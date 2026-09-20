@@ -20381,9 +20381,9 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Biggest",
                         "stem": "What size record does the whale shark hold among living fish?",
                         "choices": [
-                            "Smallest fish in a puddle",
-                            "Largest living fish",
-                            "Tallest animal on land",
+                            "Smallest fish living in a puddle",
+                            "Largest living fish known today",
+                            "Tallest animal walking on dry land",
                         ],
                         "correct": "B",
                         "why": "Wikipedia calls the whale shark the largest known living fish. Reported lengths vary, so we keep the exact metres soft.",
@@ -20394,12 +20394,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Name",
                         "stem": "Is a whale shark a whale?",
                         "choices": [
-                            "No — it is a shark (a fish with a cartilage skeleton), even though the name says “whale”",
+                            "No — it is a shark (a fish), even though its name says whale",
                             "Yes — it is a mammal that breathes air like a dolphin",
-                            "Yes — it only lives in freshwater lakes",
+                            "Yes — it only lives in freshwater lakes far inland",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia: the whale shark is a filter-feeding carpet shark (Rhincodon typus). It is a fish, not a whale. The name reflects size, not being a mammal.",
+                        "why": "Wikipedia: the whale shark is a filter-feeding carpet shark (Rhincodon typus) with a cartilage skeleton. It is a fish, not a whale. The name reflects size, not being a mammal.",
                     },
                     {
                         "slot": 3,
@@ -20407,12 +20407,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Food",
                         "stem": "How does a whale shark mostly get its food?",
                         "choices": [
-                            "By hunting large seals with big teeth",
-                            "By chewing grass on the beach",
-                            "By filter-feeding — taking in water and straining plankton, krill, fish eggs, and small schooling fish",
+                            "By hunting large seals and tuna with big teeth",
+                            "By chewing seaweed and grass on the beach",
+                            "By filter-feeding — straining plankton and small schooling fish",
                         ],
                         "correct": "C",
-                        "why": "Wikipedia: it is an active filter feeder. Prey includes plankton, krill, fish eggs, and small schooling fish such as sardines and anchovies. Soft on litres-per-hour.",
+                        "why": "Wikipedia: it is an active filter feeder. It takes in water and strains plankton, krill, fish eggs, and small schooling fish such as sardines and anchovies. Soft on litres-per-hour.",
                     },
                     {
                         "slot": 4,
@@ -20420,12 +20420,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Body",
                         "stem": "What is special about a whale shark’s pattern?",
                         "choices": [
-                            "A checkerboard of light spots and stripes on a dark back — each shark’s pattern is unique",
-                            "Solid neon pink with no marks",
-                            "Feathers instead of skin",
+                            "A checkerboard of light spots and stripes on dark skin",
+                            "Solid neon pink with no spots, stripes, or marks",
+                            "Feathers instead of skin, like a bright bird",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia describes a distinctive pattern of pale spots and stripes. Scientists can use spot patterns to tell individuals apart. Soft on exact ID methods.",
+                        "why": "Wikipedia describes a distinctive checkerboard of pale spots and stripes on a dark back. Each shark’s pattern is unique, so scientists can tell individuals apart. Soft on exact ID methods.",
                     },
                     {
                         "slot": 5,
@@ -20433,12 +20433,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Myth buster",
                         "stem": "Does a whale shark’s huge size mean it hunts people?",
                         "choices": [
-                            "Yes — it chases swimmers every day",
-                            "No — it is docile and poses no significant threat to people; it filters tiny food, not humans",
-                            "Yes — only at night",
+                            "Yes — it chases swimmers for food almost every day",
+                            "No — it is docile and filters tiny food, not people",
+                            "Yes — it only hunts people very late at night",
                         ],
                         "correct": "B",
-                        "why": "Wikipedia: despite its size, the whale shark is docile and poses no significant threat to humans. Soft care: give big animals space and follow local guide rules.",
+                        "why": "Wikipedia: despite its size, the whale shark is docile and poses no significant threat to humans — it filters tiny food, not people. Soft care: give big animals space and follow local guide rules.",
                     },
                 ],
             },
@@ -20451,12 +20451,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Rhincodontidae",
                         "stem": "Where does the whale shark sit in the shark family tree, if we keep names soft?",
                         "choices": [
-                            "Only living member of family Rhincodontidae (genus Rhincodon) in the carpet-shark order Orectolobiformes — soft",
-                            "A kind of dolphin in the whale family",
-                            "A bony tuna with no shark relatives",
+                            "Only living member of Rhincodontidae (Rhincodon) in Orectolobiformes — soft",
+                            "A kind of dolphin living in the whale family",
+                            "A bony tuna with no living shark relatives",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia: Rhincodon typus is the only living species of Rhincodon and the only living member of Rhincodontidae, within Orectolobiformes (carpet sharks). Soft on older name changes.",
+                        "why": "Wikipedia: Rhincodon typus is the only living species of Rhincodon and the only living member of family Rhincodontidae, within the carpet-shark order Orectolobiformes. Soft on older name changes.",
                     },
                     {
                         "slot": 2,
@@ -20464,12 +20464,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Gill pads",
                         "stem": "How does a whale shark’s filter gear work beyond “open mouth and swim”?",
                         "choices": [
-                            "It chews rocks into flour first",
-                            "Specialized sieve-like gill pads (filter pads) plus active suction help strain tiny food from water — litres-per-hour soft",
+                            "It chews rocks and coral into flour first",
+                            "Sieve-like gill pads plus active suction strain tiny food — soft",
                             "It only eats what sticks to its fins by accident",
                         ],
                         "correct": "B",
-                        "why": "Wikipedia: filter pads and an active suction filter-feeding style let it process large volumes of water and catch plankton and small fish. Soft on exact pad counts and litres.",
+                        "why": "Wikipedia: specialized sieve-like gill pads (filter pads) and an active suction filter-feeding style let it process large volumes of water and catch plankton and small fish. Soft on exact pad counts and litres-per-hour.",
                     },
                     {
                         "slot": 3,
@@ -20477,12 +20477,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Endangered",
                         "stem": "How has the IUCN listed the whale shark recently, if we treat the letter as a snapshot?",
                         "choices": [
-                            "Least Concern forever with no threats",
-                            "Extinct in the wild since the 1800s",
-                            "Endangered — a snapshot tied to big population drops from fishing, bycatch, and ship collisions (soft)",
+                            "Least Concern forever, with no real threats at sea",
+                            "Extinct in the wild since early in the 1800s",
+                            "Endangered — snapshot from fishing, bycatch, and ship strikes (soft)",
                         ],
                         "correct": "C",
-                        "why": "Wikipedia lists the whale shark as Endangered on the IUCN Red List, with a large decline over recent decades linked to targeted fishing, bycatch, and ship strikes. Letters can change — treat Endangered as a snapshot.",
+                        "why": "Wikipedia lists the whale shark as Endangered on the IUCN Red List, with a large decline over recent decades linked to targeted fishing, bycatch, and ship collisions. Letters can change — treat Endangered as a snapshot.",
                     },
                     {
                         "slot": 4,
@@ -20490,12 +20490,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Migration",
                         "stem": "Why do whale sharks sometimes gather in the same coastal spots year after year?",
                         "choices": [
-                            "Seasonal feeding aggregations where food is rich — sites such as Ningaloo and the Yucatán are examples (soft)",
-                            "They nest in trees like birds",
-                            "They only meet at the North Pole ice",
+                            "Seasonal feeding aggregations — Ningaloo and the Yucatán are examples (soft)",
+                            "They nest high in trees each spring like birds",
+                            "They only gather to meet at the North Pole ice",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia: highly migratory animals travel far to exploit seasonal food, with predictable coastal feeding aggregations (e.g. Ningaloo Reef, Yucatán Peninsula). Soft on exact mile counts.",
+                        "why": "Wikipedia: highly migratory animals travel far to exploit seasonal food, with predictable coastal feeding aggregations where food is rich (e.g. Ningaloo Reef, Yucatán Peninsula). Soft on exact mile counts.",
                     },
                     {
                         "slot": 5,
@@ -20503,12 +20503,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Tiny teeth",
                         "stem": "What are a whale shark’s teeth like, compared with a great white’s big biting teeth?",
                         "choices": [
-                            "Over many rows of tiny teeth — used with filter pads, not for hunting people (soft)",
-                            "No teeth at all — ever",
-                            "One giant tooth the size of a door",
+                            "Many rows of tiny teeth used with filter pads — soft",
+                            "No teeth at all left in the mouth — ever",
+                            "One giant biting tooth as big as a door",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia: mouths can hold hundreds of rows of tiny teeth plus filter pads for filter feeding. Soft on exact row counts; they are not built like a great white’s bite.",
+                        "why": "Wikipedia: mouths can hold hundreds of rows of tiny teeth plus filter pads for filter feeding — not for hunting people. Soft on exact row counts; they are not built like a great white’s bite.",
                     },
                 ],
             },
@@ -20521,12 +20521,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Taxonomy",
                         "stem": "How do scientists place the living whale shark, and what extinct relative does Wikipedia note?",
                         "choices": [
-                            "Class Chondrichthyes / subclass Elasmobranchii — a carpet shark; an extinct Rhincodon (R. ferriolensis) is noted from the Miocene of Europe (soft)",
-                            "A bony bony-fish group with no cartilaginous cousins",
-                            "A mammal clade with whales only",
+                            "Chondrichthyes / Elasmobranchii carpet shark; extinct R. ferriolensis (soft)",
+                            "A bony-fish group with no cartilaginous shark cousins",
+                            "A mammal clade that includes only living whales",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia places Rhincodon typus in Chondrichthyes and Elasmobranchii as a carpet shark. It also notes an extinct Rhincodon ferriolensis from the Late Burdigalian (Miocene) of Europe. Soft on exact site details.",
+                        "why": "Wikipedia places Rhincodon typus in class Chondrichthyes / subclass Elasmobranchii as a carpet shark. It also notes an extinct Rhincodon ferriolensis from the Late Burdigalian (Miocene) of Europe. Soft on exact site details.",
                     },
                     {
                         "slot": 2,
@@ -20535,11 +20535,11 @@ STUDY_CARDS: dict[str, dict] = {
                         "stem": "What is unusual about whale-shark life history for a fish, if we keep numbers soft?",
                         "choices": [
                             "It matures in a few weeks and lives only one summer",
-                            "Late maturity and a very long life — decades to maturity and lifespan that may reach many decades (exact years soft)",
-                            "It never grows after birth",
+                            "Late maturity and a very long life measured in decades (soft)",
+                            "It never grows any larger after the day of birth",
                         ],
                         "correct": "B",
-                        "why": "Wikipedia and linked research describe slow growth, late maturity, and long life (estimates often decades; some projections over a century). Exact year counts stay soft because methods still refine ages.",
+                        "why": "Wikipedia and linked research describe slow growth, late maturity, and long life (estimates often decades to maturity; lifespan may reach many decades, with some projections over a century). Exact year counts stay soft because methods still refine ages.",
                     },
                     {
                         "slot": 3,
@@ -20547,12 +20547,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Denticles",
                         "stem": "What tooth-like skin structures do whale sharks have beyond the tiny mouth teeth?",
                         "choices": [
-                            "Dermal denticles (placoid scales) on the body — and Wikipedia notes denticles on the eyeballs that help protect the eyes (soft)",
-                            "Feathers that molt each spring",
-                            "No scales of any kind — only slime",
+                            "Dermal denticles on the body, plus eyeball denticles (soft)",
+                            "Feathers that molt each spring like a land bird",
+                            "No scales of any kind — only slime on skin",
                         ],
                         "correct": "A",
-                        "why": "Like other sharks, whale sharks have dermal denticles. Wikipedia highlights eyeball denticles (structured differently from body denticles) plus the ability to retract the eyes for protection. Soft on filter-surface details.",
+                        "why": "Like other sharks, whale sharks have dermal denticles (placoid scales) on the body. Wikipedia highlights eyeball denticles (structured differently from body denticles) that help protect the eyes, plus the ability to retract the eyes. Soft on filter-surface details.",
                     },
                     {
                         "slot": 4,
@@ -20560,12 +20560,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Photo-ID",
                         "stem": "How do researchers tell one whale shark from another without tagging every animal?",
                         "choices": [
-                            "Only by guessing from swimming speed",
-                            "Unique spot/stripe patterns — photos of a standard flank area feed global ID libraries (soft)",
+                            "Only by guessing from each shark’s swimming speed",
+                            "Unique spot patterns — flank photos feed global ID libraries (soft)",
                             "By painting numbers on the dorsal fin in the wild",
                         ],
                         "correct": "B",
-                        "why": "Wikipedia notes each individual’s pattern is unique. Researchers use photo-identification of spot patterns (often a flank region near the gills/pectoral) to track re-sightings. Soft on database names.",
+                        "why": "Wikipedia notes each individual’s spot/stripe pattern is unique. Researchers use photo-identification of a standard flank area (often near the gills/pectoral) to feed global ID libraries and track re-sightings. Soft on database names.",
                     },
                     {
                         "slot": 5,
@@ -20573,12 +20573,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Threats",
                         "stem": "Beyond the IUCN Endangered letter, what human pressures does Wikipedia emphasize for whale sharks?",
                         "choices": [
-                            "Only too much plankton in the sea",
-                            "Only quieter oceans with no boats",
-                            "Targeted fishing, bycatch in other fisheries, and collisions with large ships — drivers of a large population drop (soft)",
+                            "Only too much plankton growing in the open sea",
+                            "Only quieter oceans with almost no boats left",
+                            "Targeted fishing, bycatch, and ship collisions drive big declines (soft)",
                         ],
                         "correct": "C",
-                        "why": "Wikipedia ties the Endangered listing to a large decline over recent decades from targeted fishing, bycatch, and ship collisions. Soft on exact percent — treat as a snapshot.",
+                        "why": "Wikipedia ties the Endangered listing to a large decline over recent decades from targeted fishing, bycatch in other fisheries, and collisions with large ships. Soft on exact percent — treat as a snapshot.",
                     },
                 ],
             },
@@ -20662,7 +20662,93 @@ def study_deck_for(card_id: str, level: str = DEFAULT_LEVEL) -> dict | None:
     }
 
 
+# Option-length guard: correct choice must not dwarf distractors.
+# Rollout: collect offenders for all cards; fail only ENFORCED ids (expand later).
+OPTION_LENGTH_RATIO = 1.5
+OPTION_LENGTH_ENFORCED_CARD_IDS: frozenset[str] = frozenset({"whale-shark"})
+
+
+def _option_word_count(text: str) -> int:
+    return len(str(text or "").split())
+
+
+def _option_word_counts(choices: list) -> list[int]:
+    return [_option_word_count(c) for c in choices]
+
+
+def _median_int(values: list[int]) -> float:
+    """Median of a small int list (study choices are always length 3)."""
+    if not values:
+        return 0.0
+    ordered = sorted(values)
+    n = len(ordered)
+    mid = n // 2
+    if n % 2:
+        return float(ordered[mid])
+    return (ordered[mid - 1] + ordered[mid]) / 2.0
+
+
+def option_length_offenders(
+    cards: dict | None = None,
+    *,
+    ratio: float = OPTION_LENGTH_RATIO,
+) -> list[dict]:
+    """List questions where correct option word-count is > ratio × median.
+
+    Each offender dict has: card_id, level, question_id, slot, correct_words,
+    median_words, ratio, counts.
+    """
+    src = STUDY_CARDS if cards is None else cards
+    out: list[dict] = []
+    for card_id, card in (src or {}).items():
+        for level, pack in (card.get("levels") or {}).items():
+            for q in pack.get("questions") or []:
+                choices = list(q.get("choices") or [])
+                if len(choices) != 3:
+                    continue
+                counts = _option_word_counts(choices)
+                median = _median_int(counts)
+                if median <= 0:
+                    continue
+                correct = str(q.get("correct") or "")
+                if correct not in LETTERS:
+                    continue
+                idx = LETTERS.index(correct)
+                correct_words = counts[idx]
+                got = correct_words / median
+                if correct_words > ratio * median:
+                    out.append(
+                        {
+                            "card_id": str(card_id),
+                            "level": str(level),
+                            "question_id": str(q.get("id") or ""),
+                            "slot": int(q.get("slot") or 0),
+                            "correct_words": correct_words,
+                            "median_words": median,
+                            "ratio": round(got, 3),
+                            "counts": counts,
+                        }
+                    )
+    return out
+
+
+def option_length_failures(
+    cards: dict | None = None,
+    *,
+    enforced: frozenset[str] | None = None,
+    ratio: float = OPTION_LENGTH_RATIO,
+) -> list[dict]:
+    """Offenders on cards in the enforced set (default: whale-shark rollout)."""
+    ids = OPTION_LENGTH_ENFORCED_CARD_IDS if enforced is None else enforced
+    return [
+        row
+        for row in option_length_offenders(cards, ratio=ratio)
+        if row["card_id"] in ids
+    ]
+
+
 def validate_deck(deck: dict) -> list[str]:
+
     """Return human-readable problems. Empty list means the deck is locked.
 
     Easy requires a Learn-first teach strip. Hard and Zoologist are
