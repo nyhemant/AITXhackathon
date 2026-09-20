@@ -1599,25 +1599,7 @@ a.seo-map-card:focus-visible {
   .seo-park-hero { max-height: 200px; border-radius: 14px; }
 }
 
-.th-safety {
-  font-size: 0.78rem;
-  line-height: 1.25;
-  margin: 0.35rem 0 0.2rem;
-  padding: 0.3rem 0.45rem;
-  border-radius: 6px;
-  background: #eef5ea;
-  border: 1px solid #cfe0c8;
-  color: #2f3d2c;
-}
-@media print {
-  .th-safety {
-    font-size: 7.5pt;
-    margin: 2pt 0;
-    padding: 2pt 4pt;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-}
+/* th-safety: shared rule in styles.css (do not duplicate here) */
 
 /* Dual-mode place page: at-home first, print secondary */
 .seo-mission-bar {

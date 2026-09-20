@@ -508,6 +508,7 @@ body.mission-drawer-open {
     padding: 0;
     background: #fff;
     color: #0a4545;
+    font-family: var(--fp-print-font, "Segoe UI", system-ui, sans-serif);
     display: flex;
     flex-direction: column;
     transform: none !important;
@@ -565,7 +566,8 @@ body.mission-drawer-open {
     font-size: 10pt;
   }
   body.printing-mission .ms-footer {
-    font-size: 7pt;
+    font-size: var(--fp-print-footer-size, 7pt);
+    color: var(--fp-print-footer-color, #3d4f6f);
     margin: 3pt 0 0;
     padding-top: 2pt;
     flex: 0 0 auto;

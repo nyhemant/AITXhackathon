@@ -1283,7 +1283,17 @@ a {
    *   and still hairline-rounds a packed 9.7in sheet onto page 2. Absolute sheets +
    *   visibility:hidden leftovers also paginated. Sheet 9.4in + 0.4in margins = 10.2in
    *   of 11in (~0.8in visible slack). Landscape cutouts use the matching 7.3in cap.
+   *
+   * FP_PRINT_TOKENS — shared across styles.css, mission.css, print-kit.js:
    */
+  :root {
+    --fp-print-font: "Segoe UI", system-ui, sans-serif;
+    --fp-print-ink: #152238;
+    --fp-print-footer-size: 7pt;
+    --fp-print-footer-color: #3d4f6f;
+    --fp-print-brand-bg: #0f5c5c;
+  }
+
   @page {
     size: letter portrait;
     margin: 0.4in;
@@ -1328,8 +1338,8 @@ a {
 
   .print-sheet {
     display: none !important;
-    color: #152238;
-    font-family: "Segoe UI", system-ui, sans-serif;
+    color: var(--fp-print-ink, #152238);
+    font-family: var(--fp-print-font, "Segoe UI", system-ui, sans-serif);
   }
 
   body:not(.printing-treasure) #print-sheet:not(:empty) {
@@ -1386,7 +1396,7 @@ a {
     height: 9.4in;
     max-height: 9.4in;
     overflow: hidden !important;
-    color: #152238;
+    color: var(--fp-print-ink, #152238);
     page-break-inside: avoid !important;
     break-inside: avoid !important;
     page-break-after: avoid !important;
@@ -1398,7 +1408,7 @@ a {
   }
 
   .ps-banner {
-    background: #0f5c5c;
+    background: var(--fp-print-brand-bg, #0f5c5c);
     color: white;
     text-align: center;
     border-radius: 8px;
@@ -1697,8 +1707,8 @@ a {
   .ps-footer {
     margin-top: 2px;
     text-align: center;
-    font-size: 6pt;
-    color: #3d4f6f;
+    font-size: var(--fp-print-footer-size, 7pt);
+    color: var(--fp-print-footer-color, #3d4f6f);
     flex: 0 0 auto;
   }
 
@@ -1861,7 +1871,7 @@ a {
     height: 9.4in;
     max-height: 9.4in;
     overflow: hidden !important;
-    color: #152238;
+    color: var(--fp-print-ink, #152238);
     page-break-inside: avoid !important;
     break-inside: avoid !important;
     page-break-after: avoid !important;
@@ -1869,7 +1879,7 @@ a {
   }
 
   .th-banner {
-    background: #0f5c5c;
+    background: var(--fp-print-brand-bg, #0f5c5c);
     color: white;
     text-align: center;
     border-radius: 8px;
@@ -2086,12 +2096,11 @@ a {
   .th-footer {
     margin-top: 3px;
     text-align: center;
-    font-size: 7pt;
-    color: #3d4f6f;
+    font-size: var(--fp-print-footer-size, 7pt);
+    color: var(--fp-print-footer-color, #3d4f6f);
   }
   .th-page-with-map .th-footer {
     margin-top: 2px;
-    font-size: 6.5pt;
   }
 
   /* Home Safari — two landscape pages: hunt cards, then cut-outs */
@@ -2103,7 +2112,7 @@ a {
     overflow: hidden !important;
     display: flex;
     flex-direction: column;
-    color: #152238;
+    color: var(--fp-print-ink, #152238);
     page-break-inside: avoid !important;
     break-inside: avoid !important;
     page-break-after: always;
@@ -2114,7 +2123,7 @@ a {
     break-after: auto;
   }
   .hs-banner {
-    background: #0f5c5c;
+    background: var(--fp-print-brand-bg, #0f5c5c);
     color: #fff;
     text-align: center;
     border-radius: 8px;
@@ -2139,8 +2148,8 @@ a {
   .hs-footer {
     margin-top: 4px;
     text-align: center;
-    font-size: 8pt;
-    color: #3d4f6f;
+    font-size: var(--fp-print-footer-size, 7pt);
+    color: var(--fp-print-footer-color, #3d4f6f);
     flex: 0 0 0.28in;
     line-height: 0.28in;
   }
