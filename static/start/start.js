@@ -95,9 +95,19 @@
     });
   });
 
+  function armPlate(img) {
+    if (!img || img.getAttribute("src")) return;
+    const src = img.getAttribute("data-src");
+    if (!src) return;
+    const srcset = img.getAttribute("data-srcset");
+    if (srcset) img.setAttribute("srcset", srcset);
+    img.setAttribute("src", src);
+  }
+
   const trackEl = document.getElementById("start-teach-track");
   if (trackEl) {
     const section = document.getElementById("start-teach");
+    const stillEl = section && section.querySelector(".start-chapter-still");
     const cue = document.querySelector("[data-teach-cue]");
     const dots = document.querySelectorAll(".start-teach-dots span");
     const prevBtn = document.querySelector("[data-teach-prev]");
@@ -106,6 +116,27 @@
     const exploreHref = (exploreEl && exploreEl.getAttribute("href")) || "/field-pack/cards/#try-a-card";
     const count = trackEl.querySelectorAll(".start-teach-slide").length;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mobileMq = window.matchMedia("(max-width: 640px)");
+
+    function isMobileTeach() {
+      return mobileMq.matches;
+    }
+
+    function armTeachPlates() {
+      if (isMobileTeach()) {
+        trackEl.querySelectorAll(".start-teach-slide img").forEach(armPlate);
+      } else if (stillEl) {
+        armPlate(stillEl);
+      }
+    }
+
+    armTeachPlates();
+    if (typeof mobileMq.addEventListener === "function") {
+      mobileMq.addEventListener("change", armTeachPlates);
+    } else if (typeof mobileMq.addListener === "function") {
+      mobileMq.addListener(armTeachPlates);
+    }
+
     const swipePx = 80;
     const hintPx = 36;
     const wheelPx = 120;
@@ -333,6 +364,15 @@
       return mobileMq.matches;
     }
 
+    function armGoingPlates() {
+      const hosts = isMobileGoing()
+        ? trackEl.querySelectorAll(".start-going-slide img")
+        : stillEl
+          ? stillEl.querySelectorAll("img")
+          : [];
+      hosts.forEach(armPlate);
+    }
+
     let lastIndex = startIndex;
     let startX = 0;
     let startY = 0;
@@ -455,6 +495,7 @@
     }
 
     function syncMode() {
+      armGoingPlates();
       if (isMobileGoing()) reveal();
       else parkDesktop();
     }
