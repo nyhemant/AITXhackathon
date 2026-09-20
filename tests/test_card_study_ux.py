@@ -390,8 +390,8 @@ class CardStudyUxTests(unittest.TestCase):
         talk_at = main.find('class="card-talk-pack')
         try_at = main.find('class="card-try-next')
         actions_at = main.find('class="card-page-actions"')
+        self.assertLess(actions_at, talk_at)
         self.assertLess(talk_at, try_at)
-        self.assertLess(try_at, actions_at)
         print_tpl = page.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertNotIn("card-try-next", print_tpl)
         whale = (FP / "cards" / "whale-shark" / "index.html").read_text(encoding="utf-8")

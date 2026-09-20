@@ -5155,13 +5155,13 @@ def write_card_pages(
       {blurb_html}
       {hero_links}
       {next_html}
-      {talk_html}
-      {try_next_html}
-      {park_rail_html}
       <p class="card-page-actions">
         {actions_html}
       </p>
       <p class="print-spec no-print">{esc(PRINT_SPEC)}</p>
+      {talk_html}
+      {try_next_html}
+      {park_rail_html}
     </main>
   </div>
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>

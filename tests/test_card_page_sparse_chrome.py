@@ -148,6 +148,18 @@ class CardPageSparseChromeTests(unittest.TestCase):
                 print_at = main.find("print-this-card")
                 self.assertGreater(spec_at, print_at)
 
+    def test_print_above_quiz(self):
+        for cid, html in self.pages.items():
+            main = _main(html)
+            with self.subTest(card=cid):
+                print_at = main.find("print-this-card")
+                spec_at = main.find("print-spec")
+                quiz_at = main.find('class="card-talk-pack')
+                self.assertGreater(print_at, 0)
+                self.assertGreater(quiz_at, 0)
+                self.assertLess(print_at, quiz_at)
+                self.assertLess(spec_at, quiz_at)
+
     def test_pre_recorded_film_uses_vft_not_youtube(self):
         for cid, html in self.pages.items():
             main = _main(html)

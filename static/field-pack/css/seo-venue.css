@@ -1989,18 +1989,21 @@ body.seo-venue-body {
 .card-page-next {
   order: 1;
 }
-.card-page .card-talk-pack {
-  order: 2;
-}
-.card-page .card-try-next {
-  order: 3;
-}
 .card-page-actions {
-  order: 4;
+  order: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
   margin-top: 1.1rem;
+}
+.card-page .print-spec {
+  order: 2;
+}
+.card-page .card-talk-pack {
+  order: 3;
+}
+.card-page .card-try-next {
+  order: 4;
 }
 .card-page-actions .btn {
   font-size: 1.05rem;
