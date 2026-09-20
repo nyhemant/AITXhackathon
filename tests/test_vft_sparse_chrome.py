@@ -4,11 +4,23 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import unittest
 from pathlib import Path
 
 
 REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO / "scripts"))
+
+from generate_bdo_seo import (  # noqa: E402
+    CATALOG_JS_VER,
+    LANDING_CSS_VER,
+    PRINT_KIT_JS_VER,
+    SHELL_CSS_VER,
+    SHELL_JS_VER,
+    STYLES_CSS_VER,
+)
+
 FP = REPO / "static" / "field-pack"
 VFT_PAGES = (
     FP / "virtual-field-trip" / "index.html",
@@ -116,6 +128,16 @@ class VftSparseChromeTests(unittest.TestCase):
             self.assertIn('href="/field-pack/virtual-field-trip/"', html)
             self.assertNotIn('id="vz-first-run"', html)
             self.assertNotIn("Start with the flamingo", html)
+
+    def test_shared_assets_match_generator_cache_bust(self):
+        for path, html in self.pages.items():
+            with self.subTest(page=str(path.relative_to(REPO))):
+                self.assertIn(f"shell.css?v={SHELL_CSS_VER}", html)
+                self.assertIn(f"styles.css?v={STYLES_CSS_VER}", html)
+                self.assertIn(f"landing.css?v={LANDING_CSS_VER}", html)
+                self.assertIn(f"shell.js?v={SHELL_JS_VER}", html)
+                self.assertIn(f"catalog.js?v={CATALOG_JS_VER}", html)
+                self.assertIn(f"print-kit.js?v={PRINT_KIT_JS_VER}", html)
 
 
 if __name__ == "__main__":
