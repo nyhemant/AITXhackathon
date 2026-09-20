@@ -81,13 +81,14 @@ Dinner still runs at `/dinner`. It is a Beta leftover from Chapter 1 (“tonight
 
 ## Documentation
 
+- Agent start: `AGENTS.md`
 - Session continuity for Field Trip Kit: `.grok/HANDOFF.md`
-- Agent brief: `docs/AGENT-BRIEF.md`
 - Origin scrape/bot rate limits: `docs/rate-limit.md`
 - Dinner local validation (not current product): `docs/demo.md`
 - Dinner Chapter 1 reference (not current product): `docs/product-reference.md`
 - `docs/product/` — pointer only; not live research
 - Archived May 2026 dinner/Reddit research: `docs/archive/dinner-research-2026-05/`
+- Archived August 2026 Field Trip Kit polish program (closed 2026-08-12): `docs/archive/polish-2026-08/`
 - Legacy dinner model 1.1 freeze: `docs/legacy/model-1.1.md` (`legacy/model-1.1`, tag `legacy-model-1.1`)
 - Other archived historical docs: `docs/archive/`
 
