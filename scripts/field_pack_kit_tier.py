@@ -15,7 +15,7 @@ FRESHNESS_PROMPT = "Was this list accurate?"
 FRESHNESS_ACCURATE = "accurate"
 FRESHNESS_CHANGED = "something changed"
 KIT_LABEL_STARTER = "Starter list"
-KIT_LABEL_VERIFIED_PREFIX = "Verified kit · checked "
+KIT_LABEL_VERIFIED_PREFIX = "We checked the animal list, exhibit names, and map link in "
 
 # `list_confidence: audited` is the existing hand-picked / presence-checked flag.
 # `status: verified` is on every scaffolded venue and is not a depth signal.
@@ -67,7 +67,7 @@ def kit_tier_label(mission_venue: dict | None) -> str:
     if (venue.get("list_confidence") or "") == VERIFIED_CONFIDENCE:
         month = checked_month_label(venue.get(CHECKED_DATE_FIELD) or "")
         if month:
-            return f"{KIT_LABEL_VERIFIED_PREFIX}{month}"
+            return f"{KIT_LABEL_VERIFIED_PREFIX}{month}."
     return KIT_LABEL_STARTER
 
 

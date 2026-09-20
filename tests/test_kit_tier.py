@@ -51,7 +51,7 @@ class KitTierHelperTests(unittest.TestCase):
                     "last_presence_audit": "2026-08-08",
                 }
             ),
-            "Verified kit · checked Aug 2026",
+            "We checked the animal list, exhibit names, and map link in Aug 2026.",
         )
 
     def test_audited_without_date_is_starter(self):
@@ -79,7 +79,7 @@ class KitTierHelperTests(unittest.TestCase):
             "last_presence_audit": "2026-08-09",
         }
         self.assertEqual(print_status_line(v), kit_tier_label(v))
-        self.assertIn("Verified kit · checked Aug 2026", status_chip_html(v))
+        self.assertIn("We checked the animal list, exhibit names, and map link in Aug 2026.", status_chip_html(v))
         self.assertIn("Starter list", status_chip_html({"list_confidence": "template"}))
 
     def test_freshness_subject_includes_slug(self):
@@ -102,7 +102,7 @@ class KitTierPageTests(unittest.TestCase):
             self.assertEqual(data.get("list_confidence"), VERIFIED_CONFIDENCE)
             self.assertTrue(data.get(CHECKED_DATE_FIELD))
             expected = kit_tier_label(data)
-            self.assertTrue(expected.startswith("Verified kit · checked "))
+            self.assertTrue(expected.startswith("We checked the animal list, exhibit names, and map link in "))
             html = (FP / slug / "index.html").read_text(encoding="utf-8")
             visible = _visible(html)
             self.assertIn(expected, visible)
@@ -121,7 +121,7 @@ class KitTierPageTests(unittest.TestCase):
         html = (FP / "houston-zoo" / "index.html").read_text(encoding="utf-8")
         visible = _visible(html)
         self.assertIn("Starter list", visible)
-        self.assertNotIn("Verified kit", visible)
+        self.assertNotIn("We checked the animal list", visible)
         self.assertIn("Was this list accurate?", visible)
         self.assertIn("houston-zoo", unquote(visible))
 
@@ -130,13 +130,13 @@ class KitTierPageTests(unittest.TestCase):
         starter = 0
         for path in sorted(VENUES.glob("*.json")):
             label = kit_tier_label(json.loads(path.read_text(encoding="utf-8")))
-            if label.startswith("Verified kit"):
+            if label.startswith("We checked"):
                 verified += 1
             else:
                 starter += 1
-        self.assertEqual(verified + starter, 218)
+        self.assertEqual(verified + starter, 221)
         self.assertEqual(verified, 78)
-        self.assertEqual(starter, 140)
+        self.assertEqual(starter, 143)
         self.assertNotIn("Local shortlist", (FP / "dallas-zoo" / "index.html").read_text())
 
 

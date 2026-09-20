@@ -746,8 +746,8 @@
     const place = placeTitle(venue);
     if (h === "alpha") {
       const n = (name || "").trim();
-      if (n) return `${n}'s Alpha Hunt · ${place}`;
-      return `Alpha Hunt at ${place}`;
+      if (n) return `${n}'s Challenge Hunt · ${place}`;
+      return `Challenge Hunt at ${place}`;
     }
     if (h === "bonus") {
       const n = (name || "").trim();
@@ -760,9 +760,9 @@
       return `Solo day at ${place}`;
     }
     const n = (name || "").trim();
-    if (!n) return `Your Mission at ${place}`;
+    if (!n) return `Your Hunt at ${place}`;
     const poss = /s$/i.test(n) ? `${n}'` : `${n}'s`;
-    return `${poss} Mission at ${place}`;
+    return `${poss} Hunt at ${place}`;
   }
 
   function parkSafetyFooter(venue) {
@@ -798,13 +798,15 @@
     const adult = opts.age === "adult";
     const egg = special ? easterEggLine(venue, opts.age, bonusFile, hunt) : "";
     const huntLabel =
-      hunt === "alpha" ? "Alpha" : hunt === "bonus" ? "Bonus hunt" : "Classic";
+      hunt === "alpha" ? "Challenge" : hunt === "bonus" ? "Bonus" : "Classic";
     const huntTagline = special
       ? (pack && pack.tagline) ||
-        (hunt === "alpha" ? "Extra-hard · cool deep cuts" : "Second visit · curious explorers")
+        (hunt === "alpha"
+          ? "Harder observation tasks for older kids"
+          : "Find the animals, plus small extra challenges")
       : "";
     let findsHeading = "Find these";
-    if (hunt === "alpha") findsHeading = isLittle(opts.age) ? "Cool hard finds" : "Alpha finds";
+    if (hunt === "alpha") findsHeading = isLittle(opts.age) ? "Cool hard finds" : "Challenge finds";
     else if (hunt === "bonus") findsHeading = "Trickier finds";
     else if (adult) findsHeading = "Don't miss";
     else if (isLittle(opts.age)) findsHeading = "Go see";

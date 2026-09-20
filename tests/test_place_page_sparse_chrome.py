@@ -1,4 +1,4 @@
-"""Place-page chrome is sparse: images + two short actions, same language everywhere."""
+"""Place-page chrome: Option A fork, sticky hunt bar, sparse labels."""
 
 from __future__ import annotations
 
@@ -13,12 +13,18 @@ sys.path.insert(0, str(REPO / "scripts"))
 from generate_bdo_seo import (  # noqa: E402
     CTA_AT_HOME,
     CTA_PRINT,
+    CTA_SETUP_HUNT,
+    CUSTOMIZE_SUMMARY_DEFAULT,
+    FORK_GOING_TITLE,
+    FORK_HOME_TITLE,
     HOME_EMPTY,
     HOME_SESSION_H2,
     HOME_SESSION_LEAD,
     HUNT_H2,
+    HUNT_STYLE_CHALLENGE_LABEL,
     MISSION_CSS_VER,
     MISSION_DRAWER_H2,
+    OFFER_SENTENCE,
     PLACE_VFT_CTA,
     PRINT_SPEC,
     SEO_CSS_VER,
@@ -45,7 +51,6 @@ WORDY = (
     "Sheet updates live",
     "Classic = first visit",
     "Open card — 6 talk questions",
-    "Explore at home",
 )
 
 
@@ -84,14 +89,19 @@ class PlacePageSparseChromeTests(unittest.TestCase):
     def test_generator_locks_sparse_strings(self):
         self.assertEqual(CTA_AT_HOME, "At home")
         self.assertEqual(CTA_PRINT, "Print")
-        self.assertEqual(HOME_SESSION_H2, "At home")
+        self.assertEqual(CTA_SETUP_HUNT, "Set up your hunt")
+        self.assertEqual(FORK_GOING_TITLE, "Going soon")
+        self.assertEqual(FORK_HOME_TITLE, "Not going yet")
+        self.assertEqual(HOME_SESSION_H2, "Can't go this week? Watch and talk at home")
         self.assertEqual(START_HERE_H2, "Start here")
         self.assertEqual(START_HERE_LEAD, "")
         self.assertEqual(HUNT_H2, "Hunt")
-        self.assertEqual(MISSION_DRAWER_H2, "Print")
+        self.assertEqual(MISSION_DRAWER_H2, "Set up your hunt")
+        self.assertEqual(HUNT_STYLE_CHALLENGE_LABEL, "Challenge")
         self.assertEqual(PLACE_VFT_CTA, "Virtual Field Trip")
         self.assertLessEqual(len(HOME_SESSION_LEAD), 56)
         self.assertEqual(HOME_EMPTY, "No cards for this place yet.")
+        self.assertIn(OFFER_SENTENCE[:40], self.gen)
         self.assertIn('CTA_AT_HOME = "At home"', self.gen)
         self.assertIn('CTA_PRINT = "Print"', self.gen)
         self.assertIn("def hunt_teaser_html(", self.gen)
@@ -124,66 +134,106 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 self.assertNotIn("mission-filters-hint", html)
                 self.assertNotIn("mission-hunt-hint", html)
 
-    def test_hero_is_name_plus_two_short_ctas(self):
+    def test_hero_has_option_a_fork_and_offer(self):
         for slug, html in self.pages.items():
             hero = _hero(html)
             with self.subTest(slug=slug):
-                self.assertIn(f">{CTA_AT_HOME}</a>", hero)
-                self.assertRegex(
-                    hero,
-                    rf'id="mission-open-btn"[^>]*>\s*{re.escape(CTA_PRINT)}\s*</button>',
-                )
-                self.assertEqual(hero.count('class="btn '), 2)
+                self.assertIn(OFFER_SENTENCE, hero)
+                self.assertIn("seo-fork", hero)
+                self.assertIn(FORK_GOING_TITLE, hero)
+                self.assertIn(FORK_HOME_TITLE, hero)
                 self.assertIn('id="mission-open-btn"', hero)
-                self.assertIn("seo-customize-disclosure", hero)
-                self.assertIn("Customize hunt", hero)
+                self.assertIn('data-how="going-soon"', hero)
+                self.assertIn('data-how="not-going-yet"', hero)
+                self.assertIn('href="#at-home"', hero)
+                self.assertIn("seo-fork-print-spec", hero)
+                self.assertIn("US Letter or A4", hero)
+                # Print-spec only on Going soon card, not under explore card
+                home_card = hero.split("seo-fork-home", 1)[1].split("</a>", 1)[0]
+                self.assertNotIn("print-spec", home_card)
+                self.assertNotIn("seo-customize-disclosure", hero)
+                self.assertNotIn("Customize hunt", hero)
                 leads = re.findall(r'class="lead"[^>]*>(.*?)</p>', hero, re.S)
                 if leads:
                     self.assertLessEqual(len(_text(leads[0])), 90)
 
-    def test_start_here_and_at_home_use_sparse_labels(self):
+    def test_customize_after_stops_opens_modal(self):
+        for slug, html in self.pages.items():
+            visible = _visible(html)
+            with self.subTest(slug=slug):
+                self.assertIn("seo-customize-open", visible)
+                self.assertIn(CUSTOMIZE_SUMMARY_DEFAULT, visible)
+                self.assertIn('data-how="open-customize"', visible)
+                # Customize sits after start-here
+                start_i = visible.find('id="start-here"')
+                cust_i = visible.find("seo-customize-open")
+                self.assertGreater(start_i, 0)
+                self.assertGreater(cust_i, start_i)
+
+    def test_at_home_below_map_and_collapsed(self):
+        for slug, html in self.pages.items():
+            visible = _visible(html)
+            with self.subTest(slug=slug):
+                self.assertIn(f">{HOME_SESSION_H2}</span>", visible)
+                self.assertIn('id="at-home"', visible)
+                self.assertIn("seo-home-summary-count", visible)
+                home_i = visible.find('id="at-home"')
+                map_i = visible.find("seo-map")
+                if map_i > 0:
+                    self.assertGreater(home_i, map_i)
+                # Collapsed details by default (no open attr on details opener)
+                chunk = visible[max(0, home_i - 80) : home_i + 160]
+                self.assertIn("<details", chunk)
+                self.assertNotIn("<details open", chunk)
+                self.assertIn('class="seo-home-session" id="at-home"', visible)
+                self.assertIn(HOME_SESSION_LEAD, visible)
+                self.assertIn(f">{PLACE_VFT_CTA}</a>", visible)
+
+    def test_start_here_and_hunt_labels(self):
         for slug, html in self.pages.items():
             visible = _visible(html)
             with self.subTest(slug=slug):
                 self.assertIn(f">{START_HERE_H2}</h2>", visible)
-                self.assertIn(f">{HOME_SESSION_H2}</h2>", visible)
-                self.assertIn(HOME_SESSION_LEAD, visible)
-                self.assertIn(f">{PLACE_VFT_CTA}</a>", visible)
                 self.assertIn(f">{HUNT_H2}</h2>", visible)
                 hunt = visible.split('id="hunt-heading"', 1)[1].split("</section>", 1)[0]
                 self.assertIn("seo-hunt-print-link", hunt)
+                self.assertIn(CTA_SETUP_HUNT, hunt)
                 self.assertIn('data-how="print-hunt"', hunt)
                 self.assertNotIn('class="btn ', hunt)
 
-    def test_print_spec_line_near_primary_print_cta(self):
+    def test_print_spec_not_under_explore_path(self):
         for slug, html in self.pages.items():
             visible = _visible(html)
             with self.subTest(slug=slug):
-                hero = _hero(html)
-                self.assertIn('class="print-spec seo-print-spec-hero"', hero)
-                self.assertIn("US Letter or A4", hero)
-                self.assertIn("black &amp; white is fine", hero)
                 hunt = visible.split('id="hunt-heading"', 1)[1].split("</section>", 1)[0]
                 self.assertNotIn('class="print-spec"', hunt)
+                self.assertIn("seo-hunt-sticky", html)
+                self.assertIn(PRINT_SPEC.replace("&", "&amp;") if False else "US Letter or A4", html)
 
     def test_empty_kit_stays_honest(self):
         cairo = _visible(self.cairo)
         self.assertIn("Starter list", cairo)
         self.assertIn(HOME_EMPTY, cairo)
-        self.assertNotIn("Verified kit", cairo)
+        self.assertNotIn("We checked the animal list", cairo)
         start = cairo.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
         self.assertNotIn("/field-pack/cards/", start)
         self.assertIn("seo-start-emoji", start)
-        home = cairo.split('id="at-home"', 1)[1].split("</section>", 1)[0]
+        home = cairo.split('id="at-home"', 1)[1].split("</details>", 1)[0]
         self.assertNotIn("seo-home-card", home)
 
-    def test_verified_and_starter_kits_keep_tier_chips(self):
-        self.assertIn("Verified kit · checked", _visible(self.dallas))
+    def test_verified_and_feedback_placement(self):
+        dallas = _visible(self.dallas)
+        self.assertIn("We checked the animal list, exhibit names, and map link in", dallas)
         self.assertIn("Starter list", _visible(self.houston))
         self.assertIn("🦁 Dallas Zoo", self.dallas)
         self.assertIn("seo-park-hero", self.yellowstone)
+        # Feedback near official line (bottom), not in hero
+        hero = _hero(self.dallas)
+        self.assertNotIn("Was this list accurate?", hero)
+        self.assertIn("Was this list accurate?", dallas)
+        self.assertIn("seo-freshness-bottom", dallas)
 
-    def test_drawer_stays_printable_with_short_chrome(self):
+    def test_drawer_challenge_label_and_setup(self):
         for slug, html in self.pages.items():
             with self.subTest(slug=slug):
                 self.assertIn('id="mission-drawer"', html)
@@ -193,6 +243,10 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 self.assertIn('id="mission-who-seg"', html)
                 self.assertIn('id="mission-time-seg"', html)
                 self.assertIn('id="mission-hunt-seg"', html)
+                self.assertRegex(html, r">\s*Challenge\s*<")
+                self.assertIn('data-hunt="alpha"', html)
+                self.assertIn(HUNT_STYLE_CHALLENGE_LABEL, html)
+                self.assertIn("Hunt style", html)
                 self.assertIn("/start/", html)
                 self.assertIn('href="/field-pack/">All places</a>', html)
 
