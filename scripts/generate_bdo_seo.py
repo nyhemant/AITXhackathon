@@ -138,6 +138,7 @@ FORK_GOING_CAPTION = "A one-page checklist to carry"
 FORK_HOME_TITLE = "Not yet"
 FORK_HOME_SUB = "Virtual zoo at home"
 FORK_HOME_CAPTION = "Watch live · habitats and cams"
+FORK_ALL_PLACES_LABEL = "All places"
 OFFER_SENTENCE = (
     "Pick a few animals, print a one-page checklist to carry, "
     "and have something to talk about on the way. Free, no signup."
@@ -342,7 +343,7 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "31"
+SEO_CSS_VER = "32"
 CARD_SEO_CSS_VER = "35"
 LANDING_CSS_VER = "100"
 LANDING_MAP_JS_VER = "89"
@@ -1416,13 +1417,69 @@ def fork_home_sub_for_kind(venue_kind: str = "") -> str:
     }.get(tab, FORK_HOME_SUB)
 
 
-def not_yet_vft_href(place_id: str = "", venue_kind: str = "") -> str:
-    """Not yet fork target: VFT with tab + place context (not #at-home)."""
+def _catalog_id_from_pick(p: dict | None) -> str:
+    """Mission/start-here pick → catalog card id (hyphenated)."""
+    if not p:
+        return ""
+    cid = str(p.get("catalog_id") or "").strip()
+    if cid:
+        return cid.replace("_", "-")
+    iid = str(p.get("id") or "").strip()
+    return iid.replace("_", "-") if iid else ""
+
+
+def vft_habitat_id_for_catalog(cid: str) -> str:
+    """Real VFT habitat id for a catalog card, or empty (never invent a hash)."""
+    key = str(cid or "").strip()
+    if not key:
+        return ""
+    vft = vft_by_card().get(key) or {}
+    return str(vft.get("habitat_id") or "").strip()
+
+
+def first_vft_habitat_for_place(
+    mission_venue: dict | None = None,
+    mission: dict | None = None,
+    card_items: list[dict] | None = None,
+) -> str:
+    """First Start-here/route90 animal with a VFT habitat; else first card-list hit.
+
+    No fake hashes — empty means tab-only Not yet URL.
+    """
+    if mission_venue is not None and mission is not None:
+        for p in _route_90m_picks(mission_venue, mission):
+            hid = vft_habitat_id_for_catalog(_catalog_id_from_pick(p))
+            if hid:
+                return hid
+    for it in card_items or []:
+        cid = str(it.get("id") or "").strip() or _catalog_id_from_pick(it)
+        hid = vft_habitat_id_for_catalog(cid)
+        if hid:
+            return hid
+    return ""
+
+
+def not_yet_vft_href(
+    place_id: str = "",
+    venue_kind: str = "",
+    *,
+    habitat_id: str = "",
+    mission_venue: dict | None = None,
+    mission: dict | None = None,
+    card_items: list[dict] | None = None,
+) -> str:
+    """Not yet fork: VFT tab + from=place; #habitat= when a real animal habitat exists."""
     tab = vft_tab_for_kind(venue_kind)
     pid = str(place_id or "").strip()
+    base = f"/field-pack/virtual-field-trip/?tab={esc(tab)}"
     if pid:
-        return f"/field-pack/virtual-field-trip/?tab={tab}&from={pid}"
-    return f"/field-pack/virtual-field-trip/?tab={tab}"
+        base += f"&from={esc(pid)}"
+    hid = str(habitat_id or "").strip()
+    if not hid:
+        hid = first_vft_habitat_for_place(mission_venue, mission, card_items)
+    if hid:
+        return f"{base}#habitat={esc(hid)}"
+    return base
 
 
 def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str = "") -> str:
@@ -2159,7 +2216,8 @@ def page_mission_chrome_html(
     else:
         sub = home_sub
     return f"""
-        <div class="seo-fork no-print" aria-label="Going soon or not yet">
+        <div class="seo-fork-wrap no-print">
+        <div class="seo-fork" aria-label="Going soon or not yet">
           <button type="button" class="seo-fork-card seo-fork-going" id="mission-open-btn" data-how="going-soon" aria-haspopup="dialog" aria-controls="mission-drawer">
             <strong class="seo-fork-title">{esc(FORK_GOING_TITLE)}</strong>
             <span class="seo-fork-sub">{esc(FORK_GOING_SUB)}</span>
@@ -2171,6 +2229,10 @@ def page_mission_chrome_html(
             <span class="seo-fork-sub">{esc(sub)}</span>
             <span class="seo-fork-cap">{esc(FORK_HOME_CAPTION)}</span>
           </a>
+        </div>
+        <p class="seo-fork-all-places">
+          <a href="/field-pack/">{esc(FORK_ALL_PLACES_LABEL)}</a>
+        </p>
         </div>"""
 
 
@@ -2555,12 +2617,6 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     route90 = route_90m_html(mission_venue, mission, catalog_v=v)
     _vkind = str(v.get("type") or "")
     _vid = str(v.get("id") or "")
-    chrome = page_mission_chrome_html(
-        home_href=not_yet_vft_href(_vid, _vkind),
-        home_sub=fork_home_sub_for_kind(_vkind),
-        venue_kind=_vkind,
-        place_id=_vid,
-    )
     customize = customize_after_stops_html()
     sticky = sticky_hunt_bar_html()
     # Catalog ids already shown in “start here” — don’t repeat in shortlist grid
@@ -2574,6 +2630,18 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     elif (mission_venue or {}).get("list_confidence") == "template":
         v_body["featured"] = []  # never show template catalog pack
     home_items = [enrich_item(it) for it in (v_body.get("featured") or v.get("featured") or [])]
+    chrome = page_mission_chrome_html(
+        home_href=not_yet_vft_href(
+            _vid,
+            _vkind,
+            mission_venue=mission_venue,
+            mission=mission,
+            card_items=home_items,
+        ),
+        home_sub=fork_home_sub_for_kind(_vkind),
+        venue_kind=_vkind,
+        place_id=_vid,
+    )
     home_sec = home_session_html(
         home_items, venue_kind=str(v.get("type") or ""), venue_id=str(v.get("id") or "")
     )
@@ -2763,11 +2831,15 @@ def render_venue_page(v: dict) -> str:
         x for x in [soft_title(place.replace("_", " ")), v.get("location") or ""] if x
     )
     body = unique_body(v)
+    _vkind = str(v.get("type") or "")
+    _vid = str(v.get("id") or "")
+    home_items = [enrich_item(it) for it in (v.get("featured") or [])]
     home_sec = home_session_html(
-        [enrich_item(it) for it in (v.get("featured") or [])],
-        venue_kind=str(v.get("type") or ""),
-        venue_id=str(v.get("id") or ""),
+        home_items,
+        venue_kind=_vkind,
+        venue_id=_vid,
     )
+    _not_yet = not_yet_vft_href(_vid, _vkind, card_items=home_items)
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
@@ -2830,7 +2902,7 @@ def render_venue_page(v: dict) -> str:
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
         {f'<p class="lead">{esc(quiet_hero_lead(v))}</p>' if quiet_hero_lead(v) else ""}
-        {page_mission_chrome_html(venue_kind=str(v.get('type') or ''), place_id=str(v.get('id') or ''))}
+        {page_mission_chrome_html(home_href=_not_yet, home_sub=fork_home_sub_for_kind(_vkind), venue_kind=_vkind, place_id=_vid)}
       </header>
 
       {home_sec}
