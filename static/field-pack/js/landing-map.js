@@ -1963,7 +1963,7 @@
             /\/field-pack\/([^/#]+)\/?/
           );
           const id = m ? m[1] : "";
-          if (!id || id === "app.html") return;
+          if (!id) return;
           const place = byId[id];
           const kind = place ? pinTypeKind(place.type) : blockKind || "other";
           const show = blockMatch && (!filterKind || kind === filterKind);

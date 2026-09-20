@@ -176,6 +176,8 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         self.assertIn('data-place-type="park"', self.html)
         self.assertNotIn('id="ready-grid"', self.html)
         self.assertNotIn('id="ready-heading"', self.html)
+        self.assertNotIn('id="continue-chip"', self.html)
+        self.assertNotIn('id="waiting-cities"', self.html)
         self.assertIn('id="cat-places-compact"', self.html)
         self.assertIn('id="cat-popular"', self.html)
         self.assertIn("218 places worldwide", self.html)
