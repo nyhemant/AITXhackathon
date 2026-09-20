@@ -5335,6 +5335,18 @@ def write_card_pages(
         title = f"{name} — KidZooKit"
         desc = (blurb + " " if blurb else "") + f"{name} card: photo and talk prompts."
         url = f"{SITE}/field-pack/cards/{cid}/"
+        # Social preview: each card's own animal photo (not the Dallas mission sample).
+        if photo:
+            photo_path = photo.split("?")[0]
+            if photo_path.startswith("http"):
+                og_img = photo_path
+            elif photo_path.startswith("/"):
+                og_img = f"{SITE}{photo_path}"
+            else:
+                og_img = OG_SHARE_IMAGE
+        else:
+            og_img = OG_SHARE_IMAGE
+            print(f"  WARN card missing photo for og:image: {cid}")
         html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5348,7 +5360,9 @@ def write_card_pages(
   <meta property="og:title" content="{esc(title)}" />
   <meta property="og:description" content="{esc(desc)}" />
   <meta property="og:url" content="{esc(url)}" />
-  <meta property="og:image" content="{OG_SHARE_IMAGE}" />
+  <meta property="og:image" content="{esc(og_img)}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="{esc(og_img)}" />
   <link rel="stylesheet" href="/shell/shell.css?v={SHELL_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
