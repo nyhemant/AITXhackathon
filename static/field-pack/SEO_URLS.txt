@@ -124,6 +124,7 @@ https://kidzookit.com/field-pack/orlando-science-center/
 https://kidzookit.com/field-pack/florida-aquarium/
 https://kidzookit.com/field-pack/tampa-zoo/
 https://kidzookit.com/field-pack/georgia-aquarium/
+https://kidzookit.com/field-pack/galapagos/
 https://kidzookit.com/field-pack/hawaii-volcanoes/
 https://kidzookit.com/field-pack/honolulu-zoo/
 https://kidzookit.com/field-pack/waikiki-aquarium/
@@ -179,6 +180,7 @@ https://kidzookit.com/field-pack/pittsburgh-zoo/
 https://kidzookit.com/field-pack/congaree/
 https://kidzookit.com/field-pack/wind-cave/
 https://kidzookit.com/field-pack/badlands/
+https://kidzookit.com/field-pack/giant-panda-national-park/
 https://kidzookit.com/field-pack/fiordland/
 https://kidzookit.com/field-pack/great-smoky-mountains/
 https://kidzookit.com/field-pack/memphis-zoo/
@@ -208,6 +210,7 @@ https://kidzookit.com/field-pack/capitol-reef/
 https://kidzookit.com/field-pack/shenandoah/
 https://kidzookit.com/field-pack/virginia-aquarium/
 https://kidzookit.com/field-pack/virgin-islands/
+https://kidzookit.com/field-pack/french-island/
 https://kidzookit.com/field-pack/mount-rainier/
 https://kidzookit.com/field-pack/north-cascades/
 https://kidzookit.com/field-pack/olympic/

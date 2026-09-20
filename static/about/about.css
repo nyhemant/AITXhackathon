@@ -234,6 +234,13 @@ body.about-body {
   opacity: 0.55;
 }
 
+.footer-by {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: #8a9ab0;
+  letter-spacing: 0.01em;
+}
+
 :focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 3px;

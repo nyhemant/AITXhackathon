@@ -21078,7 +21078,7 @@ def study_print_html(
     level_label = _esc(deck.get("level_label") or level_display_name(deck.get("level")))
     return (
         f'<div class="ps-study-front ps-page">'
-        f'<div class="ps-banner"><h1>FIELD TRIP KIT</h1>'
+        f'<div class="ps-banner"><h1>KIDZOOKIT</h1>'
         f"<p>{_esc(name)} · {level_label} · Circle one · Flip for answers</p></div>"
         f'<header class="ps-head"><h2>{_esc(banner_name)}</h2>'
         f'<p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span></p>'
@@ -21090,7 +21090,7 @@ def study_print_html(
         f'<p class="ps-footer">{source} · kidzookit.com · Duplex: this side questions, back answers</p>'
         f"</div>"
         f'<div class="ps-study-back ps-page">'
-        f'<div class="ps-banner"><h1>FIELD TRIP KIT</h1>'
+        f'<div class="ps-banner"><h1>KIDZOOKIT</h1>'
         f"<p>{_esc(name)} · {level_label} · Answers</p></div>"
         f'<ol class="ps-study-answers">{"".join(answers)}</ol>'
         f"{study_deepen_html(deck, print_mode=True)}"

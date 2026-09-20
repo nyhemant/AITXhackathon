@@ -133,7 +133,7 @@ CARDS_PLAY_H1 = "Print cutouts to play"
 CARDS_PLAY_CTA = "Print the cutouts"
 CARDS_PLAY_BROWSE = "Browse cards on the screen"
 CARDS_PLAY_PRINT_HREF = PRINT_PATH
-CARDS_HUB_TITLE = "Print cutouts to play · Animal cards · Field Trip Kit"
+CARDS_HUB_TITLE = "Print cutouts to play · Animal cards · KidZooKit"
 CARDS_HUB_DESC = "Print animal cutouts, hide them at home, then hunt. Or browse cards on the screen."
 CARDS_LANDING_CSS_VER = "103"
 CARDS_EXPLORER_JS_VER = "7"
@@ -141,7 +141,7 @@ CTA_READY = "Open"
 CTA_FIND = "Find"
 # Map explorer (/field-pack/) — short title, no sales/FAQ essay. Do not redirect to /start/.
 EXPLORER_H1 = "Find a place"
-EXPLORER_TITLE = "Find a place · Field Trip Kit"
+EXPLORER_TITLE = "Find a place · KidZooKit"
 EXPLORER_DESC = "Find a zoo, aquarium, museum, or park."
 
 HOME_SESSION_H2 = CTA_AT_HOME
@@ -331,6 +331,7 @@ LANDING_MAP_JS_VER = "88"
 LANDING_HOOK_JS_VER = "38"
 STYLES_CSS_VER = "42"
 CATALOG_JS_VER = "40"
+SHELL_CSS_VER = "9"
 SHELL_JS_VER = "6"
 PRINT_KIT_JS_VER = "20"
 STUDY_CARD_JS_VER = "10"
@@ -418,7 +419,7 @@ TYPE_LANDINGS = [
         "path": "zoos",
         "kind": "zoo",
         "nav": "Zoos",
-        "title": "Zoos · Field Trip Kit",
+        "title": "Zoos · KidZooKit",
         "h1": "Zoos",
         "blurb": TYPE_HUB_LEAD,
         "map_type": "zoo",
@@ -428,7 +429,7 @@ TYPE_LANDINGS = [
         "path": "aquariums",
         "kind": "aquarium",
         "nav": "Aquariums",
-        "title": "Aquariums · Field Trip Kit",
+        "title": "Aquariums · KidZooKit",
         "h1": "Aquariums",
         "blurb": TYPE_HUB_LEAD,
         "map_type": "aquarium",
@@ -438,7 +439,7 @@ TYPE_LANDINGS = [
         "path": "museums",
         "kind": "museum",
         "nav": "Museums",
-        "title": "Museums · Field Trip Kit",
+        "title": "Museums · KidZooKit",
         "h1": "Museums",
         "blurb": TYPE_HUB_LEAD,
         "map_type": "museum",
@@ -448,7 +449,7 @@ TYPE_LANDINGS = [
         "path": "national-parks",
         "kind": "park",
         "nav": "Parks",
-        "title": "Parks · Field Trip Kit",
+        "title": "Parks · KidZooKit",
         "h1": "Parks",
         "blurb": TYPE_HUB_LEAD,
         "map_type": "park",
@@ -1663,10 +1664,10 @@ def meta_for(v: dict) -> str:
     loc = f" in {city}" if city else ""
     base = (
         f"{name}{loc}: animal cards, talk prompts, photos, and live cams at home. "
-        "Optional printable hunt — Field Trip Kit."
+        "Optional printable hunt — KidZooKit."
     )
     if len(base) > 155:
-        base = f"{name}{loc}: explore cards at home, or print a hunt — Field Trip Kit."
+        base = f"{name}{loc}: explore cards at home, or print a hunt — KidZooKit."
     return base[:155].rsplit(" ", 1)[0] if len(base) > 155 else base
 
 
@@ -2331,7 +2332,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
     >
       <header class="mission-drawer-head">
         <div>
-          <p class="mission-drawer-kicker"><a class="mission-home" href="{HOME_HREF}">Field Trip Kit</a> · <span class="mission-place-now">{esc(mission_venue.get("short_name") or mission_venue.get("name") or "This place")}</span> · <a class="mission-change-place" href="/field-pack/?find=1">Different place?</a></p>
+          <p class="mission-drawer-kicker"><a class="mission-home" href="{HOME_HREF}">KidZooKit</a> · <span class="mission-place-now">{esc(mission_venue.get("short_name") or mission_venue.get("name") or "This place")}</span> · <a class="mission-change-place" href="/field-pack/?find=1">Different place?</a></p>
           <h2 id="mission-heading">{esc(MISSION_DRAWER_H2)}</h2>
         </div>
         <button type="button" class="mission-drawer-close" id="mission-close" aria-label="Close">×</button>
@@ -2377,7 +2378,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
         </aside>
         <div class="mission-preview">
           <div class="mission-sheet" id="mission-sheet">
-            <p class="ms-brand">Field Trip Kit{f' · {esc(loc)}' if loc else ""}</p>
+            <p class="ms-brand">KidZooKit{f' · {esc(loc)}' if loc else ""}</p>
             <h3 class="ms-title" id="mission-title">{mission_title}</h3>
             <p class="ms-meta" id="mission-meta">{age_label} · {time_label}</p>
             <p class="ms-kit-tier" id="mission-verified">{esc(verified_line)}</p>
@@ -2562,7 +2563,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <meta name="twitter:image" content="{esc(og_img)}" />
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
-  <link rel="stylesheet" href="/shell/shell.css?v=6" />
+  <link rel="stylesheet" href="/shell/shell.css?v={SHELL_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
@@ -2577,11 +2578,11 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 <body class="landing-body seo-venue-body mission-venue-body" data-content-mode="{esc(mode)}">
   <div class="app landing-app seo-venue">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="{HOME_HREF}" aria-label="Field Trip Kit home">
+      <a class="shell-brand" href="{HOME_HREF}" aria-label="KidZooKit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
       <a class="shell-product" href="{HOME_HREF}">
-        Field Trip Kit
+        KidZooKit
         <small>{HEADER_TAGLINE}</small>
       </a>
 {nav_more_menu_html()}
@@ -2619,7 +2620,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 
     <footer class="site-footer site-footer-slim no-print">
       <p>
-        <strong>Field Trip Kit</strong>
+        <strong>KidZooKit</strong> <span class="footer-by">by 1Less</span>
         <span class="footer-dot">·</span>
         <a href="/field-pack/">All places</a>
         <span class="footer-dot">·</span>
@@ -2704,7 +2705,7 @@ def render_venue_page(v: dict) -> str:
   <meta name="twitter:image" content="{esc(og_img)}" />
   <meta name="color-scheme" content="light" />
   <base href="/field-pack/" />
-  <link rel="stylesheet" href="/shell/shell.css?v=6" />
+  <link rel="stylesheet" href="/shell/shell.css?v={SHELL_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
@@ -2718,11 +2719,11 @@ def render_venue_page(v: dict) -> str:
 <body class="landing-body seo-venue-body">
   <div class="app landing-app seo-venue">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="{HOME_HREF}" aria-label="Field Trip Kit home">
+      <a class="shell-brand" href="{HOME_HREF}" aria-label="KidZooKit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
       <a class="shell-product" href="{HOME_HREF}">
-        Field Trip Kit
+        KidZooKit
         <small>{HEADER_TAGLINE}</small>
       </a>
 {nav_more_menu_html()}
@@ -2755,7 +2756,7 @@ def render_venue_page(v: dict) -> str:
     <footer class="site-footer site-footer-slim no-print">
       <p>
         <a href="/field-pack/">All places</a> ·
-        <strong>Field Trip Kit</strong> ·
+        <strong>KidZooKit</strong> <span class="footer-by">by 1Less</span> ·
         <a href="{NAV_ABOUT_HREF}">About</a>
       </p>
     </footer>
@@ -2918,7 +2919,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
         "{"
         f'"@context":"https://schema.org","@type":"CollectionPage","name":{json.dumps(meta["h1"])},'
         f'"url":{json.dumps(url)},"description":{json.dumps(meta["blurb"])},'
-        f'"isPartOf":{{"@type":"WebSite","name":"{BRAND_NAME} Field Trip Kit","url":"{SITE}/field-pack/"}},'
+        f'"isPartOf":{{"@type":"WebSite","name":"{BRAND_NAME}","url":"{SITE}/field-pack/"}},'
         f'"mainEntity":{{"@type":"ItemList","numberOfItems":{len(filtered)},"itemListElement":[{item_list}]}}'
         "}"
     )
@@ -2940,7 +2941,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
   <meta property="og:url" content="{esc(url)}" />
   <meta property="og:image" content="{og_img}" />
   <base href="/field-pack/" />
-  <link rel="stylesheet" href="/shell/shell.css?v=6" />
+  <link rel="stylesheet" href="/shell/shell.css?v={SHELL_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
@@ -2975,11 +2976,11 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
 <body class="seo-venue-body type-hub-body" data-place-type="{esc(meta["map_type"])}">
   <div class="app-shell">
     <header class="shell-bar no-print">
-      <a class="shell-brand" href="{HOME_HREF}" aria-label="Field Trip Kit home">
+      <a class="shell-brand" href="{HOME_HREF}" aria-label="KidZooKit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
       <a class="shell-product" href="{HOME_HREF}">
-        Field Trip Kit
+        KidZooKit
         <small>{HEADER_TAGLINE}</small>
       </a>
     </header>
@@ -2992,7 +2993,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
     </nav>
 
     <main class="type-landing">
-      <p class="seo-crumbs"><a href="{HOME_HREF}">Field Trip Kit</a> · {esc(meta["nav"])}</p>
+      <p class="seo-crumbs"><a href="{HOME_HREF}">KidZooKit</a> · {esc(meta["nav"])}</p>
       <h1>{esc(meta["h1"])}</h1>
       {f'<p class="type-lead">{esc(meta["blurb"])}</p>' if meta.get("blurb") else ""}
       <p class="type-count">{len(filtered)} places</p>
@@ -4857,7 +4858,7 @@ def write_cards_hub(venues: list[dict]) -> str:
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="{play_og}" />
   <base href="/field-pack/" />
-  <link rel="stylesheet" href="/shell/shell.css?v=8" />
+  <link rel="stylesheet" href="/shell/shell.css?v={SHELL_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={CARDS_LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={CARD_SEO_CSS_VER}" />
@@ -4865,11 +4866,11 @@ def write_cards_hub(venues: list[dict]) -> str:
 <body class="landing-body landing-hub cards-explorer">
   <div class="app landing-app landing-clean">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="{HOME_HREF}" aria-label="Field Trip Kit home">
+      <a class="shell-brand" href="{HOME_HREF}" aria-label="KidZooKit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
       <a class="shell-product" href="{HOME_HREF}">
-        Field Trip Kit
+        KidZooKit
         <small>{HEADER_TAGLINE}</small>
       </a>
       <nav class="shell-nav" aria-label="Site">
@@ -4956,7 +4957,7 @@ def write_cards_hub(venues: list[dict]) -> str:
     </main>
     <footer class="site-footer site-footer-slim no-print">
       <p>
-        <strong>Field Trip Kit</strong>
+        <strong>KidZooKit</strong> <span class="footer-by">by 1Less</span>
         <span class="footer-dot">·</span>
         <a href="/start/">Start</a>
         <span class="footer-dot">·</span>
@@ -5102,7 +5103,7 @@ def write_card_pages(
         )
         actions_html = "\n        ".join(action_bits)
         blurb_html = f'<p class="card-page-blurb">{esc(blurb)}</p>' if blurb else ""
-        title = f"{name} — Field Trip Kit"
+        title = f"{name} — KidZooKit"
         desc = (blurb + " " if blurb else "") + f"{name} card: photo and talk prompts."
         url = f"{SITE}/field-pack/cards/{cid}/"
         html = f"""<!DOCTYPE html>
@@ -5119,7 +5120,7 @@ def write_card_pages(
   <meta property="og:description" content="{esc(desc)}" />
   <meta property="og:url" content="{esc(url)}" />
   <meta property="og:image" content="{OG_SHARE_IMAGE}" />
-  <link rel="stylesheet" href="/shell/shell.css?v=6" />
+  <link rel="stylesheet" href="/shell/shell.css?v={SHELL_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={CARD_SEO_CSS_VER}" />{study_css_link}
@@ -5127,10 +5128,10 @@ def write_card_pages(
 <body class="landing-body card-page-body">
   <div class="app">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="{HOME_HREF}" aria-label="Field Trip Kit home">
+      <a class="shell-brand" href="{HOME_HREF}" aria-label="KidZooKit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
-      <a class="shell-product" href="{HOME_HREF}">Field Trip Kit <small>{HEADER_TAGLINE}</small></a>
+      <a class="shell-product" href="{HOME_HREF}">KidZooKit <small>{HEADER_TAGLINE}</small></a>
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
@@ -5142,7 +5143,7 @@ def write_card_pages(
       </div>
     </header>
     <main class="card-page">
-      <p class="card-page-crumbs"><a href="{HOME_HREF}">Field Trip Kit</a> · <a href="/field-pack/cards/">Cards</a></p>
+      <p class="card-page-crumbs"><a href="{HOME_HREF}">KidZooKit</a> · <a href="/field-pack/cards/">Cards</a></p>
       {img_html}
       <h1>{esc(emoji)} {esc(name)}</h1>
       {venue_chrome}
