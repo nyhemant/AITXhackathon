@@ -8,6 +8,7 @@
   "lat": 47.61,
   "lng": -122.34,
   "official_url": "https://www.seattleaquarium.org/",
+  "own_public_cams": false,
   "verified_by": "research",
   "status": "partial",
   "tagline": "Starter list: sea otters, tufted puffins, then a giant Pacific octopus — river otters are a different stop.",

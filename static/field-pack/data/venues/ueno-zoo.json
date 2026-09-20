@@ -8,6 +8,7 @@
   "lat": 35.7167,
   "lng": 139.7713,
   "official_url": "https://www.tokyo-zoo.net/en/ueno/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

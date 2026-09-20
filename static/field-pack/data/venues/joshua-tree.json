@@ -8,6 +8,7 @@
   "lat": 34.1347,
   "lng": -116.3131,
   "official_url": "https://www.nps.gov/jotr/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

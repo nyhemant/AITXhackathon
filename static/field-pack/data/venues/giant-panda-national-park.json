@@ -8,6 +8,7 @@
   "lat": 31.0294,
   "lng": 103.1967,
   "official_url": "https://www.chinawolong.gov.cn/",
+  "own_public_cams": false,
   "last_verified": "2026-09-12",
   "verified_by": "research",
   "status": "verified",

@@ -8,6 +8,7 @@
   "lat": 25.78,
   "lng": -80.19,
   "official_url": "https://www.frostscience.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",

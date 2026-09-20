@@ -8,6 +8,7 @@
   "lat": 30.024,
   "lng": 31.214,
   "official_url": "http://www.giza.gov.eg/English/Tourism/Landmarks/EZoo.aspx",
+  "own_public_cams": false,
   "verified_by": "research",
   "status": "partial",
   "tagline": "Starter: Giza Zoo's official governorate page names no species — no invented catalog cards.",

@@ -8,6 +8,7 @@
   "lat": 35.6532,
   "lng": -83.507,
   "official_url": "https://www.nps.gov/grsm/",
+  "own_public_cams": true,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

@@ -8,6 +8,7 @@
   "lat": 32.2967,
   "lng": -111.1666,
   "official_url": "https://www.nps.gov/sagu/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

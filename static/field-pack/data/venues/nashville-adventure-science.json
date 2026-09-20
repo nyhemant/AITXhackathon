@@ -8,6 +8,7 @@
   "lat": 36.15,
   "lng": -86.78,
   "official_url": "https://www.adventuresci.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-08",
   "last_presence_audit": "2026-08-08",
   "verified_by": "research",

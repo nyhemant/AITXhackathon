@@ -8,6 +8,7 @@
   "lat": 51.4968,
   "lng": -115.9281,
   "official_url": "https://parks.canada.ca/pn-np/ab/banff",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

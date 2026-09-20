@@ -8,6 +8,7 @@
   "lat": 31.9231,
   "lng": -104.8645,
   "official_url": "https://www.nps.gov/gumo/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

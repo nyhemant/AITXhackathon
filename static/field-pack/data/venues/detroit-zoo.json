@@ -8,6 +8,7 @@
   "lat": 42.48,
   "lng": -83.16,
   "official_url": "https://detroitzoo.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "last_presence_audit": "2026-08-23",
   "verified_by": "research",

@@ -8,6 +8,7 @@
   "lat": 49.3008,
   "lng": -123.1308,
   "official_url": "https://www.vanaqua.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

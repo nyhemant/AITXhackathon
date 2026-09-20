@@ -8,6 +8,7 @@
   "lat": 39.14,
   "lng": -84.51,
   "official_url": "https://cincinnatizoo.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

@@ -8,6 +8,7 @@
   "lat": 45.5597,
   "lng": -73.5497,
   "official_url": "https://espacepourlavie.ca/en/biodome",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",

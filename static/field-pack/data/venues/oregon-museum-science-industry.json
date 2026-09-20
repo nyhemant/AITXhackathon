@@ -8,6 +8,7 @@
   "lat": 45.51,
   "lng": -122.67,
   "official_url": "https://omsi.edu/",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",

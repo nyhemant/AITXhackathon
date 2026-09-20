@@ -8,6 +8,7 @@
   "lat": 67.78,
   "lng": -153.29,
   "official_url": "https://www.nps.gov/gaar/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

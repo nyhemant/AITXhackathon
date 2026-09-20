@@ -8,6 +8,7 @@
   "lat": 41.87,
   "lng": -87.62,
   "official_url": "https://www.sheddaquarium.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

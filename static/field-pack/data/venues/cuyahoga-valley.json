@@ -8,6 +8,7 @@
   "lat": 41.2808,
   "lng": -81.5678,
   "official_url": "https://www.nps.gov/cuva/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

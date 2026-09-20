@@ -84,7 +84,100 @@
     });
   }
 
+  /**
+   * Place-list accuracy two-tap (Accurate / Something changed).
+   * Fires place_feedback with venue_slug + choice; Accurate needs no mail.
+   * Note text is only used in optional mailto body — never sent to GA.
+   */
+  function bindPlaceFeedback(root) {
+    root = root || document;
+    var nodes = root.querySelectorAll("[data-place-feedback]");
+    if (!nodes.length) return;
+
+    function trackChoice(slug, choice) {
+      FPTrack("place_feedback", {
+        venue_slug: slug || "",
+        choice: choice,
+      });
+    }
+
+    function showThanks(wrap) {
+      var actions = wrap.querySelector(".seo-freshness-actions");
+      var thanks = wrap.querySelector(".seo-freshness-thanks");
+      var note = wrap.querySelector(".seo-freshness-note-wrap");
+      var prompt = wrap.querySelector(".seo-freshness-prompt");
+      if (actions) actions.hidden = true;
+      if (note) note.hidden = true;
+      if (prompt) prompt.hidden = true;
+      if (thanks) thanks.hidden = false;
+    }
+
+    nodes.forEach(function (wrap) {
+      if (wrap.getAttribute("data-feedback-bound") === "1") return;
+      wrap.setAttribute("data-feedback-bound", "1");
+      var slug = wrap.getAttribute("data-place-id") || "";
+
+      wrap.addEventListener("click", function (ev) {
+        var t = ev.target;
+        if (!t || !t.closest) return;
+        var btn = t.closest("[data-feedback]");
+        if (btn && wrap.contains(btn)) {
+          var choice = btn.getAttribute("data-feedback");
+          if (choice === "accurate") {
+            trackChoice(slug, "accurate");
+            showThanks(wrap);
+            return;
+          }
+          if (choice === "changed") {
+            trackChoice(slug, "changed");
+            var actions = wrap.querySelector(".seo-freshness-actions");
+            var note = wrap.querySelector(".seo-freshness-note-wrap");
+            if (actions) actions.hidden = true;
+            if (note) note.hidden = false;
+            return;
+          }
+        }
+        var done = t.closest("[data-feedback-done]");
+        if (done && wrap.contains(done)) {
+          showThanks(wrap);
+          return;
+        }
+        var send = t.closest("[data-feedback-send]");
+        if (send && wrap.contains(send)) {
+          var changedBtn = wrap.querySelector('[data-feedback="changed"]');
+          var mail = changedBtn && changedBtn.getAttribute("data-mailto");
+          var ta = wrap.querySelector(".seo-freshness-note");
+          var noteText = ta && ta.value ? String(ta.value).trim() : "";
+          if (mail) {
+            var href = mail;
+            if (noteText) {
+              href +=
+                (href.indexOf("?") >= 0 ? "&" : "?") +
+                "body=" +
+                encodeURIComponent(noteText.slice(0, 280));
+            }
+            window.location.href = href;
+          }
+          showThanks(wrap);
+        }
+      });
+    });
+  }
+
+  function onReady(fn) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fn);
+    } else {
+      fn();
+    }
+  }
+
+  onReady(function () {
+    bindPlaceFeedback(document);
+  });
+
   global.FPTrack = FPTrack;
   global.FPVenueType = venueTypeForAnalytics;
   global.FPTrackVenuePageView = trackVenuePageView;
+  global.FPBindPlaceFeedback = bindPlaceFeedback;
 })(typeof window !== "undefined" ? window : globalThis);

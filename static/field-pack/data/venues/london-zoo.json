@@ -8,6 +8,7 @@
   "lat": 51.5353,
   "lng": -0.1534,
   "official_url": "https://www.londonzoo.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

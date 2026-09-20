@@ -8,6 +8,7 @@
   "lat": 41.79,
   "lng": -87.58,
   "official_url": "https://www.griffinmsi.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-08",
   "last_presence_audit": "2026-08-08",
   "verified_by": "research",

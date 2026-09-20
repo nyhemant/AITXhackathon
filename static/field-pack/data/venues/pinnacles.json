@@ -8,6 +8,7 @@
   "lat": 36.4906,
   "lng": -121.1825,
   "official_url": "https://www.nps.gov/pinn/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

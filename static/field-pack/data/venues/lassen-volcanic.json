@@ -8,6 +8,7 @@
   "lat": 40.4977,
   "lng": -121.4207,
   "official_url": "https://www.nps.gov/lavo/",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

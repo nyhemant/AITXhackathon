@@ -8,6 +8,7 @@
   "lat": 24.9985,
   "lng": 121.581,
   "official_url": "https://www.zoo.gov.taipei/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

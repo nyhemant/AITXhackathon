@@ -8,6 +8,7 @@
   "lat": 48.182,
   "lng": 16.3038,
   "official_url": "https://www.zoovienna.at/en/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",

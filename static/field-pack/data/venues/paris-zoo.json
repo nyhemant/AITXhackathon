@@ -8,6 +8,7 @@
   "lat": 48.8323,
   "lng": 2.4142,
   "official_url": "https://www.parczoologiquedeparis.fr/en",
+  "own_public_cams": false,
   "verified_by": "research",
   "status": "partial",
   "tagline": "Starter Vincennes list: greenhouse sloth, then a ring-tailed lemur and West African giraffe.",

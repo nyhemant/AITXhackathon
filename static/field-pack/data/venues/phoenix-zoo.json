@@ -8,6 +8,7 @@
   "lat": 33.45,
   "lng": -111.95,
   "official_url": "https://phoenixzoo.org/",
+  "own_public_cams": false,
   "verified_by": "research",
   "status": "partial",
   "tagline": "Starter list: Sumatran tiger, Bornean orangutan, then African penguins — Asian elephants, not African.",

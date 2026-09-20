@@ -8,6 +8,7 @@
   "lat": 28.57,
   "lng": -81.37,
   "official_url": "https://www.osc.org/",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",

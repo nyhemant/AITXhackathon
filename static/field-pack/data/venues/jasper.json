@@ -8,6 +8,7 @@
   "lat": 52.8737,
   "lng": -117.9543,
   "official_url": "https://parks.canada.ca/pn-np/ab/jasper",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

@@ -8,6 +8,7 @@
   "lat": -33.72,
   "lng": 150.31,
   "official_url": "https://www.nationalparks.nsw.gov.au/visit-a-park/parks/blue-mountains-national-park",
+  "own_public_cams": false,
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",

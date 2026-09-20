@@ -8,6 +8,7 @@
   "lat": 29.95,
   "lng": -90.06,
   "official_url": "https://audubonnatureinstitute.org/aquarium",
+  "own_public_cams": false,
   "verified_by": "research",
   "status": "partial",
   "tagline": "Starter list: African penguins, then Shark Discovery and cownose rays.",

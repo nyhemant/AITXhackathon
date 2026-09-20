@@ -8,6 +8,7 @@
   "lat": 38.89,
   "lng": -77.02,
   "official_url": "https://airandspace.si.edu/",
+  "own_public_cams": false,
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",

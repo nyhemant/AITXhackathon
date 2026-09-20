@@ -1,4 +1,4 @@
-"""Kit-tier badge + freshness mailto — two labels only, no invented dates."""
+"""Kit-tier badge + two-tap place feedback — two labels only, no invented dates."""
 
 from pathlib import Path
 import json
@@ -82,7 +82,7 @@ class KitTierHelperTests(unittest.TestCase):
         self.assertIn("We checked the animal list, exhibit names, and map link in Aug 2026.", status_chip_html(v))
         self.assertIn("Starter list", status_chip_html({"list_confidence": "template"}))
 
-    def test_freshness_subject_includes_slug(self):
+    def test_freshness_two_tap_and_changed_mailto(self):
         accurate = freshness_mailto("dallas-zoo", "accurate")
         changed = freshness_mailto("dallas-zoo", "changed")
         self.assertTrue(accurate.startswith("mailto:arku2arku@gmail.com?subject="))
@@ -92,7 +92,13 @@ class KitTierHelperTests(unittest.TestCase):
         self.assertIn("something changed", unquote(changed))
         html = freshness_html("houston-zoo")
         self.assertIn("Was this list accurate?", html)
+        self.assertIn('data-place-id="houston-zoo"', html)
+        self.assertIn('data-feedback="accurate"', html)
+        self.assertIn('data-feedback="changed"', html)
+        self.assertIn(">Accurate<", html)
+        self.assertIn(">Something changed<", html)
         self.assertIn("houston-zoo", unquote(html))
+        self.assertIn("mailto:arku2arku@gmail.com", html)
 
 
 class KitTierPageTests(unittest.TestCase):
@@ -108,12 +114,13 @@ class KitTierPageTests(unittest.TestCase):
             self.assertIn(expected, visible)
             self.assertNotIn("Verified with venue website", visible)
             self.assertIn("Was this list accurate?", visible)
-            self.assertIn(f"Field Trip Kit · {slug} · accurate", unquote(visible))
-            self.assertIn(f"Field Trip Kit · {slug} · something changed", unquote(visible))
+            self.assertIn(f'data-place-id="{slug}"', visible)
+            self.assertIn('data-feedback="accurate"', visible)
+            self.assertIn('data-feedback="changed"', visible)
             self.assertIn(expected, html)  # print header uses the same label
             footer = html.split('class="ms-footer"', 1)[1].split("</p>", 1)[0]
             self.assertIn("Was this list accurate?", footer)
-            self.assertIn(f"Field Trip Kit · {slug} · accurate", unquote(footer))
+            self.assertIn(f'data-place-id="{slug}"', footer)
 
     def test_starter_venue_says_starter_list(self):
         data = _load_venue("houston-zoo")
@@ -123,7 +130,7 @@ class KitTierPageTests(unittest.TestCase):
         self.assertIn("Starter list", visible)
         self.assertNotIn("We checked the animal list", visible)
         self.assertIn("Was this list accurate?", visible)
-        self.assertIn("houston-zoo", unquote(visible))
+        self.assertIn('data-place-id="houston-zoo"', visible)
 
     def test_label_counts_match_source_json(self):
         verified = 0
@@ -138,6 +145,28 @@ class KitTierPageTests(unittest.TestCase):
         self.assertEqual(verified, 78)
         self.assertEqual(starter, 143)
         self.assertNotIn("Local shortlist", (FP / "dallas-zoo" / "index.html").read_text())
+
+
+class OwnPublicCamsTests(unittest.TestCase):
+    def test_flag_present_on_all_venues(self):
+        for path in VENUES.glob("*.json"):
+            data = json.loads(path.read_text(encoding="utf-8"))
+            self.assertIn("own_public_cams", data, path.name)
+            self.assertIsInstance(data["own_public_cams"], bool, path.name)
+
+    def test_known_own_cam_venues_are_true(self):
+        for slug in (
+            "houston-zoo",
+            "san-diego-zoo",
+            "san-diego-safari-park",
+            "national-zoo",
+            "monterey-bay-aquarium",
+            "yellowstone",
+        ):
+            self.assertTrue(_load_venue(slug)["own_public_cams"], slug)
+
+    def test_dallas_defaults_false(self):
+        self.assertFalse(_load_venue("dallas-zoo")["own_public_cams"])
 
 
 if __name__ == "__main__":

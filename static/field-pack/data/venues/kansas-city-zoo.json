@@ -8,6 +8,7 @@
   "lat": 39.01,
   "lng": -94.53,
   "official_url": "https://www.kansascityzoo.org/",
+  "own_public_cams": false,
   "verified_by": "research",
   "status": "partial",
   "tagline": "Starter list: chimpanzee troop, western lowland gorillas, then a Sumatran tiger.",

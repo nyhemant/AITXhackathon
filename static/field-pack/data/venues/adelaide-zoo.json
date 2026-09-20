@@ -8,6 +8,7 @@
   "lat": -34.914,
   "lng": 138.606,
   "official_url": "https://www.zoossa.com.au/adelaide-zoo/",
+  "own_public_cams": false,
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
