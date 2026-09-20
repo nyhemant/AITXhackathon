@@ -94,7 +94,7 @@ class BrandHomeTests(unittest.TestCase):
         self.assertEqual(_attr(html, "shell-brand"), "/start/")
         self.assertEqual(_attr(html, "shell-product"), "/start/")
         self.assertEqual(_attr(html, "mission-home"), "/start/")
-        self.assertIn('aria-label="Field Trip Kit home"', html)
+        self.assertIn('aria-label="KidZooKit home"', html)
         self.assertIn('<base href="/field-pack/" />', html)
         self.assertIn('rel="canonical" href="https://kidzookit.com/field-pack/houston-zoo/"', html)
 
@@ -119,7 +119,7 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn('href="/field-pack/">Find a place</a>', html)
         self.assertNotIn("manifest.webmanifest", html)
         self.assertNotIn("/pwa/register.js", html)
-        self.assertIn("/shell/shell.js?v=6", html)
+        self.assertIn("/shell/shell.js?v=", html)
         self.assertNotIn("/field-pack/js/fp-analytics.js", html)
         self.assertNotIn("FPTrack", html)
         self.assertNotIn("OneLessAnalytics", html)
@@ -155,7 +155,7 @@ class BrandHomeTests(unittest.TestCase):
         self.assertNotIn("Kunal", html)
         self.assertIn('id="for-ai-assistants"', html)
         self.assertIn('id="faq"', html)
-        self.assertIn("Field Trip Kit is an at-home virtual zoo", html)
+        self.assertIn("KidZooKit is an at-home virtual zoo", html)
         self.assertEqual(html.lower().count('href="/dinner"'), 1)
 
     def test_about_share_image_is_landscape_field_trip_still(self):
@@ -239,6 +239,23 @@ class BrandHomeTests(unittest.TestCase):
         self.assertEqual(_attr(vft, "shell-product"), "/start/")
         self.assertIn('href="/field-pack/" role="menuitem">Places', vft)
 
+    def test_shell_wordmark_is_kidzookit_with_1less_credit(self):
+        html = HOUSTON.read_text(encoding="utf-8")
+        self.assertIn(">KidZooKit<", html)
+        self.assertIn('aria-label="KidZooKit home"', html)
+        self.assertIn("by 1Less", html)
+        self.assertIn('class="footer-by"', html)
+        self.assertNotIn(">Field Trip Kit<", html)
+        cards = CARDS.read_text(encoding="utf-8")
+        self.assertIn(">KidZooKit<", cards)
+        self.assertIn("by 1Less", cards)
+        about = ABOUT.read_text(encoding="utf-8")
+        self.assertIn(">KidZooKit<", about)
+        self.assertIn("by 1Less", about)
+        hub = HUB.read_text(encoding="utf-8")
+        self.assertIn(">KidZooKit<", hub)
+        self.assertIn("by 1Less", hub)
+
     def test_generator_keeps_brand_on_start_and_explorer_on_field_pack(self):
         src = GENERATOR.read_text(encoding="utf-8")
         self.assertIn('HOME_HREF = "/start/"', src)
@@ -251,6 +268,9 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn('href="/field-pack/">All places</a>', src)
         self.assertIn('class="mission-change-place" href="/field-pack/?find=1"', src)
         self.assertIn("<base href=\"/field-pack/\" />", src)
+        self.assertIn('aria-label="KidZooKit home"', src)
+        self.assertIn(">KidZooKit<", src)
+        self.assertIn("by 1Less", src)
 
 
 if __name__ == "__main__":

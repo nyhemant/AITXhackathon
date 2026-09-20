@@ -18,7 +18,7 @@
  * YouTube, Ant Media, GA, and local teaser mp4s: never intercepted.
  */
 /* eslint-disable no-restricted-globals */
-const FTK_SHELL_CACHE = "ftk-shell-v2";
+const FTK_SHELL_CACHE = "ftk-shell-v3";
 const SHELL_PATHS = [
   "/start",
   "/field-pack/virtual-zoo",

@@ -131,7 +131,7 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
 
     def test_constants_lock_short_explorer_voice(self):
         self.assertEqual(EXPLORER_H1, "Find a place")
-        self.assertEqual(EXPLORER_TITLE, "Find a place · Field Trip Kit")
+        self.assertEqual(EXPLORER_TITLE, "Find a place · KidZooKit")
         self.assertEqual(CTA_FIND, "Find")
         self.assertLessEqual(len(EXPLORER_H1), 16)
         self.assertIn('EXPLORER_H1 = "Find a place"', self.gen)

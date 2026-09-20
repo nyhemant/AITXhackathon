@@ -257,3 +257,10 @@ body[data-mode="dinner"] .oneless-shell {
   margin: 0 0 12px;
   max-width: 720px;
 }
+
+.footer-by {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: #8a9ab0;
+  letter-spacing: 0.01em;
+}
