@@ -308,7 +308,7 @@ class TortoiseEasyStudyCardTests(unittest.TestCase):
         self.assertIn("card-watch-live", main)
         self.assertIn("#habitat=galapagos-tortoise", main)
         self.assertNotIn("/field-pack/virtual-zoo/?from=card#habitat=galapagos-tortoise", main)
-        self.assertIn("study-card.js?v=13", html)
+        self.assertIn("study-card.js?v=14", html)
         self.assertIn("study-card.css?v=12", html)
         self.assertIn("study-cards-data.js?v=8", html)
         self.assertIn('id="study-card-data"', html)

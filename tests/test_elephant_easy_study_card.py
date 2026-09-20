@@ -273,7 +273,7 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
             self.assertIn(line, main)
         self.assertIn("card-watch-live", main)
         self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-elephant", main.replace("&amp;", "&"))
-        self.assertIn("study-card.js?v=13", html)
+        self.assertIn("study-card.js?v=14", html)
         self.assertIn("study-card.css?v=12", html)
         self.assertIn("study-cards-data.js?v=8", html)
         self.assertIn('id="study-card-data"', html)

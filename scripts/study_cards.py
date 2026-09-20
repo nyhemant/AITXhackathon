@@ -21232,12 +21232,19 @@ def study_explore_html(deck: dict) -> str:
     )
 
 
-def _score_html(n: int) -> str:
-    """Pending count until the learner answers; JS swaps to Score X/N."""
+def _score_html(n: int, level: str | None = None) -> str:
+    """Pending count until the learner answers; JS swaps to Score X/N.
+
+    When a study level is known, append the tier name so chips are not mistaken
+    for a fixed question count (e.g. whale-shark has 5, lion has 10).
+    """
     label = "1 question" if n == 1 else f"{n} questions"
+    tier = level_display_name(level) if level is not None else ""
+    if tier:
+        label = f"{label} · {tier}"
     return (
         f'<p class="study-score" data-study-score data-total="{n}" data-pending="1">'
-        f"{label}</p>"
+        f"{_esc(label)}</p>"
     )
 
 
@@ -21401,7 +21408,7 @@ def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
     card_id = deck.get("id") or ""
     picker = _level_picker_html(str(card_id), str(level))
     n = len(deck.get("questions") or []) or STUDY_SLOTS
-    foot_bits = [_score_html(n)]
+    foot_bits = [_score_html(n, str(level))]
     next_tier = _next_tier_html(str(card_id), str(level))
     if next_tier:
         foot_bits.append(next_tier)

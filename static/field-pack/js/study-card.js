@@ -290,6 +290,16 @@ if (typeof window !== "undefined") {
     return questions(root).some((qEl) => Boolean(qEl.getAttribute("data-picked")));
   }
 
+
+  function pendingScoreLabel(root, total) {
+    const n = Number(total) || questions(root).length || 0;
+    const base = n === 1 ? "1 question" : `${n} questions`;
+    if (!n) return base;
+    const level = (root && root.getAttribute("data-study-level")) || "";
+    const tier = levelDisplayName(level);
+    return tier ? `${base} · ${tier}` : base;
+  }
+
   function paintScore(root) {
     const total = questions(root).length;
     const el = root.querySelector("[data-study-score]") || root.querySelector(".study-score");
@@ -297,7 +307,7 @@ if (typeof window !== "undefined") {
     if (!hasAnyAnswer(root)) {
       el.setAttribute("data-pending", "1");
       el.setAttribute("data-total", String(total));
-      el.textContent = total === 1 ? "1 question" : `${total} questions`;
+      el.textContent = pendingScoreLabel(root, total);
       return;
     }
     el.removeAttribute("data-pending");
@@ -314,7 +324,7 @@ if (typeof window !== "undefined") {
     el.setAttribute("data-total", String(n));
     if (!hasAnyAnswer(root)) {
       el.setAttribute("data-pending", "1");
-      el.textContent = n === 1 ? "1 question" : `${n} questions`;
+      el.textContent = pendingScoreLabel(root, n);
       return;
     }
     const span = el.querySelector("[data-study-correct]");
