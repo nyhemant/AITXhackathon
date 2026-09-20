@@ -109,6 +109,104 @@ body.start-body {
   outline-offset: 3px;
 }
 
+/*
+  Sample playing-card fan under Africa / south of the zebra pin.
+  Positions are % of the map plate (same space as hotspots).
+  Container ignores pointer events; only the card links capture clicks.
+*/
+.start-hero-cards {
+  position: absolute;
+  left: 50.5%;
+  top: 66.5%;
+  z-index: 1;
+  width: 15.5%;
+  height: 25%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.start-hero-card {
+  position: absolute;
+  width: 52%;
+  line-height: 0;
+  pointer-events: auto;
+  filter: drop-shadow(0 10px 18px rgba(12, 10, 8, 0.28));
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.start-hero-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 3.5% / 2.5%;
+}
+
+.start-hero-card:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+  border-radius: 0.35rem;
+}
+
+.start-hero-card-koala {
+  left: 0%;
+  top: 10%;
+  z-index: 1;
+  transform: rotate(12deg);
+  transform-origin: 50% 70%;
+}
+
+.start-hero-card-tiger {
+  left: 48%;
+  top: 6%;
+  z-index: 2;
+  transform: rotate(-16deg);
+  transform-origin: 50% 70%;
+}
+
+.start-hero-card-zebra {
+  left: 24%;
+  top: 0%;
+  z-index: 3;
+  transform: rotate(-5deg);
+  transform-origin: 50% 60%;
+}
+
+.start-hero-card:hover,
+.start-hero-card:focus-visible {
+  filter: drop-shadow(0 12px 22px rgba(12, 10, 8, 0.36));
+}
+
+.start-hero-card-koala:hover,
+.start-hero-card-koala:focus-visible {
+  transform: rotate(12deg) translateY(-2%);
+}
+
+.start-hero-card-tiger:hover,
+.start-hero-card-tiger:focus-visible {
+  transform: rotate(-16deg) translateY(-2%);
+}
+
+.start-hero-card-zebra:hover,
+.start-hero-card-zebra:focus-visible {
+  transform: rotate(-5deg) translateY(-2%);
+}
+
+/* Tall/narrow: Africa often crops; keep Start CTAs clear — hide the fan. */
+@media (max-width: 640px) {
+  .start-hero-cards {
+    display: none;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .start-hero-cards {
+    width: 15%;
+    height: 24%;
+    top: 62%;
+  }
+}
+
+
 .start-hero::after {
   content: "";
   position: absolute;
