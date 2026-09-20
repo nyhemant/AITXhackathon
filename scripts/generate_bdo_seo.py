@@ -5351,7 +5351,7 @@ def patch_landing_directory(venues: list[dict]) -> None:
         f'<div class="cat-cards-showcase" id="cat-cards-showcase">\n'
         f"            {_hub_filter_tabs_html(present_groups)}\n"
         f"            {tiles_ul}\n"
-        f'            <p class="cat-cards-all"><a href="/field-pack/cards/" id="cat-all-cards-link">All {n_cards} cards →</a></p>\n'
+        f'            <p class="cat-cards-all"><a href="/field-pack/cards/" id="cat-all-cards-link">Browse cards →</a></p>\n'
         f"          </div>"
     )
     cards_block = (
