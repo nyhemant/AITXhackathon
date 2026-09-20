@@ -75,7 +75,7 @@ STEMS = (
     "What is special about an eel’s body?",
     "Which fins do true eels usually skip?",
     "How do eels usually swim?",
-    "How many kinds of true eels are there, if we keep the count soft?",
+    'How many kinds of true eels are there?',
     "Where do most true eels live?",
     "What is an eel’s first baby stage?",
     "What do eel larvae become as they grow?",
@@ -202,7 +202,7 @@ class EelEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_EEL)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Eel.",
+            "Facts from Wikipedia, Eel. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -327,7 +327,7 @@ class EelEasyStudyCardTests(unittest.TestCase):
             "No — they’re South American knifefish, not Anguilliformes",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Eel.", html)
+        self.assertIn("Facts from Wikipedia, Eel. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

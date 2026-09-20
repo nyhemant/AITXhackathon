@@ -116,7 +116,7 @@ class ElkHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_ELK)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Elk.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Elk. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ELK))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_ELK))
@@ -163,7 +163,7 @@ class ElkHardStudyCardTests(unittest.TestCase):
         self.assertIn("manitoban", correct_choice_text(questions[2]).lower())
         self.assertIn("velvet", correct_choice_text(questions[3]).lower())
         self.assertIn("fastest-growing", correct_choice_text(questions[3]).lower())
-        self.assertIn("daily length stays soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("testosterone", correct_choice_text(questions[4]).lower())
         self.assertIn("bugle", correct_choice_text(questions[5]).lower())
         self.assertIn("harem", correct_choice_text(questions[5]).lower())
@@ -175,7 +175,7 @@ class ElkHardStudyCardTests(unittest.TestCase):
         self.assertIn("eastern", correct_choice_text(questions[8]).lower())
         self.assertIn("merriam", correct_choice_text(questions[8]).lower())
         self.assertIn("moose", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -240,7 +240,7 @@ class ElkHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_ELK, sheet)
-        self.assertIn("Facts from Wikipedia, Elk.", sheet)
+        self.assertIn("Facts from Wikipedia, Elk. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

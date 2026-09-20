@@ -195,7 +195,7 @@ class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_AMERICAN_ALLIGATOR)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, American alligator.",
+            "Facts from Wikipedia, American alligator. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -299,7 +299,7 @@ class AmericanAlligatorEasyStudyCardTests(unittest.TestCase):
             "No — alligator moms guard the nest and carry hatchlings to the water",
             html,
         )
-        self.assertIn("Facts from Wikipedia, American alligator.", html)
+        self.assertIn("Facts from Wikipedia, American alligator. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

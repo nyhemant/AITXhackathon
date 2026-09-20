@@ -193,7 +193,7 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_AMERICAN_BISON)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, American bison.",
+            "Facts from Wikipedia, American bison. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -297,7 +297,7 @@ class AmericanBisonEasyStudyCardTests(unittest.TestCase):
             "No — “buffalo” is a nickname; true buffalo live in Africa and Asia",
             html,
         )
-        self.assertIn("Facts from Wikipedia, American bison.", html)
+        self.assertIn("Facts from Wikipedia, American bison. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

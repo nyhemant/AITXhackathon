@@ -163,7 +163,7 @@ class OstrichHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_OSTRICH)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Ostrich.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Ostrich. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_OSTRICH))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_OSTRICH))
@@ -204,7 +204,7 @@ class OstrichHardStudyCardTests(unittest.TestCase):
         self.assertIn("four", questions[0]["why"].lower())
         self.assertIn("car in town", correct_choice_text(questions[1]).lower())
         self.assertIn("steady pace", correct_choice_text(questions[1]).lower())
-        self.assertIn("speed numbers stay soft", questions[1]["why"].lower())
+        self.assertNotIn("(soft)", questions[1]["why"].lower())
         self.assertIn("kick forward", correct_choice_text(questions[2]).lower())
         self.assertIn("defense", correct_choice_text(questions[2]).lower())
         self.assertIn("boom", correct_choice_text(questions[3]).lower())
@@ -223,7 +223,7 @@ class OstrichHardStudyCardTests(unittest.TestCase):
         self.assertIn("status letter", questions[8]["why"].lower())
         self.assertIn("zebras", correct_choice_text(questions[9]).lower())
         self.assertIn("antelope", correct_choice_text(questions[9]).lower())
-        self.assertIn("group sizes soft", questions[9]["why"].lower())
+        self.assertNotIn("soft", questions[9]["why"].lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -288,7 +288,7 @@ class OstrichHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_OSTRICH, sheet)
-        self.assertIn("Facts from Wikipedia, Ostrich.", sheet)
+        self.assertIn("Facts from Wikipedia, Ostrich. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

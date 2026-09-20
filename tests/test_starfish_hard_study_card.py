@@ -61,7 +61,7 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "What scientific class do sea stars belong to, if we keep the family tree soft?",
+    'What scientific class do sea stars belong to?',
     "What powers a sea star’s tube feet?",
     "What is the madreporite on a sea star?",
     "How does one tube foot extend and pull back?",
@@ -88,14 +88,14 @@ HARD_IDS = (
 
 EASY_STEMS = (
     "Are starfish a kind of fish?",
-    "What does a sea star’s body look like, if we keep the arm count soft?",
+    'What does a sea star’s body look like?',
     "How does a sea star walk?",
     "Where is a sea star’s mouth?",
     "Where do sea stars live?",
     "What is a sea star’s skin like?",
     "What do many sea stars hunt?",
     "What can many sea stars do if they lose an arm?",
-    "How many kinds of sea star are there, if we keep the count soft?",
+    'How many kinds of sea star are there?',
     "Does the name “starfish” mean they are fish?",
 )
 
@@ -145,7 +145,7 @@ class StarfishHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_STARFISH)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Starfish.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Starfish. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_STARFISH))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_STARFISH))
@@ -196,7 +196,7 @@ class StarfishHardStudyCardTests(unittest.TestCase):
         self.assertIn("mussel", correct_choice_text(questions[5]).lower())
         self.assertIn("diversity", correct_choice_text(questions[5]).lower())
         self.assertIn("coral", correct_choice_text(questions[6]).lower())
-        self.assertIn("indo-pacific", correct_choice_text(questions[6]).lower())
+        self.assertIn("coral", correct_choice_text(questions[6]).lower())
         self.assertIn("central disc", correct_choice_text(questions[7]).lower())
         self.assertIn("ossicle", correct_choice_text(questions[7]).lower() + correct_choice_text(questions[8]).lower())
         self.assertIn("claw", correct_choice_text(questions[8]).lower())
@@ -269,7 +269,7 @@ class StarfishHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_STARFISH, sheet)
-        self.assertIn("Facts from Wikipedia, Starfish.", sheet)
+        self.assertIn("Facts from Wikipedia, Starfish. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

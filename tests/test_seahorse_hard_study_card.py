@@ -57,16 +57,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "What family do seahorses sit in with pipefishes and seadragons, if we keep that tree soft?",
+    'What family do seahorses sit in with pipefishes and seadragons?',
     "What jobs can a closed brood pouch do besides hold eggs, if we keep that nursery story kid-simple?",
-    "Where do seahorse eggs meet sperm, if we keep that fertilization story soft?",
-    "Why do seahorse pairs dance and greet for days before eggs move, if we keep those dance names soft?",
-    "Do seahorses stay with one mate for life, if we keep that bond story soft?",
-    "Why must a seahorse eat almost constantly, if we keep that gut story soft?",
-    "How can a slow seahorse still ambush a copepod, if we keep that strike story soft?",
-    "Why are seahorses such weak swimmers, if we keep that speed story soft?",
+    'Where do seahorse eggs meet sperm?',
+    'Why do seahorse pairs dance and greet for days before eggs move?',
+    'Do seahorses stay with one mate for life?',
+    'Why must a seahorse eat almost constantly?',
+    'How can a slow seahorse still ambush a copepod?',
+    'Why are seahorses such weak swimmers?',
     "What homes do seahorses need — and what can hurt those places?",
-    "How is the huge dried-seahorse trade handled, if we keep those rules soft?",
+    'How is the huge dried-seahorse trade handled?',
 )
 
 HARD_IDS = (
@@ -87,7 +87,7 @@ EASY_STEMS = (
     "How does a seahorse swim, if we keep the fins simple?",
     "What does a seahorse’s tail do?",
     "Why does a seahorse’s head look horse-like, and how does it eat?",
-    "What covers a seahorse’s body, if we keep the armour story soft?",
+    'What covers a seahorse’s body?',
     "Who carries seahorse babies, and how?",
     "How can a seahorse hide in seagrass or coral?",
     "Where do seahorses usually live?",
@@ -143,7 +143,7 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_SEAHORSE)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Seahorse.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Seahorse. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_SEAHORSE))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_SEAHORSE))
@@ -182,7 +182,7 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
         self.assertIn("syngnathidae", correct_choice_text(questions[0]).lower())
         self.assertIn("hippocampus", correct_choice_text(questions[0]).lower())
         self.assertIn("pipefish", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("oxygen", correct_choice_text(questions[1]).lower())
         self.assertIn("lipid", correct_choice_text(questions[1]).lower())
         self.assertIn("calcium", correct_choice_text(questions[1]).lower())
@@ -268,7 +268,7 @@ class SeahorseHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_SEAHORSE, sheet)
-        self.assertIn("Facts from Wikipedia, Seahorse.", sheet)
+        self.assertIn("Facts from Wikipedia, Seahorse. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

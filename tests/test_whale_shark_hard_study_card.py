@@ -53,7 +53,7 @@ PRINT_KIT = FP / "js" / "print-kit.js"
 HARD_SLOTS = 5
 
 HARD_STEMS = (
-    "Where does the whale shark sit in the shark family tree, if we keep names soft?",
+    'Where does the whale shark sit in the shark family tree?',
     "How does a whale shark’s filter gear work beyond “open mouth and swim”?",
     "How has the IUCN listed the whale shark recently, if we treat the letter as a snapshot?",
     "Why do whale sharks sometimes gather in the same coastal spots year after year?",
@@ -106,7 +106,7 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_WHALE_SHARK)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Whale shark.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Whale shark. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST))
@@ -219,7 +219,7 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
         self.assertIn("ps-study-deepen", back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_WHALE_SHARK, sheet)
-        self.assertIn("Facts from Wikipedia, Whale shark.", sheet)
+        self.assertIn("Facts from Wikipedia, Whale shark. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

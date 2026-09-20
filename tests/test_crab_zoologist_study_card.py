@@ -48,7 +48,7 @@ ZOOLOGIST_STEMS = (
     "Which clade groups Anomura and Brachyura as sister taxa inside Decapoda?",
     "What does calling everyday “crab” a polyphyletic word mean?",
     "What traits did Keiler and colleagues use for a carcinised crab body plan?",
-    "About how many living decapod lines has carcinisation hit, if we keep the list soft?",
+    'About how many living decapod lines has carcinisation hit?',
     "Where do king crabs (Lithodidae) sit on molecular trees of hermit crabs?",
     "How do galatheoid squat lobsters sit next to porcelain crabs?",
     "What does decarcinisation mean for some crab lineages?",
@@ -79,7 +79,7 @@ HARD_STEMS = (
     "How is a hermit crab’s rear different from a true crab’s?",
     "Why aren’t horseshoe “crabs” decapod crabs at all?",
     "How wide can crab diets and freshwater homes spread?",
-    "How far can crab sizes stretch if we keep exact records soft?",
+    'How far can crab sizes stretch?',
     "Is there one IUCN letter for “crabs” as a group?",
 )
 
@@ -125,16 +125,16 @@ REDO_THEMES = (
     "Many are omnivores — algae, scraps, and small animals",
     "Keep shores and reefs healthy so crabs have places to hide and grow",
     "No — horseshoe “crabs” are a different kind of animal, closer to spiders than to true crabs",
-    "Infraorder Brachyura — about 7,000 species (soft) — thick armored carapace, tail tucked under",
+    'Infraorder Brachyura — about 7,000 species — thick armored carapace, tail tucked under',
     "Hermit crabs, king crabs, porcelain crabs, and mole crabs sit in Anomura — they look crabby but aren’t Brachyura",
     "A crab-like body — flat shell, tucked abdomen, sideways scuttle — evolved more than once",
-    "Evidence says they evolved from hermit-crab ancestors — an uneven abdomen is a soft clue",
-    "Small, flattened Anomura near squat lobsters; they often drop a limb to escape (soft)",
+    'Evidence says they evolved from hermit-crab ancestors — an uneven abdomen is a clue',
+    'Small, flattened Anomura near squat lobsters; they often drop a limb to escape',
     "Hermit crabs keep a soft rear and borrow empty snail shells — not the same body plan as true crabs",
     "They sit in Chelicerata with spiders and scorpions — different mouthparts and body layout",
-    "Omnivores, herbivores, carnivores, filter-feeders, even some parasites; about 1,300 freshwater kinds (soft)",
-    "Pea crabs may be only millimeters across; Japanese spider crab leg spans can reach several meters (soft)",
-    "No — some common or fished kinds do fine; others (and horseshoe crabs as separate animals) face habitat or harvest pressure (soft snapshot)",
+    'Omnivores, herbivores, carnivores, filter-feeders, even some parasites; about 1,300 freshwater kinds',
+    'Pea crabs may be only millimeters across; Japanese spider crab leg spans can reach several meters',
+    'No — some common or fished kinds do fine; others (and horseshoe crabs as separate animals) face habitat or harvest pressure',
 )
 
 
@@ -152,7 +152,7 @@ class CrabZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_CRAB)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Crab.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Crab. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CRAB))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CRAB))
@@ -190,32 +190,32 @@ class CrabZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("meiura", correct_choice_text(questions[0]).lower())
         self.assertIn("anomura", correct_choice_text(questions[0]).lower())
         self.assertIn("brachyura", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("polyphyletic", correct_choice_text(questions[1]).lower())
         self.assertIn("independently", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("carapace", correct_choice_text(questions[2]).lower())
         self.assertIn("plastron", correct_choice_text(questions[2]).lower())
         self.assertIn("pleon", correct_choice_text(questions[2]).lower())
         self.assertIn("keiler", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("five", correct_choice_text(questions[3]).lower())
         self.assertIn("king", correct_choice_text(questions[3]).lower())
         self.assertIn("porcelain", correct_choice_text(questions[3]).lower())
         self.assertIn("hairy stone", correct_choice_text(questions[3]).lower())
         self.assertIn("patagurus", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("lithodidae", correct_choice_text(questions[4]).lower())
         self.assertIn("paguridae", correct_choice_text(questions[4]).lower())
         self.assertIn("asymmetrical", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("half-carcinized", correct_choice_text(questions[5]).lower())
         self.assertIn("porcellanidae", correct_choice_text(questions[5]).lower())
         self.assertIn("squat", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("raninid", correct_choice_text(questions[6]).lower())
         self.assertIn("callichimaera", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("xiphosura", correct_choice_text(questions[7]).lower())
         self.assertIn("limulus", correct_choice_text(questions[7]).lower())
         self.assertIn("vu", correct_choice_text(questions[7]).lower())
@@ -224,11 +224,11 @@ class CrabZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("20%", correct_choice_text(questions[8]))
         self.assertIn("1.5 million", correct_choice_text(questions[8]))
         self.assertIn("species-by-species", correct_choice_text(questions[8]).lower())
-        self.assertIn("soft", correct_choice_text(questions[8]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[8]).lower())
         self.assertIn("birgus", correct_choice_text(questions[9]).lower())
         self.assertIn("largest land", correct_choice_text(questions[9]).lower())
         self.assertIn("hermit", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -323,7 +323,7 @@ class CrabZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_CRAB, sheet)
-        self.assertIn("Facts from Wikipedia, Crab.", sheet)
+        self.assertIn("Facts from Wikipedia, Crab. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

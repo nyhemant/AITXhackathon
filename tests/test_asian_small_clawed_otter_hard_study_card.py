@@ -122,7 +122,7 @@ class AsianSmallClawedOtterHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_ASIAN_SMALL_CLAWED_OTTER)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Asian small-clawed otter.",
+            "Facts from Wikipedia, Asian small-clawed otter. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER))
@@ -243,7 +243,7 @@ class AsianSmallClawedOtterHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_ASIAN_SMALL_CLAWED_OTTER, sheet)
-        self.assertIn("Facts from Wikipedia, Asian small-clawed otter.", sheet)
+        self.assertIn("Facts from Wikipedia, Asian small-clawed otter. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

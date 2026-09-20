@@ -252,7 +252,7 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
         self.assertEqual(deck["source"], WIKI_GIANT_PANDA)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Giant panda.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Giant panda. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
         self.assertEqual(deck["teach"], list(TEACH))
@@ -418,7 +418,7 @@ class GiantPandaEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(phrase, html)
         self.assertIn("Bamboo — almost all of their food", html)
         self.assertIn("No — giant pandas are bears, not raccoons", html)
-        self.assertIn("Facts from Wikipedia, Giant panda.", html)
+        self.assertIn("Facts from Wikipedia, Giant panda. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

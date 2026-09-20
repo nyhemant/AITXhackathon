@@ -207,7 +207,7 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_CUTTLEFISH)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Cuttlefish.",
+            "Facts from Wikipedia, Cuttlefish. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -326,10 +326,10 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
             html,
         )
         self.assertIn(
-            "No — they’re molluscs (soft bodies + a shell inside), closer to octopus than to tuna",
+            'No — they’re molluscs, closer to octopus than to tuna',
             html,
         )
-        self.assertIn("Facts from Wikipedia, Cuttlefish.", html)
+        self.assertIn("Facts from Wikipedia, Cuttlefish. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
@@ -443,7 +443,7 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
             sheet,
         )
         self.assertIn(
-            "No — they’re molluscs (soft bodies + a shell inside), closer to octopus than to tuna",
+            'No — they’re molluscs, closer to octopus than to tuna',
             sheet,
         )
         front, _, back = sheet.partition("ps-study-back")

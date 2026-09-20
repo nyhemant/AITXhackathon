@@ -72,7 +72,7 @@ STEMS = (
     "How does a seahorse swim, if we keep the fins simple?",
     "What does a seahorse’s tail do?",
     "Why does a seahorse’s head look horse-like, and how does it eat?",
-    "What covers a seahorse’s body, if we keep the armour story soft?",
+    'What covers a seahorse’s body?',
     "Who carries seahorse babies, and how?",
     "How can a seahorse hide in seagrass or coral?",
     "Where do seahorses usually live?",
@@ -202,7 +202,7 @@ class SeahorseEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_SEAHORSE)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Seahorse.",
+            "Facts from Wikipedia, Seahorse. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -319,7 +319,7 @@ class SeahorseEasyStudyCardTests(unittest.TestCase):
             "No — people think moms always carry babies, but in seahorses the father does the pouch care",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Seahorse.", html)
+        self.assertIn("Facts from Wikipedia, Seahorse. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

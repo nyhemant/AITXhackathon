@@ -117,7 +117,7 @@ class TwoToedSlothHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_TWO_TOED_SLOTH)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Two-toed sloth.",
+            "Facts from Wikipedia, Two-toed sloth. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_TWO_TOED_SLOTH))
@@ -160,7 +160,7 @@ class TwoToedSlothHardStudyCardTests(unittest.TestCase):
         self.assertIn("multi-chambered", correct_choice_text(questions[1]).lower())
         self.assertIn("ferment", correct_choice_text(questions[1]).lower())
         self.assertIn("month", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("moths", correct_choice_text(questions[3]).lower())
         self.assertIn("beetles", correct_choice_text(questions[3]).lower())
         self.assertIn("ecosystem", correct_choice_text(questions[3]).lower())
@@ -239,7 +239,7 @@ class TwoToedSlothHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_TWO_TOED_SLOTH, sheet)
-        self.assertIn("Facts from Wikipedia, Two-toed sloth.", sheet)
+        self.assertIn("Facts from Wikipedia, Two-toed sloth. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

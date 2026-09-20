@@ -130,7 +130,7 @@ class TortoiseHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_GALAPAGOS_TORTOISE)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Galápagos tortoise.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Galápagos tortoise. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_TORTOISE))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_TORTOISE))
@@ -240,7 +240,7 @@ class TortoiseHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_GALAPAGOS_TORTOISE, sheet)
-        self.assertIn("Facts from Wikipedia, Galápagos tortoise.", sheet)
+        self.assertIn("Facts from Wikipedia, Galápagos tortoise. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

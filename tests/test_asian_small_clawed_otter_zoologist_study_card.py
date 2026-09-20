@@ -156,7 +156,7 @@ class AsianSmallClawedOtterZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_ASIAN_SMALL_CLAWED_OTTER)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Asian small-clawed otter.",
+            "Facts from Wikipedia, Asian small-clawed otter. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER))
@@ -198,7 +198,7 @@ class AsianSmallClawedOtterZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("still move", correct_choice_text(questions[0]))
         self.assertIn("Lutrogale", correct_choice_text(questions[1]))
         self.assertIn("1.5 million", correct_choice_text(questions[1]))
-        self.assertIn("stays soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("African clawless", correct_choice_text(questions[2]))
         self.assertIn("Aonyx", correct_choice_text(questions[2]))
         self.assertIn("Lutra", correct_choice_text(questions[2]))
@@ -210,7 +210,7 @@ class AsianSmallClawedOtterZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Singapore", questions[5]["stem"])
         self.assertIn("hybrid", correct_choice_text(questions[5]).lower())
         self.assertIn("smooth-coated", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("Lutrinae", correct_choice_text(questions[6]))
         self.assertIn("Mustelidae", correct_choice_text(questions[6]))
         self.assertIn("weasel", correct_choice_text(questions[6]).lower())
@@ -311,7 +311,7 @@ class AsianSmallClawedOtterZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_ASIAN_SMALL_CLAWED_OTTER, sheet)
-        self.assertIn("Facts from Wikipedia, Asian small-clawed otter.", sheet)
+        self.assertIn("Facts from Wikipedia, Asian small-clawed otter. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

@@ -122,14 +122,14 @@ REDO_THEMES = (
     "Keep reefs and anemones healthy so clownfish still have homes",
     "No — many kinds of anemonefish share the clownfish nickname",
     "Genus Amphiprion, in the damselfish family Pomacentridae",
-    "Roughly two dozen living anemonefish species — the exact count stays soft",
-    "A. ocellaris (false percula) vs A. percula (true orange clownfish) — black outline thickness often differs (soft)",
+    'Roughly two dozen living anemonefish species — the',
+    'A. ocellaris (false percula) vs A. percula (true orange clownfish) — black outline thickness often differs',
     "They are born male; the largest fish can become female if the breeding female is gone",
     "Biggest = breeding female; next = breeding male; smaller fish wait in line",
     "Special mucus plus careful touching of tentacles helps them settle — protection is not instant",
-    "The fish get shelter; the anemone may get cleaning and defense help (soft mutualism)",
-    "Different clownfish prefer different anemone hosts — about ten host anemone kinds (soft)",
-    "Clownfish are very popular pets; captive breeding can help take pressure off wild reefs (soft)",
+    'The fish get shelter; the anemone may get cleaning and defense help',
+    'Different clownfish prefer different anemone hosts — about ten host anemone kinds',
+    'Clownfish are very popular pets; captive breeding can help take pressure off wild reefs',
     "They completely depend on anemones and reefs — habitat health is clownfish health",
 )
 
@@ -148,7 +148,7 @@ class ClownfishZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_CLOWNFISH)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Clownfish.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Clownfish. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CLOWNFISH))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CLOWNFISH))
@@ -185,42 +185,42 @@ class ClownfishZoologistStudyCardTests(unittest.TestCase):
             self.assertTrue(q["title"].strip())
         self.assertIn("amphiprioninae", correct_choice_text(questions[0]).lower())
         self.assertIn("pomacentridae", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("premnas", correct_choice_text(questions[1]).lower())
-        self.assertIn("amphiprion", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertIn("premnas", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("percula", correct_choice_text(questions[2]).lower())
         self.assertIn("clarkii", correct_choice_text(questions[2]).lower())
         self.assertIn("ephippium", correct_choice_text(questions[2]).lower())
         self.assertIn("akallopisos", correct_choice_text(questions[2]).lower())
         self.assertIn("polymnus", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("clarkii", correct_choice_text(questions[3]).lower())
         self.assertIn("many host", correct_choice_text(questions[3]).lower())
         self.assertIn("specialist", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("growth", correct_choice_text(questions[4]).lower())
         self.assertIn("size", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("clicks", correct_choice_text(questions[5]).lower())
         self.assertIn("pops", correct_choice_text(questions[5]).lower())
         self.assertIn("chirps", correct_choice_text(questions[5]).lower())
         self.assertIn("rank", correct_choice_text(questions[5]).lower())
         self.assertIn("sialic", correct_choice_text(questions[6]).lower())
         self.assertIn("neu5ac", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("innate", correct_choice_text(questions[7]).lower())
         self.assertIn("tentacle", correct_choice_text(questions[7]).lower())
         self.assertIn("species", correct_choice_text(questions[7]).lower())
-        self.assertIn("soft", correct_choice_text(questions[7]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[7]).lower())
         self.assertIn("larvae", correct_choice_text(questions[8]).lower())
         self.assertIn("settle", correct_choice_text(questions[8]).lower())
         self.assertIn("anemone", correct_choice_text(questions[8]).lower())
-        self.assertIn("soft", correct_choice_text(questions[8]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[8]).lower())
         self.assertIn("fan", correct_choice_text(questions[9]).lower())
         self.assertIn("clean", correct_choice_text(questions[9]).lower())
         self.assertIn("grow", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -308,7 +308,7 @@ class ClownfishZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_CLOWNFISH, sheet)
-        self.assertIn("Facts from Wikipedia, Clownfish.", sheet)
+        self.assertIn("Facts from Wikipedia, Clownfish. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

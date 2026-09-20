@@ -204,7 +204,7 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_SEA_OTTER)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Sea otter.",
+            "Facts from Wikipedia, Sea otter. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -312,7 +312,7 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
             "No — sea otters are ocean specialists, different from river otters and Asian small-clawed otters",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Sea otter.", html)
+        self.assertIn("Facts from Wikipedia, Sea otter. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

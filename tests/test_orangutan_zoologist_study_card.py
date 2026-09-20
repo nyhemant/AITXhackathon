@@ -187,7 +187,7 @@ class OrangutanZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_ORANGUTAN)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Orangutan.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Orangutan. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ORANGUTAN))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_ORANGUTAN))
@@ -241,7 +241,7 @@ class OrangutanZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("community", correct_choice_text(questions[5]).lower())
         self.assertIn("bornean", correct_choice_text(questions[6]).lower())
         self.assertIn("sumatran", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("ponginae", correct_choice_text(questions[7]).lower())
         self.assertIn("asian", correct_choice_text(questions[7]).lower())
         self.assertIn("interbirth", correct_choice_text(questions[8]).lower())
@@ -324,7 +324,7 @@ class OrangutanZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_ORANGUTAN, sheet)
-        self.assertIn("Facts from Wikipedia, Orangutan.", sheet)
+        self.assertIn("Facts from Wikipedia, Orangutan. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

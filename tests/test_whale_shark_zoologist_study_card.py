@@ -46,7 +46,7 @@ SIGNED_LETTERS = ("A", "B", "A", "B", "C")
 
 ZOOLOGIST_STEMS = (
     "How do scientists place the living whale shark, and what extinct relative does Wikipedia note?",
-    "What is unusual about whale-shark life history for a fish, if we keep numbers soft?",
+    'What is unusual about whale-shark life history for a fish?',
     "What tooth-like skin structures do whale sharks have beyond the tiny mouth teeth?",
     "How do researchers tell one whale shark from another without tagging every animal?",
     "Beyond the IUCN Endangered letter, what human pressures does Wikipedia emphasize for whale sharks?",
@@ -61,7 +61,7 @@ ZOOLOGIST_IDS = (
 )
 
 HARD_STEMS = (
-    "Where does the whale shark sit in the shark family tree, if we keep names soft?",
+    'Where does the whale shark sit in the shark family tree?',
     "How does a whale shark’s filter gear work beyond “open mouth and swim”?",
     "How has the IUCN listed the whale shark recently, if we treat the letter as a snapshot?",
     "Why do whale sharks sometimes gather in the same coastal spots year after year?",
@@ -110,7 +110,7 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_WHALE_SHARK)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Whale shark.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Whale shark. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST))
@@ -149,19 +149,19 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("elasmobranchii", correct_choice_text(questions[0]).lower())
         self.assertIn("carpet shark", correct_choice_text(questions[0]).lower())
         self.assertIn("ferriolensis", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("late maturity", correct_choice_text(questions[1]).lower())
         self.assertIn("decades", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("dermal denticles", correct_choice_text(questions[2]).lower())
         self.assertIn("eyeball", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("spot", correct_choice_text(questions[3]).lower())
         self.assertIn("photo", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("bycatch", correct_choice_text(questions[4]).lower())
         self.assertIn("ship", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -191,7 +191,7 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         talk = " ".join(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST).lower()
         push = " ".join(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST).lower()
         self.assertIn("carpet shark", talk)
-        self.assertIn("years", talk)
+        self.assertIn("year", talk)
         self.assertIn("denticles", talk)
         self.assertIn("spot", push)
         self.assertIn("boats", push)
@@ -253,7 +253,7 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_WHALE_SHARK, sheet)
-        self.assertIn("Facts from Wikipedia, Whale shark.", sheet)
+        self.assertIn("Facts from Wikipedia, Whale shark. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
 

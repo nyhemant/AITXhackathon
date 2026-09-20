@@ -45,7 +45,7 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 ZOOLOGIST_STEMS = (
-    "What did Lupše and colleagues do to classic Sepia in 2023, if we keep the tree soft?",
+    'What did Lupše and colleagues do to classic Sepia in 2023?',
     "What kind of shell is a cuttlebone, and how does gas move through it?",
     "How can cuttlefish eyes judge depth when they strike prey?",
     "Besides evening shallow-water glare, what debated idea links the W-shaped pupil to color-blind eyes?",
@@ -53,7 +53,7 @@ ZOOLOGIST_STEMS = (
     "How can a small male sneak past a guarding male to mate?",
     "Why do cephalopods need a closed blood system, unlike most molluscs?",
     "How should we read tetrodotoxin in flamboyant cuttlefish muscle?",
-    "Why might the family have never reached the Americas, if we keep that map soft?",
+    'Why might the family have never reached the Americas?',
     "How should we read the common cuttlefish IUCN letter next to local fishing and acid seas?",
 )
 
@@ -77,8 +77,8 @@ HARD_STEMS = (
     "How can cuttlefish match backgrounds if they are mostly color-blind?",
     "Why do cuttlefish have three hearts?",
     "Why can cuttlefish blood look blue-green?",
-    "Where are wild cuttlefish missing, if we keep the map soft?",
-    "How deep do most cuttlefish live, if we keep the depth soft?",
+    'Where are wild cuttlefish missing?',
+    'How deep do most cuttlefish live?',
     "What IUCN snapshot does the common cuttlefish (Sepia officinalis) carry?",
     "Why might acidifying seas matter for cuttlefish later?",
 )
@@ -121,17 +121,17 @@ REDO_THEMES = (
     "Crabs, shrimp, fish, and sometimes other cuttlefish",
     "Typical lifespan about 1–2 years",
     "Keep shallow coastal waters healthy so they have places to hunt and lay eggs",
-    "No — they’re molluscs (soft bodies + a shell inside), closer to octopus than to tuna",
-    "Family Sepiidae, order Sepiida — more than 100 living species (soft); taxonomy is being reshuffled",
+    'No — they’re molluscs, closer to octopus than to tuna',
+    'Family Sepiidae, order Sepiida — more than 100 living species; taxonomy is being reshuffled',
     "A chambered cuttlebone made of aragonite; squid keep a thin gladius instead",
     "Pigment chromatophores sit over reflective iridophores over white leucophores",
-    "They sense polarized light for contrast, which can help them match a scene even without full color vision (soft)",
+    'They sense polarized light for contrast, which can help them match a scene even without full color vision',
     "Two branchial hearts push blood to the gills; one systemic heart serves the body",
     "It uses copper-based hemocyanin to carry oxygen, not iron hemoglobin",
-    "They live around Africa, Europe, Asia, and Australia — and are totally absent from the Americas (soft)",
-    "Mostly tropical and temperate shallow seas; some kinds reach roughly hundreds of meters (soft)",
-    "Least Concern — fisheries pressure can be local, but the range is wide (soft snapshot)",
-    "More acidic water is cited as a possible future stress on shells and eggs — still under study (soft)",
+    'They live around Africa, Europe, Asia, and Australia — and are totally absent from the Americas',
+    'Mostly tropical and temperate shallow seas; some kinds reach roughly hundreds of meters',
+    'Least Concern — fisheries pressure can be local, but the range is wide',
+    'More acidic water is cited as a possible future stress on shells and eggs — still under study',
 )
 
 
@@ -149,7 +149,7 @@ class CuttlefishZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_CUTTLEFISH)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Cuttlefish.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Cuttlefish. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CUTTLEFISH))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CUTTLEFISH))
@@ -188,42 +188,42 @@ class CuttlefishZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("ascarosepion", correct_choice_text(questions[0]).lower())
         self.assertIn("rhombosepion", correct_choice_text(questions[0]).lower())
         self.assertIn("metasepia", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("phragmocone", correct_choice_text(questions[1]).lower())
         self.assertIn("siphuncle", correct_choice_text(questions[1]).lower())
         self.assertIn("spirula", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("foveae", correct_choice_text(questions[2]).lower())
         self.assertIn("forward", correct_choice_text(questions[2]).lower())
         self.assertIn("rearward", correct_choice_text(questions[2]).lower())
         self.assertIn("stereopsis", correct_choice_text(questions[2]).lower())
         self.assertIn("chromatic", correct_choice_text(questions[3]).lower())
         self.assertIn("wavelength", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("neural", correct_choice_text(questions[4]).lower())
         self.assertIn("500%", correct_choice_text(questions[4]))
         self.assertIn("iridophore", correct_choice_text(questions[4]).lower())
         self.assertIn("leucophore", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("mottle", correct_choice_text(questions[5]).lower())
         self.assertIn("egg", correct_choice_text(questions[5]).lower())
         self.assertIn("one side", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("hemocyanin", correct_choice_text(questions[6]).lower())
         self.assertIn("closed", correct_choice_text(questions[6]).lower())
         self.assertIn("hemoglobin", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("tetrodotoxin", correct_choice_text(questions[7]).lower())
         self.assertIn("poisonous", correct_choice_text(questions[7]).lower())
         self.assertIn("venom", correct_choice_text(questions[7]).lower())
         self.assertIn("species-by-species", correct_choice_text(questions[7]).lower())
         self.assertIn("old world", correct_choice_text(questions[8]).lower())
         self.assertIn("north atlantic", correct_choice_text(questions[8]).lower())
-        self.assertIn("soft", correct_choice_text(questions[8]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[8]).lower())
         self.assertIn("lc", correct_choice_text(questions[9]).lower())
         self.assertIn("overfishing", correct_choice_text(questions[9]).lower())
         self.assertIn("acidification", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -314,7 +314,7 @@ class CuttlefishZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_CUTTLEFISH, sheet)
-        self.assertIn("Facts from Wikipedia, Cuttlefish.", sheet)
+        self.assertIn("Facts from Wikipedia, Cuttlefish. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

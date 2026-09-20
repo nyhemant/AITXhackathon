@@ -163,7 +163,7 @@ class ZebraZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_PLAINS_ZEBRA)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Plains zebra.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Plains zebra. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ZEBRA))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_ZEBRA))
@@ -277,7 +277,7 @@ class ZebraZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_PLAINS_ZEBRA, sheet)
-        self.assertIn("Facts from Wikipedia, Plains zebra.", sheet)
+        self.assertIn("Facts from Wikipedia, Plains zebra. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

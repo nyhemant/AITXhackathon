@@ -129,7 +129,7 @@ class SharkHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_SHARK)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Shark.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Shark. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_SHARK))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_SHARK))
@@ -170,7 +170,7 @@ class SharkHardStudyCardTests(unittest.TestCase):
         self.assertIn("jelly-filled", questions[0]["why"].lower())
         self.assertIn("oily liver", correct_choice_text(questions[1]).lower())
         self.assertIn("buoyant", correct_choice_text(questions[1]).lower())
-        self.assertIn("percents stay soft", questions[1]["why"].lower())
+        self.assertNotIn("(soft)", questions[1]["why"].lower())
         self.assertIn("pump water", correct_choice_text(questions[2]).lower())
         self.assertIn("ram ventilation", correct_choice_text(questions[2]).lower())
         self.assertIn("small number", correct_choice_text(questions[3]).lower())
@@ -253,7 +253,7 @@ class SharkHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_SHARK, sheet)
-        self.assertIn("Facts from Wikipedia, Shark.", sheet)
+        self.assertIn("Facts from Wikipedia, Shark. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

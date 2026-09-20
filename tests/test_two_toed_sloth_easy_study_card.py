@@ -200,7 +200,7 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_TWO_TOED_SLOTH)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Two-toed sloth.",
+            "Facts from Wikipedia, Two-toed sloth. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -308,7 +308,7 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
             "No — slow is an energy plan and a way to stay hard to spot",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Two-toed sloth.", html)
+        self.assertIn("Facts from Wikipedia, Two-toed sloth. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

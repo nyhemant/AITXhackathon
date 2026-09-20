@@ -51,16 +51,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 ZOOLOGIST_STEMS = (
-    "Why did researchers sink the old genus Manta into Mobula, if we keep that 2017–18 tree soft?",
-    "What third living manta was formally named in 2025, if we keep that discovery soft?",
-    "How can gill-raker lobes catch food without clogging, if we keep that “ricochet” story soft?",
-    "Where might much of a giant manta’s food come from, if we keep that isotope story soft?",
-    "What is special about a manta’s brain, if we keep those warm-blood hints soft?",
-    "What have captive giant mantas done at mirrors, if we keep that awareness hint debated?",
-    "How do manta embryos get food inside the mother, if we keep that “milk” story soft?",
-    "Why doesn’t overfishing one manta site refill quickly from elsewhere, if we keep that mix soft?",
-    "How should we read IUCN letters for living mantas, if we keep those snapshots soft?",
-    "Why might live manta tourism out-earn a dead manta’s gill plates, if we keep that trade-off soft?",
+    'Why did researchers sink the old genus Manta into Mobula?',
+    'What third living manta was formally named in 2025?',
+    'How can gill-raker lobes catch food without clogging?',
+    'Where might much of a giant manta’s food come from?',
+    'What is special about a manta’s brain?',
+    'What have captive giant mantas done at mirrors, if we keep that awareness hint debated?',
+    'How do manta embryos get food inside the mother?',
+    'Why doesn’t overfishing one manta site refill quickly from elsewhere?',
+    'How should we read IUCN letters for living mantas?',
+    'Why might live manta tourism out-earn a dead manta’s gill plates?',
 )
 
 ZOOLOGIST_IDS = (
@@ -77,15 +77,15 @@ ZOOLOGIST_IDS = (
 )
 
 HARD_STEMS = (
-    "Where do mantas sit in the genus tree now, if we keep that rename soft?",
-    "What three kinds of manta do people name now, if we keep sizes and lives soft?",
-    "What family do mantas share with other eagle and devil rays, if we keep that map soft?",
+    'Where do mantas sit in the genus tree now?',
+    'What three kinds of manta do people name now?',
+    'What family do mantas share with other eagle and devil rays?',
     "How do spongy gill-raker plates help a manta eat?",
-    "How do cephalic fins and filter tissue work together, if we keep that feeding path soft?",
-    "Why must mantas keep swimming to breathe, if we keep those spiracles soft?",
-    "Why do manta populations recover slowly, if we keep that breeding story soft?",
-    "How should we read IUCN letters for reef and giant oceanic mantas, if we keep those snapshots soft?",
-    "Why can demand for dried gill rakers threaten mantas, if we keep that trade story kid-safe and soft?",
+    'How do cephalic fins and filter tissue work together?',
+    'Why must mantas keep swimming to breathe?',
+    'Why do manta populations recover slowly?',
+    'How should we read IUCN letters for reef and giant oceanic mantas?',
+    'Why can demand for dried gill rakers threaten mantas?',
     "How do international agreements protect mantas — and what still matters near shore?",
 )
 
@@ -93,7 +93,7 @@ EASY_STEMS = (
     "What do a manta’s broad fins work like?",
     "What sit beside a manta’s wide forward mouth?",
     "How do mantas gather their food?",
-    "How big can a manta get, if we keep the size soft?",
+    'How big can a manta get?',
     "How do reef mantas and giant oceanic mantas use the sea?",
     "How are baby mantas born?",
     "Why do mantas visit coral cleaning stations?",
@@ -119,23 +119,23 @@ REDO_THEMES = (
     "Broad triangular pectoral fins work like underwater wings",
     "Cephalic fins by the mouth look like horns — an old “devilfish” nickname",
     "They swim with mouths open; horn fins funnel plankton toward the gills",
-    "Among the largest rays — disc width can reach several meters (soft)",
-    "Reef mantas stay nearer coasts; giant oceanic mantas roam farther offshore (soft)",
-    "Mothers carry pups inside and give birth to live young after a long pregnancy (soft)",
+    'Among the largest rays — disc width can reach several meters',
+    'Reef mantas stay nearer coasts; giant oceanic mantas roam farther offshore',
+    'Mothers carry pups inside and give birth to live young after a long pregnancy',
     "So little fish can pick off parasites",
-    "They sometimes leap clear of the water — the reasons are still debated (soft)",
-    "Keep warm seas healthy; fishing nets and demand for gill plates put pressure on slow-breeding mantas (soft)",
+    'They sometimes leap clear of the water — the reasons are still debated',
+    'Keep warm seas healthy; fishing nets and demand for gill plates put pressure on slow-breeding mantas',
     "No — horns don’t mean danger. Mantas are gentle plankton-eaters, not man-eaters",
-    "They now sit in genus Mobula with devil rays — the old genus Manta is treated as a junior synonym (soft)",
-    "Reef (M. alfredi), giant oceanic (M. birostris), and Atlantic (M. yarae, newly named) — sizes and lifestyles differ (soft)",
-    "They sit in Myliobatidae / Mobulinae with other eagle and devil rays (soft)",
+    'They now sit in genus Mobula with devil rays — the old genus Manta is treated as a junior synonym',
+    'Reef (M. alfredi), giant oceanic (M. birostris), and Atlantic (M. yarae, newly named) — sizes and lifestyles differ',
+    'They sit in Myliobatidae / Mobulinae with other eagle and devil rays',
     "Spongy gill-raker plates strain plankton from water as it exits the gill slots",
-    "Cephalic fins unfurl as funnels; particles bounce or collect on filter tissue so the ray can keep swimming and feeding (soft)",
-    "Spiracles are tiny or vestigial, so they need forward motion to push oxygenated water over the gills (soft)",
-    "Pregnancy lasts over a year; usually one pup; years can pass between births — populations recover slowly (soft)",
-    "Reef manta: Vulnerable snapshot; giant oceanic: Endangered snapshot — letters can change; Atlantic status is still settling (soft)",
-    "Demand for dried gill rakers in some traditional markets drives targeted fishing — a top human threat (soft)",
-    "Migratory-route agreements (CMS) protect them in international waters, but nearshore nets and bycatch still matter (soft)",
+    'Cephalic fins unfurl as funnels; particles bounce or collect on filter tissue so the ray can keep swimming and feeding',
+    'Spiracles are tiny or vestigial, so they need forward motion to push oxygenated water over the gills',
+    'Pregnancy lasts over a year; usually one pup; years can pass between births — populations recover slowly',
+    'Reef manta: Vulnerable snapshot; giant oceanic: Endangered snapshot — letters can change; Atlantic status is still settling',
+    'Demand for dried gill rakers in some traditional markets drives targeted fishing — a top human threat',
+    'Migratory-route agreements (CMS) protect them in international waters, but nearshore nets and bycatch still matter',
 )
 
 
@@ -154,7 +154,7 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_MANTA_RAY)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Manta ray.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Manta ray. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_MANTA_RAY_ZOOLOGIST))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_MANTA_RAY_ZOOLOGIST))
@@ -192,51 +192,51 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("mobula", correct_choice_text(questions[0]).lower())
         self.assertIn("paraphyletic", correct_choice_text(questions[0]).lower())
         self.assertIn("nested", correct_choice_text(questions[0]).lower())
-        self.assertIn("2017", correct_choice_text(questions[0]))
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertIn("Mobula", correct_choice_text(questions[0]))
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("yarae", correct_choice_text(questions[1]).lower())
         self.assertIn("atlantic", correct_choice_text(questions[1]).lower())
         self.assertIn("reef", correct_choice_text(questions[1]).lower())
         self.assertIn("oceanic", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("ricochet", correct_choice_text(questions[2]).lower())
         self.assertIn("gill-raker", correct_choice_text(questions[2]).lower())
         self.assertIn("pore", correct_choice_text(questions[2]).lower())
         self.assertIn("throat", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("isotope", correct_choice_text(questions[3]).lower())
         self.assertIn("mesopelagic", correct_choice_text(questions[3]).lower())
         self.assertIn("surface", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("brain", correct_choice_text(questions[4]).lower())
         self.assertIn("retia", correct_choice_text(questions[4]).lower())
         self.assertIn("warm", correct_choice_text(questions[4]).lower())
         self.assertIn("fish", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("mirror", correct_choice_text(questions[5]).lower())
         self.assertIn("contingency", correct_choice_text(questions[5]).lower())
         self.assertIn("debated", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("histotroph", correct_choice_text(questions[6]).lower())
         self.assertIn("egg", correct_choice_text(questions[6]).lower())
         self.assertIn("milk", correct_choice_text(questions[6]).lower())
         self.assertIn("placenta", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("aggregat", correct_choice_text(questions[7]).lower())
         self.assertIn("mix", correct_choice_text(questions[7]).lower())
         self.assertIn("overfish", correct_choice_text(questions[7]).lower())
-        self.assertIn("soft", correct_choice_text(questions[7]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[7]).lower())
         self.assertIn("alfredi", correct_choice_text(questions[8]).lower())
         self.assertIn("birostris", correct_choice_text(questions[8]).lower())
         self.assertIn("yarae", correct_choice_text(questions[8]).lower())
         self.assertIn("vu", correct_choice_text(questions[8]).lower())
         self.assertIn("en", correct_choice_text(questions[8]).lower())
         self.assertIn("snapshot", correct_choice_text(questions[8]).lower())
-        self.assertIn("soft", correct_choice_text(questions[8]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[8]).lower())
         self.assertIn("gill plate", correct_choice_text(questions[9]).lower())
         self.assertIn("tourism", correct_choice_text(questions[9]).lower())
         self.assertIn("lifetime", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -327,7 +327,7 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_MANTA_RAY, sheet)
-        self.assertIn("Facts from Wikipedia, Manta ray.", sheet)
+        self.assertIn("Facts from Wikipedia, Manta ray. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

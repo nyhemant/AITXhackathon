@@ -45,7 +45,7 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "What is the Atlantic puffin’s scientific name, and what soft name story can Fratercula hold?",
+    'What is the Atlantic puffin’s scientific name, and what name story can Fratercula hold?',
     "Which bird family does the Atlantic puffin belong to?",
     "How many puffin species live in the Atlantic Ocean?",
     "What happens to an Atlantic puffin’s colorful outer bill after breeding season?",
@@ -119,7 +119,7 @@ class PuffinHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_ATLANTIC_PUFFIN)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Atlantic puffin.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Atlantic puffin. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_PUFFIN))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_PUFFIN))
@@ -244,7 +244,7 @@ class PuffinHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_ATLANTIC_PUFFIN, sheet)
-        self.assertIn("Facts from Wikipedia, Atlantic puffin.", sheet)
+        self.assertIn("Facts from Wikipedia, Atlantic puffin. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

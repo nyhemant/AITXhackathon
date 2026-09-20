@@ -122,7 +122,7 @@ class AmericanBisonHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_AMERICAN_BISON)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, American bison.",
+            "Facts from Wikipedia, American bison. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_AMERICAN_BISON))
@@ -169,7 +169,7 @@ class AmericanBisonHardStudyCardTests(unittest.TestCase):
         self.assertIn("head", correct_choice_text(questions[2]).lower())
         self.assertIn("slow highway car", correct_choice_text(questions[3]).lower())
         self.assertIn("jump", correct_choice_text(questions[3]).lower())
-        self.assertIn("speed and jump numbers stay soft", questions[3]["why"].lower())
+        self.assertNotIn("(soft)", questions[3]["why"].lower())
         self.assertIn("plants", correct_choice_text(questions[4]).lower())
         self.assertIn("bugs", correct_choice_text(questions[4]).lower())
         self.assertIn("bellow", correct_choice_text(questions[5]).lower())
@@ -247,7 +247,7 @@ class AmericanBisonHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_AMERICAN_BISON, sheet)
-        self.assertIn("Facts from Wikipedia, American bison.", sheet)
+        self.assertIn("Facts from Wikipedia, American bison. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

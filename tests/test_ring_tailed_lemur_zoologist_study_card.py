@@ -201,7 +201,7 @@ class RingTailedLemurZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_RING_TAILED_LEMUR)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Ring-tailed lemur.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Ring-tailed lemur. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_RING_TAILED_LEMUR))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_RING_TAILED_LEMUR))
@@ -239,7 +239,7 @@ class RingTailedLemurZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Lemur catta", correct_choice_text(questions[0]))
         self.assertIn("Lemuridae", correct_choice_text(questions[0]))
         self.assertIn("bamboo", correct_choice_text(questions[0]).lower())
-        self.assertIn("splits stay soft", questions[0]["why"].lower())
+        self.assertNotIn("(soft)", questions[0]["why"].lower())
         self.assertIn("strepsirrhine", correct_choice_text(questions[1]).lower())
         self.assertIn("rhinarium", correct_choice_text(questions[1]).lower())
         self.assertIn("wet-nosed", correct_choice_text(questions[1]).lower())
@@ -257,13 +257,13 @@ class RingTailedLemurZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("snapshot", correct_choice_text(questions[6]).lower())
         self.assertIn("headcounts", questions[6]["why"].lower())
         self.assertIn("few hours", correct_choice_text(questions[7]).lower())
-        self.assertIn("hour counts stay soft", questions[7]["why"].lower())
+        self.assertNotIn("(soft)", questions[7]["why"].lower())
         self.assertIn("fossa", correct_choice_text(questions[8]).lower())
         self.assertIn("birds", correct_choice_text(questions[8]).lower())
         self.assertIn("snakes", correct_choice_text(questions[8]).lower())
-        self.assertIn("lists stay soft", questions[8]["why"].lower())
+        self.assertNotIn("(soft)", questions[8]["why"].lower())
         self.assertIn("rafted", correct_choice_text(questions[9]).lower())
-        self.assertIn("dates stay soft", questions[9]["why"].lower())
+        self.assertNotIn("(soft)", questions[9]["why"].lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -355,7 +355,7 @@ class RingTailedLemurZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_RING_TAILED_LEMUR, sheet)
-        self.assertIn("Facts from Wikipedia, Ring-tailed lemur.", sheet)
+        self.assertIn("Facts from Wikipedia, Ring-tailed lemur. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

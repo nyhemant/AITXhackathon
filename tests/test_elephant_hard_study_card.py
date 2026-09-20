@@ -109,7 +109,7 @@ class ElephantHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_AFRICAN_ELEPHANT)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, African elephant / Elephant.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, African elephant / Elephant. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ELEPHANT))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_ELEPHANT))
@@ -216,7 +216,7 @@ class ElephantHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_AFRICAN_ELEPHANT, sheet)
-        self.assertIn("Facts from Wikipedia, African elephant / Elephant.", sheet)
+        self.assertIn("Facts from Wikipedia, African elephant / Elephant. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

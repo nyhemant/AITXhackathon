@@ -186,7 +186,7 @@ class ChimpanzeeZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_CHIMPANZEE)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Chimpanzee.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Chimpanzee. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CHIMPANZEE))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CHIMPANZEE))
@@ -322,7 +322,7 @@ class ChimpanzeeZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_CHIMPANZEE, sheet)
-        self.assertIn("Facts from Wikipedia, Chimpanzee.", sheet)
+        self.assertIn("Facts from Wikipedia, Chimpanzee. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

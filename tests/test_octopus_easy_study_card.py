@@ -80,7 +80,7 @@ STEMS = (
     "Where do many octopuses hide, and what clue might sit outside?",
     "What is special about octopus blood and hearts, if we keep it kid-simple?",
     "Where do octopuses live?",
-    "How many kinds of octopus are there, if we keep the count soft?",
+    'How many kinds of octopus are there?',
     "Do octopuses have tentacles?",
 )
 
@@ -208,7 +208,7 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_OCTOPUS)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Octopus.",
+            "Facts from Wikipedia, Octopus. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -332,7 +332,7 @@ class OctopusEasyStudyCardTests(unittest.TestCase):
             "No — people say “tentacles,” but octopuses have arms with suckers all along. Squid and cuttlefish add two longer tentacles",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Octopus.", html)
+        self.assertIn("Facts from Wikipedia, Octopus. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

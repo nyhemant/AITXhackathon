@@ -119,7 +119,7 @@ class PolarBearHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_POLAR_BEAR)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Polar bear.",
+            "Facts from Wikipedia, Polar bear. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_POLAR_BEAR))
@@ -242,7 +242,7 @@ class PolarBearHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_POLAR_BEAR, sheet)
-        self.assertIn("Facts from Wikipedia, Polar bear.", sheet)
+        self.assertIn("Facts from Wikipedia, Polar bear. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

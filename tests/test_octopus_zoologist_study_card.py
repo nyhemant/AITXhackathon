@@ -53,16 +53,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 ZOOLOGIST_STEMS = (
-    "How do coleoid octopuses rewrite gene copies after they are written, if we keep that editing story soft?",
-    "What makes blue-ringed octopuses (Hapalochlaena) the human danger outlier, if we keep that clinical story soft?",
-    "What did the California two-spot octopus genome show, if we keep those gene families soft?",
-    "How do modern octopod chromosomes compare with the vampire squid’s, if we keep that karyotype story soft?",
-    "How should we read the old Cirrina (Cirromorphida) and Argonautoidea boxes, if we keep those names soft?",
-    "Where do octopods arise in the fossil tree, if we keep that Jurassic timing soft?",
-    "What do the optic glands do after breeding, if we keep that fade story soft?",
+    'How do coleoid octopuses rewrite gene copies after they are written?',
+    'What makes blue-ringed octopuses (Hapalochlaena) the human danger outlier?',
+    'What did the California two-spot octopus genome show?',
+    'How do modern octopod chromosomes compare with the vampire squid’s?',
+    'How should we read the old Cirrina (Cirromorphida) and Argonautoidea boxes?',
+    'Where do octopods arise in the fossil tree?',
+    'What do the optic glands do after breeding?',
     "How should we read status for “octopus,” if we keep those snapshots by kind and fishery?",
-    "What is unusual about octopus blood vessels, if we keep that circulation story soft?",
-    "How did lab-welfare rules treat the common octopus, if we keep that legal story soft?",
+    'What is unusual about octopus blood vessels?',
+    'How did lab-welfare rules treat the common octopus?',
 )
 
 ZOOLOGIST_IDS = (
@@ -79,16 +79,16 @@ ZOOLOGIST_IDS = (
 )
 
 HARD_STEMS = (
-    "What order do octopuses sit in, if we keep that group map soft?",
-    "How is octopus skin stacked for colour and shine, if we keep those cell names soft?",
+    'What order do octopuses sit in?',
+    'How is octopus skin stacked for colour and shine?',
     "What happens to an octopus’s hearts during a hard jet swim?",
-    "Why can octopus blood look blue, if we keep the chemistry soft?",
-    "Where do most octopus nerve cells sit, if we keep that count soft?",
-    "What clues show octopus intelligence, if we keep those stories soft?",
+    'Why can octopus blood look blue?',
+    'Where do most octopus nerve cells sit?',
+    'What clues show octopus intelligence?',
     "Are octopuses venomous — and which kinds are known to be deadly to people?",
-    "What happens after an octopus lays eggs, if we keep that life story soft?",
-    "How can an octopus open a crab or clam, if we keep the timing soft?",
-    "How can some octopuses warn or fool a threat, if we keep those displays soft?",
+    'What happens after an octopus lays eggs?',
+    'How can an octopus open a crab or clam?',
+    'How can some octopuses warn or fool a threat?',
 )
 
 EASY_STEMS = (
@@ -100,7 +100,7 @@ EASY_STEMS = (
     "Where do many octopuses hide, and what clue might sit outside?",
     "What is special about octopus blood and hearts, if we keep it kid-simple?",
     "Where do octopuses live?",
-    "How many kinds of octopus are there, if we keep the count soft?",
+    'How many kinds of octopus are there?',
     "Do octopuses have tentacles?",
 )
 
@@ -133,18 +133,18 @@ REDO_THEMES = (
     "In rock crevices, shells, and dens — leftovers often pile up outside as a midden",
     "Copper-based blue blood, and three hearts — two for the gills and one for the body",
     "In seas worldwide — reefs, seafloor, tide pools, and even deep water (not freshwater)",
-    "About 300 known species, from tiny kinds to the giant Pacific octopus (soft)",
+    'About 300 known species, from tiny kinds to the giant Pacific octopus',
     "No — people say “tentacles,” but octopuses have arms with suckers all along. Squid and cuttlefish add two longer tentacles",
-    "Order Octopoda — about 300 species; a traditional split is finned deep-sea Cirrina (cirri + fins) and typical Incirrina (most aquarium kinds) (soft)",
-    "Colour cells (chromatophores) sit with reflective iridophores and white leucophores; skin muscles can also change texture (soft)",
+    'Order Octopoda — about 300 species; a traditional split is finned deep-sea Cirrina (cirri + fins) and typical Incirrina (most aquarium kinds)',
+    'Colour cells (chromatophores) sit with reflective iridophores and white leucophores; skin muscles can also change texture',
     "Two gill hearts keep pushing blood through the gills, but the main (systemic) heart pauses — so long jet swims tire them fast",
-    "A copper-based oxygen carrier (haemocyanin) is dissolved in the plasma — it works well in cold, low-oxygen water (soft)",
-    "Roughly two-thirds of the neurons sit in the arms, so an arm can act with some independence from the central brain (soft)",
-    "Maze and problem-solving tests show short- and long-term memory; the veined octopus uses coconut shells as portable shelters (tool use) (soft)",
-    "All octopuses are venomous; only blue-ringed kinds are known to be deadly to humans if bitten (soft)",
-    "The female guards the eggs in a den until they hatch, then typically stops eating and dies; males often fade after mating (soft)",
-    "It can drill a shell and use toxic saliva to open crabs or clams (exact timing stays soft)",
-    "Some mimic dangerous animals such as lionfish or sea snakes; blue-rings flash warning colours when threatened (soft)",
+    'A copper-based oxygen carrier (haemocyanin) is dissolved in the plasma — it works well in cold, low-oxygen water',
+    'Roughly two-thirds of the neurons sit in the arms, so an arm can act with some independence from the central brain',
+    'Maze and problem-solving tests show short- and long-term memory; the veined octopus uses coconut shells as portable shelters (tool use)',
+    'All octopuses are venomous; only blue-ringed kinds are known to be deadly to humans if bitten',
+    'The female guards the eggs in a den until they hatch, then typically stops eating and dies; males often fade after mating',
+    'It can drill a shell and use toxic saliva to open crabs or clams',
+    'Some mimic dangerous animals such as lionfish or sea snakes; blue-rings flash warning colours when threatened',
 )
 
 
@@ -163,7 +163,7 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_OCTOPUS)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Octopus.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Octopus. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_OCTOPUS_ZOOLOGIST))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_OCTOPUS_ZOOLOGIST))
@@ -202,22 +202,22 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("adar", correct_choice_text(questions[0]).lower())
         self.assertIn("nervous", correct_choice_text(questions[0]).lower())
         self.assertIn("dna", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("hapalochlaena", correct_choice_text(questions[1]).lower())
         self.assertIn("tetrodotoxin", correct_choice_text(questions[1]).lower())
         self.assertIn("breath", correct_choice_text(questions[1]).lower())
         self.assertIn("antidote", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("protocadherin", correct_choice_text(questions[2]).lower())
         self.assertIn("c2h2", correct_choice_text(questions[2]).lower())
         self.assertIn("zinc-finger", correct_choice_text(questions[2]).lower())
         self.assertIn("sucker", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("fusion", correct_choice_text(questions[3]).lower())
         self.assertIn("vampire squid", correct_choice_text(questions[3]).lower())
         self.assertIn("basal", correct_choice_text(questions[3]).lower())
         self.assertIn("karyotype", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("cirrina", correct_choice_text(questions[4]).lower())
         self.assertIn("cirromorphida", correct_choice_text(questions[4]).lower())
         self.assertIn("argonautoidea", correct_choice_text(questions[4]).lower())
@@ -226,27 +226,27 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("muensterelloidea", correct_choice_text(questions[5]).lower())
         self.assertIn("jurassic", correct_choice_text(questions[5]).lower())
         self.assertIn("vampyropoda", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("optic", correct_choice_text(questions[6]).lower())
         self.assertIn("maturation", correct_choice_text(questions[6]).lower())
         self.assertIn("spawning", correct_choice_text(questions[6]).lower())
         self.assertIn("extend", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("iucn", correct_choice_text(questions[7]).lower())
         self.assertIn("fished", correct_choice_text(questions[7]).lower())
         self.assertIn("farming", correct_choice_text(questions[7]).lower())
         self.assertIn("snapshot", correct_choice_text(questions[7]).lower())
-        self.assertIn("soft", correct_choice_text(questions[7]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[7]).lower())
         self.assertIn("endothelium", correct_choice_text(questions[8]).lower())
         self.assertIn("haemocyanin", correct_choice_text(questions[8]).lower())
         self.assertIn("pressure", correct_choice_text(questions[8]).lower())
         self.assertIn("invertebrate", correct_choice_text(questions[8]).lower())
-        self.assertIn("soft", correct_choice_text(questions[8]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[8]).lower())
         self.assertIn("common octopus", correct_choice_text(questions[9]).lower())
         self.assertIn("cephalopod", correct_choice_text(questions[9]).lower())
         self.assertIn("welfare", correct_choice_text(questions[9]).lower())
         self.assertIn("intelligence", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -343,7 +343,7 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_OCTOPUS, sheet)
-        self.assertIn("Facts from Wikipedia, Octopus.", sheet)
+        self.assertIn("Facts from Wikipedia, Octopus. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

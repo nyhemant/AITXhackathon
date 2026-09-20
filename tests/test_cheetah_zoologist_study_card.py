@@ -188,7 +188,7 @@ class CheetahZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_CHEETAH)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Cheetah.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Cheetah. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CHEETAH))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CHEETAH))
@@ -320,7 +320,7 @@ class CheetahZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_CHEETAH, sheet)
-        self.assertIn("Facts from Wikipedia, Cheetah.", sheet)
+        self.assertIn("Facts from Wikipedia, Cheetah. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:
