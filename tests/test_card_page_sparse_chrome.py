@@ -130,11 +130,17 @@ class CardPageSparseChromeTests(unittest.TestCase):
         for cid, html in self.pages.items():
             main = _main(html)
             actions = main.split('class="card-page-actions"', 1)[1]
+            end = actions.find("</div>\n      <section")
+            if end != -1:
+                actions = actions[:end]
             with self.subTest(card=cid):
                 self.assertIn("card-watch-live", actions)
                 self.assertRegex(actions, r"Watch (live at |film from |film</a>|Live</a>)")
                 self.assertIn("card-watch-live", actions)
                 self.assertIn(f">{CTA_PRINT_CARD}</button>", actions)
+                self.assertIn("card-page-photos", actions)
+                self.assertIn("card-page-actions-primary", actions)
+                self.assertIn("card-page-actions-print", actions)
                 self.assertNotIn("Explore at home", actions)
                 self.assertNotIn("nationalzoo.si.edu", actions)
                 self.assertLessEqual(actions.count('class="btn '), 3)
@@ -171,9 +177,12 @@ class CardPageSparseChromeTests(unittest.TestCase):
                 self.assertNotIn("nationalzoo.si.edu", main)
                 self.assertNotIn("houstonzoo.org", main)
                 self.assertNotIn('class="seo-watch-row"', main)
-                actions = main.split('class="card-page-actions"', 1)[1].split("</p>", 1)[0]
+                actions = main.split('class="card-page-actions"', 1)[1]
                 self.assertIn("card-watch-live", actions)
-                self.assertNotIn('target="_blank"', actions)
+                watch_tags = re.findall(r'<a[^>]+class="[^"]*card-watch-live[^"]*"[^>]*>', actions)
+                self.assertTrue(watch_tags)
+                for tag in watch_tags:
+                    self.assertNotIn('target="_blank"', tag)
 
     def test_watch_links_helper_routes_card_watch_live_in_page(self):
         item = {

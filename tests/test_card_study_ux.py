@@ -420,7 +420,7 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn("card-study-pack", whale)
 
     def test_photos_and_watch_live_share_hero_row(self):
-        self.assertEqual(CARD_SEO_CSS_VER, "37")
+        self.assertEqual(CARD_SEO_CSS_VER, "38")
         self.assertEqual(STUDY_CARD_JS_VER, "14")
         self.assertEqual(STUDY_CARD_CSS_VER, "12")
         css = SEO_CSS.read_text(encoding="utf-8")
@@ -459,24 +459,41 @@ class CardStudyUxTests(unittest.TestCase):
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             main = _main(html)
             with self.subTest(card=cid):
-                self.assertIn('class="card-hero-links no-print"', main)
-                hero_at = main.find('class="card-hero-links')
-                photos_at = main.find("More photos at")
-                watch_at = main.find('class="seo-watch-row"')
                 actions_at = main.find('class="card-page-actions"')
                 talk_at = main.find('class="card-talk-pack')
-                self.assertGreater(photos_at, hero_at)
-                self.assertEqual(watch_at, -1)
-                self.assertGreater(actions_at, photos_at)
+                self.assertGreater(actions_at, 0)
                 self.assertLess(actions_at, talk_at)
-                self.assertIn("card-watch-live", main.split('class="card-page-actions"', 1)[1])
+                actions = main.split('class="card-page-actions"', 1)[1]
+                self.assertIn("card-page-actions-primary", actions)
+                self.assertIn("card-page-actions-print", actions)
+                primary = actions.split('class="card-page-actions-primary"', 1)[1].split(
+                    'class="card-page-actions-print"', 1
+                )[0]
+                print_row = actions.split('class="card-page-actions-print"', 1)[1]
+                self.assertIn("card-watch-live", primary)
+                self.assertIn("More photos at", primary)
+                self.assertIn("card-page-photos", primary)
+                watch_at = primary.find("card-watch-live")
+                photos_at = primary.find("card-page-photos")
+                self.assertLess(watch_at, photos_at)
+                self.assertIn("print-this-card", print_row)
+                self.assertIn("print-spec", print_row)
+                self.assertNotIn("card-watch-live", print_row)
+                self.assertNotIn("card-page-photos", print_row)
+                self.assertEqual(main.find('class="seo-watch-row"'), -1)
+                # Photos left the hero quiet row (Learn more may remain).
+                hero = ""
+                if 'class="card-hero-links' in main:
+                    hero = main.split('class="card-hero-links', 1)[1].split(
+                        'class="card-page-actions"', 1
+                    )[0]
+                self.assertNotIn("More photos at", hero)
                 self.assertIn("study-card.js?v=14", html)
                 self.assertIn("study-card.css?v=12", html)
                 self.assertIn(f"seo-venue.css?v={CARD_SEO_CSS_VER}", html)
 
         warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))
-        self.assertIn("card-hero-links", warthog)
-        self.assertIn("More photos at", warthog)
+        self.assertIn("More photos at", warthog.split('class="card-page-actions"', 1)[1])
         self.assertNotIn('class="seo-watch-row"', warthog)
         self.assertIn("card-watch-live", warthog.split('class="card-page-actions"', 1)[1])
         self.assertIn("#habitat=warthog", warthog)

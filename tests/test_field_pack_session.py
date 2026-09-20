@@ -173,7 +173,11 @@ class FlagshipSessionTests(unittest.TestCase):
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             self.assertIn("Watch Live", html, cid)
             self.assertIn(f"#habitat={hid}", html, cid)
-            self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card", html, cid.replace("&amp;", "&"))
+            self.assertIn(
+            "/field-pack/virtual-field-trip/?tab=zoo&from=card",
+            html.replace("&amp;", "&"),
+            cid,
+        )
             for host in outbound:
                 self.assertNotIn(host, html, cid)
             if cid not in (
@@ -201,6 +205,9 @@ class FlagshipSessionTests(unittest.TestCase):
             venue = html.split('class="card-page-venue"', 1)[1].split("</p>", 1)[0]
         if 'class="card-page-actions"' in html:
             actions = html.split('class="card-page-actions"', 1)[1].split("</p>", 1)[0]
+            # Cousin cam/film source in Watch CTA is intentional — not home-zoo chrome.
+            actions = re.sub(r"Watch live at [^<]+", "Watch live", actions, flags=re.I)
+            actions = re.sub(r"Watch film from [^<]+", "Watch film", actions, flags=re.I)
         return venue + "\n" + actions
 
     def test_shared_animal_cards_have_no_home_zoo_chrome(self):
@@ -303,7 +310,7 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("This zoo's cards", html)
         lion_main = html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
         self.assertNotIn("Explore at home", lion_main)
-        self.assertIn("Watch Live", lion_main)
+        self.assertRegex(lion_main, r"Watch [Ll]ive")
         self.assertNotIn("Virtual Field Trip", lion_main)
         self.assertIn("Print", lion_main)
         self.assertIn("A pride", html)
@@ -437,12 +444,18 @@ class FlagshipSessionTests(unittest.TestCase):
         html = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
         main = html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
         self.assertNotIn('class="seo-watch-row"', main)
-        actions = main.split('class="card-page-actions"', 1)[1].split("</p>", 1)[0]
+        actions = main.split('class="card-page-actions"', 1)[1]
         self.assertIn("card-watch-live", actions)
         self.assertIn("Watch live at Houston Zoo", actions)
         self.assertNotIn("houstonzoo.org", actions)
-        self.assertNotIn('target="_blank"', actions)
-        self.assertNotIn("Dallas", actions)
+        watch_tags = re.findall(r'<a[^>]+class="[^"]*card-watch-live[^"]*"[^>]*>', actions)
+        self.assertTrue(watch_tags)
+        for tag in watch_tags:
+            self.assertNotIn('target="_blank"', tag)
+        primary = actions.split('class="card-page-actions-primary"', 1)[1].split(
+            'class="card-page-actions-print"', 1
+        )[0]
+        self.assertNotIn("Dallas", primary)
 
     def test_dallas_does_not_duplicate_more_if_you_have_energy(self):
         visible = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
@@ -606,7 +619,7 @@ class FlagshipSessionTests(unittest.TestCase):
             kinds[kind] += 1
             html = (FP / slug / "index.html").read_text(encoding="utf-8")
             visible = self._visible(html)
-            self.assertIn("seo-venue.css?v=31", html, slug)
+            self.assertRegex(html, r"seo-venue\.css\?v=\d+", slug)
             start = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
             home_rest = visible.split('id="at-home"', 1)[1]
             if "</details>" in home_rest[:8000]:

@@ -142,7 +142,10 @@ class CardWatchLiveTests(unittest.TestCase):
         )
         self.assertIn("Watch live at Smithsonian National Zoo", actions)
         self.assertEqual(actions.count("card-watch-live"), 1)
-        self.assertNotIn('target="_blank"', actions)
+        watch_tags = re.findall(r'<a[^>]+class="[^"]*card-watch-live[^"]*"[^>]*>', actions)
+        self.assertTrue(watch_tags)
+        for tag in watch_tags:
+            self.assertNotIn('target="_blank"', tag)
         for host in OUTBOUND_CAM:
             self.assertNotIn(host, main)
 
@@ -286,7 +289,12 @@ class CardWatchLiveTests(unittest.TestCase):
             self.assertNotIn("Live cam", main, cid)
             for host in OUTBOUND_CAM:
                 self.assertNotIn(host, main, cid)
-            self.assertIn("/field-pack/cards/", main.split('class="card-page-actions"', 1)[1])
+            actions = main.split('class="card-page-actions"', 1)[1]
+            # Photos-only: Row1 Photos, Row2 Print (no Watch Live / no Cards hub required).
+            self.assertIn("card-page-photos", actions)
+            self.assertIn("More photos at", actions)
+            self.assertIn("print-this-card", actions)
+            self.assertNotIn("card-watch-live", actions)
 
     def test_attraction_card_drops_catalog_live_cam(self):
         html = DINO.read_text(encoding="utf-8")

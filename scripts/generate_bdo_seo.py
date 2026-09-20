@@ -343,7 +343,7 @@ OUTING_TALK_EXHIBIT = (
 )
 
 SEO_CSS_VER = "33"
-CARD_SEO_CSS_VER = "37"
+CARD_SEO_CSS_VER = "38"
 LANDING_CSS_VER = "100"
 LANDING_MAP_JS_VER = "89"
 LANDING_HOOK_JS_VER = "39"
@@ -931,12 +931,30 @@ def pictures_link_label(url: str, explicit: str = "") -> str:
     return f"More photos at {source} ↗"
 
 
-def catalog_more_links_html(item: dict, *, shared: bool = False, allow_cam: bool = True) -> str:
+def card_pictures_link_html(item: dict, *, btn_class: str = "btn btn-secondary card-page-photos") -> str:
+    """Outbound Photos CTA for the card action row (labeled source from #290)."""
+    links = item.get("links") or {}
+    pics = str(links.get("pictures") or "").strip()
+    if not pics:
+        return ""
+    pics_label = pictures_link_label(
+        pics, str(links.get("picturesLabel") or "").strip()
+    )
+    return (
+        f'<a class="{btn_class}" href="{esc(pics)}" target="_blank" '
+        f'rel="noopener noreferrer">{esc(pics_label)}</a>'
+    )
+
+
+def catalog_more_links_html(
+    item: dict, *, shared: bool = False, allow_cam: bool = True, include_pictures: bool = True
+) -> str:
     """Photos / learn-more from catalog.links. Prefer VFT cam over catalog cam.
 
     Shared animal / sea-life cards drop a hardcoded home-zoo Learn more.
     Kit-aware Learn more is filled in from ?from= / referrer (see card page JS).
     Card pages pass allow_cam=False — never fall back to an outbound zoo cam.
+    Card pages also pass include_pictures=False — Photos lives in the action row.
     """
     links = item.get("links") or {}
     vft = item.get("vft") or {}
@@ -948,7 +966,7 @@ def catalog_more_links_html(item: dict, *, shared: bool = False, allow_cam: bool
                 f'<a class="btn btn-ghost" href="{esc(cam)}" target="_blank" rel="noopener noreferrer">Live cam</a>'
             )
     pics = str(links.get("pictures") or "").strip()
-    if pics:
+    if include_pictures and pics:
         pics_label = pictures_link_label(
             pics, str(links.get("picturesLabel") or "").strip()
         )
@@ -5352,7 +5370,7 @@ def write_card_pages(
             study_css_link = (
                 f'\n  <link rel="stylesheet" href="/field-pack/css/study-card.css?v={STUDY_CARD_CSS_VER}" />'
             )
-        more_links = catalog_more_links_html(item, shared=not show_venue_chrome, allow_cam=False)
+        more_links = catalog_more_links_html(item, shared=not show_venue_chrome, allow_cam=False, include_pictures=False)
         # Animal/sea_life Watch Live lives only in the action row (dedupe hero media block).
         watch_html = (
             ""
@@ -5366,28 +5384,46 @@ def write_card_pages(
         print_venue_attr = f' data-venue="{esc(vid)}"' if show_venue_chrome and vid else ""
         kit_sites_js = json.dumps(start_here_official_urls(), separators=(",", ":"))
         kit_names_js = json.dumps(start_here_place_names(), separators=(",", ":"))
-        action_bits: list[str] = []
+        # Row 1: Watch (left) then Photos; Place/VFT/Cards stay on row 1 when needed.
+        # Row 2: Print alone with print-spec under Print only.
+        primary_bits: list[str] = []
         if watch_live and watch_href:
             watch_cta = card_watch_cta_label(vft)
-            action_bits.append(
+            primary_bits.append(
                 f'<a class="btn btn-primary card-watch-live" href="{esc(watch_href)}">{esc(watch_cta)}</a>'
             )
         elif vft_href and not watch_live:
-            action_bits.append(
+            primary_bits.append(
                 f'<a class="btn btn-secondary" href="{vft_href}">{esc(PLACE_VFT_CTA)}</a>'
             )
+        photos_html = card_pictures_link_html(item)
+        if photos_html:
+            primary_bits.append(photos_html)
         if chrome_vid:
-            action_bits.append(
+            primary_bits.append(
                 f'<a class="btn btn-secondary" href="{venue_href}">{esc(CTA_CARD_PLACE)}</a>'
             )
-        elif not vft_href or (watch_live and not watch_href):
-            action_bits.append(
+        elif (not vft_href or (watch_live and not watch_href)) and not photos_html:
+            # Photos-only: Row1 is Photos. Cards hub only when neither Watch nor Photos.
+            primary_bits.append(
                 f'<a class="btn btn-secondary" href="/field-pack/cards/">{esc(CTA_CARDS_HUB)}</a>'
             )
-        action_bits.append(
-            f'<button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="{esc(cid)}"{print_venue_attr}>{esc(CTA_PRINT_CARD)}</button>'
+        primary_html = (
+            (
+                '<div class="card-page-actions-primary">\n        '
+                + "\n        ".join(primary_bits)
+                + "\n      </div>"
+            )
+            if primary_bits
+            else ""
         )
-        actions_html = "\n        ".join(action_bits)
+        print_html = (
+            '<div class="card-page-actions-print">\n        '
+            f'<button type="button" class="btn btn-secondary" id="print-this-card" '
+            f'data-card-id="{esc(cid)}"{print_venue_attr}>{esc(CTA_PRINT_CARD)}</button>\n        '
+            f'<p class="print-spec no-print">{esc(PRINT_SPEC)}</p>\n      </div>'
+        )
+        actions_html = "\n      ".join(x for x in (primary_html, print_html) if x)
         blurb_html = f'<p class="card-page-blurb">{esc(blurb)}</p>' if blurb else ""
         title = f"{name} — KidZooKit"
         desc = (blurb + " " if blurb else "") + f"{name} card: photo and talk prompts."
@@ -5450,10 +5486,9 @@ def write_card_pages(
       {blurb_html}
       {hero_links}
       {next_html}
-      <p class="card-page-actions">
-        {actions_html}
-      </p>
-      <p class="print-spec no-print">{esc(PRINT_SPEC)}</p>
+      <div class="card-page-actions">
+      {actions_html}
+      </div>
       {talk_html}
       {try_next_html}
       {park_rail_html}
