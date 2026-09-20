@@ -3,7 +3,7 @@
  * Correct (first or later) shows why and scores. Show answers still reveals the key.
  * Level keys stay easy / hard / zoologist; visible names come from FPStudyLevelName.
  * All 42 study cards ship JR + Park Ranger + Zoologist
- * (query ?level= or picker). Top and bottom pickers stay in sync.
+ * (query ?level= or picker). Full picker stays at the top; foot offers the next tier.
  * Try next thumbs prefer the same hub (sealife→sealife / wildlife→wildlife)
  * and skip the session recent path (fp-study-recent, last ~8).
  */
@@ -285,21 +285,89 @@ if (typeof window !== "undefined") {
     return n;
   }
 
+  function hasAnyAnswer(root) {
+    if ((root.getAttribute("data-revealed") || "") === "1") return true;
+    return questions(root).some((qEl) => Boolean(qEl.getAttribute("data-picked")));
+  }
+
   function paintScore(root) {
+    const total = questions(root).length;
+    const el = root.querySelector("[data-study-score]") || root.querySelector(".study-score");
+    if (!el || !total) return;
+    if (!hasAnyAnswer(root)) {
+      el.setAttribute("data-pending", "1");
+      el.setAttribute("data-total", String(total));
+      el.textContent = total === 1 ? "1 question" : `${total} questions`;
+      return;
+    }
+    el.removeAttribute("data-pending");
+    el.setAttribute("data-total", String(total));
     const n = String(scoreOf(root));
-    root.querySelectorAll("[data-study-correct]").forEach((el) => {
-      el.textContent = n;
-    });
+    el.innerHTML = `Score <span data-study-correct>${esc(n)}</span>/${total}`;
   }
 
   function paintScoreTotal(root, total) {
     const n = Number(total) || questions(root).length;
     if (!n) return;
-    root.querySelectorAll(".study-score").forEach((el) => {
-      const span = el.querySelector("[data-study-correct]");
-      const scored = span ? span.textContent : "0";
-      el.innerHTML = `Score <span data-study-correct>${esc(scored)}</span>/${n}`;
-    });
+    const el = root.querySelector("[data-study-score]") || root.querySelector(".study-score");
+    if (!el) return;
+    el.setAttribute("data-total", String(n));
+    if (!hasAnyAnswer(root)) {
+      el.setAttribute("data-pending", "1");
+      el.textContent = n === 1 ? "1 question" : `${n} questions`;
+      return;
+    }
+    const span = el.querySelector("[data-study-correct]");
+    const scored = span ? span.textContent : String(scoreOf(root));
+    el.removeAttribute("data-pending");
+    el.innerHTML = `Score <span data-study-correct>${esc(scored)}</span>/${n}`;
+  }
+
+  function levelDisplayName(level) {
+    if (typeof window.FPStudyLevelName === "function") {
+      const named = window.FPStudyLevelName(level);
+      if (named) return named;
+    }
+    if (level === "hard") return "Park Ranger";
+    if (level === "zoologist") return "Zoologist";
+    return "Junior Ranger";
+  }
+
+  function nextTierHtml(cardId, level) {
+    const levels = shippedLevels(cardId);
+    const cur = normalizeLevel(level) || "easy";
+    const idx = levels.indexOf(cur);
+    if (idx >= 0 && idx < levels.length - 1) {
+      const nxt = levels[idx + 1];
+      const name = levelDisplayName(nxt);
+      return (
+        `<p class="study-next-tier no-print">` +
+        `<button type="button" class="study-next-tier-btn" data-study-pick="${esc(nxt)}">` +
+        `Got them all? Try ${esc(name)} →</button></p>`
+      );
+    }
+    const catalog = window.FP_STUDY_TRY_NEXT;
+    const ids = FPStudyPickTryNextIds(cardId, readStudyRecent(), catalog, 1);
+    if (!ids.length) return "";
+    const cid = ids[0];
+    const titles = (catalog && catalog.titles) || {};
+    const name = titles[cid] || String(cid || "").replace(/-/g, " ");
+    const href = "/field-pack/cards/" + esc(cid) + "/";
+    return (
+      `<p class="study-next-tier no-print">` +
+      `<a class="study-next-tier-link" href="${href}">` +
+      `Try next: ${esc(name)} →</a></p>`
+    );
+  }
+
+  function paintNextTier(root, level) {
+    const foot = root.querySelector(".study-foot");
+    if (!foot) return;
+    const id = root.getAttribute("data-study-id") || "";
+    const html = nextTierHtml(id, level);
+    const existing = foot.querySelector(".study-next-tier");
+    if (existing) existing.remove();
+    if (html) foot.insertAdjacentHTML("beforeend", html);
   }
 
   function revealAll(root, on) {
@@ -330,10 +398,11 @@ if (typeof window !== "undefined") {
       btn.setAttribute("aria-pressed", on ? "true" : "false");
     }
     root.setAttribute("data-revealed", on ? "1" : "0");
+    paintScore(root);
   }
 
   function paintPicker(root, level) {
-    root.querySelectorAll("[data-study-pick]").forEach((btn) => {
+    root.querySelectorAll(".study-level-picker [data-study-pick]").forEach((btn) => {
       const on = btn.getAttribute("data-study-pick") === level;
       btn.classList.toggle("is-active", on);
       btn.setAttribute("aria-pressed", on ? "true" : "false");
@@ -408,15 +477,8 @@ if (typeof window !== "undefined") {
     }
     const grid = root.querySelector(".study-grid");
     if (grid) grid.innerHTML = (deck.questions || []).map(questionHtml).join("");
-    const total = (deck.questions || []).length;
-    if (total) {
-      root.querySelectorAll(".study-score").forEach((el) => {
-        const n = el.querySelector("[data-study-correct]");
-        const correct = n ? n.textContent : "0";
-        el.innerHTML = "Score <span data-study-correct>" + correct + "</span>/" + String(total);
-      });
-    }
     paintPicker(root, deck.level);
+    paintNextTier(root, deck.level);
     paintScoreTotal(root, (deck.questions || []).length);
     paintScore(root);
     const reveal = root.querySelector("[data-study-reveal]");
@@ -546,6 +608,7 @@ if (typeof window !== "undefined") {
       rememberLevel(deck.level);
     } else {
       paintPicker(root, root.getAttribute("data-study-level") || "easy");
+      paintNextTier(root, root.getAttribute("data-study-level") || "easy");
       paintScore(root);
       const details = root.querySelector("details.study-teach");
       if (details && teachWasOpen(id)) details.open = true;

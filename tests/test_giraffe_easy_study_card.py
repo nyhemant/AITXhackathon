@@ -156,7 +156,8 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
         for prompt in TALK_ABOUT_GIRAFFE + PUSH_FURTHER_GIRAFFE:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
-        self.assertIn("Score", html)
+        self.assertIn("questions", html)
+        self.assertIn("data-pending", html)
         for line in TEACH:
             self.assertIn(line, html)
         for stem in STEMS:
@@ -195,8 +196,8 @@ class GiraffeEasyStudyCardTests(unittest.TestCase):
             self.assertIn(line, main)
         self.assertIn("card-watch-live", main)
         self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=reticulated-giraffe", main.replace("&amp;", "&"))
-        self.assertIn("study-card.js?v=11", html)
-        self.assertIn("study-card.css?v=11", html)
+        self.assertIn("study-card.js?v=12", html)
+        self.assertIn("study-card.css?v=12", html)
         self.assertIn("study-cards-data.js?v=8", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)

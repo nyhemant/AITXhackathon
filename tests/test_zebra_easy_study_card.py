@@ -281,7 +281,8 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
         for prompt in TALK_ABOUT_ZEBRA + PUSH_FURTHER_ZEBRA:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
-        self.assertIn("Score", html)
+        self.assertIn("questions", html)
+        self.assertIn("data-pending", html)
         for line in TEACH:
             self.assertIn(line, html)
         for stem in STEMS:
@@ -297,8 +298,9 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
-        self.assertEqual(html.count('role="group"'), 2)
-        self.assertIn("study-level-picker-bottom", html)
+        self.assertEqual(html.count('role="group"'), 1)
+        self.assertIn("study-next-tier", html)
+        self.assertNotIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         for phrase in BRITTLE:
@@ -331,10 +333,11 @@ class ZebraEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("/field-pack/virtual-zoo/?from=card#habitat=zebra", main)
         self.assertIn('class="card-hero-links no-print"', main)
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertIn("study-level-picker-bottom", main)
+        self.assertIn("study-next-tier", main)
+        self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=11", html)
-        self.assertIn("study-card.css?v=11", html)
+        self.assertIn("study-card.js?v=12", html)
+        self.assertIn("study-card.css?v=12", html)
         self.assertIn("study-cards-data.js?v=8", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
