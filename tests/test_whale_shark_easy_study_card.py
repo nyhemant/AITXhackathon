@@ -12,7 +12,9 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
-from study_cards import (  # noqa: E402
+from study_cards import (
+    TALK_ABOUT_WHALE_SHARK_ZOOLOGIST,
+    PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST,  # noqa: E402
     LEVEL_DISPLAY_NAMES,
     PUSH_FURTHER_LION,
     PUSH_FURTHER_MANTA_RAY,
@@ -85,7 +87,7 @@ PLAIN_LEVEL_LABELS = ("Easy",)
 AGE_BADGES = ("Ages", "Age 4", "age badge", "ages 4", "4–6", "4-6")
 BRITTLE = (
     "IUCN",
-    "Endangered",
+    # "Endangered" allowed — appears in restored top-level deepen prompts (not JR quiz stems)
     "Vulnerable",
     "Critically",
     "Near Threatened",
@@ -134,8 +136,8 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS_SHORT)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], [])
-        self.assertEqual(deck["push_further"], [])
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, list(LETTERS))
         self.assertEqual(letters.count("A"), 2)
@@ -188,16 +190,15 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
         self.assertIn("card-study-pack", html)
-        self.assertIn("Learn first", html)
+        self.assertIn("Quick tips (Junior Ranger)", html)
         self.assertIn('<details class="study-teach">', html)
         self.assertNotIn('<details class="study-teach" open', html)
         self.assertIn('<summary class="study-teach-kicker">', html)
         self.assertIn("tap to open", html)
-        self.assertNotIn("Talk about it", html)
-        self.assertNotIn("Push further", html)
-        self.assertNotIn('<details class="study-explore', html)
-        self.assertNotIn("Explore more", html)
-        self.assertNotIn('<aside class="study-deepen"', html)
+        self.assertIn("Talk about it", html)
+        self.assertIn("Push further", html)
+        self.assertIn('<details class="study-explore', html)
+        self.assertIn("Explore more", html)
         self.assertIn("Show answers", html)
         self.assertIn("Score", html)
         self.assertIn(">0</span>/5", html)
@@ -273,9 +274,9 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertIn('class="card-try-next no-print"', main)
         self.assertIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=10", html)
-        self.assertIn("study-card.css?v=10", html)
-        self.assertIn("study-cards-data.js?v=7", html)
+        self.assertIn("study-card.js?v=11", html)
+        self.assertIn("study-card.css?v=11", html)
+        self.assertIn("study-cards-data.js?v=8", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "whale-shark"', html)
@@ -286,11 +287,10 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-teach">', main)
         self.assertNotIn('<details class="study-teach" open', main)
         self.assertNotIn('<div class="study-teach">', main)
-        self.assertNotIn("Talk about it", main)
-        self.assertNotIn("Push further", main)
-        self.assertNotIn('<details class="study-explore', main)
-        self.assertNotIn("Explore more", main)
-        self.assertNotIn('<aside class="study-deepen"', main)
+        self.assertIn("Talk about it", main)
+        self.assertIn("Push further", main)
+        self.assertIn('<details class="study-explore', main)
+        self.assertIn("Explore more", main)
         self.assertLess(main.find("study-foot"), main.find("card-try-next"))
         visible = _text(main)
         self.assertIn("Junior Ranger", visible)
@@ -301,7 +301,7 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="hard"', main)
         self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
-        self.assertIn("Learn first", main)
+        self.assertIn("Quick tips (Junior Ranger)", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 2)
         self.assertIn(">0</span>/5", main)
@@ -317,12 +317,12 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn(" · Hard ·", print_tpl)
         self.assertNotIn("Explore more", print_tpl)
         front, _, back = print_tpl.partition("ps-study-back")
-        self.assertIn("Learn first", front)
+        self.assertIn("Quick tips (Junior Ranger)", front)
         self.assertNotIn("Talk about it", front)
         self.assertNotIn("Push further", front)
-        self.assertNotIn("Talk about it", back)
-        self.assertNotIn("Push further", back)
-        self.assertNotIn("ps-study-deepen", back)
+        self.assertIn("Talk about it", back)
+        self.assertIn("Push further", back)
+        self.assertIn("ps-study-deepen", back)
         self.assertEqual(
             study_try_next_ids("whale-shark"),
             ["shark", "manta-ray", "clownfish"],
@@ -359,9 +359,9 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
             sheet,
         )
         front, _, back = sheet.partition("ps-study-back")
-        self.assertIn("Learn first", front)
+        self.assertIn("Quick tips (Junior Ranger)", front)
         self.assertNotIn("Talk about it", front)
-        self.assertNotIn("Talk about it", back)
+        self.assertIn("Talk about it", back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
         js = PRINT_KIT.read_text(encoding="utf-8")

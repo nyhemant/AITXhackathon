@@ -2,8 +2,7 @@
  * Study-card quiz: tap a choice. Wrong greys + disables that pick for a second try.
  * Correct (first or later) shows why and scores. Show answers still reveals the key.
  * Level keys stay easy / hard / zoologist; visible names come from FPStudyLevelName.
- * Lion, giraffe, African elephant, African penguin, Caribbean flamingo,
- * and Galápagos tortoise ship JR + Park Ranger + Zoologist
+ * All 42 study cards ship JR + Park Ranger + Zoologist
  * (query ?level= or picker). Top and bottom pickers stay in sync.
  * Try next thumbs prefer the same hub (sealife→sealife / wildlife→wildlife)
  * and skip the session recent path (fp-study-recent, last ~8).
@@ -218,7 +217,7 @@ if (typeof window !== "undefined") {
     const openAttr = teachWasOpen(id) ? " open" : "";
     return (
       `<details class="study-teach"${openAttr}>` +
-      `<summary class="study-teach-kicker">Learn first ` +
+      `<summary class="study-teach-kicker">Quick tips (Junior Ranger) ` +
       `<span class="study-teach-hint">— tap to open</span></summary>` +
       `<ul>${lines.map((line) => `<li>${esc(line)}</li>`).join("")}</ul></details>`
     );

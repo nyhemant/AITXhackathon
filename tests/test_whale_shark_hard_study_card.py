@@ -12,7 +12,9 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
-from study_cards import (  # noqa: E402
+from study_cards import (
+    TALK_ABOUT_WHALE_SHARK_ZOOLOGIST,
+    PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST,  # noqa: E402
     PUSH_FURTHER_LION,
     PUSH_FURTHER_MANTA_RAY,
     PUSH_FURTHER_SHARK,
@@ -106,8 +108,8 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_WHALE_SHARK)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Whale shark.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], [])
-        self.assertEqual(deck["push_further"], [])
+        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST))
+        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST))
         self.assertEqual(len(deck["questions"]), HARD_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         letters = [q["correct"] for q in deck["questions"]]
@@ -173,7 +175,7 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
     def test_default_screen_html_keeps_easy_and_adds_picker(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
-        self.assertIn("Learn first", html)
+        self.assertIn("Quick tips (Junior Ranger)", html)
         self.assertIn('<details class="study-teach">', html)
         self.assertNotIn('<details class="study-teach" open', html)
         self.assertIn("Junior Ranger", html)
@@ -204,16 +206,16 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
         )
         self.assertIn("Park Ranger", sheet)
         self.assertNotIn("Junior Ranger", sheet)
-        self.assertNotIn("Learn first", sheet)
+        self.assertNotIn("Quick tips", sheet)
         self.assertNotIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         front, _, back = sheet.partition("ps-study-back")
         self.assertNotIn("Talk about it", front)
         self.assertNotIn("Push further", front)
-        self.assertNotIn("Talk about it", back)
-        self.assertNotIn("Push further", back)
-        self.assertNotIn("ps-study-deepen", back)
+        self.assertIn("Talk about it", back)
+        self.assertIn("Push further", back)
+        self.assertIn("ps-study-deepen", back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_WHALE_SHARK, sheet)
         self.assertIn("Facts from Wikipedia, Whale shark.", sheet)
@@ -285,7 +287,7 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertIn("Learn first", html)
+        self.assertIn("Quick tips (Junior Ranger)", html)
         self.assertIn('class="card-hero-links no-print"', html)
         self.assertIn('class="card-try-next no-print"', html)
         self.assertIn("study-level-picker-bottom", html)
@@ -293,21 +295,21 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
         self.assertNotIn("One animal sheet — not the hide-and-seek cutouts", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
-        self.assertIn("Learn first", print_tpl)
+        self.assertIn("Quick tips (Junior Ranger)", print_tpl)
         self.assertNotIn("Park Ranger", print_tpl)
         self.assertNotIn("Zoologist", print_tpl)
         for stem in HARD_STEMS:
             self.assertNotIn(stem, print_tpl)
         front, _, back = print_tpl.partition("ps-study-back")
         self.assertNotIn("Talk about it", front)
-        self.assertNotIn("Talk about it", back)
-        self.assertNotIn("Push further", back)
+        self.assertIn("Talk about it", back)
+        self.assertIn("Push further", back)
         hard_html = study_talk_html(study_deck_for("whale-shark", "hard"))
         self.assertNotIn("study-teach", hard_html)
-        self.assertNotIn('<details class="study-explore', hard_html)
-        self.assertNotIn("Explore more", hard_html)
-        self.assertNotIn("Talk about it", hard_html)
-        self.assertNotIn("Push further", hard_html)
+        self.assertIn('<details class="study-explore', hard_html)
+        self.assertIn("Explore more", hard_html)
+        self.assertIn("Talk about it", hard_html)
+        self.assertIn("Push further", hard_html)
         self.assertIn("Park Ranger", hard_html)
         self.assertIn("Junior Ranger", hard_html)
         self.assertIn("Zoologist", hard_html)

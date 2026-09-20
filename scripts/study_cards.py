@@ -20362,8 +20362,8 @@ STUDY_CARDS: dict[str, dict] = {
         "id": "whale-shark",
         "source": WIKI_WHALE_SHARK,
         "source_note": "Facts from Wikipedia, Whale shark.",
-        "talk_about": [],
-        "push_further": [],
+        "talk_about": list(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST),
+        "push_further": list(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST),
         "levels": {
             "easy": {
                 # Teaching-first: signed Junior Ranger pack. Later tiers reserved.
@@ -20514,8 +20514,6 @@ STUDY_CARDS: dict[str, dict] = {
             },
             "zoologist": {
                 "teach": [],
-                "talk_about": list(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST),
-                "push_further": list(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST),
                 "questions": [
                     {
                         "slot": 1,
@@ -20965,7 +20963,7 @@ def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
     teach = (
         f'<details class="study-teach">'
-        f'<summary class="study-teach-kicker">Learn first '
+        f'<summary class="study-teach-kicker">Quick tips (Junior Ranger) '
         f'<span class="study-teach-hint">— tap to open</span></summary>'
         f"<ul>{teach_items}</ul>"
         f"</details>"
@@ -20997,12 +20995,18 @@ def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
         )
     source = _esc(deck.get("source_note") or "")
     source_html = f'<p class="study-source">{source}</p>' if source else ""
+    level_note = (
+        '<p class="study-level-note no-print">Tougher quizzes — no unlock needed.</p>'
+        if "study-level-picker" in picker
+        else ""
+    )
     return (
         f'<section class="card-talk-pack card-study-pack" aria-label="{_esc(heading)}" '
         f'data-study-id="{_esc(deck.get("id") or "")}" data-study-level="{_esc(level)}">'
         f'<div class="study-head">'
         f'<h2 class="card-talk-h">{_esc(heading)}</h2>'
         f"{picker}"
+        f"{level_note}"
         f"</div>"
         f"{teach}"
         f'<div class="study-toolbar no-print">'
@@ -21046,7 +21050,7 @@ def study_print_html(
     questions = list(deck.get("questions") or [])
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
     teach = (
-        f'<div class="ps-study-teach"><p class="ps-talk-label">Learn first</p>'
+        f'<div class="ps-study-teach"><p class="ps-talk-label">Quick tips (Junior Ranger)</p>'
         f"<ul>{teach_items}</ul></div>"
         if teach_items
         else ""
