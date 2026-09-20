@@ -7,7 +7,7 @@ Reports issues. Exit 1 only with --enforce-top10 / --strict when:
   - two same-type venues share >50% of core shortlist catalog ids
 
 Core list = items with core=True, else first 8 items / featured-equivalent.
-Writes docs/item-uniqueness-report.md (and legacy scripts/data copy)
+Writes docs/item-uniqueness-report.md only.
 """
 from __future__ import annotations
 import json, sys
@@ -17,7 +17,6 @@ from collections import defaultdict
 ROOT = Path(__file__).resolve().parents[1]
 VENUE_DIR = ROOT / "static/field-pack/data/venues"
 OUT = ROOT / "docs" / "item-uniqueness-report.md"
-OUT_LEGACY = ROOT / "scripts/data/item-uniqueness-report.md"
 GENERIC_PREFIXES = ("np-",)
 MAX_DESC_VENUES = 3
 MAX_GENERIC_CORE = 2
@@ -128,14 +127,8 @@ def main():
     lines.append(f"- Top-10 clean: {'YES' if top_ok else 'NO'}\n")
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.parent.mkdir(parents=True, exist_ok=True)
     text = "".join(lines)
     OUT.write_text(text, encoding="utf-8")
-    try:
-        OUT_LEGACY.parent.mkdir(parents=True, exist_ok=True)
-        OUT_LEGACY.write_text(text, encoding="utf-8")
-    except Exception:
-        pass
     print("".join(lines[-20:]))
     print("Wrote", OUT)
 

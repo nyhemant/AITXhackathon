@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Apply presence audit JSON → data/venues/*.json.
+"""ARCHIVED one-shot venue mutator. DO NOT RE-RUN.
+
+Presence audits already landed in committed venue JSON. This script is not
+idempotent (it appends research_notes on every run).
+
+Apply presence audit JSON → data/venues/*.json.
 
 Safety:
 - Only updates items that exist on the venue (matched by id).
 - Marks presence; strips items with presence=absent from print list (moved to do_not_list).
 - Does not invent new exhibit ids (museum rebuilds are hand-done).
 - Skips slug denylist (known bad audits / needs hand rewrite).
-
-Usage:
-  python3 scripts/apply_presence_audits.py
-  python3 scripts/apply_presence_audits.py --slug lincoln-park-zoo
-  python3 scripts/apply_presence_audits.py --dry-run
 """
 from __future__ import annotations
 

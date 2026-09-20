@@ -7,3 +7,5 @@ Spent one-shot writers. Their kits already live in committed venue JSON / catalo
 `write_wave3b_venues.py` and `write_wave4_venues.py` import `write_wave3a_venues.py`, so this folder is one bundle.
 
 `apply_map_images.js` is paired with `data/visitor_map_images.json`.
+
+`apply_presence_audits.py` already landed its audits in venue JSON. It is not idempotent (appends `research_notes` on every run).
