@@ -593,7 +593,7 @@ class FlagshipSessionTests(unittest.TestCase):
             kinds[kind] += 1
             html = (FP / slug / "index.html").read_text(encoding="utf-8")
             visible = self._visible(html)
-            self.assertIn("seo-venue.css?v=29", html, slug)
+            self.assertIn("seo-venue.css?v=30", html, slug)
             start = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
             home = visible.split('id="at-home"', 1)[1].split("</section>", 1)[0]
             for label, block in (("start", start), ("home", home)):

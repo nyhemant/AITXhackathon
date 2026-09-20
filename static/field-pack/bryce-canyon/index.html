@@ -21,8 +21,8 @@
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v=9" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=43" />
-  <link rel="stylesheet" href="/field-pack/css/landing.css?v=99" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=29" />
+  <link rel="stylesheet" href="/field-pack/css/landing.css?v=100" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=30" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v=20" />
   <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "HowTo", "name": "Bryce Canyon National Park for Kids — Explore at Home or Print a Hunt", "description": "Bryce Canyon National Park in Bryce Canyon City: animal cards, talk prompts, photos, and live cams at home. Optional printable hunt — KidZooKit.", "totalTime": "PT2H", "tool": [{"@type": "HowToTool", "name": "Phone or laptop (cards, photos, cams)"}, {"@type": "HowToTool", "name": "Optional printed one-page hunt sheet"}], "step": [{"@type": "HowToStep", "position": 1, "text": "Bryce Canyon visitor center — Maps, restrooms, questions — start here. · Entrance"}, {"@type": "HowToStep", "position": 2, "text": "Hoodoo overlook — Orange rock spires from the rim. · Amphitheater rim"}, {"@type": "HowToStep", "position": 3, "text": "Bryce Amphitheater rim overlook — One big view — stay behind rails. · Overlook"}, {"@type": "HowToStep", "position": 4, "text": "Second amphitheater viewpoint — Layers of rock from a safe rail. · Rim"}, {"@type": "HowToStep", "position": 5, "text": "Hoodoo spires — Orange rock towers below the rim. · Rocks"}, {"@type": "HowToStep", "position": 6, "text": "Bryce Canyon Junior Ranger desk — Ask at the visitor center — hours and ages vary. · Visitor center"}, {"@type": "HowToStep", "position": 7, "text": "Pick your favorite — draw it later"}, {"@type": "HowToStep", "position": 8, "text": "Hear a loud sound (or a very quiet one)"}, {"@type": "HowToStep", "position": 9, "text": "Find something smaller than your hand"}], "url": "https://kidzookit.com/field-pack/bryce-canyon/"}
@@ -73,33 +73,37 @@
           <button type="button" class="btn btn-secondary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="Print">
             Print
           </button>
-          <div class="seo-mission-chrome" id="seo-mission-chrome">
-            <div class="seo-chrome-row">
-              <span class="seo-chrome-k" id="seo-who-label">Who</span>
-              <div class="seo-chip-row" role="group" aria-labelledby="seo-who-label">
-                <button type="button" class="seo-age-chip" data-age="2-3">2–4</button>
-                <button type="button" class="seo-age-chip is-active" data-age="4-5" aria-pressed="true">5–8</button>
-                <button type="button" class="seo-age-chip" data-age="6-8">9–12</button>
-                <button type="button" class="seo-age-chip" data-age="adult">Adults</button>
+          <p class="print-spec seo-print-spec-hero">US Letter or A4 · black &amp; white is fine</p>
+          <details class="seo-customize-disclosure">
+            <summary>Customize hunt</summary>
+            <div class="seo-mission-chrome" id="seo-mission-chrome">
+              <div class="seo-chrome-row">
+                <span class="seo-chrome-k" id="seo-who-label">Who</span>
+                <div class="seo-chip-row" role="group" aria-labelledby="seo-who-label">
+                  <button type="button" class="seo-age-chip" data-age="2-3">2–4</button>
+                  <button type="button" class="seo-age-chip is-active" data-age="4-5" aria-pressed="true">5–8</button>
+                  <button type="button" class="seo-age-chip" data-age="6-8">9–12</button>
+                  <button type="button" class="seo-age-chip" data-age="adult">Adults</button>
+                </div>
+              </div>
+              <div class="seo-chrome-row">
+                <span class="seo-chrome-k" id="seo-time-label">Time</span>
+                <div class="seo-chip-row" role="group" aria-labelledby="seo-time-label">
+                  <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
+                  <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
+                  <button type="button" class="seo-time-chip" data-time="full">Full day</button>
+                </div>
+              </div>
+              <div class="seo-chrome-row seo-chrome-row-hunt">
+                <span class="seo-chrome-k" id="seo-hunt-label">Style</span>
+                <div class="seo-chip-row seo-chip-row-hunt" role="group" aria-labelledby="seo-hunt-label">
+                  <button type="button" class="seo-hunt-chip is-active" data-hunt="classic" aria-pressed="true">Classic</button>
+                  <button type="button" class="seo-hunt-chip seo-hunt-bonus" data-hunt="bonus">Bonus</button>
+                  <button type="button" class="seo-hunt-chip seo-hunt-alpha" data-hunt="alpha">Alpha</button>
+                </div>
               </div>
             </div>
-            <div class="seo-chrome-row">
-              <span class="seo-chrome-k" id="seo-time-label">Time</span>
-              <div class="seo-chip-row" role="group" aria-labelledby="seo-time-label">
-                <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
-                <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
-                <button type="button" class="seo-time-chip" data-time="full">Full day</button>
-              </div>
-            </div>
-            <div class="seo-chrome-row seo-chrome-row-hunt">
-              <span class="seo-chrome-k" id="seo-hunt-label">Style</span>
-              <div class="seo-chip-row seo-chip-row-hunt" role="group" aria-labelledby="seo-hunt-label">
-                <button type="button" class="seo-hunt-chip is-active" data-hunt="classic" aria-pressed="true">Classic</button>
-                <button type="button" class="seo-hunt-chip seo-hunt-bonus" data-hunt="bonus">Bonus</button>
-                <button type="button" class="seo-hunt-chip seo-hunt-alpha" data-hunt="alpha">Alpha</button>
-              </div>
-            </div>
-          </div>
+          </details>
         </div>
       </header>
 
@@ -258,8 +262,7 @@
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
       <h2 id="hunt-heading">Hunt</h2>
       
-      <p class="seo-hunt-action"><button type="button" class="btn btn-secondary" data-how="print-hunt">Print</button></p>
-      <p class="print-spec">US Letter or A4 · black &amp; white is fine</p>
+      <p class="seo-hunt-action seo-hunt-action-quiet"><a href="#mission" class="seo-hunt-print-link" data-how="print-hunt">Print this hunt</a></p>
       <details class="seo-hunt-examples">
         <summary>Finds</summary>
         <ol class="seo-hunt-list">

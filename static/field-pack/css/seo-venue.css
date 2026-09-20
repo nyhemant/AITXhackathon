@@ -1642,6 +1642,39 @@ a.seo-map-card:focus-visible {
   font-size: 0.95rem;
   font-weight: 750;
 }
+.seo-print-spec-hero {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: 0.82rem;
+  color: #777;
+  font-weight: 600;
+}
+.seo-customize-disclosure {
+  flex: 1 1 100%;
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+.seo-customize-disclosure > summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 750;
+  color: #0f5c5c;
+  list-style: none;
+  padding: 4px 0;
+}
+.seo-customize-disclosure > summary::-webkit-details-marker { display: none; }
+.seo-customize-disclosure > summary::before {
+  content: "▸ ";
+  display: inline;
+  transition: transform 0.15s ease;
+}
+.seo-customize-disclosure[open] > summary::before {
+  content: "▾ ";
+}
+.seo-customize-disclosure .seo-mission-chrome {
+  margin-top: 8px;
+}
 @media (max-width: 640px) {
   .seo-home-btn {
     width: 100%;
@@ -1670,6 +1703,19 @@ a.seo-map-card:focus-visible {
 }
 .seo-hunt-action {
   margin: 0 0 0.75rem;
+}
+.seo-hunt-action-quiet {
+  margin: 0 0 0.5rem;
+}
+.seo-hunt-print-link {
+  color: #0f5c5c;
+  font-weight: 750;
+  font-size: 0.92rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.seo-hunt-print-link:hover {
+  color: #0a4545;
 }
 .seo-hunt-block h2 {
   margin: 0 0 0.55rem;

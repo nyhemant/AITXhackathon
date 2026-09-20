@@ -135,6 +135,8 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 )
                 self.assertEqual(hero.count('class="btn '), 2)
                 self.assertIn('id="mission-open-btn"', hero)
+                self.assertIn("seo-customize-disclosure", hero)
+                self.assertIn("Customize hunt", hero)
                 leads = re.findall(r'class="lead"[^>]*>(.*?)</p>', hero, re.S)
                 if leads:
                     self.assertLessEqual(len(_text(leads[0])), 90)
@@ -149,17 +151,20 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 self.assertIn(f">{PLACE_VFT_CTA}</a>", visible)
                 self.assertIn(f">{HUNT_H2}</h2>", visible)
                 hunt = visible.split('id="hunt-heading"', 1)[1].split("</section>", 1)[0]
-                self.assertRegex(hunt, rf">{CTA_PRINT}\s*</button>")
+                self.assertIn("seo-hunt-print-link", hunt)
                 self.assertIn('data-how="print-hunt"', hunt)
+                self.assertNotIn('class="btn ', hunt)
 
-    def test_print_spec_line_near_hunt_print_cta(self):
+    def test_print_spec_line_near_primary_print_cta(self):
         for slug, html in self.pages.items():
             visible = _visible(html)
             with self.subTest(slug=slug):
+                hero = _hero(html)
+                self.assertIn('class="print-spec seo-print-spec-hero"', hero)
+                self.assertIn("US Letter or A4", hero)
+                self.assertIn("black &amp; white is fine", hero)
                 hunt = visible.split('id="hunt-heading"', 1)[1].split("</section>", 1)[0]
-                self.assertIn('class="print-spec"', hunt)
-                self.assertIn("US Letter or A4", hunt)
-                self.assertIn("black &amp; white is fine", hunt)
+                self.assertNotIn('class="print-spec"', hunt)
 
     def test_empty_kit_stays_honest(self):
         cairo = _visible(self.cairo)
