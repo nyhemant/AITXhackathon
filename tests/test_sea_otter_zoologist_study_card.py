@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    study_print_html_for,
     PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER,
     PUSH_FURTHER_LION,
     PUSH_FURTHER_SEA_OTTER,
@@ -385,9 +386,9 @@ class SeaOtterZoologistStudyCardTests(unittest.TestCase):
         html = OTTER.read_text(encoding="utf-8")
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("study-card.js?v=12", html)
+        self.assertIn("study-card.js?v=13", html)
         self.assertIn("study-cards-data.js?v=8", html)
-        print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+        print_tpl = study_print_html_for("sea-otter")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)
         self.assertNotIn("Zoologist", print_tpl)

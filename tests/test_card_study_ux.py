@@ -18,6 +18,7 @@ from generate_bdo_seo import (  # noqa: E402
     watch_links_html,
 )
 from study_cards import (  # noqa: E402
+    study_print_html_for,
     STUDY_CARDS,
     STUDY_QUIZ_H2,
     study_card_ids,
@@ -101,7 +102,7 @@ class CardStudyUxTests(unittest.TestCase):
         zoo_html = study_talk_html(study_deck_for("zebra", "zoologist"))
         self.assertIn("Try next:", zoo_html)
         self.assertNotIn("Got them all?", zoo_html)
-        print_tpl = page.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+        print_tpl = study_print_html_for("zebra")
         self.assertNotIn("study-level-picker", print_tpl)
         self.assertNotIn("study-foot", print_tpl)
         self.assertNotIn("study-explore", print_tpl)
@@ -147,7 +148,7 @@ class CardStudyUxTests(unittest.TestCase):
                 self.assertIn("Explore more", main)
                 self.assertIn("Talk about it", main)
                 self.assertNotIn('<aside class="study-deepen"', main)
-                print_tpl = page.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+                print_tpl = study_print_html_for(cid)
                 self.assertIn("Talk about it", print_tpl)
                 self.assertNotIn("Explore more", print_tpl)
                 self.assertNotIn("study-explore", print_tpl)
@@ -412,7 +413,7 @@ class CardStudyUxTests(unittest.TestCase):
         actions_at = main.find('class="card-page-actions"')
         self.assertLess(actions_at, talk_at)
         self.assertLess(talk_at, try_at)
-        print_tpl = page.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+        print_tpl = study_print_html_for("galapagos-tortoise")
         self.assertNotIn("card-try-next", print_tpl)
         whale = (FP / "cards" / "whale-shark" / "index.html").read_text(encoding="utf-8")
         self.assertIn('aria-label="Try next"', whale)
@@ -420,7 +421,7 @@ class CardStudyUxTests(unittest.TestCase):
 
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "36")
-        self.assertEqual(STUDY_CARD_JS_VER, "12")
+        self.assertEqual(STUDY_CARD_JS_VER, "13")
         self.assertEqual(STUDY_CARD_CSS_VER, "12")
         css = SEO_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-hero-links", css)
@@ -469,7 +470,7 @@ class CardStudyUxTests(unittest.TestCase):
                 self.assertGreater(actions_at, photos_at)
                 self.assertLess(actions_at, talk_at)
                 self.assertIn("card-watch-live", main.split('class="card-page-actions"', 1)[1])
-                self.assertIn("study-card.js?v=12", html)
+                self.assertIn("study-card.js?v=13", html)
                 self.assertIn("study-card.css?v=12", html)
                 self.assertIn(f"seo-venue.css?v={CARD_SEO_CSS_VER}", html)
 
@@ -541,7 +542,7 @@ class CardStudyUxTests(unittest.TestCase):
                 self.assertIn("card-watch-live", actions)
                 self.assertIn("from=card", actions)
                 self.assertIn("#habitat=", actions)
-                print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+                print_tpl = study_print_html_for(cid)
                 self.assertNotIn("card-page-photo-link", print_tpl)
                 self.assertNotIn("card-page-photo-zoom", print_tpl)
 

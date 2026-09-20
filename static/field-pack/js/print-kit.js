@@ -154,7 +154,7 @@
     return `
       <div class="th-page${mapSrc ? " th-page-with-map" : ""}">
         <div class="th-banner">
-          <h1>KIDZOOKIT</h1>
+          <h2>KIDZOOKIT</h2>
           <p>🗺️ Your mission${venue && (venue.sliceLabel || venue.slice_label || (venue.practical && venue.practical.slice_name)) ? ` · ${escapeHtml(venue.sliceLabel || venue.slice_label || venue.practical.slice_name)}` : ""} · ${escapeHtml(venue.name)} · One-page hunt</p>
         </div>
         <div class="th-meta">
@@ -654,10 +654,10 @@
 
     return `
       <div class="ps-page${photo ? " ps-page-with-photo" : ""}">
-        <div class="ps-banner"><h1>KIDZOOKIT</h1>
+        <div class="ps-banner"><h2>KIDZOOKIT</h2>
         <p>${escapeHtml(bannerNote)}</p></div>
         <header class="ps-head">
-          <h2>${escapeHtml(item.emoji || "")} ${escapeHtml(item.name)}</h2>
+          <h3>${escapeHtml(item.emoji || "")} ${escapeHtml(item.name)}</h3>
           <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span>
           &nbsp;&nbsp; <strong>Place:</strong> ${escapeHtml(venue.name)}</p>
         </header>
@@ -852,9 +852,9 @@
     const emoji = (item && item.emoji) || "";
     const levelLabel = (deck && (deck.level_label || studyLevelName(deck.level))) || studyLevelName("easy");
     return `<div class="ps-study-front ps-page">
-      <div class="ps-banner"><h1>KIDZOOKIT</h1>
+      <div class="ps-banner"><h2>KIDZOOKIT</h2>
       <p>${escapeHtml(name)} · ${escapeHtml(levelLabel)} · Circle one · Flip for answers</p></div>
-      <header class="ps-head"><h2>${escapeHtml((emoji + " " + name).trim())}</h2>
+      <header class="ps-head"><h3>${escapeHtml((emoji + " " + name).trim())}</h3>
       <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span></p>
       </header>
       ${teachHtml}
@@ -863,7 +863,7 @@
       <p class="ps-footer">${escapeHtml(source)} · kidzookit.com · Print two-sided (flip on long edge)</p>
     </div>
     <div class="ps-study-back ps-page">
-      <div class="ps-banner"><h1>KIDZOOKIT</h1>
+      <div class="ps-banner"><h2>KIDZOOKIT</h2>
       <p>${escapeHtml(name)} · ${escapeHtml(levelLabel)} · Answers</p></div>
       <ol class="ps-study-answers">${answers}</ol>
       ${deepenHtml}
@@ -896,6 +896,9 @@
     setPrintMode({ treasure: Boolean(treasure), safari: Boolean(safari), study: Boolean(study) });
     const cleanup = () => {
       clearPrintMode();
+      const { printSheet, treasureSheet } = sheets();
+      if (printSheet) printSheet.innerHTML = "";
+      if (treasureSheet) treasureSheet.innerHTML = "";
       window.removeEventListener("afterprint", cleanup);
     };
     window.addEventListener("afterprint", cleanup);
@@ -1053,34 +1056,7 @@
     const resolved = getItem(itemId, venue) || item;
     const { printSheet, treasureSheet } = sheets();
     if (!printSheet) return false;
-    const studyTpl = document.getElementById("study-print-template");
     const deck = studyDeckFor(itemId);
-    if (deck && deck.level && deck.level !== "easy") {
-      printSheet.innerHTML = buildStudyCardHtml(resolved, venue, deck);
-      if (treasureSheet) treasureSheet.innerHTML = "";
-      track("qa_catalog_printed", {
-        item_id: resolved.id || itemId,
-        item_name: resolved.name || "",
-        venue_slug: venue.id || "",
-        product: "field_trip_kit",
-        source: "study_card",
-      });
-      waitForPrintImages(printSheet).then(() => runPrint({ treasure: false, study: true }));
-      return true;
-    }
-    if (studyTpl && studyTpl.innerHTML.trim() && deck) {
-      printSheet.innerHTML = studyTpl.innerHTML;
-      if (treasureSheet) treasureSheet.innerHTML = "";
-      track("qa_catalog_printed", {
-        item_id: resolved.id || itemId,
-        item_name: resolved.name || "",
-        venue_slug: venue.id || "",
-        product: "field_trip_kit",
-        source: "study_card",
-      });
-      waitForPrintImages(printSheet).then(() => runPrint({ treasure: false, study: true }));
-      return true;
-    }
     if (deck) {
       printSheet.innerHTML = buildStudyCardHtml(resolved, venue, deck);
       if (treasureSheet) treasureSheet.innerHTML = "";
@@ -1228,7 +1204,7 @@
     const footer = (config && config.printFooter) || "kidzookit.com · Field Trip Kit";
     const cols = HS_COLS;
     return `<div class="hs-page hs-page-cut">
-      <div class="hs-banner"><h1>KIDZOOKIT</h1>
+      <div class="hs-banner"><h2>KIDZOOKIT</h2>
       <p>${escapeHtml(banner)} · ${escapeHtml(sub)}</p></div>
       <div class="hs-cuts" style="--hs-cols:${cols}">${habitats.map(cutCardHtml).join("")}</div>
       <p class="hs-footer">${escapeHtml(footer)}</p>
@@ -1244,7 +1220,7 @@
       .map((_, i) => answerCardHtml(habitats[longEdgeMirrorIndex(i, habitats.length, cols)]))
       .join("");
     return `<div class="hs-page hs-page-answers">
-      <div class="hs-banner"><h1>KIDZOOKIT</h1>
+      <div class="hs-banner"><h2>KIDZOOKIT</h2>
       <p>${escapeHtml(banner)} · ${escapeHtml(sub)}</p></div>
       <div class="hs-cuts" style="--hs-cols:${cols}">${cards}</div>
       <p class="hs-footer">${escapeHtml(footer)}</p>

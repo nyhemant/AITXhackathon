@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    study_print_html_for,
     LEVEL_DISPLAY_NAMES,
     PUSH_FURTHER_ELEPHANT,
     PUSH_FURTHER_GIRAFFE,
@@ -272,15 +273,15 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
             self.assertIn(line, main)
         self.assertIn("card-watch-live", main)
         self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-elephant", main.replace("&amp;", "&"))
-        self.assertIn("study-card.js?v=12", html)
+        self.assertIn("study-card.js?v=13", html)
         self.assertIn("study-card.css?v=12", html)
         self.assertIn("study-cards-data.js?v=8", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "african-elephant"', html)
-        self.assertIn('id="study-print-template"', html)
-        self.assertIn("print-kit.js?v=21", html)
-        self.assertIn("styles.css?v=43", html)
+        self.assertNotIn("study-print-template", html)
+        self.assertIn("print-kit.js?v=22", html)
+        self.assertIn("styles.css?v=44", html)
         self.assertIn("<details class=\"study-teach\">", main)
         self.assertNotIn("<details class=\"study-teach\" open", main)
         self.assertNotIn("<div class=\"study-teach\">", main)
@@ -303,7 +304,7 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
             self.assertNotIn(badge, visible)
         for phrase in BRITTLE:
             self.assertNotIn(phrase, main)
-        print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+        print_tpl = study_print_html_for("african-elephant")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertNotIn(" · Easy ·", print_tpl)
         self.assertNotIn(" · Hard ·", print_tpl)
