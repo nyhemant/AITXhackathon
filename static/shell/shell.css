@@ -61,32 +61,6 @@
   box-shadow: 0 2px 8px rgba(15, 92, 92, 0.1);
 }
 
-@media (max-width: 520px) {
-  .oneless-shell {
-    padding: 10px 12px;
-    gap: 10px;
-    top: 6px;
-    min-height: 62px;
-  }
-  .oneless-shell[data-product="bdo"] {
-    padding: 12px 14px;
-    min-height: 68px;
-  }
-  .oneless-shell .shell-brand {
-    font-size: 1.05rem;
-  }
-  .oneless-shell .shell-brand img {
-    width: 42px;
-    height: 42px;
-  }
-  .oneless-shell[data-product="bdo"] .shell-product {
-    font-size: 1.22rem;
-  }
-  .oneless-shell[data-product="bdo"] .shell-product small {
-    font-size: 0.72rem;
-    padding: 3px 8px;
-  }
-}
 
 .oneless-shell .shell-product {
   margin: 0;
@@ -263,4 +237,50 @@ body[data-mode="dinner"] .oneless-shell {
   font-weight: 400;
   color: #8a9ab0;
   letter-spacing: 0.01em;
+}
+
+@media (max-width: 520px) {
+  /*
+   * Keep brand mark + product name + More on one row.
+   * Tagline (shell-product small) may grow the middle column downward
+   * without wrapping More onto a second flex line.
+   */
+  .oneless-shell {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 0 10px;
+    padding: 10px 12px;
+    top: 6px;
+    min-height: 62px;
+  }
+  .oneless-shell[data-product="bdo"] {
+    padding: 12px 14px;
+    min-height: 68px;
+    /* Beat base .oneless-shell[data-product="bdo"] { gap: 14px 16px } */
+    gap: 0 10px;
+  }
+  .oneless-shell .shell-brand {
+    font-size: 1.05rem;
+  }
+  .oneless-shell .shell-brand img {
+    width: 42px;
+    height: 42px;
+  }
+  .oneless-shell .shell-product {
+    min-width: 0;
+  }
+  .oneless-shell[data-product="bdo"] .shell-product {
+    font-size: 1.22rem;
+    /* Optical align title with mark; More stays top-aligned via align-items:start */
+    padding-top: 6px;
+  }
+  .oneless-shell[data-product="bdo"] .shell-product small {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+  }
+  .oneless-shell .shell-nav,
+  .oneless-shell > .shell-more-wrap {
+    margin-left: 0;
+  }
 }
