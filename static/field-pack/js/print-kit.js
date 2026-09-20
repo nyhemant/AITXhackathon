@@ -1,5 +1,5 @@
 /**
- * Shared print helpers for Field Trip Kit (landing pin panel + outing app).
+ * Shared print helpers for Field Trip Kit (landing pin panel + place pages).
  * Requires: catalog.js (fpGetVenue, FIELD_PACK_CATALOG, fpMissionsForVenue)
  * DOM: #print-sheet, #treasure-sheet
  */

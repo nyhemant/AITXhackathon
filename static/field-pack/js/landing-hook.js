@@ -1,7 +1,6 @@
 (() => {
   const places = window.FP_PLACES || [];
   const chips = document.getElementById("city-chips");
-  const continueChip = document.getElementById("continue-chip");
   const citySelect = document.getElementById("city-select");
 
   function escapeHtml(s) {
@@ -22,95 +21,15 @@
     if (typeof fn === "function") fn(name, params || {});
   }
 
-  /** Build card search index from catalog (client-side). */
-  function buildCardIndex() {
-    const cat = window.FIELD_PACK_CATALOG || {};
-    const venues = window.FIELD_PACK_VENUES || {};
-    const home = {};
-    try {
-      for (const [vid, v] of Object.entries(venues)) {
-        const ids = [...(v.featuredAnimalIds || []), ...(v.animalIds || [])];
-        for (const id of ids) {
-          if (!home[id]) home[id] = { vid, name: v.shortName || v.name || vid };
-        }
-      }
-    } catch (_) {}
-    const out = [];
-    for (const [id, it] of Object.entries(cat)) {
-      if (!it || !it.name) continue;
-      if (String(id).startsWith("np-")) continue;
-      if (it.packTemplate === "park_features") continue;
-      const h = home[id] || {};
-      const group =
-        it.packTemplate === "exhibits" || String(id).startsWith("cm-") || String(id).startsWith("sci-")
-          ? "attractions"
-          : /shark|octopus|jelly|clown|turtle|ray|seal|whale|dolphin|seahorse|eel|penguin/.test(
-              (id + " " + (it.name || "")).toLowerCase()
-            )
-            ? "sealife"
-            : "wildlife";
-      out.push({
-        id,
-        name: it.name,
-        emoji: it.emoji || "🎴",
-        blurb: it.blurb || "",
-        group,
-        venueId: h.vid || "dallas-zoo",
-        venueName: h.name || "",
-        href: `/field-pack/cards/${encodeURIComponent(id)}/`,
-      });
-    }
-    return out;
-  }
-
-  let cardIndex = buildCardIndex();
-
   /**
-   * Unified hero search — Places | Cards mode on one field.
-   * Place pick → venue page. Card pick → card URL. Empty submit → map (place) or #after (card).
+   * Places hub search — type a zoo / museum / park / city, pick a result.
+   * Empty submit scrolls to the map.
    */
   function wireHeroSearch() {
     const form = document.getElementById("hero-search-form");
     const input = document.getElementById("hero-place-search");
     const results = document.getElementById("hero-place-search-results");
-    const label = document.getElementById("hero-search-label");
-    const submitBtn = document.getElementById("hero-search-submit");
-    const block = document.getElementById("hero-search-block");
-    const modeBtns = document.querySelectorAll(".hero-mode-btn[data-search-mode]");
     if (!form || !input || !results) return;
-
-    let mode = "place"; // place | card
-
-    function setMode(next) {
-      mode = next === "card" ? "card" : "place";
-      if (block) block.setAttribute("data-search-mode", mode);
-      form.classList.toggle("silo-place", mode === "place");
-      form.classList.toggle("silo-cards", mode === "card");
-      modeBtns.forEach((b) => {
-        const on = b.getAttribute("data-search-mode") === mode;
-        b.classList.toggle("is-active", on);
-        b.setAttribute("aria-pressed", on ? "true" : "false");
-      });
-      if (label) label.textContent = mode === "place" ? "Find a place" : "Find a card";
-      input.placeholder =
-        mode === "place" ? "Zoo, museum, park, or city…" : "Lion, shark, dinosaur…";
-      if (submitBtn) submitBtn.textContent = "Find";
-      results.setAttribute("aria-label", mode === "place" ? "Matching places" : "Matching cards");
-      const hint = document.getElementById("hero-search-mode-hint");
-      if (hint) {
-        hint.innerHTML =
-          mode === "place"
-            ? 'Search <strong>places</strong> or switch to <strong>cards</strong>'
-            : 'Search <strong>cards</strong> or switch to <strong>places</strong>';
-      }
-      hide();
-      input.value = "";
-      trackHero("hero_search_mode", { search_mode: mode });
-    }
-
-    modeBtns.forEach((b) => {
-      b.addEventListener("click", () => setMode(b.getAttribute("data-search-mode") || "place"));
-    });
 
     function hide() {
       results.hidden = true;
@@ -124,72 +43,32 @@
       location.href = `/field-pack/${encodeURIComponent(id)}/`;
     }
 
-    function goCard(card) {
-      hide();
-      input.value = "";
-      trackHero("hero_search_used", {
-        card_id: card.id || "",
-        search_mode: "card",
-        source: "hero",
-      });
-      trackHero("card_opened", { card_id: card.id || "", source: "hero_search" });
-      location.href = card.href;
-    }
-
     function search(q) {
       const needle = (q || "").trim().toLowerCase();
       if (needle.length < 2) {
         hide();
         return;
       }
-      if (mode === "place") {
-        const hits = places
-          .filter((p) => {
-            const blob = [p.name, p.city, p.state, p.country, p.id, p.type]
-              .filter(Boolean)
-              .join(" ")
-              .toLowerCase();
-            return blob.includes(needle);
-          })
-          .slice(0, 8);
-        if (!hits.length) {
-          results.innerHTML = `<li class="place-search-empty">No places match</li>`;
-          results.hidden = false;
-          return;
-        }
-        results.innerHTML = hits
-          .map((p) => {
-            const where = [p.city, p.state || p.country].filter(Boolean).join(", ");
-            return `<li role="option">
-            <button type="button" class="place-search-hit" data-kind="place" data-id="${escapeHtml(p.id)}">
-              <strong>${escapeHtml(p.emoji || "📍")} ${escapeHtml(p.name)}</strong>
-              <small>${escapeHtml(where)}</small>
-            </button>
-          </li>`;
-          })
-          .join("");
-        results.hidden = false;
-        return;
-      }
-      // cards
-      if (!cardIndex.length) cardIndex = buildCardIndex();
-      const hits = cardIndex
-        .filter((c) => {
-          const blob = [c.name, c.id, c.blurb, c.group, c.venueName].join(" ").toLowerCase();
+      const hits = places
+        .filter((p) => {
+          const blob = [p.name, p.city, p.state, p.country, p.id, p.type]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
           return blob.includes(needle);
         })
         .slice(0, 8);
       if (!hits.length) {
-        results.innerHTML = `<li class="place-search-empty">No cards match</li>`;
+        results.innerHTML = `<li class="place-search-empty">No places match</li>`;
         results.hidden = false;
         return;
       }
       results.innerHTML = hits
-        .map((c) => {
-          const where = c.venueName ? `· ${c.venueName}` : c.group;
+        .map((p) => {
+          const where = [p.city, p.state || p.country].filter(Boolean).join(", ");
           return `<li role="option">
-            <button type="button" class="place-search-hit" data-kind="card" data-id="${escapeHtml(c.id)}" data-href="${escapeHtml(c.href)}">
-              <strong>${escapeHtml(c.emoji || "🎴")} ${escapeHtml(c.name)}</strong>
+            <button type="button" class="place-search-hit" data-kind="place" data-id="${escapeHtml(p.id)}">
+              <strong>${escapeHtml(p.emoji || "📍")} ${escapeHtml(p.name)}</strong>
               <small>${escapeHtml(where)}</small>
             </button>
           </li>`;
@@ -219,15 +98,7 @@
     results.addEventListener("click", (e) => {
       const btn = e.target.closest(".place-search-hit");
       if (!btn) return;
-      const kind = btn.getAttribute("data-kind") || "place";
-      if (kind === "card") {
-        const id = btn.getAttribute("data-id");
-        const href = btn.getAttribute("data-href");
-        const card = cardIndex.find((c) => c.id === id) || { id, href };
-        goCard(card);
-      } else {
-        goPlace(btn.getAttribute("data-id"));
-      }
+      goPlace(btn.getAttribute("data-id"));
     });
     document.addEventListener("click", (e) => {
       if (e.target.closest && e.target.closest(".place-search-wrap")) return;
@@ -246,62 +117,16 @@
         input.dispatchEvent(new Event("input", { bubbles: true }));
         return;
       }
-      trackHero("hero_cta_clicked", { source: "hero_empty_submit", search_mode: mode });
-      if (mode === "card") {
-        document.getElementById("after")?.scrollIntoView({ behavior: "smooth", block: "start" });
-        history.replaceState(null, "", "#after");
-      } else {
-        const map = document.getElementById("during") || document.getElementById("us-map");
-        if (map) {
-          map.scrollIntoView({ behavior: "smooth", block: "start" });
-          history.replaceState(null, "", "#during");
-        }
+      trackHero("hero_cta_clicked", { source: "hero_empty_submit", search_mode: "place" });
+      const map = document.getElementById("during") || document.getElementById("us-map");
+      if (map) {
+        map.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", "#during");
       }
     });
-
-
-    // First visit: soft cue that Cards mode exists (once per browser session)
-    try {
-      if (!sessionStorage.getItem("fp_hero_mode_cue")) {
-        sessionStorage.setItem("fp_hero_mode_cue", "1");
-        const cardsBtn = document.getElementById("hero-mode-card");
-        if (cardsBtn) {
-          window.setTimeout(() => {
-            cardsBtn.classList.add("hero-mode-cue");
-            window.setTimeout(() => cardsBtn.classList.remove("hero-mode-cue"), 2800);
-          }, 900);
-        }
-      }
-    } catch (_) {}
-
-    // Deep-link ?mode=card
-    try {
-      const m = new URLSearchParams(location.search).get("mode");
-      if (m === "card" || location.hash === "#after-search") setMode("card");
-    } catch (_) {}
   }
 
   wireHeroSearch();
-
-  // T4b moment strip
-  document.querySelectorAll(".hero-moment-link[data-moment]").forEach((a) => {
-    a.addEventListener("click", () => {
-      trackHero("hero_moment_clicked", {
-        moment: a.getAttribute("data-moment") || "",
-        href: a.getAttribute("href") || "",
-        source: "hero_strip",
-      });
-    });
-  });
-  document.getElementById("hero-cards-link")?.addEventListener("click", () => {
-    trackHero("hero_cta_clicked", { source: "hero_cards_jump" });
-  });
-  document.getElementById("hero-map-link")?.addEventListener("click", () => {
-    trackHero("hero_cta_clicked", { source: "hero_map_jump" });
-  });
-  document.getElementById("hero-all-cards-link")?.addEventListener("click", () => {
-    trackHero("hero_cta_clicked", { source: "hero_all_cards" });
-  });
 
   // T5 catalog: card pill filter + click events
   // Mobile: 6 tiles (3 rows × 2). Desktop: 12. All uses data-featured-all only.
@@ -577,61 +402,6 @@
       });
     });
   }
-
-  try {
-    const raw =
-      localStorage.getItem("1less-babys-day-out-trips-v1") ||
-      localStorage.getItem("arya-field-pack-trips-v2");
-    if (raw && continueChip) {
-      const store = JSON.parse(raw);
-      const trips = store.trips || [];
-      if (trips.length) {
-        const last = trips[trips.length - 1];
-        const venueId = last.venueId || store.selectedVenueId || "dallas-zoo";
-        const href = `/field-pack/${encodeURIComponent(venueId)}/`;
-        // Prefer full place name — trip titles are often short codes (e.g. AMNH)
-        const fromCatalog = places.find((p) => p.id === venueId);
-        const rawTitle = (last.title || "").trim();
-        const looksLikeCode = !rawTitle || rawTitle.length <= 6 || /^[A-Z0-9][A-Z0-9.&'-]{1,10}$/.test(rawTitle);
-        const label =
-          fromCatalog?.name ||
-          (!looksLikeCode ? rawTitle : null) ||
-          "your last place";
-        continueChip.hidden = false;
-        continueChip.removeAttribute("hidden");
-        continueChip.style.display = "block";
-        continueChip.innerHTML = `Continue: <strong>${escapeHtml(
-          label
-        )}</strong> <a href="${href}">Open</a>`;
-      }
-    }
-  } catch {
-    /* ignore */
-  }
-
-  function renderWaiting() {
-    const el = document.getElementById("waiting-cities");
-    if (!el) return;
-    let ids = [];
-    try {
-      ids = JSON.parse(localStorage.getItem("1less-saved-cities") || "[]");
-    } catch {
-      ids = [];
-    }
-    if (!ids.length) {
-      el.hidden = true;
-      el.textContent = "";
-      return;
-    }
-    const labels = ids.map((id) => {
-      const opt = citySelect?.querySelector(`option[value="${id}"]`);
-      return opt ? opt.textContent.replace(/\s*·.*$/, "").trim() : id;
-    });
-    el.hidden = false;
-    el.innerHTML = `Waiting on: <strong>${labels.map(escapeHtml).join(", ")}</strong>`;
-  }
-  renderWaiting();
-  window.addEventListener("1less-cities-saved", renderWaiting);
 
   // Mission drawer “Different place?” → land on search, not another demo zoo
   try {

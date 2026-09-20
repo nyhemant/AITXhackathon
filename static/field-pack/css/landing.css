@@ -950,78 +950,6 @@
   font-weight: 600;
 }
 
-.ready-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 10px;
-}
-
-.ready-card {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 14px 16px;
-  border-radius: var(--radius, 16px);
-  background: var(--card, #fff);
-  border: 1.5px solid var(--border, rgba(15, 92, 92, 0.12));
-  text-decoration: none;
-  color: inherit;
-  box-shadow: var(--shadow-sm, none);
-  transition:
-    transform var(--dur-fast, 120ms) var(--ease, ease),
-    box-shadow var(--dur-fast, 120ms) var(--ease, ease),
-    border-color var(--dur-fast, 120ms) ease;
-}
-
-.ready-card:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow, 0 8px 24px rgba(21, 34, 56, 0.08));
-  border-color: var(--accent, #d9652e);
-}
-
-.ready-card .rc-emoji {
-  font-size: 1.65rem;
-  line-height: 1;
-}
-
-.ready-card h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 750;
-  color: var(--teal-deep, #0a4545);
-  letter-spacing: -0.01em;
-}
-
-.ready-card p {
-  margin: 0;
-  flex: 1;
-  font-size: 0.9rem;
-  color: var(--muted, #3d4f6f);
-  font-weight: 600;
-}
-
-.ready-card .rc-cta {
-  font-weight: 750;
-  color: var(--accent, #d9652e);
-  font-size: 0.9rem;
-}
-
-.continue-chip {
-  display: none;
-  margin: 0 0 14px;
-  padding: 12px 16px;
-  border-radius: 14px;
-  background: #fff8e6;
-  border: 2px solid rgba(180, 120, 20, 0.25);
-  font-weight: 750;
-  color: #5c3d0a;
-}
-
-.continue-chip a {
-  color: #0f5c5c;
-  font-weight: 900;
-}
-
 .city-chips {
   display: flex;
   flex-wrap: wrap;
@@ -1128,17 +1056,6 @@
   max-width: 18ch;
 }
 
-.waiting-cities {
-  margin: 0 0 12px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.85);
-  border: 2px dashed rgba(15, 92, 92, 0.25);
-  color: #3d4f6f;
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
 .soon-save {
   margin-top: 10px;
   padding: 12px;
@@ -1174,7 +1091,6 @@
     grid-column: 1 / -1;
   }
   .map-shell { grid-template-columns: 1fr; }
-  .ready-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .city-chips { gap: 6px; }
   .city-chip { font-size: 0.8rem; padding: 7px 10px; }
 }
@@ -2909,30 +2825,6 @@ a.pitch-sample-link:focus-visible .artifact-cap {
   color: var(--teal-deep, #0a4545);
   letter-spacing: -0.01em;
 }
-.ready-slim .ready-card {
-  padding: 12px 14px;
-  gap: 10px;
-  flex-direction: row;
-  align-items: center;
-}
-.ready-slim .ready-card p { display: none; }
-.ready-slim .ready-card h3 {
-  margin: 0;
-  flex: 1;
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-.ready-slim .rc-emoji {
-  font-size: 1.4rem;
-  width: 2rem;
-  text-align: center;
-}
-.ready-slim .rc-cta {
-  margin: 0;
-  font-size: 0.86rem;
-  font-weight: 750;
-}
-
 .site-footer-slim {
   margin-top: 8px;
   padding-top: 14px;
@@ -2963,14 +2855,6 @@ body.landing-body {
 }
 .landing-clean .oneless-shell {
   margin-bottom: 12px;
-}
-.landing-clean .continue-chip {
-  margin-bottom: 10px;
-  padding: 11px 16px;
-  border-radius: var(--radius, 16px);
-  border-width: 1.5px;
-  background: rgba(255, 248, 230, 0.95);
-  box-shadow: var(--shadow-sm, none);
 }
 
 .nearby-item {
@@ -3010,13 +2894,9 @@ body.landing-body {
   .landing-clean .pin-detail.map-pin-card .pd-actions .btn {
     font-size: 0.78rem;
   }
-  .ready-slim .ready-card {
-    flex-direction: row;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ready-card:hover,
   .btn:hover {
     transform: none;
   }
@@ -3164,42 +3044,6 @@ a.place-type-tab {
   border-bottom-color: #0f5c5c;
   outline: none;
 }
-.hero-moments {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.55rem;
-  margin: 8px 0 0;
-  padding: 0;
-  list-style: none;
-}
-.hero-moments li {
-  margin: 0;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(15, 92, 92, 0.06);
-  border: 1px solid rgba(15, 92, 92, 0.1);
-}
-.hero-moment-label {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 850;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #0f5c5c;
-  margin-bottom: 0.25rem;
-}
-.hero-moment-text {
-  font-size: 0.86rem;
-  font-weight: 650;
-  color: #0a4545;
-  line-height: 1.35;
-}
-.hero-moment-link {
-  color: #0f5c5c;
-  font-weight: 800;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
 @media (max-width: 720px) {
   .pitch-artifacts {
     max-width: none;
@@ -3217,9 +3061,6 @@ a.place-type-tab {
   }
   .pitch-artifact-mission .pitch-artifact-img {
     max-height: 210px;
-  }
-  .hero-moments {
-    grid-template-columns: 1fr;
   }
 }
 @media (min-width: 721px) {
@@ -3494,48 +3335,6 @@ a.place-type-tab {
   border: 1px solid var(--silo-cards-border);
 }
 
-.hero-search-mode {
-  display: inline-flex;
-  padding: 3px;
-  gap: 2px;
-  margin: 0 0 0.55rem;
-  border-radius: 999px;
-  background: rgba(15, 34, 56, 0.06);
-  border: 1px solid rgba(15, 34, 56, 0.08);
-}
-.hero-mode-btn {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  font-weight: 800;
-  font-size: 0.88rem;
-  padding: 0.4rem 0.95rem;
-  border-radius: 999px;
-  cursor: pointer;
-  color: #3d4f6f;
-  min-height: 36px;
-}
-.hero-mode-btn.is-active[data-search-mode="place"] {
-  background: var(--silo-place);
-  color: #fff;
-}
-.hero-mode-btn.is-active[data-search-mode="card"] {
-  background: var(--silo-cards);
-  color: #fff;
-}
-.hero-mode-btn:focus-visible {
-  outline: 3px solid #ffcf5a;
-  outline-offset: 2px;
-}
-#hero-search-block[data-search-mode="card"] .hero-search-submit {
-  background: var(--silo-cards);
-  border-color: var(--silo-cards);
-  box-shadow: 0 6px 18px rgba(196, 92, 38, 0.22);
-}
-#hero-search-block[data-search-mode="card"] .hero-place-search-input:focus {
-  border-color: var(--silo-cards);
-}
-
 .pitch-jumps {
   display: flex;
   flex-wrap: wrap;
@@ -3573,45 +3372,6 @@ a.place-type-tab {
 }
 .pitch-artifact.silo-cards .pitch-artifact-cap {
   color: #9a3f12;
-}
-
-/* Journey moments as nav cards */
-nav.hero-moments {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.55rem;
-  margin: 8px 0 0;
-  padding: 0;
-}
-a.hero-moment {
-  display: block;
-  margin: 0;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(15, 92, 92, 0.06);
-  border: 1px solid rgba(15, 92, 92, 0.12);
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 0.15s, transform 0.15s;
-}
-a.hero-moment:hover,
-a.hero-moment:focus-visible {
-  border-color: var(--silo-place);
-  outline: none;
-  transform: translateY(-1px);
-}
-a.hero-moment#hero-after-link {
-  background: var(--silo-cards-soft);
-  border-color: var(--silo-cards-border);
-}
-a.hero-moment#hero-after-link:hover,
-a.hero-moment#hero-after-link:focus-visible {
-  border-color: var(--silo-cards);
-}
-@media (max-width: 720px) {
-  nav.hero-moments {
-    grid-template-columns: 1fr;
-  }
 }
 
 .journey-section {
@@ -3793,215 +3553,6 @@ a.hero-moment#hero-after-link:focus-visible {
   .place-type-tabs-map .place-type-tab:first-child {
     border-left: none;
   }
-}
-
-/* —— T4b: moment-strip hero —— */
-.landing-pitch-t4b {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0;
-  margin: 0 0 1rem;
-  padding: 4px 2px 8px;
-  max-width: 40rem;
-}
-.landing-pitch-t4b #pitch-heading {
-  margin: 0 0 10px;
-  font-size: clamp(1.28rem, 5.2vw, 1.75rem);
-  font-weight: 850;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  color: var(--teal-deep, #0a4545);
-  max-width: none;
-}
-
-.hero-moment-strip {
-  list-style: none;
-  margin: 0 0 12px;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 6px;
-}
-.hero-moment-card {
-  margin: 0;
-  min-width: 0;
-}
-.hero-moment-link {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
-  border-radius: 12px;
-  border: 1.5px solid rgba(15, 92, 92, 0.14);
-  background: #fff;
-  overflow: hidden;
-  min-height: 44px;
-  transition: border-color 0.12s ease, box-shadow 0.12s ease, transform 0.12s ease;
-}
-.hero-moment-card.silo-cards .hero-moment-link {
-  border-color: var(--silo-cards-border, rgba(196, 92, 38, 0.28));
-}
-.hero-moment-card.silo-place .hero-moment-link {
-  border-color: var(--silo-place-border, rgba(15, 92, 92, 0.22));
-}
-.hero-moment-link:hover,
-.hero-moment-link:focus-visible {
-  transform: translateY(-1px);
-  outline: none;
-  box-shadow: 0 6px 16px rgba(21, 34, 56, 0.1);
-}
-.hero-moment-card.silo-cards .hero-moment-link:hover,
-.hero-moment-card.silo-cards .hero-moment-link:focus-visible {
-  border-color: var(--silo-cards, #c45c26);
-}
-.hero-moment-card.silo-place .hero-moment-link:hover,
-.hero-moment-card.silo-place .hero-moment-link:focus-visible {
-  border-color: var(--silo-place, #0f5c5c);
-}
-.hero-moment-kicker {
-  display: block;
-  padding: 5px 6px 3px;
-  font-size: 0.62rem;
-  font-weight: 850;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: #5a6a84;
-}
-.hero-moment-card.silo-cards .hero-moment-kicker {
-  color: #9a3f12;
-  background: var(--silo-cards-soft, rgba(196, 92, 38, 0.08));
-}
-.hero-moment-card.silo-place .hero-moment-kicker {
-  color: var(--silo-place, #0f5c5c);
-  background: var(--silo-place-soft, rgba(15, 92, 92, 0.07));
-}
-.hero-moment-visual {
-  display: block;
-  aspect-ratio: 180 / 234;
-  background: #f4f1ea;
-  overflow: hidden;
-}
-.hero-moment-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-.hero-moment-label {
-  display: block;
-  padding: 6px 6px 8px;
-  font-size: 0.68rem;
-  font-weight: 750;
-  line-height: 1.25;
-  color: #0a4545;
-  /* keep labels from colliding with kicker for plain text extractors */
-}
-
-.landing-pitch-t4b .pitch-cta-block {
-  margin: 0 0 8px;
-  max-width: none;
-}
-.landing-pitch-t4b .pitch-trust-strip {
-  margin: 0;
-  font-size: 0.75rem;
-  font-weight: 650;
-  line-height: 1.35;
-  color: #5a6b82;
-  max-width: none;
-}
-
-/* Desktop: larger vignettes, still 3-across single column */
-@media (min-width: 720px) {
-  .landing-pitch-t4b {
-    max-width: 36rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .landing-pitch-t4b #pitch-heading {
-    font-size: clamp(1.55rem, 2.5vw, 1.95rem);
-    text-align: center;
-    margin-bottom: 14px;
-  }
-  .hero-moment-strip {
-    gap: 10px;
-    max-width: 34rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero-moment-kicker {
-    font-size: 0.7rem;
-    padding: 7px 8px 4px;
-  }
-  .hero-moment-label {
-    font-size: 0.78rem;
-    padding: 8px 8px 10px;
-  }
-  .landing-pitch-t4b .pitch-cta-block {
-    max-width: 28rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .landing-pitch-t4b .pitch-trust-strip {
-    text-align: center;
-    max-width: 32rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-@media (min-width: 1024px) {
-  .hero-moment-strip {
-    max-width: 40rem;
-    gap: 12px;
-  }
-}
-
-
-/* First-visit cue: Cards mode is tappable (motion-safe) */
-@keyframes hero-mode-cue-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 92, 38, 0); transform: scale(1); }
-  40% { box-shadow: 0 0 0 4px rgba(196, 92, 38, 0.28); transform: scale(1.04); }
-  70% { box-shadow: 0 0 0 0 rgba(196, 92, 38, 0.12); transform: scale(1.02); }
-}
-.hero-mode-btn.hero-mode-cue {
-  animation: hero-mode-cue-pulse 1.3s ease-in-out 0s 2;
-  position: relative;
-  z-index: 1;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-mode-btn.hero-mode-cue {
-    animation: none;
-    outline: 2px solid rgba(196, 92, 38, 0.55);
-    outline-offset: 2px;
-  }
-}
-.hero-search-mode {
-  position: relative;
-}
-.hero-search-mode::after {
-  /* quiet always-on hint under the segment on very first paint context - skip, use title on group */
-  content: none;
-}
-
-.hero-search-mode-hint {
-  margin: 0 0 6px;
-  font-size: 0.78rem;
-  font-weight: 650;
-  color: #5a6a84;
-  line-height: 1.3;
-}
-.hero-search-mode-hint strong {
-  font-weight: 800;
-  color: #0a4545;
-}
-#hero-search-block[data-search-mode="card"] .hero-search-mode-hint strong:last-child {
-  color: var(--silo-cards, #c45c26);
-}
-#hero-search-block[data-search-mode="place"] .hero-search-mode-hint strong:first-child {
-  color: var(--silo-place, #0f5c5c);
 }
 
 .place-type-tabs-cards {

@@ -38,6 +38,8 @@ class FlagshipSessionTests(unittest.TestCase):
         hero = html.split('id="hero-search-block"', 1)[0]
         self.assertNotIn("hero-moment-link", html)
         self.assertNotIn("hero-moment-during", html)
+        self.assertNotIn('id="continue-chip"', html)
+        self.assertNotIn('id="waiting-cities"', html)
         self.assertIn('id="pitch-heading"', hero)
         self.assertIn("Find a place", hero)
 
