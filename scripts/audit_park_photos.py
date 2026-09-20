@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Audit park photo provenance from catalog.js + hero files. Updates ledger + report."""
+"""Audit park photo provenance from catalog.js + hero files.
+
+Updates the live ledger at scripts/data/park_photo_ledger.json.
+Writes the markdown report to docs/park-photo-audit-report.md only.
+"""
 from __future__ import annotations
 import json, subprocess
 from pathlib import Path
@@ -9,7 +13,7 @@ from collections import Counter
 ROOT = Path(__file__).resolve().parents[1]
 PHOTOS = ROOT / "static/field-pack/photos"
 LEDGER = ROOT / "scripts/data/park_photo_ledger.json"
-AUDIT = ROOT / "scripts/data/park_photo_audit_report.md"
+AUDIT = ROOT / "docs/park-photo-audit-report.md"
 TODAY = date.today().isoformat()
 
 def classify(credit: str) -> str:
@@ -119,6 +123,7 @@ console.log(JSON.stringify({catalog, parkVenues}));
 
     ledger["assets"] = assets
     ledger["updated"] = TODAY
+    LEDGER.parent.mkdir(parents=True, exist_ok=True)
     LEDGER.write_text(json.dumps(ledger, indent=2, ensure_ascii=False)+"\n")
 
     by_prov = Counter(a["provenance"] for a in assets)
@@ -134,6 +139,7 @@ console.log(JSON.stringify({catalog, parkVenues}));
         if a["status"]=="todo" and a.get("catalog_id"):
             lines.append(f"- `{a['catalog_id']}` ({a['role']})\n")
     lines.append(f"\n## AI heroes todo: {sum(1 for a in assets if a['role']=='hero' and a['status']=='todo')}\n")
+    AUDIT.parent.mkdir(parents=True, exist_ok=True)
     AUDIT.write_text("".join(lines))
     print("assets", len(assets), "prov", dict(by_prov), "todo", dict(todo))
     print("wrote", LEDGER)
