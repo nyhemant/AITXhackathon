@@ -325,7 +325,7 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "29"
+SEO_CSS_VER = "30"
 CARD_SEO_CSS_VER = "35"
 LANDING_CSS_VER = "100"
 LANDING_MAP_JS_VER = "89"
@@ -2038,7 +2038,7 @@ def is_wonder_find(find: dict) -> bool:
 
 
 def hunt_teaser_html(hunt_lis: str) -> str:
-    """Short title + one print action. Example finds stay collapsed."""
+    """Short title + quiet print link. Example finds stay collapsed."""
     if not (hunt_lis or "").strip():
         return ""
     essay = f"<p>{HUNT_BLOCK_P}</p>" if HUNT_BLOCK_P else ""
@@ -2046,8 +2046,7 @@ def hunt_teaser_html(hunt_lis: str) -> str:
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
       <h2 id="hunt-heading">{esc(HUNT_H2)}</h2>
       {essay}
-      <p class="seo-hunt-action"><button type="button" class="btn btn-secondary" data-how="print-hunt">{esc(CTA_PRINT)}</button></p>
-      <p class="print-spec">{esc(PRINT_SPEC)}</p>
+      <p class="seo-hunt-action seo-hunt-action-quiet"><a href="#mission" class="seo-hunt-print-link" data-how="print-hunt">{esc(CTA_PRINT)} this hunt</a></p>
       <details class="seo-hunt-examples">
         <summary>{esc(HUNT_EXAMPLES_SUMMARY)}</summary>
         <ol class="seo-hunt-list">
@@ -2095,7 +2094,7 @@ def wonder_grid_html(mission: dict) -> str:
 
 
 def page_mission_chrome_html(home_href: str = "#at-home") -> str:
-    """Two short CTAs. Chips still drive the drawer. No essay under the buttons."""
+    """Two short CTAs + print spec. Who/Time/Style collapsed behind disclosure."""
     href = home_href or "#at-home"
     return f"""
         <div class="seo-mission-bar no-print" aria-label="{esc(CTA_AT_HOME)} or {esc(CTA_PRINT)}">
@@ -2103,33 +2102,37 @@ def page_mission_chrome_html(home_href: str = "#at-home") -> str:
           <button type="button" class="btn btn-secondary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="{esc(CTA_PRINT)}">
             {esc(CTA_PRINT)}
           </button>
-          <div class="seo-mission-chrome" id="seo-mission-chrome">
-            <div class="seo-chrome-row">
-              <span class="seo-chrome-k" id="seo-who-label">Who</span>
-              <div class="seo-chip-row" role="group" aria-labelledby="seo-who-label">
-                <button type="button" class="seo-age-chip" data-age="2-3">2–4</button>
-                <button type="button" class="seo-age-chip is-active" data-age="4-5" aria-pressed="true">5–8</button>
-                <button type="button" class="seo-age-chip" data-age="6-8">9–12</button>
-                <button type="button" class="seo-age-chip" data-age="adult">Adults</button>
+          <p class="print-spec seo-print-spec-hero">{esc(PRINT_SPEC)}</p>
+          <details class="seo-customize-disclosure">
+            <summary>Customize hunt</summary>
+            <div class="seo-mission-chrome" id="seo-mission-chrome">
+              <div class="seo-chrome-row">
+                <span class="seo-chrome-k" id="seo-who-label">Who</span>
+                <div class="seo-chip-row" role="group" aria-labelledby="seo-who-label">
+                  <button type="button" class="seo-age-chip" data-age="2-3">2–4</button>
+                  <button type="button" class="seo-age-chip is-active" data-age="4-5" aria-pressed="true">5–8</button>
+                  <button type="button" class="seo-age-chip" data-age="6-8">9–12</button>
+                  <button type="button" class="seo-age-chip" data-age="adult">Adults</button>
+                </div>
+              </div>
+              <div class="seo-chrome-row">
+                <span class="seo-chrome-k" id="seo-time-label">Time</span>
+                <div class="seo-chip-row" role="group" aria-labelledby="seo-time-label">
+                  <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
+                  <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
+                  <button type="button" class="seo-time-chip" data-time="full">Full day</button>
+                </div>
+              </div>
+              <div class="seo-chrome-row seo-chrome-row-hunt">
+                <span class="seo-chrome-k" id="seo-hunt-label">Style</span>
+                <div class="seo-chip-row seo-chip-row-hunt" role="group" aria-labelledby="seo-hunt-label">
+                  <button type="button" class="seo-hunt-chip is-active" data-hunt="classic" aria-pressed="true">Classic</button>
+                  <button type="button" class="seo-hunt-chip seo-hunt-bonus" data-hunt="bonus">Bonus</button>
+                  <button type="button" class="seo-hunt-chip seo-hunt-alpha" data-hunt="alpha">Alpha</button>
+                </div>
               </div>
             </div>
-            <div class="seo-chrome-row">
-              <span class="seo-chrome-k" id="seo-time-label">Time</span>
-              <div class="seo-chip-row" role="group" aria-labelledby="seo-time-label">
-                <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
-                <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
-                <button type="button" class="seo-time-chip" data-time="full">Full day</button>
-              </div>
-            </div>
-            <div class="seo-chrome-row seo-chrome-row-hunt">
-              <span class="seo-chrome-k" id="seo-hunt-label">Style</span>
-              <div class="seo-chip-row seo-chip-row-hunt" role="group" aria-labelledby="seo-hunt-label">
-                <button type="button" class="seo-hunt-chip is-active" data-hunt="classic" aria-pressed="true">Classic</button>
-                <button type="button" class="seo-hunt-chip seo-hunt-bonus" data-hunt="bonus">Bonus</button>
-                <button type="button" class="seo-hunt-chip seo-hunt-alpha" data-hunt="alpha">Alpha</button>
-              </div>
-            </div>
-          </div>
+          </details>
         </div>"""
 
 
