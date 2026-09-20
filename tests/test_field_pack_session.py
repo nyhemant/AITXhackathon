@@ -32,6 +32,26 @@ class FlagshipSessionTests(unittest.TestCase):
         )
         self.assertNotIn("Print one sheet per child or share one for the group.", html)
 
+    def test_map_count_never_shows_zero_when_places_exist(self):
+        """fillVenueSelect must not write '0 US places' when catalog has data."""
+        js = (FP / "js" / "landing-map.js").read_text(encoding="utf-8")
+        self.assertIn(
+            "list.length === 0 && allPlaces.length > 0",
+            js,
+            "Guard against false zero count is missing from fillVenueSelect",
+        )
+        count_block = js.split("if (mapCount) {", 1)[1].split("\n    }", 1)[0]
+        first_guard = count_block.find("list.length === 0")
+        first_write = count_block.find("mapCount.textContent")
+        self.assertGreater(first_guard, -1, "zero-count guard not found")
+        self.assertGreater(first_write, -1, "mapCount write not found")
+        self.assertLess(first_guard, first_write,
+                        "zero-count guard must appear before first mapCount write")
+        html = (FP / "index.html").read_text(encoding="utf-8")
+        self.assertIn('id="map-count"', html)
+        self.assertNotIn(">0 US places<", html)
+        self.assertNotIn(">0 places<", html)
+
     def test_hub_first_tap_is_not_dallas_print(self):
         """Hub first path is find-a-place, not print, Houston, or a park."""
         html = (FP / "index.html").read_text(encoding="utf-8")

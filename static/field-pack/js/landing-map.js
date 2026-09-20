@@ -430,7 +430,15 @@
     }
     if (mapCount) {
       // Quiet status only — no “tap a pin / pick from lists” coaching
-      if (mapScope === "intl") {
+      if (list.length === 0 && allPlaces.length > 0) {
+        const hasFilter = selectedState || selectedCountry ||
+          (selectedMetroId && selectedMetroId !== "all") ||
+          (selectedRegion && selectedRegion !== "all") ||
+          (selectedTypeKind && selectedTypeKind !== "all");
+        if (hasFilter) {
+          mapCount.textContent = "No matches";
+        }
+      } else if (mapScope === "intl") {
         if (selectedCountry) {
           const name = (list[0] && list[0].countryName) || selectedCountry;
           mapCount.textContent = `${list.length} in ${name}`;
