@@ -16,6 +16,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 from field_pack_catalog_kind import load_card_kinds  # noqa: E402
 from generate_bdo_seo import (  # noqa: E402
     CTA_WATCH_LIVE,
+    card_watch_cta_label,
     card_watch_href,
     habitat_films,
     load_vft_by_card,
@@ -130,29 +131,29 @@ class CardWatchLiveTests(unittest.TestCase):
     def test_lion_watch_live_is_same_origin_virtual_zoo(self):
         html = LION.read_text(encoding="utf-8")
         main = _main(html)
-        watch = _watch(html)
-        self.assertIn(CTA_WATCH_LIVE, watch)
-        self.assertIn('class="btn btn-primary card-watch-live"', watch)
+        self.assertNotIn('class="seo-watch-row"', main)
+        self.assertNotIn("card-page-photo-link", main)
+        self.assertIn("card-page-photo-zoom", main)
+        actions = main.split('class="card-page-actions"', 1)[1]
+        self.assertIn('class="btn btn-primary card-watch-live"', actions)
         self.assertIn(
             "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion",
-            watch.replace("&amp;", "&"),
+            actions.replace("&amp;", "&"),
         )
-        self.assertIn("Live from Smithsonian National Zoo", watch)
-        self.assertNotIn('target="_blank"', watch)
+        self.assertIn("Watch live at Smithsonian National Zoo", actions)
+        self.assertEqual(actions.count("card-watch-live"), 1)
+        self.assertNotIn('target="_blank"', actions)
         for host in OUTBOUND_CAM:
             self.assertNotIn(host, main)
-        actions = main.split('class="card-page-actions"', 1)[1]
-        self.assertIn("card-watch-live", actions)
-        self.assertIn("#habitat=african-lion", actions)
 
     def test_giraffe_and_jellyfish_stay_on_site(self):
         giraffe = GIRAFFE.read_text(encoding="utf-8")
         jelly = JELLY.read_text(encoding="utf-8")
-        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=reticulated-giraffe", giraffe)
-        self.assertIn("Live from Houston Zoo", giraffe)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=reticulated-giraffe", giraffe.replace("&amp;", "&"))
+        self.assertIn("Watch live at Houston Zoo", giraffe)
         self.assertNotIn("houstonzoo.org", _main(giraffe))
-        self.assertIn("/field-pack/virtual-field-trip/?tab=aquarium&from=card#habitat=jellyfish", jelly)
-        self.assertIn("Watch Live", jelly)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=aquarium&from=card#habitat=jellyfish", jelly.replace("&amp;", "&"))
+        self.assertIn("Watch live at Monterey Bay Aquarium", jelly)
         self.assertNotIn("montereybayaquarium.org", _main(jelly))
 
     def test_wildlife_and_sealife_watch_live_or_exception(self):
@@ -177,8 +178,15 @@ class CardWatchLiveTests(unittest.TestCase):
             self.assertTrue(vft_has_inpage_media(rec), cid)
             self.assertTrue(vft_can_watch_live(rec), cid)
             self.assertIn("card-watch-live", main, cid)
-            self.assertIn(CTA_WATCH_LIVE, main, cid)
-            self.assertIn("card-page-photo-link", main, cid)
+            self.assertEqual(main.count("card-watch-live"), 1, cid)
+            self.assertNotIn("card-page-photo-link", main, cid)
+            self.assertIn("card-page-photo-zoom", main, cid)
+            self.assertNotIn('class="seo-watch-row"', main, cid)
+            actions = main.split('class="card-page-actions"', 1)[1]
+            self.assertIn("card-watch-live", actions, cid)
+            self.assertIn(f"#habitat={cid}", actions, cid)
+            label = card_watch_cta_label(rec)
+            self.assertIn(label, actions, cid)
             self.assertIn(f"#habitat={cid}", main, cid)
             for host in OUTBOUND_CAM:
                 self.assertNotIn(host, main, cid)
@@ -196,12 +204,15 @@ class CardWatchLiveTests(unittest.TestCase):
             main = _main(html)
             href = f"/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat={cid}"
             self.assertIn("card-watch-live", main, cid)
-            self.assertIn(CTA_WATCH_LIVE, main, cid)
-            self.assertIn("card-page-photo-link", main, cid)
+            self.assertEqual(main.count("card-watch-live"), 1, cid)
+            self.assertNotIn("card-page-photo-link", main, cid)
+            self.assertIn("card-page-photo-zoom", main, cid)
+            self.assertNotIn('class="seo-watch-row"', main, cid)
             self.assertIn(f"#habitat={cid}", main, cid)
             self.assertIn(href, main.replace("&amp;", "&"), cid)
             actions = main.split('class="card-page-actions"', 1)[1]
             self.assertIn("card-watch-live", actions, cid)
+            self.assertIn(card_watch_cta_label(rec), actions, cid)
 
     def test_aquarium_library_cards_keep_watch_live(self):
         """Aquarium-film-library overlays with film are live doors, not dead CTAs."""
@@ -216,12 +227,15 @@ class CardWatchLiveTests(unittest.TestCase):
             main = _main(html)
             href = f"/field-pack/virtual-field-trip/?tab=aquarium&from=card#habitat={cid}"
             self.assertIn("card-watch-live", main, cid)
-            self.assertIn(CTA_WATCH_LIVE, main, cid)
-            self.assertIn("card-page-photo-link", main, cid)
+            self.assertEqual(main.count("card-watch-live"), 1, cid)
+            self.assertNotIn("card-page-photo-link", main, cid)
+            self.assertIn("card-page-photo-zoom", main, cid)
+            self.assertNotIn('class="seo-watch-row"', main, cid)
             self.assertIn(f"#habitat={cid}", main, cid)
             self.assertIn(href, main.replace("&amp;", "&"), cid)
             actions = main.split('class="card-page-actions"', 1)[1]
             self.assertIn("card-watch-live", actions, cid)
+            self.assertIn(card_watch_cta_label(rec), actions, cid)
 
     def test_watch_live_hrefs_use_real_zoo_or_aquarium_habitats(self):
         """ParentTest: no card-watch-live / hero link to a missing VFT habitat."""
@@ -387,15 +401,25 @@ class CardWatchLiveTests(unittest.TestCase):
     def test_card_watch_hrefs_are_internal(self):
         for path in (LION, GIRAFFE, JELLY):
             html = path.read_text(encoding="utf-8")
-            watch = _watch(html)
-            hrefs = HREF_RE.findall(watch)
+            main = _main(html)
+            self.assertNotIn('class="seo-watch-row"', main, path.name)
+            actions = main.split('class="card-page-actions"', 1)[1].split("</p>", 1)[0]
+            hrefs = HREF_RE.findall(actions)
             self.assertTrue(hrefs, path.name)
-            for _, href in hrefs:
-                host = (urlparse(href).hostname or "").lower()
-                self.assertTrue(href.startswith("/field-pack/"), href)
-                self.assertFalse(host)
-                self.assertIn("from=card", href)
-                self.assertIn("#habitat=", href)
+            watch_hrefs = [h for _, h in hrefs if "card-watch-live" in actions]
+            # parse tags with card-watch-live
+            tags = re.findall(
+                r'<a[^>]+class="[^"]*card-watch-live[^"]*"[^>]*>', actions, flags=re.I
+            )
+            self.assertEqual(len(tags), 1, path.name)
+            href_m = HREF_RE.search(tags[0])
+            self.assertIsNotNone(href_m, path.name)
+            href = href_m.group(2)
+            host = (urlparse(href).hostname or "").lower()
+            self.assertTrue(href.startswith("/field-pack/"), href)
+            self.assertFalse(host)
+            self.assertIn("from=card", href)
+            self.assertIn("#habitat=", href)
 
     def test_card_session_keeps_habitat_hash_and_short_trail(self):
         js = VFT_JS.read_text(encoding="utf-8")

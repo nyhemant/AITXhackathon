@@ -352,7 +352,7 @@ class KelpForestEasyStudyCardTests(unittest.TestCase):
             self.assertIn(stem, main)
         for line in TEACH:
             self.assertIn(line, main)
-        self.assertIn("Watch Live", main)
+        self.assertIn("card-watch-live", main)
         self.assertIn("card-watch-live", main)
         self.assertIn("card-page-photo", main)
         self.assertIn("/field-pack/photos/kelp-forest.jpg", main)

@@ -399,15 +399,18 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn("card-study-pack", whale)
 
     def test_photos_and_watch_live_share_hero_row(self):
-        self.assertEqual(CARD_SEO_CSS_VER, "35")
-        self.assertEqual(STUDY_CARD_JS_VER, "10")
-        self.assertEqual(STUDY_CARD_CSS_VER, "10")
+        self.assertEqual(CARD_SEO_CSS_VER, "36")
+        self.assertEqual(STUDY_CARD_JS_VER, "11")
+        self.assertEqual(STUDY_CARD_CSS_VER, "11")
         css = SEO_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-hero-links", css)
         self.assertIn("display: contents", css)
         self.assertIn("flex-wrap: wrap", css)
+        self.assertIn("card-page-photo-zoom", css)
+        self.assertIn("card-photo-lightbox", css)
 
         more = '<div class="action-row detail-links">Photos</div>'
+        # Helper still builds a watch row for non-page callers; card pages omit it.
         watch = watch_links_html(
             {
                 "vft": {
@@ -426,6 +429,10 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn("Photos", row)
         self.assertIn("Watch Live", row)
         self.assertEqual(card_hero_links_html("", ""), "")
+        # Photos-only hero links when watch is empty (page dedupe path)
+        photos_only = card_hero_links_html(more, "")
+        self.assertIn("Photos", photos_only)
+        self.assertNotIn("Watch Live", photos_only)
 
         for cid in ("african-lion", "reticulated-giraffe"):
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
@@ -435,10 +442,13 @@ class CardStudyUxTests(unittest.TestCase):
                 hero_at = main.find('class="card-hero-links')
                 photos_at = main.find(">Photos</a>")
                 watch_at = main.find('class="seo-watch-row"')
+                actions_at = main.find('class="card-page-actions"')
                 talk_at = main.find('class="card-talk-pack')
                 self.assertGreater(photos_at, hero_at)
-                self.assertGreater(watch_at, photos_at)
-                self.assertLess(watch_at, talk_at)
+                self.assertEqual(watch_at, -1)
+                self.assertGreater(actions_at, photos_at)
+                self.assertLess(actions_at, talk_at)
+                self.assertIn("card-watch-live", main.split('class="card-page-actions"', 1)[1])
                 self.assertIn("study-card.js?v=11", html)
                 self.assertIn("study-card.css?v=11", html)
                 self.assertIn(f"seo-venue.css?v={CARD_SEO_CSS_VER}", html)
@@ -446,12 +456,13 @@ class CardStudyUxTests(unittest.TestCase):
         warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))
         self.assertIn("card-hero-links", warthog)
         self.assertIn(">Photos</a>", warthog)
-        self.assertIn("Watch Live", warthog)
-        self.assertIn('class="seo-watch-row"', warthog)
+        self.assertNotIn('class="seo-watch-row"', warthog)
+        self.assertIn("card-watch-live", warthog.split('class="card-page-actions"', 1)[1])
         self.assertIn("#habitat=warthog", warthog)
 
     def test_hero_photo_matches_watch_live_href(self):
         href = "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=zebra"
+        # Legacy cam-on-hero still supported by helper
         linked = card_hero_photo_html(
             photo="/field-pack/photos/zebra.jpg?v=img2",
             name="Zebra",
@@ -463,6 +474,17 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn('aria-label="Watch Live: Zebra"', linked)
         self.assertIn(f'href="{href.replace("&", "&amp;")}"', linked)
         self.assertRegex(linked, r'<a class="card-page-photo-link"[^>]*>\s*<img class="card-page-photo"')
+
+        zoom = card_hero_photo_html(
+            photo="/field-pack/photos/zebra.jpg?v=img2",
+            name="Zebra",
+            emoji="🦓",
+            enlarge=True,
+        )
+        self.assertIn('class="card-page-photo-zoom"', zoom)
+        self.assertIn('aria-label="View larger photo: Zebra"', zoom)
+        self.assertIn('data-photo-src="/field-pack/photos/zebra.jpg?v=img2"', zoom)
+        self.assertNotIn("card-page-photo-link", zoom)
 
         bare = card_hero_photo_html(
             photo="/field-pack/photos/warthog.jpg?v=img2",
@@ -481,34 +503,38 @@ class CardStudyUxTests(unittest.TestCase):
 
         css = SEO_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page a.card-page-photo-link", css)
-        self.assertIn("cursor: pointer", css)
+        self.assertIn("card-page-photo-zoom", css)
         gen = SEO.read_text(encoding="utf-8")
-        self.assertIn("a.card-watch-live, a.card-page-photo-link", gen)
+        self.assertIn('document.querySelectorAll("a.card-watch-live")', gen)
+        self.assertIn("button.card-page-photo-zoom", gen)
+        self.assertNotIn("a.card-watch-live, a.card-page-photo-link", gen)
 
         for cid in ("african-lion", "reticulated-giraffe"):
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             main = _main(html)
             with self.subTest(card=cid):
-                self.assertIn('class="card-page-photo-link"', main)
-                photo_block = main.split('class="card-page-photo-link"', 1)[1].split("<h1>", 1)[0]
-                watch_block = main.split('class="seo-watch-row"', 1)[1].split("</p>", 1)[0]
-                photo_href = photo_block.split('href="', 1)[1].split('"', 1)[0]
-                watch_href = watch_block.split('href="', 1)[1].split('"', 1)[0]
-                self.assertEqual(photo_href, watch_href)
-                self.assertIn("from=card", photo_href)
-                self.assertIn("#habitat=", photo_href)
-                self.assertIn(f'aria-label="Watch Live:', main)
+                self.assertIn('class="card-page-photo-zoom"', main)
+                self.assertNotIn("card-page-photo-link", main)
+                self.assertNotIn('class="seo-watch-row"', main)
+                self.assertIn("View larger photo:", main)
+                actions = main.split('class="card-page-actions"', 1)[1]
+                self.assertIn("card-watch-live", actions)
+                self.assertIn("from=card", actions)
+                self.assertIn("#habitat=", actions)
                 print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
                 self.assertNotIn("card-page-photo-link", print_tpl)
+                self.assertNotIn("card-page-photo-zoom", print_tpl)
 
         fish = _main((FP / "cards" / "freshwater-fish" / "index.html").read_text(encoding="utf-8"))
         self.assertNotIn("card-page-photo-link", fish)
+        self.assertIn("card-page-photo-zoom", fish)
         self.assertIn('class="card-page-photo"', fish)
         self.assertLess(fish.find("card-page-photo"), fish.find("<h1>"))
 
         dino = _main((FP / "cards" / "sci-dinosaur" / "index.html").read_text(encoding="utf-8"))
         self.assertNotIn("card-page-photo-link", dino)
         self.assertNotIn("Watch Live", dino)
+        self.assertNotIn("Watch live at", dino)
 
 
 if __name__ == "__main__":

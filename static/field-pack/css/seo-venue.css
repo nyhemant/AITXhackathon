@@ -1833,6 +1833,53 @@ a.seo-map-card:focus-visible {
     align-self: center;
   }
 }
+
+.card-page button.card-page-photo-zoom {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  line-height: 0;
+  color: inherit;
+  cursor: zoom-in;
+  width: 100%;
+  text-align: left;
+}
+.card-page button.card-page-photo-zoom:focus-visible {
+  outline: 2px solid #0f5c5c;
+  outline-offset: 3px;
+  border-radius: 16px;
+}
+@media screen and (min-width: 960px) {
+  .card-page button.card-page-photo-zoom {
+    max-width: 34rem;
+    width: 100%;
+    align-self: center;
+  }
+}
+.card-photo-lightbox {
+  max-width: min(96vw, 52rem);
+  padding: 0.75rem;
+  border: 1.5px solid rgba(15, 92, 92, 0.2);
+  border-radius: 16px;
+}
+.card-photo-lightbox::backdrop {
+  background: rgba(10, 30, 40, 0.55);
+}
+.card-photo-lightbox img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.card-photo-lightbox form {
+  margin: 0.65rem 0 0;
+  text-align: right;
+}
+
 .card-page-emoji {
   font-size: 3.5rem;
   margin: 0.4rem 0;

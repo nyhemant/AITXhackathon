@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/shell/shell.css?v=9" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=43" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=100" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=35" />
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=36" />
   <link rel="stylesheet" href="/field-pack/css/study-card.css?v=11" />
 </head>
 <body class="landing-body card-page-body">
@@ -37,14 +37,14 @@
     </header>
     <main class="card-page">
       <p class="card-page-crumbs"><a href="/start/">KidZooKit</a> · <a href="/field-pack/cards/">Cards</a></p>
-      <a class="card-page-photo-link" href="/field-pack/virtual-field-trip/?tab=zoo&amp;from=card#habitat=giant-panda" aria-label="Watch Live: Giant panda"><img class="card-page-photo" src="/field-pack/photos/giant-panda.jpg?v=img2" alt="Giant panda" width="640" height="640" decoding="async" style="object-position: 50% 25%" /></a>
+      <button type="button" class="card-page-photo-zoom" aria-label="View larger photo: Giant panda" data-photo-src="/field-pack/photos/giant-panda.jpg?v=img2"><img class="card-page-photo" src="/field-pack/photos/giant-panda.jpg?v=img2" alt="Giant panda" width="640" height="640" decoding="async" style="object-position: 50% 25%" /></button>
       <h1>🐼 Giant panda</h1>
       
       <p class="card-page-blurb">Black-and-white bamboo lover — calm and famous.</p>
-      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost" href="https://kids.nationalgeographic.com/animals/mammals/facts/giant-panda" target="_blank" rel="noopener noreferrer">Photos</a><a class="btn btn-ghost card-learn-more" hidden target="_blank" rel="noopener noreferrer">Learn more</a></div><p class="seo-watch-row"><a class="btn btn-primary card-watch-live" href="/field-pack/virtual-field-trip/?tab=zoo&amp;from=card#habitat=giant-panda">Watch Live</a><span class="seo-watch-source">Live from Smithsonian National Zoo</span></p></div>
+      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost" href="https://kids.nationalgeographic.com/animals/mammals/facts/giant-panda" target="_blank" rel="noopener noreferrer">Photos</a><a class="btn btn-ghost card-learn-more" hidden target="_blank" rel="noopener noreferrer">Learn more</a></div></div>
       <p class="card-page-next" hidden data-next-from="san-diego-zoo"><a href="/field-pack/cards/koala/?from=san-diego-zoo">Next: Koala</a></p><p class="card-page-next" hidden data-next-from="national-zoo"><a href="/field-pack/cards/asian-small-clawed-otter/?from=national-zoo">Next: Asian small-clawed otter</a></p><p class="card-page-next" hidden data-next-from="adelaide-zoo"><a href="/field-pack/cards/koala/?from=adelaide-zoo">Next: Koala</a></p><p class="card-page-next" hidden data-next-from="berlin-zoo"><a href="/field-pack/cards/western-lowland-gorilla/?from=berlin-zoo">Next: Western lowland gorilla</a></p><p class="card-page-next" hidden data-next-from="vienna-zoo"><a href="/field-pack/cards/koala/?from=vienna-zoo">Next: Koala</a></p><p class="card-page-next" hidden data-next-from="copenhagen-zoo"><a href="/field-pack/cards/reticulated-giraffe/?from=copenhagen-zoo">Next: Reticulated giraffe</a></p><p class="card-page-next" hidden data-next-from="beijing-zoo"><a href="/field-pack/cards/reticulated-giraffe/?from=beijing-zoo">Next: Giraffe</a></p><p class="card-page-next" hidden data-next-from="chapultepec-zoo"><a href="/field-pack/cards/african-lion/?from=chapultepec-zoo">Next: African lion</a></p><p class="card-page-next" hidden data-next-from="hong-kong-ocean-park"><a href="/field-pack/cards/red-panda/?from=hong-kong-ocean-park">Next: Red panda</a></p><p class="card-page-next" hidden data-next-from="kuala-lumpur-zoo"><a href="/field-pack/cards/orangutan/?from=kuala-lumpur-zoo">Next: Orangutan</a></p><p class="card-page-next" hidden data-next-from="madrid-zoo"><a href="/field-pack/cards/western-lowland-gorilla/?from=madrid-zoo">Next: Western lowland gorilla</a></p><p class="card-page-next" hidden data-next-from="moscow-zoo"><a href="/field-pack/cards/western-lowland-gorilla/?from=moscow-zoo">Next: Gorilla</a></p><p class="card-page-next" hidden data-next-from="taipei-zoo"><a href="/field-pack/cards/koala/?from=taipei-zoo">Next: Koala</a></p>
       <p class="card-page-actions">
-        <a class="btn btn-primary card-watch-live" href="/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=giant-panda">Watch Live</a>
+        <a class="btn btn-primary card-watch-live" href="/field-pack/virtual-field-trip/?tab=zoo&amp;from=card#habitat=giant-panda">Watch live at Smithsonian National Zoo</a>
         <button type="button" class="btn btn-secondary" id="print-this-card" data-card-id="giant-panda">Print this card</button>
       </p>
       <p class="print-spec no-print">US Letter or A4 · black &amp; white is fine</p>
@@ -82,13 +82,40 @@
         more.href = KIT_SITES[from];
         more.removeAttribute("hidden");
       }
-      document.querySelectorAll("a.card-watch-live, a.card-page-photo-link").forEach(function (a) {
+      document.querySelectorAll("a.card-watch-live").forEach(function (a) {
         if (!from || !KIT_SITES[from]) return;
         try {
           var u = new URL(a.href, window.location.origin);
           u.searchParams.set("return", from);
           a.setAttribute("href", u.pathname + u.search + u.hash);
         } catch (e) {}
+      });
+      document.querySelectorAll("button.card-page-photo-zoom").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var src = btn.getAttribute("data-photo-src") || "";
+          var img = btn.querySelector("img");
+          var alt = (img && img.getAttribute("alt")) || "";
+          if (!src) return;
+          var dlg = document.createElement("dialog");
+          dlg.className = "card-photo-lightbox";
+          dlg.setAttribute("aria-label", "Larger photo");
+          var big = document.createElement("img");
+          big.src = src;
+          big.alt = alt;
+          var close = document.createElement("form");
+          close.method = "dialog";
+          var closeBtn = document.createElement("button");
+          closeBtn.type = "submit";
+          closeBtn.className = "btn btn-secondary";
+          closeBtn.textContent = "Close";
+          close.appendChild(closeBtn);
+          dlg.appendChild(big);
+          dlg.appendChild(close);
+          document.body.appendChild(dlg);
+          if (typeof dlg.showModal === "function") dlg.showModal();
+          else dlg.setAttribute("open", "");
+          dlg.addEventListener("close", function () { dlg.remove(); });
+        });
       });
       if (typeof FPTrack === "function") FPTrack("card_page_viewed", { card_id: "giant-panda" });
       var btn = document.getElementById("print-this-card");

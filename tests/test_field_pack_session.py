@@ -147,7 +147,7 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("Where is home?", html)
         self.assertNotIn("What is their superpower?", html)
         self.assertIn("Watch Live", html)
-        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion", html)
+        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion", html.replace("&amp;", "&"))
         self.assertNotIn("nationalzoo.si.edu/webcams/lion-cam", html)
         self.assertIn("Print", html)
         self.assertNotIn("Open in outing view", html)
@@ -173,7 +173,7 @@ class FlagshipSessionTests(unittest.TestCase):
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
             self.assertIn("Watch Live", html, cid)
             self.assertIn(f"#habitat={hid}", html, cid)
-            self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card", html, cid)
+            self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card", html, cid.replace("&amp;", "&"))
             for host in outbound:
                 self.assertNotIn(host, html, cid)
             if cid not in (
@@ -435,12 +435,14 @@ class FlagshipSessionTests(unittest.TestCase):
 
     def test_cousin_cam_first_visible_line_names_source_zoo(self):
         html = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
-        watch = html.split('class="seo-watch-row"', 1)[1].split("</p>", 1)[0]
-        self.assertIn("Watch Live", watch)
-        self.assertIn("Live from Houston Zoo", watch)
-        self.assertNotIn("houstonzoo.org", watch)
-        self.assertNotIn('target="_blank"', watch)
-        self.assertNotIn("Dallas", watch)
+        main = html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
+        self.assertNotIn('class="seo-watch-row"', main)
+        actions = main.split('class="card-page-actions"', 1)[1].split("</p>", 1)[0]
+        self.assertIn("card-watch-live", actions)
+        self.assertIn("Watch live at Houston Zoo", actions)
+        self.assertNotIn("houstonzoo.org", actions)
+        self.assertNotIn('target="_blank"', actions)
+        self.assertNotIn("Dallas", actions)
 
     def test_dallas_does_not_duplicate_more_if_you_have_energy(self):
         visible = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
@@ -461,11 +463,13 @@ class FlagshipSessionTests(unittest.TestCase):
         html = (FP / "cards" / "reticulated-giraffe" / "index.html").read_text(encoding="utf-8")
         next_at = html.find("Next: African elephant")
         talk_at = html.find('class="card-talk-pack')
-        watch_at = html.find('class="seo-watch-row"')
+        actions_at = html.find('class="card-page-actions"')
         self.assertNotEqual(next_at, -1)
         self.assertNotEqual(talk_at, -1)
-        self.assertLess(watch_at, next_at)
+        self.assertNotEqual(actions_at, -1)
+        # Next rail sits above actions (order CSS); both before quiz.
         self.assertLess(next_at, talk_at)
+        self.assertLess(actions_at, talk_at)
         elephant = (FP / "cards" / "african-elephant" / "index.html").read_text(encoding="utf-8")
         self.assertLess(
             elephant.find('class="card-page-next" hidden data-next-from="dallas-zoo"'),
@@ -494,7 +498,7 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("viewport-fit=cover", dallas)
         self.assertIn("viewport-fit=cover", giraffe)
         self.assertIn("viewport-fit=cover", landing)
-        self.assertIn("Live from Houston Zoo", giraffe)
+        self.assertIn("Watch live at Houston Zoo", giraffe)
 
     def _css_rule(self, css: str, selector: str) -> str:
         needle = selector + " {"

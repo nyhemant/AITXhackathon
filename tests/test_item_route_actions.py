@@ -243,7 +243,7 @@ class ItemRouteActionTests(unittest.TestCase):
         self.assertIn(">Photos</a>", main)
         self.assertIn(
             "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=asian-small-clawed-otter",
-            main,
+            main.replace("&amp;", "&"),
         )
         self.assertNotIn("/facts/sea-otter", main)
         self.assertNotIn("/facts/river-otter", main)
