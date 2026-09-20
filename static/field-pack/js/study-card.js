@@ -437,17 +437,6 @@ if (typeof window !== "undefined") {
     }
   }
 
-  function refreshPrintTemplate(deck) {
-    const tpl = document.getElementById("study-print-template");
-    if (!tpl || !deck || !window.FPPrint || typeof window.FPPrint.buildStudyCardHtml !== "function") {
-      return;
-    }
-    const item = window.FPPrint.getItem ? window.FPPrint.getItem(deck.id, null) : null;
-    const venue = window.FPPrint.getVenue && item ? window.FPPrint.getVenue(item.venue) : null;
-    if (!item) return;
-    tpl.innerHTML = window.FPPrint.buildStudyCardHtml(item, venue, deck);
-  }
-
   function applyDeck(root, deck) {
     if (!root || !deck) return;
     root.setAttribute("data-study-level", deck.level);
@@ -486,7 +475,6 @@ if (typeof window !== "undefined") {
       reveal.textContent = "Show answers";
       reveal.setAttribute("aria-pressed", "false");
     }
-    refreshPrintTemplate(deck);
   }
 
   function selectLevel(root, level) {

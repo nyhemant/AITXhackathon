@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    study_print_html_for,
     LEVEL_DISPLAY_NAMES,
     PUSH_FURTHER_LION,
     PUSH_FURTHER_MANTA_RAY,
@@ -355,16 +356,16 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
         self.assertIn("study-next-tier", main)
         self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=12", html)
+        self.assertIn("study-card.js?v=13", html)
         self.assertIn("study-card.css?v=12", html)
         self.assertIn("study-cards-data.js?v=8", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "stingray"', html)
         self.assertNotIn('"id": "seahorse"', html)
-        self.assertIn('id="study-print-template"', html)
-        self.assertIn("print-kit.js?v=21", html)
-        self.assertIn("styles.css?v=43", html)
+        self.assertNotIn("study-print-template", html)
+        self.assertIn("print-kit.js?v=22", html)
+        self.assertIn("styles.css?v=44", html)
         self.assertIn('<details class="study-teach">', html)
         self.assertNotIn('<details class="study-teach" open', html)
         self.assertNotIn('<div class="study-teach">', main)
@@ -393,7 +394,7 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn(" · Hard ·", main)
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, main)
-        print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+        print_tpl = study_print_html_for("stingray")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertNotIn(" · Easy ·", print_tpl)
         self.assertNotIn(" · Hard ·", print_tpl)

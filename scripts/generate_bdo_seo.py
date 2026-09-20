@@ -60,7 +60,6 @@ from animal_park_links import (  # noqa: E402
 from study_cards import (  # noqa: E402
     STUDY_QUIZ_H2,
     default_study_deck_for,
-    study_print_html,
     study_talk_html,
     study_try_next_html,
     write_study_artifacts,
@@ -348,12 +347,12 @@ CARD_SEO_CSS_VER = "36"
 LANDING_CSS_VER = "100"
 LANDING_MAP_JS_VER = "89"
 LANDING_HOOK_JS_VER = "39"
-STYLES_CSS_VER = "43"
+STYLES_CSS_VER = "44"
 CATALOG_JS_VER = "40"
 SHELL_CSS_VER = "9"
 SHELL_JS_VER = "6"
-PRINT_KIT_JS_VER = "21"
-STUDY_CARD_JS_VER = "12"
+PRINT_KIT_JS_VER = "22"
+STUDY_CARD_JS_VER = "13"
 STUDY_CARD_CSS_VER = "12"
 STUDY_CARDS_DATA_JS_VER = "8"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
@@ -5281,7 +5280,6 @@ def write_card_pages(
         talk_html = outing_talk_html(item)
         study_deck = default_study_deck_for(cid)
         study_scripts = ""
-        study_print_tpl = ""
         study_json_tag = ""
         study_css_link = ""
         if study_deck:
@@ -5290,11 +5288,7 @@ def write_card_pages(
                 f"{json.dumps(study_deck, ensure_ascii=False)}"
                 f"</script>\n"
             )
-            study_print_tpl = (
-                f'<template id="study-print-template">'
-                f"{study_print_html(study_deck, name=name, emoji=emoji, photo=photo, photo_pos=_photo_position(item, c) or '')}"
-                f"</template>\n"
-            )
+            # Print duplex sheets are generated on demand into #print-sheet (print-kit.js).
             study_scripts = (
                 f'  <script src="/field-pack/js/study-cards-data.js?v={STUDY_CARDS_DATA_JS_VER}"></script>\n'
                 f'  <script src="/field-pack/js/study-card.js?v={STUDY_CARD_JS_VER}"></script>\n'
@@ -5396,7 +5390,7 @@ def write_card_pages(
   </div>
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
   <div id="treasure-sheet" class="print-sheet treasure-sheet" aria-hidden="true"></div>
-  {study_print_tpl}{study_json_tag}  <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
+  {study_json_tag}  <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
   <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-kit.js?v={PRINT_KIT_JS_VER}"></script>

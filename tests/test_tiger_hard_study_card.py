@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    study_print_html_for,
     correct_choice_text,
     PUSH_FURTHER_ELEPHANT,
     PUSH_FURTHER_FLAMINGO,
@@ -376,7 +377,7 @@ class TigerHardStudyCardTests(unittest.TestCase):
         self.assertNotIn("study-level-picker-bottom", html)
         self.assertNotIn("card-print-note", html)
         self.assertNotIn("One animal sheet — not the hide-and-seek cutouts", html)
-        print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+        print_tpl = study_print_html_for("sumatran-tiger")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)
         self.assertNotIn("Park Ranger", print_tpl)

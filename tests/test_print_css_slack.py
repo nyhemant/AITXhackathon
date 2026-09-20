@@ -116,8 +116,8 @@ class PrintCssSlackTest(unittest.TestCase):
     # ---- Unified print-pack assertions (brand + tokens) ----
 
     def test_all_print_banners_use_kidzookit_brand(self):
-        """Every JS-generated print banner should have <h1>KIDZOOKIT</h1>."""
-        self.assertIn('<h1>KIDZOOKIT</h1>', PRINT_KIT_JS)
+        """Every JS-generated print banner should have <h2>KIDZOOKIT</h2> (not page H1)."""
+        self.assertIn('<h2>KIDZOOKIT</h2>', PRINT_KIT_JS)
         for label in ("buildQaCardHtml", "buildStudyCardHtml",
                        "buildTreasureHtml", "buildCutPageHtml",
                        "buildAnswerPageHtml"):
@@ -127,8 +127,8 @@ class PrintCssSlackTest(unittest.TestCase):
             if next_fn == -1:
                 next_fn = len(PRINT_KIT_JS)
             block = PRINT_KIT_JS[block_start:next_fn]
-            self.assertIn("<h1>KIDZOOKIT</h1>", block,
-                          f"{label} should have KIDZOOKIT in banner h1")
+            self.assertIn("<h2>KIDZOOKIT</h2>", block,
+                          f"{label} should have KIDZOOKIT in banner h2")
 
     def test_shared_print_tokens_declared(self):
         """styles.css should declare FP_PRINT_TOKENS custom properties."""

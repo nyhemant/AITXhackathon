@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    study_print_html_for,
     correct_choice_text,
     PUSH_FURTHER_ELEPHANT,
     PUSH_FURTHER_FLAMINGO,
@@ -324,7 +325,7 @@ class TortoiseHardStudyCardTests(unittest.TestCase):
         self.assertIn("Watch Live", html)
         self.assertIn("card-watch-live", html)
         self.assertIn("#habitat=galapagos-tortoise", html)
-        print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
+        print_tpl = study_print_html_for("galapagos-tortoise")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)
         self.assertNotIn("Park Ranger", print_tpl)

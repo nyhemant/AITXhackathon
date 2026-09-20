@@ -21483,6 +21483,21 @@ def _print_q_card(q: dict) -> str:
     )
 
 
+
+
+def study_print_html_for(card_id: str, level: str = DEFAULT_LEVEL, *, photo: str = "", photo_pos: str = "", emoji: str = "") -> str:
+    """Duplex print markup for tests / generators (built on demand at print time in the browser)."""
+    deck = study_deck_for(card_id, level)
+    if not deck:
+        return ""
+    return study_print_html(
+        deck,
+        name=study_card_title(card_id),
+        emoji=emoji,
+        photo=photo,
+        photo_pos=photo_pos,
+    )
+
 def study_print_html(
     deck: dict,
     *,
@@ -21527,9 +21542,9 @@ def study_print_html(
     level_label = _esc(deck.get("level_label") or level_display_name(deck.get("level")))
     return (
         f'<div class="ps-study-front ps-page">'
-        f'<div class="ps-banner"><h1>KIDZOOKIT</h1>'
+        f'<div class="ps-banner"><h2>KIDZOOKIT</h2>'
         f"<p>{_esc(name)} · {level_label} · Circle one · Flip for answers</p></div>"
-        f'<header class="ps-head"><h2>{_esc(banner_name)}</h2>'
+        f'<header class="ps-head"><h3>{_esc(banner_name)}</h3>'
         f'<p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span></p>'
         f"</header>"
         f"{teach}"
@@ -21539,7 +21554,7 @@ def study_print_html(
         f'<p class="ps-footer">{source} · kidzookit.com · Duplex: this side questions, back answers</p>'
         f"</div>"
         f'<div class="ps-study-back ps-page">'
-        f'<div class="ps-banner"><h1>KIDZOOKIT</h1>'
+        f'<div class="ps-banner"><h2>KIDZOOKIT</h2>'
         f"<p>{_esc(name)} · {level_label} · Answers</p></div>"
         f'<ol class="ps-study-answers">{"".join(answers)}</ol>'
         f"{study_deepen_html(deck, print_mode=True)}"
