@@ -160,7 +160,8 @@ class LionEasyStudyCardTests(unittest.TestCase):
         for prompt in TALK_ABOUT_LION + PUSH_FURTHER_LION:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
-        self.assertIn("Score", html)
+        self.assertIn("questions", html)
+        self.assertIn("data-pending", html)
         for line in TEACH:
             self.assertIn(line, html)
         for stem in STEMS:
@@ -202,8 +203,8 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("nationalzoo.si.edu/webcams", main)
         self.assertIn("Look close — mane, whiskers, a tuft on the tail.", html)
         self.assertNotIn("mighty roar", html)
-        self.assertIn("study-card.js?v=11", html)
-        self.assertIn("study-card.css?v=11", html)
+        self.assertIn("study-card.js?v=12", html)
+        self.assertIn("study-card.css?v=12", html)
         self.assertIn("study-cards-data.js?v=8", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
@@ -325,7 +326,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
     def test_desktop_widens_study_card_page_only(self):
         css = (FP / "css" / "study-card.css").read_text(encoding="utf-8")
         seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
-        self.assertEqual(STUDY_CARD_CSS_VER, "11")
+        self.assertEqual(STUDY_CARD_CSS_VER, "12")
         self.assertIn("max-width: 34rem;", seo)
         self.assertIn("@media screen and (min-width: 960px)", css)
         self.assertIn("max-width: 48rem;", css)

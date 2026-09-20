@@ -375,7 +375,7 @@ class TortoiseZoologistStudyCardTests(unittest.TestCase):
         html = TORTOISE.read_text(encoding="utf-8")
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("study-card.js?v=11", html)
+        self.assertIn("study-card.js?v=12", html)
         self.assertIn("study-cards-data.js?v=8", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)

@@ -293,7 +293,8 @@ class EelEasyStudyCardTests(unittest.TestCase):
         for prompt in TALK_ABOUT_EEL + PUSH_FURTHER_EEL:
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
-        self.assertIn("Score", html)
+        self.assertIn("questions", html)
+        self.assertIn("data-pending", html)
         for line in TEACH:
             self.assertIn(line, html)
         for stem in STEMS:
@@ -309,8 +310,9 @@ class EelEasyStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn('data-study-pick="zoologist"', html)
         self.assertNotIn('class="study-level-badge"', html)
-        self.assertEqual(html.count('role="group"'), 2)
-        self.assertIn("study-level-picker-bottom", html)
+        self.assertEqual(html.count('role="group"'), 1)
+        self.assertIn("study-next-tier", html)
+        self.assertNotIn("study-level-picker-bottom", html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         self.assertNotIn(" · Easy ·", html)
@@ -355,10 +357,11 @@ class EelEasyStudyCardTests(unittest.TestCase):
             main,
         )
         self.assertIn('class="card-try-next no-print"', main)
-        self.assertIn("study-level-picker-bottom", main)
+        self.assertIn("study-next-tier", main)
+        self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=11", html)
-        self.assertIn("study-card.css?v=11", html)
+        self.assertIn("study-card.js?v=12", html)
+        self.assertIn("study-card.css?v=12", html)
         self.assertIn("study-cards-data.js?v=8", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
@@ -388,7 +391,7 @@ class EelEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn('class="study-level-badge"', main)
         self.assertIn("Quick tips (Junior Ranger)", main)
         self.assertIn(">Quiz</h2>", main)
-        self.assertEqual(main.count("data-study-correct"), 2)
+        self.assertEqual(main.count("data-study-correct"), 0)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         self.assertNotIn(" · Easy ·", main)

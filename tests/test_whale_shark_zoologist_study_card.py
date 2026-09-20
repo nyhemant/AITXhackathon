@@ -267,7 +267,8 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
         self.assertLess(html.find("study-foot"), html.find("study-explore"))
-        self.assertIn(">0</span>/5", html)
+        self.assertIn("5 questions", html)
+        self.assertIn("data-pending", html)
         visible = _text(html)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
@@ -320,7 +321,7 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn('data-study-id="whale-shark"', html)
         self.assertIn('data-study-level="easy"', html)
-        self.assertIn("study-card.js?v=11", html)
+        self.assertIn("study-card.js?v=12", html)
         self.assertIn("study-cards-data.js?v=8", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)

@@ -184,9 +184,10 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="easy"', html)
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertEqual(html.count('role="group"'), 2)
-        self.assertIn("study-level-picker-bottom", html)
-        self.assertIn('aria-label="Study level at the end"', html)
+        self.assertEqual(html.count('role="group"'), 1)
+        self.assertIn("study-next-tier", html)
+        self.assertNotIn("study-level-picker-bottom", html)
+        self.assertIn("Got them all? Try", html)
         for stem in HARD_STEMS:
             self.assertNotIn(stem, html)
         for stem in EASY_STEMS:
@@ -290,7 +291,8 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
         self.assertIn("Quick tips (Junior Ranger)", html)
         self.assertIn('class="card-hero-links no-print"', html)
         self.assertIn('class="card-try-next no-print"', html)
-        self.assertIn("study-level-picker-bottom", html)
+        self.assertIn("study-next-tier", html)
+        self.assertNotIn("study-level-picker-bottom", html)
         self.assertNotIn("card-print-note", html)
         self.assertNotIn("One animal sheet — not the hide-and-seek cutouts", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
@@ -313,7 +315,8 @@ class WhaleSharkHardStudyCardTests(unittest.TestCase):
         self.assertIn("Park Ranger", hard_html)
         self.assertIn("Junior Ranger", hard_html)
         self.assertIn("Zoologist", hard_html)
-        self.assertIn(">0</span>/5", hard_html)
+        self.assertIn("5 questions", hard_html)
+        self.assertIn("data-pending", hard_html)
 
 
 if __name__ == "__main__":

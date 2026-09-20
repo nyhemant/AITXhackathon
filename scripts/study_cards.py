@@ -20911,7 +20911,44 @@ def study_explore_html(deck: dict) -> str:
 
 
 def _score_html(n: int) -> str:
-    return f'<p class="study-score">Score <span data-study-correct>0</span>/{n}</p>'
+    """Pending count until the learner answers; JS swaps to Score X/N."""
+    label = "1 question" if n == 1 else f"{n} questions"
+    return (
+        f'<p class="study-score" data-study-score data-total="{n}" data-pending="1">'
+        f"{label}</p>"
+    )
+
+
+def _next_tier_html(card_id: str, current: str) -> str:
+    """Single forward prompt: next shipped tier, or one related card on the hardest."""
+    levels = shipped_levels_for(card_id)
+    cur = str(current or DEFAULT_LEVEL).strip().lower()
+    if cur not in levels and levels:
+        cur = levels[0]
+    try:
+        idx = levels.index(cur)
+    except ValueError:
+        idx = -1
+    if 0 <= idx < len(levels) - 1:
+        nxt = levels[idx + 1]
+        name = level_display_name(nxt)
+        return (
+            f'<p class="study-next-tier no-print">'
+            f'<button type="button" class="study-next-tier-btn" '
+            f'data-study-pick="{_esc(nxt)}">'
+            f"Got them all? Try {_esc(name)} →</button></p>"
+        )
+    ids = study_try_next_ids(card_id, n=1)
+    if not ids:
+        return ""
+    cid = ids[0]
+    name = study_card_title(cid)
+    href = f"/field-pack/cards/{_esc(cid)}/"
+    return (
+        f'<p class="study-next-tier no-print">'
+        f'<a class="study-next-tier-link" href="{href}">'
+        f"Try next: {_esc(name)} →</a></p>"
+    )
 
 
 def study_try_next_ids(
@@ -21037,14 +21074,15 @@ def _level_picker_html(card_id: str, current: str, *, placement: str = "top") ->
 
 
 def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
-    """Screen: optional teach strip + MCQs + reveal/why. Picker when 2+ levels."""
+    """Screen: optional teach strip + MCQs + reveal/why. Full picker at top only."""
     level = deck.get("level") or DEFAULT_LEVEL
     card_id = deck.get("id") or ""
     picker = _level_picker_html(str(card_id), str(level))
     n = len(deck.get("questions") or []) or STUDY_SLOTS
     foot_bits = [_score_html(n)]
-    if "study-level-picker" in picker:
-        foot_bits.append(_level_picker_html(str(card_id), str(level), placement="bottom"))
+    next_tier = _next_tier_html(str(card_id), str(level))
+    if next_tier:
+        foot_bits.append(next_tier)
     foot = f'<div class="study-foot no-print">{"".join(foot_bits)}</div>'
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
     teach = (
@@ -21082,7 +21120,7 @@ def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
     source = _esc(deck.get("source_note") or "")
     source_html = f'<p class="study-source">{source}</p>' if source else ""
     level_note = (
-        '<p class="study-level-note no-print">Tougher quizzes — no unlock needed.</p>'
+        '<p class="study-level-note no-print">Jump to a harder set any time.</p>'
         if "study-level-picker" in picker
         else ""
     )
@@ -21096,7 +21134,6 @@ def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
         f"</div>"
         f"{teach}"
         f'<div class="study-toolbar no-print">'
-        f"{_score_html(n)}"
         f'<button type="button" class="btn btn-secondary" data-study-reveal>Show answers</button>'
         f"</div>"
         f'<div class="mission-grid study-grid">{"".join(cards)}</div>'
