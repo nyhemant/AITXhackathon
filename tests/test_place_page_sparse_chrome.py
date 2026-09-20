@@ -17,6 +17,8 @@ from generate_bdo_seo import (  # noqa: E402
     CUSTOMIZE_SUMMARY_DEFAULT,
     FORK_GOING_TITLE,
     FORK_HOME_TITLE,
+    FORK_HOME_SUB,
+    FORK_HOME_CAPTION,
     HOME_EMPTY,
     HOME_SESSION_H2,
     HOME_SESSION_LEAD,
@@ -91,8 +93,10 @@ class PlacePageSparseChromeTests(unittest.TestCase):
         self.assertEqual(CTA_PRINT, "Print")
         self.assertEqual(CTA_SETUP_HUNT, "Set up your hunt")
         self.assertEqual(FORK_GOING_TITLE, "Going soon")
-        self.assertEqual(FORK_HOME_TITLE, "Not going yet")
-        self.assertEqual(HOME_SESSION_H2, "Can't go this week? Watch and talk at home")
+        self.assertEqual(FORK_HOME_TITLE, "Not yet")
+        self.assertEqual(FORK_HOME_SUB, "Virtual zoo at home")
+        self.assertEqual(FORK_HOME_CAPTION, "Watch live · habitats and cams")
+        self.assertEqual(HOME_SESSION_H2, "Talk and cards for this place")
         self.assertEqual(START_HERE_H2, "Start here")
         self.assertEqual(START_HERE_LEAD, "")
         self.assertEqual(HUNT_H2, "Hunt")
@@ -145,7 +149,10 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 self.assertIn('id="mission-open-btn"', hero)
                 self.assertIn('data-how="going-soon"', hero)
                 self.assertIn('data-how="not-going-yet"', hero)
-                self.assertIn('href="#at-home"', hero)
+                self.assertIn("/field-pack/virtual-field-trip/?tab=", hero)
+                self.assertIn(f"from={slug}", hero)
+                self.assertIn(FORK_HOME_CAPTION, hero)
+                self.assertNotIn('href="#at-home"', hero)
                 self.assertIn("seo-fork-print-spec", hero)
                 self.assertIn("US Letter or A4", hero)
                 # Print-spec only on Going soon card, not under explore card
@@ -187,7 +194,8 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 self.assertNotIn("<details open", chunk)
                 self.assertIn('class="seo-home-session" id="at-home"', visible)
                 self.assertIn(HOME_SESSION_LEAD, visible)
-                self.assertIn(f">{PLACE_VFT_CTA}</a>", visible)
+                home_chunk = visible[home_i : home_i + 2500]
+                self.assertNotIn("seo-home-vft", home_chunk)
 
     def test_start_here_and_hunt_labels(self):
         for slug, html in self.pages.items():

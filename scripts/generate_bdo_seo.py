@@ -136,8 +136,8 @@ FORK_GOING_TITLE = "Going soon"
 FORK_GOING_SUB = "Build and print your hunt"
 FORK_GOING_CAPTION = "A one-page checklist to carry"
 FORK_HOME_TITLE = "Not yet"
-FORK_HOME_SUB = "Explore at home"
-FORK_HOME_CAPTION = "Live cams, photos, and things to talk about."
+FORK_HOME_SUB = "Virtual zoo at home"
+FORK_HOME_CAPTION = "Watch live · habitats and cams"
 OFFER_SENTENCE = (
     "Pick a few animals, print a one-page checklist to carry, "
     "and have something to talk about on the way. Free, no signup."
@@ -162,7 +162,7 @@ EXPLORER_H1 = "Find a place"
 EXPLORER_TITLE = "Find a place · KidZooKit"
 EXPLORER_DESC = "Find a zoo, aquarium, museum, or park."
 
-HOME_SESSION_H2 = "Can't go this week? Watch and talk at home"
+HOME_SESSION_H2 = "Talk and cards for this place"
 HOME_SESSION_LEAD = "Cards, photos, and a cam when we have one."
 HOME_SESSION_VFT = "Open Virtual Field Trip"
 PLACE_VFT_CTA = "Virtual Field Trip"
@@ -1392,6 +1392,39 @@ def card_next_html(cid: str) -> str:
     return "".join(parts)
 
 
+
+def vft_tab_for_kind(venue_kind: str = "") -> str:
+    """Per-place VFT tab (zoo/aquarium/parks/science) — shared by fork + SEO links."""
+    kind = (venue_kind or "").lower()
+    if "aquarium" in kind:
+        return "aquarium"
+    if "museum" in kind or kind in {"sci", "nh", "cm"}:
+        return "science"
+    if "park" in kind:
+        return "parks"
+    return "zoo"
+
+
+def fork_home_sub_for_kind(venue_kind: str = "") -> str:
+    """Type-aware Not yet subtitle (virtual zoo / aquarium / parks / museum)."""
+    tab = vft_tab_for_kind(venue_kind)
+    return {
+        "aquarium": "Virtual aquarium at home",
+        "science": "Virtual museum at home",
+        "parks": "Virtual parks at home",
+        "zoo": "Virtual zoo at home",
+    }.get(tab, FORK_HOME_SUB)
+
+
+def not_yet_vft_href(place_id: str = "", venue_kind: str = "") -> str:
+    """Not yet fork target: VFT with tab + place context (not #at-home)."""
+    tab = vft_tab_for_kind(venue_kind)
+    pid = str(place_id or "").strip()
+    if pid:
+        return f"/field-pack/virtual-field-trip/?tab={tab}&from={pid}"
+    return f"/field-pack/virtual-field-trip/?tab={tab}"
+
+
 def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str = "") -> str:
     """First-class at-home block: catalog cards + talk Q&A + existing VFT cams/films."""
     cards: list[str] = []
@@ -1429,16 +1462,7 @@ def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str 
         </div>
       </article>"""
         )
-    kind = (venue_kind or "").lower()
-    if "aquarium" in kind:
-        vft_tab = "aquarium"
-    elif "museum" in kind or kind in {"sci", "nh", "cm"}:
-        vft_tab = "science"
-    elif "park" in kind:
-        vft_tab = "parks"
-    else:
-        vft_tab = "zoo"
-    vft_href = f"/field-pack/virtual-field-trip/?tab={vft_tab}"
+    # Primary VFT CTA lives on the Not yet fork; keep #at-home for SEO/cards only.
     grid = f'<div class="seo-home-grid">{"".join(cards)}</div>' if cards else ""
     empty = (
         ""
@@ -1453,9 +1477,9 @@ def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str 
     n_home = len(cards)
     plural = "s" if n_home != 1 else ""
     count_label = (
-        f"{n_home} animal{plural} to explore at home"
+        f"{n_home} animal{plural} with talk cards"
         if n_home
-        else "Explore at home"
+        else "Talk cards for this place"
     )
     return f"""
     <details class="seo-home-session" id="at-home" aria-labelledby="home-session-heading">
@@ -1465,7 +1489,6 @@ def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str 
       </summary>
       <div class="seo-home-session-body">
       {lead_html}
-      <p class="seo-home-vft"><a class="btn btn-secondary" href="{esc(vft_href)}">{esc(PLACE_VFT_CTA)}</a></p>
       {grid}
       {empty}
       </div>
@@ -2122,9 +2145,19 @@ def wonder_grid_html(mission: dict) -> str:
     </section>"""
 
 
-def page_mission_chrome_html(home_href: str = "#at-home") -> str:
-    """Option A: two side-by-side choice cards (Going soon / Not going yet)."""
-    href = home_href or "#at-home"
+def page_mission_chrome_html(
+    home_href: str = "",
+    *,
+    home_sub: str | None = None,
+    venue_kind: str = "",
+    place_id: str = "",
+) -> str:
+    """Option A: two side-by-side choice cards (Going soon / Not yet → VFT)."""
+    href = home_href or not_yet_vft_href(place_id, venue_kind)
+    if home_sub is None:
+        sub = fork_home_sub_for_kind(venue_kind) if (venue_kind or place_id) else FORK_HOME_SUB
+    else:
+        sub = home_sub
     return f"""
         <div class="seo-fork no-print" aria-label="Going soon or not yet">
           <button type="button" class="seo-fork-card seo-fork-going" id="mission-open-btn" data-how="going-soon" aria-haspopup="dialog" aria-controls="mission-drawer">
@@ -2135,7 +2168,7 @@ def page_mission_chrome_html(home_href: str = "#at-home") -> str:
           </button>
           <a class="seo-fork-card seo-fork-home" href="{esc(href)}" data-how="not-going-yet">
             <strong class="seo-fork-title">{esc(FORK_HOME_TITLE)}</strong>
-            <span class="seo-fork-sub">{esc(FORK_HOME_SUB)}</span>
+            <span class="seo-fork-sub">{esc(sub)}</span>
             <span class="seo-fork-cap">{esc(FORK_HOME_CAPTION)}</span>
           </a>
         </div>"""
@@ -2520,7 +2553,14 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     drawer = mission_drawer_html(mission_venue, mission)
     map_card = map_card_html(mission_venue)
     route90 = route_90m_html(mission_venue, mission, catalog_v=v)
-    chrome = page_mission_chrome_html(home_href="#at-home")
+    _vkind = str(v.get("type") or "")
+    _vid = str(v.get("id") or "")
+    chrome = page_mission_chrome_html(
+        home_href=not_yet_vft_href(_vid, _vkind),
+        home_sub=fork_home_sub_for_kind(_vkind),
+        venue_kind=_vkind,
+        place_id=_vid,
+    )
     customize = customize_after_stops_html()
     sticky = sticky_hunt_bar_html()
     # Catalog ids already shown in “start here” — don’t repeat in shortlist grid
@@ -2790,7 +2830,7 @@ def render_venue_page(v: dict) -> str:
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
         {f'<p class="lead">{esc(quiet_hero_lead(v))}</p>' if quiet_hero_lead(v) else ""}
-        {page_mission_chrome_html()}
+        {page_mission_chrome_html(venue_kind=str(v.get('type') or ''), place_id=str(v.get('id') or ''))}
       </header>
 
       {home_sec}
