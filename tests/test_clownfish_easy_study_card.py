@@ -205,7 +205,7 @@ class ClownfishEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_CLOWNFISH)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Clownfish.",
+            "Facts from Wikipedia, Clownfish. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -330,7 +330,7 @@ class ClownfishEasyStudyCardTests(unittest.TestCase):
             "No — many kinds of anemonefish share the clownfish nickname",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Clownfish.", html)
+        self.assertIn("Facts from Wikipedia, Clownfish. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

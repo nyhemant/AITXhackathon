@@ -198,7 +198,7 @@ class PuffinEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_ATLANTIC_PUFFIN)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Atlantic puffin.",
+            "Facts from Wikipedia, Atlantic puffin. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -316,7 +316,7 @@ class PuffinEasyStudyCardTests(unittest.TestCase):
             "No — puffins can fly in the air; penguins are different birds that don’t",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Atlantic puffin.", html)
+        self.assertIn("Facts from Wikipedia, Atlantic puffin. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

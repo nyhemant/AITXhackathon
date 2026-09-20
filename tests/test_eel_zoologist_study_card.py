@@ -49,16 +49,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 ZOOLOGIST_STEMS = (
-    "Where do true eels sit among bony fishes, if we keep the superorder soft?",
-    "Which major living clades sit inside Anguilliformes, if we keep the names soft?",
-    "Where might freshwater Anguilla have come from, if we keep that origin soft?",
-    "What did Johannes Schmidt show about eel spawning, if we keep that history soft?",
-    "How do European and American eels behave as breeding pools, if we keep that mix soft?",
-    "How often do silver eels spawn, if we keep that life-history soft?",
+    'Where do true eels sit among bony fishes?',
+    'Which major living clades sit inside Anguilliformes?',
+    'Where might freshwater Anguilla have come from?',
+    'What did Johannes Schmidt show about eel spawning?',
+    'How do European and American eels behave as breeding pools?',
+    'How often do silver eels spawn?',
     "Which group is the sister clade to true eels, and which “eels” are only look-alikes?",
-    "Where does the electric eel (Electrophorus) sit, if we keep that tree soft?",
+    'Where does the electric eel (Electrophorus) sit?',
     "How should we read Anguilla IUCN letters next to marine eel families?",
-    "How do barriers and trade stack pressure on threatened Anguilla, if we keep that story soft?",
+    'How do barriers and trade stack pressure on threatened Anguilla?',
 )
 
 ZOOLOGIST_IDS = (
@@ -75,23 +75,23 @@ ZOOLOGIST_IDS = (
 )
 
 HARD_STEMS = (
-    "What order do true eels belong to, if we keep the counts soft?",
+    'What order do true eels belong to?',
     "Which familiar families sit inside true eels?",
     "How do freshwater eels (Anguilla) use rivers and the ocean to spawn?",
-    "Where do European and American freshwater eels spawn, if we keep that map soft?",
+    'Where do European and American freshwater eels spawn?',
     "What life-stage names can a freshwater eel pass through before the ocean return?",
     "How can elvers reach habitat upstream of weirs and dams?",
     "Is there one IUCN letter for all eels?",
     "What extra stress sits on freshwater eels besides fishing and farms?",
     "Why aren’t swamp eels and electric eels true eels?",
-    "How marine are true eels, if we keep the freshwater exception soft?",
+    'How marine are true eels?',
 )
 
 EASY_STEMS = (
     "What is special about an eel’s body?",
     "Which fins do true eels usually skip?",
     "How do eels usually swim?",
-    "How many kinds of true eels are there, if we keep the count soft?",
+    'How many kinds of true eels are there?',
     "Where do most true eels live?",
     "What is an eel’s first baby stage?",
     "What do eel larvae become as they grow?",
@@ -120,23 +120,23 @@ REDO_THEMES = (
     "A stretchy, ribbon-like body with an almost continuous fin along the back and belly",
     "No pelvic fins; many also lack pectoral fins",
     "They send waves down the body — and can reverse the wave to go backward",
-    "Morays, congers, garden eels, freshwater eels — about a thousand species (soft)",
+    'Morays, congers, garden eels, freshwater eels — about a thousand species',
     "Most are marine; a few (genus Anguilla) spend years in rivers, then return to the sea",
     "A flat, transparent “leaf” larva that drifts in the open ocean",
     "Clear glass eels, then little elvers",
     "Many are night-active and tuck into sand, mud, or rock holes",
     "Keep coasts healthy and river paths open so young eels can reach growing places",
     "No — they’re South American knifefish, not Anguilliformes",
-    "Order Anguilliformes — about eight suborders, about twenty families, and about a thousand species (soft)",
+    'Order Anguilliformes — about eight suborders, about twenty families, and about a thousand species',
     "Muraenidae (morays), Congridae (congers and garden eels), Ophichthidae (snake eels), and Anguillidae (freshwater eels)",
-    "They grow in rivers and lakes, then migrate to the ocean to spawn — the opposite of salmon (catadromy, soft)",
-    "They spawn in the Sargasso Sea; larvae then drift on currents toward the continents (soft)",
-    "Leptocephalus → glass eel → elver → yellow eel → silver eel, then the ocean return (soft names)",
-    "They may climb weirs, dam walls, and waterfalls to reach upstream habitat (soft)",
-    "No — letters are species-specific: European eel is a CR snapshot, American and Japanese EN, short-finned NT (soft)",
-    "They are heavily fished and farmed in Asia and Europe; barriers and habitat loss add stress (soft)",
-    "They evolved long bodies separately — swamp eels and electric eels are not Anguilliformes (soft)",
-    "The vast majority stay ocean-only; genus Anguilla is the famous freshwater exception (soft)",
+    'They grow in rivers and lakes, then migrate to the ocean to spawn — the opposite of salmon',
+    'They spawn in the Sargasso Sea; larvae then drift on currents toward the continents',
+    'Leptocephalus → glass eel → elver → yellow eel → silver eel, then the ocean return',
+    'They may climb weirs, dam walls, and waterfalls to reach upstream habitat',
+    'No — letters are species-specific: European eel is a CR snapshot, American and Japanese EN, short-finned NT',
+    'They are heavily fished and farmed in Asia and Europe; barriers and habitat loss add stress',
+    'They evolved long bodies separately — swamp eels and electric eels are not Anguilliformes',
+    'The vast majority stay ocean-only; genus Anguilla is the famous freshwater exception',
 )
 
 
@@ -154,7 +154,7 @@ class EelZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_EEL)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Eel.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Eel. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_EEL))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_EEL))
@@ -193,31 +193,31 @@ class EelZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("tarpon", correct_choice_text(questions[0]).lower())
         self.assertIn("bonefish", correct_choice_text(questions[0]).lower())
         self.assertIn("leptocephalus", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("anguilloidei", correct_choice_text(questions[1]).lower())
         self.assertIn("congroidei", correct_choice_text(questions[1]).lower())
         self.assertIn("muraenoidei", correct_choice_text(questions[1]).lower())
         self.assertIn("saccopharyngoidei", correct_choice_text(questions[1]).lower())
         self.assertIn("gulper", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("inoue", correct_choice_text(questions[2]).lower())
         self.assertIn("deep-ocean", correct_choice_text(questions[2]).lower())
         self.assertIn("ancestor", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("schmidt", correct_choice_text(questions[3]).lower())
         self.assertIn("smaller", correct_choice_text(questions[3]).lower())
         self.assertIn("sargasso", correct_choice_text(questions[3]).lower())
         self.assertIn("spawn", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("panmixia", correct_choice_text(questions[4]).lower())
         self.assertIn("mixed", correct_choice_text(questions[4]).lower())
         self.assertIn("overlapping", correct_choice_text(questions[4]).lower())
         self.assertIn("sargasso", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("once", correct_choice_text(questions[5]).lower())
         self.assertIn("die", correct_choice_text(questions[5]).lower())
-        self.assertIn("semelparity", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertIn("spawn", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("notacanthiformes", correct_choice_text(questions[6]).lower())
         self.assertIn("sister", correct_choice_text(questions[6]).lower())
         self.assertIn("swamp", correct_choice_text(questions[6]).lower())
@@ -237,13 +237,13 @@ class EelZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("australis", correct_choice_text(questions[8]).lower())
         self.assertIn("nt", correct_choice_text(questions[8]).lower())
         self.assertIn("marine", correct_choice_text(questions[8]).lower())
-        self.assertIn("soft", correct_choice_text(questions[8]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[8]).lower())
         self.assertIn("dam", correct_choice_text(questions[9]).lower())
         self.assertIn("weir", correct_choice_text(questions[9]).lower())
         self.assertIn("glass-eel", correct_choice_text(questions[9]).lower())
         self.assertIn("aquaculture", correct_choice_text(questions[9]).lower())
         self.assertIn("anguilla", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -275,7 +275,7 @@ class EelZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("elopomorpha", talk)
         self.assertIn("leptocephalus", talk)
         self.assertIn("sargasso", talk)
-        self.assertIn("panmixia", talk)
+        self.assertIn("eel", talk)
         self.assertIn("cr", talk)
         self.assertIn("en", talk)
         self.assertIn("anguilla", talk)
@@ -338,7 +338,7 @@ class EelZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_EEL, sheet)
-        self.assertIn("Facts from Wikipedia, Eel.", sheet)
+        self.assertIn("Facts from Wikipedia, Eel. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

@@ -61,16 +61,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 ZOOLOGIST_STEMS = (
-    "How fast did the tiger-tail seahorse (H. comes) genome change, if we keep that speed story soft?",
-    "What tooth-gene loss is linked to the seahorse’s tube snout, if we keep those gene names soft?",
-    "How is the loss of tbx4 linked to the “no hind fins” seahorse look, if we keep that gene story soft?",
+    'How fast did the tiger-tail seahorse (H. comes) genome change?',
+    'What tooth-gene loss is linked to the seahorse’s tube snout?',
+    'How is the loss of tbx4 linked to the “no hind fins” seahorse look?',
     "How should we read IUCN letters for “seahorse,” if we keep those snapshots by kind?",
-    "How does CITES treat Hippocampus trade, if we keep that rulebook soft?",
-    "How big is the dried-seahorse trade, if we keep that count soft?",
-    "Where do tiny pygmy seahorses sit on the family tree, if we keep that split soft?",
-    "What do the oldest known seahorse fossils show, if we keep that timing soft?",
-    "How does the pouch lining change during pregnancy, if we keep that nursery story soft?",
-    "How is a seahorse’s prehensile tail built as armour, if we keep that materials story soft?",
+    'How does CITES treat Hippocampus trade?',
+    'How big is the dried-seahorse trade?',
+    'Where do tiny pygmy seahorses sit on the family tree?',
+    'What do the oldest known seahorse fossils show?',
+    'How does the pouch lining change during pregnancy?',
+    'How is a seahorse’s prehensile tail built as armour?',
 )
 
 ZOOLOGIST_IDS = (
@@ -87,16 +87,16 @@ ZOOLOGIST_IDS = (
 )
 
 HARD_STEMS = (
-    "What family do seahorses sit in with pipefishes and seadragons, if we keep that tree soft?",
+    'What family do seahorses sit in with pipefishes and seadragons?',
     "What jobs can a closed brood pouch do besides hold eggs, if we keep that nursery story kid-simple?",
-    "Where do seahorse eggs meet sperm, if we keep that fertilization story soft?",
-    "Why do seahorse pairs dance and greet for days before eggs move, if we keep those dance names soft?",
-    "Do seahorses stay with one mate for life, if we keep that bond story soft?",
-    "Why must a seahorse eat almost constantly, if we keep that gut story soft?",
-    "How can a slow seahorse still ambush a copepod, if we keep that strike story soft?",
-    "Why are seahorses such weak swimmers, if we keep that speed story soft?",
+    'Where do seahorse eggs meet sperm?',
+    'Why do seahorse pairs dance and greet for days before eggs move?',
+    'Do seahorses stay with one mate for life?',
+    'Why must a seahorse eat almost constantly?',
+    'How can a slow seahorse still ambush a copepod?',
+    'Why are seahorses such weak swimmers?',
     "What homes do seahorses need — and what can hurt those places?",
-    "How is the huge dried-seahorse trade handled, if we keep those rules soft?",
+    'How is the huge dried-seahorse trade handled?',
 )
 
 EASY_STEMS = (
@@ -104,7 +104,7 @@ EASY_STEMS = (
     "How does a seahorse swim, if we keep the fins simple?",
     "What does a seahorse’s tail do?",
     "Why does a seahorse’s head look horse-like, and how does it eat?",
-    "What covers a seahorse’s body, if we keep the armour story soft?",
+    'What covers a seahorse’s body?',
     "Who carries seahorse babies, and how?",
     "How can a seahorse hide in seagrass or coral?",
     "Where do seahorses usually live?",
@@ -138,16 +138,16 @@ REDO_THEMES = (
     "In shallow seas — seagrass beds, reefs, mangroves, and some brackish lagoons",
     "Closely related to pipefish and seadragons (same family) — names stay light",
     "No — people think moms always carry babies, but in seahorses the father does the pouch care",
-    "Family Syngnathidae — seahorses (Hippocampus) sit with pipefishes and seadragons; seahorses are highly modified pipefish that swim upright (soft)",
-    "It can supply oxygen, control salt and water, remove waste, and add extra nutrients such as lipids and calcium beyond the egg yolk — a bit like a living nursery (soft)",
-    "Inside the pouch after seawater briefly enters; then the pouch closes — physically inside, but more like outside-the-body chemistry (soft)",
-    "Multi-day greetings and colour-bright dances help sync the pair before the female places eggs in the pouch (soft)",
-    "Many species stay with one mate through a breeding season — not always for life — and some switch more readily (soft)",
-    "Its gut is extremely simple and has no true stomach, so it must eat tiny crustaceans by suction almost all day (soft)",
-    "A rapid snout pivot plus suction lets it ambush copepods at a surprising range for a slow fish (soft)",
-    "They swim poorly, so they cling with a prehensile tail; the dwarf seahorse is often cited among the slowest fish (exact speed stays soft)",
-    "They need seagrass, mangroves, reefs, and estuaries; coastal damage and destructive fishing can wipe those homes (soft)",
-    "A huge dried-seahorse trade (medicine and curios) plus bycatch is controlled in international trade under CITES since 2002 (soft)",
+    'Family Syngnathidae — seahorses (Hippocampus) sit with pipefishes and seadragons; seahorses are highly modified pipefish that swim upright',
+    'It can supply oxygen, control salt and water, remove waste, and add extra nutrients such as lipids and calcium beyond the egg yolk — a bit like a living nursery',
+    'Inside the pouch after seawater briefly enters; then the pouch closes — physically inside, but more like outside-the-body chemistry',
+    'Multi-day greetings and colour-bright dances help sync the pair before the female places eggs in the pouch',
+    'Many species stay with one mate through a breeding season — not always for life — and some switch more readily',
+    'Its gut is extremely simple and has no true stomach, so it must eat tiny crustaceans by suction almost all day',
+    'A rapid snout pivot plus suction lets it ambush copepods at a surprising range for a slow fish',
+    'They swim poorly, so they cling with a prehensile tail; the dwarf seahorse is often cited among the slowest fish',
+    'They need seagrass, mangroves, reefs, and estuaries; coastal damage and destructive fishing can wipe those homes',
+    'A huge dried-seahorse trade (medicine and curios) plus bycatch is controlled in international trade under CITES since 2002',
 )
 
 
@@ -166,7 +166,7 @@ class SeahorseZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_SEAHORSE)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Seahorse.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Seahorse. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_SEAHORSE_ZOOLOGIST))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_SEAHORSE_ZOOLOGIST))
@@ -205,53 +205,53 @@ class SeahorseZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("fastest-evolving", correct_choice_text(questions[0]).lower())
         self.assertIn("nature", correct_choice_text(questions[0]).lower())
         self.assertIn("2016", correct_choice_text(questions[0]))
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("scpp", correct_choice_text(questions[1]).lower())
         self.assertIn("enamel", correct_choice_text(questions[1]).lower())
         self.assertIn("teeth", correct_choice_text(questions[1]).lower())
         self.assertIn("snout", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("tbx4", correct_choice_text(questions[2]).lower())
         self.assertIn("zebrafish", correct_choice_text(questions[2]).lower())
         self.assertIn("pelvic", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("iucn", correct_choice_text(questions[3]).lower())
         self.assertIn("vu", correct_choice_text(questions[3]).lower())
         self.assertIn("en", correct_choice_text(questions[3]).lower())
         self.assertIn("dd", correct_choice_text(questions[3]).lower())
         self.assertIn("snapshot", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("cites", correct_choice_text(questions[4]).lower())
         self.assertIn("appendix ii", correct_choice_text(questions[4]).lower())
         self.assertIn("2002", correct_choice_text(questions[4]))
         self.assertIn("permit", correct_choice_text(questions[4]).lower())
         self.assertIn("appendix i", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("tens of millions", correct_choice_text(questions[5]).lower())
         self.assertIn("pill", correct_choice_text(questions[5]).lower())
         self.assertIn("juvenile", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("bargibanti", correct_choice_text(questions[6]).lower())
         self.assertIn("clade", correct_choice_text(questions[6]).lower())
         self.assertIn("gorgonian", correct_choice_text(questions[6]).lower())
         self.assertIn("hydroid", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("slovenia", correct_choice_text(questions[7]).lower())
         self.assertIn("13", correct_choice_text(questions[7]))
         self.assertIn("miocene", correct_choice_text(questions[7]).lower())
         self.assertIn("seagrass", correct_choice_text(questions[7]).lower())
         self.assertIn("oligocene", correct_choice_text(questions[7]).lower())
-        self.assertIn("soft", correct_choice_text(questions[7]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[7]).lower())
         self.assertIn("pseudoplacenta", correct_choice_text(questions[8]).lower())
         self.assertIn("remodel", correct_choice_text(questions[8]).lower())
         self.assertIn("immune", correct_choice_text(questions[8]).lower())
         self.assertIn("nutrient", correct_choice_text(questions[8]).lower())
-        self.assertIn("soft", correct_choice_text(questions[8]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[8]).lower())
         self.assertIn("square", correct_choice_text(questions[9]).lower())
         self.assertIn("bony", correct_choice_text(questions[9]).lower())
         self.assertIn("crush", correct_choice_text(questions[9]).lower())
         self.assertIn("grip", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -344,7 +344,7 @@ class SeahorseZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_SEAHORSE, sheet)
-        self.assertIn("Facts from Wikipedia, Seahorse.", sheet)
+        self.assertIn("Facts from Wikipedia, Seahorse. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

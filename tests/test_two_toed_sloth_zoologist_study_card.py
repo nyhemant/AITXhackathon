@@ -160,7 +160,7 @@ class TwoToedSlothZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_TWO_TOED_SLOTH)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Two-toed sloth.",
+            "Facts from Wikipedia, Two-toed sloth. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_TWO_TOED_SLOTH))
@@ -209,10 +209,10 @@ class TwoToedSlothZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("mylodontid", correct_choice_text(questions[3]).lower())
         self.assertIn("Megalonychidae", correct_choice_text(questions[3]))
         self.assertIn("ground sloths", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("6–7", correct_choice_text(questions[5]))
         self.assertIn("Andes", correct_choice_text(questions[5]))
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("fewer than seven", correct_choice_text(questions[6]).lower())
         self.assertIn("three-toed", correct_choice_text(questions[6]).lower())
         self.assertIn("front claws", correct_choice_text(questions[7]).lower())
@@ -221,7 +221,7 @@ class TwoToedSlothZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("three-toed", correct_choice_text(questions[8]).lower())
         self.assertIn("fruit", correct_choice_text(questions[9]).lower())
         self.assertIn("shoots", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -311,7 +311,7 @@ class TwoToedSlothZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_TWO_TOED_SLOTH, sheet)
-        self.assertIn("Facts from Wikipedia, Two-toed sloth.", sheet)
+        self.assertIn("Facts from Wikipedia, Two-toed sloth. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

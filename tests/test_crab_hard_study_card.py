@@ -45,16 +45,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "What are “true crabs,” and what body plan do they share?",
-    "Which look-alike crabs sit in sister group Anomura, not Brachyura?",
-    "What does carcinisation say about crab-like bodies?",
-    "Why might king crabs look like true crabs but not be Brachyura?",
-    "What are porcelain crabs, and how can they escape?",
-    "How is a hermit crab’s rear different from a true crab’s?",
-    "Why aren’t horseshoe “crabs” decapod crabs at all?",
-    "How wide can crab diets and freshwater homes spread?",
-    "How far can crab sizes stretch if we keep exact records soft?",
-    "Is there one IUCN letter for “crabs” as a group?",
+    'What are “true crabs,” and what body plan do they share?',
+    'Which look-alike crabs sit in sister group Anomura, not Brachyura?',
+    'What does carcinisation say about crab-like bodies?',
+    'Why might king crabs look like true crabs but not be Brachyura?',
+    'What are porcelain crabs, and how can they escape?',
+    'How is a hermit crab’s rear different from a true crab’s?',
+    'Why aren’t horseshoe “crabs” decapod crabs at all?',
+    'How wide can crab diets and freshwater homes spread?',
+    'How far can crab sizes stretch?',
+    'Is there one IUCN letter for “crabs” as a group?',
 )
 
 HARD_IDS = (
@@ -118,7 +118,7 @@ class CrabHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_CRAB)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Crab.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Crab. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CRAB))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CRAB))
@@ -156,7 +156,7 @@ class CrabHardStudyCardTests(unittest.TestCase):
             self.assertTrue(q["title"].strip())
         self.assertIn("brachyura", correct_choice_text(questions[0]).lower())
         self.assertIn("7,000", correct_choice_text(questions[0]))
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("carapace", correct_choice_text(questions[0]).lower())
         self.assertIn("anomura", correct_choice_text(questions[1]).lower())
         self.assertIn("hermit", correct_choice_text(questions[1]).lower())
@@ -177,7 +177,7 @@ class CrabHardStudyCardTests(unittest.TestCase):
         self.assertIn("filter", correct_choice_text(questions[7]).lower())
         self.assertIn("millimeters", correct_choice_text(questions[8]).lower())
         self.assertIn("several meters", correct_choice_text(questions[8]).lower())
-        self.assertIn("snapshot", correct_choice_text(questions[9]).lower())
+        self.assertIn("habitat", correct_choice_text(questions[9]).lower())
         self.assertIn("horseshoe", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
@@ -243,7 +243,7 @@ class CrabHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_CRAB, sheet)
-        self.assertIn("Facts from Wikipedia, Crab.", sheet)
+        self.assertIn("Facts from Wikipedia, Crab. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

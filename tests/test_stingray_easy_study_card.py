@@ -60,7 +60,7 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "Flattened ocean fish with a skeleton of cartilage (related to sharks — soft)",
+    'Flattened ocean fish with a skeleton of cartilage (related to sharks)',
     "Eyes on top; mouth and gills on the underside",
     "Many hide under sand on the seafloor",
     "The tail can carry a venomous stinger used for defense",
@@ -76,7 +76,7 @@ STEMS = (
     "What do many stingrays eat on the seafloor?",
     "How can a buried stingray keep breathing without gulping sandy water through its mouth?",
     "How do stingray babies usually arrive?",
-    "About how many kinds of stingray are there, if we keep the count soft?",
+    'About how many kinds of stingray are there?',
     "Do stingrays usually chase and hunt people?",
 )
 
@@ -204,7 +204,7 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_STINGRAY)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Stingray.",
+            "Facts from Wikipedia, Stingray. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -322,7 +322,7 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
             "No — they are not usually aggressive; stings happen mainly when a ray is stepped on or threatened",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Stingray.", html)
+        self.assertIn("Facts from Wikipedia, Stingray. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

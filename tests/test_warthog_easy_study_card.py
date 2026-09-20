@@ -234,7 +234,7 @@ class WarthogEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level_label"], "Junior Ranger")
         self.assertEqual(level_display_name("easy"), "Junior Ranger")
         self.assertEqual(deck["source"], WIKI_WARTHOG)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Common warthog.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Common warthog. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
         self.assertEqual(deck["teach"], list(TEACH))
@@ -398,7 +398,7 @@ class WarthogEasyStudyCardTests(unittest.TestCase):
             "No — they dig with the snout and feet; tusks are for fighting and defense",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Common warthog.", html)
+        self.assertIn("Facts from Wikipedia, Common warthog. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

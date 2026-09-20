@@ -57,16 +57,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "Where do true sea turtles sit in the family tree, if we keep that map soft?",
-    "How can nest sand temperature steer hatchling sex, if we keep those thresholds soft?",
-    "Where do many female sea turtles return to nest, if we keep that homing story soft?",
-    "How can hatchlings and adults stay on long ocean routes, if we keep that sense soft?",
-    "How do sea turtles dump extra salt, if we keep those glands soft?",
-    "What makes a leatherback different from hard-shell sea turtles, if we keep that size soft?",
-    "How do adult diets split among sea turtle kinds, if we keep those menus soft?",
+    'Where do true sea turtles sit in the family tree?',
+    'How can nest sand temperature steer hatchling sex?',
+    'Where do many female sea turtles return to nest?',
+    'How can hatchlings and adults stay on long ocean routes?',
+    'How do sea turtles dump extra salt?',
+    'What makes a leatherback different from hard-shell sea turtles?',
+    'How do adult diets split among sea turtle kinds?',
     "How do some ridleys nest differently from most other sea turtles?",
-    "Where do many young sea turtles spend their early years, if we keep that time soft?",
-    "What human pressures can send hatchlings the wrong way or put wild turtles at risk, if we keep that care story soft?",
+    'Where do many young sea turtles spend their early years?',
+    'What human pressures can send hatchlings the wrong way or put wild turtles at risk?',
 )
 
 HARD_IDS = (
@@ -83,7 +83,7 @@ HARD_IDS = (
 )
 
 EASY_STEMS = (
-    "How many kinds of sea turtle live in the world’s oceans, if we keep the list soft?",
+    'How many kinds of sea turtle live in the world’s oceans?',
     "What do a sea turtle’s flippers do?",
     "How is a sea turtle’s shell built for the ocean?",
     "How does a mom sea turtle make a nest?",
@@ -91,7 +91,7 @@ EASY_STEMS = (
     "What do baby sea turtles do after they hatch?",
     "How do sea turtles breathe, even though they live in the ocean?",
     "Where do sea turtles live?",
-    "How far can many sea turtles travel, if we keep the miles soft?",
+    'How far can many sea turtles travel?',
     "Can a sea turtle pull its head and flippers into its shell like many pet turtles?",
 )
 
@@ -142,7 +142,7 @@ class SeaTurtleHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_SEA_TURTLE)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Sea turtle.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Sea turtle. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_SEA_TURTLE))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_SEA_TURTLE))
@@ -182,7 +182,7 @@ class SeaTurtleHardStudyCardTests(unittest.TestCase):
         self.assertIn("cheloniidae", correct_choice_text(questions[0]).lower())
         self.assertIn("dermochelyidae", correct_choice_text(questions[0]).lower())
         self.assertIn("leatherback", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("warmer", correct_choice_text(questions[1]).lower())
         self.assertIn("female", correct_choice_text(questions[1]).lower())
         self.assertIn("cooler", correct_choice_text(questions[1]).lower())
@@ -277,7 +277,7 @@ class SeaTurtleHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_SEA_TURTLE, sheet)
-        self.assertIn("Facts from Wikipedia, Sea turtle.", sheet)
+        self.assertIn("Facts from Wikipedia, Sea turtle. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

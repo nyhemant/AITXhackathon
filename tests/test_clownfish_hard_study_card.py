@@ -49,16 +49,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "Clownfish are also called anemonefish. Which genus and family do they sit in?",
-    "About how many living anemonefish species do scientists often name?",
-    "How can the common “Nemo-like” pair of clownfish look different?",
-    "How can a clownfish’s sex change if the breeding female is gone?",
-    "How does size rank the fish that share one anemone?",
-    "How does a clownfish settle into an anemone’s stinging tentacles?",
-    "What do clownfish and sea anemones often give each other?",
-    "Do all clownfish use the same kind of anemone host?",
-    "Why does captive breeding matter for popular pet clownfish?",
-    "How tightly are wild clownfish tied to reefs and anemones?",
+    'Clownfish are also called anemonefish. Which genus and family do they sit in?',
+    'About how many living anemonefish species do scientists often name?',
+    'How can the common “Nemo-like” pair of clownfish look different?',
+    'How can a clownfish’s sex change if the breeding female is gone?',
+    'How does size rank the fish that share one anemone?',
+    'How does a clownfish settle into an anemone’s stinging tentacles?',
+    'What do clownfish and sea anemones often give each other?',
+    'Do all clownfish use the same kind of anemone host?',
+    'Why does captive breeding matter for popular pet clownfish?',
+    'How tightly are wild clownfish tied to reefs and anemones?',
 )
 
 HARD_IDS = (
@@ -123,7 +123,7 @@ class ClownfishHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_CLOWNFISH)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Clownfish.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Clownfish. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CLOWNFISH))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CLOWNFISH))
@@ -163,7 +163,7 @@ class ClownfishHardStudyCardTests(unittest.TestCase):
         self.assertIn("pomacentridae", correct_choice_text(questions[0]).lower())
         self.assertIn("damselfish", correct_choice_text(questions[0]).lower())
         self.assertIn("two dozen", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("ocellaris", correct_choice_text(questions[2]).lower())
         self.assertIn("percula", correct_choice_text(questions[2]).lower())
         self.assertIn("outline", correct_choice_text(questions[2]).lower())
@@ -175,7 +175,7 @@ class ClownfishHardStudyCardTests(unittest.TestCase):
         self.assertIn("mucus", correct_choice_text(questions[5]).lower())
         self.assertIn("not instant", correct_choice_text(questions[5]).lower())
         self.assertIn("shelter", correct_choice_text(questions[6]).lower())
-        self.assertIn("mutual", correct_choice_text(questions[6]).lower())
+        self.assertIn("shelter", correct_choice_text(questions[6]).lower())
         self.assertIn("ten", correct_choice_text(questions[7]).lower())
         self.assertIn("host", correct_choice_text(questions[7]).lower())
         self.assertIn("captive", correct_choice_text(questions[8]).lower())
@@ -246,7 +246,7 @@ class ClownfishHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_CLOWNFISH, sheet)
-        self.assertIn("Facts from Wikipedia, Clownfish.", sheet)
+        self.assertIn("Facts from Wikipedia, Clownfish. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

@@ -55,8 +55,8 @@ HARD_STEMS = (
     "How can cuttlefish match backgrounds if they are mostly color-blind?",
     "Why do cuttlefish have three hearts?",
     "Why can cuttlefish blood look blue-green?",
-    "Where are wild cuttlefish missing, if we keep the map soft?",
-    "How deep do most cuttlefish live, if we keep the depth soft?",
+    'Where are wild cuttlefish missing?',
+    'How deep do most cuttlefish live?',
     "What IUCN snapshot does the common cuttlefish (Sepia officinalis) carry?",
     "Why might acidifying seas matter for cuttlefish later?",
 )
@@ -125,7 +125,7 @@ class CuttlefishHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_CUTTLEFISH)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Cuttlefish.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Cuttlefish. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CUTTLEFISH))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CUTTLEFISH))
@@ -164,7 +164,7 @@ class CuttlefishHardStudyCardTests(unittest.TestCase):
         self.assertIn("sepiidae", correct_choice_text(questions[0]).lower())
         self.assertIn("sepiida", correct_choice_text(questions[0]).lower())
         self.assertIn("100", correct_choice_text(questions[0]))
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("cuttlebone", correct_choice_text(questions[1]).lower())
         self.assertIn("aragonite", correct_choice_text(questions[1]).lower())
         self.assertIn("gladius", correct_choice_text(questions[1]).lower())
@@ -182,7 +182,7 @@ class CuttlefishHardStudyCardTests(unittest.TestCase):
         self.assertIn("shallow", correct_choice_text(questions[7]).lower())
         self.assertIn("hundreds", correct_choice_text(questions[7]).lower())
         self.assertIn("least concern", correct_choice_text(questions[8]).lower())
-        self.assertIn("snapshot", correct_choice_text(questions[8]).lower())
+        self.assertIn("least concern", correct_choice_text(questions[8]).lower())
         self.assertIn("acid", correct_choice_text(questions[9]).lower())
         self.assertIn("shells", correct_choice_text(questions[9]).lower())
         self.assertIn("study", correct_choice_text(questions[9]).lower())
@@ -250,7 +250,7 @@ class CuttlefishHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_CUTTLEFISH, sheet)
-        self.assertIn("Facts from Wikipedia, Cuttlefish.", sheet)
+        self.assertIn("Facts from Wikipedia, Cuttlefish. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

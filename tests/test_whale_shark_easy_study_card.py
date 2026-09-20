@@ -58,7 +58,7 @@ GENERIC_WORKSHEET = (
 )
 
 TEACH = (
-    "The biggest living fish in the ocean (size soft).",
+    'The biggest living fish in the ocean.',
     "A shark — not a whale — that filter-feeds with a huge mouth.",
     "Dark back with light spots and stripes in a checkerboard pattern.",
     "Eats tiny plankton and small schooling fish — not people.",
@@ -128,7 +128,7 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_WHALE_SHARK)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Whale shark.",
+            "Facts from Wikipedia, Whale shark. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -229,7 +229,7 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         for phrase in PAGE_BRITTLE:
             self.assertNotIn(phrase, html)
         self.assertIn("Largest living fish known today", html)
-        self.assertNotIn("Largest living fish (exact length soft)", html)
+        self.assertNotIn("unique (soft)", html)
         self.assertIn(
             "A checkerboard of light spots and stripes on dark skin",
             html,
@@ -239,7 +239,7 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
             "No — it is a shark (a fish), even though its name says whale",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Whale shark.", html)
+        self.assertIn("Facts from Wikipedia, Whale shark. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "stingray", "packTemplate": "animals"})
@@ -267,7 +267,7 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("https://kids.nationalgeographic.com/animals/fish/facts/whale-sharks", main)
         self.assertNotIn("https://kids.nationalgeographic.com/animals/fish/facts/whale-shark\"", main)
         self.assertIn("Largest living fish known today", main)
-        self.assertNotIn("Largest living fish (exact length soft)", main)
+        self.assertNotIn("unique (soft)", main)
         self.assertIn(
             "A checkerboard of light spots and stripes on dark skin",
             main,
@@ -353,7 +353,7 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         for stem in STEMS:
             self.assertIn(stem, sheet)
         self.assertIn("Largest living fish known today", sheet)
-        self.assertNotIn("Largest living fish (exact length soft)", sheet)
+        self.assertNotIn("unique (soft)", sheet)
         self.assertIn(
             "A checkerboard of light spots and stripes on dark skin",
             sheet,

@@ -181,7 +181,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn("A pride", html)
         self.assertIn("The moms (lionesses)", html)
         self.assertIn("about 8 km / 5 miles (Wikipedia)", html)
-        self.assertIn("Facts from Wikipedia, Lion.", html)
+        self.assertIn("Facts from Wikipedia, Lion. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

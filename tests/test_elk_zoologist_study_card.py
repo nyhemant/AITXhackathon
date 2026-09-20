@@ -124,15 +124,15 @@ REDO_THEMES = (
     "They are one of the largest deer — only moose is bigger",
     "No — in Europe “elk” often means moose; North American elk are also called wapiti",
     "Cervus canadensis — “wapiti” comes from a Shawnee and Cree-related word for “white rump”",
-    "They were once lumped with European red deer (C. elaphus); genetics now treat elk/wapiti as their own species (soft)",
-    "Living kinds include Rocky Mountain, Roosevelt, tule, and Manitoban (exact splits stay soft)",
-    "Soft “velvet” skin — growing antlers are among the fastest-growing bones in mammals (daily length stays soft)",
+    'They were once lumped with European red deer (C. elaphus); genetics now treat elk/wapiti as their own species',
+    'Living kinds include Rocky Mountain, Roosevelt, tule, and Manitoban',
+    'Soft “velvet” skin — growing antlers are among the fastest-growing bones in mammals',
     "A hormone called testosterone — it rises and drops through the year",
     "Bulls bugle, spar with antlers, and tend harems of cows",
     "Cows and calves often keep to their own groups, and bulls often keep to theirs",
     "Least Concern is a snapshot for the whole species — some local kinds, like tule elk, had tighter recoveries",
-    "Eastern elk and Merriam’s elk are gone from the wild (soft history)",
-    "They are the largest living deer after moose (soft)",
+    'Eastern elk and Merriam’s elk are gone from the wild',
+    'They are the largest living deer after moose',
 )
 
 
@@ -150,7 +150,7 @@ class ElkZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_ELK)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Elk.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Elk. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ELK))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_ELK))
@@ -188,36 +188,36 @@ class ElkZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("eastern", correct_choice_text(questions[0]).lower())
         self.assertIn("sika", correct_choice_text(questions[0]).lower())
         self.assertIn("thorold", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("asia", correct_choice_text(questions[1]).lower())
         self.assertIn("beringia", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("altai", correct_choice_text(questions[2]).lower())
         self.assertIn("tianshan", correct_choice_text(questions[2]).lower())
         self.assertIn("manchurian", correct_choice_text(questions[2]).lower())
         self.assertIn("alashan", correct_choice_text(questions[2]).lower())
         self.assertIn("ecotype", correct_choice_text(questions[3]).lower())
         self.assertIn("geist", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("high", correct_choice_text(questions[4]).lower())
         self.assertIn("nasal", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("red deer", correct_choice_text(questions[5]).lower())
         self.assertIn("high-pitched", correct_choice_text(questions[5]).lower())
         self.assertIn("sika", correct_choice_text(questions[5]).lower())
         self.assertIn("hybrid", correct_choice_text(questions[6]).lower())
         self.assertIn("new zealand", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("cud", correct_choice_text(questions[7]).lower())
         self.assertIn("graze", correct_choice_text(questions[7]).lower())
         self.assertIn("browse", correct_choice_text(questions[7]).lower())
-        self.assertIn("soft", correct_choice_text(questions[7]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[7]).lower())
         self.assertIn("snapshot", correct_choice_text(questions[8]).lower())
         self.assertIn("tule", correct_choice_text(questions[8]).lower())
         self.assertIn("asian", correct_choice_text(questions[8]).lower())
         self.assertIn("subspecies", correct_choice_text(questions[9]).lower())
         self.assertIn("conservation genetics", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -304,7 +304,7 @@ class ElkZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_ELK, sheet)
-        self.assertIn("Facts from Wikipedia, Elk.", sheet)
+        self.assertIn("Facts from Wikipedia, Elk. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

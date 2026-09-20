@@ -71,7 +71,7 @@ ZOOLOGIST_SLOTS = 5
 SIGNED_LETTERS = ("A", "B", "C", "A", "A")
 
 ZOOLOGIST_STEMS = (
-    "How broad is the stingray group Myliobatoidei, if we keep the family list soft?",
+    'How broad is the stingray group Myliobatoidei?',
     "What is unusual about how a stingray stores its venom, compared with many other venomous animals?",
     "How should we talk about IUCN status for the GROUP card “stingray”?",
     "After the yolk sac is used up, how can a mother stingray keep feeding embryos inside her?",
@@ -87,7 +87,7 @@ ZOOLOGIST_IDS = (
 )
 
 HARD_STEMS = (
-    "Where do scientists place stingrays in the fish family tree, if we keep names soft?",
+    'Where do scientists place stingrays in the fish family tree?',
     "How can a stingray find prey it cannot see under its disc?",
     "How do stingrays power swimming with their pectoral “wings”?",
     "Do all stingrays live only in the ocean?",
@@ -103,7 +103,7 @@ EASY_STEMS = (
     "What do many stingrays eat on the seafloor?",
     "How can a buried stingray keep breathing without gulping sandy water through its mouth?",
     "How do stingray babies usually arrive?",
-    "About how many kinds of stingray are there, if we keep the count soft?",
+    'About how many kinds of stingray are there?',
     "Do stingrays usually chase and hunt people?",
 )
 
@@ -116,20 +116,20 @@ BRITTLE = (
     "km/h",
 )
 REDO_THEMES = (
-    "Cartilage — tough and flexible, like a shark’s skeleton (soft)",
+    'Cartilage — tough and flexible, like a shark’s skeleton',
     "A flattened body with wide pectoral “wings” fused into a disc",
     "Eyes on top; mouth (and gill slots) on the underside",
     "They stir sand and settle under it, often leaving mainly eyes and tail showing",
     "A venomous spine (stinger / spinal blade) on the tail used for defense",
     "Mollusks, crustaceans, and sometimes small fish — many crush hard shells with strong jaws",
     "Openings called spiracles behind the eyes can draw clearer water in",
-    "Born live after developing inside the mother (ovoviviparous soft) — litter size soft",
-    "About two hundred known kinds worldwide (soft)",
+    'Born live after developing inside the mother',
+    'About two hundred known kinds worldwide',
     "No — they are not usually aggressive; stings happen mainly when a ray is stepped on or threatened",
     "Order Myliobatiformes (suborder Myliobatoidei) — cartilaginous rays related to sharks, not bony fish",
     "Smell plus electroreceptors (ampullae of Lorenzini) that sense tiny electrical signals, similar to sharks",
-    "Two main styles — undulatory waves along thicker fins (often slower, bottom-living) or oscillatory wing-like flaps (often faster, open-water soft)",
-    "No — river stingrays (and some whiptail kinds) live in fresh water; most others are marine (soft)",
+    'Two main styles — undulatory waves along thicker fins (often slower, bottom-living) or oscillatory wing-like flaps',
+    'No — river stingrays (and some whiptail kinds) live in fresh water; most others are marine',
     "Spiracles behind the eyes can draw clearer water in while the mouth stays out of the sediment path",
 )
 
@@ -149,7 +149,7 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_STINGRAY)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Stingray.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Stingray. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_STINGRAY_ZOOLOGIST))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_STINGRAY_ZOOLOGIST))
@@ -195,15 +195,15 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("tissue cells", correct_choice_text(questions[1]).lower())
         self.assertIn("gland", correct_choice_text(questions[1]).lower())
         self.assertIn("mucus", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("varies by kind", correct_choice_text(questions[2]).lower())
         self.assertIn("snapshot", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("uterine", correct_choice_text(questions[3]).lower())
         self.assertIn("milk", correct_choice_text(questions[3]).lower())
         self.assertIn("histotroph", correct_choice_text(questions[3]).lower())
         self.assertIn("placenta", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("pointed", correct_choice_text(questions[4]).lower())
         self.assertIn("cusp", correct_choice_text(questions[4]).lower())
         self.assertIn("dimorphism", correct_choice_text(questions[4]).lower())
@@ -300,7 +300,7 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_STINGRAY, sheet)
-        self.assertIn("Facts from Wikipedia, Stingray.", sheet)
+        self.assertIn("Facts from Wikipedia, Stingray. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:
@@ -397,7 +397,7 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("hard", payload["stingray"]["levels"])
         self.assertEqual(payload["stingray"]["levels"]["hard"]["teach"], [])
         self.assertEqual(payload["stingray"]["levels"]["easy"]["teach"], [
-            "Flattened ocean fish with a skeleton of cartilage (related to sharks — soft)",
+            'Flattened ocean fish with a skeleton of cartilage (related to sharks)',
             "Eyes on top; mouth and gills on the underside",
             "Many hide under sand on the seafloor",
             "The tail can carry a venomous stinger used for defense",

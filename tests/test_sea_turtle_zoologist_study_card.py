@@ -57,16 +57,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 ZOOLOGIST_STEMS = (
-    "Where does crown Chelonioidea sit among living turtles, if we keep that tree soft?",
-    "How can a leatherback keep a warmer core in cold water, if we keep that heat gap soft?",
+    'Where does crown Chelonioidea sit among living turtles?',
+    'How can a leatherback keep a warmer core in cold water?',
     "How should we read IUCN letters for living sea turtles, if we keep those snapshots by kind?",
-    "Why can one sea turtle species look recovered in one place and still struggle in another, if we keep those stocks soft?",
-    "How does CITES treat sea turtles in international trade, if we keep that rule soft?",
-    "How can a turtle excluder device (TED) help in a shrimp net, if we keep that cut soft?",
-    "Why can floating plastic put sea turtles in danger, if we keep that trash story soft?",
-    "How can beach lights send hatchlings inland, if we keep that glow story soft?",
-    "What can a nesting beach’s magnetic signature tell us, if we keep that imprint story soft?",
-    "How do green turtles help seagrass meadows, if we keep that gardening story soft?",
+    'Why can one sea turtle species look recovered in one place and still struggle in another?',
+    'How does CITES treat sea turtles in international trade?',
+    'How can a turtle excluder device (TED) help in a shrimp net?',
+    'Why can floating plastic put sea turtles in danger?',
+    'How can beach lights send hatchlings inland?',
+    'What can a nesting beach’s magnetic signature tell us?',
+    'How do green turtles help seagrass meadows?',
 )
 
 ZOOLOGIST_IDS = (
@@ -83,20 +83,20 @@ ZOOLOGIST_IDS = (
 )
 
 HARD_STEMS = (
-    "Where do true sea turtles sit in the family tree, if we keep that map soft?",
-    "How can nest sand temperature steer hatchling sex, if we keep those thresholds soft?",
-    "Where do many female sea turtles return to nest, if we keep that homing story soft?",
-    "How can hatchlings and adults stay on long ocean routes, if we keep that sense soft?",
-    "How do sea turtles dump extra salt, if we keep those glands soft?",
-    "What makes a leatherback different from hard-shell sea turtles, if we keep that size soft?",
-    "How do adult diets split among sea turtle kinds, if we keep those menus soft?",
+    'Where do true sea turtles sit in the family tree?',
+    'How can nest sand temperature steer hatchling sex?',
+    'Where do many female sea turtles return to nest?',
+    'How can hatchlings and adults stay on long ocean routes?',
+    'How do sea turtles dump extra salt?',
+    'What makes a leatherback different from hard-shell sea turtles?',
+    'How do adult diets split among sea turtle kinds?',
     "How do some ridleys nest differently from most other sea turtles?",
-    "Where do many young sea turtles spend their early years, if we keep that time soft?",
-    "What human pressures can send hatchlings the wrong way or put wild turtles at risk, if we keep that care story soft?",
+    'Where do many young sea turtles spend their early years?',
+    'What human pressures can send hatchlings the wrong way or put wild turtles at risk?',
 )
 
 EASY_STEMS = (
-    "How many kinds of sea turtle live in the world’s oceans, if we keep the list soft?",
+    'How many kinds of sea turtle live in the world’s oceans?',
     "What do a sea turtle’s flippers do?",
     "How is a sea turtle’s shell built for the ocean?",
     "How does a mom sea turtle make a nest?",
@@ -104,7 +104,7 @@ EASY_STEMS = (
     "What do baby sea turtles do after they hatch?",
     "How do sea turtles breathe, even though they live in the ocean?",
     "Where do sea turtles live?",
-    "How far can many sea turtles travel, if we keep the miles soft?",
+    'How far can many sea turtles travel?',
     "Can a sea turtle pull its head and flippers into its shell like many pet turtles?",
 )
 
@@ -124,26 +124,26 @@ BRITTLE = (
     "km/h",
 )
 REDO_THEMES = (
-    "About seven kinds — flatback, green, hawksbill, leatherback, loggerhead, Kemp’s ridley, and olive ridley (soft)",
+    'About seven kinds — flatback, green, hawksbill, leatherback, loggerhead, Kemp’s ridley, and olive ridley',
     "Front flippers paddle; back flippers help steer — and dig the nest hole",
     "It is streamlined for swimming — flatter and smoother than many land turtles",
     "She hauls onto sand (usually at night), digs with hind flippers, buries eggs, then returns to the sea",
     "Soft-shelled eggs in a sand nest; mom does not stay to guard them",
     "They dig out together and race toward the brightest horizon — normally the ocean",
-    "They have lungs and must surface to breathe — they can stay under a long time when resting (soft)",
+    'They have lungs and must surface to breathe — they can stay under a long time when resting',
     "In warm and temperate seas worldwide — none live only on land",
-    "Many travel far between feeding waters and nesting beaches (soft)",
+    'Many travel far between feeding waters and nesting beaches',
     "No — unlike many pet turtles, they cannot pull their head and flippers in. The body is built for swimming, not hiding inside",
-    "Superfamily Chelonioidea — most kinds in hard-shelled Cheloniidae; the leatherback sits alone in Dermochelyidae with a leathery shell (soft)",
-    "Warmer nests tend to make more females; cooler nests tend to make more males (exact degrees stay soft)",
-    "Many return to nest near the beach where they hatched (philopatry); how tightly they match that beach varies by kind (soft)",
-    "They use Earth’s magnetic field like a map plus a compass so they can hold a heading and know roughly where they are (soft)",
-    "Special glands near the eyes make salty tears — reptile kidneys cannot make urine saltier than seawater (soft)",
-    "It is the largest living sea turtle, with a soft leathery shell (no hard scutes), and it mainly eats jellyfish (soft)",
-    "Green turtles shift toward seagrass and algae as adults; hawksbills lean on sponges; loggerheads and ridleys stay more mixed hunters (soft)",
-    "Some ridleys nest in huge synchronized beach arrivals (arribadas); most other kinds nest more alone (soft)",
-    "They spend early years offshore — often in floating seaweed mats — then move closer to shore as they grow (soft)",
-    "Beach lights can send hatchlings the wrong way; fishing nets and trash also put pressure on wild turtles (soft)",
+    'Superfamily Chelonioidea — most kinds in hard-shelled Cheloniidae; the leatherback sits alone in Dermochelyidae with a leathery shell',
+    'Warmer nests tend to make more females; cooler nests tend to make more males',
+    'Many return to nest near the beach where they hatched (philopatry); how tightly they match that beach varies by kind',
+    'They use Earth’s magnetic field like a map plus a compass so they can hold a heading and know roughly where they are',
+    'Special glands near the eyes make salty tears — reptile kidneys cannot make urine saltier than seawater',
+    'It is the largest living sea turtle, with a soft leathery shell (no hard scutes), and it mainly eats jellyfish',
+    'Green turtles shift toward seagrass and algae as adults; hawksbills lean on sponges; loggerheads and ridleys stay more mixed hunters',
+    'Some ridleys nest in huge synchronized beach arrivals (arribadas); most other kinds nest more alone',
+    'They spend early years offshore — often in floating seaweed mats — then move closer to shore as they grow',
+    'Beach lights can send hatchlings the wrong way; fishing nets and trash also put pressure on wild turtles',
 )
 
 
@@ -162,7 +162,7 @@ class SeaTurtleZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_SEA_TURTLE)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Sea turtle.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Sea turtle. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_SEA_TURTLE_ZOOLOGIST))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_SEA_TURTLE_ZOOLOGIST))
@@ -201,44 +201,44 @@ class SeaTurtleZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("chelonioidea", correct_choice_text(questions[0]).lower())
         self.assertIn("protostegidae", correct_choice_text(questions[0]).lower())
         self.assertIn("archelon", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("gigantothermy", correct_choice_text(questions[1]).lower())
         self.assertIn("leatherback", correct_choice_text(questions[1]).lower())
         self.assertIn("circulation", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("cr", correct_choice_text(questions[2]).lower())
         self.assertIn("vu", correct_choice_text(questions[2]).lower())
         self.assertIn("lc", correct_choice_text(questions[2]).lower())
         self.assertIn("dd", correct_choice_text(questions[2]).lower())
         self.assertIn("snapshot", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("regional management", correct_choice_text(questions[3]).lower())
         self.assertIn("stock", correct_choice_text(questions[3]).lower())
         self.assertIn("recover", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("appendix i", correct_choice_text(questions[4]).lower())
         self.assertIn("trade", correct_choice_text(questions[4]).lower())
         self.assertIn("restricted", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("escape", correct_choice_text(questions[5]).lower())
         self.assertIn("bycatch", correct_choice_text(questions[5]).lower())
-        self.assertIn("percent", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertIn("ted", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("jellyfish", correct_choice_text(questions[6]).lower())
         self.assertIn("blockage", correct_choice_text(questions[6]).lower())
         self.assertIn("entangle", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("brightest horizon", correct_choice_text(questions[7]).lower())
         self.assertIn("inland", correct_choice_text(questions[7]).lower())
-        self.assertIn("soft", correct_choice_text(questions[7]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[7]).lower())
         self.assertIn("isoline", correct_choice_text(questions[8]).lower())
         self.assertIn("genetic", correct_choice_text(questions[8]).lower())
         self.assertIn("distance", correct_choice_text(questions[8]).lower())
-        self.assertIn("soft", correct_choice_text(questions[8]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[8]).lower())
         self.assertIn("seagrass", correct_choice_text(questions[9]).lower())
         self.assertIn("graz", correct_choice_text(questions[9]).lower())
         self.assertIn("meadow", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -331,7 +331,7 @@ class SeaTurtleZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_SEA_TURTLE, sheet)
-        self.assertIn("Facts from Wikipedia, Sea turtle.", sheet)
+        self.assertIn("Facts from Wikipedia, Sea turtle. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

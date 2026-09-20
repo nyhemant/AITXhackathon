@@ -125,7 +125,7 @@ REDO_THEMES = (
     "Digging holes can hold water in dry times for other wildlife too",
     "Healthy freshwater wetlands give food, nest sites, and shelter",
     "alligator moms guard the nest and carry hatchlings to the water",
-    "American alligators have a broader U-shaped snout; American crocodiles tend toward a narrower V — a soft field tip",
+    'American alligators have a broader U-shaped snout; American crocodiles tend toward a narrower V — a field tip',
     "tongue salt glands don’t work the same way as in American crocodiles",
     "They handle cooler climates better than tropical-leaning American crocodiles",
     "Nest temperature helps decide whether hatchlings are male or female",
@@ -157,7 +157,7 @@ class AmericanAlligatorZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_AMERICAN_ALLIGATOR)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, American alligator.",
+            "Facts from Wikipedia, American alligator. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_AMERICAN_ALLIGATOR))
@@ -200,15 +200,15 @@ class AmericanAlligatorZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("el lagarto", correct_choice_text(questions[1]).lower())
         self.assertIn("chinese", correct_choice_text(questions[2]).lower())
         self.assertIn("tens of millions", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("neotropical", correct_choice_text(questions[3]).lower())
         self.assertIn("not true alligator", correct_choice_text(questions[3]).lower())
         self.assertIn("one way", correct_choice_text(questions[4]).lower())
         self.assertIn("bird", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("slows", correct_choice_text(questions[5]).lower())
         self.assertIn("not forever", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("mid-range", correct_choice_text(questions[6]).lower())
         self.assertIn("male", correct_choice_text(questions[6]).lower())
         self.assertIn("female", correct_choice_text(questions[6]).lower())
@@ -216,10 +216,10 @@ class AmericanAlligatorZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("fourth", correct_choice_text(questions[7]).lower())
         self.assertIn("stick", correct_choice_text(questions[8]).lower())
         self.assertIn("debated", correct_choice_text(questions[8]).lower())
-        self.assertIn("soft", correct_choice_text(questions[8]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[8]).lower())
         self.assertIn("fruit", correct_choice_text(questions[9]).lower())
         self.assertIn("seed", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -310,7 +310,7 @@ class AmericanAlligatorZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_AMERICAN_ALLIGATOR, sheet)
-        self.assertIn("Facts from Wikipedia, American alligator.", sheet)
+        self.assertIn("Facts from Wikipedia, American alligator. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

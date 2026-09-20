@@ -71,7 +71,7 @@ ZOOLOGIST_IDS = (
 )
 
 HARD_STEMS = (
-    "What is the Atlantic puffin’s scientific name, and what soft name story can Fratercula hold?",
+    'What is the Atlantic puffin’s scientific name, and what name story can Fratercula hold?',
     "Which bird family does the Atlantic puffin belong to?",
     "How many puffin species live in the Atlantic Ocean?",
     "What happens to an Atlantic puffin’s colorful outer bill after breeding season?",
@@ -126,7 +126,7 @@ REDO_THEMES = (
     "Protect nesting islands and keep oceans healthy for fish",
     "They nest close together in busy cliff-top colonies",
     "No — puffins can fly in the air; penguins are different birds that don’t",
-    "Fratercula arctica — a soft “little brother of the north” name story",
+    'Fratercula arctica — a “little brother of the north” name story',
     "The auk family, Alcidae — with murres, auklets, and razorbills, not penguins",
     "Only the Atlantic puffin; horned and tufted puffins live in the North Pacific",
     "The colorful outer plates and face ornaments grow for breeding, then shed — the winter bill looks duller and smaller",
@@ -153,7 +153,7 @@ class PuffinZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_ATLANTIC_PUFFIN)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Atlantic puffin.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Atlantic puffin. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_PUFFIN))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_PUFFIN))
@@ -191,39 +191,39 @@ class PuffinZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("fraterculini", correct_choice_text(questions[0]).lower())
         self.assertIn("rhinoceros auklet", correct_choice_text(questions[0]).lower())
         self.assertIn("alcidae", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("charadriiformes", correct_choice_text(questions[1]).lower())
         self.assertIn("gull", correct_choice_text(questions[1]).lower())
         self.assertIn("auk", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("arctica", correct_choice_text(questions[2]).lower())
         self.assertIn("grabae", correct_choice_text(questions[2]).lower())
         self.assertIn("naumanni", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("horned", correct_choice_text(questions[3]).lower())
         self.assertIn("corniculata", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("pacific", correct_choice_text(questions[4]).lower())
         self.assertIn("atlantic", correct_choice_text(questions[4]).lower())
         self.assertIn("one living", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("keratin", correct_choice_text(questions[5]).lower())
         self.assertIn("sheath", correct_choice_text(questions[5]).lower())
         self.assertIn("paint", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("long-lived", correct_choice_text(questions[6]).lower())
         self.assertIn("one chick", correct_choice_text(questions[6]).lower())
         self.assertIn("several years", correct_choice_text(questions[6]).lower())
         self.assertIn("sandeel", correct_choice_text(questions[7]).lower())
         self.assertIn("warm", correct_choice_text(questions[7]).lower())
         self.assertIn("prey", correct_choice_text(questions[7]).lower())
-        self.assertIn("soft", correct_choice_text(questions[7]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[7]).lower())
         self.assertIn("snapshot", correct_choice_text(questions[8]).lower())
         self.assertIn("east atlantic", correct_choice_text(questions[8]).lower())
         self.assertIn("west atlantic", correct_choice_text(questions[8]).lower())
         self.assertIn("great auk", correct_choice_text(questions[9]).lower())
         self.assertIn("flightless", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -311,7 +311,7 @@ class PuffinZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_ATLANTIC_PUFFIN, sheet)
-        self.assertIn("Facts from Wikipedia, Atlantic puffin.", sheet)
+        self.assertIn("Facts from Wikipedia, Atlantic puffin. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

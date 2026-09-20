@@ -202,7 +202,7 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_POLAR_BEAR)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Polar bear.",
+            "Facts from Wikipedia, Polar bear. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -305,7 +305,7 @@ class PolarBearEasyStudyCardTests(unittest.TestCase):
             "No — polar bears are Arctic animals; penguins, not polar bears, live in Antarctica",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Polar bear.", html)
+        self.assertIn("Facts from Wikipedia, Polar bear. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

@@ -203,7 +203,7 @@ class CrabEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_CRAB)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Crab.",
+            "Facts from Wikipedia, Crab. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -318,7 +318,7 @@ class CrabEasyStudyCardTests(unittest.TestCase):
             "No — horseshoe “crabs” are a different kind of animal, closer to spiders than to true crabs",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Crab.", html)
+        self.assertIn("Facts from Wikipedia, Crab. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

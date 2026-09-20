@@ -53,16 +53,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "What are “kelps,” if we keep the group soft?",
+    'What are “kelps,”?',
     "What is a kelp’s body called, and how does it take up nutrients?",
-    "How can a kelp forest make “stories” like a land forest, if we keep those layers soft?",
-    "How fast can giant kelp (Macrocystis) lengthen in ideal water, if we keep the rate soft?",
-    "Where do especially productive kelp forests often sit, if we keep that ocean story soft?",
-    "How can predators shape a kelp forest in a trophic cascade, if we keep that chain soft?",
-    "What can overgrazing do to a lush kelp forest, if we keep that flip soft?",
-    "Who helps control urchins, if we keep the regional difference soft?",
-    "How can warm spells and storms stress a kelp canopy, if we keep those threats soft?",
-    "How can people help keep predator–urchin–kelp balance, if we keep that care soft?",
+    'How can a kelp forest make “stories” like a land forest?',
+    'How fast can giant kelp (Macrocystis) lengthen in ideal water?',
+    'Where do especially productive kelp forests often sit?',
+    'How can predators shape a kelp forest in a trophic cascade?',
+    'What can overgrazing do to a lush kelp forest?',
+    'Who helps control urchins?',
+    'How can warm spells and storms stress a kelp canopy?',
+    'How can people help keep predator–urchin–kelp balance?',
 )
 
 HARD_IDS = (
@@ -127,7 +127,7 @@ class KelpForestHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_KELP_FOREST)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Kelp forest.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Kelp forest. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_KELP_FOREST))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_KELP_FOREST))
@@ -168,7 +168,7 @@ class KelpForestHardStudyCardTests(unittest.TestCase):
         self.assertIn("nereocystis", correct_choice_text(questions[0]).lower())
         self.assertIn("laminaria", correct_choice_text(questions[0]).lower())
         self.assertIn("ecklonia", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("thallus", correct_choice_text(questions[1]).lower())
         self.assertIn("holdfast", correct_choice_text(questions[1]).lower())
         self.assertIn("stipe", correct_choice_text(questions[1]).lower())
@@ -257,7 +257,7 @@ class KelpForestHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_KELP_FOREST, sheet)
-        self.assertIn("Facts from Wikipedia, Kelp forest.", sheet)
+        self.assertIn("Facts from Wikipedia, Kelp forest. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

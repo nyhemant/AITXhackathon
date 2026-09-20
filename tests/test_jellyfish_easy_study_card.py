@@ -81,7 +81,7 @@ STEMS = (
     "What hang below a jelly’s bell?",
     "What do a jelly’s tentacles use to grab food?",
     "How does a jellyfish usually swim?",
-    "How much of a jelly’s body is water, if we keep the share soft?",
+    'How much of a jelly’s body is water?',
     "What two stages do many jellies pass through?",
     "Where do jellyfish live?",
     "How can people help jellies and the shores they visit?",
@@ -213,7 +213,7 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_JELLYFISH)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Jellyfish.",
+            "Facts from Wikipedia, Jellyfish. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -350,7 +350,7 @@ class JellyfishEasyStudyCardTests(unittest.TestCase):
             "No — it’s a floating colony of many tiny animals working as one, not a true jellyfish",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Jellyfish.", html)
+        self.assertIn("Facts from Wikipedia, Jellyfish. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

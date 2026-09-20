@@ -124,7 +124,7 @@ class AmericanAlligatorHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_AMERICAN_ALLIGATOR)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, American alligator.",
+            "Facts from Wikipedia, American alligator. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_AMERICAN_ALLIGATOR))
@@ -243,7 +243,7 @@ class AmericanAlligatorHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_AMERICAN_ALLIGATOR, sheet)
-        self.assertIn("Facts from Wikipedia, American alligator.", sheet)
+        self.assertIn("Facts from Wikipedia, American alligator. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

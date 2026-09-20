@@ -209,7 +209,7 @@ class WarthogZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_WARTHOG)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Common warthog.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Common warthog. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_WARTHOG))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_WARTHOG))
@@ -250,7 +250,7 @@ class WarthogZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("lumped", correct_choice_text(questions[1]).lower())
         self.assertIn("aethiopicus", correct_choice_text(questions[1]))
         self.assertIn("desert warthog only", correct_choice_text(questions[1]).lower())
-        self.assertIn("split maps stay soft", questions[1]["why"].lower())
+        self.assertNotIn("(soft)", questions[1]["why"].lower())
         self.assertIn("four living subspecies", correct_choice_text(questions[2]).lower())
         self.assertIn("maps", correct_choice_text(questions[2]).lower())
         self.assertIn("contested", questions[2]["why"].lower())
@@ -262,7 +262,7 @@ class WarthogZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("fetus", questions[4]["why"].lower())
         self.assertIn("five to six months", correct_choice_text(questions[5]).lower())
         self.assertIn("long for a pig", correct_choice_text(questions[5]).lower())
-        self.assertIn("day counts stay soft", questions[5]["why"].lower())
+        self.assertNotIn("(soft)", questions[5]["why"].lower())
         self.assertIn("foster", correct_choice_text(questions[6]).lower())
         self.assertIn("allosucking", correct_choice_text(questions[6]).lower())
         self.assertIn("cooperative", correct_choice_text(questions[6]).lower())
@@ -273,7 +273,7 @@ class WarthogZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("not territorial", questions[8]["why"].lower())
         self.assertIn("fewer years", correct_choice_text(questions[9]).lower())
         self.assertIn("in care", correct_choice_text(questions[9]).lower())
-        self.assertIn("ages stay soft", questions[9]["why"].lower())
+        self.assertNotIn("(soft)", questions[9]["why"].lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -360,7 +360,7 @@ class WarthogZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_WARTHOG, sheet)
-        self.assertIn("Facts from Wikipedia, Common warthog.", sheet)
+        self.assertIn("Facts from Wikipedia, Common warthog. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

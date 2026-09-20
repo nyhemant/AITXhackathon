@@ -75,7 +75,7 @@ TEACH = (
 )
 
 STEMS = (
-    "How many kinds of sea turtle live in the world’s oceans, if we keep the list soft?",
+    'How many kinds of sea turtle live in the world’s oceans?',
     "What do a sea turtle’s flippers do?",
     "How is a sea turtle’s shell built for the ocean?",
     "How does a mom sea turtle make a nest?",
@@ -83,7 +83,7 @@ STEMS = (
     "What do baby sea turtles do after they hatch?",
     "How do sea turtles breathe, even though they live in the ocean?",
     "Where do sea turtles live?",
-    "How far can many sea turtles travel, if we keep the miles soft?",
+    'How far can many sea turtles travel?',
     "Can a sea turtle pull its head and flippers into its shell like many pet turtles?",
 )
 
@@ -210,7 +210,7 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_SEA_TURTLE)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Sea turtle.",
+            "Facts from Wikipedia, Sea turtle. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -340,7 +340,7 @@ class SeaTurtleEasyStudyCardTests(unittest.TestCase):
             "No — unlike many pet turtles, they cannot pull their head and flippers in. The body is built for swimming, not hiding inside",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Sea turtle.", html)
+        self.assertIn("Facts from Wikipedia, Sea turtle. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

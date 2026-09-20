@@ -2338,29 +2338,349 @@ _JR_SOFT_PAREN = re.compile(r"\s*[—–-]\s*soft(?=\))")
 _JR_SOFT_TAG = re.compile(r"\s*\(soft\)")
 _JR_SOFT_DASH = re.compile(r"\s*[—–-]\s*soft\s*$")
 
+# Natural "soft" English that must survive display stripping.
+# Gentle "Soft … care" *titles* are product copy (kid-safe framing), not the
+# approximate-numbers jargon — keep those titles; rewrite "Soft care:" tips.
+_NATURAL_SOFT = re.compile(
+    r"stay soft and fluffy|"
+    r"soft rear|"
+    r"soft leathery(?:\s+shell)?|"
+    r"soft[- ]palate|"
+    r"soft tissue|"
+    r"soft body|"
+    r"soft[- ]bodied|"
+    r"soft coral|"
+    r"soft parts|"
+    r"soft shell|"
+    r"soft-shelled|"
+    r"soft sandy|"
+    r"soft mud|"
+    r"soft bottom|"
+    r"soft fatty|"
+    r"soft wings|"
+    r"soft white|"
+    r"soft feathers|"
+    r"soft balloons|"
+    r"soft snout|"
+    r"soft cartilage|"
+    r"soft fur|"
+    r"soft faeces|"
+    r"soft kind of|"
+    r"soft story|"
+    r"soft squeeze|"
+    r"soft umbrella|"
+    r"soft,? jelly|"
+    r"soft eggs|"
+    r"Soft eggs|"
+    r"Soft skeleton|"
+    r"Soft prairie care|"
+    r"Soft forest care|"
+    r"Soft water care|"
+    r"Soft ice care|"
+    r"Soft kelp care|"
+    r"Soft wetland care|"
+    r"Soft reef care|"
+    r"Soft ocean care|"
+    r"Soft sea care|"
+    r"Soft wetland care|"
+    r"starts soft|"
+    r"bigger soft one|"
+    r"blood-rich skin called velvet|"
+    r"growing antlers are covered in a soft|"
+    r"feathers soft|"
+    r"soft, often coiled|"
+    r"have soft bodies|"
+    r"Most of the body is soft|"
+    r"body is soft|"
+    r'Soft [“"]velvet[”"]',
+    re.I,
+)
+
+# One plain-language note near Wikipedia attribution (replaces inline soft jargon).
+SOURCE_APPROX_NOTE = (
+    "Where sources disagree on exact numbers, we keep them approximate."
+)
+
 
 def strip_jr_soft_choice_label(text: str) -> str:
-    """Drop literal '(soft)' / '— soft' from a Junior Ranger choice label."""
+    """Drop literal '(soft)' / '— soft' from a choice label (legacy helper)."""
+    return strip_editorial_soft_display(text)
+
+
+def strip_editorial_soft_display(text: str) -> str:
+    """Remove authoring soft markers from user-visible study copy.
+
+    Editorial "soft" meant "sources disagree; keep approximate." Parents and
+    kids should not see that jargon. Natural English (soft feathers, soft rear)
+    and gentle "Soft care" titles are preserved. Approximate numbers stay —
+    we just stop saying soft.
+    """
     s = str(text or "")
+    if not s:
+        return s
+    was_question = s.rstrip().endswith("?")
+    protections: list[str] = []
+
+    def _protect(m: re.Match[str]) -> str:
+        protections.append(m.group(0))
+        return f"\x00P{len(protections) - 1}\x00"
+
+    # Tip label (before protecting titles that contain "care")
+    s = re.sub(r"\bSoft care\s*:", "Care tip:", s, flags=re.I)
+    s = re.sub(r"\bSoft physiology\s*:", "", s, flags=re.I)
+
+    s = _NATURAL_SOFT.sub(_protect, s)
+
+    # Title-only editorial shorthand (not natural English).
+    if re.fullmatch(r"Soft top speed", s, flags=re.I):
+        s = "Top speed"
+    elif re.fullmatch(r"Sprint soft", s, flags=re.I):
+        s = "Sprint"
+
+    # Soft on X. clauses
+    s = re.sub(r"(?<=[.!?])\s*Soft on [^.!?]+[.!]?", "", s, flags=re.I)
+    s = re.sub(r"(?<=\w)\.\s*Soft on [^.!?]+[.!]?", ".", s, flags=re.I)
+    s = re.sub(r"^Soft on [^.!?]+[.!]?\s*", "", s, flags=re.I)
+    s = re.sub(r"\s+Soft on [^.!?]+[.!]?", "", s, flags=re.I)
+
+    # Inside-paren dash soft first: "(… — soft)" → "(…)"
     s = _JR_SOFT_PAREN.sub("", s)
+    # Bare (soft) tags
     s = _JR_SOFT_TAG.sub("", s)
     s = _JR_SOFT_DASH.sub("", s)
+    s = re.sub(r"\s*[—–-]\s*soft\b", "", s, flags=re.I)
+    # Whole parenthetical soft markers — (size soft), (exact weights stay soft), etc.
+    # Skip parens that still have real content after the dash-soft trim above.
+    s = re.sub(r"\s*\((?:size soft|soft)\)", "", s, flags=re.I)
+    s = re.sub(
+        r"\s*\([^)]*\bstay(?:s)? soft\)",
+        "",
+        s,
+        flags=re.I,
+    )
+    s = re.sub(
+        r"\s*\([^)]*\bsoft\b[^)]*\)",
+        "",
+        s,
+        flags=re.I,
+    )
+
+    # Stem clauses: "if we keep names/numbers soft"
+    s = re.sub(
+        r",?\s*if we keep .{0,80}? soft\??",
+        "",
+        s,
+        flags=re.I,
+    )
+    s = re.sub(
+        r"\bif we keep .{0,80}? soft\??",
+        "",
+        s,
+        flags=re.I,
+    )
+    # Lone leftovers from stem edits
+    s = re.sub(r",\s*if(?:\s+we)?\??\s*$", "?", s)
+    s = re.sub(r"\s+if(?:\s+we)?\??\s*$", "?", s)
+
+    for pat, rep in (
+        (r"Why keep the exact years soft\?", "Why might exact year counts still vary?"),
+        (r"Why keep that chemistry name soft\?", "Why not lock one exact chemistry name?"),
+        (r"Why might size and range still stay soft\?", "Why might size and range still vary by source?"),
+        (r"Family lists stay soft\.", "Family lists still vary."),
+        (r"Family-tree site details stay soft\.", "Family-tree site details still vary."),
+        (r"How big can a manta get, if we keep the size soft\?", "How big can a manta get?"),
+    ):
+        s = re.sub(pat, rep, s, flags=re.I)
+
+    s = re.sub(r",?\s*so we keep [^.!?]{0,80}\bsoft\.?", ".", s, flags=re.I)
+    s = re.sub(r"(?:(?<=[.!?])\s*)?\bWe keep [^.!?]{0,80}\bsoft\.?", "", s, flags=re.I)
+    s = re.sub(r"^We keep [^.!?]{0,80}\bsoft\.?\s*", "", s, flags=re.I)
+    s = re.sub(r",?\s*so we stay soft(?:\s+on [^.!?]+)?\.?", ".", s, flags=re.I)
+    s = re.sub(r"(?:(?<=[.!?])\s*)?\bWe stay soft(?:\s+on [^.!?]+)?\.?", "", s, flags=re.I)
+    s = re.sub(r"^We stay soft(?:\s+on [^.!?]+)?\.?\s*", "", s, flags=re.I)
+
+    # "that date stays soft" / "Exact timing stays soft." etc.
+    s = re.sub(
+        r"(?:(?<=[.!?])\s*)?(?:Exact|Extra|Distances|Counts|Ages|Dates|Years|Percents|"
+        r"Maps|Lists|Names|Splits|Details|Numbers|Timing|Weights|That date|"
+        r"The date|Date)[^.!?]{0,60}\bstay(?:s)? soft\.?",
+        "",
+        s,
+        flags=re.I,
+    )
+    s = re.sub(
+        r"[—–-]\s*(?:that|exact|the)?\s*(?:date|timing|counts?|ages?|years?|"
+        r"numbers?|details?)\s+stay(?:s)? soft\b\.?",
+        "",
+        s,
+        flags=re.I,
+    )
+    s = re.sub(
+        r",?\s*(?:that|exact|the)\s+(?:date|timing|counts?|ages?|years?|"
+        r"numbers?|details?)\s+stay(?:s)? soft\b\.?",
+        "",
+        s,
+        flags=re.I,
+    )
+
+    def _drop_soft_sentences(blob: str) -> str:
+        parts = re.split(r"(?<=[.!?])\s+", blob.strip()) if blob.strip() else []
+        kept: list[str] = []
+        for part in parts:
+            low = part.lower()
+            if not re.search(r"\bstay(?:s)? soft\b|\bkeep .{0,60}\bsoft\b|\bsoft on\b", low):
+                kept.append(part)
+                continue
+            trimmed = re.sub(
+                r",?\s*(?:and\s+)?(?:exact |extra )?[^.!?,]{0,60}\bstay(?:s)? soft\b\.?",
+                "",
+                part,
+                flags=re.I,
+            )
+            trimmed = re.sub(
+                r",?\s*we keep [^.!?]{0,60}\bsoft\b\.?",
+                "",
+                trimmed,
+                flags=re.I,
+            )
+            trimmed = re.sub(r"\bstay(?:s)? soft\b", "", trimmed, flags=re.I)
+            trimmed = re.sub(r"\bkeep [^.!?]{0,60}\bsoft\b", "", trimmed, flags=re.I)
+            trimmed = trimmed.strip(" ,;")
+            if trimmed and not re.search(r"\bsoft\b", trimmed, re.I):
+                if not trimmed.endswith((".", "!", "?")) and len(trimmed) > 15:
+                    trimmed += "."
+                kept.append(trimmed)
+        return " ".join(kept)
+
+    s = _drop_soft_sentences(s)
+    s = re.sub(r"\bkeep (?:the )?(?:exact )?[a-z][\w\s-]{0,40} soft\b", "", s, flags=re.I)
+    s = re.sub(
+        r"(?:(?<=[.!?])\s*)?Exact [^.!?]{0,80}\bstay(?:s)? soft because ([^.!?]+[.!?]?)",
+        lambda m: (m.group(1)[:1].upper() + m.group(1)[1:]) if m.group(1) else "",
+        s,
+        flags=re.I,
+    )
+    s = re.sub(r"\bstay(?:s)? soft\b", "", s, flags=re.I)
+    s = re.sub(r",\s*if(?:\s+we)?\??\s*$", "?", s)
+    s = re.sub(r"\s+if(?:\s+we)?\??\s*$", "?", s)
+
+    # Soften leftover "Soft species notes …" authoring crumbs mid-sentence.
+    s = re.sub(r"\bSoft species notes[^.!?]*[.!]?", "", s, flags=re.I)
+
+    # More editorial soft jargon (approximate / informal authoring), not natural English.
+    for pat, rep in (
+        (r"\ba soft field tip\b", "a field tip"),
+        (r"\bstill a soft puzzle\b", "still an open puzzle"),
+        (r"\ba soft puzzle\b", "an open puzzle"),
+        (r"\bsoft name story\b", "name story"),
+        (r"\ba soft “little brother", "a “little brother"),
+        (r'\ba soft "little brother', 'a "little brother'),
+        (r"\bSoft protandry[^.!?]*[.!]?", ""),
+        (r"\bsoft stage names\b", "stage names"),
+        (r"\ba soft panmixia story\b", "a panmixia story"),
+        (r"\b— a soft panmixia story —", "—"),
+        (r"\bWikipedia’s soft split:\s*", "Wikipedia’s split: "),
+        (r"\bWikipedia's soft split:\s*", "Wikipedia's split: "),
+        (r"\bWikipedia’s soft biogeography story\b", "Wikipedia’s biogeography story"),
+        (r"\bWikipedia's soft biogeography story\b", "Wikipedia's biogeography story"),
+        (r"\ba soft clue\b", "a clue"),
+        (r"\ban asymmetrical abdomen is a soft clue\b", "an asymmetrical abdomen is a clue"),
+        (r"\bthe names are soft, not forever\b", "the names can shift"),
+        (r"\bthe names are soft\b", "the names can shift"),
+        (r"\bin soft kid-safe terms\b", "in kid-safe terms"),
+        (r"\ba soft climate link\b", "a climate link"),
+        (r"\b— litter size soft\b", ""),
+        (r"\blitter size soft\b", ""),
+        (r"\bsoft deep-time contrast\b", ""),
+        (r"\bsoft biogeography\b", "biogeography"),
+        (r"\bsoft timing\b", ""),
+        (r"\bWe stay with that soft care\b", "We stay with that gentle care"),
+        (r"\bWe stay with that soft squeeze\b", "We stay with that gentle squeeze"),
+        (r"\bstay a little soft\b", "still vary"),
+        (r"\bstays a little soft\b", "still varies"),
+        (r"Exact family trees stay a little soft\.", "Exact family trees still vary."),
+        (r"Exact snack lists stay a little soft\.", "Exact snack lists still vary."),
+        (r"Soft history — not a scare story\.", "History — not a scare story."),
+        (r"\bA common soft clue is\b", "A common clue is"),
+        (r"\ba soft clue is\b", "a clue is"),
+        (r"\ba soft settlement puzzle\b", "a settlement puzzle"),
+        (r"\bThat is a soft snapshot\b", "That is a snapshot"),
+        (r"\ba soft snapshot\b", "a snapshot"),
+        (r"\banother soft reading\b", "another reading"),
+        (r"\ba soft reading\b", "a reading"),
+    ):
+        s = re.sub(pat, rep, s, flags=re.I)
+
+
+    s = re.sub(r"\s{2,}", " ", s)
+    s = re.sub(r"\s+([.,;:!?])", r"\1", s)
+    s = re.sub(r"([.!?]){2,}", r"\1", s)
+    s = re.sub(r",\s*,", ",", s)
+    s = re.sub(r"\s+—\s*$", "", s)
+    s = s.strip(" ,;")
+    s = re.sub(r"\(\s*\)", "", s)
+    s = re.sub(r"\s{2,}", " ", s).strip()
+    if was_question and s and not s.endswith("?"):
+        s = s.rstrip(".") + "?"
+    for i, protected in enumerate(protections):
+        s = s.replace(f"\x00P{i}\x00", protected)
     return s.strip()
 
 
-def apply_easy_choice_soft_strip(cards: dict | None = None) -> None:
-    """Junior Ranger (easy) choice labels stay kid-facing — no authoring soft tags.
+def _append_source_approx_note(note: str) -> str:
+    base = str(note or "").strip()
+    if not base:
+        return SOURCE_APPROX_NOTE
+    if SOURCE_APPROX_NOTE.lower() in base.lower():
+        return base
+    if base.endswith("."):
+        return f"{base} {SOURCE_APPROX_NOTE}"
+    return f"{base}. {SOURCE_APPROX_NOTE}"
 
-    Hard / Zoologist keep their soft wording for a later pass.
+
+def apply_display_soft_strip(cards: dict | None = None) -> None:
+    """Strip editorial soft jargon from all user-visible study fields.
+
+    Touches teach, stems, choices, why, talk_about, and push_further on every
+    shipped level. Question ids may still contain '-soft' (not user-visible).
+    Nothing downstream treats soft markers as machine flags — they were display
+    authoring only. Also appends SOURCE_APPROX_NOTE once on each source_note.
     """
     src = STUDY_CARDS if cards is None else cards
     for card in src.values():
-        pack = (card.get("levels") or {}).get("easy") or {}
-        for q in pack.get("questions") or []:
-            choices = list(q.get("choices") or [])
-            if not choices:
-                continue
-            q["choices"] = [strip_jr_soft_choice_label(ch) for ch in choices]
+        note = card.get("source_note")
+        if note is not None:
+            card["source_note"] = _append_source_approx_note(str(note))
+        for key in ("talk_about", "push_further"):
+            lines = card.get(key)
+            if isinstance(lines, list):
+                card[key] = [strip_editorial_soft_display(x) for x in lines]
+        for pack in (card.get("levels") or {}).values():
+            for key in ("teach", "talk_about", "push_further"):
+                lines = pack.get(key)
+                if isinstance(lines, list):
+                    pack[key] = [strip_editorial_soft_display(x) for x in lines]
+            for q in pack.get("questions") or []:
+                for field in ("title", "stem", "why"):
+                    if field in q and q.get(field) is not None:
+                        q[field] = strip_editorial_soft_display(str(q.get(field) or ""))
+                choices = list(q.get("choices") or [])
+                if choices:
+                    q["choices"] = [strip_editorial_soft_display(ch) for ch in choices]
+
+    # Keep exported talk/push prompt lists in sync (tests compare these constants).
+    for name, val in list(globals().items()):
+        if not name.startswith(("TALK_ABOUT_", "PUSH_FURTHER_")):
+            continue
+        if isinstance(val, list):
+            globals()[name] = [strip_editorial_soft_display(x) for x in val]
+        elif isinstance(val, tuple):
+            globals()[name] = tuple(strip_editorial_soft_display(x) for x in val)
+
+
+def apply_easy_choice_soft_strip(cards: dict | None = None) -> None:
+    """Backward-compatible alias — full display strip covers easy choices too."""
+    apply_display_soft_strip(cards)
 
 # Product display names — one map for screen, print, and later pickers.
 LEVEL_DISPLAY_NAMES = {
@@ -20539,7 +20859,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Grows fast when young, then stops aging after five years (soft)",
                         ],
                         "correct": "B",
-                        "why": "Wikipedia and linked research describe slow growth, late maturity, and long life (estimates often decades to maturity; lifespan may reach many decades, with some projections over a century). Exact year counts stay soft because methods still refine ages.",
+                        "why": "Wikipedia and linked research describe slow growth, late maturity, and long life (estimates often decades to maturity; lifespan may reach many decades, with some projections over a century). Methods still refine exact ages.",
                     },
                     {
                         "slot": 3,
@@ -20588,7 +20908,7 @@ STUDY_CARDS: dict[str, dict] = {
 }
 
 apply_slot_letter_rotation()
-apply_easy_choice_soft_strip()
+apply_display_soft_strip()
 
 
 def level_display_name(level: str | None = None) -> str:

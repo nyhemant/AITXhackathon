@@ -192,7 +192,7 @@ class GiantPandaZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_GIANT_PANDA)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Giant panda.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Giant panda. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_GIANT_PANDA))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_GIANT_PANDA))
@@ -236,7 +236,7 @@ class GiantPandaZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("rumen", correct_choice_text(questions[2]).lower())
         self.assertIn("dozen", correct_choice_text(questions[3]).lower())
         self.assertIn("kilograms", correct_choice_text(questions[3]).lower())
-        self.assertIn("range soft", questions[3]["why"].lower())
+        self.assertNotIn("soft", questions[3]["why"].lower())
         self.assertIn("tiny fraction", correct_choice_text(questions[4]).lower())
         self.assertIn("do not lock one number", questions[4]["why"].lower())
         self.assertIn("umami", correct_choice_text(questions[5]).lower())
@@ -249,7 +249,7 @@ class GiantPandaZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("subspecies", correct_choice_text(questions[7]).lower())
         self.assertIn("debated", correct_choice_text(questions[7]).lower())
         self.assertIn("delay implanting", correct_choice_text(questions[8]).lower())
-        self.assertIn("timing soft", questions[8]["why"].lower())
+        self.assertNotIn("soft", questions[8]["why"].lower())
         self.assertIn("flower and die together", correct_choice_text(questions[9]).lower())
         self.assertIn("habitat", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
@@ -340,7 +340,7 @@ class GiantPandaZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_GIANT_PANDA, sheet)
-        self.assertIn("Facts from Wikipedia, Giant panda.", sheet)
+        self.assertIn("Facts from Wikipedia, Giant panda. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

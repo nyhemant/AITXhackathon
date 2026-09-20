@@ -117,7 +117,7 @@ class FlamingoHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_AMERICAN_FLAMINGO)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, American flamingo / Caribbean flamingo.",
+            "Facts from Wikipedia, American flamingo / Caribbean flamingo. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_FLAMINGO))
@@ -224,7 +224,7 @@ class FlamingoHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_AMERICAN_FLAMINGO, sheet)
-        self.assertIn("Facts from Wikipedia, American flamingo / Caribbean flamingo.", sheet)
+        self.assertIn("Facts from Wikipedia, American flamingo / Caribbean flamingo. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

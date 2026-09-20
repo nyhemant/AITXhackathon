@@ -57,15 +57,15 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "What are swimming “jellies,” if we keep the group soft?",
+    'What are swimming “jellies,”?',
     "What main groups sit inside medusozoan jellies?",
-    "How do stinging cells (nematocysts) grab prey, if we keep the mechanism soft?",
+    'How do stinging cells (nematocysts) grab prey?',
     "How do scyphozoan polyps make baby medusae?",
     "What happens after a jelly egg is fertilized, before a swimming medusa appears?",
     "Why can box jellyfish see space better than most other jellies?",
     "Why isn’t a Portuguese man o’ war a solitary true jelly?",
     "Why aren’t comb jellies the same as cnidarian jellies?",
-    "When can huge jelly swarms form, if we keep the causes soft?",
+    'When can huge jelly swarms form?',
     "Is there one IUCN letter for “jellyfish”?",
 )
 
@@ -88,7 +88,7 @@ EASY_STEMS = (
     "What hang below a jelly’s bell?",
     "What do a jelly’s tentacles use to grab food?",
     "How does a jellyfish usually swim?",
-    "How much of a jelly’s body is water, if we keep the share soft?",
+    'How much of a jelly’s body is water?',
     "What two stages do many jellies pass through?",
     "Where do jellyfish live?",
     "How can people help jellies and the shores they visit?",
@@ -129,7 +129,7 @@ class JellyfishHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_JELLYFISH)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Jellyfish.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Jellyfish. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_JELLYFISH))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_JELLYFISH))
@@ -169,7 +169,7 @@ class JellyfishHardStudyCardTests(unittest.TestCase):
         self.assertIn("medusa", correct_choice_text(questions[0]).lower())
         self.assertIn("cnidaria", correct_choice_text(questions[0]).lower())
         self.assertIn("clade", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("scyphozoa", correct_choice_text(questions[1]).lower())
         self.assertIn("cubozoa", correct_choice_text(questions[1]).lower())
         self.assertIn("hydrozoa", correct_choice_text(questions[1]).lower())
@@ -258,7 +258,7 @@ class JellyfishHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_JELLYFISH, sheet)
-        self.assertIn("Facts from Wikipedia, Jellyfish.", sheet)
+        self.assertIn("Facts from Wikipedia, Jellyfish. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

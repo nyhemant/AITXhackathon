@@ -214,7 +214,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_FRESHWATER_FISH)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Freshwater fish.",
+            "Facts from Wikipedia, Freshwater fish. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -315,7 +315,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
             "No — plenty of fish spend their whole lives in fresh water, with no ocean required",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Freshwater fish.", html)
+        self.assertIn("Facts from Wikipedia, Freshwater fish. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

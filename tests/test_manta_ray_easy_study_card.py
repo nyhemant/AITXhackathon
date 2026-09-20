@@ -71,7 +71,7 @@ STEMS = (
     "What do a manta’s broad fins work like?",
     "What sit beside a manta’s wide forward mouth?",
     "How do mantas gather their food?",
-    "How big can a manta get, if we keep the size soft?",
+    'How big can a manta get?',
     "How do reef mantas and giant oceanic mantas use the sea?",
     "How are baby mantas born?",
     "Why do mantas visit coral cleaning stations?",
@@ -224,7 +224,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_MANTA_RAY)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Manta ray.",
+            "Facts from Wikipedia, Manta ray. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -341,7 +341,7 @@ class MantaRayEasyStudyCardTests(unittest.TestCase):
             "No — horns don’t mean danger. Mantas are gentle plankton-eaters, not man-eaters",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Manta ray.", html)
+        self.assertIn("Facts from Wikipedia, Manta ray. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})

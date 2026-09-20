@@ -71,12 +71,25 @@ class LayerALeftoversTests(unittest.TestCase):
             "Tiny stinging cells (many stings feel mild to people)",
         )
         leftover = []
+        soft_display = re.compile(
+            r"\(soft\)|\([^)]*\bsoft\)|Soft on |\bstay soft\b|\bstays soft\b",
+            re.I,
+        )
         for cid, card in STUDY_CARDS.items():
-            easy = (card.get("levels") or {}).get("easy") or {}
-            for q in easy.get("questions") or []:
-                for ch in q.get("choices") or []:
-                    if SOFT_MARK.search(ch):
-                        leftover.append(f"{cid} {q.get('id')}: {ch}")
+            for level, pack in (card.get("levels") or {}).items():
+                for teach in pack.get("teach") or []:
+                    if soft_display.search(teach) and "stay soft and fluffy" not in teach.lower():
+                        leftover.append(f"{cid} {level} teach: {teach}")
+                for q in pack.get("questions") or []:
+                    for field in ("stem", "why", "title"):
+                        val = str(q.get(field) or "")
+                        if soft_display.search(val) and "stay soft and fluffy" not in val.lower():
+                            leftover.append(
+                                f"{cid} {level} {q.get('id')} {field}: {val[:80]}"
+                            )
+                    for ch in q.get("choices") or []:
+                        if soft_display.search(ch):
+                            leftover.append(f"{cid} {level} {q.get('id')}: {ch}")
         self.assertEqual(leftover, [], "\n".join(leftover[:20]))
 
         choice_re = re.compile(r'data-choice="([^"]*)"')

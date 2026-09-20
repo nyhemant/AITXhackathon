@@ -152,7 +152,7 @@ class GiantPandaHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_GIANT_PANDA)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Giant panda.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Giant panda. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_GIANT_PANDA))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_GIANT_PANDA))
@@ -208,7 +208,7 @@ class GiantPandaHardStudyCardTests(unittest.TestCase):
         self.assertIn("sit upright", correct_choice_text(questions[7]).lower())
         self.assertIn("long time", correct_choice_text(questions[8]).lower())
         self.assertIn("bamboo grows", correct_choice_text(questions[8]).lower())
-        self.assertIn("years soft", questions[8]["why"].lower())
+        self.assertNotIn("soft", questions[8]["why"].lower())
         self.assertIn("scent marks", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
@@ -274,7 +274,7 @@ class GiantPandaHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_GIANT_PANDA, sheet)
-        self.assertIn("Facts from Wikipedia, Giant panda.", sheet)
+        self.assertIn("Facts from Wikipedia, Giant panda. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

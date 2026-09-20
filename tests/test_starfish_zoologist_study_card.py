@@ -65,12 +65,12 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 ZOOLOGIST_STEMS = (
-    "How do living sea stars split at the order level, if we keep the count soft?",
+    'How do living sea stars split at the order level?',
     "What do scientists still debate about sea-star family trees?",
     "What lets a sea star shed an arm in seconds without using big muscles to tear it off?",
     "What experimental clue shows arm-shedding can be chemically triggered in sea stars?",
     "What helps pull an everted cardiac stomach back inside after feeding?",
-    "What is sea star wasting disease, in soft kid-safe terms?",
+    'What is sea star wasting disease, in kid-safe terms?',
     "How should we talk about IUCN status for the GROUP card “starfish”?",
     "Why is the Northern Pacific seastar (Asterias amurensis) famous in invasion biology?",
     "How do living sea stars relate to ancient Paleozoic star-shaped echinoderms?",
@@ -91,7 +91,7 @@ ZOOLOGIST_IDS = (
 )
 
 HARD_STEMS = (
-    "What scientific class do sea stars belong to, if we keep the family tree soft?",
+    'What scientific class do sea stars belong to?',
     "What powers a sea star’s tube feet?",
     "What is the madreporite on a sea star?",
     "How does one tube foot extend and pull back?",
@@ -105,14 +105,14 @@ HARD_STEMS = (
 
 EASY_STEMS = (
     "Are starfish a kind of fish?",
-    "What does a sea star’s body look like, if we keep the arm count soft?",
+    'What does a sea star’s body look like?',
     "How does a sea star walk?",
     "Where is a sea star’s mouth?",
     "Where do sea stars live?",
     "What is a sea star’s skin like?",
     "What do many sea stars hunt?",
     "What can many sea stars do if they lose an arm?",
-    "How many kinds of sea star are there, if we keep the count soft?",
+    'How many kinds of sea star are there?',
     "Does the name “starfish” mean they are fish?",
 )
 
@@ -130,14 +130,14 @@ BRITTLE = (
 )
 REDO_THEMES = (
     "No — they have no gills, scales, or fins like fish. They are echinoderms, with urchins and sea cucumbers (names light)",
-    "A central disc plus arms — five is common, but some kinds have far more (soft)",
+    'A central disc plus arms — five is common, but some kinds have far more',
     "Hundreds of tiny tube feet on the underside, powered by a water-pump system, help it move and grip",
     "On the bottom side, in the middle of the central disc",
     "In salt water, from shores to the deep sea — not in freshwater lakes",
     "Tough skin with plates and spines on top; colours run from bright orange or red to dull browns",
     "Slow seabed animals such as clams, snails, and other invertebrates",
-    "They can grow a damaged or lost arm back over time; a few can rebuild more if part of the disc remains (soft)",
-    "About two thousand known kinds worldwide (soft)",
+    'They can grow a damaged or lost arm back over time; a few can rebuild more if part of the disc remains',
+    'About two thousand known kinds worldwide',
     "No — the name sounds like a fish, but they are sea stars: invertebrates, not fish",
     "Asteroidea — star-shaped echinoderms in the same big phylum as urchins and sea cucumbers",
     "A water vascular system — fluid-filled canals that move, grip, feed, and help exchange gases",
@@ -145,8 +145,8 @@ REDO_THEMES = (
     "A bulb-like ampulla squeezes fluid into the foot to extend it; muscles pull it back",
     "They evert (push out) the cardiac stomach through the mouth, digest outside, then pull food back in",
     "Removing a few can let mussels take over and shrink tide-pool diversity — they punch above their numbers",
-    "It is a coral-eating predator; dense outbreaks can leave large white coral scars (Indo-Pacific soft)",
-    "At least part of the central disc still attached (a few tropical kinds can do more from an arm — soft)",
+    'It is a coral-eating predator; dense outbreaks can leave large white coral scars',
+    'At least part of the central disc still attached (a few tropical kinds can do more from an arm)',
     "Tiny claw- or wrench-like ossicles that help keep the body surface clear of debris and settlers",
     "No — oral (mouth + tube feet) is the underside; aboral (often colourful, with madreporite) faces up",
 )
@@ -167,7 +167,7 @@ class StarfishZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_STARFISH)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Starfish.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Starfish. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_STARFISH_ZOOLOGIST))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_STARFISH_ZOOLOGIST))
@@ -205,31 +205,31 @@ class StarfishZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("seven", correct_choice_text(questions[0]).lower())
         self.assertIn("forcipulatida", correct_choice_text(questions[0]).lower())
         self.assertIn("valvatida", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("base", correct_choice_text(questions[1]).lower())
         self.assertIn("asteroidea", correct_choice_text(questions[1]).lower())
         self.assertIn("morphology", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("catch connective", correct_choice_text(questions[2]).lower())
         self.assertIn("mutable collagenous", correct_choice_text(questions[2]).lower())
         self.assertIn("nervous", correct_choice_text(questions[2]).lower())
         self.assertIn("autotomy", correct_choice_text(questions[3]).lower())
         self.assertIn("injected", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("ngffyamide", correct_choice_text(questions[4]).lower())
         self.assertIn("cardiac", correct_choice_text(questions[4]).lower())
         self.assertIn("retraction", correct_choice_text(questions[4]).lower())
         self.assertIn("wasting", correct_choice_text(questions[5]).lower())
         self.assertIn("lesion", correct_choice_text(questions[5]).lower())
         self.assertIn("die-off", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("varies by kind", correct_choice_text(questions[6]).lower())
         self.assertIn("snapshot", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("invasive", correct_choice_text(questions[7]).lower())
         self.assertIn("ballast", correct_choice_text(questions[7]).lower())
         self.assertIn("australia", correct_choice_text(questions[7]).lower())
-        self.assertIn("soft", correct_choice_text(questions[7]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[7]).lower())
         self.assertIn("neoasteroidea", correct_choice_text(questions[8]).lower())
         self.assertIn("paleozoic", correct_choice_text(questions[8]).lower())
         self.assertIn("debated", correct_choice_text(questions[8]).lower())
@@ -327,7 +327,7 @@ class StarfishZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_STARFISH, sheet)
-        self.assertIn("Facts from Wikipedia, Starfish.", sheet)
+        self.assertIn("Facts from Wikipedia, Starfish. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

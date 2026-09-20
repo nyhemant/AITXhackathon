@@ -49,15 +49,15 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "Where do mantas sit in the genus tree now, if we keep that rename soft?",
-    "What three kinds of manta do people name now, if we keep sizes and lives soft?",
-    "What family do mantas share with other eagle and devil rays, if we keep that map soft?",
+    'Where do mantas sit in the genus tree now?',
+    'What three kinds of manta do people name now?',
+    'What family do mantas share with other eagle and devil rays?',
     "How do spongy gill-raker plates help a manta eat?",
-    "How do cephalic fins and filter tissue work together, if we keep that feeding path soft?",
-    "Why must mantas keep swimming to breathe, if we keep those spiracles soft?",
-    "Why do manta populations recover slowly, if we keep that breeding story soft?",
-    "How should we read IUCN letters for reef and giant oceanic mantas, if we keep those snapshots soft?",
-    "Why can demand for dried gill rakers threaten mantas, if we keep that trade story kid-safe and soft?",
+    'How do cephalic fins and filter tissue work together?',
+    'Why must mantas keep swimming to breathe?',
+    'Why do manta populations recover slowly?',
+    'How should we read IUCN letters for reef and giant oceanic mantas?',
+    'Why can demand for dried gill rakers threaten mantas?',
     "How do international agreements protect mantas — and what still matters near shore?",
 )
 
@@ -78,7 +78,7 @@ EASY_STEMS = (
     "What do a manta’s broad fins work like?",
     "What sit beside a manta’s wide forward mouth?",
     "How do mantas gather their food?",
-    "How big can a manta get, if we keep the size soft?",
+    'How big can a manta get?',
     "How do reef mantas and giant oceanic mantas use the sea?",
     "How are baby mantas born?",
     "Why do mantas visit coral cleaning stations?",
@@ -130,7 +130,7 @@ class MantaRayHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_MANTA_RAY)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Manta ray.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Manta ray. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_MANTA_RAY))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_MANTA_RAY))
@@ -168,7 +168,7 @@ class MantaRayHardStudyCardTests(unittest.TestCase):
             self.assertTrue(q["title"].strip())
         self.assertIn("mobula", correct_choice_text(questions[0]).lower())
         self.assertIn("junior synonym", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("alfredi", correct_choice_text(questions[1]).lower())
         self.assertIn("birostris", correct_choice_text(questions[1]).lower())
         self.assertIn("yarae", correct_choice_text(questions[1]).lower())
@@ -253,7 +253,7 @@ class MantaRayHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_MANTA_RAY, sheet)
-        self.assertIn("Facts from Wikipedia, Manta ray.", sheet)
+        self.assertIn("Facts from Wikipedia, Manta ray. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

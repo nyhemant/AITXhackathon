@@ -53,16 +53,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "What order do octopuses sit in, if we keep that group map soft?",
-    "How is octopus skin stacked for colour and shine, if we keep those cell names soft?",
+    'What order do octopuses sit in?',
+    'How is octopus skin stacked for colour and shine?',
     "What happens to an octopus’s hearts during a hard jet swim?",
-    "Why can octopus blood look blue, if we keep the chemistry soft?",
-    "Where do most octopus nerve cells sit, if we keep that count soft?",
-    "What clues show octopus intelligence, if we keep those stories soft?",
+    'Why can octopus blood look blue?',
+    'Where do most octopus nerve cells sit?',
+    'What clues show octopus intelligence?',
     "Are octopuses venomous — and which kinds are known to be deadly to people?",
-    "What happens after an octopus lays eggs, if we keep that life story soft?",
-    "How can an octopus open a crab or clam, if we keep the timing soft?",
-    "How can some octopuses warn or fool a threat, if we keep those displays soft?",
+    'What happens after an octopus lays eggs?',
+    'How can an octopus open a crab or clam?',
+    'How can some octopuses warn or fool a threat?',
 )
 
 HARD_IDS = (
@@ -87,7 +87,7 @@ EASY_STEMS = (
     "Where do many octopuses hide, and what clue might sit outside?",
     "What is special about octopus blood and hearts, if we keep it kid-simple?",
     "Where do octopuses live?",
-    "How many kinds of octopus are there, if we keep the count soft?",
+    'How many kinds of octopus are there?',
     "Do octopuses have tentacles?",
 )
 
@@ -133,7 +133,7 @@ class OctopusHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_OCTOPUS)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Octopus.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Octopus. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_OCTOPUS))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_OCTOPUS))
@@ -172,7 +172,7 @@ class OctopusHardStudyCardTests(unittest.TestCase):
         self.assertIn("octopoda", correct_choice_text(questions[0]).lower())
         self.assertIn("cirrina", correct_choice_text(questions[0]).lower())
         self.assertIn("incirrina", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("chromatophore", correct_choice_text(questions[1]).lower())
         self.assertIn("iridophore", correct_choice_text(questions[1]).lower())
         self.assertIn("leucophore", correct_choice_text(questions[1]).lower())
@@ -259,7 +259,7 @@ class OctopusHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_OCTOPUS, sheet)
-        self.assertIn("Facts from Wikipedia, Octopus.", sheet)
+        self.assertIn("Facts from Wikipedia, Octopus. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

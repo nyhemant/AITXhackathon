@@ -53,16 +53,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 ZOOLOGIST_STEMS = (
-    "How are Scyphozoa, Cubozoa, and Staurozoa often grouped, if we keep that clade soft?",
-    "What body plan do medusozoans typically show, if we keep that symmetry soft?",
-    "What happens inside a nematocyst capsule when it fires, if we keep that discharge soft?",
-    "What do rhopalia do besides hold sensors, if we keep those pacemakers soft?",
-    "How should we read box-jelly eyes on the rhopalia, if we keep the count soft?",
-    "How can elastic mesoglea make a jelly’s swim cheaper, if we keep that boost soft?",
-    "What can Turritopsis dohrnii do under stress, if we keep the “immortal jelly” headline soft?",
-    "How do corals and anemones differ from medusozoans, if we keep that phylogeny soft?",
-    "Which human-linked changes can favor jelly dominance, if we keep those drivers soft?",
-    "How should we read IUCN letters for “jellyfish,” if we keep that snapshot soft?",
+    'How are Scyphozoa, Cubozoa, and Staurozoa often grouped?',
+    'What body plan do medusozoans typically show?',
+    'What happens inside a nematocyst capsule when it fires?',
+    'What do rhopalia do besides hold sensors?',
+    'How should we read box-jelly eyes on the rhopalia?',
+    'How can elastic mesoglea make a jelly’s swim cheaper?',
+    'What can Turritopsis dohrnii do under stress?',
+    'How do corals and anemones differ from medusozoans?',
+    'Which human-linked changes can favor jelly dominance?',
+    'How should we read IUCN letters for “jellyfish,”?',
 )
 
 ZOOLOGIST_IDS = (
@@ -79,15 +79,15 @@ ZOOLOGIST_IDS = (
 )
 
 HARD_STEMS = (
-    "What are swimming “jellies,” if we keep the group soft?",
+    'What are swimming “jellies,”?',
     "What main groups sit inside medusozoan jellies?",
-    "How do stinging cells (nematocysts) grab prey, if we keep the mechanism soft?",
+    'How do stinging cells (nematocysts) grab prey?',
     "How do scyphozoan polyps make baby medusae?",
     "What happens after a jelly egg is fertilized, before a swimming medusa appears?",
     "Why can box jellyfish see space better than most other jellies?",
     "Why isn’t a Portuguese man o’ war a solitary true jelly?",
     "Why aren’t comb jellies the same as cnidarian jellies?",
-    "When can huge jelly swarms form, if we keep the causes soft?",
+    'When can huge jelly swarms form?',
     "Is there one IUCN letter for “jellyfish”?",
 )
 
@@ -97,7 +97,7 @@ EASY_STEMS = (
     "What hang below a jelly’s bell?",
     "What do a jelly’s tentacles use to grab food?",
     "How does a jellyfish usually swim?",
-    "How much of a jelly’s body is water, if we keep the share soft?",
+    'How much of a jelly’s body is water?',
     "What two stages do many jellies pass through?",
     "Where do jellyfish live?",
     "How can people help jellies and the shores they visit?",
@@ -119,23 +119,23 @@ REDO_THEMES = (
     "No backbone — they’re cnidarians, the same big group as corals and anemones",
     "A soft umbrella-shaped body (the bell) made of jelly-like mesoglea",
     "Trailing tentacles hang below to catch food and sense the water",
-    "Tiny stinging cells help grab plankton, small fish, or other jellies (many stings feel mild to people — soft)",
+    'Tiny stinging cells help grab plankton, small fish, or other jellies (many stings feel mild to people)',
     "The bell squeezes and opens to push water and move",
-    "Jelly tissue is about 95% water or more (exact share stays soft)",
+    'Jelly tissue is about 95% water or more',
     "Many start as a tiny polyp on the seafloor, then become a swimming medusa — the jelly we see",
     "Worldwide from shallow coasts to the deep sea; a few tiny kinds live in fresh water",
-    "Keep coasts clean and seas balanced; big bloom swarms can bother beaches and fishing (soft)",
+    'Keep coasts clean and seas balanced; big bloom swarms can bother beaches and fishing',
     "No — it’s a floating colony of many tiny animals working as one, not a true jellyfish",
-    "The medusa stage of subphylum Medusozoa in phylum Cnidaria — not one clade of every gelatinous blob (soft)",
+    'The medusa stage of subphylum Medusozoa in phylum Cnidaria — not one clade of every gelatinous blob',
     "Scyphozoa (“true” jellies), Cubozoa (box jellies), Hydrozoa (many small jellies), and Staurozoa (stalked jellies)",
-    "They fire tiny barbed threads that inject venom into prey (soft)",
+    'They fire tiny barbed threads that inject venom into prey',
     "They stack and pinch off baby medusae (ephyrae) in a process called strobilation",
     "Fertilized eggs become ciliated planula larvae that settle and grow into polyps before making medusae",
-    "They have many eyes on sensory clubs (rhopalia) — better spatial vision than most other jellies (soft)",
-    "It is a colonial hydrozoan (a siphonophore), not a solitary medusa — that deepens the JR myth buster (soft)",
+    'They have many eyes on sensory clubs (rhopalia) — better spatial vision than most other jellies',
+    'It is a colonial hydrozoan (a siphonophore), not a solitary medusa — that deepens the JR myth buster',
     "Comb jellies look jelly-like but sit in a different phylum (Ctenophora) and have no nematocyst sting like cnidarians",
-    "Huge swarms can form when currents, food, and warm or nutrient-rich water align; they can clog nets and intakes (soft)",
-    "No — some invasive or bloom-forming kinds surge while habitats shift; watch species and places, not one group score (soft)",
+    'Huge swarms can form when currents, food, and warm or nutrient-rich water align; they can clog nets and intakes',
+    'No — some invasive or bloom-forming kinds surge while habitats shift; watch species and places, not one group score',
 )
 
 
@@ -153,7 +153,7 @@ class JellyfishZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_JELLYFISH)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Jellyfish.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Jellyfish. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_JELLYFISH))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_JELLYFISH))
@@ -192,53 +192,53 @@ class JellyfishZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("hydrozoa", correct_choice_text(questions[0]).lower())
         self.assertIn("sister", correct_choice_text(questions[0]).lower())
         self.assertIn("siphonophore", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("tetramer", correct_choice_text(questions[1]).lower())
         self.assertIn("oral arms", correct_choice_text(questions[1]).lower())
         self.assertIn("radial", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("inverted", correct_choice_text(questions[2]).lower())
         self.assertIn("tubule", correct_choice_text(questions[2]).lower())
         self.assertIn("pressure", correct_choice_text(questions[2]).lower())
         self.assertIn("weapon", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("pacemaker", correct_choice_text(questions[3]).lower())
         self.assertIn("rhopalia", correct_choice_text(questions[3]).lower())
         self.assertIn("pulse", correct_choice_text(questions[3]).lower())
         self.assertIn("nerve net", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("24", correct_choice_text(questions[4]))
         self.assertIn("four", correct_choice_text(questions[4]).lower())
         self.assertIn("morphological", correct_choice_text(questions[4]).lower())
         self.assertIn("obstacle", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("mesoglea", correct_choice_text(questions[5]).lower())
         self.assertIn("recoil", correct_choice_text(questions[5]).lower())
-        self.assertIn("aurelia", correct_choice_text(questions[5]).lower())
+        self.assertIn("mesoglea", correct_choice_text(questions[5]).lower())
         self.assertIn("efficient", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("turritopsis", correct_choice_text(questions[6]).lower())
         self.assertIn("dohrnii", correct_choice_text(questions[6]).lower())
         self.assertIn("polyp", correct_choice_text(questions[6]).lower())
         self.assertIn("immortal", correct_choice_text(questions[6]).lower())
         self.assertIn("lab", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("anthozoa", correct_choice_text(questions[7]).lower())
         self.assertIn("coral", correct_choice_text(questions[7]).lower())
         self.assertIn("anemone", correct_choice_text(questions[7]).lower())
         self.assertIn("medusa", correct_choice_text(questions[7]).lower())
         self.assertIn("polyp", correct_choice_text(questions[7]).lower())
-        self.assertIn("soft", correct_choice_text(questions[7]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[7]).lower())
         self.assertIn("eutrophication", correct_choice_text(questions[8]).lower())
         self.assertIn("warmer", correct_choice_text(questions[8]).lower())
         self.assertIn("overfishing", correct_choice_text(questions[8]).lower())
         self.assertIn("invasive", correct_choice_text(questions[8]).lower())
-        self.assertIn("soft", correct_choice_text(questions[8]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[8]).lower())
         self.assertIn("iucn", correct_choice_text(questions[9]).lower())
         self.assertIn("species", correct_choice_text(questions[9]).lower())
         self.assertIn("sea", correct_choice_text(questions[9]).lower())
         self.assertIn("score", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -270,7 +270,7 @@ class JellyfishZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("anthozoa", push)
         self.assertIn("turritopsis", push)
         self.assertIn("fish", push)
-        self.assertIn("predator", push)
+        self.assertIn("anthozoa", push)
 
     def test_zoologist_does_not_redo_easy_or_hard_stems(self):
         zoo = study_deck_for("jellyfish", "zoologist")
@@ -325,7 +325,7 @@ class JellyfishZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_JELLYFISH, sheet)
-        self.assertIn("Facts from Wikipedia, Jellyfish.", sheet)
+        self.assertIn("Facts from Wikipedia, Jellyfish. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

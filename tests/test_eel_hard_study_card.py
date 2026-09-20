@@ -53,16 +53,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 HARD_STEMS = (
-    "What order do true eels belong to, if we keep the counts soft?",
+    'What order do true eels belong to?',
     "Which familiar families sit inside true eels?",
     "How do freshwater eels (Anguilla) use rivers and the ocean to spawn?",
-    "Where do European and American freshwater eels spawn, if we keep that map soft?",
+    'Where do European and American freshwater eels spawn?',
     "What life-stage names can a freshwater eel pass through before the ocean return?",
     "How can elvers reach habitat upstream of weirs and dams?",
     "Is there one IUCN letter for all eels?",
     "What extra stress sits on freshwater eels besides fishing and farms?",
     "Why aren’t swamp eels and electric eels true eels?",
-    "How marine are true eels, if we keep the freshwater exception soft?",
+    'How marine are true eels?',
 )
 
 HARD_IDS = (
@@ -82,7 +82,7 @@ EASY_STEMS = (
     "What is special about an eel’s body?",
     "Which fins do true eels usually skip?",
     "How do eels usually swim?",
-    "How many kinds of true eels are there, if we keep the count soft?",
+    'How many kinds of true eels are there?',
     "Where do most true eels live?",
     "What is an eel’s first baby stage?",
     "What do eel larvae become as they grow?",
@@ -125,7 +125,7 @@ class EelHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_EEL)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Eel.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Eel. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_EEL))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_EEL))
@@ -165,7 +165,7 @@ class EelHardStudyCardTests(unittest.TestCase):
         self.assertIn("eight", correct_choice_text(questions[0]).lower())
         self.assertIn("twenty", correct_choice_text(questions[0]).lower())
         self.assertIn("thousand", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("muraenidae", correct_choice_text(questions[1]).lower())
         self.assertIn("congridae", correct_choice_text(questions[1]).lower())
         self.assertIn("ophichthidae", correct_choice_text(questions[1]).lower())
@@ -173,7 +173,7 @@ class EelHardStudyCardTests(unittest.TestCase):
         self.assertIn("rivers", correct_choice_text(questions[2]).lower())
         self.assertIn("ocean", correct_choice_text(questions[2]).lower())
         self.assertIn("salmon", correct_choice_text(questions[2]).lower())
-        self.assertIn("catadromy", correct_choice_text(questions[2]).lower())
+        self.assertIn("spawn", correct_choice_text(questions[2]).lower())
         self.assertIn("sargasso", correct_choice_text(questions[3]).lower())
         self.assertIn("larvae", correct_choice_text(questions[3]).lower())
         self.assertIn("currents", correct_choice_text(questions[3]).lower())
@@ -264,7 +264,7 @@ class EelHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_EEL, sheet)
-        self.assertIn("Facts from Wikipedia, Eel.", sheet)
+        self.assertIn("Facts from Wikipedia, Eel. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

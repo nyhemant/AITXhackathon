@@ -53,16 +53,16 @@ STUDY_JS = FP / "js" / "study-card.js"
 PRINT_KIT = FP / "js" / "print-kit.js"
 
 ZOOLOGIST_STEMS = (
-    "Where do kelps sit on the tree of life, if we keep that nest soft?",
-    "How do kelp growth forms stack like a rainforest, if we keep those guilds soft?",
-    "How fast can giant kelp add length in ideal light and nutrients, if we keep that rate soft?",
-    "Where is kelp species richness often highest, if we keep that count soft?",
-    "Why can a kelp forest and an urchin barren both last, if we keep that flip soft?",
+    'Where do kelps sit on the tree of life?',
+    'How do kelp growth forms stack like a rainforest?',
+    'How fast can giant kelp add length in ideal light and nutrients?',
+    'Where is kelp species richness often highest?',
+    'Why can a kelp forest and an urchin barren both last?',
     "Why doesn’t removing one kelp-forest predator mean the same outcome everywhere?",
-    "When do urchins switch from drift kelp to live holdfasts, if we keep that buffer soft?",
-    "How can El Niño–type events stress a kelp canopy, if we keep that climate link soft?",
+    'When do urchins switch from drift kelp to live holdfasts?',
+    'How can El Niño–type events stress a kelp canopy?',
     "What happened to some Northern California kelp in the 2010s, if we keep that snapshot local?",
-    "How might kelp and other macroalgae store carbon, if we keep those amounts soft?",
+    'How might kelp and other macroalgae store carbon?',
 )
 
 ZOOLOGIST_IDS = (
@@ -79,16 +79,16 @@ ZOOLOGIST_IDS = (
 )
 
 HARD_STEMS = (
-    "What are “kelps,” if we keep the group soft?",
+    'What are “kelps,”?',
     "What is a kelp’s body called, and how does it take up nutrients?",
-    "How can a kelp forest make “stories” like a land forest, if we keep those layers soft?",
-    "How fast can giant kelp (Macrocystis) lengthen in ideal water, if we keep the rate soft?",
-    "Where do especially productive kelp forests often sit, if we keep that ocean story soft?",
-    "How can predators shape a kelp forest in a trophic cascade, if we keep that chain soft?",
-    "What can overgrazing do to a lush kelp forest, if we keep that flip soft?",
-    "Who helps control urchins, if we keep the regional difference soft?",
-    "How can warm spells and storms stress a kelp canopy, if we keep those threats soft?",
-    "How can people help keep predator–urchin–kelp balance, if we keep that care soft?",
+    'How can a kelp forest make “stories” like a land forest?',
+    'How fast can giant kelp (Macrocystis) lengthen in ideal water?',
+    'Where do especially productive kelp forests often sit?',
+    'How can predators shape a kelp forest in a trophic cascade?',
+    'What can overgrazing do to a lush kelp forest?',
+    'Who helps control urchins?',
+    'How can warm spells and storms stress a kelp canopy?',
+    'How can people help keep predator–urchin–kelp balance?',
 )
 
 EASY_STEMS = (
@@ -125,21 +125,21 @@ REDO_THEMES = (
     "A root-like holdfast grips rock so the kelp stays put — it does not drink nutrients like plant roots",
     "A flexible stalk (the stipe) holds up leaf-like blades that catch light",
     "Many kinds have gas-filled bladders that help the blades float toward sunlight",
-    "Along cool, nutrient-rich coasts — often where deeper water rises and feeds the kelp (soft)",
+    'Along cool, nutrient-rich coasts — often where deeper water rises and feeds the kelp',
     "Rockfish, snails, crabs, seals, otters, and seabirds can use the forest for food or shelter",
-    "Sea otters eat urchins that chew kelp — when predators keep urchins in check, forests stay lush (soft)",
-    "Protect cool coasts and the animals that stop urchins from mowing the kelp down (soft)",
+    'Sea otters eat urchins that chew kelp — when predators keep urchins in check, forests stay lush',
+    'Protect cool coasts and the animals that stop urchins from mowing the kelp down',
     "No — it’s a forest of seaweed, even when giant kelp looks tree-tall",
-    "Large brown algae in order Laminariales — genera like Macrocystis, Nereocystis, Laminaria, and Ecklonia (soft list)",
+    'Large brown algae in order Laminariales — genera like Macrocystis, Nereocystis, Laminaria, and Ecklonia',
     "The body is a thallus — holdfast + stipe + fronds — and nutrients are taken across the blades, not through roots",
-    "Surface canopy, mid understory, and seafloor prostrate kelps create sunny-to-shaded stories (soft)",
-    "In cool, nutrient-rich water, giant kelp (Macrocystis) can lengthen tens of centimeters a day (exact rate stays soft)",
-    "Where deep, cool, nutrient-rich water rises to the surface (upwelling) (soft)",
-    "Predators (for example sea otters in Alaska) eat urchins → fewer urchins → kelp can recover; remove predators and urchins can boom (soft)",
-    "It can flip the forest into rocky “urchin barrens” with little kelp — an alternate ecosystem state (soft)",
-    "In some Pacific forests otters act as a keystone; elsewhere lobsters or large fishes help control urchins instead (soft)",
-    "Heat waves, El Niño-type warm spells, and storms can weaken canopies and tip systems toward barrens (soft)",
-    "Marine protected areas and careful fishing can help; forest status is place-by-place, not one letter (soft)",
+    'Surface canopy, mid understory, and seafloor prostrate kelps create sunny-to-shaded stories',
+    'In cool, nutrient-rich water, giant kelp (Macrocystis) can lengthen tens of centimeters a day',
+    'Where deep, cool, nutrient-rich water rises to the surface (upwelling)',
+    'Predators (for example sea otters in Alaska) eat urchins → fewer urchins → kelp can recover; remove predators and urchins can boom',
+    'It can flip the forest into rocky “urchin barrens” with little kelp — an alternate ecosystem state',
+    'In some Pacific forests otters act as a keystone; elsewhere lobsters or large fishes help control urchins instead',
+    'Heat waves, El Niño-type warm spells, and storms can weaken canopies and tip systems toward barrens',
+    'Marine protected areas and careful fishing can help; forest status is place-by-place, not one letter',
 )
 
 
@@ -158,7 +158,7 @@ class KelpForestZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "zoologist")
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_KELP_FOREST)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Kelp forest.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Kelp forest. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_KELP_FOREST))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_KELP_FOREST))
@@ -197,53 +197,53 @@ class KelpForestZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("laminariales", correct_choice_text(questions[0]).lower())
         self.assertIn("stramenopile", correct_choice_text(questions[0]).lower())
         self.assertIn("plantae", correct_choice_text(questions[0]).lower())
-        self.assertIn("soft", correct_choice_text(questions[0]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[0]).lower())
         self.assertIn("macrocystis", correct_choice_text(questions[1]).lower())
         self.assertIn("alaria", correct_choice_text(questions[1]).lower())
         self.assertIn("eisenia", correct_choice_text(questions[1]).lower())
         self.assertIn("ecklonia", correct_choice_text(questions[1]).lower())
         self.assertIn("laminaria", correct_choice_text(questions[1]).lower())
         self.assertIn("rainforest", correct_choice_text(questions[1]).lower())
-        self.assertIn("soft", correct_choice_text(questions[1]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[1]).lower())
         self.assertIn("30", correct_choice_text(questions[2]))
         self.assertIn("60", correct_choice_text(questions[2]))
         self.assertIn("centimeter", correct_choice_text(questions[2]).lower())
         self.assertIn("year-round", correct_choice_text(questions[2]).lower())
-        self.assertIn("soft", correct_choice_text(questions[2]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[2]).lower())
         self.assertIn("northeastern pacific", correct_choice_text(questions[3]).lower())
         self.assertIn("california", correct_choice_text(questions[3]).lower())
         self.assertIn("aleutian", correct_choice_text(questions[3]).lower())
         self.assertIn("dozens", correct_choice_text(questions[3]).lower())
-        self.assertIn("soft", correct_choice_text(questions[3]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[3]).lower())
         self.assertIn("barren", correct_choice_text(questions[4]).lower())
         self.assertIn("persist", correct_choice_text(questions[4]).lower())
         self.assertIn("disease", correct_choice_text(questions[4]).lower())
         self.assertIn("predator", correct_choice_text(questions[4]).lower())
-        self.assertIn("soft", correct_choice_text(questions[4]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[4]).lower())
         self.assertIn("alaska", correct_choice_text(questions[5]).lower())
         self.assertIn("otter", correct_choice_text(questions[5]).lower())
         self.assertIn("southern california", correct_choice_text(questions[5]).lower())
         self.assertIn("lobster", correct_choice_text(questions[5]).lower())
         self.assertIn("sheephead", correct_choice_text(questions[5]).lower())
-        self.assertIn("soft", correct_choice_text(questions[5]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[5]).lower())
         self.assertIn("drift", correct_choice_text(questions[6]).lower())
         self.assertIn("holdfast", correct_choice_text(questions[6]).lower())
         self.assertIn("subsidy", correct_choice_text(questions[6]).lower())
-        self.assertIn("soft", correct_choice_text(questions[6]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[6]).lower())
         self.assertIn("el niño", correct_choice_text(questions[7]).lower())
         self.assertIn("nutrient-poor", correct_choice_text(questions[7]).lower())
         self.assertIn("storm", correct_choice_text(questions[7]).lower())
-        self.assertIn("soft", correct_choice_text(questions[7]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[7]).lower())
         self.assertIn("northern california", correct_choice_text(questions[8]).lower())
         self.assertIn("heatwave", correct_choice_text(questions[8]).lower())
         self.assertIn("urchin", correct_choice_text(questions[8]).lower())
         self.assertIn("snapshot", correct_choice_text(questions[8]).lower())
-        self.assertIn("soft", correct_choice_text(questions[8]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[8]).lower())
         self.assertIn("carbon", correct_choice_text(questions[9]).lower())
         self.assertIn("sink", correct_choice_text(questions[9]).lower())
         self.assertIn("offshore", correct_choice_text(questions[9]).lower())
         self.assertIn("estimate", correct_choice_text(questions[9]).lower())
-        self.assertIn("soft", correct_choice_text(questions[9]).lower())
+        self.assertNotIn("(soft)", correct_choice_text(questions[9]).lower())
         blob = " ".join(q["why"] for q in questions) + " ".join(
             " ".join(q["choices"]) for q in questions
         )
@@ -337,7 +337,7 @@ class KelpForestZoologistStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_KELP_FOREST, sheet)
-        self.assertIn("Facts from Wikipedia, Kelp forest.", sheet)
+        self.assertIn("Facts from Wikipedia, Kelp forest. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in ZOOLOGIST_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS + HARD_STEMS:

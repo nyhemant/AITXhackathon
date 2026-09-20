@@ -54,7 +54,7 @@ PRINT_KIT = FP / "js" / "print-kit.js"
 HARD_SLOTS = 5
 
 HARD_STEMS = (
-    "Where do scientists place stingrays in the fish family tree, if we keep names soft?",
+    'Where do scientists place stingrays in the fish family tree?',
     "How can a stingray find prey it cannot see under its disc?",
     "How do stingrays power swimming with their pectoral “wings”?",
     "Do all stingrays live only in the ocean?",
@@ -78,7 +78,7 @@ EASY_STEMS = (
     "What do many stingrays eat on the seafloor?",
     "How can a buried stingray keep breathing without gulping sandy water through its mouth?",
     "How do stingray babies usually arrive?",
-    "About how many kinds of stingray are there, if we keep the count soft?",
+    'About how many kinds of stingray are there?',
     "Do stingrays usually chase and hunt people?",
 )
 
@@ -125,7 +125,7 @@ class StingrayHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level"], "hard")
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_STINGRAY)
-        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Stingray.")
+        self.assertEqual(deck["source_note"], "Facts from Wikipedia, Stingray. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
         self.assertEqual(deck["talk_about"], list(TALK_ABOUT_STINGRAY))
         self.assertEqual(deck["push_further"], list(PUSH_FURTHER_STINGRAY))
@@ -238,7 +238,7 @@ class StingrayHardStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_STINGRAY, sheet)
-        self.assertIn("Facts from Wikipedia, Stingray.", sheet)
+        self.assertIn("Facts from Wikipedia, Stingray. Where sources disagree on exact numbers, we keep them approximate.", sheet)
         for stem in HARD_STEMS:
             self.assertIn(stem, sheet)
         for stem in EASY_STEMS:

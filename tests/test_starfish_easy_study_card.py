@@ -78,14 +78,14 @@ TEACH = (
 
 STEMS = (
     "Are starfish a kind of fish?",
-    "What does a sea star’s body look like, if we keep the arm count soft?",
+    'What does a sea star’s body look like?',
     "How does a sea star walk?",
     "Where is a sea star’s mouth?",
     "Where do sea stars live?",
     "What is a sea star’s skin like?",
     "What do many sea stars hunt?",
     "What can many sea stars do if they lose an arm?",
-    "How many kinds of sea star are there, if we keep the count soft?",
+    'How many kinds of sea star are there?',
     "Does the name “starfish” mean they are fish?",
 )
 
@@ -217,7 +217,7 @@ class StarfishEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_STARFISH)
         self.assertEqual(
             deck["source_note"],
-            "Facts from Wikipedia, Starfish.",
+            "Facts from Wikipedia, Starfish. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(validate_deck(deck), [])
         self.assertEqual(len(deck["teach"]), 5)
@@ -357,7 +357,7 @@ class StarfishEasyStudyCardTests(unittest.TestCase):
             "No — the name sounds like a fish, but they are sea stars: invertebrates, not fish",
             html,
         )
-        self.assertIn("Facts from Wikipedia, Starfish.", html)
+        self.assertIn("Facts from Wikipedia, Starfish. Where sources disagree on exact numbers, we keep them approximate.", html)
 
     def test_other_animal_stays_generic_worksheet(self):
         html = outing_talk_html({"id": "whale-shark", "packTemplate": "animals"})
