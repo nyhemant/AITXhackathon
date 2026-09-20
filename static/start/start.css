@@ -621,6 +621,13 @@ body.start-body {
   object-fit: cover;
 }
 
+.start-going-panel img:not([src]),
+.start-going-slide img:not([src]),
+#start-teach .start-chapter-still:not([src]),
+.start-teach-slide img:not([src]) {
+  display: none;
+}
+
 .start-going-panel[data-going-place="georgia"] img {
   object-position: 38% 20%;
 }

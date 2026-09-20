@@ -25,7 +25,7 @@
   <meta name="twitter:title" content="Make the zoo day stick. · KidZooKit" />
   <meta name="twitter:description" content="A virtual zoo for curious kids. Watch Live, explore Places, or open Cards — free, no signup, works on a phone." />
   <meta name="twitter:image" content="https://kidzookit.com/start/hero-world-map.jpg" />
-  <link rel="stylesheet" href="/start/start.css?v=52" />
+  <link rel="stylesheet" href="/start/start.css?v=53" />
 </head>
 <body class="start-body">
   <section class="start-hero" id="start-hero" aria-labelledby="start-heading">
@@ -144,22 +144,22 @@
   <section class="start-chapter" id="start-going" aria-labelledby="start-going-heading">
     <div class="start-chapter-box">
       <a class="start-chapter-hit start-going-hit" href="/field-pack/dallas-zoo/" aria-labelledby="start-going-heading">
+        <!-- No-JS fallback only: one Dallas still, no srcset. Hidden JS layouts arm src on the visible set. -->
         <img
           class="start-chapter-still"
           src="/start/going-giraffe.jpg"
-          srcset="/start/going-giraffe-480.jpg 480w, /start/going-giraffe-640.jpg 640w, /start/going-giraffe.jpg 1024w"
-          sizes="100vw"
           width="1024"
           height="1536"
           alt="Child holding a Dallas Zoo mission page with reticulated giraffe checked, a giraffe behind the paper"
           decoding="async"
+          loading="lazy"
         />
       </a>
       <div class="start-going-still" role="group" aria-label="Georgia Aquarium, Dallas Zoo, and San Diego Zoo">
         <a class="start-going-panel" data-going-place="georgia" href="/field-pack/georgia-aquarium/" aria-label="Georgia Aquarium">
           <img
-            src="/start/going-georgia-aquarium.jpg?v=3"
-            srcset="/start/going-georgia-aquarium-480.jpg?v=3 480w, /start/going-georgia-aquarium-640.jpg?v=3 640w, /start/going-georgia-aquarium.jpg?v=3 1024w"
+            data-src="/start/going-georgia-aquarium.jpg?v=3"
+            data-srcset="/start/going-georgia-aquarium-480.jpg?v=3 480w, /start/going-georgia-aquarium-640.jpg?v=3 640w, /start/going-georgia-aquarium.jpg?v=3 1024w"
             sizes="(min-width: 641px) 34vw, 100vw"
             width="1024"
             height="1536"
@@ -169,8 +169,8 @@
         </a>
         <a class="start-going-panel" data-going-place="dallas" href="/field-pack/dallas-zoo/" aria-label="Dallas Zoo">
           <img
-            src="/start/going-giraffe.jpg"
-            srcset="/start/going-giraffe-480.jpg 480w, /start/going-giraffe-640.jpg 640w, /start/going-giraffe.jpg 1024w"
+            data-src="/start/going-giraffe.jpg"
+            data-srcset="/start/going-giraffe-480.jpg 480w, /start/going-giraffe-640.jpg 640w, /start/going-giraffe.jpg 1024w"
             sizes="(min-width: 641px) 34vw, 100vw"
             width="1024"
             height="1536"
@@ -180,8 +180,8 @@
         </a>
         <a class="start-going-panel" data-going-place="sandiego" href="/field-pack/san-diego-zoo/" aria-label="San Diego Zoo">
           <img
-            src="/start/going-san-diego-zoo.jpg?v=2"
-            srcset="/start/going-san-diego-zoo-480.jpg?v=2 480w, /start/going-san-diego-zoo-640.jpg?v=2 640w, /start/going-san-diego-zoo.jpg?v=2 1024w"
+            data-src="/start/going-san-diego-zoo.jpg?v=2"
+            data-srcset="/start/going-san-diego-zoo-480.jpg?v=2 480w, /start/going-san-diego-zoo-640.jpg?v=2 640w, /start/going-san-diego-zoo.jpg?v=2 1024w"
             sizes="(min-width: 641px) 34vw, 100vw"
             width="1024"
             height="1536"
@@ -196,8 +196,8 @@
           <a class="start-going-slide" data-going-place="georgia" href="/field-pack/georgia-aquarium/" aria-label="Georgia Aquarium">
             <!-- Locked teaser: going-georgia-locked-octopus.jpg (also going-georgia-octopus-v2.jpg). No fish/whale swap. -->
             <img
-              src="/start/going-georgia-aquarium.jpg?v=3"
-              srcset="/start/going-georgia-aquarium-480.jpg?v=3 480w, /start/going-georgia-aquarium-640.jpg?v=3 640w, /start/going-georgia-aquarium.jpg?v=3 1024w"
+              data-src="/start/going-georgia-aquarium.jpg?v=3"
+              data-srcset="/start/going-georgia-aquarium-480.jpg?v=3 480w, /start/going-georgia-aquarium-640.jpg?v=3 640w, /start/going-georgia-aquarium.jpg?v=3 1024w"
               sizes="100vw"
               width="1024"
               height="1536"
@@ -208,8 +208,8 @@
           </a>
           <a class="start-going-slide" data-going-place="dallas" href="/field-pack/dallas-zoo/" aria-label="Dallas Zoo">
             <img
-              src="/start/going-giraffe.jpg"
-              srcset="/start/going-giraffe-480.jpg 480w, /start/going-giraffe-640.jpg 640w, /start/going-giraffe.jpg 1024w"
+              data-src="/start/going-giraffe.jpg"
+              data-srcset="/start/going-giraffe-480.jpg 480w, /start/going-giraffe-640.jpg 640w, /start/going-giraffe.jpg 1024w"
               sizes="100vw"
               width="1024"
               height="1536"
@@ -220,8 +220,8 @@
           <a class="start-going-slide" data-going-place="sandiego" href="/field-pack/san-diego-zoo/" aria-label="San Diego Zoo">
             <!-- Locked teaser: going-san-diego-locked-v2.jpg (also going-san-diego-v2.jpg). Pure v2 only; no zoom variants. -->
             <img
-              src="/start/going-san-diego-zoo.jpg?v=2"
-              srcset="/start/going-san-diego-zoo-480.jpg?v=2 480w, /start/going-san-diego-zoo-640.jpg?v=2 640w, /start/going-san-diego-zoo.jpg?v=2 1024w"
+              data-src="/start/going-san-diego-zoo.jpg?v=2"
+              data-srcset="/start/going-san-diego-zoo-480.jpg?v=2 480w, /start/going-san-diego-zoo-640.jpg?v=2 640w, /start/going-san-diego-zoo.jpg?v=2 1024w"
               sizes="100vw"
               width="1024"
               height="1536"
@@ -265,8 +265,8 @@
     <div class="start-chapter-box">
       <img
         class="start-chapter-still"
-        src="/start/teach-card.jpg"
-        srcset="/start/teach-card-480.jpg 480w, /start/teach-card-640.jpg 640w, /start/teach-card.jpg 1536w"
+        data-src="/start/teach-card.jpg"
+        data-srcset="/start/teach-card-480.jpg 480w, /start/teach-card-640.jpg 640w, /start/teach-card.jpg 1536w"
         sizes="100vw"
         width="1536"
         height="1024"
@@ -278,8 +278,8 @@
         <div class="start-teach-track" id="start-teach-track">
           <a class="start-teach-slide" href="/field-pack/cards/african-lion/">
             <img
-              src="/start/teach-lion.jpg"
-              srcset="/start/teach-lion-480.jpg 480w, /start/teach-lion.jpg 510w"
+              data-src="/start/teach-lion.jpg"
+              data-srcset="/start/teach-lion-480.jpg 480w, /start/teach-lion.jpg 510w"
               sizes="100vw"
               width="510"
               height="960"
@@ -289,8 +289,8 @@
           </a>
           <a class="start-teach-slide" href="/field-pack/cards/african-elephant/">
             <img
-              src="/start/teach-elephant.jpg"
-              srcset="/start/teach-elephant-480.jpg 480w, /start/teach-elephant.jpg 490w"
+              data-src="/start/teach-elephant.jpg"
+              data-srcset="/start/teach-elephant-480.jpg 480w, /start/teach-elephant.jpg 490w"
               sizes="100vw"
               width="490"
               height="960"
@@ -300,8 +300,8 @@
           </a>
           <a class="start-teach-slide" href="/field-pack/cards/reticulated-giraffe/">
             <img
-              src="/start/teach-giraffe.jpg"
-              srcset="/start/teach-giraffe-480.jpg 480w, /start/teach-giraffe.jpg 502w"
+              data-src="/start/teach-giraffe.jpg"
+              data-srcset="/start/teach-giraffe-480.jpg 480w, /start/teach-giraffe.jpg 502w"
               sizes="100vw"
               width="502"
               height="960"
@@ -353,6 +353,6 @@
   <script src="/shell/shell.js?v=6"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/pwa/register.js?v=1"></script>
-  <script src="/start/start.js?v=31"></script>
+  <script src="/start/start.js?v=32"></script>
 </body>
 </html>
