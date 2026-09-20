@@ -20,6 +20,7 @@ from generate_bdo_seo import (  # noqa: E402
     MISSION_CSS_VER,
     MISSION_DRAWER_H2,
     PLACE_VFT_CTA,
+    PRINT_SPEC,
     SEO_CSS_VER,
     START_HERE_H2,
     START_HERE_LEAD,
@@ -150,6 +151,15 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 hunt = visible.split('id="hunt-heading"', 1)[1].split("</section>", 1)[0]
                 self.assertRegex(hunt, rf">{CTA_PRINT}\s*</button>")
                 self.assertIn('data-how="print-hunt"', hunt)
+
+    def test_print_spec_line_near_hunt_print_cta(self):
+        for slug, html in self.pages.items():
+            visible = _visible(html)
+            with self.subTest(slug=slug):
+                hunt = visible.split('id="hunt-heading"', 1)[1].split("</section>", 1)[0]
+                self.assertIn('class="print-spec"', hunt)
+                self.assertIn("US Letter or A4", hunt)
+                self.assertIn("black &amp; white is fine", hunt)
 
     def test_empty_kit_stays_honest(self):
         cairo = _visible(self.cairo)

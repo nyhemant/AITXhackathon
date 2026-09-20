@@ -2978,3 +2978,10 @@ body.app-body {
     print-color-adjust: exact;
   }
 }
+
+/* Print spec hint (screen-only, near print CTAs) */
+.print-spec {
+  font-size: .82rem;
+  color: #777;
+  margin: .35em 0 0;
+}

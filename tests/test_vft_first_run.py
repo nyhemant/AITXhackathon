@@ -183,6 +183,19 @@ class VftFirstRunTests(unittest.TestCase):
                 self.assertIn(">Hide</span>", html)
                 self.assertNotIn("and maybe hide them for a hunt", html)
 
+    def test_print_spec_line_near_cutouts_cta(self):
+        for path, html in self.pages.items():
+            with self.subTest(page=str(path.relative_to(REPO))):
+                print_row = re.search(
+                    r'<div class="vz-print-row[^"]*" id="print">[\s\S]*?</div>\s*</main>',
+                    html,
+                )
+                self.assertIsNotNone(print_row)
+                block = print_row.group(0)
+                self.assertIn('class="print-spec"', block)
+                self.assertIn("US Letter or A4", block)
+                self.assertIn("black &amp; white is fine", block)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -574,7 +574,7 @@
    * @param {object} venue
    * @param {object} [opts]
    * @param {Record<string, string[]>} [opts.answers] missionId → selected choice labels
-   * @param {string} [opts.bannerNote] line under FIELD TRIP KIT title
+   * @param {string} [opts.bannerNote] line under KIDZOOKIT title
    * @param {string} [opts.footer] footer line
    */
   function buildQaCardHtml(item, venue, opts) {
@@ -654,7 +654,7 @@
 
     return `
       <div class="ps-page${photo ? " ps-page-with-photo" : ""}">
-        <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
+        <div class="ps-banner"><h1>KIDZOOKIT</h1>
         <p>${escapeHtml(bannerNote)}</p></div>
         <header class="ps-head">
           <h2>${escapeHtml(item.emoji || "")} ${escapeHtml(item.name)}</h2>
@@ -852,7 +852,7 @@
     const emoji = (item && item.emoji) || "";
     const levelLabel = (deck && (deck.level_label || studyLevelName(deck.level))) || studyLevelName("easy");
     return `<div class="ps-study-front ps-page">
-      <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
+      <div class="ps-banner"><h1>KIDZOOKIT</h1>
       <p>${escapeHtml(name)} · ${escapeHtml(levelLabel)} · Circle one · Flip for answers</p></div>
       <header class="ps-head"><h2>${escapeHtml((emoji + " " + name).trim())}</h2>
       <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span></p>
@@ -863,7 +863,7 @@
       <p class="ps-footer">${escapeHtml(source)} · kidzookit.com · Duplex: this side questions, back answers</p>
     </div>
     <div class="ps-study-back ps-page">
-      <div class="ps-banner"><h1>FIELD TRIP KIT</h1>
+      <div class="ps-banner"><h1>KIDZOOKIT</h1>
       <p>${escapeHtml(name)} · ${escapeHtml(levelLabel)} · Answers</p></div>
       <ol class="ps-study-answers">${answers}</ol>
       ${deepenHtml}
