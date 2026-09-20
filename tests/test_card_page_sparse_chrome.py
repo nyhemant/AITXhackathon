@@ -25,6 +25,7 @@ from generate_bdo_seo import (  # noqa: E402
     HOME_HREF,
     CTA_WATCH_LIVE,
     PLACE_VFT_CTA,
+    PRINT_SPEC,
     card_watch_href,
     vft_has_inpage_media,
     CARD_SEO_CSS_VER,
@@ -77,6 +78,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertEqual(CTA_AT_HOME, "At home")
         self.assertEqual(CTA_PRINT, "Print")
         self.assertEqual(CTA_PRINT_CARD, "Print this card")
+        self.assertEqual(PRINT_SPEC, "US Letter or A4 · black & white is fine")
         self.assertNotIn("CARD_PRINT_NOTE", self.gen)
         self.assertNotIn("One animal sheet — not the hide-and-seek cutouts", self.gen)
         self.assertEqual(CARDS_PLAY_H1, "Print cutouts to play")
@@ -134,6 +136,17 @@ class CardPageSparseChromeTests(unittest.TestCase):
                 self.assertNotIn("Explore at home", actions)
                 self.assertNotIn("nationalzoo.si.edu", actions)
                 self.assertLessEqual(actions.count('class="btn '), 3)
+
+    def test_print_spec_line_near_print_cta(self):
+        for cid, html in self.pages.items():
+            main = _main(html)
+            with self.subTest(card=cid):
+                self.assertIn('class="print-spec no-print"', main)
+                self.assertIn("US Letter or A4", main)
+                self.assertIn("black &amp; white is fine", main)
+                spec_at = main.find("print-spec")
+                print_at = main.find("print-this-card")
+                self.assertGreater(spec_at, print_at)
 
     def test_pre_recorded_film_uses_vft_not_youtube(self):
         for cid, html in self.pages.items():

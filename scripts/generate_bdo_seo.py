@@ -129,6 +129,7 @@ CTA_EXPLORE_HOME = "Explore at home"
 CTA_PRINT_VISIT = CTA_PRINT
 CTA_PRINT_VISIT_SHORT = CTA_PRINT
 CTA_PRINT_CARD = "Print this card"
+PRINT_SPEC = "US Letter or A4 · black & white is fine"
 CARDS_PLAY_H1 = "Print cutouts to play"
 CARDS_PLAY_CTA = "Print the cutouts"
 CARDS_PLAY_BROWSE = "Browse cards on the screen"
@@ -136,7 +137,7 @@ CARDS_PLAY_PRINT_HREF = PRINT_PATH
 CARDS_HUB_TITLE = "Print cutouts to play · Animal cards · KidZooKit"
 CARDS_HUB_DESC = "Print animal cutouts, hide them at home, then hunt. Or browse cards on the screen."
 CARDS_LANDING_CSS_VER = "103"
-CARDS_EXPLORER_JS_VER = "7"
+CARDS_EXPLORER_JS_VER = "8"
 CTA_READY = "Open"
 CTA_FIND = "Find"
 # Map explorer (/field-pack/) — short title, no sales/FAQ essay. Do not redirect to /start/.
@@ -329,11 +330,11 @@ CARD_SEO_CSS_VER = "35"
 LANDING_CSS_VER = "99"
 LANDING_MAP_JS_VER = "88"
 LANDING_HOOK_JS_VER = "38"
-STYLES_CSS_VER = "42"
+STYLES_CSS_VER = "43"
 CATALOG_JS_VER = "40"
 SHELL_CSS_VER = "9"
 SHELL_JS_VER = "6"
-PRINT_KIT_JS_VER = "20"
+PRINT_KIT_JS_VER = "21"
 STUDY_CARD_JS_VER = "10"
 STUDY_CARD_CSS_VER = "10"
 STUDY_CARDS_DATA_JS_VER = "7"
@@ -2046,6 +2047,7 @@ def hunt_teaser_html(hunt_lis: str) -> str:
       <h2 id="hunt-heading">{esc(HUNT_H2)}</h2>
       {essay}
       <p class="seo-hunt-action"><button type="button" class="btn btn-secondary" data-how="print-hunt">{esc(CTA_PRINT)}</button></p>
+      <p class="print-spec">{esc(PRINT_SPEC)}</p>
       <details class="seo-hunt-examples">
         <summary>{esc(HUNT_EXAMPLES_SUMMARY)}</summary>
         <ol class="seo-hunt-list">
@@ -5156,6 +5158,7 @@ def write_card_pages(
       <p class="card-page-actions">
         {actions_html}
       </p>
+      <p class="print-spec no-print">{esc(PRINT_SPEC)}</p>
     </main>
   </div>
   <div id="print-sheet" class="print-sheet" aria-hidden="true"></div>
