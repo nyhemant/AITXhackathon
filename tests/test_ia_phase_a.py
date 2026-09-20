@@ -173,7 +173,7 @@ class IaPhaseATests(unittest.TestCase):
         self.assertIn(">Places</a>", before_exp)
         self.assertIn("Those three doors start from", before_exp)
         self.assertIn("print cutouts to cut · hide · seek", before_exp)
-        self.assertIn("Experimental", exp)
+        self.assertIn("Beta", exp)
         self.assertIn(
             "Not part of the three doors — quiet extras if you already know you want them.",
             exp,
@@ -207,7 +207,7 @@ class IaPhaseATests(unittest.TestCase):
         self.assertIn('data-card-group="wildlife"', primary)
         self.assertNotIn('data-card-id="sci-dinosaur"', primary)
         self.assertNotIn('data-card-id="cm-art-lab"', primary)
-        self.assertIn("Experimental", experimental)
+        self.assertIn("Beta", experimental)
         self.assertIn("Museum stops &amp; extras", experimental)
         self.assertNotIn("Museum &amp; science cards", experimental)
         self.assertIn('data-card-id="sci-dinosaur"', experimental)

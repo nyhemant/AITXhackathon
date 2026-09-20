@@ -149,7 +149,7 @@
   }
 
   var hash = (location.hash || "").replace(/^#/, "");
-  if (hash === "cards-attractions" || hash === "cards-experimental") openOnly("attractions");
+  if (hash === "cards-attractions" || hash === "cards-experimental" || hash === "cards-beta") openOnly("attractions");
   else if (hash === "cards-wildlife" || hash === "cards-wildlife-wrap") openOnly("wildlife");
   else if (hash === "cards-sealife" || hash === "cards-sealife-wrap") openOnly("sealife");
   else if (hash === "cards-all-wrap" || hash === "cards-accordion") openPrimaryAll();
