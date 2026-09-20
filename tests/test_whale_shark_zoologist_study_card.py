@@ -190,12 +190,25 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
             self.assertLessEqual(len(line), peer_max + 20, line)
         talk = " ".join(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST).lower()
         push = " ".join(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST).lower()
-        self.assertIn("carpet shark", talk)
-        self.assertIn("year", talk)
-        self.assertIn("denticles", talk)
-        self.assertIn("spot", push)
-        self.assertIn("boats", push)
-        self.assertIn("fossil", push)
+        # Premises kids meet on the card (JR teach / quiz), not off-card jargon.
+        self.assertIn("smallest food", talk)
+        self.assertIn("spots", talk)
+        self.assertIn("isn’t a whale", talk)
+        self.assertIn("gentle", push)
+        self.assertIn("mouth", push)
+        self.assertIn("warm seas", push)
+        banned = (
+            "carpet shark",
+            "carpet sharks",
+            "fossil beach",
+            "endangered letter",
+            "denticles",
+            "elasmobranchii",
+            "chondrichthyes",
+        )
+        blob = talk + " " + push
+        for phrase in banned:
+            self.assertNotIn(phrase, blob)
 
     def test_zoologist_does_not_redo_easy_or_hard_stems(self):
         zoo = study_deck_for("whale-shark", "zoologist")

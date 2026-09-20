@@ -87,7 +87,8 @@ PLAIN_LEVEL_LABELS = ("Easy",)
 AGE_BADGES = ("Ages", "Age 4", "age badge", "ages 4", "4–6", "4-6")
 BRITTLE = (
     "IUCN",
-    # "Endangered" allowed — appears in restored top-level deepen prompts (not JR quiz stems)
+    # Deepen prompts stay on-card (no Endangered letter jargon); JR quiz also avoids it.
+    "Endangered",
     "Vulnerable",
     "Critically",
     "Near Threatened",
