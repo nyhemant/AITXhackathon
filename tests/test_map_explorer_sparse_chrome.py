@@ -14,12 +14,18 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import (  # noqa: E402
+    CATALOG_JS_VER,
     CTA_FIND,
     EXPLORER_H1,
     EXPLORER_TITLE,
     LANDING_CSS_VER,
     LANDING_HOOK_JS_VER,
     LANDING_MAP_JS_VER,
+    PRINT_KIT_JS_VER,
+    SEO_CSS_VER,
+    SHELL_CSS_VER,
+    SHELL_JS_VER,
+    STYLES_CSS_VER,
     TYPE_LANDINGS,
     TYPE_HUB_LEAD,
 )
@@ -229,7 +235,13 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         self.assertEqual(root._headers.get("Location"), START_PREFIX + "/")
 
     def test_cache_and_type_hubs_stay_sparse(self):
+        self.assertIn(f"shell.css?v={SHELL_CSS_VER}", self.html)
+        self.assertIn(f"styles.css?v={STYLES_CSS_VER}", self.html)
         self.assertIn(f"landing.css?v={LANDING_CSS_VER}", self.html)
+        self.assertIn(f"seo-venue.css?v={SEO_CSS_VER}", self.html)
+        self.assertIn(f"shell.js?v={SHELL_JS_VER}", self.html)
+        self.assertIn(f"catalog.js?v={CATALOG_JS_VER}", self.html)
+        self.assertIn(f"print-kit.js?v={PRINT_KIT_JS_VER}", self.html)
         self.assertIn(f"landing-map.js?v={LANDING_MAP_JS_VER}", self.html)
         self.assertIn(f"landing-hook.js?v={LANDING_HOOK_JS_VER}", self.html)
         self.assertEqual(TYPE_HUB_LEAD, "Cards, photos, and a cam when we have one.")
