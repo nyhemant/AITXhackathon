@@ -78,15 +78,15 @@ class FlagshipSessionTests(unittest.TestCase):
 
         dallas = (FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8")
         dallas_visible = dallas.split('id="venue-data"', 1)[0]
-        self.assertIn("Verified kit · checked", dallas_visible)
+        self.assertIn("We checked the animal list, exhibit names, and map link in", dallas_visible)
         self.assertIn('id="mission"', dallas)
         venue = json.loads((VENUES / "dallas-zoo.json").read_text(encoding="utf-8"))
-        self.assertTrue(kit_tier_label(venue).startswith("Verified kit"))
+        self.assertTrue(kit_tier_label(venue).startswith("We checked"))
 
         houston = (FP / "houston-zoo" / "index.html").read_text(encoding="utf-8")
         houston_visible = houston.split('id="venue-data"', 1)[0]
         self.assertIn("Starter list", houston_visible)
-        self.assertNotIn("Verified kit", houston_visible)
+        self.assertNotIn("We checked the animal list", houston_visible)
 
         self.assertNotIn('href="/field-pack/dallas-zoo/#mission"', html)
         self.assertIn('id="during"', html)
@@ -104,8 +104,10 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn('href="/field-pack/cards/african-elephant/?from=dallas-zoo"', visible)
         self.assertIn('href="/field-pack/cards/african-lion/?from=dallas-zoo"', visible)
         self.assertIn('data-how="print-hunt"', visible)
-        self.assertIn("At home", visible)
-        self.assertIn('href="#start-here"', visible)
+        self.assertIn("Going soon", visible)
+        self.assertIn("Not going yet", visible)
+        self.assertIn("Explore at home", visible)
+        self.assertIn('href="#at-home"', visible)
         start = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
         self.assertNotIn('class="seo-start-card" href="#mission"', start)
         self.assertNotIn("What did you notice about", visible)
@@ -124,7 +126,8 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("Add to hunt", visible)
         self.assertIn('href="/field-pack/cards/giant-panda/?from=san-diego-zoo"', visible)
         self.assertIn('href="/field-pack/cards/koala/?from=san-diego-zoo"', visible)
-        self.assertIn("At home", visible)
+        self.assertIn("Going soon", visible)
+        self.assertIn("Not going yet", visible)
         self.assertNotIn("What did you notice about the Koala?", visible)
 
     def test_lion_card_has_outing_six_and_cam(self):
@@ -304,7 +307,8 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("Run fast", html)
         self.assertNotIn("Can't tell", html)
         dallas = self._visible((FP / "dallas-zoo" / "index.html").read_text(encoding="utf-8"))
-        self.assertIn("At home", dallas)
+        self.assertIn("Going soon", dallas)
+        self.assertIn("Not going yet", dallas)
         self.assertIn("Start here", dallas)
         css = (FP / "css" / "styles.css").read_text(encoding="utf-8")
         seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
@@ -593,9 +597,13 @@ class FlagshipSessionTests(unittest.TestCase):
             kinds[kind] += 1
             html = (FP / slug / "index.html").read_text(encoding="utf-8")
             visible = self._visible(html)
-            self.assertIn("seo-venue.css?v=30", html, slug)
+            self.assertIn("seo-venue.css?v=31", html, slug)
             start = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
-            home = visible.split('id="at-home"', 1)[1].split("</section>", 1)[0]
+            home_rest = visible.split('id="at-home"', 1)[1]
+            if "</details>" in home_rest[:8000]:
+                home = home_rest.split("</details>", 1)[0]
+            else:
+                home = home_rest.split("</section>", 1)[0]
             for label, block in (("start", start), ("home", home)):
                 dims = img_wh.findall(block)
                 if dims:
@@ -627,7 +635,7 @@ class FlagshipSessionTests(unittest.TestCase):
 
         for kind in ("zoo", "aquarium", "museum", "park"):
             self.assertGreater(kinds[kind], 0, kind)
-        self.assertEqual(sum(kinds.values()), 218)
+        self.assertEqual(sum(kinds.values()), 221)
 
 
 if __name__ == "__main__":

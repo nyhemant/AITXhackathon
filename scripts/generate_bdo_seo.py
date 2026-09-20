@@ -129,7 +129,24 @@ CTA_EXPLORE_HOME = "Explore at home"
 CTA_PRINT_VISIT = CTA_PRINT
 CTA_PRINT_VISIT_SHORT = CTA_PRINT
 CTA_PRINT_CARD = "Print this card"
+CTA_SETUP_HUNT = "Set up your hunt"
 PRINT_SPEC = "US Letter or A4 · black & white is fine"
+# Option A fork cards (replace At home / Print pair on place pages)
+FORK_GOING_TITLE = "Going soon"
+FORK_GOING_SUB = "Build and print your hunt"
+FORK_GOING_CAPTION = "A one-page checklist to carry"
+FORK_HOME_TITLE = "Not going yet"
+FORK_HOME_SUB = "Explore at home"
+FORK_HOME_CAPTION = "Live cams, photos, and things to talk about."
+OFFER_SENTENCE = (
+    "Pick a few animals, print a one-page checklist to carry, "
+    "and have something to talk about on the way. Free, no signup."
+)
+CUSTOMIZE_SUMMARY_DEFAULT = "Customize — currently ages 5–8, half day, Classic"
+HUNT_STYLE_CLASSIC_CAP = "find the animals"
+HUNT_STYLE_BONUS_CAP = "find the animals, plus small extra challenges"
+HUNT_STYLE_CHALLENGE_CAP = "harder observation tasks for older kids"
+HUNT_STYLE_CHALLENGE_LABEL = "Challenge"
 CARDS_PLAY_H1 = "Animal cards"
 CARDS_PLAY_CTA = "Print the cutouts"
 CARDS_PLAY_BROWSE = "Browse cards on the screen"
@@ -145,7 +162,7 @@ EXPLORER_H1 = "Find a place"
 EXPLORER_TITLE = "Find a place · KidZooKit"
 EXPLORER_DESC = "Find a zoo, aquarium, museum, or park."
 
-HOME_SESSION_H2 = CTA_AT_HOME
+HOME_SESSION_H2 = "Can't go this week? Watch and talk at home"
 HOME_SESSION_LEAD = "Cards, photos, and a cam when we have one."
 HOME_SESSION_VFT = "Open Virtual Field Trip"
 PLACE_VFT_CTA = "Virtual Field Trip"
@@ -171,7 +188,7 @@ SHORTLIST_LEAD = ""
 HUNT_H2 = "Hunt"
 HUNT_BLOCK_P = ""
 HUNT_EXAMPLES_SUMMARY = "Finds"
-MISSION_DRAWER_H2 = CTA_PRINT
+MISSION_DRAWER_H2 = CTA_SETUP_HUNT
 MISSION_PRINT_BTN = CTA_PRINT
 MISSION_FILTERS_HINT = ""
 MISSION_HUNT_HINT = ""
@@ -325,7 +342,7 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "30"
+SEO_CSS_VER = "31"
 CARD_SEO_CSS_VER = "35"
 LANDING_CSS_VER = "100"
 LANDING_MAP_JS_VER = "89"
@@ -339,8 +356,8 @@ STUDY_CARD_JS_VER = "11"
 STUDY_CARD_CSS_VER = "11"
 STUDY_CARDS_DATA_JS_VER = "8"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
-MISSION_CSS_VER = "20"
-MISSION_UI_JS_VER = "19"
+MISSION_CSS_VER = "21"
+MISSION_UI_JS_VER = "20"
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
 FEATURED_CARD_IDS = (
@@ -1433,14 +1450,26 @@ def home_session_html(items: list[dict], *, venue_kind: str = "", venue_id: str 
         if HOME_SESSION_LEAD
         else ""
     )
+    n_home = len(cards)
+    plural = "s" if n_home != 1 else ""
+    count_label = (
+        f"{n_home} animal{plural} to explore at home"
+        if n_home
+        else "Explore at home"
+    )
     return f"""
-    <section class="seo-home-session" id="at-home" aria-labelledby="home-session-heading">
-      <h2 id="home-session-heading">{esc(HOME_SESSION_H2)}</h2>
+    <details class="seo-home-session" id="at-home" aria-labelledby="home-session-heading">
+      <summary class="seo-home-summary">
+        <span class="seo-home-summary-title" id="home-session-heading">{esc(HOME_SESSION_H2)}</span>
+        <span class="seo-home-summary-count">{esc(count_label)}</span>
+      </summary>
+      <div class="seo-home-session-body">
       {lead_html}
       <p class="seo-home-vft"><a class="btn btn-secondary" href="{esc(vft_href)}">{esc(PLACE_VFT_CTA)}</a></p>
       {grid}
       {empty}
-    </section>"""
+      </div>
+    </details>"""
 
 
 def load_venues() -> list[dict]:
@@ -2046,7 +2075,7 @@ def hunt_teaser_html(hunt_lis: str) -> str:
     <section class="seo-list-block seo-hunt-block" aria-labelledby="hunt-heading">
       <h2 id="hunt-heading">{esc(HUNT_H2)}</h2>
       {essay}
-      <p class="seo-hunt-action seo-hunt-action-quiet"><a href="#mission" class="seo-hunt-print-link" data-how="print-hunt">{esc(CTA_PRINT)} this hunt</a></p>
+      <p class="seo-hunt-action seo-hunt-action-quiet"><a href="#mission" class="seo-hunt-print-link" data-how="print-hunt">{esc(CTA_SETUP_HUNT)}</a></p>
       <details class="seo-hunt-examples">
         <summary>{esc(HUNT_EXAMPLES_SUMMARY)}</summary>
         <ol class="seo-hunt-list">
@@ -2094,46 +2123,46 @@ def wonder_grid_html(mission: dict) -> str:
 
 
 def page_mission_chrome_html(home_href: str = "#at-home") -> str:
-    """Two short CTAs + print spec. Who/Time/Style collapsed behind disclosure."""
+    """Option A: two side-by-side choice cards (Going soon / Not going yet)."""
     href = home_href or "#at-home"
     return f"""
-        <div class="seo-mission-bar no-print" aria-label="{esc(CTA_AT_HOME)} or {esc(CTA_PRINT)}">
-          <a class="btn btn-primary seo-home-btn" href="{esc(href)}">{esc(CTA_AT_HOME)}</a>
-          <button type="button" class="btn btn-secondary seo-print-btn" id="mission-open-btn" aria-haspopup="dialog" aria-controls="mission-drawer" aria-label="{esc(CTA_PRINT)}">
-            {esc(CTA_PRINT)}
+        <div class="seo-fork no-print" aria-label="Going soon or explore at home">
+          <button type="button" class="seo-fork-card seo-fork-going" id="mission-open-btn" data-how="going-soon" aria-haspopup="dialog" aria-controls="mission-drawer">
+            <strong class="seo-fork-title">{esc(FORK_GOING_TITLE)}</strong>
+            <span class="seo-fork-sub">{esc(FORK_GOING_SUB)}</span>
+            <span class="seo-fork-cap">{esc(FORK_GOING_CAPTION)}</span>
+            <span class="print-spec seo-fork-print-spec">{esc(PRINT_SPEC)}</span>
           </button>
-          <p class="print-spec seo-print-spec-hero">{esc(PRINT_SPEC)}</p>
-          <details class="seo-customize-disclosure">
-            <summary>Customize hunt</summary>
-            <div class="seo-mission-chrome" id="seo-mission-chrome">
-              <div class="seo-chrome-row">
-                <span class="seo-chrome-k" id="seo-who-label">Who</span>
-                <div class="seo-chip-row" role="group" aria-labelledby="seo-who-label">
-                  <button type="button" class="seo-age-chip" data-age="2-3">2–4</button>
-                  <button type="button" class="seo-age-chip is-active" data-age="4-5" aria-pressed="true">5–8</button>
-                  <button type="button" class="seo-age-chip" data-age="6-8">9–12</button>
-                  <button type="button" class="seo-age-chip" data-age="adult">Adults</button>
-                </div>
-              </div>
-              <div class="seo-chrome-row">
-                <span class="seo-chrome-k" id="seo-time-label">Time</span>
-                <div class="seo-chip-row" role="group" aria-labelledby="seo-time-label">
-                  <button type="button" class="seo-time-chip" data-time="90m">90 min</button>
-                  <button type="button" class="seo-time-chip is-active" data-time="half" aria-pressed="true">Half day</button>
-                  <button type="button" class="seo-time-chip" data-time="full">Full day</button>
-                </div>
-              </div>
-              <div class="seo-chrome-row seo-chrome-row-hunt">
-                <span class="seo-chrome-k" id="seo-hunt-label">Style</span>
-                <div class="seo-chip-row seo-chip-row-hunt" role="group" aria-labelledby="seo-hunt-label">
-                  <button type="button" class="seo-hunt-chip is-active" data-hunt="classic" aria-pressed="true">Classic</button>
-                  <button type="button" class="seo-hunt-chip seo-hunt-bonus" data-hunt="bonus">Bonus</button>
-                  <button type="button" class="seo-hunt-chip seo-hunt-alpha" data-hunt="alpha">Alpha</button>
-                </div>
-              </div>
-            </div>
-          </details>
+          <a class="seo-fork-card seo-fork-home" href="{esc(href)}" data-how="not-going-yet">
+            <strong class="seo-fork-title">{esc(FORK_HOME_TITLE)}</strong>
+            <span class="seo-fork-sub">{esc(FORK_HOME_SUB)}</span>
+            <span class="seo-fork-cap">{esc(FORK_HOME_CAPTION)}</span>
+          </a>
         </div>"""
+
+
+def customize_after_stops_html() -> str:
+    """Customize opens the hunt modal (no duplicate Who/Time/Style on the page)."""
+    return f"""
+    <p class="seo-customize-row no-print">
+      <button type="button" class="seo-customize-open" id="seo-customize-open" data-how="open-customize" aria-haspopup="dialog" aria-controls="mission-drawer">
+        <span id="seo-customize-summary">{esc(CUSTOMIZE_SUMMARY_DEFAULT)}</span>
+      </button>
+    </p>"""
+
+
+def sticky_hunt_bar_html() -> str:
+    """Bottom sticky: live animal count + primary print action."""
+    return f"""
+  <div class="seo-hunt-sticky no-print" id="seo-hunt-sticky" hidden>
+    <p class="seo-hunt-sticky-copy" id="seo-hunt-sticky-label"><span id="seo-hunt-count">0</span> animals in your hunt · Print (1 page)</p>
+    <button type="button" class="btn btn-primary seo-sticky-print" id="seo-sticky-print" data-how="print-hunt">{esc(CTA_PRINT)}</button>
+    <p class="print-spec seo-sticky-print-spec">{esc(PRINT_SPEC)}</p>
+  </div>"""
+
+
+def offer_sentence_html() -> str:
+    return f'<p class="seo-offer">{esc(OFFER_SENTENCE)}</p>'
 
 
 def _photo_src(photo: str) -> str:
@@ -2305,7 +2334,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
     vid = mission_venue["slug"]
     loc = ", ".join(x for x in [mission_venue.get("city"), mission_venue.get("region")] if x)
     verified_line = print_status_line(mission_venue)
-    mission_title = esc(mission.get("title") or f"Your Mission at {mission_venue['name']}")
+    mission_title = esc(mission.get("title") or f"Your Hunt at {mission_venue['name']}")
     age_label = esc(mission.get("ageLabel") or "Kids · 5–8")
     time_label = esc(mission.get("timeLabel") or "Half day")
     finds_html = "".join(
@@ -2367,11 +2396,20 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
             </div>
           </div>
           <div class="mission-field mission-field-hunt">
-            <span class="mission-field-label" id="mission-hunt-label">Mission style</span>
-            <div class="mission-seg" id="mission-hunt-seg" role="group" aria-labelledby="mission-hunt-label">
-              <button type="button" class="mission-seg-btn is-active" data-hunt="classic" aria-pressed="true">Classic</button>
-              <button type="button" class="mission-seg-btn mission-seg-bonus" data-hunt="bonus">Bonus</button>
-              <button type="button" class="mission-seg-btn mission-seg-alpha" data-hunt="alpha">Alpha</button>
+            <span class="mission-field-label" id="mission-hunt-label">Hunt style</span>
+            <div class="mission-seg mission-seg-hunt" id="mission-hunt-seg" role="group" aria-labelledby="mission-hunt-label">
+              <button type="button" class="mission-seg-btn is-active" data-hunt="classic" aria-pressed="true">
+                Classic
+                <small class="mission-seg-cap">{esc(HUNT_STYLE_CLASSIC_CAP)}</small>
+              </button>
+              <button type="button" class="mission-seg-btn mission-seg-bonus" data-hunt="bonus">
+                Bonus
+                <small class="mission-seg-cap">{esc(HUNT_STYLE_BONUS_CAP)}</small>
+              </button>
+              <button type="button" class="mission-seg-btn mission-seg-alpha" data-hunt="alpha">
+                {esc(HUNT_STYLE_CHALLENGE_LABEL)}
+                <small class="mission-seg-cap">{esc(HUNT_STYLE_CHALLENGE_CAP)}</small>
+              </button>
             </div>
           </div>
           <div class="mission-field">
@@ -2482,7 +2520,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     drawer = mission_drawer_html(mission_venue, mission)
     map_card = map_card_html(mission_venue)
     route90 = route_90m_html(mission_venue, mission, catalog_v=v)
-    chrome = page_mission_chrome_html(home_href="#start-here" if route90 else "#at-home")
+    chrome = page_mission_chrome_html(home_href="#at-home")
+    customize = customize_after_stops_html()
+    sticky = sticky_hunt_bar_html()
     # Catalog ids already shown in “start here” — don’t repeat in shortlist grid
     start_exclude = _start_here_catalog_ids(mission_venue, mission)
     practical = mission_venue.get("practical") or {}
@@ -2541,11 +2581,12 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     )
     lead = quiet_hero_lead(v, mission_venue)
     lead_html = f'<p class="lead">{esc(lead)}</p>' if lead else ""
+    offer_html = offer_sentence_html()
     facts_html = (
         practical_chips_html(practical, last_v)
         + status_chip_html(mission_venue)
-        + freshness_html(vid, "no-print")
     )
+    freshness_bottom = freshness_html(vid, "no-print seo-freshness-bottom")
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -2604,6 +2645,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       <header class="seo-hero">
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
+        {offer_html}
         {lead_html}
         {hero_banner}
         {facts_html}
@@ -2611,16 +2653,18 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       </header>
 
       {route90}
-      {home_sec}
+      {customize}
       {park_animals_html(vid)}
       {map_card}
       <div id="seo-play-target" class="seo-play-anchor" tabindex="-1"></div>
       {body}
+      {home_sec}
 
       <p class="seo-official no-print">
         {f'Official site: <a href="{esc(v["website"])}" rel="noopener noreferrer" target="_blank">{esc(v["name"])} website</a>.' if v.get("website") else ""}
         Always check hours and tickets before you go.
       </p>
+      {freshness_bottom}
     </article>
 
     <footer class="site-footer site-footer-slim no-print">
@@ -2640,13 +2684,14 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   </div>
 
   {drawer}
+  {sticky}
 
   <script type="application/json" id="venue-data">{venue_json}</script>
   <script type="application/json" id="bonus-hunts-data">{bonus_json}</script>
   <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
-  <script src="/field-pack/js/mission/mission-engine.js?v=13"></script>
+  <script src="/field-pack/js/mission/mission-engine.js?v=14"></script>
   <script src="/field-pack/js/mission/mission-ui.js?v={MISSION_UI_JS_VER}"></script>
 </body>
 </html>
@@ -3006,7 +3051,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
         <a class="type-cta-primary" href="/field-pack/virtual-field-trip/">{esc(CTA_AT_HOME)}</a>
         <a class="type-cta-secondary" href="{map_href}">Map</a>
       </div>
-      {"<h2>Start here</h2><div class=\"type-feat-grid\">" + featured + "</div>" if featured else ""}
+      {(('<h2>Start here</h2><div class="type-feat-grid">' + featured + '</div>') if featured else '')}
       <h2 id="dir-heading">{esc(meta["nav"])}</h2>
       {f'<p id="dir-blurb">{esc(meta["pitch"])}</p>' if meta.get("pitch") else ""}
       <div id="seo-venue-directory" class="seo-dir-body">

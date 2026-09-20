@@ -19,7 +19,7 @@
     const conf = (venue && venue.list_confidence) || "";
     if (conf === "audited") {
       const month = checkedMonthLabel(venue && venue.last_presence_audit);
-      if (month) return `Verified kit · checked ${month}`;
+      if (month) return `We checked the animal list, exhibit names, and map link in ${month}.`;
     }
     return "Starter list";
   }
@@ -251,8 +251,8 @@
     if (title) title.textContent = mission.title;
     if (meta) {
       const parts = [mission.ageLabel, mission.timeLabel];
-      if (mission.hunt === "alpha") parts.push(mission.huntLabel || "Alpha");
-      else if (mission.hunt === "bonus") parts.push(mission.huntLabel || "Bonus hunt");
+      if (mission.hunt === "alpha") parts.push(mission.huntLabel || "Challenge");
+      else if (mission.hunt === "bonus") parts.push(mission.huntLabel || "Bonus");
       else if (mission.contentMode === "wonder") parts.push("Flexible finds");
       if (mission.huntTagline && (mission.hunt === "bonus" || mission.hunt === "alpha")) {
         const tagCls = mission.hunt === "alpha" ? "ms-hunt-tag ms-hunt-tag-alpha" : "ms-hunt-tag";
@@ -269,6 +269,8 @@
     }
     setSectionHeadings(mission);
     syncAudienceChrome(mission);
+    syncStickyHuntBar(mission);
+    syncCustomizeSummary();
     if (findsEl) {
       findsEl.innerHTML = (mission.finds || [])
         .map(
@@ -529,19 +531,52 @@
       if (el.classList.contains("seo-bonus-hint")) {
         el.textContent =
           state.hunt === "alpha"
-            ? "Alpha = extra-hard cool finds."
+            ? "Challenge — harder observation tasks for older kids"
             : state.hunt === "bonus"
-              ? "Bonus = trickier second-visit finds."
-              : "Classic · Bonus · Alpha styles.";
+              ? "Bonus — find the animals, plus small extra challenges"
+              : "Classic — find the animals";
       } else {
         el.textContent =
           state.hunt === "alpha"
-            ? "Alpha = extra-hard cool finds + easter egg"
+            ? "Challenge — harder observation tasks for older kids"
             : state.hunt === "bonus"
-              ? "Bonus = second visit · trickier finds + easter egg"
-              : "Classic = first visit · Bonus = trickier · Alpha = extra-hard";
+              ? "Bonus — find the animals, plus small extra challenges"
+              : "Classic — find the animals · Bonus — plus small extras · Challenge — harder tasks";
       }
     });
+    syncCustomizeSummary();
+    syncStickyHuntBar(lastMission);
+  }
+
+  function ageChipLabel(age) {
+    return ({ "2-3": "ages 2–4", "4-5": "ages 5–8", "6-8": "ages 9–12", adult: "adults" })[age] || "ages 5–8";
+  }
+  function timeChipLabel(time) {
+    return ({ "90m": "90 min", half: "half day", full: "full day" })[time] || "half day";
+  }
+  function huntChipLabel(hunt) {
+    return ({ classic: "Classic", bonus: "Bonus", alpha: "Challenge" })[hunt] || "Classic";
+  }
+  function syncCustomizeSummary() {
+    const el = document.getElementById("seo-customize-summary");
+    if (!el) return;
+    el.textContent =
+      "Customize — currently " +
+      ageChipLabel(state.age) +
+      ", " +
+      timeChipLabel(state.time) +
+      ", " +
+      huntChipLabel(state.hunt);
+  }
+  function syncStickyHuntBar(mission) {
+    const bar = document.getElementById("seo-hunt-sticky");
+    const label = document.getElementById("seo-hunt-sticky-label");
+    if (!bar || !label) return;
+    const n = (mission && mission.finds && mission.finds.length) || 0;
+    const noun = n === 1 ? "animal" : "animals";
+    label.textContent = n + " " + noun + " in your hunt · Print (1 page)";
+    bar.hidden = false;
+    document.body.classList.add("has-hunt-sticky");
   }
 
   function recompute(fromShuffle) {
@@ -742,6 +777,35 @@
       e.preventDefault();
       openDrawerWhenReady();
     });
+    document.querySelectorAll("[data-how='open-customize'], #seo-customize-open").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        openDrawerWhenReady();
+      });
+    });
+    document.querySelectorAll("[data-how='going-soon']").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.body.classList.add("seo-path-going");
+        document.body.classList.remove("seo-path-home");
+        openDrawerWhenReady();
+      });
+    });
+    document.querySelectorAll("[data-how='not-going-yet']").forEach((el) => {
+      el.addEventListener("click", () => {
+        document.body.classList.add("seo-path-home");
+        document.body.classList.remove("seo-path-going");
+        const home = document.getElementById("at-home");
+        if (home && home.tagName === "DETAILS") home.open = true;
+      });
+    });
+    const openAtHomeFromHash = () => {
+      if (location.hash !== "#at-home") return;
+      const home = document.getElementById("at-home");
+      if (home && home.tagName === "DETAILS") home.open = true;
+    };
+    openAtHomeFromHash();
+    window.addEventListener("hashchange", openAtHomeFromHash);
 
     // Any print CTA on the venue page → mission drawer (never static treasure sheet)
     document.querySelectorAll("[data-how], #seo-print-hunt, #seo-open-mission").forEach((el) => {

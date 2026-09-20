@@ -2059,3 +2059,193 @@ body.seo-venue-body {
     box-sizing: border-box;
   }
 }
+
+
+/* === Option A fork / sticky / at-home collapse (2026-09-20) === */
+.seo-offer {
+  margin: 0.35rem 0 0.65rem;
+  max-width: 40rem;
+  color: #3d4f6f;
+  font-size: 1.02rem;
+  font-weight: 650;
+  line-height: 1.4;
+}
+.seo-fork {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 0.85rem 0 0.25rem;
+}
+.seo-fork-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.9rem 1rem 1rem;
+  border-radius: 16px;
+  border: 1.5px solid rgba(15, 92, 92, 0.18);
+  background: #fff;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  min-height: 7.5rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.seo-fork-card:hover,
+.seo-fork-card:focus-visible {
+  border-color: #0f5c5c;
+  box-shadow: 0 4px 16px rgba(15, 92, 92, 0.12);
+  outline: none;
+}
+.seo-fork-going {
+  background: linear-gradient(180deg, #e8f6f2 0%, #fff 55%);
+  border-color: rgba(15, 92, 92, 0.28);
+}
+.seo-fork-title {
+  font-size: 1.12rem;
+  font-weight: 850;
+  color: #0a4545;
+  letter-spacing: -0.02em;
+}
+.seo-fork-sub {
+  font-size: 0.95rem;
+  font-weight: 750;
+  color: #0f5c5c;
+}
+.seo-fork-cap {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #5a6b82;
+  line-height: 1.3;
+  font-style: italic;
+}
+.seo-fork-print-spec {
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+  color: #777;
+  font-weight: 600;
+  font-style: normal;
+}
+@media (max-width: 560px) {
+  .seo-fork { grid-template-columns: 1fr; }
+}
+
+.seo-customize-row {
+  margin: 0.75rem 0 1rem;
+}
+.seo-customize-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(15, 92, 92, 0.2);
+  background: rgba(255, 255, 255, 0.92);
+  color: #0f5c5c;
+  font-size: 0.88rem;
+  font-weight: 750;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 750;
+}
+.seo-customize-open:hover,
+.seo-customize-open:focus-visible {
+  border-color: #0f5c5c;
+  outline: none;
+}
+
+.seo-home-session {
+  margin: 1.25rem 0 1.5rem;
+  padding: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1.5px solid rgba(15, 92, 92, 0.14);
+  overflow: hidden;
+}
+.seo-home-summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.seo-home-summary::-webkit-details-marker { display: none; }
+.seo-home-summary::before {
+  content: "▸ ";
+  color: #0f5c5c;
+  font-weight: 850;
+}
+.seo-home-session[open] > .seo-home-summary::before { content: "▾ "; }
+.seo-home-summary-title {
+  font-size: clamp(1.15rem, 3.5vw, 1.45rem);
+  font-weight: 850;
+  color: #0a4545;
+  letter-spacing: -0.02em;
+}
+.seo-home-summary-count {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f5c5c;
+  padding-left: 1rem;
+}
+.seo-home-session-body {
+  padding: 0 0.85rem 1rem;
+}
+.seo-home-session h2,
+.seo-home-session .seo-home-summary-title {
+  margin: 0;
+}
+
+.seo-freshness-bottom {
+  margin: 0.5rem 0 1.25rem;
+}
+
+.seo-hunt-sticky {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.85rem;
+  padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1.5px solid rgba(15, 92, 92, 0.18);
+  box-shadow: 0 -6px 24px rgba(10, 40, 40, 0.08);
+  backdrop-filter: blur(8px);
+}
+.seo-hunt-sticky[hidden] { display: none !important; }
+.seo-hunt-sticky-copy {
+  margin: 0;
+  flex: 1 1 auto;
+  font-size: 0.92rem;
+  font-weight: 750;
+  color: #0a4545;
+}
+.seo-sticky-print {
+  flex: 0 0 auto;
+  min-height: 2.6rem;
+  padding: 0.45rem 1.1rem;
+  font-weight: 850;
+}
+.seo-sticky-print-spec {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: 0.78rem;
+  color: #777;
+  font-weight: 600;
+}
+body.has-hunt-sticky {
+  padding-bottom: 5.5rem;
+}
+@media (max-width: 560px) {
+  .seo-hunt-sticky { padding-left: 0.75rem; padding-right: 0.75rem; }
+  .seo-sticky-print { width: 100%; }
+}
+
+/* Legacy mission-bar rules kept for older cached HTML; fork is primary */
