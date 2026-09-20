@@ -113,6 +113,64 @@ class PrintCssSlackTest(unittest.TestCase):
         self.assertIn("waitForPrintImages", MISSION_UI_JS)
         self.assertIn("waitForPrintImages,", PRINT_KIT_JS)
 
+    # ---- Unified print-pack assertions (brand + tokens) ----
+
+    def test_all_print_banners_use_kidzookit_brand(self):
+        """Every JS-generated print banner should have <h1>KIDZOOKIT</h1>."""
+        self.assertIn('<h1>KIDZOOKIT</h1>', PRINT_KIT_JS)
+        for label in ("buildQaCardHtml", "buildStudyCardHtml",
+                       "buildTreasureHtml", "buildCutPageHtml",
+                       "buildAnswerPageHtml"):
+            block_start = PRINT_KIT_JS.find(f"function {label}")
+            self.assertNotEqual(block_start, -1, f"{label} not found")
+            next_fn = PRINT_KIT_JS.find("\n  function ", block_start + 1)
+            if next_fn == -1:
+                next_fn = len(PRINT_KIT_JS)
+            block = PRINT_KIT_JS[block_start:next_fn]
+            self.assertIn("<h1>KIDZOOKIT</h1>", block,
+                          f"{label} should have KIDZOOKIT in banner h1")
+
+    def test_shared_print_tokens_declared(self):
+        """styles.css should declare FP_PRINT_TOKENS custom properties."""
+        self.assertIn("FP_PRINT_TOKENS", STYLES_CSS)
+        for token in ("--fp-print-font", "--fp-print-ink",
+                       "--fp-print-footer-size", "--fp-print-footer-color",
+                       "--fp-print-brand-bg"):
+            self.assertIn(token, STYLES_CSS,
+                          f"Token {token} should be declared in styles.css")
+
+    def test_print_tokens_consumed_by_mission_css(self):
+        """mission.css print rules should reference shared tokens."""
+        self.assertIn("--fp-print-font", MISSION_CSS)
+        self.assertIn("--fp-print-footer-size", MISSION_CSS)
+
+    def test_no_hardcoded_6pt_or_8pt_print_footer(self):
+        """Footer sizes should use the shared 7pt token, not stale 6pt/8pt."""
+        block = _first_print_block(STYLES_CSS)
+        for selector in (".ps-footer", ".th-footer", ".hs-footer"):
+            after = block.split(selector, 1)
+            if len(after) < 2:
+                continue
+            rule = after[1][:200]
+            self.assertNotIn("font-size: 6pt", rule,
+                             f"{selector} should not use hardcoded 6pt")
+            self.assertNotIn("font-size: 8pt", rule,
+                             f"{selector} should not use hardcoded 8pt")
+
+    def test_duplex_guidance_is_consistent(self):
+        """Study card and cutout answers should use the same two-sided wording."""
+        self.assertIn("Print two-sided (flip on long edge)", PRINT_KIT_JS)
+        self.assertNotIn("Duplex:", PRINT_KIT_JS)
+
+    def test_th_safety_not_duplicated_in_seo_venue(self):
+        """th-safety should only be defined in styles.css, not duplicated."""
+        seo_css = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
+        self.assertNotIn(".th-safety {", seo_css)
+
+    def test_footer_includes_kidzookit_com(self):
+        """All print footer strings should mention kidzookit.com."""
+        self.assertIn("kidzookit.com", PRINT_KIT_JS)
+
 
 if __name__ == "__main__":
     unittest.main()

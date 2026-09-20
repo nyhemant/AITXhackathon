@@ -154,8 +154,8 @@
     return `
       <div class="th-page${mapSrc ? " th-page-with-map" : ""}">
         <div class="th-banner">
-          <h1>🗺️ Your mission${venue && (venue.sliceLabel || venue.slice_label || (venue.practical && venue.practical.slice_name)) ? ` · ${escapeHtml(venue.sliceLabel || venue.slice_label || venue.practical.slice_name)}` : ""}</h1>
-          <p>${escapeHtml(venue.name)} · One-page hunt · Field Trip Kit</p>
+          <h1>KIDZOOKIT</h1>
+          <p>🗺️ Your mission${venue && (venue.sliceLabel || venue.slice_label || (venue.practical && venue.practical.slice_name)) ? ` · ${escapeHtml(venue.sliceLabel || venue.slice_label || venue.practical.slice_name)}` : ""} · ${escapeHtml(venue.name)} · One-page hunt</p>
         </div>
         <div class="th-meta">
           <p><strong>Place:</strong> ${escapeHtml(venue.name)}
@@ -183,7 +183,7 @@
               )}</p>`
             : ""
         }
-        <p class="th-footer">${freshnessFooterHtml(venue)} · Optional after: open Field Trip Kit → tap a card → Q&A</p>
+        <p class="th-footer">kidzookit.com · ${freshnessFooterHtml(venue)}</p>
       </div>`;
   }
 
@@ -860,7 +860,7 @@
       ${teachHtml}
       <div class="ps-study-top">${photoBlock}<div class="ps-study-top-qs">${qs.slice(0, 2).map(qCard).join("")}</div></div>
       <div class="ps-study-grid">${qs.slice(2).map(qCard).join("")}</div>
-      <p class="ps-footer">${escapeHtml(source)} · kidzookit.com · Duplex: this side questions, back answers</p>
+      <p class="ps-footer">${escapeHtml(source)} · kidzookit.com · Print two-sided (flip on long edge)</p>
     </div>
     <div class="ps-study-back ps-page">
       <div class="ps-banner"><h1>KIDZOOKIT</h1>
@@ -1225,11 +1225,11 @@
     const sub =
       (config && config.printHideSub) ||
       "Cut the cards. Hide them. Write in the box. Ask the question.";
-    const footer = (config && config.printFooter) || "kidzookit.com/field-pack/virtual-field-trip/ · Field Trip Kit";
+    const footer = (config && config.printFooter) || "kidzookit.com · Field Trip Kit";
     const cols = HS_COLS;
     return `<div class="hs-page hs-page-cut">
-      <div class="hs-banner"><h1>${escapeHtml(banner)}</h1>
-      <p>${escapeHtml(sub)}</p></div>
+      <div class="hs-banner"><h1>KIDZOOKIT</h1>
+      <p>${escapeHtml(banner)} · ${escapeHtml(sub)}</p></div>
       <div class="hs-cuts" style="--hs-cols:${cols}">${habitats.map(cutCardHtml).join("")}</div>
       <p class="hs-footer">${escapeHtml(footer)}</p>
     </div>`;
@@ -1237,15 +1237,15 @@
 
   function buildAnswerPageHtml(config, habitats) {
     const banner = (config && config.printHideBanner) || "Hide-and-seek at home";
-    const sub = "Answers. Print two-sided.";
-    const footer = (config && config.printFooter) || "kidzookit.com/field-pack/virtual-field-trip/ · Field Trip Kit";
+    const sub = "Answers · Print two-sided (flip on long edge)";
+    const footer = (config && config.printFooter) || "kidzookit.com · Field Trip Kit";
     const cols = HS_COLS;
     const cards = habitats
       .map((_, i) => answerCardHtml(habitats[longEdgeMirrorIndex(i, habitats.length, cols)]))
       .join("");
     return `<div class="hs-page hs-page-answers">
-      <div class="hs-banner"><h1>${escapeHtml(banner)}</h1>
-      <p>${escapeHtml(sub)}</p></div>
+      <div class="hs-banner"><h1>KIDZOOKIT</h1>
+      <p>${escapeHtml(banner)} · ${escapeHtml(sub)}</p></div>
       <div class="hs-cuts" style="--hs-cols:${cols}">${cards}</div>
       <p class="hs-footer">${escapeHtml(footer)}</p>
     </div>`;
