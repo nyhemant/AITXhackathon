@@ -193,6 +193,22 @@ class HubExplorerTests(unittest.TestCase):
         self.assertEqual(vz._code, 301)
         self.assertEqual(vz._headers.get("Location"), "/field-pack/virtual-field-trip/")
 
+    def test_places_card_cta_is_honest_and_primary_only(self):
+        cta = re.search(r'id="cat-all-cards-link"[^>]*>(.*?)</a>', self.html)
+        self.assertIsNotNone(cta, "Places hub must have a cards CTA link")
+        label = cta.group(1)
+        self.assertIn("Browse cards", label)
+        self.assertNotIn("58", label)
+        self.assertNotIn("57", label)
+        self.assertNotRegex(label, r"\d+ cards")
+        self.assertIn('href="/field-pack/cards/"', self.html)
+        tiles = re.findall(r'data-card-group="([^"]+)"', self.html)
+        self.assertTrue(len(tiles) > 0, "Places hub must have card tiles")
+        for g in tiles:
+            self.assertIn(g, ("wildlife", "sealife"), f"unexpected card group on Places hub: {g}")
+        self.assertNotIn('data-card-group="attractions"', self.html)
+        self.assertNotIn('data-card-group="parks"', self.html)
+
     def test_about_is_seek_out_not_a_landing(self):
         slash = _get("/about")
         self.assertEqual(slash._code, 301)
