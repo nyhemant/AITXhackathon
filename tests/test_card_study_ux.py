@@ -439,8 +439,8 @@ class CardStudyUxTests(unittest.TestCase):
                 self.assertGreater(photos_at, hero_at)
                 self.assertGreater(watch_at, photos_at)
                 self.assertLess(watch_at, talk_at)
-                self.assertIn("study-card.js?v=10", html)
-                self.assertIn("study-card.css?v=10", html)
+                self.assertIn("study-card.js?v=11", html)
+                self.assertIn("study-card.css?v=11", html)
                 self.assertIn(f"seo-venue.css?v={CARD_SEO_CSS_VER}", html)
 
         warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))

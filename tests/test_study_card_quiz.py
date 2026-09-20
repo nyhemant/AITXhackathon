@@ -206,8 +206,8 @@ class StudyCardQuizTests(unittest.TestCase):
         self.assertIn('STUDY_CARD_JS_VER = "10"', seo)
         self.assertIn('STUDY_CARD_CSS_VER = "10"', seo)
         html = LION.read_text(encoding="utf-8")
-        self.assertIn("study-card.js?v=10", html)
-        self.assertIn("study-card.css?v=10", html)
+        self.assertIn("study-card.js?v=11", html)
+        self.assertIn("study-card.css?v=11", html)
 
     def test_runtime_wrong_then_correct_scores(self):
         node = shutil.which("node")

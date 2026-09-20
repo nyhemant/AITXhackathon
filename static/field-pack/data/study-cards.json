@@ -17483,8 +17483,16 @@
     "id": "whale-shark",
     "source": "https://en.wikipedia.org/wiki/Whale_shark",
     "source_note": "Facts from Wikipedia, Whale shark.",
-    "talk_about": [],
-    "push_further": [],
+    "talk_about": [
+      "Scientists put the living whale shark with carpet sharks. Why mention an extinct cousin too?",
+      "Whale sharks grow slowly and live a long time. Why keep the exact years soft?",
+      "Skin teeth cover more than the mouth. Why might denticles on the eyes help?"
+    ],
+    "push_further": [
+      "Spot patterns can name one animal. Why might photos beat tagging every shark?",
+      "Boats and nets still hurt whale sharks. Why treat the Endangered letter as a snapshot?",
+      "Family-tree site details stay soft. Why not lock one fossil beach forever?"
+    ],
     "levels": {
       "easy": {
         "teach": [
@@ -17634,16 +17642,6 @@
       },
       "zoologist": {
         "teach": [],
-        "talk_about": [
-          "Scientists put the living whale shark with carpet sharks. Why mention an extinct cousin too?",
-          "Whale sharks grow slowly and live a long time. Why keep the exact years soft?",
-          "Skin teeth cover more than the mouth. Why might denticles on the eyes help?"
-        ],
-        "push_further": [
-          "Spot patterns can name one animal. Why might photos beat tagging every shark?",
-          "Boats and nets still hurt whale sharks. Why treat the Endangered letter as a snapshot?",
-          "Family-tree site details stay soft. Why not lock one fossil beach forever?"
-        ],
         "questions": [
           {
             "slot": 1,

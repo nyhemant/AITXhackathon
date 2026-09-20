@@ -148,7 +148,7 @@ class LionHardStudyCardTests(unittest.TestCase):
     def test_default_screen_html_keeps_easy_and_adds_picker(self):
         html = outing_talk_html({"id": "african-lion", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
-        self.assertIn("Learn first", html)
+        self.assertIn("Quick tips (Junior Ranger)", html)
         self.assertIn("<details class=\"study-teach\">", html)
         self.assertNotIn("<details class=\"study-teach\" open", html)
         self.assertIn("Junior Ranger", html)
@@ -175,7 +175,7 @@ class LionHardStudyCardTests(unittest.TestCase):
         )
         self.assertIn("Park Ranger", sheet)
         self.assertNotIn("Junior Ranger", sheet)
-        self.assertNotIn("Learn first", sheet)
+        self.assertNotIn("Quick tips", sheet)
         self.assertNotIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
@@ -216,12 +216,12 @@ class LionHardStudyCardTests(unittest.TestCase):
         self.assertIn("Park Ranger", html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Zoologist", html)
-        self.assertIn("Learn first", html)
+        self.assertIn("Quick tips (Junior Ranger)", html)
         self.assertIn("Watch Live", html)
         self.assertIn("Zoologist", html.split("<main", 1)[1].split("</main>", 1)[0])
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
-        self.assertIn("Learn first", print_tpl)
+        self.assertIn("Quick tips (Junior Ranger)", print_tpl)
         self.assertNotIn("Park Ranger", print_tpl)
         for stem in HARD_STEMS:
             self.assertNotIn(stem, print_tpl)

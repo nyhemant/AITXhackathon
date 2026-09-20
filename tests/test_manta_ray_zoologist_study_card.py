@@ -286,7 +286,7 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
     def test_default_screen_html_keeps_easy_and_adds_zoologist_picker(self):
         html = outing_talk_html({"id": "manta-ray", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
-        self.assertIn("Learn first", html)
+        self.assertIn("Quick tips (Junior Ranger)", html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
         self.assertIn("Zoologist", html)
@@ -313,7 +313,7 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", sheet)
         self.assertNotIn("Junior Ranger", sheet)
         self.assertNotIn("Park Ranger", sheet)
-        self.assertNotIn("Learn first", sheet)
+        self.assertNotIn("Quick tips", sheet)
         self.assertNotIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
@@ -407,11 +407,11 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn('data-study-pick="hard"', html)
-        self.assertIn("study-card.js?v=10", html)
-        self.assertIn("study-cards-data.js?v=7", html)
+        self.assertIn("study-card.js?v=11", html)
+        self.assertIn("study-cards-data.js?v=8", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
-        self.assertIn("Learn first", print_tpl)
+        self.assertIn("Quick tips (Junior Ranger)", print_tpl)
         self.assertNotIn("Zoologist", print_tpl)
         for stem in ZOOLOGIST_STEMS:
             self.assertNotIn(stem, print_tpl)

@@ -196,7 +196,7 @@ class PolarBearHardStudyCardTests(unittest.TestCase):
     def test_default_screen_html_keeps_easy_and_adds_picker(self):
         html = outing_talk_html({"id": "polar-bear", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
-        self.assertIn("Learn first", html)
+        self.assertIn("Quick tips (Junior Ranger)", html)
         self.assertIn('<details class="study-teach">', html)
         self.assertNotIn('<details class="study-teach" open', html)
         self.assertIn("Junior Ranger", html)
@@ -227,7 +227,7 @@ class PolarBearHardStudyCardTests(unittest.TestCase):
         )
         self.assertIn("Park Ranger", sheet)
         self.assertNotIn("Junior Ranger", sheet)
-        self.assertNotIn("Learn first", sheet)
+        self.assertNotIn("Quick tips", sheet)
         self.assertNotIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
@@ -294,7 +294,7 @@ class PolarBearHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("Learn first", html)
+        self.assertIn("Quick tips (Junior Ranger)", html)
         self.assertIn('class="card-hero-links no-print"', html)
         self.assertIn('class="card-try-next no-print"', html)
         self.assertIn("study-level-picker-bottom", html)
@@ -302,7 +302,7 @@ class PolarBearHardStudyCardTests(unittest.TestCase):
         self.assertNotIn("One animal sheet — not the hide-and-seek cutouts", html)
         print_tpl = html.split('id="study-print-template">', 1)[1].split("</template>", 1)[0]
         self.assertIn("Junior Ranger", print_tpl)
-        self.assertIn("Learn first", print_tpl)
+        self.assertIn("Quick tips (Junior Ranger)", print_tpl)
         self.assertNotIn("Park Ranger", print_tpl)
         for stem in HARD_STEMS:
             self.assertNotIn(stem, print_tpl)

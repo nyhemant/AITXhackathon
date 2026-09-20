@@ -799,7 +799,7 @@
     const qs = (deck && deck.questions) || [];
     const teach = (deck && deck.teach) || [];
     const teachHtml = teach.length
-      ? `<div class="ps-study-teach"><p class="ps-talk-label">Learn first</p><ul>${teach
+      ? `<div class="ps-study-teach"><p class="ps-talk-label">Quick tips (Junior Ranger)</p><ul>${teach
           .map((t) => `<li>${escapeHtml(t)}</li>`)
           .join("")}</ul></div>`
       : "";
