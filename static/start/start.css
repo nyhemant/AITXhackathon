@@ -652,15 +652,23 @@ body.start-body {
   text-shadow: 0 1px 18px rgba(12, 10, 8, 0.35);
 }
 
-/* Going section: bright white on light map wash */
+/* Going section: bright white (copy sits above fade via z-index 3) */
 #start-going .start-kicker {
   color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55), 0 2px 14px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65), 0 2px 16px rgba(0, 0, 0, 0.45);
 }
 
 #start-going .start-chapter-line {
   color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55), 0 2px 18px rgba(0, 0, 0, 0.45);
+  opacity: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65), 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+#start-going .start-chapter-quiet {
+  color: rgba(255, 255, 255, 0.92);
+  opacity: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 2px 14px rgba(0, 0, 0, 0.4);
 }
 
 .start-chapter-quiet {
@@ -1870,18 +1878,20 @@ body.start-body {
 #start-going .start-chapter-copy {
   top: 0;
   bottom: auto;
+  z-index: 3; /* above ::after fade — same z-index was muting white ink */
   padding: calc(1.15rem + env(safe-area-inset-top, 0px)) clamp(1.25rem, 5vw, 4rem) 1.25rem;
 }
 
-/* Flip fade to top so white copy still has a dark wash */
+/* Flip fade to top so white copy still has a dark wash (under copy) */
 #start-going .start-chapter-box::after {
   inset: 0 0 auto;
+  z-index: 2;
   height: min(58%, 26rem);
   background: linear-gradient(
     to bottom,
-    rgba(12, 10, 8, 0.78) 0%,
-    rgba(12, 10, 8, 0.52) 38%,
-    rgba(12, 10, 8, 0.18) 72%,
+    rgba(12, 10, 8, 0.72) 0%,
+    rgba(12, 10, 8, 0.45) 40%,
+    rgba(12, 10, 8, 0.14) 74%,
     transparent 100%
   );
 }
