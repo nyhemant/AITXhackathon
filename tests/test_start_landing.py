@@ -418,11 +418,12 @@ class StartLandingTests(unittest.TestCase):
         chrome = header.group(1)
         self.assertNotIn("start-brand", chrome)
         self.assertNotIn("/1LessMark.png", chrome)
-        self.assertTrue(chrome.strip().startswith('<div class="start-menu-wrap">'))
         self.assertIn('<p class="start-wordmark">Arya’s Wildlife Project</p>', chrome)
-        self.assertLess(chrome.find("start-menu-wrap"), chrome.find("start-wordmark"))
+        self.assertLess(chrome.find("start-wordmark"), chrome.find("start-menu-wrap"))
         self.assertEqual(self.html.count("start-wordmark"), 1)
         self.assertIn(".start-wordmark", self.css)
+        self.assertIn("justify-content: space-between", self.css)
+        self.assertIn("margin-left: auto", self.css)
         # Start only: shell pages stay neutral for search arrivals.
         for other in (
             self.home,
@@ -443,8 +444,8 @@ class StartLandingTests(unittest.TestCase):
             ],
         )
         self.assertNotIn("<small>", chrome)
-        self.assertIn("justify-content: flex-start", self.css)
-        self.assertIn("margin-left: 0", self.css)
+        self.assertIn("justify-content: space-between", self.css)
+        self.assertIn("margin-left: auto", self.css)
         self.assertNotIn(".start-brand", self.css)
         self.assertIn(".start-routes", self.css)
         self.assertIn(".start-route", self.css)
