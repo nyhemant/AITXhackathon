@@ -99,9 +99,12 @@ RESERVED = {
 }
 
 # Type hub landings: path segment → filter + copy
-HEADER_TAGLINE = "Zoo, aquarium, museum &amp; park days"
-# Card pages only — kit promise (static; do not animate).
+# Default shell tagline (places, hubs, about extras). Not the old venue list.
+HEADER_TAGLINE = "Watch it. Print it. Go find it."
+# Card pages — same kit promise (static; do not animate).
 CARD_HEADER_TAGLINE = "Watch it. Print it. Go find it."
+# Virtual Field Trip / Watch Live shell.
+VFT_HEADER_TAGLINE = "Watch live. Wonder at home."
 OG_SHARE_IMAGE = f"{SITE}/field-pack/photos/sample-mission-dallas-zoo.jpg"
 PARK_OG_IMAGE = f"{SITE}/field-pack/photos/np-hero-yellowstone.jpg"
 # Brand / product home. Map explorer stays at /field-pack/ — do not point logo/title there.
