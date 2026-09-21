@@ -1969,3 +1969,14 @@ body.start-body {
     transparent 100%
   );
 }
+
+.start-going-more {
+  margin: 0.5rem 0 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+.start-going-more a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}

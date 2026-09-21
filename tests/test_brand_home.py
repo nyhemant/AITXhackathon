@@ -111,7 +111,10 @@ class BrandHomeTests(unittest.TestCase):
         self.assertNotIn("/1LessMark.png", html)
         self.assertIn('id="start-menu-btn"', html)
         pills = re.findall(r'<a class="start-pill" href="([^"]+)">([^<]+)</a>', html)
-        self.assertIn(("/field-pack/", "Explore Places Near You"), pills)
+        self.assertIn(("/field-pack/dallas-zoo/", "Sample visit"), pills)
+        self.assertNotIn(("/field-pack/", "Explore Places Near You"), pills)
+        self.assertIn('class="start-going-more"', html)
+        self.assertIn(">Explore Places Near You</a>", html)
 
     def test_about_brand_goes_to_start_find_a_place_hits_explorer(self):
         html = ABOUT.read_text(encoding="utf-8")
@@ -236,7 +239,7 @@ class BrandHomeTests(unittest.TestCase):
         vft = VFT.read_text(encoding="utf-8")
         self.assertEqual(_attr(cards, "shell-brand"), "/start/")
         self.assertEqual(_attr(cards, "shell-product"), "/start/")
-        self.assertIn('href="/field-pack/">Places</a>', cards)
+        self.assertIn('href="/start/" role="menuitem">Start</a>', cards)
         self.assertIn('href="/field-pack/" role="menuitem">Places', cards)
         self.assertEqual(_attr(vft, "shell-brand"), "/start/")
         self.assertEqual(_attr(vft, "shell-product"), "/start/")
