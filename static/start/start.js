@@ -1049,106 +1049,111 @@
   });
 })();
 
-(function startVenueRotator() {
-  const root = document.querySelector("[data-venue-rotator]");
-  const slot = root && root.closest(".start-venue-slot");
-  if (!root || !slot) return;
+(function startWordRotators() {
+  function bootRotator(rootSel, slotSel, sizerSel, wordSel) {
+    const root = document.querySelector(rootSel);
+    const slot = root && root.closest(slotSel);
+    if (!root || !slot) return;
 
-  const sizer = slot.querySelector(".start-venue-sizer");
-  const words = Array.from(root.querySelectorAll(".start-venue-word"));
-  if (words.length < 2) return;
+    const sizer = slot.querySelector(sizerSel);
+    const words = Array.from(root.querySelectorAll(wordSel));
+    if (words.length < 2) return;
 
-  function wordWidth(el) {
-    const rect = el.getBoundingClientRect().width;
-    if (rect > 0) return Math.ceil(rect);
-    return Math.ceil(el.scrollWidth) || 0;
-  }
-
-  function fitSlot(i, animate) {
-    const el = words[i];
-    if (!el) return;
-    const label = (el.textContent || "").trim();
-    if (sizer && label) sizer.textContent = label;
-    const w = wordWidth(el);
-    if (!w) return;
-    if (!animate) {
-      const prev = slot.style.transition;
-      slot.style.transition = "none";
-      slot.style.width = w + "px";
-      void slot.offsetWidth;
-      slot.style.transition = prev;
-    } else {
-      slot.style.width = w + "px";
+    function wordWidth(el) {
+      const rect = el.getBoundingClientRect().width;
+      if (rect > 0) return Math.ceil(rect);
+      return Math.ceil(el.scrollWidth) || 0;
     }
-  }
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) {
-    words.forEach((el, i) => {
-      el.classList.toggle("is-active", i === 0);
+    function fitSlot(i, animate) {
+      const el = words[i];
+      if (!el) return;
+      const label = (el.textContent || "").trim();
+      if (sizer && label) sizer.textContent = label;
+      const w = wordWidth(el);
+      if (!w) return;
+      if (!animate) {
+        const prev = slot.style.transition;
+        slot.style.transition = "none";
+        slot.style.width = w + "px";
+        void slot.offsetWidth;
+        slot.style.transition = prev;
+      } else {
+        slot.style.width = w + "px";
+      }
+    }
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      words.forEach((el, i) => {
+        el.classList.toggle("is-active", i === 0);
+      });
+      fitSlot(0, false);
+      return;
+    }
+
+    const INTERVAL_MS = 5000;
+    let index = words.findIndex((el) => el.classList.contains("is-active"));
+    if (index < 0) index = 0;
+    let timer = null;
+    let paused = false;
+
+    function show(i, animate) {
+      words.forEach((el, n) => {
+        el.classList.toggle("is-active", n === i);
+      });
+      fitSlot(i, animate !== false);
+      index = i;
+    }
+
+    function next() {
+      if (paused) return;
+      show((index + 1) % words.length, true);
+    }
+
+    function start() {
+      if (timer != null) return;
+      timer = window.setInterval(next, INTERVAL_MS);
+    }
+
+    function stop() {
+      if (timer == null) return;
+      window.clearInterval(timer);
+      timer = null;
+    }
+
+    function pause() {
+      paused = true;
+      stop();
+    }
+
+    function resume() {
+      paused = false;
+      start();
+    }
+
+    slot.addEventListener("mouseenter", pause);
+    slot.addEventListener("mouseleave", resume);
+    slot.addEventListener("focusin", pause);
+    slot.addEventListener("focusout", resume);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stop();
+      } else if (!paused) {
+        start();
+      }
     });
-    fitSlot(0, false);
-    return;
-  }
 
-  const INTERVAL_MS = 5000;
-  let index = words.findIndex((el) => el.classList.contains("is-active"));
-  if (index < 0) index = 0;
-  let timer = null;
-  let paused = false;
-
-  function show(i, animate) {
-    words.forEach((el, n) => {
-      el.classList.toggle("is-active", n === i);
+    window.addEventListener("resize", () => {
+      fitSlot(index, false);
     });
-    fitSlot(i, animate !== false);
-    index = i;
-  }
 
-  function next() {
-    if (paused) return;
-    show((index + 1) % words.length, true);
-  }
-
-  function start() {
-    if (timer != null) return;
-    timer = window.setInterval(next, INTERVAL_MS);
-  }
-
-  function stop() {
-    if (timer == null) return;
-    window.clearInterval(timer);
-    timer = null;
-  }
-
-  function pause() {
-    paused = true;
-    stop();
-  }
-
-  function resume() {
-    paused = false;
+    show(index, false);
     start();
   }
 
-  slot.addEventListener("mouseenter", pause);
-  slot.addEventListener("mouseleave", resume);
-  slot.addEventListener("focusin", pause);
-  slot.addEventListener("focusout", resume);
-
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      stop();
-    } else if (!paused) {
-      start();
-    }
-  });
-
-  window.addEventListener("resize", () => {
-    fitSlot(index, false);
-  });
-
-  show(index, false);
-  start();
+  bootRotator("[data-venue-rotator]", ".start-venue-slot", ".start-venue-sizer", ".start-venue-word");
+  bootRotator("[data-wildlife-rotator]", ".start-wildlife-slot", ".start-wildlife-sizer", ".start-wildlife-word");
 })();
 

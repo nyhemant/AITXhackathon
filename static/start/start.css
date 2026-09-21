@@ -1760,3 +1760,76 @@ body.start-body {
     transform: scale(1.15);
   }
 }
+
+
+/* Wildlife rotator (cam section) — mirror venue slot */
+.start-wildlife-line {
+  display: inline;
+}
+.start-wildlife-slot {
+  display: inline-block;
+  position: relative;
+  vertical-align: baseline;
+  overflow: hidden;
+  transition: width 250ms ease;
+}
+.start-wildlife-sizer {
+  visibility: hidden;
+  white-space: nowrap;
+}
+.start-wildlife-words {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.start-wildlife-word {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+.start-wildlife-word.is-active {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .start-wildlife-slot {
+    transition: none;
+  }
+  .start-wildlife-word {
+    transition: none;
+  }
+}
+
+/* Desktop: keep hero + chapter headlines on one row */
+@media (min-width: 721px) {
+  .start-hero h1 .start-venue-line,
+  #start-home .start-chapter-line .start-wildlife-line,
+  #start-teach .start-chapter-line,
+  #start-going .start-chapter-line {
+    white-space: nowrap;
+  }
+  .start-hero h1 {
+    font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+  }
+  #start-home .start-chapter-line,
+  #start-teach .start-chapter-line,
+  #start-going .start-chapter-line {
+    font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  }
+}
+
+/* Mobile: slight trim only — don’t crush into unreadability */
+@media (max-width: 720px) {
+  .start-hero h1 {
+    font-size: clamp(1.35rem, 6.2vw, 1.85rem);
+  }
+  #start-home .start-chapter-line,
+  #start-teach .start-chapter-line,
+  #start-going .start-chapter-line {
+    font-size: clamp(1.15rem, 4.6vw, 1.45rem);
+  }
+}
