@@ -1,4 +1,4 @@
-"""Virtual Field Trip Pre-recorded stays in-page — no youtube.com dump."""
+"""Virtual Field Trip Film controls stay in-page — no youtube.com dump."""
 
 from __future__ import annotations
 
@@ -133,6 +133,8 @@ class VftInlineFilmTests(unittest.TestCase):
         self.assertIn("data-habitat=\"caribbean-flamingo\"", primary)
         self.assertIn("#habitat=caribbean-flamingo", primary)
         self.assertIn('role="button"', primary)
+        self.assertIn("Film — Flamingo chicks at the Houston Zoo", primary)
+        self.assertNotIn("Pre-recorded", primary)
         self.assertIn("<noscript>", html)
         self.assertIn("vz-static-film-offsite", html)
         self.assertIn("youtube.com/watch?v=u2k4lSTZxS4", html.split("<noscript>", 1)[1])
@@ -297,7 +299,7 @@ class VftInlineFilmTests(unittest.TestCase):
 
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=104", html)
+            self.assertIn("virtual-venue.js?v=105", html)
             self.assertIn("virtual-venue.css?v=57", html)
         self.assertIn("virtual-zoo.json?v=27", self.js)
         self.assertIn("virtual-aquarium.json?v=27", self.js)

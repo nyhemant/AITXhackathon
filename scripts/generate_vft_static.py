@@ -19,35 +19,35 @@ TABS = [
     {
         "id": "zoo",
         "json": "virtual-zoo.json",
-        "h2": "Virtual Zoo",
+        "h2": "Zoo",
         "href": "/field-pack/virtual-field-trip/?tab=zoo#zoo",
         "label": "Zoo",
     },
     {
         "id": "aquarium",
         "json": "virtual-aquarium.json",
-        "h2": "Virtual Aquarium Field Trip",
+        "h2": "Aquarium",
         "href": "/field-pack/virtual-field-trip/?tab=aquarium#aquarium",
         "label": "Aquarium",
     },
     {
         "id": "natural-history",
         "json": "virtual-nhm.json",
-        "h2": "Virtual Natural History Museum",
+        "h2": "Natural History Museum",
         "href": "/field-pack/virtual-field-trip/?tab=natural-history#natural-history",
         "label": "Museum",
     },
     {
         "id": "science",
         "json": "virtual-science.json",
-        "h2": "Virtual Science Museum Field Trip",
+        "h2": "Science Museum",
         "href": "/field-pack/virtual-field-trip/?tab=science#science",
         "label": "Science",
     },
     {
         "id": "parks",
         "json": "virtual-parks.json",
-        "h2": "Virtual National Parks Field Trip",
+        "h2": "National Parks",
         "href": "/field-pack/virtual-field-trip/?tab=parks#parks",
         "label": "Parks",
     },
@@ -98,9 +98,9 @@ def card_href(h: dict, tab: str = "zoo") -> tuple[str, str]:
         return h["placeHref"], "Park kit"
     cid = h.get("cardId") or h.get("id")
     if cid and (ROOT / "cards" / cid / "index.html").is_file():
-        return f"/field-pack/cards/{cid}/", "Card"
+        return f"/field-pack/cards/{cid}/", "Open card"
     hid = h.get("id") or cid or ""
-    return f"/field-pack/virtual-field-trip/?tab={tab}#habitat={hid}", "Card"
+    return f"/field-pack/virtual-field-trip/?tab={tab}#habitat={hid}", ""
 
 
 def cam_line(h: dict) -> str:
@@ -122,7 +122,7 @@ def film_line(h: dict, tab: str = "zoo") -> str:
     href = f"/field-pack/virtual-field-trip/?tab={tab}#habitat={hid}"
     primary = (
         f'<a class="vz-static-film" href="{esc(href)}" data-habitat="{esc(hid)}" role="button">'
-        f"Pre-recorded — {esc(label)}</a>"
+        f"Film — {esc(label)}</a>"
     )
     noscript = (
         f'<noscript><a class="vz-static-film-offsite" href="{esc(url)}" rel="noopener noreferrer">'
@@ -146,13 +146,14 @@ def render_panels(cat: dict) -> str:
             href, kind = card_href(h, spec["id"])
             cam = cam_line(h)
             film = film_line(h, spec["id"])
+            kind_html = f'<p class="vz-static-kind">{esc(kind)}</p>' if kind else ""
             items.append(
                 f"""          <li>
             <a href="{esc(href)}">{esc(name)}</a>
             {f'<p>{esc(line)}</p>' if line else ''}
             {cam}
             {film}
-            <p class="vz-static-kind">{esc(kind)}</p>
+            {kind_html}
           </li>"""
             )
         chunks.append(
