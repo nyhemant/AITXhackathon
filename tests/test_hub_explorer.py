@@ -160,7 +160,8 @@ class HubExplorerTests(unittest.TestCase):
 
     def test_hub_has_start_path_and_no_primary_pitch(self):
         self.assertIn('href="/start/"', self.html)
-        self.assertIn('class="shell-start"', self.html)
+        self.assertNotIn('class="shell-start"', self.html)
+        self.assertIn('class="shell-more"', self.html)
         self.assertNotIn("landing-pitch-t4b", self.html)
         self.assertNotIn("hero-moment-strip", self.html)
         self.assertNotIn("hero-moment-before", self.html)

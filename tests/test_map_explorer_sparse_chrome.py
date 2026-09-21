@@ -224,7 +224,8 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
     def test_brand_stays_on_start_explorer_does_not_redirect(self):
         self.assertIn('class="shell-brand" href="/start/"', self.html)
         self.assertIn('class="shell-product" href="/start/"', self.html)
-        self.assertIn('class="shell-start" href="/start/"', self.html)
+        self.assertNotIn('class="shell-start"', self.html)
+        self.assertIn('class="shell-more"', self.html)
         self.assertIn('href="/field-pack/" aria-current="page" role="menuitem">Places', self.html)
         explorer = _get("/field-pack/")
         self.assertEqual(explorer._code, 200)
