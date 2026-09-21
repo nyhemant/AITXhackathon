@@ -53,6 +53,15 @@ class VftSparseChromeTests(unittest.TestCase):
             "parks": json.loads((VENUES / "virtual-parks.json").read_text(encoding="utf-8")),
         }
 
+    def test_shell_tagline_and_no_field_trip_kit_brand(self):
+        for path, html in self.pages.items():
+            with self.subTest(page=str(path.relative_to(REPO))):
+                self.assertIn("Watch it. Print it. Go find it.", html)
+                self.assertNotIn("Watch live. Wonder at home.", html)
+                self.assertNotIn("Field Trip Kit", html)
+                self.assertNotIn("existing Field Trip Kit", html)
+                self.assertRegex(html, r'class="vz-static-count">\d+ (stops|halls)</p>')
+
     def test_pages_drop_instructional_chrome(self):
         for path, html in self.pages.items():
             with self.subTest(page=str(path.relative_to(REPO))):

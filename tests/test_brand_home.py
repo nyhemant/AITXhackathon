@@ -156,6 +156,9 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn('id="for-ai-assistants"', html)
         self.assertIn('id="faq"', html)
         self.assertIn("KidZooKit is an at-home virtual zoo", html)
+        self.assertNotIn("Field Trip Kit", html)
+        self.assertIn("KidZooKit is free for busy parents", html)
+        self.assertIn("KidZooKit gives you that short list", html)
         self.assertEqual(html.lower().count('href="/dinner"'), 1)
 
     def test_about_share_image_is_landscape_field_trip_still(self):

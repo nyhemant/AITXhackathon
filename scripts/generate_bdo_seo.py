@@ -99,12 +99,10 @@ RESERVED = {
 }
 
 # Type hub landings: path segment → filter + copy
-# Default shell tagline (places, hubs, about extras). Not the old venue list.
+# Shell tagline everywhere (places, hubs, cards, VFT). Static; do not animate.
 HEADER_TAGLINE = "Watch it. Print it. Go find it."
-# Card pages — same kit promise (static; do not animate).
-CARD_HEADER_TAGLINE = "Watch it. Print it. Go find it."
-# Virtual Field Trip / Watch Live shell.
-VFT_HEADER_TAGLINE = "Watch live. Wonder at home."
+CARD_HEADER_TAGLINE = HEADER_TAGLINE
+VFT_HEADER_TAGLINE = HEADER_TAGLINE
 OG_SHARE_IMAGE = f"{SITE}/field-pack/photos/sample-mission-dallas-zoo.jpg"
 PARK_OG_IMAGE = f"{SITE}/field-pack/photos/np-hero-yellowstone.jpg"
 # Brand / product home. Map explorer stays at /field-pack/ — do not point logo/title there.

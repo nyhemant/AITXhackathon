@@ -846,6 +846,11 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("webgl", self.css.lower())
         self.assertNotIn("parallax", self.css.lower())
 
+    def test_teach_image_alt_uses_kidzookit_not_field_trip_kit(self):
+        chapter = self.html.split('id="start-teach"', 1)[1].split("</section>", 1)[0]
+        self.assertIn("KidZooKit Q&amp;A printouts", chapter)
+        self.assertNotIn("Field Trip Kit", chapter)
+
     def test_teach_chapter_is_local_jpeg(self):
         teach = re.search(
             r'<section class="start-chapter" id="start-teach"[\s\S]*?</section>',
