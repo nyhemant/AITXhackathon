@@ -181,7 +181,8 @@ class CardsExplorerTests(unittest.TestCase):
 
     def test_nav_pairs_with_places_and_start(self):
         self.assertIn('href="/start/"', self.html)
-        self.assertIn('class="shell-start"', self.html)
+        self.assertNotIn('class="shell-start"', self.html)
+        self.assertIn('class="shell-more"', self.html)
         self.assertIn('class="shell-brand" href="/start/"', self.html)
         self.assertIn('href="/field-pack/"', self.html)
         self.assertIn(">Places<", self.html)

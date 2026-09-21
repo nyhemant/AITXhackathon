@@ -5180,19 +5180,15 @@ def write_cards_hub(venues: list[dict]) -> str:
         KidZooKit
         <small>{HEADER_TAGLINE}</small>
       </a>
-      <nav class="shell-nav" aria-label="Site">
-        <a class="shell-start" href="/start/">Start</a>
-        <a class="shell-start" href="/field-pack/">Places</a>
-        <div class="shell-more-wrap">
-          <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
-          <div id="shell-menu" class="shell-menu" hidden role="menu">
-            <a href="/field-pack/cards/" aria-current="page" role="menuitem">{NAV_CARDS_LABEL}<small>{NAV_CARDS_SUB}</small></a>
-            <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}<small>{NAV_VFT_SUB}</small></a>
-            <a href="/field-pack/" role="menuitem">{NAV_PLACES_LABEL}<small>{NAV_PLACES_SUB}</small></a>
-            <a href="{NAV_ABOUT_HREF}" role="menuitem">{NAV_ABOUT_LABEL}<small>{NAV_ABOUT_SUB}</small></a>
-          </div>
+      <div class="shell-more-wrap">
+        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
+        <div id="shell-menu" class="shell-menu" hidden role="menu">
+          <a href="/field-pack/cards/" aria-current="page" role="menuitem">{NAV_CARDS_LABEL}<small>{NAV_CARDS_SUB}</small></a>
+          <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}<small>{NAV_VFT_SUB}</small></a>
+          <a href="/field-pack/" role="menuitem">{NAV_PLACES_LABEL}<small>{NAV_PLACES_SUB}</small></a>
+          <a href="{NAV_ABOUT_HREF}" role="menuitem">{NAV_ABOUT_LABEL}<small>{NAV_ABOUT_SUB}</small></a>
         </div>
-      </nav>
+      </div>
     </header>
     <section class="cards-play" id="cards-play" aria-labelledby="cards-play-heading">
       <img
