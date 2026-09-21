@@ -304,7 +304,7 @@ body.start-body {
   border: 0;
 }
 
-/* Fixed-width venue slot so H1 does not jump (sized to Aquarium). */
+/* Venue slot width tracks the active word; JS sets inline width + transitions. */
 .start-venue-line {
   display: inline;
 }
@@ -316,6 +316,8 @@ body.start-body {
   text-align: left;
   outline: none;
   border-radius: 0.2em;
+  /* Width set by start.js to the current word; transition matches fade. */
+  transition: width 250ms ease;
 }
 
 .start-venue-slot:focus-visible {
@@ -323,6 +325,7 @@ body.start-body {
 }
 
 .start-venue-sizer {
+  /* Height strut only; width is overridden by the slot's inline width. */
   visibility: hidden;
   white-space: nowrap;
   pointer-events: none;
@@ -350,6 +353,10 @@ body.start-body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .start-venue-slot {
+    transition: none;
+  }
+
   .start-venue-word {
     transition: none;
   }

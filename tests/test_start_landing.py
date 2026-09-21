@@ -996,7 +996,10 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(">Aquarium</span>", self.html)
         self.assertIn(">Museum</span>", self.html)
         self.assertIn(">Park</span>", self.html)
-        self.assertIn('class="start-venue-sizer">Aquarium</span>', self.html)
+        self.assertIn('class="start-venue-sizer">Zoo</span>', self.html)
+        self.assertIn("transition: width 250ms ease", self.css)
+        self.assertIn("fitSlot", self.js)
+        self.assertIn("wordWidth", self.js)
         self.assertIn("<title>Make the zoo day stick. · KidZooKit</title>", self.html)
         self.assertIn(
             '<meta property="og:title" content="Make the zoo day stick. · KidZooKit" />',
@@ -1187,8 +1190,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("autoplay", self.html)
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
-        self.assertIn('start.js?v=33', self.html)
-        self.assertIn("start.css?v=55", self.html)
+        self.assertIn('start.js?v=34', self.html)
+        self.assertIn("start.css?v=56", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
