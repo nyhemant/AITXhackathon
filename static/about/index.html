@@ -31,7 +31,8 @@
   />
   <meta name="twitter:image" content="https://kidzookit.com/start/hero-world-map.jpg" />
   <meta name="twitter:image:alt" content="Stylized world map with eight animals" />
-  <link rel="stylesheet" href="/about/about.css?v=9" />
+  <link rel="stylesheet" href="/shell/shell.css?v=12" />
+  <link rel="stylesheet" href="/about/about.css?v=10" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -106,14 +107,20 @@
   </script>
 </head>
 <body class="about-body">
-  <header class="about-top">
-    <a class="about-brand" href="/start/" aria-label="KidZooKit">
-      <span>KidZooKit</span>
-    </a>
-    <nav class="about-nav" aria-label="Site">
-      <a href="/start/">Start</a>
-      <a href="/field-pack/">Find a place</a>
-    </nav>
+  <header class="oneless-shell no-print" data-product="bdo">
+    <a class="shell-product" href="/start/">KidZooKit <small>Watch it. Print it. Go find it.</small></a>
+    <div class="shell-more-wrap">
+      <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu" aria-label="Open menu">
+        <span class="shell-more-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <div id="shell-menu" class="shell-menu" hidden role="menu">
+        <a href="/start/" role="menuitem">Start</a>
+        <a href="/field-pack/cards/" role="menuitem">Cards</a>
+        <a href="/field-pack/virtual-field-trip/" role="menuitem">Watch Live</a>
+        <a href="/field-pack/" role="menuitem">Places</a>
+        <a href="/about/" aria-current="page" role="menuitem">About</a>
+      </div>
+    </div>
   </header>
 
   <main class="about-main">

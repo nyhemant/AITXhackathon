@@ -118,10 +118,19 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn('class="start-going-more"', html)
         self.assertIn(">Explore Places Near You</a>", html)
 
+
+
     def test_about_brand_goes_to_start_find_a_place_hits_explorer(self):
         html = ABOUT.read_text(encoding="utf-8")
-        self.assertEqual(_attr(html, "about-brand"), "/start/")
-        self.assertIn('href="/field-pack/">Find a place</a>', html)
+        self.assertIn('class="oneless-shell', html)
+        self.assertEqual(_attr(html, "shell-product"), "/start/")
+        self.assertIn("shell-more-bars", html)
+        self.assertIn('aria-label="Open menu"', html)
+        self.assertIn('href="/start/" role="menuitem"', html)
+        self.assertIn('href="/field-pack/" role="menuitem"', html)
+        self.assertIn('href="/about/" aria-current="page" role="menuitem"', html)
+        self.assertNotIn("about-nav", html)
+        self.assertIn('role="menuitem">Places</a>', html)
         self.assertNotIn("manifest.webmanifest", html)
         self.assertNotIn("/pwa/register.js", html)
         self.assertIn("/shell/shell.js?v=", html)
@@ -223,8 +232,11 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn("International", text)
 
     def test_about_nav_and_footer_links_have_44px_hit_area(self):
+        shell = (REPO / "static" / "shell" / "shell.css").read_text(encoding="utf-8")
         css = (REPO / "static" / "about" / "about.css").read_text(encoding="utf-8")
-        nav = re.search(r"\.about-nav a\s*\{([^}]+)\}", css)
+        nav = re.search(r"\.oneless-shell \.shell-menu a\s*\{([^}]+)\}", shell)
+        if nav is None:
+            nav = re.search(r"\.shell-menu a\s*\{([^}]+)\}", shell)
         foot = re.search(r"\.about-foot a\s*\{([^}]+)\}", css)
         self.assertIsNotNone(nav)
         self.assertIsNotNone(foot)

@@ -231,3 +231,10 @@ body.about-body {
 #faq {
   scroll-margin-top: 5rem;
 }
+
+/* Shared site shell (hamburger) — full width above narrow About column */
+.about-body .oneless-shell {
+  max-width: 40rem;
+  margin: 0 auto 1.75rem;
+  width: 100%;
+}
