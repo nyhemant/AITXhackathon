@@ -1054,14 +1054,40 @@
   const slot = root && root.closest(".start-venue-slot");
   if (!root || !slot) return;
 
+  const sizer = slot.querySelector(".start-venue-sizer");
   const words = Array.from(root.querySelectorAll(".start-venue-word"));
   if (words.length < 2) return;
+
+  function wordWidth(el) {
+    const rect = el.getBoundingClientRect().width;
+    if (rect > 0) return Math.ceil(rect);
+    return Math.ceil(el.scrollWidth) || 0;
+  }
+
+  function fitSlot(i, animate) {
+    const el = words[i];
+    if (!el) return;
+    const label = (el.textContent || "").trim();
+    if (sizer && label) sizer.textContent = label;
+    const w = wordWidth(el);
+    if (!w) return;
+    if (!animate) {
+      const prev = slot.style.transition;
+      slot.style.transition = "none";
+      slot.style.width = w + "px";
+      void slot.offsetWidth;
+      slot.style.transition = prev;
+    } else {
+      slot.style.width = w + "px";
+    }
+  }
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduceMotion) {
     words.forEach((el, i) => {
       el.classList.toggle("is-active", i === 0);
     });
+    fitSlot(0, false);
     return;
   }
 
@@ -1071,16 +1097,17 @@
   let timer = null;
   let paused = false;
 
-  function show(i) {
+  function show(i, animate) {
     words.forEach((el, n) => {
       el.classList.toggle("is-active", n === i);
     });
+    fitSlot(i, animate !== false);
     index = i;
   }
 
   function next() {
     if (paused) return;
-    show((index + 1) % words.length);
+    show((index + 1) % words.length, true);
   }
 
   function start() {
@@ -1117,7 +1144,11 @@
     }
   });
 
-  show(index);
+  window.addEventListener("resize", () => {
+    fitSlot(index, false);
+  });
+
+  show(index, false);
   start();
 })();
 
