@@ -348,7 +348,12 @@ body.start-body {
   pointer-events: none;
 }
 
+.start-venue-word:not(.is-active) {
+  display: none;
+}
+
 .start-venue-word.is-active {
+  display: block;
   opacity: 1;
 }
 
@@ -359,14 +364,6 @@ body.start-body {
 
   .start-venue-word {
     transition: none;
-  }
-
-  .start-venue-word:not(.is-active) {
-    display: none;
-  }
-
-  .start-venue-word.is-active {
-    opacity: 1;
   }
 }
 
@@ -1821,7 +1818,12 @@ body.start-body {
   pointer-events: none;
 }
 
+.start-wildlife-word:not(.is-active) {
+  display: none;
+}
+
 .start-wildlife-word.is-active {
+  display: block;
   opacity: 1;
 }
 
@@ -1832,14 +1834,6 @@ body.start-body {
 
   .start-wildlife-word {
     transition: none;
-  }
-
-  .start-wildlife-word:not(.is-active) {
-    display: none;
-  }
-
-  .start-wildlife-word.is-active {
-    opacity: 1;
   }
 }
 
@@ -1925,7 +1919,12 @@ body.start-body {
   pointer-events: none;
 }
 
+.start-going-venue-word:not(.is-active) {
+  display: none;
+}
+
 .start-going-venue-word.is-active {
+  display: block;
   opacity: 1;
 }
 
@@ -1936,14 +1935,6 @@ body.start-body {
 
   .start-going-venue-word {
     transition: none;
-  }
-
-  .start-going-venue-word:not(.is-active) {
-    display: none;
-  }
-
-  .start-going-venue-word.is-active {
-    opacity: 1;
   }
 }
 
