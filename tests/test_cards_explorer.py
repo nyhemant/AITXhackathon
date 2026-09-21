@@ -88,7 +88,7 @@ class CardsExplorerTests(unittest.TestCase):
         self.assertIsNotNone(title)
         self.assertIn("Animal cards", title.group(1))
         self.assertIn("landing.css?v=103", self.html)
-        self.assertIn("cards-explorer.js?v=8", self.html)
+        self.assertIn("cards-explorer.js?v=9", self.html)
 
     def test_explorer_is_samples_not_a_58_card_wall(self):
         self.assertIn("landing-hub", self.html)
@@ -120,7 +120,7 @@ class CardsExplorerTests(unittest.TestCase):
         self.assertIn('data-card-filter="sealife"', self.html)
         self.assertNotIn('data-card-filter="attractions"', self.html)
         self.assertNotIn('data-card-filter="parks"', self.html)
-        self.assertIn("42 cards", self.html)
+        self.assertIn("58 cards", self.html)
         self.assertIn('id="cards-attractions"', self.html)
         self.assertIn("Beta <span class=\"cards-experimental-note\">Museum stops &amp; extras</span>", self.html)
         self.assertNotIn("Museum &amp; science cards", self.html)

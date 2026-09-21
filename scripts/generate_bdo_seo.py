@@ -157,7 +157,7 @@ CARDS_PLAY_PRINT_HREF = PRINT_PATH
 CARDS_HUB_TITLE = "Animal cards · KidZooKit"
 CARDS_HUB_DESC = "Animal cards with talk prompts, photos, and Q&A. Print cutouts to hide and seek at home."
 CARDS_LANDING_CSS_VER = "103"
-CARDS_EXPLORER_JS_VER = "8"
+CARDS_EXPLORER_JS_VER = "9"
 CTA_READY = "Open"
 CTA_FIND = "Find"
 # Map explorer (/field-pack/) — short title, no sales/FAQ essay. Do not redirect to /start/.
@@ -4957,6 +4957,8 @@ def _card_group_key(card: dict) -> str:
 # Cards hub bake: primary = Wildlife + Sea life only (All cards / filters).
 # Beta shelf = museum/science (attractions kind). Not a peer primary.
 # Parks stay unlisted via HUB_UNLISTED_SECTION_IDS — never bake a Parks accordion.
+# Parent-facing count (eyebrow + places "All N") = len(published_card_ids()),
+# not primary-only — keeps hub and places numbers in sync.
 PRIMARY_HUB_SECTION_IDS = ("wildlife", "sealife")
 EXPERIMENTAL_HUB_SECTION_IDS = ("attractions",)
 EXPERIMENTAL_SHELF_LABEL = "Beta"
@@ -5026,7 +5028,8 @@ def write_cards_hub(venues: list[dict]) -> str:
         for sid, _label, items in sections
         if sid in EXPERIMENTAL_HUB_SECTION_IDS and items
     ]
-    total = sum(len(s[2]) for s in primary_sections)
+    # One parent-facing number: every published /field-pack/cards/<id>/ page.
+    total = len(published_card_ids())
 
     def section_html(sid: str, _label: str, items: list[dict]) -> str:
         if not items:
@@ -5241,7 +5244,7 @@ def write_cards_hub(venues: list[dict]) -> str:
         </form>
       </div>
     </header>
-    <main class="cards-hub" id="cards-hub">
+    <main class="cards-hub" id="cards-hub" data-card-count-build="{total}">
       <section class="ready-now ready-slim try-card-row" id="try-a-card" aria-labelledby="try-card-heading">
         <h2 id="try-card-heading">Try a card</h2>
         <div class="try-card-grid" id="try-card-grid">
@@ -5629,7 +5632,8 @@ def patch_landing_directory(venues: list[dict]) -> None:
 
     pool = _landing_primary_cards(all_cards if all_cards else cards)
     featured = _landing_teaser_cards(pool)
-    n_cards = len(pool)
+    # Same number parents see on the Cards hub (all published pages).
+    n_cards = len(published_card_ids())
 
     tile_lis = []
     for c in featured:
@@ -5720,7 +5724,7 @@ def patch_landing_directory(venues: list[dict]) -> None:
         f'<div class="cat-cards-showcase" id="cat-cards-showcase">\n'
         f"            {_hub_filter_tabs_html(present_groups)}\n"
         f"            {tiles_ul}\n"
-        f'            <p class="cat-cards-all"><a href="/field-pack/cards/" id="cat-all-cards-link">Browse cards →</a></p>\n'
+        f'            <p class="cat-cards-all"><a href="/field-pack/cards/" id="cat-all-cards-link">All {n_cards} cards →</a></p>\n'
         f"          </div>"
     )
     cards_block = (

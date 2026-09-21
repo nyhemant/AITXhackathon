@@ -1,4 +1,4 @@
-/* Find-a-card explorer: samples first; accordion library; All cards = primary set. */
+/* Find-a-card explorer: samples first; accordion library; count = published bake. */
 (function () {
   if (typeof FPTrack === "function") FPTrack("cards_hub_visited", { source: "cards_hub" });
   document.querySelectorAll("a[data-card-id]").forEach(function (a) {
@@ -15,7 +15,11 @@
   var tryRow = document.getElementById("try-a-card");
   var countEl = document.getElementById("cards-hub-count");
   var panels = Array.prototype.slice.call(document.querySelectorAll("[data-card-accordion]"));
-  var TOTAL = document.querySelectorAll(".cards-hub-item:not([data-card-group='attractions'])").length;
+  var hubRoot = document.getElementById("cards-hub");
+  var baked = hubRoot && hubRoot.getAttribute("data-card-count-build");
+  var TOTAL = baked && /^\d+$/.test(baked)
+    ? parseInt(baked, 10)
+    : document.querySelectorAll(".cards-hub-item").length;
   var syncing = false;
 
   function setAllPressed(on) {
