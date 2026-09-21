@@ -199,7 +199,9 @@ class StartLandingTests(unittest.TestCase):
         chapter = hero.group(0)
         self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="start-home"'))
         self.assertIn('id="start-heading"', chapter)
-        self.assertIn("Make the zoo day stick.", chapter)
+        self.assertIn("Make the zoo, aquarium, museum, or park day stick.", chapter)
+        self.assertIn("data-venue-rotator", chapter)
+        self.assertIn(">Zoo</span>", chapter)
         self.assertIn('class="start-routes"', chapter)
         self.assertIn('href="/field-pack/cards/"', chapter)
         self.assertIn('href="/field-pack/virtual-field-trip/"', chapter)
@@ -983,7 +985,18 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("parallax", self.css.lower())
 
     def test_locked_headline_and_no_marketing_stats(self):
-        self.assertEqual(_heading_text(self.html), "Make the zoo day stick.")
+        # Title/og stay Hemant-locked on "zoo"; visible H1 rotates venue words.
+        self.assertIn('class="sr-only"', self.html)
+        self.assertIn(
+            "Make the zoo, aquarium, museum, or park day stick.",
+            self.html,
+        )
+        self.assertIn('data-venue-rotator', self.html)
+        self.assertIn('class="start-venue-word is-active">Zoo</span>', self.html)
+        self.assertIn(">Aquarium</span>", self.html)
+        self.assertIn(">Museum</span>", self.html)
+        self.assertIn(">Park</span>", self.html)
+        self.assertIn('class="start-venue-sizer">Aquarium</span>', self.html)
         self.assertIn("<title>Make the zoo day stick. · KidZooKit</title>", self.html)
         self.assertIn(
             '<meta property="og:title" content="Make the zoo day stick. · KidZooKit" />',
@@ -1174,8 +1187,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("autoplay", self.html)
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
-        self.assertIn('start.js?v=32', self.html)
-        self.assertIn("start.css?v=53", self.html)
+        self.assertIn('start.js?v=33', self.html)
+        self.assertIn("start.css?v=55", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)

@@ -242,6 +242,10 @@ body.start-body {
   pointer-events: auto;
 }
 
+.start-hero-copy .start-venue-slot {
+  pointer-events: auto;
+}
+
 .start-map-coach {
   position: absolute;
   z-index: 2;
@@ -286,6 +290,79 @@ body.start-body {
   letter-spacing: -0.025em;
   text-shadow: 0 1px 18px rgba(12, 10, 8, 0.35);
 }
+
+/* Screen-reader-only accessible name for the rotating H1 venue word. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Fixed-width venue slot so H1 does not jump (sized to Aquarium). */
+.start-venue-line {
+  display: inline;
+}
+
+.start-venue-slot {
+  display: inline-block;
+  position: relative;
+  vertical-align: baseline;
+  text-align: left;
+  outline: none;
+  border-radius: 0.2em;
+}
+
+.start-venue-slot:focus-visible {
+  box-shadow: 0 0 0 2px rgba(255, 252, 247, 0.9), 0 0 0 4px rgba(15, 92, 92, 0.55);
+}
+
+.start-venue-sizer {
+  visibility: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  display: inline-block;
+}
+
+.start-venue-words {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.start-venue-word {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+}
+
+.start-venue-word.is-active {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .start-venue-word {
+    transition: none;
+  }
+
+  .start-venue-word:not(.is-active) {
+    display: none;
+  }
+
+  .start-venue-word.is-active {
+    opacity: 1;
+  }
+}
+
 
 .start-hero-guide {
   display: flex;
