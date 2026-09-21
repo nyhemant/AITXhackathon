@@ -167,26 +167,27 @@ class IaPhaseATests(unittest.TestCase):
         about = ABOUT.read_text(encoding="utf-8")
         before_exp, rest = about.split('id="experimental"', 1)
         exp = rest.split("</section>", 1)[0]
-        self.assertIn("How it fits together", before_exp)
+        self.assertIn("Three ways in", before_exp)
+        self.assertNotIn("How it fits together", before_exp)
+        self.assertNotIn("doors", before_exp.lower())
         self.assertIn(">Cards</a>", before_exp)
         self.assertIn(">Watch Live</a>", before_exp)
         self.assertIn(">Places</a>", before_exp)
-        self.assertIn("Those three doors start from", before_exp)
         self.assertIn("print cutouts to cut · hide · seek", before_exp)
         self.assertIn("Beta", exp)
         self.assertIn(
-            "Not part of the three doors — quiet extras if you already know you want them.",
+            "Quiet extras if you already know you want them.",
             exp,
         )
+        self.assertNotIn("three doors", exp.lower())
         self.assertIn("Museum stops &amp; extras", exp)
         self.assertIn('href="/field-pack/cards/#cards-attractions"', exp)
-        self.assertIn('href="/dinner"', exp)
-        self.assertIn("tonight", exp)
+        self.assertNotIn('href="/dinner"', about)
+        self.assertNotIn("tonight", exp)
         self.assertNotIn("national-parks", exp)
         self.assertNotIn("Yellowstone", exp)
         self.assertNotIn('href="/field-pack/parks/"', exp)
         self.assertNotIn("Dinner", before_exp)
-        self.assertNotIn('href="/dinner"', before_exp)
 
     def test_museum_sci_hidden_from_primary_cards_hub(self):
         cards = CARDS.read_text(encoding="utf-8")
@@ -222,14 +223,10 @@ class IaPhaseATests(unittest.TestCase):
         self.assertNotIn('href="/field-pack/parks/"', landing)
 
     def test_fp_chrome_does_not_promote_dinner(self):
-        for path in (LANDING, CARDS, VFT, START):
+        for path in (LANDING, CARDS, VFT, START, ABOUT):
             html = path.read_text(encoding="utf-8")
             self.assertNotIn('href="/dinner"', html, path.name)
             self.assertNotIn("Dinner<small>", html, path.name)
-        about = ABOUT.read_text(encoding="utf-8")
-        intro = about.split('id="experimental"', 1)[0]
-        self.assertNotIn('href="/dinner"', intro)
-        self.assertIn('href="/dinner"', about.split('id="experimental"', 1)[1])
 
     def test_zoo_watch_live_uses_vft_tab(self):
         lion = (FP / "cards" / "african-lion" / "index.html").read_text(encoding="utf-8")

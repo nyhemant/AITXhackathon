@@ -94,6 +94,12 @@ body.about-body {
   color: var(--ink);
 }
 
+.about-why {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
 .about-path {
   margin: 0 0 1rem;
   padding-left: 1.2rem;
@@ -140,31 +146,6 @@ body.about-body {
   color: var(--teal);
 }
 
-.about-ai {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
-}
-
-.about-ai h2 {
-  margin: 0 0 0.65rem;
-  font-size: 1.15rem;
-  font-weight: 500;
-}
-
-.about-ai p {
-  margin: 0 0 0.85rem;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-.about-ai p:last-child {
-  margin-bottom: 0;
-}
-
-.about-ai a {
-  color: var(--teal);
-}
 
 .about-faq {
   margin-top: 2.25rem;

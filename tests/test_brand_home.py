@@ -132,39 +132,41 @@ class BrandHomeTests(unittest.TestCase):
     def test_about_parent_map_is_the_kid_path(self):
         html = ABOUT.read_text(encoding="utf-8")
         intro, rest = html.split('id="how-it-fits"', 1)
-        doors = rest.split('id="experimental"', 1)[0]
+        ways = rest.split('id="experimental"', 1)[0]
         exp = rest.split('id="experimental"', 1)[1].split("</section>", 1)[0]
-        self.assertIn("How it fits together", doors)
-        steps = re.findall(r'<a href="([^"]+)">([^<]+)</a>', doors)
+        self.assertIn("Three ways in", ways)
+        self.assertNotIn("How it fits together", html)
+        self.assertNotIn("doors", html.lower())
+        self.assertNotIn("Side door", html)
+        steps = re.findall(r'<a href="([^"]+)">([^<]+)</a>', ways)
         self.assertEqual(
             steps,
             [
-                ("/field-pack/cards/", "Cards"),
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
                 ("/field-pack/", "Places"),
+                ("/field-pack/cards/", "Cards"),
                 ("/start/", "Start"),
                 ("/field-pack/print/", "print cutouts to cut · hide · seek"),
             ],
         )
-        self.assertIn("Those three doors start from", doors)
-        self.assertIn("Side door:", doors)
-        self.assertNotIn("grown-ups", doors)
-        self.assertNotIn("Animal cards", doors)
+        self.assertNotIn("grown-ups", ways)
+        self.assertNotIn("Animal cards", ways)
         self.assertNotIn("/field-pack/virtual-zoo/", html)
-        self.assertNotIn('href="/dinner"', intro)
-        self.assertNotIn('href="/dinner"', doors)
+        self.assertNotIn('href="/dinner"', html)
         self.assertIn("Museum stops &amp; extras", exp)
         self.assertIn('href="/field-pack/cards/#cards-attractions"', exp)
-        self.assertIn('href="/dinner"', exp)
-        self.assertNotIn("Arya", html)
-        self.assertNotIn("Kunal", html)
-        self.assertIn('id="for-ai-assistants"', html)
+        self.assertIn("Quiet extras if you already know you want them.", exp)
+        self.assertIn("Arya", html)
+        self.assertIn("Kunal", html)
+        self.assertIn("Lamplighter", html)
+        self.assertIn('class="about-why"', html)
+        self.assertNotIn('id="for-ai-assistants"', html)
+        self.assertNotIn("medical advice", html.lower())
         self.assertIn('id="faq"', html)
         self.assertIn("KidZooKit is an at-home virtual zoo", html)
         self.assertNotIn("Field Trip Kit", html)
-        self.assertIn("KidZooKit is free for busy parents", html)
         self.assertIn("KidZooKit gives you that short list", html)
-        self.assertEqual(html.lower().count('href="/dinner"'), 1)
+        self.assertTrue((REPO / "static" / "llms.txt").is_file())
 
     def test_about_share_image_is_landscape_field_trip_still(self):
         html = ABOUT.read_text(encoding="utf-8")

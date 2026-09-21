@@ -127,10 +127,12 @@ class IaPhaseBTests(unittest.TestCase):
         self.assertNotIn("Cut · hide · seek", start)
         about = ABOUT.read_text(encoding="utf-8")
         before_exp = about.split('id="experimental"', 1)[0]
-        self.assertIn("Side door:", before_exp)
+        self.assertNotIn("Side door:", before_exp)
+        self.assertNotIn("doors", before_exp.lower())
         self.assertNotIn("grown-ups", before_exp)
         self.assertIn('href="/field-pack/print/"', before_exp)
         self.assertIn("print cutouts to cut · hide · seek", before_exp)
+        self.assertIn("Optional:", before_exp)
 
     def test_featured_surfaces_do_not_link_legacy_destinations(self):
         for path in FEATURED_HTML:
@@ -182,7 +184,7 @@ class IaPhaseBTests(unittest.TestCase):
         about = ABOUT.read_text(encoding="utf-8")
         exp = about.split('id="experimental"', 1)[1]
         self.assertIn('href="/field-pack/cards/#cards-attractions"', exp)
-        self.assertIn('href="/dinner"', exp)
+        self.assertNotIn('href="/dinner"', about)
 
     def test_virtual_zoo_stays_301_alias_not_a_featured_href(self):
         self.assertEqual(_get("/field-pack/virtual-zoo/")._code, 301)
