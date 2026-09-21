@@ -1619,15 +1619,15 @@ body.start-body {
   }
 }
 
-/* Hamburger top-left — no brand home-link on Start */
+/* Wordmark left · hamburger right — match field-pack shell balance */
 .start-top {
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 0.75rem;
 }
 
 .start-menu-wrap {
   position: relative;
-  margin-left: 0;
+  margin-left: auto;
 }
 
 .start-menu-btn {
@@ -1654,7 +1654,7 @@ body.start-body {
   outline-offset: 3px;
 }
 
-/* Quiet wordmark beside the hamburger — Start only, never a home link. */
+/* Quiet wordmark top-left — Start only, never a home link. */
 .start-wordmark {
   margin: 0;
   padding: 0.28rem 0.6rem;
@@ -1692,8 +1692,8 @@ body.start-body {
 .start-menu {
   position: absolute;
   top: calc(100% + 0.45rem);
-  left: 0;
-  right: auto;
+  left: auto;
+  right: 0;
   z-index: 40;
   min-width: min(18.5rem, calc(100vw - 2rem));
   padding: 0.45rem;
