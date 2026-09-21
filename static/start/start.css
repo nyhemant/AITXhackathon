@@ -1874,6 +1874,79 @@ body.start-body {
 }
 
 
+
+/* Going line venue rotator — same grid baseline trick as wildlife */
+.start-going-venue-line {
+  display: inline;
+}
+
+.start-going-venue-slot {
+  display: inline-grid;
+  vertical-align: baseline;
+  justify-items: start;
+  align-items: baseline;
+  overflow: visible;
+  outline: none;
+  border-radius: 0.2em;
+  transition: width 250ms ease;
+}
+
+.start-going-venue-slot:focus-visible {
+  box-shadow: 0 0 0 2px rgba(255, 252, 247, 0.9), 0 0 0 4px rgba(15, 92, 92, 0.55);
+}
+
+.start-going-venue-sizer,
+.start-going-venue-words,
+.start-going-venue-word {
+  grid-area: 1 / 1;
+}
+
+.start-going-venue-sizer {
+  visibility: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.start-going-venue-words {
+  display: grid;
+  justify-items: start;
+  align-items: baseline;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.start-going-venue-word {
+  position: relative;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+}
+
+.start-going-venue-word.is-active {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .start-going-venue-slot {
+    transition: none;
+  }
+
+  .start-going-venue-word {
+    transition: none;
+  }
+
+  .start-going-venue-word:not(.is-active) {
+    display: none;
+  }
+
+  .start-going-venue-word.is-active {
+    opacity: 1;
+  }
+}
+
 /* Going this week: copy top-left (other chapters stay bottom) */
 #start-going .start-chapter-copy {
   top: 0;
