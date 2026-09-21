@@ -1155,5 +1155,6 @@
 
   bootRotator("[data-venue-rotator]", ".start-venue-slot", ".start-venue-sizer", ".start-venue-word");
   bootRotator("[data-wildlife-rotator]", ".start-wildlife-slot", ".start-wildlife-sizer", ".start-wildlife-word");
+  bootRotator("[data-going-venue-rotator]", ".start-going-venue-slot", ".start-going-venue-sizer", ".start-going-venue-word");
 })();
 
