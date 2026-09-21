@@ -1103,6 +1103,16 @@ body.start-body {
 .start-foot-more {
   margin-top: 0.7rem;
   font-size: 0.76rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.55rem;
+}
+
+.start-foot-dot {
+  color: var(--muted);
+  opacity: 0.7;
+  user-select: none;
 }
 
 .start-foot-more a {
