@@ -226,3 +226,8 @@ body.about-body {
   outline: 2px solid var(--focus);
   outline-offset: 3px;
 }
+
+/* Deep-link from /start/ FAQ footer */
+#faq {
+  scroll-margin-top: 5rem;
+}
