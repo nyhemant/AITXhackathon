@@ -1069,7 +1069,7 @@
       const el = words[i];
       if (!el) return;
       const label = (el.textContent || "").trim();
-      if (sizer && label) sizer.textContent = label;
+      if (sizer && label) sizer.setAttribute("data-sizer", label);
       const w = wordWidth(el);
       if (!w) return;
       if (!animate) {
