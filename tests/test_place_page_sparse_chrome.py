@@ -16,6 +16,7 @@ from generate_bdo_seo import (  # noqa: E402
     CTA_SETUP_HUNT,
     CUSTOMIZE_SUMMARY_DEFAULT,
     FORK_GOING_TITLE,
+    FORK_GOING_CAPTION,
     FORK_HOME_TITLE,
     FORK_HOME_SUB,
     FORK_HOME_CAPTION,
@@ -26,7 +27,6 @@ from generate_bdo_seo import (  # noqa: E402
     HUNT_STYLE_CHALLENGE_LABEL,
     MISSION_CSS_VER,
     MISSION_DRAWER_H2,
-    OFFER_SENTENCE,
     PLACE_VFT_CTA,
     PRINT_SPEC,
     SEO_CSS_VER,
@@ -103,9 +103,11 @@ class PlacePageSparseChromeTests(unittest.TestCase):
         self.assertEqual(MISSION_DRAWER_H2, "Set up your hunt")
         self.assertEqual(HUNT_STYLE_CHALLENGE_LABEL, "Challenge")
         self.assertEqual(PLACE_VFT_CTA, "Virtual Field Trip")
-        self.assertLessEqual(len(HOME_SESSION_LEAD), 56)
+        self.assertEqual(HOME_SESSION_LEAD, "")
+        self.assertEqual(FORK_GOING_CAPTION, "")
         self.assertEqual(HOME_EMPTY, "No cards for this place yet.")
-        self.assertIn(OFFER_SENTENCE[:40], self.gen)
+        self.assertNotIn("Pick a few animals, print a one-page checklist", self.gen)
+        self.assertNotIn("Cards, photos, and a cam when we have one.", self.gen)
         self.assertIn('CTA_AT_HOME = "At home"', self.gen)
         self.assertIn('CTA_PRINT = "Print"', self.gen)
         self.assertIn("def hunt_teaser_html(", self.gen)
@@ -138,11 +140,12 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 self.assertNotIn("mission-filters-hint", html)
                 self.assertNotIn("mission-hunt-hint", html)
 
-    def test_hero_has_option_a_fork_and_offer(self):
+    def test_hero_has_option_a_fork_no_offer(self):
         for slug, html in self.pages.items():
             hero = _hero(html)
             with self.subTest(slug=slug):
-                self.assertIn(OFFER_SENTENCE, hero)
+                self.assertNotIn("seo-offer", hero)
+                self.assertNotIn("Pick a few animals, print a one-page checklist", hero)
                 self.assertIn("seo-fork", hero)
                 self.assertIn(FORK_GOING_TITLE, hero)
                 self.assertIn(FORK_HOME_TITLE, hero)
@@ -152,6 +155,7 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 self.assertIn("/field-pack/virtual-field-trip/?tab=", hero)
                 self.assertIn(f"from={slug}", hero)
                 self.assertIn(FORK_HOME_CAPTION, hero)
+                self.assertNotIn("A one-page checklist to carry", hero)
                 self.assertNotIn('href="#at-home"', hero)
                 self.assertIn("seo-fork-print-spec", hero)
                 self.assertIn("US Letter or A4", hero)
@@ -193,8 +197,10 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 self.assertIn("<details", chunk)
                 self.assertNotIn("<details open", chunk)
                 self.assertIn('class="seo-home-session" id="at-home"', visible)
-                self.assertIn(HOME_SESSION_LEAD, visible)
+                self.assertNotIn("Cards, photos, and a cam when we have one.", visible)
                 home_chunk = visible[home_i : home_i + 2500]
+                # Place at-home block: no meta lead (park animal sections may still use seo-home-lead)
+                self.assertNotIn("seo-home-lead", home_chunk)
                 self.assertNotIn("seo-home-vft", home_chunk)
 
     def test_start_here_and_hunt_labels(self):
@@ -279,12 +285,18 @@ class PlacePageSparseChromeTests(unittest.TestCase):
         for path in ("zoos", "aquariums", "museums", "national-parks"):
             html = (FP / path / "index.html").read_text(encoding="utf-8")
             with self.subTest(hub=path):
-                self.assertIn(f">{CTA_AT_HOME}</a>", html)
+                self.assertIn(f"{CTA_AT_HOME}</a>", html)
                 self.assertIn(">Map</a>", html)
+                self.assertNotIn("Cards, photos, and a cam when we have one.", html)
+                self.assertNotIn('class="type-lead"', html)
                 self.assertNotIn("Print a hunt for the visit", html)
                 self.assertNotIn("Explore a zoo at home", html)
                 self.assertNotIn("optional hunt", html.lower())
                 self.assertIn('href="/field-pack/virtual-field-trip/"', html)
+        aq = (FP / "aquariums" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("not a generic otter", aq)
+        self.assertNotIn("not a Start here", aq)
+
 
 
 if __name__ == "__main__":

@@ -3120,7 +3120,7 @@ window.FIELD_PACK_VENUES = {
     location: "Chicago, Illinois",
     website: "https://www.sheddaquarium.org/",
     mapUrl: "https://www.sheddaquarium.org/",
-    blurb: "Sea otters first, then Wild Reef sharks and jellies — rockhopper and Magellanic penguins, not African.",
+    blurb: "Sea otters first, then Wild Reef sharks and jellies — rockhopper and Magellanic penguins.",
     itemLabel: "animals",
     itemDisplayNames: {
       "sea-otter": "Shedd sea otter",
@@ -3178,7 +3178,7 @@ window.FIELD_PACK_VENUES = {
     location: "Atlanta, Georgia",
     website: "https://www.georgiaaquarium.org/",
     mapUrl: "https://www.georgiaaquarium.org/",
-    blurb: "Whale sharks and manta rays first, then African penguins — southern sea otters, not a generic otter.",
+    blurb: "Whale sharks and manta rays first, then African penguins and southern sea otters.",
     itemLabel: "animals",
     itemDisplayNames: {
       "whale-shark": "Ocean Voyager whale shark",
@@ -3237,7 +3237,7 @@ window.FIELD_PACK_VENUES = {
     location: "Monterey, California",
     website: "https://www.montereybayaquarium.org/",
     mapUrl: "https://www.montereybayaquarium.org/animals/live-cams",
-    blurb: "Jellies first, then southern sea otters and the Kelp Forest — Magellanic penguins are not a Start here.",
+    blurb: "Jellies first, then southern sea otters and the Kelp Forest.",
     itemLabel: "animals",
     itemDisplayNames: {
       "jellyfish": "Monterey jelly",
@@ -3295,7 +3295,7 @@ window.FIELD_PACK_VENUES = {
     location: "Long Beach, California",
     website: "https://www.aquariumofpacific.org/",
     mapUrl: "https://www.aquariumofpacific.org/",
-    blurb: "Southern sea otters and tufted puffins first, then Shark Lagoon — Magellanic penguins, not African.",
+    blurb: "Southern sea otters and tufted puffins first, then Shark Lagoon — Magellanic penguins.",
     itemLabel: "animals",
     itemDisplayNames: {
       "sea-otter": "Pacific sea otter",
@@ -4363,7 +4363,7 @@ window.FIELD_PACK_VENUES = {
     location: "Seattle, WA",
     website: "https://www.seattleaquarium.org/",
     mapUrl: "https://www.seattleaquarium.org/",
-    blurb: "Starter list: sea otters, tufted puffins, then a giant Pacific octopus — river otters are a different stop.",
+    blurb: "Starter list: sea otters, tufted puffins, then a giant Pacific octopus.",
     itemLabel: "animals",
     itemDisplayNames: {
       "sea-otter": "Seattle sea otter",

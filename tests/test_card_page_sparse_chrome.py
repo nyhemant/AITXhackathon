@@ -203,6 +203,8 @@ class CardPageSparseChromeTests(unittest.TestCase):
         card = watch_links_html(item, film_via_vft=True, watch_live=True)
         self.assertIn("youtube.com", place)
         self.assertIn("nationalzoo.si.edu", place)
+        # One watch CTA per row: no duplicate Open Virtual Field Trip beside live/film
+        self.assertNotIn("Open Virtual Field Trip", place)
         self.assertNotIn("youtube.com", card)
         self.assertNotIn("nationalzoo.si.edu", card)
         self.assertIn("Watch Live", card)
