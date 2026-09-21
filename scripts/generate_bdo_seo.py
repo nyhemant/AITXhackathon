@@ -353,7 +353,7 @@ LANDING_MAP_JS_VER = "89"
 LANDING_HOOK_JS_VER = "39"
 STYLES_CSS_VER = "44"
 CATALOG_JS_VER = "40"
-SHELL_CSS_VER = "10"
+SHELL_CSS_VER = "11"
 SHELL_JS_VER = "6"
 PRINT_KIT_JS_VER = "22"
 STUDY_CARD_JS_VER = "14"
@@ -558,14 +558,18 @@ def esc(s: str) -> str:
 
 
 def nav_more_menu_html(*, current: str = "") -> str:
-    """Shared More menu — Start, Cards, Watch Live, Places, About. No Dinner, no print."""
+    """Shared More menu — Start, Cards, Watch Live, Places, About. No Dinner, no print.
+    Button is a three-line hamburger (aria-label Open menu); no 1Less mark in shell.
+    """
 
     def item(href: str, label: str, key: str) -> str:
         cur = ' aria-current="page"' if current == key else ""
         return f'<a href="{href}"{cur} role="menuitem">{label}</a>'
 
     return f"""      <div class="shell-more-wrap">
-        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
+        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu" aria-label="Open menu">
+          <span class="shell-more-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
           {item(HOME_HREF, NAV_START_LABEL, "start")}
           {item("/field-pack/cards/", NAV_CARDS_LABEL, "cards")}
@@ -2873,9 +2877,6 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 <body class="landing-body seo-venue-body mission-venue-body" data-content-mode="{esc(mode)}">
   <div class="app landing-app seo-venue">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="{HOME_HREF}" aria-label="KidZooKit home">
-        <img src="/1LessMark.png" alt="" width="52" height="52" />
-      </a>
       <a class="shell-product" href="{HOME_HREF}">
         KidZooKit
         <small>{HEADER_TAGLINE}</small>
@@ -3024,9 +3025,6 @@ def render_venue_page(v: dict) -> str:
 <body class="landing-body seo-venue-body">
   <div class="app landing-app seo-venue">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="{HOME_HREF}" aria-label="KidZooKit home">
-        <img src="/1LessMark.png" alt="" width="52" height="52" />
-      </a>
       <a class="shell-product" href="{HOME_HREF}">
         KidZooKit
         <small>{HEADER_TAGLINE}</small>
@@ -3280,14 +3278,12 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
 </head>
 <body class="seo-venue-body type-hub-body" data-place-type="{esc(meta["map_type"])}">
   <div class="app-shell">
-    <header class="shell-bar no-print">
-      <a class="shell-brand" href="{HOME_HREF}" aria-label="KidZooKit home">
-        <img src="/1LessMark.png" alt="" width="52" height="52" />
-      </a>
+    <header class="oneless-shell no-print" data-product="bdo">
       <a class="shell-product" href="{HOME_HREF}">
         KidZooKit
         <small>{HEADER_TAGLINE}</small>
       </a>
+{nav_more_menu_html()}
     </header>
 
     <nav class="place-type-tabs no-print" aria-label="Place type">
@@ -5174,23 +5170,11 @@ def write_cards_hub(venues: list[dict]) -> str:
 <body class="landing-body landing-hub cards-explorer">
   <div class="app landing-app landing-clean">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="{HOME_HREF}" aria-label="KidZooKit home">
-        <img src="/1LessMark.png" alt="" width="52" height="52" />
-      </a>
       <a class="shell-product" href="{HOME_HREF}">
         KidZooKit
         <small>{HEADER_TAGLINE}</small>
       </a>
-      <div class="shell-more-wrap">
-        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
-        <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="{HOME_HREF}" role="menuitem">{NAV_START_LABEL}</a>
-          <a href="/field-pack/cards/" aria-current="page" role="menuitem">{NAV_CARDS_LABEL}</a>
-          <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}</a>
-          <a href="/field-pack/" role="menuitem">{NAV_PLACES_LABEL}</a>
-          <a href="{NAV_ABOUT_HREF}" role="menuitem">{NAV_ABOUT_LABEL}</a>
-        </div>
-      </div>
+{nav_more_menu_html(current="cards")}
     </header>
     <section class="cards-play" id="cards-play" aria-labelledby="cards-play-heading">
       <img
@@ -5466,20 +5450,8 @@ def write_card_pages(
 <body class="landing-body card-page-body">
   <div class="app">
     <header class="oneless-shell no-print" data-product="bdo">
-      <a class="shell-brand" href="{HOME_HREF}" aria-label="KidZooKit home">
-        <img src="/1LessMark.png" alt="" width="52" height="52" />
-      </a>
       <a class="shell-product" href="{HOME_HREF}">KidZooKit <small>{CARD_HEADER_TAGLINE}</small></a>
-      <div class="shell-more-wrap">
-        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
-        <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="{HOME_HREF}" role="menuitem">{NAV_START_LABEL}</a>
-          <a href="/field-pack/cards/" aria-current="page" role="menuitem">{NAV_CARDS_LABEL}</a>
-          <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}</a>
-          <a href="/field-pack/" role="menuitem">{NAV_PLACES_LABEL}</a>
-          <a href="{NAV_ABOUT_HREF}" role="menuitem">{NAV_ABOUT_LABEL}</a>
-        </div>
-      </div>
+{nav_more_menu_html(current="cards")}
     </header>
     <main class="card-page">
       <p class="card-page-crumbs"><a href="{HOME_HREF}">KidZooKit</a> · <a href="/field-pack/cards/">Cards</a><span class="card-back-to-place" hidden> · <a href="#"></a></span></p>

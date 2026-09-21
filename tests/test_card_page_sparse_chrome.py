@@ -226,8 +226,11 @@ class CardPageSparseChromeTests(unittest.TestCase):
 
     def test_brand_and_explorer_paths_unchanged(self):
         for html in self.pages.values():
-            self.assertIn(f'class="shell-brand" href="{HOME_HREF}"', html)
+            self.assertNotIn("shell-brand", html)
+            self.assertNotIn("/1LessMark.png", html)
             self.assertIn(f'class="shell-product" href="{HOME_HREF}"', html)
+            self.assertIn('aria-label="Open menu"', html)
+            self.assertIn("shell-more-bars", html)
             self.assertIn("Watch it. Print it. Go find it.", html)
             self.assertNotIn("Zoo, aquarium, museum &amp; park days", html)
             self.assertNotIn("Watch live. Wonder at home.", html)

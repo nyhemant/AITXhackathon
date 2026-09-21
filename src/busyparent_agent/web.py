@@ -299,15 +299,12 @@ HTML = """<!doctype html>
   </head>
   <body data-mode="dinner">
     <main>
-      <link rel="stylesheet" href="/shell/shell.css?v=5" />
+      <link rel="stylesheet" href="/shell/shell.css?v=11" />
       <header class="oneless-shell" data-product="dinner">
-        <a class="shell-brand" href="/">
-          <img src="/1LessMark.png" alt="KidZooKit" width="52" height="52" />
-          KidZooKit
-        </a>
+        <a class="shell-brand" href="/">KidZooKit</a>
         <p class="shell-product">Dinner<small>Decide tonight’s meal</small></p>
         <div class="shell-more-wrap">
-          <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
+          <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu" aria-label="Open menu"><span class="shell-more-bars" aria-hidden="true"><span></span><span></span><span></span></span></button>
           <div id="shell-menu" class="shell-menu" hidden role="menu">
             <a href="/" role="menuitem">Baby's Day Out<small>Kids' museum &amp; zoo days</small></a>
             <a href="/dinner" aria-current="page" role="menuitem">Dinner<small>Decide tonight’s meal</small></a>

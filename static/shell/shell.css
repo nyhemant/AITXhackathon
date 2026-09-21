@@ -1,4 +1,4 @@
-/* KidZooKit site shell — brand anchor + More menu (Dinner secondary) */
+/* KidZooKit site shell — product name + hamburger More menu (Dinner secondary) */
 .oneless-shell {
   display: flex;
   align-items: center;
@@ -162,12 +162,15 @@ a.shell-product:focus-visible {
   border: 1.5px solid var(--border, rgba(15, 92, 92, 0.14));
   background: rgba(247, 251, 249, 0.95);
   color: var(--teal-deep, #0a4545);
-  font: inherit;
-  font-weight: 700;
-  font-size: 0.86rem;
-  padding: 9px 14px;
-  min-height: 40px;
-  border-radius: var(--radius-pill, 999px);
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition:
     background 0.15s ease,
@@ -180,6 +183,28 @@ a.shell-product:focus-visible {
   background: #e8f6f0;
   border-color: var(--teal, #0f5c5c);
   box-shadow: var(--shadow-sm, 0 2px 8px rgba(21, 34, 56, 0.05));
+}
+
+.oneless-shell .shell-more:focus-visible {
+  outline: 3px solid var(--sun, #ffcf5a);
+  outline-offset: 2px;
+}
+
+.oneless-shell .shell-more-bars {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 18px;
+}
+
+.oneless-shell .shell-more-bars span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.92;
 }
 
 .oneless-shell .shell-menu {
@@ -241,13 +266,13 @@ body[data-mode="dinner"] .oneless-shell {
 
 @media (max-width: 520px) {
   /*
-   * Keep brand mark + product name + More on one row.
-   * Tagline (shell-product small) may grow the middle column downward
-   * without wrapping More onto a second flex line.
+   * Product name + hamburger on one row.
+   * Tagline (shell-product small) may grow the left column downward
+   * without wrapping the menu control onto a second flex line.
    */
   .oneless-shell {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: start;
     gap: 0 10px;
     padding: 10px 12px;
@@ -260,20 +285,12 @@ body[data-mode="dinner"] .oneless-shell {
     /* Beat base .oneless-shell[data-product="bdo"] { gap: 14px 16px } */
     gap: 0 10px;
   }
-  .oneless-shell .shell-brand {
-    font-size: 1.05rem;
-  }
-  .oneless-shell .shell-brand img {
-    width: 42px;
-    height: 42px;
-  }
   .oneless-shell .shell-product {
     min-width: 0;
   }
   .oneless-shell[data-product="bdo"] .shell-product {
     font-size: 1.22rem;
-    /* Optical align title with mark; More stays top-aligned via align-items:start */
-    padding-top: 6px;
+    padding-top: 2px;
   }
   .oneless-shell[data-product="bdo"] .shell-product small {
     font-size: 0.72rem;

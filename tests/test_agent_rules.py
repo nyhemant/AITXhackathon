@@ -473,7 +473,9 @@ class WebApiScenarioTest(unittest.TestCase):
         self.assertIn('src="/1LessPrimaryLogo.png?v=transparent-square"', HTML)
         self.assertIn('width="800" height="800"', HTML)
         self.assertNotIn('src="/1LessLogo.png', HTML)
-        self.assertIn('src="/1LessMark.png', HTML)  # shell brand mark
+        self.assertNotIn('src="/1LessMark.png', HTML)  # shell no longer uses mark
+        self.assertIn('shell-more-bars', HTML)
+        self.assertIn('aria-label="Open menu"', HTML)
         self.assertIn('class="oneless-shell"', HTML)
         self.assertNotIn('<source media="(max-width: 640px)"', HTML)
         self.assertIn('<p class="tagline">One less thing on your plate.</p>', HTML)

@@ -222,7 +222,10 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         self.assertNotIn("Pick up where you left off", self.hook)
 
     def test_brand_stays_on_start_explorer_does_not_redirect(self):
-        self.assertIn('class="shell-brand" href="/start/"', self.html)
+        self.assertNotIn("shell-brand", self.html)
+        self.assertNotIn("/1LessMark.png", self.html)
+        self.assertIn('aria-label="Open menu"', self.html)
+        self.assertIn("shell-more-bars", self.html)
         self.assertIn('class="shell-product" href="/start/"', self.html)
         self.assertNotIn('class="shell-start"', self.html)
         self.assertIn('class="shell-more"', self.html)

@@ -131,7 +131,10 @@ class VftSparseChromeTests(unittest.TestCase):
 
     def test_brand_and_sibling_paths_unchanged(self):
         for html in self.pages.values():
-            self.assertIn('class="shell-brand" href="/start/"', html)
+            self.assertNotIn("shell-brand", html)
+            self.assertNotIn("/1LessMark.png", html)
+            self.assertIn('aria-label="Open menu"', html)
+            self.assertIn("shell-more-bars", html)
             self.assertIn('class="shell-product" href="/start/"', html)
             self.assertIn('href="/field-pack/" role="menuitem">Places', html)
             self.assertIn('href="/field-pack/virtual-field-trip/"', html)

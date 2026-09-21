@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://kidzookit.com/field-pack/museums/" />
   <meta property="og:image" content="https://kidzookit.com/field-pack/photos/sample-mission-dallas-zoo.jpg" />
   <base href="/field-pack/" />
-  <link rel="stylesheet" href="/shell/shell.css?v=10" />
+  <link rel="stylesheet" href="/shell/shell.css?v=11" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v=44" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v=100" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=33" />
@@ -48,14 +48,24 @@
 </head>
 <body class="seo-venue-body type-hub-body" data-place-type="museum">
   <div class="app-shell">
-    <header class="shell-bar no-print">
-      <a class="shell-brand" href="/start/" aria-label="KidZooKit home">
-        <img src="/1LessMark.png" alt="" width="52" height="52" />
-      </a>
+    <header class="oneless-shell no-print" data-product="bdo">
       <a class="shell-product" href="/start/">
         KidZooKit
         <small>Watch it. Print it. Go find it.</small>
       </a>
+    
+      <div class="shell-more-wrap">
+        <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu" aria-label="Open menu">
+          <span class="shell-more-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+        <div id="shell-menu" class="shell-menu" hidden role="menu">
+          <a href="/start/" role="menuitem">Start</a>
+          <a href="/field-pack/cards/" role="menuitem">Cards</a>
+          <a href="/field-pack/virtual-field-trip/" role="menuitem">Watch Live</a>
+          <a href="/field-pack/" role="menuitem">Places</a>
+          <a href="/about/" role="menuitem">About</a>
+        </div>
+      </div>
     </header>
 
     <nav class="place-type-tabs no-print" aria-label="Place type">
