@@ -100,6 +100,8 @@ RESERVED = {
 
 # Type hub landings: path segment → filter + copy
 HEADER_TAGLINE = "Zoo, aquarium, museum &amp; park days"
+# Card pages only — kit promise (static; do not animate).
+CARD_HEADER_TAGLINE = "Watch it. Print it. Go find it."
 OG_SHARE_IMAGE = f"{SITE}/field-pack/photos/sample-mission-dallas-zoo.jpg"
 PARK_OG_IMAGE = f"{SITE}/field-pack/photos/np-hero-yellowstone.jpg"
 # Brand / product home. Map explorer stays at /field-pack/ — do not point logo/title there.
@@ -5467,7 +5469,7 @@ def write_card_pages(
       <a class="shell-brand" href="{HOME_HREF}" aria-label="KidZooKit home">
         <img src="/1LessMark.png" alt="" width="52" height="52" />
       </a>
-      <a class="shell-product" href="{HOME_HREF}">KidZooKit <small>{HEADER_TAGLINE}</small></a>
+      <a class="shell-product" href="{HOME_HREF}">KidZooKit <small>{CARD_HEADER_TAGLINE}</small></a>
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">

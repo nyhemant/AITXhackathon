@@ -1048,3 +1048,76 @@
     }
   });
 })();
+
+(function startVenueRotator() {
+  const root = document.querySelector("[data-venue-rotator]");
+  const slot = root && root.closest(".start-venue-slot");
+  if (!root || !slot) return;
+
+  const words = Array.from(root.querySelectorAll(".start-venue-word"));
+  if (words.length < 2) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) {
+    words.forEach((el, i) => {
+      el.classList.toggle("is-active", i === 0);
+    });
+    return;
+  }
+
+  const INTERVAL_MS = 5000;
+  let index = words.findIndex((el) => el.classList.contains("is-active"));
+  if (index < 0) index = 0;
+  let timer = null;
+  let paused = false;
+
+  function show(i) {
+    words.forEach((el, n) => {
+      el.classList.toggle("is-active", n === i);
+    });
+    index = i;
+  }
+
+  function next() {
+    if (paused) return;
+    show((index + 1) % words.length);
+  }
+
+  function start() {
+    if (timer != null) return;
+    timer = window.setInterval(next, INTERVAL_MS);
+  }
+
+  function stop() {
+    if (timer == null) return;
+    window.clearInterval(timer);
+    timer = null;
+  }
+
+  function pause() {
+    paused = true;
+    stop();
+  }
+
+  function resume() {
+    paused = false;
+    start();
+  }
+
+  slot.addEventListener("mouseenter", pause);
+  slot.addEventListener("mouseleave", resume);
+  slot.addEventListener("focusin", pause);
+  slot.addEventListener("focusout", resume);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stop();
+    } else if (!paused) {
+      start();
+    }
+  });
+
+  show(index);
+  start();
+})();
+
