@@ -325,11 +325,15 @@ body.start-body {
 }
 
 .start-venue-sizer {
-  /* Height strut only; width is overridden by the slot's inline width. */
+  /* Height strut only; width is overridden by the slot's inline width.
+     Glyph lives in data-sizer + ::before so it never enters the text layer. */
   visibility: hidden;
   white-space: nowrap;
   pointer-events: none;
   display: inline-block;
+}
+.start-venue-sizer::before {
+  content: attr(data-sizer);
 }
 
 .start-venue-words {
@@ -1799,6 +1803,9 @@ body.start-body {
   white-space: nowrap;
   pointer-events: none;
 }
+.start-wildlife-sizer::before {
+  content: attr(data-sizer);
+}
 
 .start-wildlife-words {
   display: grid;
@@ -1899,6 +1906,9 @@ body.start-body {
   visibility: hidden;
   white-space: nowrap;
   pointer-events: none;
+}
+.start-going-venue-sizer::before {
+  content: attr(data-sizer);
 }
 
 .start-going-venue-words {
