@@ -679,13 +679,11 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("data-going-venue-rotator", chapter)
         self.assertIn('href="/field-pack/dallas-zoo/"', chapter)
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
-        self.assertEqual(len(pills), 1, pills)
+        self.assertEqual(len(pills), 2, pills)
         self.assertIn('href="/field-pack/dallas-zoo/"', pills[0])
         self.assertIn("Sample visit", pills[0])
-        self.assertIn('class="start-going-more"', chapter)
-        self.assertIn('href="/field-pack/"', chapter)
-        self.assertIn("Explore Places Near You", chapter)
-        self.assertNotIn('class="start-pill" href="/field-pack/"', chapter)
+        self.assertIn('href="/field-pack/"', pills[1])
+        self.assertIn("Explore Places Near You", pills[1])
         still = re.search(r'<div class="start-going-still"[^>]*>([\s\S]*?)</div>', chapter)
         self.assertIsNotNone(still)
         self.assertIn('aria-label="Georgia Aquarium, Dallas Zoo, and San Diego Zoo"', still.group(0))
@@ -1075,7 +1073,7 @@ class StartLandingTests(unittest.TestCase):
         foot = self.html.find("start-foot")
         self.assertTrue(0 < hero < rest < home < rest2 < going < rest3 < teach < foot)
         self.assertEqual(self.html.count('class="start-chapter"'), 3)
-        self.assertEqual(len(self.pills), 3)
+        self.assertEqual(len(self.pills), 4)
         self.assertNotIn('id="start-outcome"', self.html)
         self.assertNotIn('id="start-doors"', self.html)
         self.assertNotIn('id="start-proof"', self.html)
@@ -1122,6 +1120,7 @@ class StartLandingTests(unittest.TestCase):
             ],
             "start-going": [
                 ("/field-pack/dallas-zoo/", "Sample visit"),
+                ("/field-pack/", "Explore Places Near You"),
             ],
             "start-teach": [
                 ("/field-pack/cards/", "All cards"),
@@ -1141,7 +1140,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("/field-pack/dallas-zoo/", home)
         self.assertNotIn("youtube.com", home)
         self.assertNotIn("target=\"_blank\"", home)
-        self.assertEqual(self.html.count('class="start-pill"'), 3)
+        self.assertEqual(self.html.count('class="start-pill"'), 4)
         teach = chapters["start-teach"].group(0)
         open_cards = re.search(r'<p class="start-open-cards">([\s\S]*?)</p>', teach)
         self.assertIsNotNone(open_cards)
@@ -1236,7 +1235,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
         self.assertIn('start.js?v=38', self.html)
-        self.assertIn("start.css?v=68", self.html)
+        self.assertIn("start.css?v=69", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
@@ -1249,7 +1248,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-pill", self.js)
         self.assertIn(".start-route", self.js)
         self.assertNotIn(".start-door", self.js)
-        self.assertEqual(len(self.pills), 3)
+        self.assertEqual(len(self.pills), 4)
         for pill in self.pills:
             self.assertTrue(pill.startswith("<a"))
 
