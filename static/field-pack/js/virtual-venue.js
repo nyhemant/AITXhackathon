@@ -1867,9 +1867,12 @@
     if (stopsDrawer) {
       const sum = stopsDrawer.querySelector("summary");
       if (sum) {
-        const spec = pickSpec(config.kind);
         sum.textContent =
-          config.kind === "park" ? "Park kits and links" : spec ? spec.title : "Stops and cards";
+          config.kind === "park"
+            ? "Parks"
+            : config.kind === "natural_history" || config.kind === "science"
+              ? "Halls"
+              : "Stops";
       }
     }
     if (done === habs.length && habs.length) {
@@ -2168,7 +2171,7 @@
   function playHabitatFilm(h) {
     const film = pickHabitatFilm(h);
     if (!film) return false;
-    return playFilmInline(film.url, film.title || (h && h.label) || "Pre-recorded", film.start);
+    return playFilmInline(film.url, film.title || (h && h.label) || "Film", film.start);
   }
 
   function playFilmInline(url, label, start) {
@@ -2178,7 +2181,7 @@
     });
     if (!embed || !photoEl) return false;
     photoEl.classList.add("is-playing");
-    photoEl.innerHTML = `<iframe class="vz-watch-frame" title="${escapeHtml(label || "Pre-recorded")}" src="${embed}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    photoEl.innerHTML = `<iframe class="vz-watch-frame" title="${escapeHtml(label || "Film")}" src="${embed}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
     const frame = photoEl.querySelector("iframe.vz-watch-frame");
     const kick = () => {
       ytCommand(frame, "playVideo");
@@ -2254,10 +2257,10 @@
     if (film) {
       if (playFilmInline(url, label)) return;
       if (embed && camFrame) {
-        if (camPopTitle) camPopTitle.textContent = label || "Pre-recorded";
+        if (camPopTitle) camPopTitle.textContent = label || "Film";
         if (camPopNote) camPopNote.hidden = true;
         camFrame.hidden = false;
-        camFrame.title = label || "Pre-recorded";
+        camFrame.title = label || "Film";
         camFrame.src = embed;
         if (camPop) camPop.hidden = false;
         camPopBack?.focus();
@@ -2397,7 +2400,7 @@
         filmLink.href = inPageFilmHref(h.id);
         filmLink.setAttribute("role", "button");
         filmLink.removeAttribute("target");
-        filmLink.innerHTML = `Pre-recorded<small>${escapeHtml(video.title || "A short video")}</small>`;
+        filmLink.innerHTML = `Film — ${escapeHtml(video.title || "A short film")}`;
         filmLink.onclick = (e) => {
           e.preventDefault();
           playHabitatFilm(h);

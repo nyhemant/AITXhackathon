@@ -148,6 +148,33 @@ class VftSparseChromeTests(unittest.TestCase):
                 self.assertIn(f"catalog.js?v={CATALOG_JS_VER}", html)
                 self.assertIn(f"print-kit.js?v={PRINT_KIT_JS_VER}", html)
 
+    def test_section_h2s_drop_virtual_prefix(self):
+        html = self.pages[VFT_PAGES[0]]
+        for h2 in (
+            "<h2>Zoo</h2>",
+            "<h2>Aquarium</h2>",
+            "<h2>Natural History Museum</h2>",
+            "<h2>Science Museum</h2>",
+            "<h2>National Parks</h2>",
+        ):
+            self.assertIn(h2, html)
+        self.assertNotIn("<h2>Virtual Zoo</h2>", html)
+        self.assertNotIn("Virtual Science Museum Field Trip", html)
+        self.assertNotIn("Stops and cards", html)
+        self.assertIn("<summary>Stops</summary>", html)
+        self.assertIn("Open card", html)
+        self.assertNotIn('class="vz-static-kind">Card</p>', html)
+        self.assertIn("Film —", html)
+        self.assertNotIn("Pre-recorded —", html)
+        visible = re.sub(r"<noscript\b[^>]*>.*?</noscript>", "", html, flags=re.I | re.S)
+        self.assertNotIn("Watch on YouTube", visible)
+        self.assertIn("Watch on YouTube", html)
+
+    def test_js_film_control_uses_film_label(self):
+        self.assertIn("Film — ${escapeHtml(video.title || \"A short film\")}", self.js)
+        self.assertNotIn("Pre-recorded<small>", self.js)
+        self.assertNotIn("Stops and cards", self.js)
+
 
 if __name__ == "__main__":
     unittest.main()

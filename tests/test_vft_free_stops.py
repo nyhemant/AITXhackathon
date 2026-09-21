@@ -118,7 +118,7 @@ class VftFreeStopsTests(unittest.TestCase):
 
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=104", html)
+            self.assertIn("virtual-venue.js?v=105", html)
             self.assertIn("virtual-venue.css?v=57", html)
         self.assertIn("virtual-zoo.json?v=27", self.js)
         self.assertIn("virtual-aquarium.json?v=27", self.js)
