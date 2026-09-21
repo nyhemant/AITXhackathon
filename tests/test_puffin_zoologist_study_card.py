@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     PUSH_FURTHER_ELK,
     PUSH_FURTHER_LION,
@@ -156,8 +157,8 @@ class PuffinZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_ATLANTIC_PUFFIN)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Atlantic puffin. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_PUFFIN))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_PUFFIN))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_PUFFIN, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_PUFFIN, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         letters = [q["correct"] for q in deck["questions"]]
@@ -308,7 +309,7 @@ class PuffinZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_PUFFIN + PUSH_FURTHER_PUFFIN:
+        for prompt in visible_prompts(TALK_ABOUT_PUFFIN, "zoologist") + visible_prompts(PUSH_FURTHER_PUFFIN, "zoologist"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_ATLANTIC_PUFFIN, sheet)
@@ -341,15 +342,15 @@ class PuffinZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)
         self.assertIn("Park Ranger", lion_html)
-        self.assertEqual(lion_zoo["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion_zoo["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion_zoo["talk_about"], visible_prompts(TALK_ABOUT_LION, lion_zoo["level"]))
+        self.assertEqual(lion_zoo["push_further"], visible_prompts(PUSH_FURTHER_LION, lion_zoo["level"]))
         self.assertEqual(shipped_levels_for("elk"), ("easy", "hard", "zoologist"))
         elk_zoo = study_deck_for("elk", "zoologist")
         self.assertEqual(elk_zoo["source"], WIKI_ELK)
         elk_html = ELK.read_text(encoding="utf-8")
         self.assertIn("Zoologist", elk_html)
-        self.assertEqual(elk_zoo["talk_about"], list(TALK_ABOUT_ELK))
-        self.assertEqual(elk_zoo["push_further"], list(PUSH_FURTHER_ELK))
+        self.assertEqual(elk_zoo["talk_about"], visible_prompts(TALK_ABOUT_ELK, elk_zoo["level"]))
+        self.assertEqual(elk_zoo["push_further"], visible_prompts(PUSH_FURTHER_ELK, elk_zoo["level"]))
         jelly = OCTOPUS.read_text(encoding="utf-8")
         self.assertIn("card-study-pack", jelly)
         self.assertNotIn("What do they eat?", jelly)
@@ -375,8 +376,8 @@ class PuffinZoologistStudyCardTests(unittest.TestCase):
         html = PUFFIN.read_text(encoding="utf-8")
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         print_tpl = study_print_html_for("puffin")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)

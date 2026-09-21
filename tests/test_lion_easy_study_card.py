@@ -12,6 +12,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, STUDY_CARD_CSS_VER, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     LEVEL_DISPLAY_NAMES,
     PUSH_FURTHER_LION,
@@ -138,8 +139,8 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual(deck["questions"][3]["title"], "Mane")
         self.assertEqual(deck["questions"][8]["title"], "Tail")
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_LION, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_LION, deck["level"]))
         self.assertEqual(study_deck_for("african-elephant")["level"], "easy")
         self.assertIsNotNone(study_deck_for("african-elephant", "hard"))
         self.assertIsNotNone(study_deck_for("african-elephant", "zoologist"))
@@ -158,7 +159,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_LION + PUSH_FURTHER_LION:
+        for prompt in visible_prompts(TALK_ABOUT_LION, "easy") + visible_prompts(PUSH_FURTHER_LION, "easy"):
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("questions", html)
@@ -204,9 +205,9 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("nationalzoo.si.edu/webcams", main)
         self.assertIn("Look close — mane, whiskers, a tuft on the tail.", html)
         self.assertNotIn("mighty roar", html)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-card.css?v=12", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-card.css?v=13", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertNotIn("study-print-template", html)
@@ -242,7 +243,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_LION + PUSH_FURTHER_LION:
+        for prompt in visible_prompts(TALK_ABOUT_LION, "easy") + visible_prompts(PUSH_FURTHER_LION, "easy"):
             self.assertIn(prompt, back)
 
     def test_print_faces_are_duplex_and_clamped(self):
@@ -271,7 +272,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_LION + PUSH_FURTHER_LION:
+        for prompt in visible_prompts(TALK_ABOUT_LION, "easy") + visible_prompts(PUSH_FURTHER_LION, "easy"):
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)
@@ -327,7 +328,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
     def test_desktop_widens_study_card_page_only(self):
         css = (FP / "css" / "study-card.css").read_text(encoding="utf-8")
         seo = (FP / "css" / "seo-venue.css").read_text(encoding="utf-8")
-        self.assertEqual(STUDY_CARD_CSS_VER, "12")
+        self.assertEqual(STUDY_CARD_CSS_VER, "13")
         self.assertIn("max-width: 34rem;", seo)
         self.assertIn("@media screen and (min-width: 960px)", css)
         self.assertIn("max-width: 48rem;", css)

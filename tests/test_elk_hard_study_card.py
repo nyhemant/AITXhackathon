@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     PUSH_FURTHER_AMERICAN_BISON,
     PUSH_FURTHER_ELK,
@@ -119,8 +120,8 @@ class ElkHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_ELK)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Elk. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ELK))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_ELK))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_ELK, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_ELK, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         letters = [q["correct"] for q in deck["questions"]]
@@ -237,7 +238,7 @@ class ElkHardStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_ELK + PUSH_FURTHER_ELK:
+        for prompt in visible_prompts(TALK_ABOUT_ELK, "hard") + visible_prompts(PUSH_FURTHER_ELK, "hard"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_ELK, sheet)
@@ -256,15 +257,15 @@ class ElkHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)
         self.assertIn("Park Ranger", lion_html)
-        self.assertEqual(lion_hard["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion_hard["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion_hard["talk_about"], visible_prompts(TALK_ABOUT_LION, lion_hard["level"]))
+        self.assertEqual(lion_hard["push_further"], visible_prompts(PUSH_FURTHER_LION, lion_hard["level"]))
         self.assertEqual(shipped_levels_for("american-bison"), ("easy", "hard", "zoologist"))
         bison_hard = study_deck_for("american-bison", "hard")
         self.assertEqual(bison_hard["source"], WIKI_AMERICAN_BISON)
         bison_html = BISON.read_text(encoding="utf-8")
         self.assertIn("Zoologist", bison_html)
-        self.assertEqual(bison_hard["talk_about"], list(TALK_ABOUT_AMERICAN_BISON))
-        self.assertEqual(bison_hard["push_further"], list(PUSH_FURTHER_AMERICAN_BISON))
+        self.assertEqual(bison_hard["talk_about"], visible_prompts(TALK_ABOUT_AMERICAN_BISON, bison_hard["level"]))
+        self.assertEqual(bison_hard["push_further"], visible_prompts(PUSH_FURTHER_AMERICAN_BISON, bison_hard["level"]))
         jelly = OCTOPUS.read_text(encoding="utf-8")
         self.assertIn("card-study-pack", jelly)
         self.assertNotIn("What do they eat?", jelly)

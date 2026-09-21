@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     LEVEL_DISPLAY_NAMES,
     PUSH_FURTHER_FRESHWATER_FISH,
@@ -223,8 +224,8 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_FRESHWATER_FISH))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_FRESHWATER_FISH))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_FRESHWATER_FISH, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_FRESHWATER_FISH, deck["level"]))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, [target_letter_for_slot(i) for i in range(1, 11)])
         self.assertEqual(letters.count("A"), 4)
@@ -259,13 +260,13 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(lion["source"], WIKI_LION)
         self.assertEqual(lion["level_label"], "Junior Ranger")
         self.assertEqual(len(lion["questions"]), STUDY_SLOTS)
-        self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion["talk_about"], visible_prompts(TALK_ABOUT_LION, lion["level"]))
+        self.assertEqual(lion["push_further"], visible_prompts(PUSH_FURTHER_LION, lion["level"]))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
         sloth = study_deck_for("two-toed-sloth")
         self.assertEqual(sloth["source"], WIKI_TWO_TOED_SLOTH)
-        self.assertEqual(sloth["talk_about"], list(TALK_ABOUT_TWO_TOED_SLOTH))
-        self.assertEqual(sloth["push_further"], list(PUSH_FURTHER_TWO_TOED_SLOTH))
+        self.assertEqual(sloth["talk_about"], visible_prompts(TALK_ABOUT_TWO_TOED_SLOTH, sloth["level"]))
+        self.assertEqual(sloth["push_further"], visible_prompts(PUSH_FURTHER_TWO_TOED_SLOTH, sloth["level"]))
         self.assertEqual(shipped_levels_for("two-toed-sloth"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("two-toed-sloth", "hard"))
         self.assertIsNotNone(study_deck_for("two-toed-sloth", "zoologist"))
@@ -284,7 +285,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_FRESHWATER_FISH + PUSH_FURTHER_FRESHWATER_FISH:
+        for prompt in visible_prompts(TALK_ABOUT_FRESHWATER_FISH, "easy") + visible_prompts(PUSH_FURTHER_FRESHWATER_FISH, "easy"):
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("questions", html)
@@ -343,9 +344,9 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
         self.assertIn("study-next-tier", main)
         self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-card.css?v=12", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-card.css?v=13", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "freshwater-fish"', html)
@@ -390,7 +391,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_FRESHWATER_FISH + PUSH_FURTHER_FRESHWATER_FISH:
+        for prompt in visible_prompts(TALK_ABOUT_FRESHWATER_FISH, "easy") + visible_prompts(PUSH_FURTHER_FRESHWATER_FISH, "easy"):
             self.assertIn(prompt, back)
         self.assertEqual(
             study_try_next_ids("freshwater-fish"),
@@ -426,7 +427,7 @@ class FreshwaterFishEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_FRESHWATER_FISH + PUSH_FURTHER_FRESHWATER_FISH:
+        for prompt in visible_prompts(TALK_ABOUT_FRESHWATER_FISH, "easy") + visible_prompts(PUSH_FURTHER_FRESHWATER_FISH, "easy"):
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)

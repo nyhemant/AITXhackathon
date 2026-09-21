@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     LEVEL_DISPLAY_NAMES,
     PUSH_FURTHER_ELEPHANT,
@@ -176,8 +177,8 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ELEPHANT))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_ELEPHANT))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_ELEPHANT, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_ELEPHANT, deck["level"]))
         for q in deck["questions"]:
             self.assertEqual(len(q["choices"]), 3)
             self.assertIn(q["correct"], ("A", "B", "C"))
@@ -198,15 +199,15 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(lion["source"], WIKI_LION)
         self.assertEqual(lion["level_label"], "Junior Ranger")
         self.assertEqual(len(lion["questions"]), STUDY_SLOTS)
-        self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion["talk_about"], visible_prompts(TALK_ABOUT_LION, lion["level"]))
+        self.assertEqual(lion["push_further"], visible_prompts(PUSH_FURTHER_LION, lion["level"]))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("african-lion", "hard"))
         self.assertIsNotNone(study_deck_for("african-lion", "zoologist"))
         giraffe = study_deck_for("reticulated-giraffe")
         self.assertEqual(giraffe["source"], WIKI_GIRAFFE)
-        self.assertEqual(giraffe["talk_about"], list(TALK_ABOUT_GIRAFFE))
-        self.assertEqual(giraffe["push_further"], list(PUSH_FURTHER_GIRAFFE))
+        self.assertEqual(giraffe["talk_about"], visible_prompts(TALK_ABOUT_GIRAFFE, giraffe["level"]))
+        self.assertEqual(giraffe["push_further"], visible_prompts(PUSH_FURTHER_GIRAFFE, giraffe["level"]))
         self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("reticulated-giraffe", "hard"))
         self.assertIsNotNone(study_deck_for("reticulated-giraffe", "zoologist"))
@@ -225,7 +226,7 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_ELEPHANT + PUSH_FURTHER_ELEPHANT:
+        for prompt in visible_prompts(TALK_ABOUT_ELEPHANT, "easy") + visible_prompts(PUSH_FURTHER_ELEPHANT, "easy"):
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("questions", html)
@@ -273,9 +274,9 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
             self.assertIn(line, main)
         self.assertIn("card-watch-live", main)
         self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-elephant", main.replace("&amp;", "&"))
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-card.css?v=12", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-card.css?v=13", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "african-elephant"', html)
@@ -315,7 +316,7 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_ELEPHANT + PUSH_FURTHER_ELEPHANT:
+        for prompt in visible_prompts(TALK_ABOUT_ELEPHANT, "easy") + visible_prompts(PUSH_FURTHER_ELEPHANT, "easy"):
             self.assertIn(prompt, back)
 
     def test_print_faces_are_duplex_and_clamped(self):
@@ -344,7 +345,7 @@ class ElephantEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_ELEPHANT + PUSH_FURTHER_ELEPHANT:
+        for prompt in visible_prompts(TALK_ABOUT_ELEPHANT, "easy") + visible_prompts(PUSH_FURTHER_ELEPHANT, "easy"):
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)

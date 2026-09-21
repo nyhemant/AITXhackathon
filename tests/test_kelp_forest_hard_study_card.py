@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     PUSH_FURTHER_CUTTLEFISH,
     PUSH_FURTHER_EEL,
@@ -130,8 +131,8 @@ class KelpForestHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_KELP_FOREST)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Kelp forest. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_KELP_FOREST))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_KELP_FOREST))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_KELP_FOREST, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_KELP_FOREST, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         letters = [q["correct"] for q in deck["questions"]]
@@ -254,7 +255,7 @@ class KelpForestHardStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_KELP_FOREST + PUSH_FURTHER_KELP_FOREST:
+        for prompt in visible_prompts(TALK_ABOUT_KELP_FOREST, "hard") + visible_prompts(PUSH_FURTHER_KELP_FOREST, "hard"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_KELP_FOREST, sheet)
@@ -273,29 +274,29 @@ class KelpForestHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)
         self.assertIn("Park Ranger", lion_html)
-        self.assertEqual(lion_hard["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion_hard["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion_hard["talk_about"], visible_prompts(TALK_ABOUT_LION, lion_hard["level"]))
+        self.assertEqual(lion_hard["push_further"], visible_prompts(PUSH_FURTHER_LION, lion_hard["level"]))
         self.assertEqual(shipped_levels_for("jellyfish"), ("easy", "hard", "zoologist"))
         jelly_hard = study_deck_for("jellyfish", "hard")
         self.assertEqual(jelly_hard["source"], WIKI_JELLYFISH)
         jelly_html = JELLYFISH.read_text(encoding="utf-8")
         self.assertIn("Zoologist", jelly_html)
-        self.assertEqual(jelly_hard["talk_about"], list(TALK_ABOUT_JELLYFISH))
-        self.assertEqual(jelly_hard["push_further"], list(PUSH_FURTHER_JELLYFISH))
+        self.assertEqual(jelly_hard["talk_about"], visible_prompts(TALK_ABOUT_JELLYFISH, jelly_hard["level"]))
+        self.assertEqual(jelly_hard["push_further"], visible_prompts(PUSH_FURTHER_JELLYFISH, jelly_hard["level"]))
         self.assertEqual(shipped_levels_for("eel"), ("easy", "hard", "zoologist"))
         eel_hard = study_deck_for("eel", "hard")
         self.assertEqual(eel_hard["source"], WIKI_EEL)
         eel_html = EEL.read_text(encoding="utf-8")
         self.assertIn("Zoologist", eel_html)
-        self.assertEqual(eel_hard["talk_about"], list(TALK_ABOUT_EEL))
-        self.assertEqual(eel_hard["push_further"], list(PUSH_FURTHER_EEL))
+        self.assertEqual(eel_hard["talk_about"], visible_prompts(TALK_ABOUT_EEL, eel_hard["level"]))
+        self.assertEqual(eel_hard["push_further"], visible_prompts(PUSH_FURTHER_EEL, eel_hard["level"]))
         self.assertEqual(shipped_levels_for("cuttlefish"), ("easy", "hard", "zoologist"))
         cuttle_hard = study_deck_for("cuttlefish", "hard")
         self.assertEqual(cuttle_hard["source"], WIKI_CUTTLEFISH)
         cuttle_html = CUTTLEFISH.read_text(encoding="utf-8")
         self.assertIn("Zoologist", cuttle_html)
-        self.assertEqual(cuttle_hard["talk_about"], list(TALK_ABOUT_CUTTLEFISH))
-        self.assertEqual(cuttle_hard["push_further"], list(PUSH_FURTHER_CUTTLEFISH))
+        self.assertEqual(cuttle_hard["talk_about"], visible_prompts(TALK_ABOUT_CUTTLEFISH, cuttle_hard["level"]))
+        self.assertEqual(cuttle_hard["push_further"], visible_prompts(PUSH_FURTHER_CUTTLEFISH, cuttle_hard["level"]))
         octo = OCTOPUS.read_text(encoding="utf-8")
         self.assertIn("card-study-pack", octo)
         self.assertNotIn("What do they eat?", octo)

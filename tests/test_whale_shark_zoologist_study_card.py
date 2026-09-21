@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     PUSH_FURTHER_LION,
     PUSH_FURTHER_STINGRAY_ZOOLOGIST,
@@ -113,8 +114,8 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_WHALE_SHARK)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Whale shark. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST, deck["level"]))
         self.assertEqual(len(deck["questions"]), ZOOLOGIST_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         letters = [q["correct"] for q in deck["questions"]]
@@ -263,7 +264,7 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_WHALE_SHARK_ZOOLOGIST + PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST:
+        for prompt in visible_prompts(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST, "zoologist") + visible_prompts(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST, "zoologist"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_WHALE_SHARK, sheet)
@@ -291,8 +292,8 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(shipped_levels_for("stingray"), ("easy", "hard", "zoologist"))
         ray_zoo = study_deck_for("stingray", "zoologist")
         self.assertEqual(ray_zoo["source"], WIKI_STINGRAY)
-        self.assertEqual(ray_zoo["talk_about"], list(TALK_ABOUT_STINGRAY_ZOOLOGIST))
-        self.assertEqual(ray_zoo["push_further"], list(PUSH_FURTHER_STINGRAY_ZOOLOGIST))
+        self.assertEqual(ray_zoo["talk_about"], visible_prompts(TALK_ABOUT_STINGRAY_ZOOLOGIST, ray_zoo["level"]))
+        self.assertEqual(ray_zoo["push_further"], visible_prompts(PUSH_FURTHER_STINGRAY_ZOOLOGIST, ray_zoo["level"]))
         ray_html = STINGRAY.read_text(encoding="utf-8")
         self.assertIn("Zoologist", ray_html)
         self.assertIn("Junior Ranger", ray_html)
@@ -335,8 +336,8 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn('data-study-id="whale-shark"', html)
         self.assertIn('data-study-level="easy"', html)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         print_tpl = study_print_html_for("whale-shark")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)

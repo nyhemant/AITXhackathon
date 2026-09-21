@@ -120,8 +120,8 @@ class VftMapPolishTests(unittest.TestCase):
         self.assertNotIn("isSequential()", can_open)
         self.assertIn('const DEFAULT_ZOO_STOP = "caribbean-flamingo"', self.js)
         for html in self.pages.values():
-            self.assertIn("Print the cutouts", html)
-            self.assertIn("virtual-venue.js?v=105", html)
+            self.assertIn("Print from Watch", html)
+            self.assertIn("virtual-venue.js?v=106", html)
             self.assertIn("virtual-venue.css?v=57", html)
             self.assertIn('class="btn btn-secondary" id="vz-print-watch"', html)
             self.assertNotIn('class="btn btn-primary" id="vz-print-watch"', html)

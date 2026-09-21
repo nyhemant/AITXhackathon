@@ -2638,6 +2638,81 @@ def _append_source_approx_note(note: str) -> str:
     return f"{base}. {SOURCE_APPROX_NOTE}"
 
 
+_WIKI_SAYS_RE = re.compile(r"\bWikipedia says(?: that)?\b\s*:?\s*", re.I)
+_STATUS_LETTER_PROMPT = re.compile(
+    r"threat letter"
+    r"|status letter"
+    r"|\bIUCN\b"
+    r"|Red List letter"
+    r"|one letter"
+    r"|status-by-kind"
+    r"|snapshot letter"
+    r"|one snapshot"
+    r"|low-risk"
+    r"|\b(?:VU|EN|CR)\b"
+    r"|pick the letter",
+    re.I,
+)
+
+
+def strip_wikipedia_says_voice(text: str) -> str:
+    """Drop a child-facing “Wikipedia says” frame. Keep the factual clause.
+
+    Does not rewrite other Wikipedia verbs (lists, names, ties) — those carry
+    the fact. Does not invent replacement copy.
+    """
+    raw = str(text or "")
+    if not _WIKI_SAYS_RE.search(raw):
+        return raw
+    parts: list[str] = []
+    cursor = 0
+    for match in _WIKI_SAYS_RE.finditer(raw):
+        before = raw[cursor:match.start()]
+        parts.append(before)
+        stripped_before = before.rstrip()
+        sentence_start = (not stripped_before) or stripped_before[-1] in ".!?"
+        parts.append("\x00CAP\x00" if sentence_start else "")
+        cursor = match.end()
+    parts.append(raw[cursor:])
+    s = "".join(parts)
+    s = re.sub(
+        r"\x00CAP\x00\s*([\"“']?)([a-z])",
+        lambda m: (m.group(1) or "") + m.group(2).upper(),
+        s,
+    )
+    s = s.replace("\x00CAP\x00", "")
+    s = re.sub(r"\s{2,}", " ", s)
+    s = re.sub(r"\s+([.,;:!?])", r"\1", s)
+    s = s.strip()
+    return s or raw.strip()
+
+
+def apply_wikipedia_says_strip(cards: dict | None = None) -> None:
+    """Remove child-facing “Wikipedia says” from quiz why fields only.
+
+    source_note keeps the Wikipedia credit. Talk prompts and stems stay put.
+    """
+    src = STUDY_CARDS if cards is None else cards
+    for card in src.values():
+        for pack in (card.get("levels") or {}).values():
+            for q in pack.get("questions") or []:
+                if q.get("why") is not None:
+                    q["why"] = strip_wikipedia_says_voice(str(q.get("why") or ""))
+
+
+def is_status_letter_prompt(line: str) -> bool:
+    """Threat-letter / IUCN-status-letter talk that stays on Zoologist."""
+    return bool(_STATUS_LETTER_PROMPT.search(str(line or "")))
+
+
+def visible_prompts(lines, level: str = "") -> list[str]:
+    """Shared talk/push, with status-letter lines hidden below Zoologist."""
+    cleaned = [str(line).strip() for line in (lines or []) if str(line).strip()]
+    if str(level or "").strip().lower() == "zoologist":
+        return cleaned
+    return [line for line in cleaned if not is_status_letter_prompt(line)]
+
+
 def apply_display_soft_strip(cards: dict | None = None) -> None:
     """Strip editorial soft jargon from all user-visible study fields.
 
@@ -20911,6 +20986,7 @@ STUDY_CARDS: dict[str, dict] = {
 
 apply_slot_letter_rotation()
 apply_display_soft_strip()
+apply_wikipedia_says_strip()
 
 
 def level_display_name(level: str | None = None) -> str:
@@ -20940,13 +21016,17 @@ def shipped_levels_for(card_id: str) -> tuple[str, ...]:
     return tuple(key for key in SHIPPED_LEVELS if key in have)
 
 
-def _prompt_lines(raw: dict, pack: dict, key: str) -> list[str]:
-    """Per-level override when the key is set; otherwise card-level shared prompts."""
+def _prompt_lines(raw: dict, pack: dict, key: str, level: str = "") -> list[str]:
+    """Per-level override when the key is set; otherwise card-level shared prompts.
+
+    Threat-letter / IUCN-status-letter lines stay on Zoologist. Junior Ranger
+    and Park Ranger do not see them.
+    """
     if key in pack and pack.get(key) is not None:
         src = pack.get(key) or []
     else:
         src = raw.get(key) or []
-    return [str(line).strip() for line in src if str(line).strip()]
+    return visible_prompts(src, level)
 
 
 def default_study_deck_for(card_id: str) -> dict | None:
@@ -20978,8 +21058,8 @@ def study_deck_for(card_id: str, level: str = DEFAULT_LEVEL) -> dict | None:
         "source": raw.get("source") or "",
         "source_note": raw.get("source_note") or "",
         "teach": list(pack.get("teach") or []),
-        "talk_about": _prompt_lines(raw, pack, "talk_about"),
-        "push_further": _prompt_lines(raw, pack, "push_further"),
+        "talk_about": _prompt_lines(raw, pack, "talk_about", level),
+        "push_further": _prompt_lines(raw, pack, "push_further", level),
         "questions": questions,
     }
 
@@ -21154,6 +21234,8 @@ def study_try_next_catalog() -> dict:
 
 def write_study_artifacts() -> None:
     """JSON + window.FP_STUDY_CARDS for print-kit / study-card.js."""
+    apply_display_soft_strip()
+    apply_wikipedia_says_strip()
     STUDY_JSON.parent.mkdir(parents=True, exist_ok=True)
     STUDY_DATA_JS.parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(STUDY_CARDS, indent=2, ensure_ascii=False)
@@ -21402,6 +21484,22 @@ def _level_picker_html(card_id: str, current: str, *, placement: str = "top") ->
     )
 
 
+# Young tiers can still climb. The note does not advertise Zoologist as one tap.
+_LEVEL_NOTE = {
+    "easy": "A grown-up can help you try a harder set.",
+    "hard": "Zoologist is a bigger step. A grown-up can help.",
+}
+
+
+def _level_note_html(level: str, picker: str) -> str:
+    if "study-level-picker" not in picker:
+        return ""
+    text = _LEVEL_NOTE.get(str(level or "").strip().lower(), "")
+    if not text:
+        return ""
+    return f'<p class="study-level-note no-print">{_esc(text)}</p>'
+
+
 def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
     """Screen: optional teach strip + MCQs + reveal/why. Full picker at top only."""
     level = deck.get("level") or DEFAULT_LEVEL
@@ -21448,11 +21546,7 @@ def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
         )
     source = _esc(deck.get("source_note") or "")
     source_html = f'<p class="study-source">{source}</p>' if source else ""
-    level_note = (
-        '<p class="study-level-note no-print">Jump to a harder set any time.</p>'
-        if "study-level-picker" in picker
-        else ""
-    )
+    level_note = _level_note_html(str(level), picker)
     return (
         f'<section class="card-talk-pack card-study-pack" aria-label="{_esc(heading)}" '
         f'data-study-id="{_esc(deck.get("id") or "")}" data-study-level="{_esc(level)}">'
