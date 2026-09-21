@@ -12,6 +12,9 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import (  # noqa: E402
+    HEADER_TAGLINE,
+    CARD_HEADER_TAGLINE,
+    VFT_HEADER_TAGLINE,
     CARD_TALK_H2,
     CARDS_PLAY_BROWSE,
     CARDS_PLAY_CTA,
@@ -215,12 +218,19 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertFalse(is_youtube_url("https://nationalzoo.si.edu/webcams/lion-cam"))
         self.assertFalse(vft_has_inpage_media({"cam_url": "https://nationalzoo.si.edu/webcams/lion-cam"}))
 
+    def test_shell_tagline_constants_unified(self):
+        shell = "Watch it. Print it. Go find it."
+        self.assertEqual(HEADER_TAGLINE, shell)
+        self.assertEqual(CARD_HEADER_TAGLINE, shell)
+        self.assertEqual(VFT_HEADER_TAGLINE, shell)
+
     def test_brand_and_explorer_paths_unchanged(self):
         for html in self.pages.values():
             self.assertIn(f'class="shell-brand" href="{HOME_HREF}"', html)
             self.assertIn(f'class="shell-product" href="{HOME_HREF}"', html)
             self.assertIn("Watch it. Print it. Go find it.", html)
-            self.assertNotIn("Watch it. Print it. Go find it.", html)
+            self.assertNotIn("Zoo, aquarium, museum &amp; park days", html)
+            self.assertNotIn("Watch live. Wonder at home.", html)
             self.assertIn('href="/field-pack/" role="menuitem">Places', html)
             self.assertIn('href="/field-pack/virtual-field-trip/"', html)
             self.assertIn('href="/field-pack/cards/"', html)

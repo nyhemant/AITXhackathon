@@ -158,7 +158,7 @@ def render_panels(cat: dict) -> str:
         chunks.append(
             f"""      <section class="vz-tab-panel" id="{spec['id']}" data-vz-panel="{spec['id']}">
         <h2>{esc(spec['h2'])}</h2>
-        <p class="vz-static-count">{len(habs)} {'halls' if spec['id']=='natural-history' else 'stops'} · existing Field Trip Kit {('park kits' if spec['id']=='parks' else 'cards')}</p>
+        <p class="vz-static-count">{len(habs)} {'halls' if spec['id']=='natural-history' else 'stops'}</p>
         <ol class="vz-static-stops">
 {chr(10).join(items)}
         </ol>
