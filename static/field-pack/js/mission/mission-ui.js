@@ -140,6 +140,7 @@
   let challenges = null;
   let wonders = null;
   let bonusHunts = null;
+  let parentEngaged = false;
   let state = { age: "4-5", time: "half", interest: "", name: "", seed: 1, hunt: "classic" };
   let lastMission = null;
   let genTimer = null;
@@ -574,7 +575,15 @@
     if (!bar || !label) return;
     const n = (mission && mission.finds && mission.finds.length) || 0;
     const noun = n === 1 ? "animal" : "animals";
-    label.textContent = n + " " + noun + " in your hunt · Print (1 page)";
+    // route_90m defaults are suggested stops until the parent engages.
+    if (parentEngaged && n > 0) {
+      label.textContent = n + " " + noun + " in your hunt · Print (1 page)";
+    } else if (n > 0) {
+      label.textContent =
+        n + " suggested " + (n === 1 ? "stop" : "stops") + " · Print (1 page)";
+    } else {
+      label.textContent = "Suggested stops · Print (1 page)";
+    }
     bar.hidden = false;
     document.body.classList.add("has-hunt-sticky");
   }
@@ -620,6 +629,7 @@
     ov.hidden = false;
     document.body.classList.add("mission-drawer-open");
     recompute(false);
+    parentEngaged = true;
     track("mission_drawer_open", { venue: venue && venue.slug });
     const nameEl = $("#mission-name");
     setTimeout(() => {
@@ -657,6 +667,7 @@
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
+        parentEngaged = true;
         state.time = normalizeTimeKey(btn.getAttribute("data-time") || "half");
         syncChipChrome();
         recompute(false);
@@ -666,6 +677,7 @@
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
+        parentEngaged = true;
         state.age = normalizeAgeKey(btn.getAttribute("data-age") || "4-5");
         syncChipChrome();
         recompute(false);
@@ -675,6 +687,7 @@
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
+        parentEngaged = true;
         state.hunt = normalizeHuntKey(btn.getAttribute("data-hunt") || "classic");
         syncChipChrome();
         recompute(false);

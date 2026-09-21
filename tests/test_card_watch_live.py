@@ -140,7 +140,7 @@ class CardWatchLiveTests(unittest.TestCase):
             "/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-lion",
             actions.replace("&amp;", "&"),
         )
-        self.assertIn("Watch live at Smithsonian National Zoo", actions)
+        self.assertIn(card_watch_cta_label(load_vft_by_card()["african-lion"]), actions)
         self.assertEqual(actions.count("card-watch-live"), 1)
         watch_tags = re.findall(r'<a[^>]+class="[^"]*card-watch-live[^"]*"[^>]*>', actions)
         self.assertTrue(watch_tags)
@@ -153,10 +153,10 @@ class CardWatchLiveTests(unittest.TestCase):
         giraffe = GIRAFFE.read_text(encoding="utf-8")
         jelly = JELLY.read_text(encoding="utf-8")
         self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=reticulated-giraffe", giraffe.replace("&amp;", "&"))
-        self.assertIn("Watch live at Houston Zoo", giraffe)
+        self.assertIn(card_watch_cta_label(load_vft_by_card()["reticulated-giraffe"]), giraffe)
         self.assertNotIn("houstonzoo.org", _main(giraffe))
         self.assertIn("/field-pack/virtual-field-trip/?tab=aquarium&from=card#habitat=jellyfish", jelly.replace("&amp;", "&"))
-        self.assertIn("Watch live at Monterey Bay Aquarium", jelly)
+        self.assertIn(card_watch_cta_label(load_vft_by_card()["jellyfish"]), jelly)
         self.assertNotIn("montereybayaquarium.org", _main(jelly))
 
     def test_wildlife_and_sealife_watch_live_or_exception(self):

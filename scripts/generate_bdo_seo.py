@@ -342,7 +342,7 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "33"
+SEO_CSS_VER = "34"
 CARD_SEO_CSS_VER = "38"
 LANDING_CSS_VER = "100"
 LANDING_MAP_JS_VER = "89"
@@ -352,13 +352,13 @@ CATALOG_JS_VER = "40"
 SHELL_CSS_VER = 12
 SHELL_JS_VER = "6"
 PRINT_KIT_JS_VER = "22"
-STUDY_CARD_JS_VER = "15"
-STUDY_CARD_CSS_VER = "13"
+STUDY_CARD_JS_VER = "16"
+STUDY_CARD_CSS_VER = "14"
 STUDY_CARDS_DATA_JS_VER = "9"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "22"
 FP_ANALYTICS_JS_VER = "2"
-MISSION_UI_JS_VER = "20"
+MISSION_UI_JS_VER = "21"
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
 FEATURED_CARD_IDS = (
@@ -1030,17 +1030,24 @@ def cousin_source_from_label(label: str) -> str:
 
 
 def card_watch_cta_label(vft: dict | None) -> str:
-    """Single action-row Watch Live label; fold zoo/film source in when known."""
+    """Action-row label. “Watch live” only when an in-page cam embed exists.
+
+    A cam_label without cam_embed is not a live door (library films often
+    still name a zoo cam). Those stay “Watch film…”. The habitat deep-link
+    is unchanged.
+    """
     vft = vft or {}
-    cam_src = cousin_source_from_label(vft.get("cam_label") or "")
-    if cam_src:
-        return f"Watch live at {cam_src}"
+    if str(vft.get("cam_embed") or "").strip():
+        cam_src = cousin_source_from_label(vft.get("cam_label") or "")
+        if cam_src:
+            return f"Watch live at {cam_src}"
+        return CTA_WATCH_LIVE
     film_src = cousin_source_from_label(vft.get("film_title") or "")
     if film_src:
         return f"Watch film from {film_src}"
-    if str(vft.get("film_url") or "").strip():
+    if str(vft.get("film_url") or "").strip() or str(vft.get("film_title") or "").strip():
         return "Watch film"
-    return CTA_WATCH_LIVE
+    return "Watch film"
 
 
 def is_youtube_url(url: str) -> bool:
@@ -2381,7 +2388,7 @@ def sticky_hunt_bar_html() -> str:
     """Bottom sticky: live animal count + primary print action."""
     return f"""
   <div class="seo-hunt-sticky no-print" id="seo-hunt-sticky" hidden>
-    <p class="seo-hunt-sticky-copy" id="seo-hunt-sticky-label"><span id="seo-hunt-count">0</span> animals in your hunt · Print (1 page)</p>
+    <p class="seo-hunt-sticky-copy" id="seo-hunt-sticky-label"><span id="seo-hunt-count"></span>Suggested stops · Print (1 page)</p>
     <button type="button" class="btn btn-primary seo-sticky-print" id="seo-sticky-print" data-how="print-hunt">{esc(CTA_PRINT)}</button>
     <p class="print-spec seo-sticky-print-spec">{esc(PRINT_SPEC)}</p>
   </div>"""
@@ -5371,6 +5378,10 @@ def write_card_pages(
             primary_bits.append(
                 f'<a class="btn btn-primary card-watch-live" href="{esc(watch_href)}">{esc(watch_cta)}</a>'
             )
+        if study_deck:
+            primary_bits.append(
+                '<a class="btn btn-primary card-quiz-peer" href="#quiz" hidden>Quiz</a>'
+            )
         elif vft_href and not watch_live:
             primary_bits.append(
                 f'<a class="btn btn-secondary" href="{vft_href}">{esc(PLACE_VFT_CTA)}</a>'
@@ -5497,6 +5508,12 @@ def write_card_pages(
         more.href = KIT_SITES[from];
         more.removeAttribute("hidden");
       }}
+      
+      var quizPeer = document.querySelector("a.card-quiz-peer");
+      if (quizPeer && from && KIT_SITES[from]) {{
+        quizPeer.removeAttribute("hidden");
+      }}
+
       document.querySelectorAll("a.card-watch-live").forEach(function (a) {{
         if (!from || !KIT_SITES[from]) return;
         try {{

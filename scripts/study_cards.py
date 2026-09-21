@@ -21548,7 +21548,7 @@ def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
     source_html = f'<p class="study-source">{source}</p>' if source else ""
     level_note = _level_note_html(str(level), picker)
     return (
-        f'<section class="card-talk-pack card-study-pack" aria-label="{_esc(heading)}" '
+        f'<section class="card-talk-pack card-study-pack" id="quiz" aria-label="{_esc(heading)}" '
         f'data-study-id="{_esc(deck.get("id") or "")}" data-study-level="{_esc(level)}">'
         f'<div class="study-head">'
         f'<h2 class="card-talk-h">{_esc(heading)}</h2>'
