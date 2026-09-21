@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     correct_choice_text,
     PUSH_FURTHER_CHEETAH,
@@ -135,8 +136,8 @@ class CheetahHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_CHEETAH)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Cheetah. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_CHEETAH))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_CHEETAH))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_CHEETAH, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_CHEETAH, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         letters = [q["correct"] for q in deck["questions"]]
@@ -247,7 +248,7 @@ class CheetahHardStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_CHEETAH + PUSH_FURTHER_CHEETAH:
+        for prompt in visible_prompts(TALK_ABOUT_CHEETAH, "hard") + visible_prompts(PUSH_FURTHER_CHEETAH, "hard"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_CHEETAH, sheet)
@@ -266,31 +267,31 @@ class CheetahHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)
         self.assertIn("Park Ranger", lion_html)
-        self.assertEqual(lion_hard["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion_hard["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion_hard["talk_about"], visible_prompts(TALK_ABOUT_LION, lion_hard["level"]))
+        self.assertEqual(lion_hard["push_further"], visible_prompts(PUSH_FURTHER_LION, lion_hard["level"]))
         self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy", "hard", "zoologist"))
         giraffe_hard = study_deck_for("reticulated-giraffe", "hard")
         self.assertEqual(giraffe_hard["source"], WIKI_GIRAFFE)
         self.assertIn("okapi", correct_choice_text(giraffe_hard["questions"][0]))
         giraffe_html = GIRAFFE.read_text(encoding="utf-8")
         self.assertIn("Zoologist", giraffe_html)
-        self.assertEqual(giraffe_hard["talk_about"], list(TALK_ABOUT_GIRAFFE))
-        self.assertEqual(giraffe_hard["push_further"], list(PUSH_FURTHER_GIRAFFE))
+        self.assertEqual(giraffe_hard["talk_about"], visible_prompts(TALK_ABOUT_GIRAFFE, giraffe_hard["level"]))
+        self.assertEqual(giraffe_hard["push_further"], visible_prompts(PUSH_FURTHER_GIRAFFE, giraffe_hard["level"]))
         self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard", "zoologist"))
         elephant_hard = study_deck_for("african-elephant", "hard")
         self.assertEqual(elephant_hard["source"], WIKI_AFRICAN_ELEPHANT)
         self.assertIn("Tens of thousands", correct_choice_text(elephant_hard["questions"][0]))
         elephant_html = ELEPHANT.read_text(encoding="utf-8")
         self.assertIn("Zoologist", elephant_html)
-        self.assertEqual(elephant_hard["talk_about"], list(TALK_ABOUT_ELEPHANT))
-        self.assertEqual(elephant_hard["push_further"], list(PUSH_FURTHER_ELEPHANT))
+        self.assertEqual(elephant_hard["talk_about"], visible_prompts(TALK_ABOUT_ELEPHANT, elephant_hard["level"]))
+        self.assertEqual(elephant_hard["push_further"], visible_prompts(PUSH_FURTHER_ELEPHANT, elephant_hard["level"]))
         self.assertEqual(shipped_levels_for("western-lowland-gorilla"), ("easy", "hard", "zoologist"))
         gorilla_hard = study_deck_for("western-lowland-gorilla", "hard")
         self.assertEqual(gorilla_hard["source"], WIKI_WESTERN_LOWLAND_GORILLA)
         gorilla_html = GORILLA.read_text(encoding="utf-8")
         self.assertIn("Zoologist", gorilla_html)
-        self.assertEqual(gorilla_hard["talk_about"], list(TALK_ABOUT_GORILLA))
-        self.assertEqual(gorilla_hard["push_further"], list(PUSH_FURTHER_GORILLA))
+        self.assertEqual(gorilla_hard["talk_about"], visible_prompts(TALK_ABOUT_GORILLA, gorilla_hard["level"]))
+        self.assertEqual(gorilla_hard["push_further"], visible_prompts(PUSH_FURTHER_GORILLA, gorilla_hard["level"]))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))

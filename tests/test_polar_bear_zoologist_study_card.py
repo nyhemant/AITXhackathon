@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     PUSH_FURTHER_FRESHWATER_FISH,
     PUSH_FURTHER_LION,
@@ -155,8 +156,8 @@ class PolarBearZoologistStudyCardTests(unittest.TestCase):
             "Facts from Wikipedia, Polar bear. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_POLAR_BEAR))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_POLAR_BEAR))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_POLAR_BEAR, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_POLAR_BEAR, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         letters = [q["correct"] for q in deck["questions"]]
@@ -300,7 +301,7 @@ class PolarBearZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_POLAR_BEAR + PUSH_FURTHER_POLAR_BEAR:
+        for prompt in visible_prompts(TALK_ABOUT_POLAR_BEAR, "zoologist") + visible_prompts(PUSH_FURTHER_POLAR_BEAR, "zoologist"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_POLAR_BEAR, sheet)
@@ -333,15 +334,15 @@ class PolarBearZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)
         self.assertIn("Park Ranger", lion_html)
-        self.assertEqual(lion_zoo["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion_zoo["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion_zoo["talk_about"], visible_prompts(TALK_ABOUT_LION, lion_zoo["level"]))
+        self.assertEqual(lion_zoo["push_further"], visible_prompts(PUSH_FURTHER_LION, lion_zoo["level"]))
         self.assertEqual(shipped_levels_for("freshwater-fish"), ("easy", "hard", "zoologist"))
         fish_zoo = study_deck_for("freshwater-fish", "zoologist")
         self.assertEqual(fish_zoo["source"], WIKI_FRESHWATER_FISH)
         fish_html = FISH.read_text(encoding="utf-8")
         self.assertIn("Zoologist", fish_html)
-        self.assertEqual(fish_zoo["talk_about"], list(TALK_ABOUT_FRESHWATER_FISH))
-        self.assertEqual(fish_zoo["push_further"], list(PUSH_FURTHER_FRESHWATER_FISH))
+        self.assertEqual(fish_zoo["talk_about"], visible_prompts(TALK_ABOUT_FRESHWATER_FISH, fish_zoo["level"]))
+        self.assertEqual(fish_zoo["push_further"], visible_prompts(PUSH_FURTHER_FRESHWATER_FISH, fish_zoo["level"]))
         sea = OCTOPUS.read_text(encoding="utf-8")
         self.assertIn("card-study-pack", sea)
         self.assertNotIn("What do they eat?", sea)
@@ -367,8 +368,8 @@ class PolarBearZoologistStudyCardTests(unittest.TestCase):
         html = BEAR.read_text(encoding="utf-8")
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         print_tpl = study_print_html_for("polar-bear")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)

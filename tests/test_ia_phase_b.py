@@ -122,7 +122,7 @@ class IaPhaseBTests(unittest.TestCase):
         self.assertNotIn("/field-pack/print/", "".join(href for href, _ in routes))
         menu = _menu_items(start, "start-menu")
         self.assertEqual(menu[:5], list(PRIMARY_MENU))
-        self.assertEqual(menu[5], ("/field-pack/print/", "Print cutouts"))
+        self.assertEqual(menu[5], ("/field-pack/print/", "Print from Watch"))
         self.assertIn('class="start-menu-grownup"', start)
         self.assertNotIn("Cut · hide · seek", start)
         about = ABOUT.read_text(encoding="utf-8")
@@ -131,7 +131,7 @@ class IaPhaseBTests(unittest.TestCase):
         self.assertNotIn("doors", before_exp.lower())
         self.assertNotIn("grown-ups", before_exp)
         self.assertIn('href="/field-pack/print/"', before_exp)
-        self.assertIn("print cutouts to cut · hide · seek", before_exp)
+        self.assertIn("print from Watch", before_exp)
         self.assertIn("Optional:", before_exp)
 
     def test_featured_surfaces_do_not_link_legacy_destinations(self):
@@ -155,7 +155,7 @@ class IaPhaseBTests(unittest.TestCase):
             items = _menu_items(html, "shell-menu") if 'id="shell-menu"' in html else _menu_items(html, "start-menu")
             if path == START:
                 self.assertEqual(items[:5], list(PRIMARY_MENU), path.name)
-                self.assertEqual(items[5], ("/field-pack/print/", "Print cutouts"))
+                self.assertEqual(items[5], ("/field-pack/print/", "Print from Watch"))
             else:
                 self.assertEqual(
                     [(href, label) for href, label in items],

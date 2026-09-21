@@ -86,7 +86,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertNotIn("CARD_PRINT_NOTE", self.gen)
         self.assertNotIn("One animal sheet — not the hide-and-seek cutouts", self.gen)
         self.assertEqual(CARDS_PLAY_H1, "Animal cards")
-        self.assertEqual(CARDS_PLAY_CTA, "Print the cutouts")
+        self.assertEqual(CARDS_PLAY_CTA, "Print from Watch")
         self.assertEqual(CARDS_PLAY_BROWSE, "Browse all cards")
         self.assertEqual(CARDS_PLAY_PRINT_HREF, "/field-pack/print/")
         self.assertEqual(CARD_TALK_H2, "Talk")

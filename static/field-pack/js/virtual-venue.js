@@ -21,7 +21,7 @@
   ];
   const MUSEUM_LAST_KEY = "fp-vft-museum-tab";
   const TAB_CONFIGS = {
-    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=27",
+    zoo: "/field-pack/data/virtual-venues/virtual-zoo.json?v=28",
     aquarium: "/field-pack/data/virtual-venues/virtual-aquarium.json?v=27",
     "natural-history": "/field-pack/data/virtual-venues/virtual-nhm.json?v=15",
     science: "/field-pack/data/virtual-venues/virtual-science.json?v=17",
@@ -36,7 +36,7 @@
   const PICK_BY_KIND = {
     zoo: {
       key: "fp-virtual-zoo-picks-v1",
-      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=10",
+      libUrl: "/field-pack/data/virtual-venues/zoo-film-library.json?v=11",
       title: "Create your own virtual zoo",
       noun: "zoo",
       track: "zoo_picks_saved",
@@ -171,7 +171,14 @@
 
   function cardReturnVenue() {
     try {
-      return new URLSearchParams(location.search).get("return") || "";
+      const q = new URLSearchParams(location.search);
+      const ret = (q.get("return") || "").trim();
+      if (ret) return ret;
+      // Not-yet / place links arrive as ?from={venueSlug}, not from=card.
+      // Keep that slug on return= so tabUrl / replaceState do not drop it.
+      const from = (q.get("from") || "").trim();
+      if (from && from !== "card") return from;
+      return "";
     } catch (_) {
       return "";
     }

@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     PUSH_FURTHER_AMERICAN_ALLIGATOR,
     PUSH_FURTHER_AMERICAN_BISON,
@@ -157,8 +158,8 @@ class AmericanBisonZoologistStudyCardTests(unittest.TestCase):
             "Facts from Wikipedia, American bison. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_AMERICAN_BISON))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_AMERICAN_BISON))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_AMERICAN_BISON, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_AMERICAN_BISON, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         letters = [q["correct"] for q in deck["questions"]]
@@ -306,7 +307,7 @@ class AmericanBisonZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_AMERICAN_BISON + PUSH_FURTHER_AMERICAN_BISON:
+        for prompt in visible_prompts(TALK_ABOUT_AMERICAN_BISON, "zoologist") + visible_prompts(PUSH_FURTHER_AMERICAN_BISON, "zoologist"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_AMERICAN_BISON, sheet)
@@ -339,15 +340,15 @@ class AmericanBisonZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)
         self.assertIn("Park Ranger", lion_html)
-        self.assertEqual(lion_zoo["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion_zoo["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion_zoo["talk_about"], visible_prompts(TALK_ABOUT_LION, lion_zoo["level"]))
+        self.assertEqual(lion_zoo["push_further"], visible_prompts(PUSH_FURTHER_LION, lion_zoo["level"]))
         self.assertEqual(shipped_levels_for("american-alligator"), ("easy", "hard", "zoologist"))
         gator_zoo = study_deck_for("american-alligator", "zoologist")
         self.assertEqual(gator_zoo["source"], WIKI_AMERICAN_ALLIGATOR)
         gator_html = GATOR.read_text(encoding="utf-8")
         self.assertIn("Zoologist", gator_html)
-        self.assertEqual(gator_zoo["talk_about"], list(TALK_ABOUT_AMERICAN_ALLIGATOR))
-        self.assertEqual(gator_zoo["push_further"], list(PUSH_FURTHER_AMERICAN_ALLIGATOR))
+        self.assertEqual(gator_zoo["talk_about"], visible_prompts(TALK_ABOUT_AMERICAN_ALLIGATOR, gator_zoo["level"]))
+        self.assertEqual(gator_zoo["push_further"], visible_prompts(PUSH_FURTHER_AMERICAN_ALLIGATOR, gator_zoo["level"]))
         jelly = OCTOPUS.read_text(encoding="utf-8")
         self.assertIn("card-study-pack", jelly)
         self.assertNotIn("What do they eat?", jelly)
@@ -373,8 +374,8 @@ class AmericanBisonZoologistStudyCardTests(unittest.TestCase):
         html = BISON.read_text(encoding="utf-8")
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         print_tpl = study_print_html_for("american-bison")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)

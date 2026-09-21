@@ -236,7 +236,7 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIn('href="/field-pack/cards/"', body)
         self.assertIn('href="/field-pack/virtual-field-trip/"', body)
         self.assertIn("Watch Live", body)
-        self.assertIn("print cutouts to cut · hide · seek", body)
+        self.assertIn("print from Watch", body)
         self.assertIn('href="mailto:arku2arku@gmail.com"', body)
         self.assertNotIn("hello@1less.app", body)
         self.assertIn('id="experimental"', body)

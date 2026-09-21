@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     PUSH_FURTHER_LION,
     PUSH_FURTHER_MANTA_RAY,
@@ -128,8 +129,8 @@ class StingrayHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_STINGRAY)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Stingray. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_STINGRAY))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_STINGRAY))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_STINGRAY, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_STINGRAY, deck["level"]))
         self.assertEqual(len(deck["questions"]), HARD_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         letters = [q["correct"] for q in deck["questions"]]
@@ -235,7 +236,7 @@ class StingrayHardStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_STINGRAY + PUSH_FURTHER_STINGRAY:
+        for prompt in visible_prompts(TALK_ABOUT_STINGRAY, "hard") + visible_prompts(PUSH_FURTHER_STINGRAY, "hard"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_STINGRAY, sheet)
@@ -256,29 +257,29 @@ class StingrayHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)
         self.assertIn("Park Ranger", lion_html)
-        self.assertEqual(lion_hard["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion_hard["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion_hard["talk_about"], visible_prompts(TALK_ABOUT_LION, lion_hard["level"]))
+        self.assertEqual(lion_hard["push_further"], visible_prompts(PUSH_FURTHER_LION, lion_hard["level"]))
         self.assertEqual(shipped_levels_for("starfish"), ("easy", "hard", "zoologist"))
         star_hard = study_deck_for("starfish", "hard")
         self.assertEqual(star_hard["source"], WIKI_STARFISH)
         star_html = STARFISH.read_text(encoding="utf-8")
         self.assertIn("Zoologist", star_html)
-        self.assertEqual(star_hard["talk_about"], list(TALK_ABOUT_STARFISH))
-        self.assertEqual(star_hard["push_further"], list(PUSH_FURTHER_STARFISH))
+        self.assertEqual(star_hard["talk_about"], visible_prompts(TALK_ABOUT_STARFISH, star_hard["level"]))
+        self.assertEqual(star_hard["push_further"], visible_prompts(PUSH_FURTHER_STARFISH, star_hard["level"]))
         self.assertEqual(shipped_levels_for("seahorse"), ("easy", "hard", "zoologist"))
         horse_hard = study_deck_for("seahorse", "hard")
         self.assertEqual(horse_hard["source"], WIKI_SEAHORSE)
         horse_html = SEAHORSE.read_text(encoding="utf-8")
         self.assertIn("Zoologist", horse_html)
-        self.assertEqual(horse_hard["talk_about"], list(TALK_ABOUT_SEAHORSE))
-        self.assertEqual(horse_hard["push_further"], list(PUSH_FURTHER_SEAHORSE))
+        self.assertEqual(horse_hard["talk_about"], visible_prompts(TALK_ABOUT_SEAHORSE, horse_hard["level"]))
+        self.assertEqual(horse_hard["push_further"], visible_prompts(PUSH_FURTHER_SEAHORSE, horse_hard["level"]))
         self.assertEqual(shipped_levels_for("manta-ray"), ("easy", "hard", "zoologist"))
         manta_hard = study_deck_for("manta-ray", "hard")
         self.assertEqual(manta_hard["source"], WIKI_MANTA_RAY)
         manta_html = MANTA.read_text(encoding="utf-8")
         self.assertIn("Zoologist", manta_html)
-        self.assertEqual(manta_hard["talk_about"], list(TALK_ABOUT_MANTA_RAY))
-        self.assertEqual(manta_hard["push_further"], list(PUSH_FURTHER_MANTA_RAY))
+        self.assertEqual(manta_hard["talk_about"], visible_prompts(TALK_ABOUT_MANTA_RAY, manta_hard["level"]))
+        self.assertEqual(manta_hard["push_further"], visible_prompts(PUSH_FURTHER_MANTA_RAY, manta_hard["level"]))
         ray = WHALE_SHARK.read_text(encoding="utf-8")
         self.assertIn("card-study-pack", ray)
         self.assertNotIn("What do they eat?", ray)

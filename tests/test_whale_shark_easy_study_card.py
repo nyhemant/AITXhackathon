@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (
+    visible_prompts,
     study_print_html_for,
 
     TALK_ABOUT_WHALE_SHARK_ZOOLOGIST,
@@ -139,8 +140,8 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS_SHORT)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST, deck["level"]))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, list(LETTERS))
         self.assertEqual(letters.count("A"), 2)
@@ -171,20 +172,20 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         lion = study_deck_for("african-lion")
         self.assertEqual(lion["source"], WIKI_LION)
         self.assertEqual(lion["level_label"], "Junior Ranger")
-        self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion["talk_about"], visible_prompts(TALK_ABOUT_LION, lion["level"]))
+        self.assertEqual(lion["push_further"], visible_prompts(PUSH_FURTHER_LION, lion["level"]))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
         shark = study_deck_for("shark")
         self.assertEqual(shark["source"], WIKI_SHARK)
-        self.assertEqual(shark["talk_about"], list(TALK_ABOUT_SHARK))
-        self.assertEqual(shark["push_further"], list(PUSH_FURTHER_SHARK))
+        self.assertEqual(shark["talk_about"], visible_prompts(TALK_ABOUT_SHARK, shark["level"]))
+        self.assertEqual(shark["push_further"], visible_prompts(PUSH_FURTHER_SHARK, shark["level"]))
         self.assertEqual(shipped_levels_for("shark"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("shark", "hard"))
         self.assertIsNotNone(study_deck_for("shark", "zoologist"))
         manta = study_deck_for("manta-ray")
         self.assertEqual(manta["source"], WIKI_MANTA_RAY)
-        self.assertEqual(manta["talk_about"], list(TALK_ABOUT_MANTA_RAY))
-        self.assertEqual(manta["push_further"], list(PUSH_FURTHER_MANTA_RAY))
+        self.assertEqual(manta["talk_about"], visible_prompts(TALK_ABOUT_MANTA_RAY, manta["level"]))
+        self.assertEqual(manta["push_further"], visible_prompts(PUSH_FURTHER_MANTA_RAY, manta["level"]))
         self.assertEqual(shipped_levels_for("manta-ray"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("manta-ray", "hard"))
         self.assertIsNotNone(study_deck_for("manta-ray", "zoologist"))
@@ -281,9 +282,9 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("study-next-tier", main)
         self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-card.css?v=12", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-card.css?v=13", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "whale-shark"', html)

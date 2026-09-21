@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER,
     PUSH_FURTHER_LION,
@@ -161,8 +162,8 @@ class SeaOtterZoologistStudyCardTests(unittest.TestCase):
             "Facts from Wikipedia, Sea otter. Where sources disagree on exact numbers, we keep them approximate.",
         )
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_SEA_OTTER))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_SEA_OTTER))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_SEA_OTTER, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_SEA_OTTER, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
         letters = [q["correct"] for q in deck["questions"]]
@@ -310,7 +311,7 @@ class SeaOtterZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_SEA_OTTER + PUSH_FURTHER_SEA_OTTER:
+        for prompt in visible_prompts(TALK_ABOUT_SEA_OTTER, "zoologist") + visible_prompts(PUSH_FURTHER_SEA_OTTER, "zoologist"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_SEA_OTTER, sheet)
@@ -343,8 +344,8 @@ class SeaOtterZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)
         self.assertIn("Park Ranger", lion_html)
-        self.assertEqual(lion_zoo["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion_zoo["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion_zoo["talk_about"], visible_prompts(TALK_ABOUT_LION, lion_zoo["level"]))
+        self.assertEqual(lion_zoo["push_further"], visible_prompts(PUSH_FURTHER_LION, lion_zoo["level"]))
         self.assertEqual(
             shipped_levels_for("asian-small-clawed-otter"),
             ("easy", "hard", "zoologist"),
@@ -386,8 +387,8 @@ class SeaOtterZoologistStudyCardTests(unittest.TestCase):
         html = OTTER.read_text(encoding="utf-8")
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         print_tpl = study_print_html_for("sea-otter")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)

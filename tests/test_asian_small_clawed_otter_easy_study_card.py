@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     LEVEL_DISPLAY_NAMES,
     PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER,
@@ -246,18 +247,18 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(lion["source"], WIKI_LION)
         self.assertEqual(lion["level_label"], "Junior Ranger")
         self.assertEqual(len(lion["questions"]), STUDY_SLOTS)
-        self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion["talk_about"], visible_prompts(TALK_ABOUT_LION, lion["level"]))
+        self.assertEqual(lion["push_further"], visible_prompts(PUSH_FURTHER_LION, lion["level"]))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
         hog = study_deck_for("warthog")
         self.assertEqual(hog["source"], WIKI_WARTHOG)
-        self.assertEqual(hog["talk_about"], list(TALK_ABOUT_WARTHOG))
-        self.assertEqual(hog["push_further"], list(PUSH_FURTHER_WARTHOG))
+        self.assertEqual(hog["talk_about"], visible_prompts(TALK_ABOUT_WARTHOG, hog["level"]))
+        self.assertEqual(hog["push_further"], visible_prompts(PUSH_FURTHER_WARTHOG, hog["level"]))
         self.assertEqual(shipped_levels_for("warthog"), ("easy", "hard", "zoologist"))
         fish = study_deck_for("shark")
         self.assertEqual(fish["source"], WIKI_SHARK)
-        self.assertEqual(fish["talk_about"], list(TALK_ABOUT_SHARK))
-        self.assertEqual(fish["push_further"], list(PUSH_FURTHER_SHARK))
+        self.assertEqual(fish["talk_about"], visible_prompts(TALK_ABOUT_SHARK, fish["level"]))
+        self.assertEqual(fish["push_further"], visible_prompts(PUSH_FURTHER_SHARK, fish["level"]))
         self.assertEqual(shipped_levels_for("shark"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("shark", "hard"))
         self.assertIsNotNone(study_deck_for("shark", "zoologist"))
@@ -278,7 +279,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER + PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER:
+        for prompt in visible_prompts(TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER, "easy") + visible_prompts(PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER, "easy"):
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("questions", html)
@@ -345,9 +346,9 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn("study-next-tier", main)
         self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-card.css?v=12", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-card.css?v=13", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "asian-small-clawed-otter"', html)
@@ -393,7 +394,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER + PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER:
+        for prompt in visible_prompts(TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER, "easy") + visible_prompts(PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER, "easy"):
             self.assertIn(prompt, back)
         self.assertEqual(
             study_try_next_ids("asian-small-clawed-otter"),
@@ -429,7 +430,7 @@ class AsianSmallClawedOtterEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER + PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER:
+        for prompt in visible_prompts(TALK_ABOUT_ASIAN_SMALL_CLAWED_OTTER, "easy") + visible_prompts(PUSH_FURTHER_ASIAN_SMALL_CLAWED_OTTER, "easy"):
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)

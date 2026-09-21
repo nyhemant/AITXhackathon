@@ -128,6 +128,42 @@ if (typeof window !== "undefined") {
     return ["easy", "hard", "zoologist"].filter((key) => levels[key] && Array.isArray(levels[key].questions));
   }
 
+  // Keep in step with scripts/study_cards.py visible_prompts / is_status_letter_prompt.
+  function isStatusLetterPrompt(line) {
+    return /threat letter|status letter|\bIUCN\b|Red List letter|one letter|status-by-kind|snapshot letter|one snapshot|low-risk|\b(?:VU|EN|CR)\b|pick the letter/i.test(
+      String(line || "")
+    );
+  }
+
+  function visiblePrompts(lines, level) {
+    const cleaned = (lines || []).map((line) => String(line || "").trim()).filter(Boolean);
+    if (String(level || "").toLowerCase() === "zoologist") return cleaned;
+    return cleaned.filter((line) => !isStatusLetterPrompt(line));
+  }
+
+  function levelNoteText(level) {
+    if (level === "easy") return "A grown-up can help you try a harder set.";
+    if (level === "hard") return "Zoologist is a bigger step. A grown-up can help.";
+    return "";
+  }
+
+  function paintLevelNote(root, level) {
+    let note = root.querySelector(".study-level-note");
+    const text = levelNoteText(level);
+    if (!text) {
+      if (note) note.remove();
+      return;
+    }
+    if (!note) {
+      const picker = root.querySelector(".study-level-picker");
+      if (!picker) return;
+      note = document.createElement("p");
+      note.className = "study-level-note no-print";
+      picker.insertAdjacentElement("afterend", note);
+    }
+    note.textContent = text;
+  }
+
   function flattenDeck(id, level) {
     const raw = rawCard(id);
     if (!raw) return null;
@@ -163,8 +199,8 @@ if (typeof window !== "undefined") {
       source: raw.source || "",
       source_note: raw.source_note || "",
       teach: pack.teach || [],
-      talk_about: pack.talk_about || raw.talk_about || [],
-      push_further: pack.push_further || raw.push_further || [],
+      talk_about: visiblePrompts(pack.talk_about || raw.talk_about || [], used),
+      push_further: visiblePrompts(pack.push_further || raw.push_further || [], used),
       questions,
     };
   }
@@ -477,6 +513,7 @@ if (typeof window !== "undefined") {
     const grid = root.querySelector(".study-grid");
     if (grid) grid.innerHTML = (deck.questions || []).map(questionHtml).join("");
     paintPicker(root, deck.level);
+    paintLevelNote(root, deck.level);
     paintNextTier(root, deck.level);
     paintScoreTotal(root, (deck.questions || []).length);
     paintScore(root);

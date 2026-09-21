@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     correct_choice_text,
     PUSH_FURTHER_ELEPHANT,
@@ -134,8 +135,8 @@ class ZebraHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_PLAINS_ZEBRA)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Plains zebra. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_ZEBRA))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_ZEBRA))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_ZEBRA, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_ZEBRA, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
 
@@ -237,7 +238,7 @@ class ZebraHardStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_ZEBRA + PUSH_FURTHER_ZEBRA:
+        for prompt in visible_prompts(TALK_ABOUT_ZEBRA, "hard") + visible_prompts(PUSH_FURTHER_ZEBRA, "hard"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_PLAINS_ZEBRA, sheet)
@@ -256,8 +257,8 @@ class ZebraHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)
         self.assertIn("Park Ranger", lion_html)
-        self.assertEqual(lion_hard["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion_hard["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion_hard["talk_about"], visible_prompts(TALK_ABOUT_LION, lion_hard["level"]))
+        self.assertEqual(lion_hard["push_further"], visible_prompts(PUSH_FURTHER_LION, lion_hard["level"]))
         self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy", "hard", "zoologist"))
         giraffe_hard = study_deck_for("reticulated-giraffe", "hard")
         self.assertEqual(giraffe_hard["source"], WIKI_GIRAFFE)
@@ -266,8 +267,8 @@ class ZebraHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", giraffe_html)
         self.assertIn("Junior Ranger", giraffe_html)
         self.assertIn("Park Ranger", giraffe_html)
-        self.assertEqual(giraffe_hard["talk_about"], list(TALK_ABOUT_GIRAFFE))
-        self.assertEqual(giraffe_hard["push_further"], list(PUSH_FURTHER_GIRAFFE))
+        self.assertEqual(giraffe_hard["talk_about"], visible_prompts(TALK_ABOUT_GIRAFFE, giraffe_hard["level"]))
+        self.assertEqual(giraffe_hard["push_further"], visible_prompts(PUSH_FURTHER_GIRAFFE, giraffe_hard["level"]))
         self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard", "zoologist"))
         elephant_hard = study_deck_for("african-elephant", "hard")
         self.assertEqual(elephant_hard["source"], WIKI_AFRICAN_ELEPHANT)
@@ -276,8 +277,8 @@ class ZebraHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", elephant_html)
         self.assertIn("Junior Ranger", elephant_html)
         self.assertIn("Park Ranger", elephant_html)
-        self.assertEqual(elephant_hard["talk_about"], list(TALK_ABOUT_ELEPHANT))
-        self.assertEqual(elephant_hard["push_further"], list(PUSH_FURTHER_ELEPHANT))
+        self.assertEqual(elephant_hard["talk_about"], visible_prompts(TALK_ABOUT_ELEPHANT, elephant_hard["level"]))
+        self.assertEqual(elephant_hard["push_further"], visible_prompts(PUSH_FURTHER_ELEPHANT, elephant_hard["level"]))
         self.assertEqual(shipped_levels_for("african-penguin"), ("easy", "hard", "zoologist"))
         penguin_hard = study_deck_for("african-penguin", "hard")
         self.assertEqual(penguin_hard["source"], WIKI_AFRICAN_PENGUIN)
@@ -286,8 +287,8 @@ class ZebraHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", penguin_html)
         self.assertIn("Junior Ranger", penguin_html)
         self.assertIn("Park Ranger", penguin_html)
-        self.assertEqual(penguin_hard["talk_about"], list(TALK_ABOUT_PENGUIN))
-        self.assertEqual(penguin_hard["push_further"], list(PUSH_FURTHER_PENGUIN))
+        self.assertEqual(penguin_hard["talk_about"], visible_prompts(TALK_ABOUT_PENGUIN, penguin_hard["level"]))
+        self.assertEqual(penguin_hard["push_further"], visible_prompts(PUSH_FURTHER_PENGUIN, penguin_hard["level"]))
         self.assertEqual(shipped_levels_for("caribbean-flamingo"), ("easy", "hard", "zoologist"))
         flamingo_hard = study_deck_for("caribbean-flamingo", "hard")
         self.assertEqual(flamingo_hard["source"], WIKI_AMERICAN_FLAMINGO)
@@ -296,8 +297,8 @@ class ZebraHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", flamingo_html)
         self.assertIn("Junior Ranger", flamingo_html)
         self.assertIn("Park Ranger", flamingo_html)
-        self.assertEqual(flamingo_hard["talk_about"], list(TALK_ABOUT_FLAMINGO))
-        self.assertEqual(flamingo_hard["push_further"], list(PUSH_FURTHER_FLAMINGO))
+        self.assertEqual(flamingo_hard["talk_about"], visible_prompts(TALK_ABOUT_FLAMINGO, flamingo_hard["level"]))
+        self.assertEqual(flamingo_hard["push_further"], visible_prompts(PUSH_FURTHER_FLAMINGO, flamingo_hard["level"]))
         self.assertEqual(shipped_levels_for("galapagos-tortoise"), ("easy", "hard", "zoologist"))
         tortoise_hard = study_deck_for("galapagos-tortoise", "hard")
         self.assertEqual(tortoise_hard["source"], WIKI_GALAPAGOS_TORTOISE)
@@ -306,8 +307,8 @@ class ZebraHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", tortoise_html)
         self.assertIn("Junior Ranger", tortoise_html)
         self.assertIn("Park Ranger", tortoise_html)
-        self.assertEqual(tortoise_hard["talk_about"], list(TALK_ABOUT_TORTOISE))
-        self.assertEqual(tortoise_hard["push_further"], list(PUSH_FURTHER_TORTOISE))
+        self.assertEqual(tortoise_hard["talk_about"], visible_prompts(TALK_ABOUT_TORTOISE, tortoise_hard["level"]))
+        self.assertEqual(tortoise_hard["push_further"], visible_prompts(PUSH_FURTHER_TORTOISE, tortoise_hard["level"]))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))

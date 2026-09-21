@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     correct_choice_text,
     PUSH_FURTHER_LION,
@@ -105,8 +106,8 @@ class LionZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_LION)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Lion. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_LION, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_LION, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
 
@@ -192,7 +193,7 @@ class LionZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_LION + PUSH_FURTHER_LION:
+        for prompt in visible_prompts(TALK_ABOUT_LION, "zoologist") + visible_prompts(PUSH_FURTHER_LION, "zoologist"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_LION, sheet)
@@ -234,8 +235,8 @@ class LionZoologistStudyCardTests(unittest.TestCase):
         html = LION.read_text(encoding="utf-8")
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         print_tpl = study_print_html_for("african-lion")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)

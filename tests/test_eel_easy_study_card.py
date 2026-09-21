@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     LEVEL_DISPLAY_NAMES,
     PUSH_FURTHER_CLOWNFISH,
@@ -211,8 +212,8 @@ class EelEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_EEL))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_EEL))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_EEL, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_EEL, deck["level"]))
         letters = [q["correct"] for q in deck["questions"]]
         self.assertEqual(letters, [target_letter_for_slot(i) for i in range(1, 11)])
         self.assertEqual(letters.count("A"), 4)
@@ -252,27 +253,27 @@ class EelEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(lion["source"], WIKI_LION)
         self.assertEqual(lion["level_label"], "Junior Ranger")
         self.assertEqual(len(lion["questions"]), STUDY_SLOTS)
-        self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion["talk_about"], visible_prompts(TALK_ABOUT_LION, lion["level"]))
+        self.assertEqual(lion["push_further"], visible_prompts(PUSH_FURTHER_LION, lion["level"]))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
         cuttle = study_deck_for("cuttlefish")
         self.assertEqual(cuttle["source"], WIKI_CUTTLEFISH)
-        self.assertEqual(cuttle["talk_about"], list(TALK_ABOUT_CUTTLEFISH))
-        self.assertEqual(cuttle["push_further"], list(PUSH_FURTHER_CUTTLEFISH))
+        self.assertEqual(cuttle["talk_about"], visible_prompts(TALK_ABOUT_CUTTLEFISH, cuttle["level"]))
+        self.assertEqual(cuttle["push_further"], visible_prompts(PUSH_FURTHER_CUTTLEFISH, cuttle["level"]))
         self.assertEqual(shipped_levels_for("cuttlefish"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("cuttlefish", "hard"))
         self.assertIsNotNone(study_deck_for("cuttlefish", "zoologist"))
         crab = study_deck_for("crab")
         self.assertEqual(crab["source"], WIKI_CRAB)
-        self.assertEqual(crab["talk_about"], list(TALK_ABOUT_CRAB))
-        self.assertEqual(crab["push_further"], list(PUSH_FURTHER_CRAB))
+        self.assertEqual(crab["talk_about"], visible_prompts(TALK_ABOUT_CRAB, crab["level"]))
+        self.assertEqual(crab["push_further"], visible_prompts(PUSH_FURTHER_CRAB, crab["level"]))
         self.assertEqual(shipped_levels_for("crab"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("crab", "hard"))
         self.assertIsNotNone(study_deck_for("crab", "zoologist"))
         clown = study_deck_for("clownfish")
         self.assertEqual(clown["source"], WIKI_CLOWNFISH)
-        self.assertEqual(clown["talk_about"], list(TALK_ABOUT_CLOWNFISH))
-        self.assertEqual(clown["push_further"], list(PUSH_FURTHER_CLOWNFISH))
+        self.assertEqual(clown["talk_about"], visible_prompts(TALK_ABOUT_CLOWNFISH, clown["level"]))
+        self.assertEqual(clown["push_further"], visible_prompts(PUSH_FURTHER_CLOWNFISH, clown["level"]))
         self.assertEqual(shipped_levels_for("clownfish"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("clownfish", "hard"))
         self.assertIsNotNone(study_deck_for("clownfish", "zoologist"))
@@ -291,7 +292,7 @@ class EelEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_EEL + PUSH_FURTHER_EEL:
+        for prompt in visible_prompts(TALK_ABOUT_EEL, "easy") + visible_prompts(PUSH_FURTHER_EEL, "easy"):
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("questions", html)
@@ -361,9 +362,9 @@ class EelEasyStudyCardTests(unittest.TestCase):
         self.assertIn("study-next-tier", main)
         self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-card.css?v=12", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-card.css?v=13", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "eel"', html)
@@ -411,7 +412,7 @@ class EelEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_EEL + PUSH_FURTHER_EEL:
+        for prompt in visible_prompts(TALK_ABOUT_EEL, "easy") + visible_prompts(PUSH_FURTHER_EEL, "easy"):
             self.assertIn(prompt, back)
         self.assertEqual(
             study_try_next_ids("eel"),
@@ -450,7 +451,7 @@ class EelEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_EEL + PUSH_FURTHER_EEL:
+        for prompt in visible_prompts(TALK_ABOUT_EEL, "easy") + visible_prompts(PUSH_FURTHER_EEL, "easy"):
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)

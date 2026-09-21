@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     correct_choice_text,
     PUSH_FURTHER_ELEPHANT,
@@ -153,8 +154,8 @@ class PenguinZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_AFRICAN_PENGUIN)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, African penguin. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_PENGUIN))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_PENGUIN))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_PENGUIN, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_PENGUIN, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
 
@@ -258,7 +259,7 @@ class PenguinZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_PENGUIN + PUSH_FURTHER_PENGUIN:
+        for prompt in visible_prompts(TALK_ABOUT_PENGUIN, "zoologist") + visible_prompts(PUSH_FURTHER_PENGUIN, "zoologist"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_AFRICAN_PENGUIN, sheet)
@@ -290,8 +291,8 @@ class PenguinZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)
         self.assertIn("Park Ranger", lion_html)
-        self.assertEqual(lion_zoo["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion_zoo["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion_zoo["talk_about"], visible_prompts(TALK_ABOUT_LION, lion_zoo["level"]))
+        self.assertEqual(lion_zoo["push_further"], visible_prompts(PUSH_FURTHER_LION, lion_zoo["level"]))
         self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy", "hard", "zoologist"))
         giraffe_zoo = study_deck_for("reticulated-giraffe", "zoologist")
         self.assertEqual(giraffe_zoo["source"], WIKI_GIRAFFE)
@@ -300,8 +301,8 @@ class PenguinZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", giraffe_html)
         self.assertIn("Junior Ranger", giraffe_html)
         self.assertIn("Park Ranger", giraffe_html)
-        self.assertEqual(giraffe_zoo["talk_about"], list(TALK_ABOUT_GIRAFFE))
-        self.assertEqual(giraffe_zoo["push_further"], list(PUSH_FURTHER_GIRAFFE))
+        self.assertEqual(giraffe_zoo["talk_about"], visible_prompts(TALK_ABOUT_GIRAFFE, giraffe_zoo["level"]))
+        self.assertEqual(giraffe_zoo["push_further"], visible_prompts(PUSH_FURTHER_GIRAFFE, giraffe_zoo["level"]))
         self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard", "zoologist"))
         elephant_zoo = study_deck_for("african-elephant", "zoologist")
         self.assertEqual(elephant_zoo["source"], WIKI_AFRICAN_ELEPHANT)
@@ -310,8 +311,8 @@ class PenguinZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", elephant_html)
         self.assertIn("Junior Ranger", elephant_html)
         self.assertIn("Park Ranger", elephant_html)
-        self.assertEqual(elephant_zoo["talk_about"], list(TALK_ABOUT_ELEPHANT))
-        self.assertEqual(elephant_zoo["push_further"], list(PUSH_FURTHER_ELEPHANT))
+        self.assertEqual(elephant_zoo["talk_about"], visible_prompts(TALK_ABOUT_ELEPHANT, elephant_zoo["level"]))
+        self.assertEqual(elephant_zoo["push_further"], visible_prompts(PUSH_FURTHER_ELEPHANT, elephant_zoo["level"]))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
@@ -333,8 +334,8 @@ class PenguinZoologistStudyCardTests(unittest.TestCase):
         html = PENGUIN.read_text(encoding="utf-8")
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         print_tpl = study_print_html_for("african-penguin")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)

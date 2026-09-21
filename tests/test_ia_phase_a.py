@@ -173,7 +173,7 @@ class IaPhaseATests(unittest.TestCase):
         self.assertIn(">Cards</a>", before_exp)
         self.assertIn(">Watch Live</a>", before_exp)
         self.assertIn(">Places</a>", before_exp)
-        self.assertIn("print cutouts to cut · hide · seek", before_exp)
+        self.assertIn("print from Watch", before_exp)
         self.assertIn("Beta", exp)
         self.assertIn(
             "Quiet extras if you already know you want them.",

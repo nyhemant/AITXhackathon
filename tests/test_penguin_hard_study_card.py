@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import CARD_TALK_H2, outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     correct_choice_text,
     PUSH_FURTHER_ELEPHANT,
@@ -121,8 +122,8 @@ class PenguinHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["source"], WIKI_AFRICAN_PENGUIN)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, African penguin. Where sources disagree on exact numbers, we keep them approximate.")
         self.assertEqual(deck["teach"], [])
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_PENGUIN))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_PENGUIN))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_PENGUIN, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_PENGUIN, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual(validate_deck(deck), [])
 
@@ -222,7 +223,7 @@ class PenguinHardStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_PENGUIN + PUSH_FURTHER_PENGUIN:
+        for prompt in visible_prompts(TALK_ABOUT_PENGUIN, "hard") + visible_prompts(PUSH_FURTHER_PENGUIN, "hard"):
             self.assertIn(prompt, back)
         self.assertIn("Flip for answers", sheet)
         self.assertIn(WIKI_AFRICAN_PENGUIN, sheet)
@@ -241,8 +242,8 @@ class PenguinHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", lion_html)
         self.assertIn("Junior Ranger", lion_html)
         self.assertIn("Park Ranger", lion_html)
-        self.assertEqual(lion_hard["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion_hard["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion_hard["talk_about"], visible_prompts(TALK_ABOUT_LION, lion_hard["level"]))
+        self.assertEqual(lion_hard["push_further"], visible_prompts(PUSH_FURTHER_LION, lion_hard["level"]))
         self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy", "hard", "zoologist"))
         giraffe_hard = study_deck_for("reticulated-giraffe", "hard")
         self.assertEqual(giraffe_hard["source"], WIKI_GIRAFFE)
@@ -251,8 +252,8 @@ class PenguinHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", giraffe_html)
         self.assertIn("Junior Ranger", giraffe_html)
         self.assertIn("Park Ranger", giraffe_html)
-        self.assertEqual(giraffe_hard["talk_about"], list(TALK_ABOUT_GIRAFFE))
-        self.assertEqual(giraffe_hard["push_further"], list(PUSH_FURTHER_GIRAFFE))
+        self.assertEqual(giraffe_hard["talk_about"], visible_prompts(TALK_ABOUT_GIRAFFE, giraffe_hard["level"]))
+        self.assertEqual(giraffe_hard["push_further"], visible_prompts(PUSH_FURTHER_GIRAFFE, giraffe_hard["level"]))
         self.assertEqual(shipped_levels_for("african-elephant"), ("easy", "hard", "zoologist"))
         elephant_hard = study_deck_for("african-elephant", "hard")
         self.assertEqual(elephant_hard["source"], WIKI_AFRICAN_ELEPHANT)
@@ -261,8 +262,8 @@ class PenguinHardStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", elephant_html)
         self.assertIn("Junior Ranger", elephant_html)
         self.assertIn("Park Ranger", elephant_html)
-        self.assertEqual(elephant_hard["talk_about"], list(TALK_ABOUT_ELEPHANT))
-        self.assertEqual(elephant_hard["push_further"], list(PUSH_FURTHER_ELEPHANT))
+        self.assertEqual(elephant_hard["talk_about"], visible_prompts(TALK_ABOUT_ELEPHANT, elephant_hard["level"]))
+        self.assertEqual(elephant_hard["push_further"], visible_prompts(PUSH_FURTHER_ELEPHANT, elephant_hard["level"]))
 
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))

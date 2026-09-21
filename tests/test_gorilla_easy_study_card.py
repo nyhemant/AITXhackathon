@@ -13,6 +13,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from generate_bdo_seo import outing_talk_html  # noqa: E402
 from study_cards import (  # noqa: E402
+    visible_prompts,
     study_print_html_for,
     LEVEL_DISPLAY_NAMES,
     PUSH_FURTHER_ELEPHANT,
@@ -218,8 +219,8 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
         self.assertEqual([q["stem"] for q in deck["questions"]], list(STEMS))
         self.assertEqual([q["id"] for q in deck["questions"]], list(QIDS))
-        self.assertEqual(deck["talk_about"], list(TALK_ABOUT_GORILLA))
-        self.assertEqual(deck["push_further"], list(PUSH_FURTHER_GORILLA))
+        self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_GORILLA, deck["level"]))
+        self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_GORILLA, deck["level"]))
         for q in deck["questions"]:
             self.assertEqual(len(q["choices"]), 3)
             self.assertIn(q["correct"], ("A", "B", "C"))
@@ -248,46 +249,46 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
         self.assertEqual(lion["source"], WIKI_LION)
         self.assertEqual(lion["level_label"], "Junior Ranger")
         self.assertEqual(len(lion["questions"]), STUDY_SLOTS)
-        self.assertEqual(lion["talk_about"], list(TALK_ABOUT_LION))
-        self.assertEqual(lion["push_further"], list(PUSH_FURTHER_LION))
+        self.assertEqual(lion["talk_about"], visible_prompts(TALK_ABOUT_LION, lion["level"]))
+        self.assertEqual(lion["push_further"], visible_prompts(PUSH_FURTHER_LION, lion["level"]))
         self.assertEqual(shipped_levels_for("african-lion"), ("easy", "hard", "zoologist"))
         self.assertIsNotNone(study_deck_for("african-lion", "hard"))
         self.assertIsNotNone(study_deck_for("african-lion", "zoologist"))
         giraffe = study_deck_for("reticulated-giraffe")
         self.assertEqual(giraffe["source"], WIKI_GIRAFFE)
-        self.assertEqual(giraffe["talk_about"], list(TALK_ABOUT_GIRAFFE))
-        self.assertEqual(giraffe["push_further"], list(PUSH_FURTHER_GIRAFFE))
+        self.assertEqual(giraffe["talk_about"], visible_prompts(TALK_ABOUT_GIRAFFE, giraffe["level"]))
+        self.assertEqual(giraffe["push_further"], visible_prompts(PUSH_FURTHER_GIRAFFE, giraffe["level"]))
         self.assertEqual(shipped_levels_for("reticulated-giraffe"), ("easy", "hard", "zoologist"))
         elephant = study_deck_for("african-elephant")
         self.assertEqual(elephant["source"], WIKI_AFRICAN_ELEPHANT)
-        self.assertEqual(elephant["talk_about"], list(TALK_ABOUT_ELEPHANT))
-        self.assertEqual(elephant["push_further"], list(PUSH_FURTHER_ELEPHANT))
+        self.assertEqual(elephant["talk_about"], visible_prompts(TALK_ABOUT_ELEPHANT, elephant["level"]))
+        self.assertEqual(elephant["push_further"], visible_prompts(PUSH_FURTHER_ELEPHANT, elephant["level"]))
         penguin = study_deck_for("african-penguin")
         self.assertEqual(penguin["source"], WIKI_AFRICAN_PENGUIN)
-        self.assertEqual(penguin["talk_about"], list(TALK_ABOUT_PENGUIN))
-        self.assertEqual(penguin["push_further"], list(PUSH_FURTHER_PENGUIN))
+        self.assertEqual(penguin["talk_about"], visible_prompts(TALK_ABOUT_PENGUIN, penguin["level"]))
+        self.assertEqual(penguin["push_further"], visible_prompts(PUSH_FURTHER_PENGUIN, penguin["level"]))
         flamingo = study_deck_for("caribbean-flamingo")
         self.assertEqual(flamingo["source"], WIKI_AMERICAN_FLAMINGO)
-        self.assertEqual(flamingo["talk_about"], list(TALK_ABOUT_FLAMINGO))
-        self.assertEqual(flamingo["push_further"], list(PUSH_FURTHER_FLAMINGO))
+        self.assertEqual(flamingo["talk_about"], visible_prompts(TALK_ABOUT_FLAMINGO, flamingo["level"]))
+        self.assertEqual(flamingo["push_further"], visible_prompts(PUSH_FURTHER_FLAMINGO, flamingo["level"]))
         tortoise = study_deck_for("galapagos-tortoise")
         self.assertEqual(tortoise["source"], WIKI_GALAPAGOS_TORTOISE)
-        self.assertEqual(tortoise["talk_about"], list(TALK_ABOUT_TORTOISE))
-        self.assertEqual(tortoise["push_further"], list(PUSH_FURTHER_TORTOISE))
+        self.assertEqual(tortoise["talk_about"], visible_prompts(TALK_ABOUT_TORTOISE, tortoise["level"]))
+        self.assertEqual(tortoise["push_further"], visible_prompts(PUSH_FURTHER_TORTOISE, tortoise["level"]))
         zebra = study_deck_for("zebra")
         self.assertEqual(zebra["source"], WIKI_PLAINS_ZEBRA)
-        self.assertEqual(zebra["talk_about"], list(TALK_ABOUT_ZEBRA))
-        self.assertEqual(zebra["push_further"], list(PUSH_FURTHER_ZEBRA))
+        self.assertEqual(zebra["talk_about"], visible_prompts(TALK_ABOUT_ZEBRA, zebra["level"]))
+        self.assertEqual(zebra["push_further"], visible_prompts(PUSH_FURTHER_ZEBRA, zebra["level"]))
         self.assertEqual(shipped_levels_for("zebra"), ("easy", "hard", "zoologist"))
         hippo = study_deck_for("nile-hippo")
         self.assertEqual(hippo["source"], WIKI_HIPPOPOTAMUS)
-        self.assertEqual(hippo["talk_about"], list(TALK_ABOUT_HIPPO))
-        self.assertEqual(hippo["push_further"], list(PUSH_FURTHER_HIPPO))
+        self.assertEqual(hippo["talk_about"], visible_prompts(TALK_ABOUT_HIPPO, hippo["level"]))
+        self.assertEqual(hippo["push_further"], visible_prompts(PUSH_FURTHER_HIPPO, hippo["level"]))
         self.assertEqual(shipped_levels_for("nile-hippo"), ("easy", "hard", "zoologist"))
         tiger = study_deck_for("sumatran-tiger")
         self.assertEqual(tiger["source"], WIKI_SUMATRAN_TIGER)
-        self.assertEqual(tiger["talk_about"], list(TALK_ABOUT_TIGER))
-        self.assertEqual(tiger["push_further"], list(PUSH_FURTHER_TIGER))
+        self.assertEqual(tiger["talk_about"], visible_prompts(TALK_ABOUT_TIGER, tiger["level"]))
+        self.assertEqual(tiger["push_further"], visible_prompts(PUSH_FURTHER_TIGER, tiger["level"]))
         self.assertEqual(shipped_levels_for("sumatran-tiger"), ("easy", "hard", "zoologist"))
 
     def test_generator_html_is_study_not_worksheet(self):
@@ -304,7 +305,7 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
         self.assertIn('<details class="study-explore', html)
         self.assertIn("Explore more", html)
         self.assertNotIn('<aside class="study-deepen"', html)
-        for prompt in TALK_ABOUT_GORILLA + PUSH_FURTHER_GORILLA:
+        for prompt in visible_prompts(TALK_ABOUT_GORILLA, "easy") + visible_prompts(PUSH_FURTHER_GORILLA, "easy"):
             self.assertIn(prompt, html)
         self.assertIn("Show answers", html)
         self.assertIn("questions", html)
@@ -362,9 +363,9 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("study-next-tier", main)
         self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=14", html)
-        self.assertIn("study-card.css?v=12", html)
-        self.assertIn("study-cards-data.js?v=8", html)
+        self.assertIn("study-card.js?v=15", html)
+        self.assertIn("study-card.css?v=13", html)
+        self.assertIn("study-cards-data.js?v=9", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "western-lowland-gorilla"', html)
@@ -409,7 +410,7 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         self.assertIn("ps-study-deepen", back)
-        for prompt in TALK_ABOUT_GORILLA + PUSH_FURTHER_GORILLA:
+        for prompt in visible_prompts(TALK_ABOUT_GORILLA, "easy") + visible_prompts(PUSH_FURTHER_GORILLA, "easy"):
             self.assertIn(prompt, back)
         self.assertEqual(
             study_try_next_ids("western-lowland-gorilla"),
@@ -442,7 +443,7 @@ class GorillaEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("Talk about it", front)
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
-        for prompt in TALK_ABOUT_GORILLA + PUSH_FURTHER_GORILLA:
+        for prompt in visible_prompts(TALK_ABOUT_GORILLA, "easy") + visible_prompts(PUSH_FURTHER_GORILLA, "easy"):
             self.assertIn(prompt, back)
         css = STYLES.read_text(encoding="utf-8")
         self.assertIn(".ps-study-front", css)

@@ -111,7 +111,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('id="start-menu-btn"', body)
         self.assertLess(body.find("start-menu-wrap"), body.find("start-menu-btn"))
         self.assertLess(body.find('class="start-top"'), body.find("start-menu-wrap"))
-        self.assertIn("Print cutouts", body)
+        self.assertIn("Print from Watch", body)
         self.assertNotIn("Cut · hide · seek", body)
         self.assertIn("Library", body)
         self.assertIn("/field-pack/print/", body)
@@ -408,7 +408,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("start-pill", chapter)
         routes_html = nav.group(0)
         self.assertIn("Watch Live", routes_html)
-        self.assertNotIn("Print cutouts", routes_html)
+        self.assertNotIn("Print from Watch", routes_html)
         self.assertNotIn("Cut · hide · seek", chapter)
         self.assertIn('class="start-menu-grownup"', chapter)
         self.assertIn('id="start-menu-btn"', chapter)
@@ -440,7 +440,7 @@ class StartLandingTests(unittest.TestCase):
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
                 ("/field-pack/", "Places"),
                 ("/about/", "About"),
-                ("/field-pack/print/", "Print cutouts"),
+                ("/field-pack/print/", "Print from Watch"),
             ],
         )
         self.assertNotIn("<small>", chrome)
