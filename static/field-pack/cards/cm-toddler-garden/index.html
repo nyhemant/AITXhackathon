@@ -94,6 +94,12 @@
         more.href = KIT_SITES[from];
         more.removeAttribute("hidden");
       }
+      
+      var quizPeer = document.querySelector("a.card-quiz-peer");
+      if (quizPeer && from && KIT_SITES[from]) {
+        quizPeer.removeAttribute("hidden");
+      }
+
       document.querySelectorAll("a.card-watch-live").forEach(function (a) {
         if (!from || !KIT_SITES[from]) return;
         try {

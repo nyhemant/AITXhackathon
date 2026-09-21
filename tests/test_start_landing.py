@@ -303,6 +303,45 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(">Places<", self.html)
         self.assertIn(">Cards<", self.html)
 
+
+    def test_hero_shows_meta_product_line_under_h1(self):
+        """Meta product sentence is visible body copy under the H1."""
+        self.assertIn('class="start-meta-line"', self.html)
+        meta = re.search(r'<meta name="description" content="([^"]+)"', self.html)
+        self.assertIsNotNone(meta)
+        body = re.search(r'<p class="start-meta-line">([^<]+)</p>', self.html)
+        self.assertIsNotNone(body)
+        self.assertEqual(body.group(1), meta.group(1))
+        # Still keep three doors
+        self.assertEqual(len(re.findall(r'class="start-route"', self.html)), 3)
+
+
+
+    def test_awake_line_deep_links_named_animal(self):
+        """Awake chapter hit deep-links the animal named by the wildlife rotator."""
+        self.assertIn('id="start-wildlife-hit"', self.html)
+        hit = re.search(
+            r'<a class="start-chapter-hit"[^>]*id="start-wildlife-hit"[^>]*href="([^"]+)"',
+            self.html,
+        )
+        if not hit:
+            hit = re.search(
+                r'<a[^>]*id="start-wildlife-hit"[^>]*href="([^"]+)"',
+                self.html,
+            )
+        self.assertIsNotNone(hit)
+        self.assertIn("#habitat=", hit.group(1).replace("&amp;", "&"))
+        # Each rotator word carries a matching habitat
+        words = re.findall(
+            r'<span class="start-wildlife-word[^>]*data-habitat="([^"]+)"[^>]*>([^<]+)</span>',
+            self.html,
+        )
+        self.assertGreaterEqual(len(words), 6)
+        for hid, word in words:
+            self.assertTrue(hid, word)
+        self.assertIn("syncWildlifeHit", (START / "start.js").read_text(encoding="utf-8"))
+
+
     def test_hero_hotspots_are_centered_and_do_not_overlap(self):
         self.assertIn("transform: translate(-50%, -50%)", self.css)
         self.assertIn("min-width: 52px", self.css)
@@ -553,7 +592,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(">Continue<", chapter)
         hit = re.search(r'<a class="start-chapter-hit"[^>]*>[\s\S]*?</a>', chapter)
         self.assertIsNotNone(hit)
-        self.assertIn('href="/field-pack/virtual-field-trip/"', hit.group(0))
+        self.assertIn('href="/field-pack/virtual-field-trip/', hit.group(0))
+        self.assertIn("#habitat=", hit.group(0).replace("&amp;", "&"))
         continue_link = re.search(r'<a class="start-home-continue"[^>]*>', chapter)
         self.assertIsNotNone(continue_link)
         self.assertIn('href="/field-pack/virtual-field-trip/"', continue_link.group(0))
@@ -1235,7 +1275,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
         self.assertIn('start.js?v=38', self.html)
-        self.assertIn("start.css?v=69", self.html)
+        self.assertIn("start.css?v=70", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)

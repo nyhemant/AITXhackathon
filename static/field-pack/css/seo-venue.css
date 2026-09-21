@@ -2331,6 +2331,15 @@ body.has-hunt-sticky {
   padding-bottom: 5.5rem;
 }
 @media (max-width: 560px) {
+  body.has-hunt-sticky {
+    padding-bottom: max(8.5rem, calc(7rem + env(safe-area-inset-bottom, 0px)));
+  }
+  .seo-start-here,
+  #start-here {
+    scroll-margin-bottom: max(8.5rem, calc(7rem + env(safe-area-inset-bottom, 0px)));
+  }
+}
+@media (max-width: 560px) {
   .seo-hunt-sticky { padding-left: 0.75rem; padding-right: 0.75rem; }
   .seo-sticky-print { width: 100%; }
 }
@@ -2404,4 +2413,21 @@ body.has-hunt-sticky {
   flex-wrap: wrap;
   gap: 0.35rem;
   margin-top: 0.35rem;
+}
+
+
+/* Place-context: Quiz peers Watch in the primary row */
+.card-page-actions-primary .card-quiz-peer {
+  font-weight: 800;
+}
+.card-page-actions-primary:has(.card-quiz-peer:not([hidden])) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: stretch;
+}
+.card-page-actions-primary:has(.card-quiz-peer:not([hidden])) > .btn {
+  flex: 1 1 10rem;
+  text-align: center;
+  justify-content: center;
 }
