@@ -42,7 +42,7 @@ class CardTemplatePolishTests(unittest.TestCase):
         label = pictures_link_label(
             "https://kids.nationalgeographic.com/animals/mammals/facts/lion"
         )
-        self.assertEqual(label, "More photos at National Geographic Kids ↗")
+        self.assertEqual(label, "More photos at National Geographic Kids")
         self.assertEqual(
             pictures_link_label("https://example.com/x", "Christmas Island photos"),
             "Christmas Island photos",
@@ -56,7 +56,7 @@ class CardTemplatePolishTests(unittest.TestCase):
             shared=True,
             allow_cam=False,
         )
-        self.assertIn("More photos at National Geographic Kids ↗", html)
+        self.assertIn("More photos at National Geographic Kids", html)
         self.assertNotIn(">Photos</a>", html)
 
     def test_generator_emits_back_to_place_chrome(self):

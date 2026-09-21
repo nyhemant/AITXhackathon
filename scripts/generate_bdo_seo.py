@@ -930,7 +930,7 @@ def pictures_link_label(url: str, explicit: str = "") -> str:
             source = bare.split(".")[0].replace("-", " ").title()
         else:
             source = "this source"
-    return f"More photos at {source} ↗"
+    return f"More photos at {source}"
 
 
 def card_pictures_link_html(item: dict, *, btn_class: str = "btn btn-secondary card-page-photos") -> str:
