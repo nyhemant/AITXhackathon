@@ -197,7 +197,7 @@ class IaPhaseATests(unittest.TestCase):
         self.assertIn('data-card-filter="wildlife"', primary)
         self.assertIn('data-card-filter="sealife"', primary)
         self.assertNotIn('data-card-filter="parks"', cards)
-        self.assertIn("42 cards", primary)
+        self.assertIn("58 cards", primary)
         self.assertIn("All cards", primary)
         self.assertNotIn("All 42 cards", primary)
         self.assertIn('data-card-id="american-alligator"', primary)
