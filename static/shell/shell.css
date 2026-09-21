@@ -226,6 +226,8 @@ a.shell-product:focus-visible {
 .oneless-shell .shell-menu a {
   display: block;
   padding: 12px 14px;
+  min-height: 44px;
+  box-sizing: border-box;
   border-radius: var(--radius-sm, 12px);
   text-decoration: none;
   color: var(--ink, #152238);
