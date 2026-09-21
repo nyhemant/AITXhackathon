@@ -118,6 +118,7 @@ NAV_CARDS_SUB = "Talk, photos &amp; Q&amp;A"
 NAV_VFT_SUB = "Explore at home"
 NAV_ABOUT_SUB = f"{BRAND_NAME} &amp; contact"
 # Phase B More menu — same four doors as Start. Print is a side door, not here.
+NAV_START_LABEL = "Start"
 NAV_CARDS_LABEL = "Cards"
 NAV_WATCH_LABEL = "Watch Live"
 NAV_PLACES_LABEL = "Places"
@@ -152,7 +153,7 @@ HUNT_STYLE_CHALLENGE_CAP = "harder observation tasks for older kids"
 HUNT_STYLE_CHALLENGE_LABEL = "Challenge"
 CARDS_PLAY_H1 = "Animal cards"
 CARDS_PLAY_CTA = "Print the cutouts"
-CARDS_PLAY_BROWSE = "Browse cards on the screen"
+CARDS_PLAY_BROWSE = "Browse all cards"
 CARDS_PLAY_PRINT_HREF = PRINT_PATH
 CARDS_HUB_TITLE = "Animal cards · KidZooKit"
 CARDS_HUB_DESC = "Animal cards with talk prompts, photos, and Q&A. Print cutouts to hide and seek at home."
@@ -557,21 +558,20 @@ def esc(s: str) -> str:
 
 
 def nav_more_menu_html(*, current: str = "") -> str:
-    """Shared More menu — Cards, Watch Live, Places, About. No Dinner, no print."""
+    """Shared More menu — Start, Cards, Watch Live, Places, About. No Dinner, no print."""
 
-    def item(href: str, label: str, sub: str, key: str) -> str:
+    def item(href: str, label: str, key: str) -> str:
         cur = ' aria-current="page"' if current == key else ""
-        return (
-            f'<a href="{href}"{cur} role="menuitem">{label}<small>{sub}</small></a>'
-        )
+        return f'<a href="{href}"{cur} role="menuitem">{label}</a>'
 
     return f"""      <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
-          {item("/field-pack/cards/", NAV_CARDS_LABEL, NAV_CARDS_SUB, "cards")}
-          {item("/field-pack/virtual-field-trip/", NAV_WATCH_LABEL, NAV_VFT_SUB, "vft")}
-          {item("/field-pack/", NAV_PLACES_LABEL, NAV_PLACES_SUB, "places")}
-          {item(NAV_ABOUT_HREF, NAV_ABOUT_LABEL, NAV_ABOUT_SUB, "about")}
+          {item(HOME_HREF, NAV_START_LABEL, "start")}
+          {item("/field-pack/cards/", NAV_CARDS_LABEL, "cards")}
+          {item("/field-pack/virtual-field-trip/", NAV_WATCH_LABEL, "vft")}
+          {item("/field-pack/", NAV_PLACES_LABEL, "places")}
+          {item(NAV_ABOUT_HREF, NAV_ABOUT_LABEL, "about")}
         </div>
       </div>"""
 
@@ -5184,10 +5184,11 @@ def write_cards_hub(venues: list[dict]) -> str:
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="/field-pack/cards/" aria-current="page" role="menuitem">{NAV_CARDS_LABEL}<small>{NAV_CARDS_SUB}</small></a>
-          <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}<small>{NAV_VFT_SUB}</small></a>
-          <a href="/field-pack/" role="menuitem">{NAV_PLACES_LABEL}<small>{NAV_PLACES_SUB}</small></a>
-          <a href="{NAV_ABOUT_HREF}" role="menuitem">{NAV_ABOUT_LABEL}<small>{NAV_ABOUT_SUB}</small></a>
+          <a href="{HOME_HREF}" role="menuitem">{NAV_START_LABEL}</a>
+          <a href="/field-pack/cards/" aria-current="page" role="menuitem">{NAV_CARDS_LABEL}</a>
+          <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}</a>
+          <a href="/field-pack/" role="menuitem">{NAV_PLACES_LABEL}</a>
+          <a href="{NAV_ABOUT_HREF}" role="menuitem">{NAV_ABOUT_LABEL}</a>
         </div>
       </div>
     </header>
@@ -5199,11 +5200,10 @@ def write_cards_hub(venues: list[dict]) -> str:
         sizes="(max-width: 720px) 100vw, 720px"
         width="1024"
         height="1536"
-        alt="Animal cards on a kitchen table, ready to print, cut, and hide"
+        alt="Animal cards on a kitchen table"
         decoding="async"
       />
       <div class="cards-play-copy">
-        <p class="cards-play-kicker">Hide-and-seek at home</p>
         <h1 id="cards-play-heading">{esc(CARDS_PLAY_H1)}</h1>
         <ol class="cards-play-steps">
           <li>
@@ -5239,7 +5239,7 @@ def write_cards_hub(venues: list[dict]) -> str:
           <label class="place-search-label sr-only" for="cards-hub-search" id="cards-search-label">Find a card</label>
           <div class="hero-search-row">
             <input type="search" id="cards-hub-search" name="q" class="place-search-input hero-place-search-input cards-hub-search" placeholder="Lion, shark, bison…" autocomplete="off" enterkeyhint="search" />
-            <button type="submit" class="btn btn-primary hero-search-submit">Find card</button>
+            <button type="submit" class="btn btn-primary hero-search-submit">Search</button>
           </div>
         </form>
       </div>
@@ -5473,10 +5473,11 @@ def write_card_pages(
       <div class="shell-more-wrap">
         <button type="button" class="shell-more" aria-expanded="false" aria-haspopup="true" aria-controls="shell-menu">More</button>
         <div id="shell-menu" class="shell-menu" hidden role="menu">
-          <a href="/field-pack/cards/" aria-current="page" role="menuitem">{NAV_CARDS_LABEL}<small>{NAV_CARDS_SUB}</small></a>
-          <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}<small>{NAV_VFT_SUB}</small></a>
-          <a href="/field-pack/" role="menuitem">{NAV_PLACES_LABEL}<small>{NAV_PLACES_SUB}</small></a>
-          <a href="{NAV_ABOUT_HREF}" role="menuitem">{NAV_ABOUT_LABEL}<small>{NAV_ABOUT_SUB}</small></a>
+          <a href="{HOME_HREF}" role="menuitem">{NAV_START_LABEL}</a>
+          <a href="/field-pack/cards/" aria-current="page" role="menuitem">{NAV_CARDS_LABEL}</a>
+          <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}</a>
+          <a href="/field-pack/" role="menuitem">{NAV_PLACES_LABEL}</a>
+          <a href="{NAV_ABOUT_HREF}" role="menuitem">{NAV_ABOUT_LABEL}</a>
         </div>
       </div>
     </header>
@@ -5781,8 +5782,8 @@ def patch_landing_directory(venues: list[dict]) -> None:
 
     if 'href="/field-pack/cards/"' not in html:
         html = html.replace(
-            f'<a href="/field-pack/" aria-current="page" role="menuitem">{NAV_PLACES_LABEL}<small>{NAV_PLACES_SUB}</small></a>\n            <a href="{NAV_ABOUT_HREF}"',
-            f'<a href="/field-pack/cards/" role="menuitem">{NAV_CARDS_LABEL}<small>{NAV_CARDS_SUB}</small></a>\n            <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}<small>{NAV_VFT_SUB}</small></a>\n            <a href="/field-pack/" aria-current="page" role="menuitem">{NAV_PLACES_LABEL}<small>{NAV_PLACES_SUB}</small></a>\n            <a href="{NAV_ABOUT_HREF}"',
+            f'<a href="/field-pack/" aria-current="page" role="menuitem">{NAV_PLACES_LABEL}</a>\n            <a href="{NAV_ABOUT_HREF}"',
+            f'<a href="{HOME_HREF}" role="menuitem">{NAV_START_LABEL}</a>\n            <a href="/field-pack/cards/" role="menuitem">{NAV_CARDS_LABEL}</a>\n            <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}</a>\n            <a href="/field-pack/" aria-current="page" role="menuitem">{NAV_PLACES_LABEL}</a>\n            <a href="{NAV_ABOUT_HREF}"',
             1,
         )
 

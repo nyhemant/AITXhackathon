@@ -1,4 +1,4 @@
-"""Phase B IA: print is a side door; More menu is four doors only."""
+"""Phase B IA: print is a side door; More menu is Start + four doors."""
 
 from __future__ import annotations
 
@@ -34,6 +34,7 @@ LEGACY_HREFS = (
 )
 
 PRIMARY_MENU = (
+    ("/start/", "Start"),
     ("/field-pack/cards/", "Cards"),
     ("/field-pack/virtual-field-trip/", "Watch Live"),
     ("/field-pack/", "Places"),
@@ -120,10 +121,10 @@ class IaPhaseBTests(unittest.TestCase):
         )
         self.assertNotIn("/field-pack/print/", "".join(href for href, _ in routes))
         menu = _menu_items(start, "start-menu")
-        self.assertEqual(menu[:4], list(PRIMARY_MENU))
-        self.assertEqual(menu[4], ("/field-pack/print/", "Print cutouts"))
+        self.assertEqual(menu[:5], list(PRIMARY_MENU))
+        self.assertEqual(menu[5], ("/field-pack/print/", "Print cutouts"))
         self.assertIn('class="start-menu-grownup"', start)
-        self.assertIn("Cut · hide · seek", start)
+        self.assertNotIn("Cut · hide · seek", start)
         about = ABOUT.read_text(encoding="utf-8")
         before_exp = about.split('id="experimental"', 1)[0]
         self.assertIn("Side door:", before_exp)
@@ -151,8 +152,8 @@ class IaPhaseBTests(unittest.TestCase):
             html = path.read_text(encoding="utf-8")
             items = _menu_items(html, "shell-menu") if 'id="shell-menu"' in html else _menu_items(html, "start-menu")
             if path == START:
-                self.assertEqual(items[:4], list(PRIMARY_MENU), path.name)
-                self.assertEqual(items[4], ("/field-pack/print/", "Print cutouts"))
+                self.assertEqual(items[:5], list(PRIMARY_MENU), path.name)
+                self.assertEqual(items[5], ("/field-pack/print/", "Print cutouts"))
             else:
                 self.assertEqual(
                     [(href, label) for href, label in items],
@@ -190,6 +191,7 @@ class IaPhaseBTests(unittest.TestCase):
         self.assertNotIn('href="/field-pack/virtual-zoo/', start)
         self.assertNotIn('href="/virtual-zoo/', start)
         gen = GENERATOR.read_text(encoding="utf-8")
+        self.assertIn('NAV_START_LABEL = "Start"', gen)
         self.assertIn('NAV_CARDS_LABEL = "Cards"', gen)
         self.assertIn('NAV_WATCH_LABEL = "Watch Live"', gen)
         self.assertIn('NAV_PLACES_LABEL = "Places"', gen)
