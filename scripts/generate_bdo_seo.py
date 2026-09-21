@@ -137,15 +137,11 @@ PRINT_SPEC = "US Letter or A4 · black & white is fine"
 # Option A fork cards (replace At home / Print pair on place pages)
 FORK_GOING_TITLE = "Going soon"
 FORK_GOING_SUB = "Build and print your hunt"
-FORK_GOING_CAPTION = "A one-page checklist to carry"
+FORK_GOING_CAPTION = ""  # fork: title + one sub; caption dropped
 FORK_HOME_TITLE = "Not yet"
 FORK_HOME_SUB = "Virtual zoo at home"
 FORK_HOME_CAPTION = "Watch live · habitats and cams"
 FORK_ALL_PLACES_LABEL = "All places"
-OFFER_SENTENCE = (
-    "Pick a few animals, print a one-page checklist to carry, "
-    "and have something to talk about on the way. Free, no signup."
-)
 CUSTOMIZE_SUMMARY_DEFAULT = "Customize — currently ages 5–8, half day, Classic"
 HUNT_STYLE_CLASSIC_CAP = "find the animals"
 HUNT_STYLE_BONUS_CAP = "find the animals, plus small extra challenges"
@@ -167,7 +163,7 @@ EXPLORER_TITLE = "Find a place · KidZooKit"
 EXPLORER_DESC = "Find a zoo, aquarium, museum, or park."
 
 HOME_SESSION_H2 = "Talk and cards for this place"
-HOME_SESSION_LEAD = "Cards, photos, and a cam when we have one."
+HOME_SESSION_LEAD = ""  # fork/cards already explain; no meta lead
 HOME_SESSION_VFT = "Open Virtual Field Trip"
 PLACE_VFT_CTA = "Virtual Field Trip"
 CTA_WATCH_LIVE = "Watch Live"
@@ -1204,10 +1200,6 @@ def watch_links_html(item: dict, *, film_via_vft: bool = False, watch_live: bool
     if vft.get("film_url"):
         label = vft.get("film_title") or "Watch a short film"
         links.append(watch_link_html(str(vft["film_url"]), label, kind="film"))
-    if vft.get("vft_href") and (vft.get("cam_url") or vft.get("film_url")):
-        links.append(
-            f'<a class="seo-watch-link" href="{vft["vft_href"]}">{esc(HOME_SESSION_VFT)}</a>'
-        )
     if not links:
         return ""
     return f'<p class="seo-watch-row">{" · ".join(links)}</p>'
@@ -2360,13 +2352,13 @@ def page_mission_chrome_html(
           <button type="button" class="seo-fork-card seo-fork-going" id="mission-open-btn" data-how="going-soon" aria-haspopup="dialog" aria-controls="mission-drawer">
             <strong class="seo-fork-title">{esc(FORK_GOING_TITLE)}</strong>
             <span class="seo-fork-sub">{esc(FORK_GOING_SUB)}</span>
-            <span class="seo-fork-cap">{esc(FORK_GOING_CAPTION)}</span>
+            {f'<span class="seo-fork-cap">{esc(FORK_GOING_CAPTION)}</span>' if FORK_GOING_CAPTION else ""}
             <span class="print-spec seo-fork-print-spec">{esc(PRINT_SPEC)}</span>
           </button>
           <a class="seo-fork-card seo-fork-home" href="{esc(href)}" data-how="not-going-yet">
             <strong class="seo-fork-title">{esc(FORK_HOME_TITLE)}</strong>
             <span class="seo-fork-sub">{esc(sub)}</span>
-            <span class="seo-fork-cap">{esc(FORK_HOME_CAPTION)}</span>
+            {f'<span class="seo-fork-cap">{esc(FORK_HOME_CAPTION)}</span>' if FORK_HOME_CAPTION else ""}
           </a>
         </div>
         <p class="seo-fork-all-places">
@@ -2396,7 +2388,8 @@ def sticky_hunt_bar_html() -> str:
 
 
 def offer_sentence_html() -> str:
-    return f'<p class="seo-offer">{esc(OFFER_SENTENCE)}</p>'
+    """Removed: fork cards already explain Going soon / Not yet."""
+    return ""
 
 
 def _photo_src(photo: str) -> str:
@@ -2834,7 +2827,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     )
     lead = quiet_hero_lead(v, mission_venue)
     lead_html = f'<p class="lead">{esc(lead)}</p>' if lead else ""
-    offer_html = offer_sentence_html()
+    offer_html = ""  # fork cards already explain Going soon / Not yet
     facts_html = (
         practical_chips_html(practical, last_v)
         + status_chip_html(mission_venue)
