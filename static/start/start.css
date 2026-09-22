@@ -1782,76 +1782,9 @@ body.start-body {
 }
 
 
-/* Wildlife rotator — grid-stack keeps “A … ’s awake” on one baseline */
+/* Awake chapter line is stable flamingo copy — no word rotator. */
 .start-wildlife-line {
   display: inline;
-}
-
-.start-wildlife-slot {
-  display: inline-grid;
-  vertical-align: baseline;
-  justify-items: start;
-  align-items: baseline;
-  overflow: visible;
-  outline: none;
-  border-radius: 0.2em;
-  transition: width 250ms ease;
-}
-
-.start-wildlife-slot:focus-visible {
-  box-shadow: 0 0 0 2px rgba(255, 252, 247, 0.9), 0 0 0 4px rgba(15, 92, 92, 0.55);
-}
-
-.start-wildlife-sizer,
-.start-wildlife-words,
-.start-wildlife-word {
-  grid-area: 1 / 1;
-}
-
-.start-wildlife-sizer {
-  visibility: hidden;
-  white-space: nowrap;
-  pointer-events: none;
-}
-.start-wildlife-sizer::before {
-  content: attr(data-sizer);
-}
-
-.start-wildlife-words {
-  display: grid;
-  justify-items: start;
-  align-items: baseline;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.start-wildlife-word {
-  position: relative;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 250ms ease;
-  pointer-events: none;
-}
-
-.start-wildlife-word:not(.is-active) {
-  display: none;
-}
-
-.start-wildlife-word.is-active {
-  display: block;
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .start-wildlife-slot {
-    transition: none;
-  }
-
-  .start-wildlife-word {
-    transition: none;
-  }
 }
 
 /* Desktop: keep hero + chapter headlines on one row */
