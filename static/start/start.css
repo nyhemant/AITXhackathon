@@ -192,10 +192,10 @@ body.start-body {
   transform: rotate(-5deg) translateY(-2%);
 }
 
-/* Mobile: keep fan in mid-left Pacific, above bottom fade/CTAs. */
+/* Mobile: push fan into the light-blue ocean, above bottom fade/CTAs. */
 @media (max-width: 640px) {
   .start-hero-cards {
-    left: 18%;
+    left: 8%;
     top: 58%;
     width: 11%;
     height: 17.5%;
