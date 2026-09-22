@@ -304,15 +304,9 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(">Cards<", self.html)
 
 
-    def test_hero_shows_meta_product_line_under_h1(self):
-        """Meta product sentence is visible body copy under the H1."""
-        self.assertIn('class="start-meta-line"', self.html)
-        meta = re.search(r'<meta name="description" content="([^"]+)"', self.html)
-        self.assertIsNotNone(meta)
-        body = re.search(r'<p class="start-meta-line">([^<]+)</p>', self.html)
-        self.assertIsNotNone(body)
-        self.assertEqual(body.group(1), meta.group(1))
-        # Still keep three doors
+    def test_hero_omits_redundant_meta_product_line_under_h1(self):
+        """The redundant sentence is omitted; the three doors remain."""
+        self.assertIsNone(re.search(r'<p class="start-meta-line">', self.html))
         self.assertEqual(len(re.findall(r'class="start-route"', self.html)), 3)
 
 
@@ -1299,7 +1293,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
         self.assertIn('start.js?v=38', self.html)
-        self.assertIn("start.css?v=70", self.html)
+        self.assertIn("start.css?v=71", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)
