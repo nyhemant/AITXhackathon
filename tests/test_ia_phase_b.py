@@ -1,4 +1,4 @@
-"""Phase B IA: print is a side door; More menu is Start + four doors."""
+"""Phase B IA: print is a companion action; hamburger is Start + four doors (About grownup)."""
 
 from __future__ import annotations
 
@@ -121,9 +121,10 @@ class IaPhaseBTests(unittest.TestCase):
         )
         self.assertNotIn("/field-pack/print/", "".join(href for href, _ in routes))
         menu = _menu_items(start, "start-menu")
-        self.assertEqual(menu[:5], list(PRIMARY_MENU))
-        self.assertEqual(menu[5], ("/field-pack/print/", "Print from Watch"))
-        self.assertIn('class="start-menu-grownup"', start)
+        self.assertEqual(menu, list(PRIMARY_MENU))
+        self.assertIn('class="start-menu-grownup" href="/about/">About</a>', start)
+        self.assertNotIn("Print from Watch", start)
+        self.assertNotIn('href="/field-pack/print/"', start)
         self.assertNotIn("Cut · hide · seek", start)
         about = ABOUT.read_text(encoding="utf-8")
         before_exp = about.split('id="experimental"', 1)[0]
@@ -153,15 +154,14 @@ class IaPhaseBTests(unittest.TestCase):
         for path in SHELL_HTML:
             html = path.read_text(encoding="utf-8")
             items = _menu_items(html, "shell-menu") if 'id="shell-menu"' in html else _menu_items(html, "start-menu")
+            self.assertEqual(
+                [(href, label) for href, label in items],
+                list(PRIMARY_MENU),
+                path.name,
+            )
             if path == START:
-                self.assertEqual(items[:5], list(PRIMARY_MENU), path.name)
-                self.assertEqual(items[5], ("/field-pack/print/", "Print from Watch"))
-            else:
-                self.assertEqual(
-                    [(href, label) for href, label in items],
-                    list(PRIMARY_MENU),
-                    path.name,
-                )
+                self.assertIn('class="start-menu-grownup" href="/about/">About</a>', html)
+                self.assertNotIn("Print from Watch", html)
             self.assertNotIn('href="/dinner"', html, path.name)
 
     def test_cards_hub_keeps_primary_filters_and_experimental_museum(self):

@@ -111,10 +111,10 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('id="start-menu-btn"', body)
         self.assertLess(body.find("start-menu-wrap"), body.find("start-menu-btn"))
         self.assertLess(body.find('class="start-top"'), body.find("start-menu-wrap"))
-        self.assertIn("Print from Watch", body)
+        self.assertNotIn("Print from Watch", body)
         self.assertNotIn("Cut · hide · seek", body)
         self.assertIn("Library", body)
-        self.assertIn("/field-pack/print/", body)
+        self.assertNotIn("/field-pack/print/", body)
         self.assertNotIn(">Field Trip Kit</span>", body)
         self.assertIn("Watch Live", body)
         self.assertNotIn("I need an activity for today", body)
@@ -499,9 +499,9 @@ class StartLandingTests(unittest.TestCase):
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
                 ("/field-pack/", "Places"),
                 ("/about/", "About"),
-                ("/field-pack/print/", "Print from Watch"),
             ],
         )
+        self.assertIn('class="start-menu-grownup" href="/about/">About</a>', chrome)
         self.assertNotIn("<small>", chrome)
         self.assertIn("justify-content: space-between", self.css)
         self.assertIn("margin-left: auto", self.css)
