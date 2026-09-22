@@ -1050,7 +1050,7 @@
 })();
 
 (function startWordRotators() {
-  function bootRotator(rootSel, slotSel, sizerSel, wordSel) {
+  function bootRotator(rootSel, slotSel, sizerSel, wordSel, intervalMs) {
     const root = document.querySelector(rootSel);
     const slot = root && root.closest(slotSel);
     if (!root || !slot) return;
@@ -1092,7 +1092,7 @@
       return;
     }
 
-    const INTERVAL_MS = 5000;
+    const INTERVAL_MS = typeof intervalMs === "number" ? intervalMs : 5000;
     let index = words.findIndex((el) => el.classList.contains("is-active"));
     if (index < 0) index = 0;
     let timer = null;
@@ -1153,7 +1153,29 @@
     start();
   }
 
+  function syncWildlifeHit() {
+    const hit = document.getElementById("start-wildlife-hit");
+    const active = document.querySelector("[data-wildlife-rotator] .start-wildlife-word.is-active");
+    if (!hit || !active) return;
+    const hid = active.getAttribute("data-habitat");
+    if (!hid) return;
+    hit.href = "/field-pack/virtual-field-trip/?tab=zoo#habitat=" + encodeURIComponent(hid);
+    const pill = document.querySelector('#start-home .start-pill[href*="virtual-field-trip"]');
+    if (pill) pill.href = hit.href;
+  }
+
   bootRotator("[data-venue-rotator]", ".start-venue-slot", ".start-venue-sizer", ".start-venue-word");
+  bootRotator("[data-wildlife-rotator]", ".start-wildlife-slot", ".start-wildlife-sizer", ".start-wildlife-word", 2500);
+  syncWildlifeHit();
+  const wildRoot = document.querySelector("[data-wildlife-rotator]");
+  if (wildRoot && "MutationObserver" in window) {
+    new MutationObserver(syncWildlifeHit).observe(wildRoot, {
+      attributes: true,
+      subtree: true,
+      attributeFilter: ["class"],
+    });
+  }
+
   bootRotator("[data-going-venue-rotator]", ".start-going-venue-slot", ".start-going-venue-sizer", ".start-going-venue-word");
 })();
 
