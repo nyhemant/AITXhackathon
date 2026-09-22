@@ -317,8 +317,8 @@ class StartLandingTests(unittest.TestCase):
 
 
 
-    def test_awake_line_deep_links_named_animal(self):
-        """Awake chapter hit deep-links the animal named by the wildlife rotator."""
+    def test_awake_line_is_flamingo(self):
+        """Awake chapter is stable flamingo copy and opens the flamingo habitat."""
         self.assertIn('id="start-wildlife-hit"', self.html)
         hit = re.search(
             r'<a class="start-chapter-hit"[^>]*id="start-wildlife-hit"[^>]*href="([^"]+)"',
@@ -330,16 +330,42 @@ class StartLandingTests(unittest.TestCase):
                 self.html,
             )
         self.assertIsNotNone(hit)
-        self.assertIn("#habitat=", hit.group(1).replace("&amp;", "&"))
-        # Each rotator word carries a matching habitat
-        words = re.findall(
-            r'<span class="start-wildlife-word[^>]*data-habitat="([^"]+)"[^>]*>([^<]+)</span>',
+        href = hit.group(1).replace("&amp;", "&")
+        self.assertIn("/field-pack/virtual-field-trip/", href)
+        self.assertTrue(href.endswith("#habitat=caribbean-flamingo"), href)
+        self.assertNotIn("nile-hippo", href)
+        home = re.search(
+            r'<section class="start-chapter" id="start-home"[\s\S]*?</section>',
             self.html,
         )
-        self.assertGreaterEqual(len(words), 6)
-        for hid, word in words:
-            self.assertTrue(hid, word)
-        self.assertIn("syncWildlifeHit", (START / "start.js").read_text(encoding="utf-8"))
+        self.assertIsNotNone(home)
+        chapter = home.group(0)
+        sentence = "A flamingo&apos;s awake. Look."
+        self.assertIn(f'<span class="sr-only">{sentence}</span>', chapter)
+        self.assertIn(
+            f'<span class="start-wildlife-line" aria-hidden="true">{sentence}</span>',
+            chapter,
+        )
+        self.assertNotIn("data-wildlife-rotator", chapter)
+        self.assertNotIn("start-wildlife-word", chapter)
+        for banned in (
+            "nile-hippo",
+            "reticulated-giraffe",
+            "african-penguin",
+            "sumatran-tiger",
+            ">hippo<",
+            ">giraffe<",
+            ">penguin<",
+            ">tiger<",
+            ">zebra<",
+            ">koala<",
+        ):
+            self.assertNotIn(banned, chapter, banned)
+        js = (START / "start.js").read_text(encoding="utf-8")
+        self.assertNotIn("syncWildlifeHit", js)
+        self.assertNotIn("data-wildlife-rotator", js)
+        self.assertIn('bootRotator("[data-venue-rotator]"', js)
+        self.assertIn('bootRotator("[data-going-venue-rotator]"', js)
 
 
     def test_hero_hotspots_are_centered_and_do_not_overlap(self):
@@ -557,8 +583,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-rest-3"'), self.html.find('id="start-teach"'))
         self.assertLess(self.html.find('id="start-teach"'), self.html.find('start-foot'))
         self.assertIn("At home this afternoon", chapter)
-        self.assertIn("awake. Look.", chapter)
-        self.assertIn("data-wildlife-rotator", chapter)
+        self.assertIn("A flamingo&apos;s awake. Look.", chapter)
+        self.assertNotIn("data-wildlife-rotator", chapter)
         self.assertNotIn("start-kicker", chapter)
         self.assertNotIn("Watch live — or print, cut, hide.", chapter)
         self.assertNotIn("start-chapter-quiet", chapter)
@@ -593,7 +619,7 @@ class StartLandingTests(unittest.TestCase):
         hit = re.search(r'<a class="start-chapter-hit"[^>]*>[\s\S]*?</a>', chapter)
         self.assertIsNotNone(hit)
         self.assertIn('href="/field-pack/virtual-field-trip/', hit.group(0))
-        self.assertIn("#habitat=", hit.group(0).replace("&amp;", "&"))
+        self.assertIn("#habitat=caribbean-flamingo", hit.group(0).replace("&amp;", "&"))
         continue_link = re.search(r'<a class="start-home-continue"[^>]*>', chapter)
         self.assertIsNotNone(continue_link)
         self.assertIn('href="/field-pack/virtual-field-trip/"', continue_link.group(0))
@@ -1034,7 +1060,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("parallax", self.css.lower())
 
     def test_locked_headline_and_no_marketing_stats(self):
-        # Title/og match H1 promise; sr-only is single active word; inactive words display:none.
+        # Title/og match H1 promise; venue/Going sr-only is the active word; inactive words display:none.
         self.assertIn('class="sr-only"', self.html)
         self.assertIn(
             "Turn the zoo into an expedition.",
@@ -1049,17 +1075,15 @@ class StartLandingTests(unittest.TestCase):
             "Put the zoo, aquarium, museum, or park day in their hands.",
             self.html,
         )
-        self.assertIn("A hippo&apos;s awake. Look.", self.html)
+        self.assertIn("A flamingo&apos;s awake. Look.", self.html)
+        self.assertNotIn("A hippo&apos;s awake. Look.", self.html)
+        self.assertIn(".start-wildlife-line", self.css)
+        self.assertNotIn(".start-wildlife-word", self.css)
         self.assertIn(".start-venue-word:not(.is-active)", self.css)
-        self.assertIn(".start-wildlife-word:not(.is-active)", self.css)
         self.assertIn(".start-going-venue-word:not(.is-active)", self.css)
         # Inactive rotator words leave the text layer always (not only reduced-motion).
         self.assertIn(
             ".start-venue-word:not(.is-active) {\n  display: none;\n}",
-            self.css,
-        )
-        self.assertIn(
-            ".start-wildlife-word:not(.is-active) {\n  display: none;\n}",
             self.css,
         )
         self.assertIn(
