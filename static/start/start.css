@@ -110,17 +110,18 @@ body.start-body {
 }
 
 /*
-  Sample playing-card fan under Africa / south of the zebra pin.
+  Sample playing-card fan in open Pacific / west of the Americas.
   Positions are % of the map plate (same space as hotspots).
+  Mid-left ocean clears animal pins, H1, and route pills; survives mobile crop.
   Container ignores pointer events; only the card links capture clicks.
 */
 .start-hero-cards {
   position: absolute;
-  left: 50.5%;
-  top: 66.5%;
+  left: 17%;
+  top: 44%;
   z-index: 3; /* above .start-hero::after fade (z-index: 1) */
-  width: 15.5%;
-  height: 25%;
+  width: 12%;
+  height: 19.5%;
   pointer-events: none;
   transform: translate(-50%, -50%);
 }
@@ -191,18 +192,22 @@ body.start-body {
   transform: rotate(-5deg) translateY(-2%);
 }
 
-/* Tall/narrow: Africa often crops; keep Start CTAs clear — hide the fan. */
+/* Mobile: keep fan in mid-left Pacific, above bottom fade/CTAs. */
 @media (max-width: 640px) {
   .start-hero-cards {
-    display: none;
+    left: 18%;
+    top: 38%;
+    width: 11%;
+    height: 17.5%;
   }
 }
 
 @media (min-width: 641px) and (max-width: 900px) {
   .start-hero-cards {
-    width: 15%;
-    height: 24%;
-    top: 62%;
+    left: 17.5%;
+    top: 42%;
+    width: 11.5%;
+    height: 18.5%;
   }
 }
 
