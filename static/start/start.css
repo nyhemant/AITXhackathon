@@ -1912,21 +1912,3 @@ body.start-body {
     transparent 100%
   );
 }
-
-
-
-/* Product promise under H1 (mirrors meta description) */
-.start-meta-line {
-  margin: 0.55rem 0 0.85rem;
-  max-width: 34rem;
-  font-size: 1.02rem;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #1a3a3a;
-}
-@media (max-width: 640px) {
-  .start-meta-line {
-    font-size: 0.95rem;
-    margin: 0.4rem 0 0.7rem;
-  }
-}
