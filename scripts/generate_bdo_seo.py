@@ -438,9 +438,14 @@ TYPE_LANDINGS = [
         "path": "zoos",
         "kind": "zoo",
         "nav": "Zoos",
-        "title": "Zoos · KidZooKit",
+        "title": "Zoos for Kids — Cards & Printable Hunts · KidZooKit",
         "h1": "Zoos",
         "blurb": TYPE_HUB_LEAD,
+        # SERP only. Visible type-lead stays empty (sparse hub chrome).
+        "description": (
+            "Zoo pages for kids: animal cards, talk prompts, and a printable hunt "
+            "for each place, at home or on a visit — KidZooKit."
+        ),
         "map_type": "zoo",
         "pitch": "",
     },
@@ -1895,28 +1900,112 @@ def h1_for(v: dict) -> str:
     return v["name"]
 
 
+# Shared venue title: parent promise in the first ~60 characters, then the brand.
+# Differentiates a KidZooKit companion from the venue’s own ticket site.
+VENUE_TITLE_TAIL = "At-Home Cards or a Printable Hunt"
+
+# Query-language overrides. Only where the page really offers that thing.
+# Dallas / Memphis do not stream their own cams (other zoos’ cams are labeled).
+# Field Museum has a printable hunt (SUE + halls), not a live cam.
+SEO_TITLE_LABELS = {
+    "field-museum": "Field Museum Scavenger Hunt for Kids",
+    "dallas-zoo": "Dallas Zoo Field Trip for Kids — Printable Hunt",
+    "memphis-zoo": "Memphis Zoo Field Trip for Kids — Printable Hunt",
+    "singapore-night-safari": "Singapore Night Safari for Kids — Printable Hunt",
+}
+
+SEO_META_DESCRIPTIONS = {
+    "field-museum": (
+        "Field Museum scavenger hunt for kids in Chicago: SUE the T. rex, "
+        "mammal halls, and a printable sheet — KidZooKit."
+    ),
+    "dallas-zoo": (
+        "Dallas Zoo field trip for kids: Giraffe Ridge, Penguin Cove, and "
+        "elephant cards, plus a printable hunt — KidZooKit."
+    ),
+    "memphis-zoo": (
+        "Memphis Zoo field trip for kids: elephants, tigers, and Zambezi River "
+        "Hippo Camp, plus a printable hunt — KidZooKit."
+    ),
+    "san-diego-zoo": (
+        "San Diego Zoo for kids: panda and koala cards, talk prompts, live cams, "
+        "and a printable hunt — KidZooKit."
+    ),
+    "vancouver-aquarium": (
+        "Vancouver Aquarium for kids: otter, jelly, and sloth cards, talk prompts, "
+        "and a printable hunt — KidZooKit."
+    ),
+    "singapore-night-safari": (
+        "Singapore Night Safari for kids: talk prompts and a printable hunt "
+        "for the evening visit — KidZooKit."
+    ),
+    "copenhagen-zoo": (
+        "Copenhagen Zoo for kids: panda, giraffe, and hippo cards, talk prompts, "
+        "and a printable hunt — KidZooKit."
+    ),
+}
+
+# Card pages. sci-planet is a real photo + talk + print card, not a live cam.
+CARD_SEO = {
+    "sci-planet": {
+        "title": "Planet / Space Hall for Kids — Photo & Talk Card · KidZooKit",
+        "description": (
+            "Planet and space hall card for kids: a photo, talk prompts, and a "
+            "printable card for home or a museum visit — KidZooKit."
+        ),
+    },
+}
+
+
 def seo_hunt_label(v: dict) -> str:
     """Search/social title phrase (not the on-page H1). Dual-mode — not print-only."""
-    return f"{v['name']} for Kids — Explore at Home or Print a Hunt"
+    custom = SEO_TITLE_LABELS.get(v.get("id") or "")
+    if custom:
+        return custom
+    return f"{v['name']} for Kids — {VENUE_TITLE_TAIL}"
 
 
 def title_for(v: dict) -> str:
     return f"{seo_hunt_label(v)} · {BRAND_NAME}"
 
 
+def venue_streams_public_cams(v: dict) -> bool:
+    """True only when this place publishes its own cams. Do not infer from peer links."""
+    if "own_public_cams" in v:
+        return bool(v.get("own_public_cams"))
+    mission = load_mission_venue(str(v.get("id") or ""))
+    return bool((mission or {}).get("own_public_cams"))
+
+
+def _clip_serp(text: str, limit: int = 155) -> str:
+    text = " ".join((text or "").split())
+    if len(text) <= limit:
+        return text
+    return text[: limit + 1].rsplit(" ", 1)[0].rstrip(".,;:—- ")
+
+
 def meta_for(v: dict) -> str:
+    custom = SEO_META_DESCRIPTIONS.get(v.get("id") or "")
+    if custom:
+        return _clip_serp(custom)
     city = v["city"] or v["location"] or ""
-    place, things, _ = type_bits(v)
-    # Keep well under ~155 chars so SERP/OG don't truncate mid-word
+    # Keep well under ~155 chars so SERP/OG don't truncate mid-word.
+    # "live cams" only when this venue actually streams them.
     name = v["name"]
     loc = f" in {city}" if city else ""
-    base = (
-        f"{name}{loc}: animal cards, talk prompts, photos, and live cams at home. "
-        "Optional printable hunt — KidZooKit."
-    )
+    if venue_streams_public_cams(v):
+        base = (
+            f"{name}{loc}: animal cards, talk prompts, photos, and live cams at home. "
+            "Optional printable hunt — KidZooKit."
+        )
+    else:
+        base = (
+            f"{name}{loc}: animal cards, talk prompts, and photos at home. "
+            "Optional printable hunt — KidZooKit."
+        )
     if len(base) > 155:
         base = f"{name}{loc}: explore cards at home, or print a hunt — KidZooKit."
-    return base[:155].rsplit(" ", 1)[0] if len(base) > 155 else base
+    return _clip_serp(base)
 
 
 def venue_json_ld(v: dict, url: str) -> str:
@@ -1940,7 +2029,14 @@ def venue_json_ld(v: dict, url: str) -> str:
         "description": meta_for(v),
         "totalTime": "PT2H",
         "tool": [
-            {"@type": "HowToTool", "name": "Phone or laptop (cards, photos, cams)"},
+            {
+                "@type": "HowToTool",
+                "name": (
+                    "Phone or laptop (cards, photos, cams)"
+                    if venue_streams_public_cams(v)
+                    else "Phone or laptop (cards and photos)"
+                ),
+            },
             {"@type": "HowToTool", "name": "Optional printed one-page hunt sheet"},
         ],
         "step": steps,
@@ -2314,7 +2410,8 @@ def quiet_hero_lead(v: dict, mission_venue: dict | None = None) -> str:
     low = raw.lower()
     if "print a hunt" in low or "talk prompts" in low:
         return ""
-    line = raw.split(". ")[0].strip()
+    # "T. rex" is an initial, not the end of the sentence.
+    line = re.split(r"(?<!\b[A-Za-z])\.\s+", raw, maxsplit=1)[0].strip()
     if line.endswith("."):
         line = line[:-1]
     return line
@@ -3218,10 +3315,11 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
         f'{{"@type":"ListItem","position":{i+1},"url":"{SITE}/field-pack/{esc(v["id"])}/","name":{json.dumps(v.get("name") or v["id"])}}}'
         for i, v in enumerate(filtered[:40])
     )
+    serp_desc = meta.get("description") or meta.get("blurb") or ""
     json_ld = (
         "{"
         f'"@context":"https://schema.org","@type":"CollectionPage","name":{json.dumps(meta["h1"])},'
-        f'"url":{json.dumps(url)},"description":{json.dumps(meta["blurb"])},'
+        f'"url":{json.dumps(url)},"description":{json.dumps(serp_desc)},'
         f'"isPartOf":{{"@type":"WebSite","name":"{BRAND_NAME}","url":"{SITE}/field-pack/"}},'
         f'"mainEntity":{{"@type":"ItemList","numberOfItems":{len(filtered)},"itemListElement":[{item_list}]}}'
         "}"
@@ -3234,13 +3332,13 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
   <meta charset="UTF-8" />
   <meta name="viewport" content="{VIEWPORT}" />
   <title>{esc(meta["title"])}</title>
-  <meta name="description" content="{esc(meta["blurb"])}" />
+  <meta name="description" content="{esc(serp_desc)}" />
   <link rel="canonical" href="{esc(url)}" />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="{BRAND_NAME}" />
   <meta property="og:title" content="{esc(meta["title"])}" />
-  <meta property="og:description" content="{esc(meta["blurb"])}" />
+  <meta property="og:description" content="{esc(serp_desc)}" />
   <meta property="og:url" content="{esc(url)}" />
   <meta property="og:image" content="{og_img}" />
   <base href="/field-pack/" />
@@ -5415,8 +5513,11 @@ def write_card_pages(
         )
         actions_html = "\n      ".join(x for x in (primary_html, print_html) if x)
         blurb_html = f'<p class="card-page-blurb">{esc(blurb)}</p>' if blurb else ""
-        title = f"{name} — KidZooKit"
-        desc = (blurb + " " if blurb else "") + f"{name} card: photo and talk prompts."
+        card_seo = CARD_SEO.get(cid) or {}
+        title = card_seo.get("title") or f"{name} — KidZooKit"
+        desc = card_seo.get("description") or (
+            (blurb + " " if blurb else "") + f"{name} card: photo and talk prompts."
+        )
         url = f"{SITE}/field-pack/cards/{cid}/"
         # Social preview: each card's own animal photo (not the Dallas mission sample).
         if photo:
