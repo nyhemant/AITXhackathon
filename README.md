@@ -28,7 +28,7 @@ From the repo root:
 ./scripts/dev-serve.sh
 ```
 
-Then open `http://127.0.0.1:8000/` — the server **302s `/` to `/start/`**. Also useful:
+Then open `http://127.0.0.1:8000/` — the server **301s `/` to `/start/`**. Also useful:
 
 ```text
 http://127.0.0.1:8000/start/
@@ -62,7 +62,7 @@ python3 -m unittest discover -s tests
 
 | Path | What |
 |------|------|
-| `/` | **302** to `/start/` |
+| `/` | **301** to `/start/` (the only indexable homepage) |
 | `/start/` | First screen. Doors: Watch Live, Places, Cards |
 | `/zoo` | **301** to `/start/` |
 | `/field-pack/` | Places — map explorer (stays **200**; does not redirect to Start) |
@@ -74,6 +74,8 @@ python3 -m unittest discover -s tests
 | `/dinner` | Dinner — secondary, **Beta** |
 
 Field Trip Kit static lives under `static/field-pack/` and is served at `/field-pack/`. In-app links are absolute `/field-pack/...` (pages use `<base href="/field-pack/">`).
+
+Public `http://kidzookit.com/...` 301s to the https URL when the edge sends `CF-Visitor` or `X-Forwarded-Proto: http` (`/` goes straight to `https://kidzookit.com/start/`). Local requests without those headers stay on http.
 
 ## Dinner (secondary)
 

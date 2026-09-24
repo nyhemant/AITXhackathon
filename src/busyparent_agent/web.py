@@ -12,9 +12,12 @@ from uuid import uuid4
 from busyparent_agent.rate_limit import evaluate_request, set_limiter, RateLimiter
 from busyparent_agent.service import APP_TITLE, create_dinner_decision_session
 from busyparent_agent.site import (
+    CANONICAL_HOST,
     PUBLIC_SITE,
     cookie_parent_domain,
     host_redirect_location,
+    https_upgrade_location,
+    public_host,
 )
 from busyparent_agent.url_aliases import (
     CARD_ALIAS_REDIRECTS,
@@ -1189,6 +1192,35 @@ class WebHandler(BaseHTTPRequestHandler):
         _send_redirect(self, location, code=301)
         return True
 
+    def _redirect_if_plain_http(self) -> bool:
+        """301 public http://kidzookit.com/... to the https URL.
+
+        The origin is HTTP behind Cloudflare. Without this, http://kidzookit.com/start/
+        is a second 200 of the same page and Google can ignore the https canonical.
+        Local requests have no forwarded scheme and stay on http.
+        """
+        headers = self.headers
+        host = headers.get("Host") if headers is not None else None
+        location = https_upgrade_location(host, self.path, headers)
+        if not location:
+            return False
+        _send_redirect(self, location, code=301)
+        return True
+
+    def _redirect_start_home(self) -> None:
+        """Permanent redirect so ``/`` is not a second indexable homepage.
+
+        On the public apex the Location is absolute https. Localhost keeps a
+        relative Location so ``127.0.0.1`` does not jump to production.
+        """
+        headers = self.headers
+        host = headers.get("Host") if headers is not None else None
+        if public_host(host) == CANONICAL_HOST:
+            location = f"{PUBLIC_SITE}{START_PREFIX}/"
+        else:
+            location = START_PREFIX + "/"
+        _send_redirect(self, location, code=301)
+
     def _reject_if_rate_limited(self) -> bool:
         """Return True when this request was answered with 429."""
         path = urlsplit(self.path).path
@@ -1223,6 +1255,8 @@ class WebHandler(BaseHTTPRequestHandler):
         if self._reject_if_rate_limited():
             return
         if self._redirect_if_public_host():
+            return
+        if self._redirect_if_plain_http():
             return
         path = urlsplit(self.path).path
         if path == "/analytics/off":
@@ -1267,13 +1301,9 @@ class WebHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(body)
             return
-        # Default home = Start (first-time Field Trip Kit landing)
+        # Default home = Start. 301 (not 302) so Google indexes /start/ only.
         if path in {"/", "/index.html"}:
-            self.send_response(302)
-            self.send_header("Location", START_PREFIX + "/")
-            self.send_header("Cache-Control", "no-cache")
-            self.send_header("Content-Length", "0")
-            self.end_headers()
+            self._redirect_start_home()
             return
         # Memorable alias: /zoo → first-time landing (not /field-pack/virtual-zoo/)
         if path in ZOO_ALIAS_PATHS:
@@ -1400,12 +1430,11 @@ class WebHandler(BaseHTTPRequestHandler):
             return
         if self._redirect_if_public_host():
             return
+        if self._redirect_if_plain_http():
+            return
         path = urlsplit(self.path).path
         if path in {"/", "/index.html"}:
-            self.send_response(302)
-            self.send_header("Location", START_PREFIX + "/")
-            self.send_header("Content-Length", "0")
-            self.end_headers()
+            self._redirect_start_home()
             return
         if path in ZOO_ALIAS_PATHS:
             _send_redirect(self, START_PREFIX + "/", code=301)

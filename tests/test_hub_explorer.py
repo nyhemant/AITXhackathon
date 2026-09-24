@@ -1,4 +1,4 @@
-"""Field Trip Kit hub is a place explorer. Root 302s to /start/; explorer stays at /field-pack/."""
+"""Field Trip Kit hub is a place explorer. Root 301s to /start/; explorer stays at /field-pack/."""
 
 from pathlib import Path
 import re
@@ -78,7 +78,7 @@ class HubExplorerTests(unittest.TestCase):
 
     def test_root_redirects_to_start_explorer_stays(self):
         root = _get("/")
-        self.assertEqual(root._code, 302)
+        self.assertEqual(root._code, 301)
         self.assertEqual(root._headers.get("Location"), START_PREFIX + "/")
         explorer = _get("/field-pack/")
         self.assertEqual(explorer._code, 200)
