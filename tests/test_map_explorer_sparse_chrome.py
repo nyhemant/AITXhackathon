@@ -237,7 +237,7 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         self.assertIn(b"landing-hub", body)
         self.assertIn(b'id="us-map"', body)
         root = _get("/")
-        self.assertEqual(root._code, 302)
+        self.assertEqual(root._code, 301)
         self.assertEqual(root._headers.get("Location"), START_PREFIX + "/")
 
     def test_cache_and_type_hubs_stay_sparse(self):

@@ -1,7 +1,7 @@
 """Brand/home links go to /start/. Explorer CTAs stay on /field-pack/.
 
 Locked IA:
-  / → 302 /start/
+  / → 301 /start/
   /start/ = first screen
   /field-pack/ = map explorer (must stay 200; never redirect to /start/)
 """
@@ -76,7 +76,7 @@ def _attr(html: str, cls: str, attr: str = "href") -> str:
 class BrandHomeTests(unittest.TestCase):
     def test_root_redirects_to_start_not_explorer(self):
         root = _get("/")
-        self.assertEqual(root._code, 302)
+        self.assertEqual(root._code, 301)
         self.assertEqual(root._headers.get("Location"), START_PREFIX + "/")
         self.assertNotEqual(root._headers.get("Location"), FIELD_PACK_PREFIX + "/")
 

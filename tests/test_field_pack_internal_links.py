@@ -226,7 +226,7 @@ def _ids_on_page(html: str) -> set[str]:
 def _served_status(path: str) -> int:
     """Same outcomes as WebHandler.do_GET, without opening a socket."""
     if path in {"/", "/index.html"}:
-        return 302
+        return 301
     if path in ZOO_ALIAS_PATHS:
         return 301
     if redirect_location(path):
@@ -483,7 +483,7 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             "/zoo": 301,
             "/zoo/": 301,
             "/field-pack": 301,
-            "/": 302,
+            "/": 301,
             "/field-pack/cards/acad-cadillac-view/": 404,
             "/field-pack/not-a-real-place/": 404,
         }

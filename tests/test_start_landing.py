@@ -87,7 +87,7 @@ class StartLandingTests(unittest.TestCase):
 
     def test_route_is_start_not_home(self):
         root = _get("/")
-        self.assertEqual(root._code, 302)
+        self.assertEqual(root._code, 301)
         self.assertEqual(root._headers.get("Location"), START_PREFIX + "/")
 
         home = _get("/field-pack/")
