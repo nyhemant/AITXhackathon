@@ -218,7 +218,7 @@ class HubExplorerTests(unittest.TestCase):
         page = _get("/about/")
         self.assertEqual(page._code, 200)
         body = page.wfile.getvalue().decode("utf-8")
-        self.assertIn("<title>About · KidZooKit</title>", body)
+        self.assertIn("<title>KidZooKit — Free At-Home Zoo for Kids</title>", body)
         self.assertIn("KidZooKit is an at-home virtual zoo", body)
         self.assertIn("Use the at-home cards and session together; print is optional for a group visit.", body)
         self.assertIn("What should I see at the zoo with a toddler?", body)

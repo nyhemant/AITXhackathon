@@ -126,6 +126,12 @@ class PlacePageSparseChromeTests(unittest.TestCase):
             "Giraffe Ridge feeding plus Penguin Cove and a hippo window",
         )
         self.assertEqual(quiet_hero_lead({"blurb": ""}), "")
+        self.assertEqual(
+            quiet_hero_lead(
+                {"blurb": "SUE the T. rex leads Chicago’s natural history hit list."}
+            ),
+            "SUE the T. rex leads Chicago’s natural history hit list",
+        )
 
     def test_place_pages_drop_instructional_chrome(self):
         for slug, html in self.pages.items():
