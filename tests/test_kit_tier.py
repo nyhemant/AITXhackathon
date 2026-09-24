@@ -85,7 +85,7 @@ class KitTierHelperTests(unittest.TestCase):
     def test_freshness_two_tap_and_changed_mailto(self):
         accurate = freshness_mailto("dallas-zoo", "accurate")
         changed = freshness_mailto("dallas-zoo", "changed")
-        self.assertTrue(accurate.startswith("mailto:arku2arku@gmail.com?subject="))
+        self.assertTrue(accurate.startswith("mailto:kidzookit@agentmail.to?subject="))
         self.assertIn("dallas-zoo", unquote(accurate))
         self.assertIn("accurate", unquote(accurate))
         self.assertIn("dallas-zoo", unquote(changed))
@@ -98,7 +98,7 @@ class KitTierHelperTests(unittest.TestCase):
         self.assertIn(">Accurate<", html)
         self.assertIn(">Something changed<", html)
         self.assertIn("houston-zoo", unquote(html))
-        self.assertIn("mailto:arku2arku@gmail.com", html)
+        self.assertIn("mailto:kidzookit@agentmail.to", html)
 
 
 class KitTierPageTests(unittest.TestCase):

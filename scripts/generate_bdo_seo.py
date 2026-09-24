@@ -77,7 +77,7 @@ PLACES_JS = FIELD / "js" / "places-data.js"
 SITE = PUBLIC_SITE
 SITE_HOST = PUBLIC_SITE.split("://", 1)[-1]
 BRAND_NAME = "KidZooKit"
-CONTACT_MAIL = "arku2arku@gmail.com"
+CONTACT_MAIL = "kidzookit@agentmail.to"
 TODAY = date.today().isoformat()
 
 RESERVED = {
