@@ -423,8 +423,8 @@ class CardStudyUxTests(unittest.TestCase):
 
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "38")
-        self.assertEqual(STUDY_CARD_JS_VER, "15")
-        self.assertEqual(STUDY_CARD_CSS_VER, "13")
+        self.assertEqual(STUDY_CARD_JS_VER, "16")
+        self.assertEqual(STUDY_CARD_CSS_VER, "14")
         css = SEO_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-hero-links", css)
         self.assertIn("display: contents", css)
@@ -450,12 +450,13 @@ class CardStudyUxTests(unittest.TestCase):
         row = card_hero_links_html(more, watch)
         self.assertIn('class="card-hero-links no-print"', row)
         self.assertIn("Photos", row)
-        self.assertIn("Watch Live", row)
+        self.assertIn("Watch film from Smithsonian National Zoo", row)
+        self.assertNotIn("Watch live", row)
         self.assertEqual(card_hero_links_html("", ""), "")
         # Photos-only hero links when watch is empty (page dedupe path)
         photos_only = card_hero_links_html(more, "")
         self.assertIn("Photos", photos_only)
-        self.assertNotIn("Watch Live", photos_only)
+        self.assertNotIn("Watch film", photos_only)
 
         for cid in ("african-lion", "reticulated-giraffe"):
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
@@ -490,8 +491,8 @@ class CardStudyUxTests(unittest.TestCase):
                         'class="card-page-actions"', 1
                     )[0]
                 self.assertNotIn("More photos at", hero)
-                self.assertIn("study-card.js?v=15", html)
-                self.assertIn("study-card.css?v=13", html)
+                self.assertIn("study-card.js?v=16", html)
+                self.assertIn("study-card.css?v=14", html)
                 self.assertIn(f"seo-venue.css?v={CARD_SEO_CSS_VER}", html)
 
         warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))

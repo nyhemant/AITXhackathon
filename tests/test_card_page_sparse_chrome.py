@@ -146,7 +146,9 @@ class CardPageSparseChromeTests(unittest.TestCase):
                 self.assertIn("card-page-actions-print", actions)
                 self.assertNotIn("Explore at home", actions)
                 self.assertNotIn("nationalzoo.si.edu", actions)
-                self.assertLessEqual(actions.count('class="btn '), 3)
+                # Hidden Quiz peer is extra only with ?from= a place. The standing row is Watch, Photos, Print.
+                shown = re.sub(r"<a\b[^>]*\bhidden\b[^>]*>.*?</a>", "", actions)
+                self.assertLessEqual(shown.count('class="btn '), 3)
 
     def test_print_spec_line_near_print_cta(self):
         for cid, html in self.pages.items():
@@ -201,15 +203,19 @@ class CardPageSparseChromeTests(unittest.TestCase):
         }
         place = watch_links_html(item)
         card = watch_links_html(item, film_via_vft=True, watch_live=True)
-        self.assertIn("youtube.com", place)
+        # Place brief: the cam page is the one control. The film is not a second link.
+        self.assertNotIn("youtube.com", place)
         self.assertIn("nationalzoo.si.edu", place)
-        # One watch CTA per row: no duplicate Open Virtual Field Trip beside live/film
+        self.assertEqual(place.count("seo-watch-link"), 1)
         self.assertNotIn("Open Virtual Field Trip", place)
+        # Card door: no embed, so the label is the film the player opens — not Watch live.
         self.assertNotIn("youtube.com", card)
         self.assertNotIn("nationalzoo.si.edu", card)
-        self.assertIn("Watch Live", card)
+        self.assertIn("Watch film", card)
+        self.assertNotIn("Watch live", card)
+        self.assertNotIn("Live from", card)
         self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&amp;from=card#habitat=african-lion", card)
-        self.assertIn("Live from Smithsonian National Zoo", card)
+        self.assertIn("Film from Houston Zoo", card)
         self.assertNotIn('target="_blank"', card)
         self.assertTrue(vft_has_inpage_media(item["vft"]))
         self.assertEqual(

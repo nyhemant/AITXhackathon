@@ -169,9 +169,8 @@ class VftSparseChromeTests(unittest.TestCase):
         self.assertNotIn('class="vz-static-kind">Card</p>', html)
         self.assertIn("Film —", html)
         self.assertNotIn("Pre-recorded —", html)
-        visible = re.sub(r"<noscript\b[^>]*>.*?</noscript>", "", html, flags=re.I | re.S)
-        self.assertNotIn("Watch on YouTube", visible)
-        self.assertIn("Watch on YouTube", html)
+        self.assertNotIn("Watch on YouTube", html)
+        self.assertNotIn("vz-static-film-offsite", html)
 
     def test_js_film_control_uses_film_label(self):
         self.assertIn("Film — ${escapeHtml(video.title || \"A short film\")}", self.js)

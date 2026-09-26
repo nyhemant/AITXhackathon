@@ -1113,13 +1113,18 @@ def watch_link_html(url: str, label: str, *, kind: str) -> str:
 
 
 def card_watch_row_html(vft: dict, *, cta: str) -> str:
-    """Card Watch Live: same-origin player only. Cousin zoo is plain text, not a href."""
+    """Card Watch: same-origin player only. Cousin zoo is plain text, not a href.
+
+    “Live from” only when an in-page cam embed exists. A cam label without
+    an embed is not a live door.
+    """
     if not vft_can_watch_live(vft):
         return ""
     href = card_watch_href(vft)
     if not href:
         return ""
-    cam_src = cousin_source_from_label(vft.get("cam_label") or "")
+    embed = str(vft.get("cam_embed") or "").strip()
+    cam_src = cousin_source_from_label(vft.get("cam_label") or "") if embed else ""
     film_src = cousin_source_from_label(vft.get("film_title") or "")
     if cam_src:
         attr = f'<span class="seo-watch-source">Live from {esc(cam_src)}</span>'
@@ -1181,40 +1186,44 @@ def card_hero_photo_html(
 
 
 def watch_links_html(item: dict, *, film_via_vft: bool = False, watch_live: bool = False) -> str:
-    """Live cam / film only when Virtual Field Trip already has a sourced URL.
+    """One live cam or one film when Virtual Field Trip already has a sourced URL.
 
-    Card pages pass film_via_vft=True so Pre-recorded YouTube tabs open the
-    in-page VFT habitat instead. Place pages keep the existing film URLs.
-    watch_live=True (animal / sea_life cards) emits Watch Live and never
-    an outbound zoo/webcam href.
+    Card callers pass film_via_vft=True so the control opens the in-page habitat.
+    watch_live=True uses the honest action label: Watch live only with a cam
+    embed, otherwise Watch film. Place briefs keep a single outbound control:
+    the cam page when one exists, otherwise the film.
     """
     vft = item.get("vft") or {}
     if vft.get("library_only") and not film_via_vft:
         return ""
     if film_via_vft:
         if watch_live:
-            return card_watch_row_html(vft, cta=CTA_WATCH_LIVE)
+            return card_watch_row_html(vft, cta=card_watch_cta_label(vft))
         if not vft_has_inpage_media(vft) or not vft.get("vft_href"):
             return ""
-        label = vft.get("film_title") or PLACE_VFT_CTA
-        film_url = str(vft.get("film_url") or "")
-        if film_url and is_youtube_url(film_url):
-            return f'<p class="seo-watch-row">{watch_link_html(str(vft["vft_href"]), label, kind="vft")}</p>'
+        label = card_watch_cta_label(vft)
         return (
             f'<p class="seo-watch-row">'
-            f'{watch_link_html(str(vft["vft_href"]), label or PLACE_VFT_CTA, kind="vft")}'
+            f'{watch_link_html(str(vft["vft_href"]), label, kind="vft")}'
             f"</p>"
         )
-    links: list[str] = []
+    # Place-page animal brief: one cam or one film, never both for the same animal.
+    # A sourced cam page wins. Film is the control only when there is no cam.
     if vft.get("cam_url"):
         label = vft.get("cam_label") or "Watch live cam"
-        links.append(watch_link_html(str(vft["cam_url"]), label, kind="cam"))
+        return (
+            f'<p class="seo-watch-row">'
+            f'{watch_link_html(str(vft["cam_url"]), label, kind="cam")}'
+            f"</p>"
+        )
     if vft.get("film_url"):
         label = vft.get("film_title") or "Watch a short film"
-        links.append(watch_link_html(str(vft["film_url"]), label, kind="film"))
-    if not links:
-        return ""
-    return f'<p class="seo-watch-row">{" · ".join(links)}</p>'
+        return (
+            f'<p class="seo-watch-row">'
+            f'{watch_link_html(str(vft["film_url"]), label, kind="film")}'
+            f"</p>"
+        )
+    return ""
 
 
 # Wave 1 + Wave 2a + Wave 2b + Wave 3a + Wave 3b + Wave 4 Start here kits share
@@ -5442,12 +5451,8 @@ def write_card_pages(
                 f'\n  <link rel="stylesheet" href="/field-pack/css/study-card.css?v={STUDY_CARD_CSS_VER}" />'
             )
         more_links = catalog_more_links_html(item, shared=not show_venue_chrome, allow_cam=False, include_pictures=False)
-        # Animal/sea_life Watch Live lives only in the action row (dedupe hero media block).
-        watch_html = (
-            ""
-            if watch_live
-            else watch_links_html(item, film_via_vft=True, watch_live=False)
-        )
+        # One watch door lives in the action row. Hero photo is a lightbox, not a second cam.
+        watch_html = ""
         hero_links = card_hero_links_html(more_links, watch_html)
         next_html = card_next_html(cid)
         try_next_html = study_try_next_html(cid) if study_deck else ""
@@ -5468,9 +5473,15 @@ def write_card_pages(
                 '<a class="btn btn-primary card-quiz-peer" href="#quiz" hidden>Quiz</a>'
             )
         elif vft_href and not watch_live:
-            primary_bits.append(
-                f'<a class="btn btn-secondary" href="{vft_href}">{esc(PLACE_VFT_CTA)}</a>'
-            )
+            if vft_has_inpage_media(vft):
+                film_cta = card_watch_cta_label(vft)
+                primary_bits.append(
+                    f'<a class="btn btn-secondary" href="{vft_href}">{esc(film_cta)}</a>'
+                )
+            else:
+                primary_bits.append(
+                    f'<a class="btn btn-secondary" href="{vft_href}">{esc(PLACE_VFT_CTA)}</a>'
+                )
         photos_html = card_pictures_link_html(item)
         if photos_html:
             primary_bits.append(photos_html)

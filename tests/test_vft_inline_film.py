@@ -80,9 +80,9 @@ class VftInlineFilmTests(unittest.TestCase):
                     )
                     self.assertIn("data-habitat=", tag)
                     self.assertIn('role="button"', tag)
-                self.assertIn("youtube.com", html)
-                self.assertIn("vz-static-film-offsite", html)
-                self.assertIn("<noscript>", html)
+                self.assertNotIn("youtube.com", visible.lower())
+                self.assertNotIn("vz-static-film-offsite", html)
+                self.assertNotIn("Watch on YouTube", html)
 
     def test_js_never_assigns_youtube_watch_href_to_film_controls(self):
         self.assertNotIn("filmLink.href = video.url", self.js)
@@ -134,10 +134,62 @@ class VftInlineFilmTests(unittest.TestCase):
         self.assertIn("#habitat=caribbean-flamingo", primary)
         self.assertIn('role="button"', primary)
         self.assertIn("Film — Flamingo chicks at the Houston Zoo", primary)
-        self.assertNotIn("Pre-recorded", primary)
-        self.assertIn("<noscript>", html)
-        self.assertIn("vz-static-film-offsite", html)
-        self.assertIn("youtube.com/watch?v=u2k4lSTZxS4", html.split("<noscript>", 1)[1])
+        self.assertNotIn("Pre-recorded", html)
+        self.assertNotIn("Watch on YouTube", html)
+        self.assertNotIn("youtube.com", html.lower())
+        self.assertNotIn("<noscript>", html)
+        self.assertEqual(html.count("<a "), 1)
+
+    def test_stop_row_keeps_one_watch_control(self):
+        sys.path.insert(0, str(REPO / "scripts"))
+        import generate_vft_static as gen
+
+        film_and_outbound_cam = gen.stop_watch_html(
+            {
+                "id": "african-lion",
+                "cam": {
+                    "url": "https://nationalzoo.si.edu/webcams/lion-cam",
+                    "camLabel": "Lion cam at the Smithsonian National Zoo",
+                    "embed": None,
+                },
+                "video": {
+                    "url": "https://www.youtube.com/watch?v=tlZwYsJpqjo",
+                    "title": "African lions",
+                },
+            },
+            "zoo",
+        )
+        self.assertIn("Film — African lions", film_and_outbound_cam)
+        self.assertNotIn("Live cam", film_and_outbound_cam)
+        self.assertNotIn("youtube.com", film_and_outbound_cam.lower())
+        self.assertEqual(film_and_outbound_cam.count("<a "), 1)
+
+        live_embed = gen.stop_watch_html(
+            {
+                "id": "caribbean-flamingo",
+                "cam": {
+                    "url": "https://www.houstonzoo.org/explore/webcams/flamingo-cam/",
+                    "embed": "https://example.com/embed",
+                    "camLabel": "Flamingo cam at the Houston Zoo",
+                },
+                "video": {
+                    "url": "https://www.youtube.com/watch?v=7nK3gZqtlOM",
+                    "title": "Flamingos gather at Lake Bogoria",
+                },
+            },
+            "zoo",
+        )
+        self.assertIn("Live cam — Flamingo cam at the Houston Zoo", live_embed)
+        self.assertNotIn("Film —", live_embed)
+        self.assertEqual(live_embed.count("<a "), 1)
+
+        for path, html in self.pages.items():
+            with self.subTest(page=str(path.relative_to(REPO))):
+                visible = without_noscript(html)
+                for li in re.findall(r"<li>\s*(.*?)</li>", visible, flags=re.S):
+                    cams = li.count('class="vz-static-cam"')
+                    films = li.count('class="vz-static-film"')
+                    self.assertLessEqual(cams + films, 1, li[:180])
 
     def test_live_cam_links_still_leave_site(self):
         for html in self.pages.values():

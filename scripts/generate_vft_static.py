@@ -112,7 +112,18 @@ def cam_line(h: dict) -> str:
     return f'<a class="vz-static-cam" href="{esc(url)}" rel="noopener">Live cam — {esc(label)}</a>'
 
 
+def _cam_embed(h: dict) -> str:
+    cam = h.get("cam") if isinstance(h, dict) else None
+    if not isinstance(cam, dict):
+        return ""
+    embed = cam.get("embed")
+    if not embed:
+        return ""
+    return str(embed).strip()
+
+
 def film_line(h: dict, tab: str = "zoo") -> str:
+    """One in-page film control. The YouTube URL stays in the player, not a second link."""
     video = h.get("video") or {}
     url = video.get("url")
     if not url:
@@ -120,15 +131,27 @@ def film_line(h: dict, tab: str = "zoo") -> str:
     label = video.get("title") or "A short film"
     hid = h.get("id") or h.get("cardId") or ""
     href = f"/field-pack/virtual-field-trip/?tab={tab}#habitat={hid}"
-    primary = (
+    return (
         f'<a class="vz-static-film" href="{esc(href)}" data-habitat="{esc(hid)}" role="button">'
         f"Film — {esc(label)}</a>"
     )
-    noscript = (
-        f'<noscript><a class="vz-static-film-offsite" href="{esc(url)}" rel="noopener noreferrer">'
-        f"Watch on YouTube — {esc(label)}</a></noscript>"
-    )
-    return primary + noscript
+
+
+def stop_watch_html(h: dict, tab: str = "zoo") -> str:
+    """One watch control per stop.
+
+    An in-page cam embed is the live door. Otherwise the film is the control.
+    An outbound cam page is used only when there is no film. Never pair a film
+    with a second YouTube link for the same title.
+    """
+    if _cam_embed(h):
+        cam = cam_line(h)
+        if cam:
+            return cam
+    film = film_line(h, tab)
+    if film:
+        return film
+    return cam_line(h)
 
 
 def render_panels(cat: dict) -> str:
@@ -144,15 +167,13 @@ def render_panels(cat: dict) -> str:
             name = h.get("label") or (cat.get(h.get("cardId") or h.get("id")) or {}).get("name") or h.get("id")
             line = teaser(h, cat)
             href, kind = card_href(h, spec["id"])
-            cam = cam_line(h)
-            film = film_line(h, spec["id"])
+            watch = stop_watch_html(h, spec["id"])
             kind_html = f'<p class="vz-static-kind">{esc(kind)}</p>' if kind else ""
             items.append(
                 f"""          <li>
             <a href="{esc(href)}">{esc(name)}</a>
             {f'<p>{esc(line)}</p>' if line else ''}
-            {cam}
-            {film}
+            {watch}
             {kind_html}
           </li>"""
             )

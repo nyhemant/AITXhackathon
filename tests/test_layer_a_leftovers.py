@@ -12,6 +12,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 from field_pack_catalog_kind import load_card_kinds  # noqa: E402
 from generate_bdo_seo import (  # noqa: E402
+    card_watch_cta_label,
     load_vft_by_card,
     vft_can_watch_live,
 )
@@ -209,12 +210,15 @@ class LayerALeftoversTests(unittest.TestCase):
         main = _main(html)
         self.assertIn("card-watch-live", main)
         self.assertEqual(main.count("card-watch-live"), 1)
-        self.assertIn("Watch live at Georgia Aquarium", main)
+        # Ocean Voyager is a cam page, not an in-page embed. The player opens the film.
+        self.assertFalse(str(rec.get("cam_embed") or "").strip())
+        self.assertEqual(card_watch_cta_label(rec), "Watch film")
+        self.assertIn(">Watch film</a>", main)
+        self.assertNotIn("Watch live at", main)
         self.assertIn("card-page-photo-zoom", main)
         self.assertNotIn("card-page-photo-link", main)
         self.assertNotIn('class="seo-watch-row"', main)
         self.assertIn("#habitat=manta-ray", main)
-        self.assertIn("Georgia Aquarium", main)
         self.assertEqual(_try_next_ids(html), ["jellyfish", "kelp-forest", "clownfish"])
 
 
