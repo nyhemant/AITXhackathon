@@ -93,11 +93,14 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIsNotNone(going)
         chapter = going.group(0)
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
-        self.assertEqual(len(pills), 2, pills)
-        self.assertIn('href="/field-pack/dallas-zoo/"', pills[0])
-        self.assertIn("Sample visit", pills[0])
-        self.assertIn('href="/field-pack/"', pills[1])
-        self.assertIn("Explore Places Near You", pills[1])
+        self.assertEqual(len(pills), 1, pills)
+        self.assertIn('href="/field-pack/"', pills[0])
+        self.assertIn("Explore Places Near You", pills[0])
+        self.assertNotIn("Sample visit", pills[0])
+        self.assertIn(
+            'class="start-going-secondary" href="/field-pack/dallas-zoo/">Sample visit</a>',
+            chapter,
+        )
         self.assertNotIn("Explore zoos", chapter)
         self.assertNotIn("Explore aquariums", chapter)
         self.assertIn('href="/field-pack/dallas-zoo/"', chapter)

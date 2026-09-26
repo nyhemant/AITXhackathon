@@ -113,8 +113,12 @@ class BrandHomeTests(unittest.TestCase):
         self.assertNotIn("/1LessMark.png", html)
         self.assertIn('id="start-menu-btn"', html)
         pills = re.findall(r'<a class="start-pill" href="([^"]+)">([^<]+)</a>', html)
-        self.assertIn(("/field-pack/dallas-zoo/", "Sample visit"), pills)
         self.assertIn(("/field-pack/", "Explore Places Near You"), pills)
+        self.assertNotIn(("/field-pack/dallas-zoo/", "Sample visit"), pills)
+        self.assertIn(
+            'class="start-going-secondary" href="/field-pack/dallas-zoo/">Sample visit</a>',
+            html,
+        )
 
 
 
