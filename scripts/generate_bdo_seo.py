@@ -5022,25 +5022,12 @@ def _pick_group_cards(cards: list[dict], group: str, n: int = 12) -> list[dict]:
 
 
 def _landing_teaser_cards(all_cards: list[dict]) -> list[dict]:
-    """Featured 12 for All, plus every primary-hub card so filters match the cards hub."""
-    featured = _featured_cards(all_cards)
-    by_id: dict[str, dict] = {}
-    for c in featured:
+    """Featured teasers only — full animal browse lives on /field-pack/cards/ (single spine)."""
+    ordered: list[dict] = []
+    for c in _featured_cards(all_cards):
         cc = dict(c)
         cc["featured_all"] = True
-        by_id[cc["id"]] = cc
-    ordered = [by_id[c["id"]] for c in featured]
-    grouped = group_cards_by_hub_section(all_cards)
-    for sid, _label, _kind in HUB_SECTIONS:
-        if sid not in PRIMARY_HUB_SECTION_IDS or not grouped.get(sid):
-            continue
-        for c in _pick_group_cards(all_cards, sid, len(grouped[sid])):
-            if c["id"] in by_id:
-                continue
-            cc = dict(c)
-            cc["featured_all"] = False
-            by_id[cc["id"]] = cc
-            ordered.append(cc)
+        ordered.append(cc)
     return ordered
 
 
@@ -5685,7 +5672,7 @@ def write_card_pages(
 
 
 def patch_landing_directory(venues: list[dict]) -> None:
-    """T5: cards showcase + compact places (no full dual-rail lists on landing)."""
+    """T5: thin cards teaser + compact places. Full animal list is /field-pack/cards/ only."""
     index = FIELD / "index.html"
     html = index.read_text(encoding="utf-8")
     venues_by_id = {v["id"]: v for v in venues}
@@ -5742,7 +5729,7 @@ def patch_landing_directory(venues: list[dict]) -> None:
             )
         tile_lis.append(
             f'<li class="cat-card-tile" data-card-group="{esc(g)}" data-card-id="{esc(cid)}"'
-            f'{" data-featured-all=\"1\"" if c.get("featured_all") else " hidden"}>'
+            f' data-featured-all="1">'
             f'<a class="cat-card-tile-link" href="{_card_href(c)}" data-card-id="{esc(cid)}">'
             f"{media}"
             f'<span class="cat-card-name">{esc(c.get("name") or cid)}</span>'
@@ -5803,14 +5790,13 @@ def patch_landing_directory(venues: list[dict]) -> None:
         f"            {popular_html}\n"
         f"          </div>"
     )
-    present_groups = sorted({c.get("group") or _card_group_key(c) for c in pool})
     cards_inner = (
         f'<div class="cat-cards-showcase" id="cat-cards-showcase">\n'
-        f"            {_hub_filter_tabs_html(present_groups)}\n"
         f"            {tiles_ul}\n"
-        f'            <p class="cat-cards-all"><a href="/field-pack/cards/" id="cat-all-cards-link">All {n_cards} cards →</a></p>\n'
+        f'<p class="cat-cards-all"><a href="/field-pack/cards/" id="cat-all-cards-link">All {n_cards} cards →</a></p>\n'
         f"          </div>"
     )
+
     cards_block = (
         f'<div id="seo-venue-directory" class="seo-dir-body seo-dir-body-compact seo-dir-cards-only" '
         f'data-place-count-build="{n_places}" data-card-count-build="{n_cards}">\n'
