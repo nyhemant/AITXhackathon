@@ -1708,19 +1708,15 @@ body.start-body {
 /* Quiet wordmark top-left — Start only, never a home link. */
 .start-wordmark {
   margin: 0;
-  padding: 0.28rem 0.6rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
+  padding: 0;
+  background: none;
   color: var(--teal);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.035em;
+  font-size: 0.95rem;
+  font-weight: 550;
+  letter-spacing: 0.012em;
   line-height: 1.2;
   white-space: nowrap;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 1px 0 rgba(10, 69, 69, 0.06);
 }
 
 .start-menu-bars {
@@ -1798,8 +1794,7 @@ body.start-body {
   font-weight: 500;
 }
 
-.start-hero .start-menu-btn,
-.start-hero .start-wordmark {
+.start-hero .start-menu-btn {
   background: rgba(255, 255, 255, 0.78);
 }
 
@@ -1809,8 +1804,8 @@ body.start-body {
   }
 
   .start-wordmark {
-    font-size: 0.6875rem;
-    letter-spacing: 0.03em;
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
   }
 }
 
