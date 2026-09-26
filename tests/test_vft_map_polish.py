@@ -121,8 +121,8 @@ class VftMapPolishTests(unittest.TestCase):
         self.assertIn('const DEFAULT_ZOO_STOP = "caribbean-flamingo"', self.js)
         for html in self.pages.values():
             self.assertIn("Print from Watch", html)
-            self.assertIn("virtual-venue.js?v=107", html)
-            self.assertIn("virtual-venue.css?v=58", html)
+            self.assertIn("virtual-venue.js?v=108", html)
+            self.assertIn("virtual-venue.css?v=59", html)
             self.assertIn('class="btn btn-secondary" id="vz-print-watch"', html)
             self.assertNotIn('class="btn btn-primary" id="vz-print-watch"', html)
 
@@ -178,6 +178,64 @@ class VftMapPolishTests(unittest.TestCase):
         self.assertIn("desk ? 23 : 19", bullet)
         self.assertIn("@media (min-width: 720px)", self.css)
         self.assertIn("Pin diameter is JS padRestScale", self.css)
+
+    def test_phase3_light_motion_keeps_trail_geometry(self):
+        life = _fn_body(self.js, "ensureTrailLife")
+        self.assertIn('setAttribute("class", "vz-trail-life")', life)
+        self.assertIn("isPictorialMap()", life)
+        self.assertNotIn("catmullRomPath", life)
+        self.assertNotIn("ZOO_TRAIL_WAYPOINTS", life)
+        self.assertNotIn("beside", life)
+        polish = _fn_body(self.js, "polishTrail")
+        self.assertLess(polish.index("ensureTrailLife("), polish.index("applyTrailD("))
+        self.assertIn("zooTrailPoints()", polish)
+        self.assertIn("alpha = 0.5", _fn_body(self.js, "catmullRomPath"))
+        dash = self.css.split(".vz-trail-dash {\n  stroke: #f3e4c0;", 1)[1].split("}", 1)[0]
+        self.assertIn("stroke-width: 9.5", dash)
+        self.assertIn("stroke-dasharray: none", dash)
+        self.assertNotIn("stroke-dasharray: 10 8", self.css)
+        self.assertIn("const DESK_PICTORIAL_REST = 0.8", self.js)
+        self.assertIn("const DESK_PICTORIAL_NEXT = 0.9", self.js)
+
+    def test_phase3_motion_is_calm_and_reduced_motion_disables_it(self):
+        self.assertIn(
+            "animation: vz-next-breathe 3.6s ease-in-out infinite",
+            self.css,
+        )
+        breathe = self.css.split("@keyframes vz-next-breathe", 1)[1].split("}", 2)
+        breathe_body = breathe[0] + "}" + breathe[1] + "}"
+        self.assertIn("opacity: 0.2", breathe_body)
+        self.assertIn("opacity: 0.48", breathe_body)
+        self.assertIn("transform: scale(1.045)", breathe_body)
+        self.assertNotIn("opacity: 0.95", breathe_body)
+        life_at = self.css.index(".vz-map-wrap.is-pictorial .vz-trail-life {")
+        life_rule = self.css[life_at : self.css.index("}", life_at)]
+        self.assertIn("stroke-dasharray: 22 498", life_rule)
+        self.assertIn("animation: vz-trail-drift 22s linear infinite", life_rule)
+        self.assertIn("stroke-width: 3.4", life_rule)
+        block = _media_block(self.css, "@media (prefers-reduced-motion: reduce)")
+        self.assertIn(".vz-trail-dash { animation: none; }", block)
+        self.assertIn(".vz-map-wrap.is-pictorial .vz-spot[data-next=\"1\"] .vz-halo", block)
+        self.assertIn("animation: none", block)
+        self.assertIn("transform: none", block)
+        self.assertIn(".vz-map-wrap.is-pictorial .vz-trail-life", block)
+        self.assertIn("display: none", block)
+        self.assertIn(".vz-bubble", block)
+        self.assertIn(".vz-caustic", block)
+
+
+def _media_block(css: str, header: str) -> str:
+    start = css.index(header)
+    i = css.index("{", start)
+    depth = 0
+    for j in range(i, len(css)):
+        if css[j] == "{":
+            depth += 1
+        elif css[j] == "}":
+            depth -= 1
+            if depth == 0:
+                return css[start : j + 1]
+    raise AssertionError(f"unclosed {header}")
 
 
 if __name__ == "__main__":

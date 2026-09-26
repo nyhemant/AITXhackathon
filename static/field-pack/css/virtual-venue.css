@@ -108,13 +108,22 @@
 .vz-map-wrap.is-wide {
   background: #d7e4ee;
 }
-.vz-spot[data-next="1"] .vz-halo,
-.vz-map-wrap.is-pictorial .vz-spot[data-next="1"] .vz-halo {
+.vz-spot[data-next="1"] .vz-halo {
   animation: vz-next-glow 1.7s ease-in-out infinite;
+}
+/* Pictorial next pin: slow halo breathe. The photo and silo stay still. */
+.vz-map-wrap.is-pictorial .vz-spot[data-next="1"] .vz-halo {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: vz-next-breathe 3.6s ease-in-out infinite;
 }
 @keyframes vz-next-glow {
   0%, 100% { opacity: 0.35; }
   50% { opacity: 0.95; }
+}
+@keyframes vz-next-breathe {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.48; transform: scale(1.045); }
 }
 .vz-next-tag {
   font-family: Georgia, serif;
@@ -340,6 +349,19 @@ html[data-vft-print="1"] .vz-print-row,
   stroke-dasharray: none;
   opacity: 1;
 }
+/* Soft beads on the solid cream center. Hidden when motion is reduced. */
+.vz-map-wrap.is-pictorial .vz-trail-life {
+  fill: none;
+  stroke: #fffaf2;
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-dasharray: 22 498;
+  opacity: 0.8;
+  animation: vz-trail-drift 22s linear infinite;
+}
+@keyframes vz-trail-drift {
+  to { stroke-dashoffset: -520; }
+}
 .vz-arrows { fill: #8a7d5e; }
 @media (min-width: 720px) {
   .vz-map-wrap,
@@ -392,6 +414,15 @@ html[data-vft-print="1"] .vz-print-row,
   .vz-bubble,
   .vz-caustic,
   .vz-trail-dash { animation: none; }
+  .vz-spot[data-next="1"] .vz-halo,
+  .vz-map-wrap.is-pictorial .vz-spot[data-next="1"] .vz-halo {
+    animation: none;
+    transform: none;
+  }
+  .vz-map-wrap.is-pictorial .vz-trail-life {
+    animation: none;
+    display: none;
+  }
   .vz-caustic { opacity: 0.4; }
 }
 .vz-bullet-disc {

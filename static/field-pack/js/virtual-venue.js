@@ -870,6 +870,19 @@
     });
   }
 
+  function ensureTrailLife(g) {
+    if (!isPictorialMap()) {
+      const old = g.querySelector(".vz-trail-life");
+      if (old) old.remove();
+      return;
+    }
+    if (g.querySelector(".vz-trail-life")) return;
+    const life = document.createElementNS(svgNS(), "path");
+    life.setAttribute("class", "vz-trail-life");
+    life.setAttribute("fill", "none");
+    g.appendChild(life);
+  }
+
   function polishTrail() {
     if (!mapMount) return;
     const g = mapMount.querySelector("#vz-trail");
@@ -895,6 +908,7 @@
         mode = "smooth";
       }
     }
+    ensureTrailLife(g);
     applyTrailD(g, d);
     g.setAttribute("data-polished", "1");
     g.setAttribute("data-trail", mode);

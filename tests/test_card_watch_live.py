@@ -402,8 +402,8 @@ class CardWatchLiveTests(unittest.TestCase):
             self.assertIn('id="vz-card-nav"', html)
             self.assertIn('id="vz-back-card"', html)
             self.assertIn('id="vz-next-stop"', html)
-            self.assertIn("virtual-venue.js?v=107", html)
-            self.assertIn("virtual-venue.css?v=58", html)
+            self.assertIn("virtual-venue.js?v=108", html)
+            self.assertIn("virtual-venue.css?v=59", html)
             self.assertIn("This is a film, not a live cam.", html)
 
     def test_card_watch_hrefs_are_internal(self):
