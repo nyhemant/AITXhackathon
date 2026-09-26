@@ -349,10 +349,39 @@ class VftInlineFilmTests(unittest.TestCase):
                 disagreements.append(f"{url}: {rows}")
         self.assertEqual(disagreements, [])
 
+    def test_film_stop_plays_in_panel_with_youtube_secondary(self):
+        self.assertIn("function prefersReducedMotion(", self.js)
+        self.assertIn('matchMedia("(prefers-reduced-motion: reduce)")', self.js)
+        self.assertIn("const showCam = Boolean(cam.embed)", self.js)
+        self.assertNotIn("fromCard() ? inPageCam : hasCam", self.js)
+        film = self.js.split("function playFilmInline(", 1)[1].split("function closeCamPopup", 1)[0]
+        self.assertIn("prefersReducedMotion()", film)
+        self.assertIn("autoplay: motionOk", film)
+        self.assertIn("showFilmYt(url)", film)
+        self.assertIn("showSoundTip()", film)
+        self.assertNotIn("openExternal", film)
+        yt = self.js.split("function showFilmYt(", 1)[1].split("function playFilmInline", 1)[0]
+        self.assertIn("filmYt.href = url", yt)
+        self.assertIn("isYoutubeWatchUrl(url)", yt)
+        self.assertIn("hideFilmYt()", self.js.split("function fillPhoto(", 1)[1].split("function stopWatchPlayer", 1)[0])
+        for path, html in self.pages.items():
+            with self.subTest(page=str(path.relative_to(REPO))):
+                self.assertIn('id="vz-film-yt"', html)
+                self.assertIn("Open on YouTube", html)
+                self.assertNotIn("Watch on YouTube", html)
+                self.assertNotIn("youtube.com", without_noscript(html).lower())
+                tag = html.split('id="vz-film-yt"', 1)[1].split(">", 1)[0]
+                self.assertIn("hidden", tag)
+                self.assertNotIn("youtube.com", tag.lower())
+        css = (FP / "css" / "virtual-venue.css").read_text(encoding="utf-8")
+        self.assertIn(".vz-yt", css)
+        self.assertIn(".vz-yt[hidden]", css)
+        self.assertIn("min-height: 44px", css.split(".vz-yt {", 1)[1].split("}", 1)[0])
+
     def test_cache_bump(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.js?v=106", html)
-            self.assertIn("virtual-venue.css?v=57", html)
+            self.assertIn("virtual-venue.js?v=107", html)
+            self.assertIn("virtual-venue.css?v=58", html)
         self.assertIn("virtual-zoo.json?v=28", self.js)
         self.assertIn("virtual-aquarium.json?v=27", self.js)
         self.assertIn("zoo-film-library.json?v=11", self.js)

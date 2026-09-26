@@ -1,6 +1,9 @@
 /**
  * Virtual Field Trip engine — zoo / aquarium / museums / parks.
- * Tabs load a JSON + map SVG. Cams are link-out; films embed.
+ * Tabs load a JSON + map SVG.
+ * A film stop plays in the stop panel (muted autoplay unless reduced motion).
+ * Open on YouTube is a secondary link. A cam embed is the live door;
+ * a cam page without an embed is not a second button beside the film.
  * Zoo tab with no #habitat= deep link opens flamingo as the default stop.
  * Kid name is not collected.
  */
@@ -79,6 +82,7 @@
   const camLink = document.getElementById("vz-cam");
   const filmLink = document.getElementById("vz-film");
   const filmHint = document.getElementById("vz-film-hint");
+  const filmYt = document.getElementById("vz-film-yt");
   const placeLink = document.getElementById("vz-place");
   const challengeEl = document.getElementById("vz-challenge");
   const closeBtn = document.getElementById("vz-close");
@@ -2069,6 +2073,7 @@
   }
 
   function fillPhoto() {
+    hideFilmYt();
     if (!photoEl) return;
     photoEl.classList.remove("is-playing");
     photoEl.innerHTML = currentPhotoSrc
@@ -2181,23 +2186,53 @@
     return playFilmInline(film.url, film.title || (h && h.label) || "Film", film.start);
   }
 
+  function prefersReducedMotion() {
+    try {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function hideFilmYt() {
+    if (!filmYt) return;
+    filmYt.hidden = true;
+    filmYt.removeAttribute("href");
+  }
+
+  function showFilmYt(url) {
+    if (!filmYt || !isYoutubeWatchUrl(url)) {
+      hideFilmYt();
+      return;
+    }
+    filmYt.href = url;
+    filmYt.hidden = false;
+  }
+
   function playFilmInline(url, label, start) {
+    const motionOk = !prefersReducedMotion();
     const embed = youtubeEmbed(url, {
-      autoplay: true,
+      autoplay: motionOk,
       start: filmStartSec(start),
     });
-    if (!embed || !photoEl) return false;
+    if (!embed || !photoEl) {
+      hideFilmYt();
+      return false;
+    }
     photoEl.classList.add("is-playing");
     photoEl.innerHTML = `<iframe class="vz-watch-frame" title="${escapeHtml(label || "Film")}" src="${embed}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
     const frame = photoEl.querySelector("iframe.vz-watch-frame");
-    const kick = () => {
-      ytCommand(frame, "playVideo");
-    };
-    if (frame) {
-      frame.addEventListener("load", kick, { once: true });
-      kick();
+    if (motionOk) {
+      const kick = () => {
+        ytCommand(frame, "playVideo");
+      };
+      if (frame) {
+        frame.addEventListener("load", kick, { once: true });
+        kick();
+      }
+      showSoundTip();
     }
-    showSoundTip();
+    showFilmYt(url);
     return true;
   }
 
@@ -2379,8 +2414,7 @@
       watchEl.hidden = cinema ? !hasCam : !canWatch;
     }
     if (camLink) {
-      const inPageCam = Boolean(cam.embed);
-      const showCam = fromCard() ? inPageCam : hasCam;
+      const showCam = Boolean(cam.embed);
       camLink.hidden = !showCam;
       if (showCam) {
         camLink.href = fromCard() ? "#" : cam.url;
