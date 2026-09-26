@@ -282,7 +282,7 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("study-next-tier", main)
         self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=16", html)
+        self.assertIn("study-card.js?v=17", html)
         self.assertIn("study-card.css?v=14", html)
         self.assertIn("study-cards-data.js?v=9", html)
         self.assertIn('id="study-card-data"', html)
@@ -334,7 +334,7 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("ps-study-deepen", back)
         self.assertEqual(
             study_try_next_ids("whale-shark"),
-            ["shark", "manta-ray", "clownfish"],
+            ["manta-ray", "clownfish", "crab"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):

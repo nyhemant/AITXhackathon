@@ -199,11 +199,11 @@ class MarineAnimalParkRailsTests(unittest.TestCase):
         )
         self.assertEqual(
             study_try_next_ids("crab"),
-            ["shark", "clownfish", "cuttlefish"],
+            ["clownfish", "cuttlefish", "eel"],
         )
         self.assertEqual(
             study_try_next_ids("sea-otter"),
-            ["shark", "clownfish", "crab"],
+            ["clownfish", "crab", "cuttlefish"],
         )
         self.assertEqual(
             study_try_next_ids("puffin"),

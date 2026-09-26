@@ -150,7 +150,7 @@ class LayerALeftoversTests(unittest.TestCase):
         cases = {
             "stingray": ["manta-ray", "seahorse", "clownfish"],
             "starfish": ["sea-turtle", "octopus", "clownfish"],
-            "manta-ray": ["jellyfish", "kelp-forest", "clownfish"],
+            "manta-ray": ["jellyfish", "clownfish", "crab"],
         }
         for cid, want in cases.items():
             html = (FP / "cards" / cid / "index.html").read_text(encoding="utf-8")
@@ -219,7 +219,7 @@ class LayerALeftoversTests(unittest.TestCase):
         self.assertNotIn("card-page-photo-link", main)
         self.assertNotIn('class="seo-watch-row"', main)
         self.assertIn("#habitat=manta-ray", main)
-        self.assertEqual(_try_next_ids(html), ["jellyfish", "kelp-forest", "clownfish"])
+        self.assertEqual(_try_next_ids(html), ["jellyfish", "clownfish", "crab"])
 
 
 if __name__ == "__main__":

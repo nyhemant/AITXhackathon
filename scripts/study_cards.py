@@ -2838,6 +2838,22 @@ STUDY_NEIGHBORS = {
     "whale-shark": ("shark", "manta-ray"),
 }
 
+# Category / habitat hubs, not a species peer for Try next.
+# card-kinds.tsv hub+kind is kingdom and venue only: shark is sealife/both,
+# the same kingdom as whale-shark, and field_pack_card_kind() is sea_life
+# for both. STUDY_NEIGHBORS still keeps the same-kind link (whale-shark → shark).
+# These ids are the decks whose copy says they are not one animal:
+# shark (the group card, not whale-shark), freshwater-fish (group, not one
+# species), kelp-forest (a habitat, not one species). Common-name groups
+# that are the animal card (seahorse, stingray, sea turtle, …) stay peers.
+STUDY_TRY_NEXT_CATEGORY_IDS = frozenset(
+    {
+        "freshwater-fish",
+        "kelp-forest",
+        "shark",
+    }
+)
+
 STUDY_CARD_TITLES = {
     "african-lion": "African lion",
     "reticulated-giraffe": "Reticulated giraffe",
@@ -21215,6 +21231,11 @@ def study_try_next_hub(card_id: str, kinds: dict | None = None) -> str:
     return "wildlife"
 
 
+def study_try_next_is_category(card_id: str) -> bool:
+    """True for a category/habitat hub deck, not a species peer."""
+    return str(card_id or "").strip() in STUDY_TRY_NEXT_CATEGORY_IDS
+
+
 def study_try_next_catalog() -> dict:
     """Neighbors + traffic + titles + hubs for client-side Try next (session recent skip)."""
     titles = {
@@ -21229,6 +21250,7 @@ def study_try_next_catalog() -> dict:
         "traffic": list(STUDY_TRAFFIC_ORDER),
         "titles": titles,
         "hubs": hubs,
+        "categories": sorted(STUDY_TRY_NEXT_CATEGORY_IDS),
     }
 
 
@@ -21372,6 +21394,10 @@ def study_try_next_ids(
     ParentTest: default picks stay in-kingdom (sealife→sealife / wildlife→wildlife).
     ``exclude`` is a recent-path skip (session history). Fresh same-hub ids are
     preferred; recent same-hub fills before crossing hubs; never the current card.
+
+    When the source is a species card, category/habitat hubs (generic Shark,
+    freshwater-fish, kelp forest) are not siblings. They fill only if species
+    peers cannot make three thumbs. A category card may still recommend them.
     """
     current = str(card_id or "").strip()
     have_all = {cid for cid in STUDY_CARDS if cid and cid != current}
@@ -21382,6 +21408,7 @@ def study_try_next_ids(
     have_fresh = {cid for cid in have_all if cid not in blocked}
     kinds = load_card_kinds()
     cur_hub = study_try_next_hub(current, kinds)
+    skip_categories = not study_try_next_is_category(current)
 
     def extra(pool: set[str]) -> tuple[str, ...]:
         return tuple(sorted(cid for cid in pool if cid not in STUDY_TRAFFIC_ORDER))
@@ -21392,11 +21419,19 @@ def study_try_next_ids(
     out: list[str] = []
     seen: set[str] = set()
 
-    def take(cids: tuple[str, ...], pool: set[str], *, hub_only: bool) -> bool:
+    def take(
+        cids: tuple[str, ...],
+        pool: set[str],
+        *,
+        hub_only: bool,
+        allow_category: bool,
+    ) -> bool:
         for cid in cids:
             if cid not in pool or cid in seen:
                 continue
             if hub_only and not same_hub(cid):
+                continue
+            if not allow_category and study_try_next_is_category(cid):
                 continue
             seen.add(cid)
             out.append(cid)
@@ -21414,13 +21449,19 @@ def study_try_next_ids(
         *STUDY_TRAFFIC_ORDER,
         *extra(have_all),
     )
-    if take(fresh_order, have_fresh, hub_only=True):
+    allow = not skip_categories
+    if take(fresh_order, have_fresh, hub_only=True, allow_category=allow):
         return out
-    if take(all_order, have_all, hub_only=True):
+    if take(all_order, have_all, hub_only=True, allow_category=allow):
         return out
-    if take(fresh_order, have_fresh, hub_only=False):
+    if take(fresh_order, have_fresh, hub_only=False, allow_category=allow):
         return out
-    take(all_order, have_all, hub_only=False)
+    if take(all_order, have_all, hub_only=False, allow_category=allow):
+        return out
+    if skip_categories and len(out) < n:
+        if take(all_order, have_all, hub_only=True, allow_category=True):
+            return out
+        take(all_order, have_all, hub_only=False, allow_category=True)
     return out
 
 

@@ -352,7 +352,7 @@ CATALOG_JS_VER = "40"
 SHELL_CSS_VER = 12
 SHELL_JS_VER = "6"
 PRINT_KIT_JS_VER = "22"
-STUDY_CARD_JS_VER = "16"
+STUDY_CARD_JS_VER = "17"
 STUDY_CARD_CSS_VER = "14"
 STUDY_CARDS_DATA_JS_VER = "9"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"

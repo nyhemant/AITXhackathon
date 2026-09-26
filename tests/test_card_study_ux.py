@@ -321,7 +321,7 @@ class CardStudyUxTests(unittest.TestCase):
         )
         self.assertEqual(
             study_try_next_ids("sea-otter"),
-            ["shark", "clownfish", "crab"],
+            ["clownfish", "crab", "cuttlefish"],
         )
         self.assertEqual(
             study_try_next_ids("american-alligator"),
@@ -341,11 +341,11 @@ class CardStudyUxTests(unittest.TestCase):
         )
         self.assertEqual(
             study_try_next_ids("clownfish"),
-            ["shark", "freshwater-fish", "crab"],
+            ["crab", "cuttlefish", "eel"],
         )
         self.assertEqual(
             study_try_next_ids("crab"),
-            ["shark", "clownfish", "cuttlefish"],
+            ["clownfish", "cuttlefish", "eel"],
         )
         self.assertEqual(
             study_try_next_ids("cuttlefish"),
@@ -365,7 +365,7 @@ class CardStudyUxTests(unittest.TestCase):
         )
         self.assertEqual(
             study_try_next_ids("manta-ray"),
-            ["jellyfish", "kelp-forest", "clownfish"],
+            ["jellyfish", "clownfish", "crab"],
         )
         self.assertEqual(
             study_try_next_ids("octopus"),
@@ -389,7 +389,7 @@ class CardStudyUxTests(unittest.TestCase):
         )
         self.assertEqual(
             study_try_next_ids("whale-shark"),
-            ["shark", "manta-ray", "clownfish"],
+            ["manta-ray", "clownfish", "crab"],
         )
         for cid in study_card_ids():
             nxt = study_try_next_ids(cid)
@@ -423,7 +423,7 @@ class CardStudyUxTests(unittest.TestCase):
 
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "38")
-        self.assertEqual(STUDY_CARD_JS_VER, "16")
+        self.assertEqual(STUDY_CARD_JS_VER, "17")
         self.assertEqual(STUDY_CARD_CSS_VER, "14")
         css = SEO_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-hero-links", css)
@@ -491,7 +491,7 @@ class CardStudyUxTests(unittest.TestCase):
                         'class="card-page-actions"', 1
                     )[0]
                 self.assertNotIn("More photos at", hero)
-                self.assertIn("study-card.js?v=16", html)
+                self.assertIn("study-card.js?v=17", html)
                 self.assertIn("study-card.css?v=14", html)
                 self.assertIn(f"seo-venue.css?v={CARD_SEO_CSS_VER}", html)
 

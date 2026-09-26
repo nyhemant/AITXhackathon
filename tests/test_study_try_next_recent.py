@@ -18,6 +18,7 @@ from study_cards import (  # noqa: E402
     STUDY_CARDS,
     STUDY_NEIGHBORS,
     STUDY_TRAFFIC_ORDER,
+    STUDY_TRY_NEXT_CATEGORY_IDS,
     study_card_ids,
     study_try_next_catalog,
     study_try_next_html,
@@ -75,10 +76,32 @@ if (after[0] !== "african-elephant") fail("prefer remaining neighbor when not re
 if (after.length !== 3) fail("must fill to 3");
 
 eq(FPStudyPickTryNextIds("whale-shark", ["whale-shark"], catalog, 3),
-  ["shark", "manta-ray", "clownfish"],
-  "whale-shark stays sealife");
+  ["manta-ray", "clownfish", "crab"],
+  "whale-shark species peers, no generic shark");
 const whale = FPStudyPickTryNextIds("whale-shark", ["whale-shark"], catalog, 3);
+if (whale.includes("shark")) fail("whale-shark must not recommend generic shark");
+if (whale.includes("freshwater-fish") || whale.includes("kelp-forest")) {
+  fail("whale-shark must not recommend a category hub");
+}
 if (whale.includes("african-lion")) fail("whale-shark must not recommend lion");
+const whaleAfterManta = FPStudyPickTryNextIds(
+  "whale-shark",
+  ["manta-ray", "whale-shark"],
+  catalog,
+  3
+);
+if (whaleAfterManta.includes("shark") || whaleAfterManta.includes("manta-ray")) {
+  fail("recent skip still prefers species peers, got " + JSON.stringify(whaleAfterManta));
+}
+if (whaleAfterManta.length !== 3 || whaleAfterManta[0] !== "clownfish") {
+  fail("whale-shark after manta got " + JSON.stringify(whaleAfterManta));
+}
+eq(FPStudyPickTryNextIds("sea-otter", ["sea-otter"], catalog, 3),
+  ["clownfish", "crab", "cuttlefish"],
+  "sea-otter skips generic shark");
+eq(FPStudyPickTryNextIds("freshwater-fish", ["freshwater-fish"], catalog, 3),
+  ["shark", "clownfish", "crab"],
+  "group card may still offer shark");
 eq(FPStudyPickTryNextIds("stingray", ["stingray"], catalog, 3),
   ["manta-ray", "seahorse", "clownfish"],
   "stingray first visit stays sealife");
@@ -148,6 +171,10 @@ class StudyTryNextRecentTests(unittest.TestCase):
         self.assertEqual(catalog["hubs"]["whale-shark"], "sealife")
         self.assertEqual(catalog["hubs"]["stingray"], "sealife")
         self.assertEqual(catalog["hubs"]["african-lion"], "wildlife")
+        self.assertEqual(
+            catalog["categories"],
+            ["freshwater-fish", "kelp-forest", "shark"],
+        )
         self.assertEqual(study_try_next_hub("whale-shark"), "sealife")
         self.assertEqual(study_try_next_hub("stingray"), "sealife")
         self.assertEqual(study_try_next_hub("polar-bear"), "wildlife")
@@ -203,6 +230,29 @@ class StudyTryNextRecentTests(unittest.TestCase):
         self.assertEqual(star_after_lion, ["sea-turtle", "octopus", "clownfish"])
         self.assertNotIn("african-lion", star_after_lion)
 
+        whale = study_try_next_ids("whale-shark")
+        self.assertEqual(whale, ["manta-ray", "clownfish", "crab"])
+        self.assertNotIn("shark", whale)
+        whale_after = study_try_next_ids(
+            "whale-shark", exclude=["whale-shark", "manta-ray"]
+        )
+        self.assertEqual(whale_after, ["clownfish", "crab", "cuttlefish"])
+        self.assertTrue(set(whale_after).isdisjoint(STUDY_TRY_NEXT_CATEGORY_IDS))
+        for cid in study_card_ids():
+            nxt = study_try_next_ids(cid)
+            if cid in STUDY_TRY_NEXT_CATEGORY_IDS:
+                continue
+            with self.subTest(card=cid):
+                self.assertEqual(len(nxt), 3)
+                self.assertTrue(set(nxt).isdisjoint(STUDY_TRY_NEXT_CATEGORY_IDS))
+                self.assertTrue(
+                    all(study_try_next_hub(x) == study_try_next_hub(cid) for x in nxt)
+                )
+        self.assertEqual(
+            study_try_next_ids("freshwater-fish"),
+            ["shark", "clownfish", "crab"],
+        )
+
         almost_all = [cid for cid in study_card_ids() if cid != "shark"]
         filled = study_try_next_ids("shark", exclude=almost_all)
         self.assertEqual(len(filled), 3)
@@ -239,8 +289,8 @@ class StudyTryNextRecentTests(unittest.TestCase):
         seo = SEO.read_text(encoding="utf-8")
         self.assertIn(f'STUDY_CARD_JS_VER = "{STUDY_CARD_JS_VER}"', seo)
         self.assertIn(f'STUDY_CARDS_DATA_JS_VER = "{STUDY_CARDS_DATA_JS_VER}"', seo)
-        self.assertEqual(STUDY_CARD_JS_VER, "12")
-        self.assertEqual(STUDY_CARDS_DATA_JS_VER, "8")
+        self.assertEqual(STUDY_CARD_JS_VER, "17")
+        self.assertEqual(STUDY_CARDS_DATA_JS_VER, "9")
 
     def test_js_helper_runtime_matches_python(self):
         node = shutil.which("node")

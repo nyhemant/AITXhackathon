@@ -393,7 +393,7 @@ class SeaOtterEasyStudyCardTests(unittest.TestCase):
             self.assertIn(prompt, back)
         self.assertEqual(
             study_try_next_ids("sea-otter"),
-            ["shark", "clownfish", "crab"],
+            ["clownfish", "crab", "cuttlefish"],
         )
 
     def test_print_faces_are_duplex_and_clamped(self):
