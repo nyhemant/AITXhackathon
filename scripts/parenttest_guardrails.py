@@ -3,6 +3,8 @@
 
 Read-only checks. Fail the build when Sep 2026 Layer A/B regressions return:
   A) baked Try-next thumbs leave the card's kingdom
+  A2) a species card bakes a category/habitat hub (generic Shark, freshwater
+      fish, kelp forest) as a Try-next sibling
   B) visible Watch Live CTA with no tour habitat
   C) empty catalog `pictures` on animal / sea_life cards
 
@@ -43,7 +45,7 @@ sys.path.insert(0, str(SCRIPTS))
 from field_pack_catalog_kind import load_card_kinds  # noqa: E402
 from generate_bdo_seo import load_catalog_depth, load_vft_by_card, vft_can_watch_live  # noqa: E402
 from rewrite_card_try_next import baked_try_next_ids  # noqa: E402
-from study_cards import study_try_next_hub  # noqa: E402
+from study_cards import STUDY_TRY_NEXT_CATEGORY_IDS, study_try_next_hub  # noqa: E402
 
 FP = ROOT / "static" / "field-pack"
 CARDS = FP / "cards"
@@ -197,6 +199,37 @@ def cross_kingdom_try_next_issues(
         if crossed:
             issues.append(
                 f"{cid}: Try-next {crossed} left kingdom {hub} (baked {baked})"
+            )
+    return issues
+
+
+def category_hub_try_next_issues(
+    *,
+    html_by_id: dict[str, str] | None = None,
+    ids: list[str] | None = None,
+) -> list[str]:
+    """Species cards must not bake a category/habitat hub as a Try-next sibling.
+
+    Category ids are decks that are not one species (shark group, freshwater-fish
+    group, kelp habitat). TSV hub/kind does not encode that split. A category
+    card may still recommend Shark. Parks and attractions stay out of this check.
+    """
+    want = ids if ids is not None else published_animal_sea_life_ids()
+    categories = set(STUDY_TRY_NEXT_CATEGORY_IDS)
+    issues: list[str] = []
+    for cid in want:
+        if cid in categories:
+            continue
+        html = (html_by_id or {}).get(cid) if html_by_id is not None else load_card_html(cid)
+        if html_by_id is not None and cid not in html_by_id:
+            continue
+        if not html:
+            continue
+        baked = baked_try_next_ids(html)
+        odd = [nxt for nxt in baked if nxt in categories]
+        if odd:
+            issues.append(
+                f"{cid}: Try-next category hub {odd} beside a species card (baked {baked})"
             )
     return issues
 
@@ -374,6 +407,9 @@ def all_issues(**kwargs) -> dict[str, list[str]]:
     shared = {k: kwargs[k] for k in ("html_by_id", "kinds", "ids") if k in kwargs}
     return {
         "try_next_kingdom": cross_kingdom_try_next_issues(**shared),
+        "try_next_category_hub": category_hub_try_next_issues(
+            **{k: kwargs[k] for k in ("html_by_id", "ids") if k in kwargs}
+        ),
         "watch_live_habitat": dead_watch_live_issues(**shared),
         "empty_pictures": empty_pictures_issues(**shared),
         "library_watch_live": missing_library_watch_live_issues(**shared),

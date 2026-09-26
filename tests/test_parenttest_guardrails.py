@@ -29,6 +29,7 @@ from parenttest_guardrails import (  # noqa: E402
     WATCH_LIVE_NO_MEDIA_ALLOW,
     WATCH_LIVE_WITHOUT_HABITAT_ALLOW,
     card_kingdom,
+    category_hub_try_next_issues,
     cross_kingdom_try_next_issues,
     dead_watch_live_issues,
     empty_pictures_issues,
@@ -136,6 +137,31 @@ class TryNextKingdomTests(unittest.TestCase):
     def test_baked_try_next_stays_in_kingdom(self):
         issues = cross_kingdom_try_next_issues()
         self.assertEqual(issues, [], "\n".join(issues))
+
+    def test_species_try_next_skips_category_hubs(self):
+        """ParentTest: whale-shark and other species cards do not bake generic Shark."""
+        issues = category_hub_try_next_issues()
+        self.assertEqual(issues, [], "\n".join(issues))
+        odd = """
+<main class="card-page">
+<nav class="card-try-next no-print" aria-label="Try next">
+  <a class="card-try-next-link" href="/field-pack/cards/shark/">Shark</a>
+  <a class="card-try-next-link" href="/field-pack/cards/manta-ray/">Manta ray</a>
+  <a class="card-try-next-link" href="/field-pack/cards/clownfish/">Clownfish</a>
+</nav>
+</main>
+"""
+        baked = category_hub_try_next_issues(html_by_id={"whale-shark": odd})
+        self.assertTrue(baked)
+        self.assertTrue(
+            any("whale-shark" in row and "shark" in row for row in baked),
+            baked,
+        )
+        # The group card may still point at Shark. That is not a species sibling.
+        self.assertEqual(
+            category_hub_try_next_issues(html_by_id={"freshwater-fish": odd}),
+            [],
+        )
 
     def test_sep11_lion_on_sealife_would_fail(self):
         """Bake lag: sealife first paint still showing african-lion thumb."""

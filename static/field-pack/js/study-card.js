@@ -6,9 +6,14 @@
  * (query ?level= or picker). Full picker stays at the top; foot offers the next tier.
  * Try next thumbs prefer the same hub (sealife→sealife / wildlife→wildlife)
  * and skip the session recent path (fp-study-recent, last ~8).
+ * Species cards skip category/habitat hubs (generic Shark, freshwater fish,
+ * kelp forest) until species peers cannot fill the row.
  */
 const FP_STUDY_RECENT_KEY = "fp-study-recent";
 const FP_STUDY_RECENT_MAX = 8;
+// Keep in sync with STUDY_TRY_NEXT_CATEGORY_IDS. Used when a cached catalog
+// has no categories list. card-kinds.tsv does not encode this split.
+const FP_STUDY_TRY_NEXT_CATEGORIES = ["freshwater-fish", "kelp-forest", "shark"];
 
 function FPStudyPickTryNextIds(current, recent, catalog, n) {
   const want = n == null ? 3 : Number(n) || 3;
@@ -17,6 +22,11 @@ function FPStudyPickTryNextIds(current, recent, catalog, n) {
   const neighbors = (catalog && catalog.neighbors) || {};
   const hubs = (catalog && catalog.hubs) || {};
   const traffic = Array.isArray(catalog && catalog.traffic) ? catalog.traffic : [];
+  const listed = catalog && Array.isArray(catalog.categories) ? catalog.categories : null;
+  const categoryIds = new Set(
+    (listed || FP_STUDY_TRY_NEXT_CATEGORIES).map((x) => String(x || "").trim()).filter(Boolean)
+  );
+  const skipCategories = !categoryIds.has(cur);
   const allIds = Object.keys(titles).length
     ? Object.keys(titles)
     : Object.keys((typeof window !== "undefined" && window.FP_STUDY_CARDS) || {});
@@ -33,11 +43,12 @@ function FPStudyPickTryNextIds(current, recent, catalog, n) {
   const sameHub = (cid) => (hubs[cid] || "wildlife") === curHub;
   const out = [];
   const seen = new Set();
-  const take = (cids, poolSet, hubOnly) => {
+  const take = (cids, poolSet, hubOnly, allowCategory) => {
     for (let i = 0; i < cids.length; i += 1) {
       const cid = cids[i];
       if (!poolSet.has(cid) || seen.has(cid)) continue;
       if (hubOnly && !sameHub(cid)) continue;
+      if (!allowCategory && categoryIds.has(cid)) continue;
       seen.add(cid);
       out.push(cid);
       if (out.length >= want) return true;
@@ -49,10 +60,15 @@ function FPStudyPickTryNextIds(current, recent, catalog, n) {
   const allSet = new Set(haveAll);
   const freshOrder = [].concat(neigh, traffic, extra(haveFresh));
   const allOrder = [].concat(neigh, traffic, extra(haveAll));
-  if (take(freshOrder, freshSet, true)) return out;
-  if (take(allOrder, allSet, true)) return out;
-  if (take(freshOrder, freshSet, false)) return out;
-  take(allOrder, allSet, false);
+  const allow = !skipCategories;
+  if (take(freshOrder, freshSet, true, allow)) return out;
+  if (take(allOrder, allSet, true, allow)) return out;
+  if (take(freshOrder, freshSet, false, allow)) return out;
+  if (take(allOrder, allSet, false, allow)) return out;
+  if (skipCategories && out.length < want) {
+    if (take(allOrder, allSet, true, true)) return out;
+    take(allOrder, allSet, false, true);
+  }
   return out;
 }
 
