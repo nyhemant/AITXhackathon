@@ -13,6 +13,8 @@ sys.path.insert(0, str(REPO / "scripts"))
 from generate_bdo_seo import (  # noqa: E402
     CARD_SEO_CSS_VER,
     card_pictures_link_html,
+    card_watch_cta_label,
+    load_vft_by_card,
     pictures_link_label,
 )
 
@@ -53,7 +55,12 @@ class CardActionsResequenceTests(unittest.TestCase):
             "card-page-actions-print", 1
         )[0]
         print_row = actions.split("card-page-actions-print", 1)[1]
-        self.assertIn("Watch live at Georgia Aquarium", primary)
+        whale = load_vft_by_card()["whale-shark"]
+        self.assertFalse(str(whale.get("cam_embed") or "").strip())
+        self.assertEqual(card_watch_cta_label(whale), "Watch film")
+        self.assertIn("Watch film", primary)
+        self.assertNotIn("Watch live", primary)
+        self.assertEqual(primary.count("card-watch-live"), 1)
         self.assertLess(primary.find("card-watch-live"), primary.find("card-page-photos"))
         self.assertIn("print-this-card", print_row)
         self.assertIn("US Letter or A4", print_row)

@@ -310,7 +310,10 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn("This zoo's cards", html)
         lion_main = html.split('<main class="card-page">', 1)[1].split("</main>", 1)[0]
         self.assertNotIn("Explore at home", lion_main)
-        self.assertRegex(lion_main, r"Watch [Ll]ive")
+        # No in-page cam embed — the one control names the film the player opens.
+        self.assertRegex(lion_main, r"Watch film")
+        self.assertNotIn("Watch live", lion_main)
+        self.assertEqual(lion_main.count("card-watch-live"), 1)
         self.assertNotIn("Virtual Field Trip", lion_main)
         self.assertIn("Print", lion_main)
         self.assertIn("A pride", html)
@@ -446,7 +449,10 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn('class="seo-watch-row"', main)
         actions = main.split('class="card-page-actions"', 1)[1]
         self.assertIn("card-watch-live", actions)
-        self.assertIn("Watch live at Houston Zoo", actions)
+        # Cam page names Houston, but there is no in-page embed — the player opens the film.
+        self.assertIn(">Watch film</a>", actions)
+        self.assertNotIn("Watch live", actions)
+        self.assertEqual(actions.count("card-watch-live"), 1)
         self.assertNotIn("houstonzoo.org", actions)
         watch_tags = re.findall(r'<a[^>]+class="[^"]*card-watch-live[^"]*"[^>]*>', actions)
         self.assertTrue(watch_tags)
@@ -511,7 +517,9 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("viewport-fit=cover", dallas)
         self.assertIn("viewport-fit=cover", giraffe)
         self.assertIn("viewport-fit=cover", landing)
-        self.assertIn("Watch live at Houston Zoo", giraffe)
+        flamingo = (FP / "cards" / "caribbean-flamingo" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Watch live at Houston Zoo", flamingo)
+        self.assertIn(">Watch film</a>", giraffe)
 
     def _css_rule(self, css: str, selector: str) -> str:
         needle = selector + " {"
