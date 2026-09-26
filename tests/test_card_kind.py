@@ -80,7 +80,8 @@ class CardKindTests(unittest.TestCase):
         self.assertNotIn('id="cards-parks"', hub)
         self.assertNotIn('data-card-id="cuyahoga-towpath"', hub)
 
-    def test_landing_showcase_matches_tsv_primary_hub(self):
+    def test_landing_showcase_is_thin_teaser_not_full_catalog(self):
+        """Places hub teases cards; full animal browse is /field-pack/cards/ only."""
         landing = (FP / "index.html").read_text(encoding="utf-8")
         showcase = landing.split('id="cat-cards-showcase"', 1)[1].split(
             "<!-- SEO:CARDS-BODY:END -->", 1
@@ -92,19 +93,20 @@ class CardKindTests(unittest.TestCase):
             showcase,
         )
         self.assertTrue(tiles)
+        self.assertLessEqual(len(tiles), 12, "Places hub must not bake the full animal wall")
+        self.assertLess(len(tiles), len(primary), "Teaser must be thinner than the primary catalog")
+        self.assertNotIn(" hidden>", showcase)
+        self.assertNotIn('data-card-filter="wildlife"', showcase)
+        self.assertNotIn('data-card-filter="sealife"', showcase)
+        self.assertNotIn("place-type-tabs-cards", showcase)
         seen: set[str] = set()
         for group, cid in tiles:
             row = kinds[cid]
             self.assertEqual(row["hub"], group, cid)
             self.assertIn(group, ("wildlife", "sealife"), cid)
+            self.assertIn(cid, primary, cid)
             seen.add(cid)
-        self.assertEqual(seen, primary)
-        for cid in ("american-bison", "american-alligator", "elk"):
-            li = [line for line in showcase.splitlines() if f'data-card-id="{cid}"' in line][0]
-            self.assertIn('data-card-group="wildlife"', li, cid)
-        for cid in SEALIFE_MISFILED:
-            li = [line for line in showcase.splitlines() if f'data-card-id="{cid}"' in line][0]
-            self.assertIn('data-card-group="sealife"', li, cid)
+        self.assertTrue(seen & primary)
         self.assertNotIn('data-card-group="parks"', showcase)
         self.assertNotIn('data-card-filter="parks"', showcase)
         self.assertNotIn('data-card-filter="attractions"', showcase)
@@ -115,7 +117,11 @@ class CardKindTests(unittest.TestCase):
         self.assertNotIn("cuyahoga-towpath", showcase)
         gen = (REPO / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
         self.assertIn("def _landing_primary_cards(", gen)
-        self.assertIn("PRIMARY_HUB_SECTION_IDS", gen.split("def _landing_teaser_cards(", 1)[1])
+        self.assertIn("def _landing_teaser_cards(", gen)
+        teaser_fn = gen.split("def _landing_teaser_cards(", 1)[1].split("def _card_group_key(", 1)[0]
+        self.assertIn("single spine", teaser_fn)
+        self.assertIn("_featured_cards", teaser_fn)
+        self.assertNotIn("group_cards_by_hub_section", teaser_fn)
 
     def test_animal_pack_stays_animal(self):
         self.assertEqual(
