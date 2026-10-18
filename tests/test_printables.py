@@ -85,3 +85,24 @@ class PrintablesWordingTests(unittest.TestCase):
         start = (PRINTABLES_ROOT.parent / "start" / "index.html").read_text()
         self.assertNotIn("Free printables", start)
         self.assertIn("<strong>Play &amp; learn printables</strong>", start)
+
+
+class PrintablesPolishTests(unittest.TestCase):
+    def test_tap_targets_and_link_color(self):
+        html = (PRINTABLES_ROOT / "index.html").read_text()
+        self.assertIn("min-height:44px", html)
+        self.assertIn(".a4note a{display:inline-block;padding:.7rem .25rem}", html)
+        self.assertIn(".a4note a,.tips a{color:var(--teal-deep)", html)
+
+    def test_pdfs_have_no_free_wording(self):
+        import shutil
+        import subprocess
+
+        if not shutil.which("pdftotext"):
+            self.skipTest("pdftotext not installed")
+        for f in sorted(PRINTABLES_ROOT.rglob("*.pdf")):
+            text = subprocess.run(["pdftotext", str(f), "-"], capture_output=True, text=True).stdout
+            for line in text.splitlines():
+                if "FREE" in line:  # bingo FREE square is game terminology
+                    continue
+                self.assertNotIn("free", line.lower(), f"{f.name}: {line}")
