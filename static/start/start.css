@@ -2016,7 +2016,17 @@ body.start-body {
   );
 }
 
-/* Compact Printables entry above the footer */
+/* Compact Printables entry right after the hero */
+.start-printables-band {
+  background: #f6f1ea;
+  padding: 0.9rem max(1.25rem, calc((100% - 72rem) / 2)) 0.5rem;
+}
+
+.start-printables-band .start-printables {
+  margin: 0;
+}
+
+
 .start-printables {
   display: flex;
   align-items: center;
