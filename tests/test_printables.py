@@ -74,3 +74,14 @@ class PrintablesIntegrationTests(unittest.TestCase):
         for rel in ("field-pack", "about"):
             html = (root / rel / "index.html").read_text(encoding="utf-8")
             self.assertIn('<a href="/printables/" role="menuitem">Printables</a>', html, rel)
+
+
+class PrintablesWordingTests(unittest.TestCase):
+    def test_no_free_wording_and_new_copy(self):
+        html = (PRINTABLES_ROOT / "index.html").read_text()
+        self.assertNotIn("free", html.lower())
+        self.assertIn("<h1>Play &amp; Learn Printables for Kids</h1>", html)
+        self.assertIn("For home and classroom use; please link rather than re-host.", html)
+        start = (PRINTABLES_ROOT.parent / "start" / "index.html").read_text()
+        self.assertNotIn("Free printables", start)
+        self.assertIn("<strong>Play &amp; learn printables</strong>", start)
