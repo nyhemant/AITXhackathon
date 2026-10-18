@@ -60,3 +60,17 @@ class PrintablesTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PrintablesIntegrationTests(unittest.TestCase):
+    def test_printables_linked_from_start_and_hubs(self):
+        root = Path(__file__).resolve().parents[1] / "static"
+        start = (root / "start" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('<a href="/printables/">Printables</a>', start)
+        self.assertIn('class="start-printables" href="/printables/"', start)
+        for rel in ("field-pack", "field-pack/zoos", "field-pack/aquariums", "field-pack/museums", "field-pack/national-parks"):
+            html = (root / rel / "index.html").read_text(encoding="utf-8")
+            self.assertIn('href="/printables/"', html, rel)
+        for rel in ("field-pack", "about"):
+            html = (root / rel / "index.html").read_text(encoding="utf-8")
+            self.assertIn('<a href="/printables/" role="menuitem">Printables</a>', html, rel)
