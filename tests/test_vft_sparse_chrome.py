@@ -27,7 +27,7 @@ VFT_PAGES = (
 )
 VFT_JS = FP / "js" / "virtual-venue.js"
 VENUES = FP / "data" / "virtual-venues"
-LEAD = "Live cams · short films · free"
+LEAD = "Live cams · short films · no signup"
 WORDY = (
     "Tap any stop",
     "Tap any pool",
@@ -89,8 +89,8 @@ class VftSparseChromeTests(unittest.TestCase):
         expected = {
             "zoo": ("A zoo day at home", LEAD),
             "aquarium": ("An aquarium day at home", LEAD),
-            "natural-history": ("A museum day at home", "Halls · short films · free"),
-            "science": ("A science day at home", "Labs · short films · free"),
+            "natural-history": ("A museum day at home", "Halls · short films · no signup"),
+            "science": ("A science day at home", "Labs · short films · no signup"),
             "parks": ("A park day at home", LEAD),
         }
         for key, (h1, lead) in expected.items():
@@ -103,7 +103,7 @@ class VftSparseChromeTests(unittest.TestCase):
                 self.assertNotIn(phrase, cfg["lead"])
 
     def test_js_rewrites_lead_in_the_same_sparse_voice(self):
-        self.assertIn("Your parks · lower 48 · free", self.js)
+        self.assertIn("Your parks · lower 48", self.js)
         self.assertNotIn("Your parks on a real map of the lower 48", self.js)
         self.assertNotIn("For rainy days, a classroom Friday", self.js)
         self.assertNotIn("Tap any stop. A suggested Next", self.js)

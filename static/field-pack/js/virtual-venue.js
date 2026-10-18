@@ -1836,7 +1836,7 @@
     const lead = document.getElementById("vz-lead");
     if (title && config && config.h1) title.textContent = config.h1;
     if (lead && config && config.lead) {
-      lead.textContent = isParkCustom() ? "Your parks · lower 48 · free" : config.lead;
+      lead.textContent = isParkCustom() ? "Your parks · lower 48" : config.lead;
     }
     if (config && config.title) document.title = config.title;
     if (mapMount && config) {

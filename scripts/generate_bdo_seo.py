@@ -165,7 +165,7 @@ EXPLORER_H1 = "Find a Place to Explore with Kids"
 EXPLORER_TITLE = "Find a Zoo, Aquarium, Museum or Park for Kids | KidZooKit"
 EXPLORER_DESC = (
     "Find a zoo, aquarium, museum, or park to explore with kids. Animal cards, "
-    "talk prompts, and printable hunts for each place. Free, no signup."
+    "talk prompts, and printable hunts for each place. No signup."
 )
 
 HOME_SESSION_H2 = "Talk and cards for this place"
@@ -2807,7 +2807,7 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
             <p class="ms-favorite">My favorite was _______________________</p>
             <p class="ms-footer">
               {freshness_span_html(vid)}
-              · free at {SITE_HOST}/field-pack/{esc(vid)}/
+              · more at {SITE_HOST}/field-pack/{esc(vid)}/
             </p>
             <p class="ms-map-hint" id="mission-map-hint"></p>
           </div>

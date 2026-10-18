@@ -140,7 +140,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertEqual(about_slash._headers.get("Location"), ABOUT_PREFIX + "/")
         about = _get("/about/")
         self.assertEqual(about._code, 200)
-        self.assertIn("KidZooKit — Free At-Home Zoo for Kids", about.wfile.getvalue().decode("utf-8"))
+        self.assertIn("KidZooKit — At-Home Zoo for Kids", about.wfile.getvalue().decode("utf-8"))
         self.assertIsNotNone(_safe_about_path("/about/"))
         self.assertIsNotNone(_safe_about_path("/about/about.css"))
         self.assertIsNone(_safe_about_path("/about/../field-pack/index.html"))
@@ -292,13 +292,13 @@ class StartLandingTests(unittest.TestCase):
             self.assertIn("Watch Live", desc)
             self.assertIn("Places", desc)
             self.assertIn("Cards", desc)
-            self.assertIn("free", desc.lower())
+            self.assertNotIn("free", desc.lower())
             self.assertIn("no signup", desc.lower())
         self.assertEqual(
             {match.group(1) for match in metas.values()},
             {metas['name="description"'].group(1)},
         )
-        self.assertIn("Free · no signup · works on a phone", self.html)
+        self.assertIn("No signup · works on a phone", self.html)
         self.assertIn(">Watch Live<", self.html)
         self.assertIn(">Places<", self.html)
         self.assertIn(">Cards<", self.html)
@@ -556,7 +556,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("&#8594;", chapter)
         self.assertNotIn("&#x2192;", chapter)
         self.assertLess(chapter.find("start-routes"), chapter.find("start-trust"))
-        self.assertIn("Free · no signup · works on a phone", chapter)
+        self.assertIn("No signup · works on a phone", chapter)
         self.assertIn('class="start-trust"', chapter)
         self.assertIn('id="start-map-coach"', chapter)
         self.assertIn("Tap an animal to open a card.", chapter)
