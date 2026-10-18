@@ -38,6 +38,7 @@ PRIMARY_MENU = (
     ("/field-pack/cards/", "Cards"),
     ("/field-pack/virtual-field-trip/", "Watch Live"),
     ("/field-pack/", "Places"),
+    ("/printables/", "Printables"),
     ("/about/", "About"),
 )
 

@@ -124,6 +124,8 @@ NAV_CARDS_LABEL = "Cards"
 NAV_WATCH_LABEL = "Watch Live"
 NAV_PLACES_LABEL = "Places"
 NAV_ABOUT_LABEL = "About"
+NAV_PRINTABLES_LABEL = "Printables"
+NAV_PRINTABLES_HREF = "/printables/"
 NAV_ABOUT_HREF = "/about/"
 
 # Place-page primary actions (short). Card pages use CARD_* / CTA_PRINT / PLACE_VFT_CTA.
@@ -588,6 +590,7 @@ def nav_more_menu_html(*, current: str = "") -> str:
           {item("/field-pack/cards/", NAV_CARDS_LABEL, "cards")}
           {item("/field-pack/virtual-field-trip/", NAV_WATCH_LABEL, "vft")}
           {item("/field-pack/", NAV_PLACES_LABEL, "places")}
+          {item(NAV_PRINTABLES_HREF, NAV_PRINTABLES_LABEL, "printables")}
           {item(NAV_ABOUT_HREF, NAV_ABOUT_LABEL, "about")}
         </div>
       </div>"""
@@ -3414,6 +3417,8 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
     .type-cta-primary {{ background: #0f5c5c; color: #fff; }}
     .type-cta-secondary {{ background: #fff; color: #0a4545; border: 1.5px solid rgba(15,92,92,0.2); }}
     .type-count {{ font-weight: 700; color: #0f5c5c; }}
+    .type-print-line {{ margin: -0.75rem 0 1.5rem; font-size: 0.92rem; }}
+    .type-print-line a {{ color: #0a4545; font-weight: 650; }}
     .place-type-tabs a.place-type-tab {{ text-decoration: none; }}
   </style>
 </head>
@@ -3443,6 +3448,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
         <a class="type-cta-primary" href="/field-pack/virtual-field-trip/">{esc(CTA_AT_HOME)}</a>
         <a class="type-cta-secondary" href="{map_href}">Map</a>
       </div>
+      <p class="type-print-line"><a href="/printables/">Print a hunt for your visit</a></p>
       {(('<h2>Start here</h2><div class="type-feat-grid">' + featured + '</div>') if featured else '')}
       <h2 id="dir-heading">{esc(meta["nav"])}</h2>
       {f'<p id="dir-blurb">{esc(meta["pitch"])}</p>' if meta.get("pitch") else ""}
@@ -5901,7 +5907,7 @@ def patch_landing_directory(venues: list[dict]) -> None:
     if 'href="/field-pack/cards/"' not in html:
         html = html.replace(
             f'<a href="/field-pack/" aria-current="page" role="menuitem">{NAV_PLACES_LABEL}</a>\n            <a href="{NAV_ABOUT_HREF}"',
-            f'<a href="{HOME_HREF}" role="menuitem">{NAV_START_LABEL}</a>\n            <a href="/field-pack/cards/" role="menuitem">{NAV_CARDS_LABEL}</a>\n            <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}</a>\n            <a href="/field-pack/" aria-current="page" role="menuitem">{NAV_PLACES_LABEL}</a>\n            <a href="{NAV_ABOUT_HREF}"',
+            f'<a href="{HOME_HREF}" role="menuitem">{NAV_START_LABEL}</a>\n            <a href="/field-pack/cards/" role="menuitem">{NAV_CARDS_LABEL}</a>\n            <a href="/field-pack/virtual-field-trip/" role="menuitem">{NAV_WATCH_LABEL}</a>\n            <a href="/field-pack/" aria-current="page" role="menuitem">{NAV_PLACES_LABEL}</a>\n            <a href="{NAV_PRINTABLES_HREF}" role="menuitem">{NAV_PRINTABLES_LABEL}</a>\n            <a href="{NAV_ABOUT_HREF}"',
             1,
         )
 
