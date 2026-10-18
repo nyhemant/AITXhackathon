@@ -10,6 +10,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 
+from seo_page_copy import PAGE_COPY  # noqa: E402
 from generate_bdo_seo import (  # noqa: E402
     CTA_AT_HOME,
     CTA_PRINT,
@@ -285,16 +286,22 @@ class PlacePageSparseChromeTests(unittest.TestCase):
     def test_type_hubs_share_the_same_sparse_shell(self):
         self.assertEqual(TYPE_HUB_LEAD, HOME_SESSION_LEAD)
         for meta in TYPE_LANDINGS:
-            self.assertEqual(meta["blurb"], TYPE_HUB_LEAD)
-            self.assertEqual(meta["h1"], meta["nav"])
-            self.assertLessEqual(len(meta["h1"]), 12)
+            approved = PAGE_COPY.get(f"/field-pack/{meta['path']}/")
+            if approved:  # approved SEO copy: H1 "<Nav> for Kids" + visible intro
+                self.assertEqual(meta["blurb"], approved["intro"])
+                self.assertEqual(meta["h1"], f"{meta['nav']} for Kids")
+            else:
+                self.assertEqual(meta["blurb"], TYPE_HUB_LEAD)
+                self.assertEqual(meta["h1"], meta["nav"])
+            self.assertLessEqual(len(meta["h1"]), 20)
         for path in ("zoos", "aquariums", "museums", "national-parks"):
             html = (FP / path / "index.html").read_text(encoding="utf-8")
             with self.subTest(hub=path):
                 self.assertIn(f"{CTA_AT_HOME}</a>", html)
                 self.assertIn(">Map</a>", html)
                 self.assertNotIn("Cards, photos, and a cam when we have one.", html)
-                self.assertNotIn('class="type-lead"', html)
+                if f"/field-pack/{path}/" not in PAGE_COPY:
+                    self.assertNotIn('class="type-lead"', html)
                 self.assertNotIn("Print a hunt for the visit", html)
                 self.assertNotIn("Explore a zoo at home", html)
                 self.assertNotIn("optional hunt", html.lower())

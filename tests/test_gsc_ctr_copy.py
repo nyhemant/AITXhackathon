@@ -36,9 +36,10 @@ class GscCtrCopyTests(unittest.TestCase):
         self.assertLess(label.index("At-Home"), 60)
         self.assertIn("Printable Hunt", label)
         title = title_for(_venue("san-diego-zoo", "San Diego Zoo", "San Diego"))
-        self.assertTrue(title.startswith("San Diego Zoo for Kids — At-Home"))
-        self.assertTrue(title.endswith(" · KidZooKit"))
-        self.assertLess(title.index("At-Home"), 60)
+        # Approved SEO copy (docs/seo/seo-proposals.md) uses " | KidZooKit".
+        self.assertTrue(title.startswith("San Diego Zoo for Kids: Animal Cards"))
+        self.assertTrue(title.endswith(" | KidZooKit"))
+        self.assertIn("Printable Hunt", title)
 
     def test_query_overrides_match_real_offers(self):
         field = title_for(_venue("field-museum", "Field Museum", "Chicago"))
@@ -75,7 +76,7 @@ class GscCtrCopyTests(unittest.TestCase):
         self.assertIn("Hippo Camp", memphis)
         self.assertNotIn("Simmons", memphis)
         sd = meta_for(_venue("san-diego-zoo", "San Diego Zoo", "San Diego"))
-        self.assertIn("live cams", sd)
+        self.assertIn("printable hunt", sd)
         self.assertLessEqual(len(sd), 155)
 
     def test_cam_flag_follows_venue_json(self):
@@ -98,9 +99,9 @@ class GscCtrCopyTests(unittest.TestCase):
     def test_hub_and_card_snippets(self):
         zoos = next(m for m in TYPE_LANDINGS if m["path"] == "zoos")
         self.assertIn("Zoos for Kids", zoos["title"])
-        self.assertEqual(zoos["h1"], "Zoos")
-        self.assertEqual(zoos["blurb"], "")
-        self.assertIn("printable hunt", zoos["description"].lower())
+        self.assertEqual(zoos["h1"], "Zoos for Kids")
+        self.assertIn("Dallas Zoo", zoos["blurb"])  # approved visible intro
+        self.assertIn("hunt", zoos["description"].lower())
         self.assertNotIn("live cam", zoos["description"].lower())
         card = CARD_SEO["sci-planet"]
         self.assertIn("for Kids", card["title"])

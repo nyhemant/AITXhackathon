@@ -83,7 +83,7 @@ class VftSparseChromeTests(unittest.TestCase):
                 self.assertLessEqual(len(text), 40)
         vft = self.pages[VFT_PAGES[0]]
         title = re.search(r'id="vz-title"[^>]*>(.*?)</h1>', vft, re.S)
-        self.assertEqual(re.sub(r"\s+", " ", title.group(1)).strip(), "Virtual Field Trip")
+        self.assertEqual(re.sub(r"\s+", " ", title.group(1)).strip(), "Virtual Field Trip for Kids")
 
     def test_json_leads_stay_sparse(self):
         expected = {
