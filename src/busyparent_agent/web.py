@@ -53,6 +53,8 @@ ZOO_ALIAS_PATHS = frozenset({"/zoo", "/zoo/"})
 # Educational About / FAQ — seek-out only; not a landing
 ABOUT_ROOT = REPO_ROOT / "static" / "about"
 ABOUT_PREFIX = "/about"
+PRINTABLES_ROOT = REPO_ROOT / "static" / "printables"
+PRINTABLES_PREFIX = "/printables"
 SHELL_ROOT = REPO_ROOT / "static" / "shell"
 SHELL_PREFIX = "/shell"
 # PWA assets (icons, register.js). Manifest + SW are also served at site root.
@@ -1006,6 +1008,8 @@ def _static_content_type(path: Path) -> str:
         return "text/plain; charset=utf-8"
     if suffix == ".mp4":
         return "video/mp4"
+    if suffix == ".pdf":
+        return "application/pdf"
     return "application/octet-stream"
 
 
@@ -1066,6 +1070,11 @@ def _safe_field_pack_path(url_path: str) -> Path | None:
 def _safe_start_path(url_path: str) -> Path | None:
     """Resolve /start/... to a file under START_ROOT, or None."""
     return _safe_mounted_static(url_path, START_PREFIX, START_ROOT)
+
+
+def _safe_printables_path(url_path: str) -> Path | None:
+    """Resolve /printables/... to a file under PRINTABLES_ROOT, or None."""
+    return _safe_mounted_static(url_path, PRINTABLES_PREFIX, PRINTABLES_ROOT)
 
 
 def _safe_about_path(url_path: str) -> Path | None:
@@ -1394,6 +1403,19 @@ class WebHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(body)
             return
+        printables_file = _safe_printables_path(path)
+        if printables_file is not None:
+            body = printables_file.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", _static_content_type(printables_file))
+            self.send_header("Content-Length", str(len(body)))
+            if printables_file.suffix.lower() in {".css", ".js", ".html", ".htm"}:
+                self.send_header("Cache-Control", "no-cache")
+            else:
+                self.send_header("Cache-Control", "public, max-age=86400")
+            self.end_headers()
+            self.wfile.write(body)
+            return
         about_file = _safe_about_path(path)
         if about_file is not None:
             body = about_file.read_bytes()
@@ -1501,6 +1523,7 @@ class WebHandler(BaseHTTPRequestHandler):
         pwa_file = _safe_pwa_path(path)
         start_file = _safe_start_path(path)
         about_file = _safe_about_path(path)
+        printables_file = _safe_printables_path(path)
         field_pack_file = _safe_field_pack_path(path)
         if asset_path is not None and asset_path.exists():
             content_type = _image_content_type(asset_path)
@@ -1517,6 +1540,9 @@ class WebHandler(BaseHTTPRequestHandler):
         elif about_file is not None:
             content_type = _static_content_type(about_file)
             length = about_file.stat().st_size
+        elif printables_file is not None:
+            content_type = _static_content_type(printables_file)
+            length = printables_file.stat().st_size
         elif field_pack_file is not None:
             content_type = _static_content_type(field_pack_file)
             length = field_pack_file.stat().st_size
