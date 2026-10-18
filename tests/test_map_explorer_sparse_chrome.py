@@ -136,11 +136,11 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         cls.gen = GEN.read_text(encoding="utf-8")
 
     def test_constants_lock_short_explorer_voice(self):
-        self.assertEqual(EXPLORER_H1, "Find a place")
-        self.assertEqual(EXPLORER_TITLE, "Find a place · KidZooKit")
+        self.assertEqual(EXPLORER_H1, "Find a Place to Explore with Kids")
+        self.assertEqual(EXPLORER_TITLE, "Find a Zoo, Aquarium, Museum or Park for Kids | KidZooKit")
         self.assertEqual(CTA_FIND, "Find")
-        self.assertLessEqual(len(EXPLORER_H1), 16)
-        self.assertIn('EXPLORER_H1 = "Find a place"', self.gen)
+        self.assertLessEqual(len(EXPLORER_H1), 40)
+        self.assertIn('EXPLORER_H1 = "Find a Place to Explore with Kids"', self.gen)
         self.assertNotIn('CTA_READY = "Explore →"', self.gen)
         self.assertIn(f"LANDING_CSS_VER = \"{LANDING_CSS_VER}\"", self.gen)
 
@@ -150,16 +150,14 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         self.assertEqual(_text(title.group(1)), EXPLORER_TITLE)
         desc = re.search(r'name="description"\s+content="([^"]+)"', self.html)
         self.assertIsNotNone(desc)
-        self.assertLessEqual(len(desc.group(1)), 72)
-        self.assertNotIn("print a hunt", desc.group(1).lower())
-        self.assertNotIn("talk prompts", desc.group(1).lower())
+        self.assertLessEqual(len(desc.group(1)), 160)  # approved SEO meta
 
     def test_hero_is_title_search_and_optional_one_line(self):
         hero = _hero(self.html)
         self.assertIn(f">{EXPLORER_H1}</h1>", hero)
         self.assertIn('id="hero-place-search"', hero)
         self.assertRegex(hero, rf">\s*{CTA_FIND}\s*</button>")
-        leads = re.findall(r"<p[^>]*>(.*?)</p>", hero, re.S)
+        leads = re.findall(r"<p(?![^>]*seo-intro)[^>]*>(.*?)</p>", hero, re.S)
         for lead in leads:
             self.assertLessEqual(len(_text(lead)), 56)
         self.assertNotIn("class=\"pitch-cta\"", hero)

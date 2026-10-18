@@ -61,7 +61,7 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertNotIn('id="continue-chip"', html)
         self.assertNotIn('id="waiting-cities"', html)
         self.assertIn('id="pitch-heading"', hero)
-        self.assertIn("Find a place", hero)
+        self.assertIn("Find a Place to Explore with Kids", hero)
 
         self.assertNotIn('id="ready-grid"', html)
         popular = html.split('id="cat-popular"', 1)[1].split("</div>", 1)[0]

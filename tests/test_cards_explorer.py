@@ -90,7 +90,7 @@ class CardsExplorerTests(unittest.TestCase):
         self.assertNotIn("youtube.com", door)
         title = re.search(r"<title>(.*?)</title>", self.html)
         self.assertIsNotNone(title)
-        self.assertIn("Animal cards", title.group(1))
+        self.assertIn("Animal Cards", title.group(1))
         self.assertIn("landing.css?v=103", self.html)
         self.assertIn("cards-explorer.js?v=9", self.html)
 

@@ -32,6 +32,7 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from busyparent_agent.site import PUBLIC_SITE  # noqa: E402
+from seo_page_copy import PAGE_COPY  # noqa: E402
 from busyparent_agent.url_aliases import (  # noqa: E402
     CARD_SLUG_ALIASES,
     PRINT_PATH,
@@ -158,9 +159,12 @@ CARDS_EXPLORER_JS_VER = "9"
 CTA_READY = "Open"
 CTA_FIND = "Find"
 # Map explorer (/field-pack/) — short title, no sales/FAQ essay. Do not redirect to /start/.
-EXPLORER_H1 = "Find a place"
-EXPLORER_TITLE = "Find a place · KidZooKit"
-EXPLORER_DESC = "Find a zoo, aquarium, museum, or park."
+EXPLORER_H1 = "Find a Place to Explore with Kids"
+EXPLORER_TITLE = "Find a Zoo, Aquarium, Museum or Park for Kids | KidZooKit"
+EXPLORER_DESC = (
+    "Find a zoo, aquarium, museum, or park to explore with kids. Animal cards, "
+    "talk prompts, and printable hunts for each place. Free, no signup."
+)
 
 HOME_SESSION_H2 = "Talk and cards for this place"
 HOME_SESSION_LEAD = ""  # fork/cards already explain; no meta lead
@@ -480,6 +484,14 @@ TYPE_LANDINGS = [
         "pitch": "",
     },
 ]
+
+for _t in TYPE_LANDINGS:
+    _c = PAGE_COPY.get(f"/field-pack/{_t['path']}/")
+    if _c:
+        _t["title"] = _c["title"]
+        _t["h1"] = _c["h1"]
+        _t["description"] = _c["description"]
+        _t["blurb"] = _c["intro"]  # rendered as the visible type-lead under the H1
 
 
 def venue_type_kind(v: dict) -> str:
@@ -1904,9 +1916,20 @@ def unique_body(
 """
 
 
+def page_copy(path: str) -> dict:
+    """Approved SEO copy (title/description/h1/intro) for a URL path, or {}."""
+    return PAGE_COPY.get(path) or {}
+
+
+def seo_intro_html(path: str, css_class: str) -> str:
+    """Visible intro paragraph under the H1 for pages with approved copy."""
+    intro = page_copy(path).get("intro")
+    return f'<p class="{css_class}">{esc(intro)}</p>' if intro else ""
+
+
 def h1_for(v: dict) -> str:
-    """Visible page heading — venue name only. SEO phrase lives in title/meta."""
-    return v["name"]
+    """Visible page heading — venue name, or approved SEO H1 when one exists."""
+    return page_copy(f"/field-pack/{v['id']}/").get("h1") or v["name"]
 
 
 # Shared venue title: parent promise in the first ~60 characters, then the brand.
@@ -1968,6 +1991,9 @@ CARD_SEO = {
 
 def seo_hunt_label(v: dict) -> str:
     """Search/social title phrase (not the on-page H1). Dual-mode — not print-only."""
+    approved = page_copy(f"/field-pack/{v['id']}/").get("title")
+    if approved:
+        return approved.removesuffix(f" | {BRAND_NAME}")
     custom = SEO_TITLE_LABELS.get(v.get("id") or "")
     if custom:
         return custom
@@ -1975,6 +2001,9 @@ def seo_hunt_label(v: dict) -> str:
 
 
 def title_for(v: dict) -> str:
+    approved = page_copy(f"/field-pack/{v['id']}/").get("title")
+    if approved:
+        return approved
     return f"{seo_hunt_label(v)} · {BRAND_NAME}"
 
 
@@ -1994,6 +2023,9 @@ def _clip_serp(text: str, limit: int = 155) -> str:
 
 
 def meta_for(v: dict) -> str:
+    approved = page_copy(f"/field-pack/{v['id']}/").get("description")
+    if approved:
+        return approved
     custom = SEO_META_DESCRIPTIONS.get(v.get("id") or "")
     if custom:
         return _clip_serp(custom)
@@ -3001,6 +3033,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
       <header class="seo-hero">
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
+        {seo_intro_html(f"/field-pack/{v['id']}/", "lead seo-intro")}
         {offer_html}
         {lead_html}
         {hero_banner}
@@ -3148,6 +3181,7 @@ def render_venue_page(v: dict) -> str:
       <header class="seo-hero">
         <p class="promise-pill">{esc(loc_chip)}</p>
         <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
+        {seo_intro_html(f"/field-pack/{v['id']}/", "lead seo-intro")}
         {f'<p class="lead">{esc(quiet_hero_lead(v))}</p>' if quiet_hero_lead(v) else ""}
         {page_mission_chrome_html(home_href=_not_yet, home_sub=fork_home_sub_for_kind(_vkind), venue_kind=_vkind, place_id=_vid)}
       </header>
@@ -5212,8 +5246,9 @@ def write_cards_hub(venues: list[dict]) -> str:
         if items
     )
     accordion_html = "\n      ".join(accordion_panels)
-    title = CARDS_HUB_TITLE
-    desc = CARDS_HUB_DESC
+    _hub = page_copy("/field-pack/cards/")
+    title = _hub.get("title") or CARDS_HUB_TITLE
+    desc = _hub.get("description") or CARDS_HUB_DESC
     url = f"{SITE}/field-pack/cards/"
     play_og = f"{SITE}/start/home-print-table.jpg"
     cards_by_id = {c.get("id"): c for c in cards}
@@ -5282,7 +5317,8 @@ def write_cards_hub(venues: list[dict]) -> str:
         decoding="async"
       />
       <div class="cards-play-copy">
-        <h1 id="cards-play-heading">{esc(CARDS_PLAY_H1)}</h1>
+        <h1 id="cards-play-heading">{esc(page_copy("/field-pack/cards/").get("h1") or CARDS_PLAY_H1)}</h1>
+        {seo_intro_html("/field-pack/cards/", "cards-play-intro seo-intro")}
         <ol class="cards-play-steps">
           <li>
             <span class="cards-play-step-num">1</span>
@@ -5512,8 +5548,9 @@ def write_card_pages(
         actions_html = "\n      ".join(x for x in (primary_html, print_html) if x)
         blurb_html = f'<p class="card-page-blurb">{esc(blurb)}</p>' if blurb else ""
         card_seo = CARD_SEO.get(cid) or {}
-        title = card_seo.get("title") or f"{name} — KidZooKit"
-        desc = card_seo.get("description") or (
+        _approved = page_copy(f"/field-pack/cards/{cid}/")
+        title = _approved.get("title") or card_seo.get("title") or f"{name} — KidZooKit"
+        desc = _approved.get("description") or card_seo.get("description") or (
             (blurb + " " if blurb else "") + f"{name} card: photo and talk prompts."
         )
         url = f"{SITE}/field-pack/cards/{cid}/"
@@ -5559,7 +5596,8 @@ def write_card_pages(
     <main class="card-page">
       <p class="card-page-crumbs"><a href="{HOME_HREF}">KidZooKit</a> · <a href="/field-pack/cards/">Cards</a><span class="card-back-to-place" hidden> · <a href="#"></a></span></p>
       {img_html}
-      <h1>{esc(emoji)} {esc(name)}</h1>
+      <h1>{esc(emoji)} {esc(page_copy(f"/field-pack/cards/{cid}/").get("h1") or name)}</h1>
+      {seo_intro_html(f"/field-pack/cards/{cid}/", "card-page-blurb seo-intro")}
       {venue_chrome}
       {blurb_html}
       {hero_links}
