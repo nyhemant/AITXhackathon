@@ -5,12 +5,12 @@ Source: docs/seo/seo-proposals.csv. Used by generate_bdo_seo.py and the static p
 
 PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip for Kids: Live Cams & Films | '
                                               'KidZooKit',
-                                     'description': 'Take a free virtual field trip: watch live '
+                                     'description': 'Take a virtual field trip: watch live '
                                                     'animal cams and short films at the zoo, '
                                                     'aquarium, museum, and parks. No signup, works '
                                                     'on a phone.',
                                      'h1': 'Virtual Field Trip for Kids',
-                                     'intro': 'Take a free virtual field trip with live cams and '
+                                     'intro': 'Take a virtual field trip with live cams and '
                                               'short films. Visit zoo stops like Flamingo Lagoon '
                                               'and Panda House, aquarium stops like Octopus Den '
                                               'and Jelly Drift, plus museum and science stops. No '
@@ -29,7 +29,7 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
  '/field-pack/cards/puffin/': {'title': 'Puffin for Kids: Animal Card, Quiz & Talk Prompts | '
                                         'KidZooKit',
                                'description': 'Meet the puffin: a black-and-white seabird with a '
-                                              'big colorful bill. Free kids animal card with '
+                                              'big colorful bill. Kids animal card with '
                                               'photo, quick tips, a quiz, and a printable page.',
                                'h1': 'Puffin Animal Card for Kids',
                                'intro': 'The puffin is a black-and-white seabird with a big '
@@ -39,7 +39,7 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
  '/field-pack/cards/giant-panda/': {'title': 'Giant Panda for Kids: Animal Card, Quiz & Talk '
                                              'Prompts | KidZooKit',
                                     'description': 'Meet the giant panda, a black-and-white bear '
-                                                   'that loves bamboo. Free kids animal card with '
+                                                   'that loves bamboo. Kids animal card with '
                                                    'photo, quick tips, a quiz, and a printable '
                                                    'page.',
                                     'h1': 'Giant Panda Animal Card for Kids',
@@ -51,7 +51,7 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
  '/field-pack/cards/octopus/': {'title': 'Octopus for Kids: Animal Card, Quiz & Talk Prompts | '
                                          'KidZooKit',
                                 'description': 'Meet the octopus: eight arms, soft body, and '
-                                               'master of hide-and-seek. Free kids animal card '
+                                               'master of hide-and-seek. Kids animal card '
                                                'with photo, quick tips, a quiz, and a printable '
                                                'page.',
                                 'h1': 'Octopus Animal Card for Kids',
@@ -62,7 +62,7 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
  '/field-pack/cards/african-elephant/': {'title': 'African Elephant for Kids: Animal Card, Quiz & '
                                                   'Prompts | KidZooKit',
                                          'description': 'Meet the African elephant, the largest '
-                                                        'living land animal. Free kids card with '
+                                                        'living land animal. Kids card with '
                                                         'photo, quick tips, a quiz, and a '
                                                         'printable page.',
                                          'h1': 'African Elephant Animal Card for Kids',
@@ -75,7 +75,7 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
                                          'KidZooKit',
                                 'description': 'San Diego Zoo for kids: panda, koala, and elephant '
                                                'cards, talk prompts, and a printable hunt. Use it '
-                                               'at home or on your visit. Free, no signup.',
+                                               'at home or on your visit. No signup.',
                                 'h1': 'San Diego Zoo for Kids',
                                 'intro': 'Plan a San Diego Zoo visit with kids, or explore from '
                                          'home. Start with giant pandas at Panda Ridge, then '
@@ -96,7 +96,7 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
  '/field-pack/zoos/': {'title': 'Zoos for Kids: Animal Cards & Printable Hunts | KidZooKit',
                        'description': 'Find a zoo near you: animal cards, talk prompts, and a '
                                       'printable scavenger-style hunt for each zoo. Dallas, San '
-                                      'Diego, Bronx, Houston, and more. Free.',
+                                      'Diego, Bronx, Houston, and more.',
                        'h1': 'Zoos for Kids',
                        'intro': 'Pick a zoo and get animal cards, talk prompts, and a printable '
                                 'hunt for your visit, or explore from home. Start with Dallas Zoo, '
@@ -106,7 +106,7 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
                                           'KidZooKit',
                                  'description': 'Park pages for kids: Yellowstone, Grand Canyon, '
                                                 'Yosemite, Zion, and more. Talk prompts, animal '
-                                                'cards, and printable hunts. Free.',
+                                                'cards, and printable hunts.',
                                  'h1': 'Parks for Kids',
                                  'intro': 'Pick a park to explore with kids at home or on a visit. '
                                           'Start with Yellowstone, Grand Canyon, Yosemite, Zion, '
@@ -116,7 +116,7 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
                                      'KidZooKit',
                             'description': 'Aquarium pages for kids: Georgia Aquarium, Monterey '
                                            'Bay, Shedd, and more. Talk prompts, animal cards, and '
-                                           'printable hunts. Free.',
+                                           'printable hunts.',
                             'h1': 'Aquariums for Kids',
                             'intro': 'Pick an aquarium to explore with kids at home or on a visit. '
                                      'Start with Georgia Aquarium, Monterey Bay Aquarium, '
@@ -124,7 +124,7 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
                                      'prompts and a printable hunt.'},
  '/field-pack/cards/': {'title': 'Animal Cards for Kids: Photos, Quizzes & Talk Prompts | '
                                  'KidZooKit',
-                        'description': 'Free animal cards for kids with photos, talk prompts, '
+                        'description': 'Animal cards for kids with photos, talk prompts, '
                                        'quick tips, and quizzes. Pick an animal, learn, and print '
                                        'the card.',
                         'h1': 'Animal Cards for Kids',
@@ -134,7 +134,7 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
  '/field-pack/': {'title': 'Find a Zoo, Aquarium, Museum or Park for Kids | KidZooKit',
                   'description': 'Find a zoo, aquarium, museum, or park to explore with kids. '
                                  'Animal cards, talk prompts, and printable hunts for each place. '
-                                 'Free, no signup.',
+                                 'No signup.',
                   'h1': 'Find a Place to Explore with Kids',
                   'intro': 'Choose a zoo, aquarium, museum, or park and get animal cards, talk '
                            'prompts, and a printable hunt for your visit. Or explore from home '
