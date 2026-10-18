@@ -35,14 +35,15 @@ class PrintablesTests(unittest.TestCase):
                 self.assertEqual(_static_content_type(f), "application/pdf")
                 self.assertTrue(f.read_bytes().startswith(b"%PDF"), rel)
 
-    def test_hub_links_every_v2_pdf_and_group(self):
+    def test_hub_links_every_v2_pdf_and_sections(self):
         html = (PRINTABLES_ROOT / "index.html").read_text()
         for slug in V2_SLUGS:
             self.assertIn(f'href="pdf/letter/{slug}.pdf"', html)
             self.assertIn(f'href="pdf/a4/{slug}-a4.pdf"', html)
             self.assertTrue(_safe_printables_path(f"/printables/img/{slug}.png"))
-        for group in ("At the zoo", "On the way", "For teachers and chaperones"):
-            self.assertIn(group, html)
+        self.assertEqual(html.count('class="card spot"'), 3)
+        self.assertEqual(html.count("<li><div>"), 4)
+        self.assertIn("More printables", html)
 
     def test_sitemap_lists_printables(self):
         sitemap = (PRINTABLES_ROOT.parent / "sitemap.xml").read_text()
