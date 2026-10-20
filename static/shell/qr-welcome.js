@@ -68,13 +68,13 @@
     var n = NEXT[c];
     var css = document.createElement("style");
     css.textContent =
-      "#kzk-qr-welcome{display:flex;align-items:center;gap:.5rem .9rem;flex-wrap:wrap;margin:.5rem auto .75rem;max-width:56rem;width:calc(100% - 2rem);" +
-      "padding:.55rem .6rem .55rem 1rem;border-radius:14px;background:#fff8e6;border:1.5px solid #f2c75c;color:#152238;" +
-      "font:600 .95rem/1.35 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;box-shadow:0 2px 8px rgba(21,34,56,.06);box-sizing:border-box}" +
-      "#kzk-qr-welcome .kqw-t{flex:1 1 14rem}" +
+      "#kzk-qr-welcome{display:flex;align-items:center;gap:.4rem .9rem;flex-wrap:wrap;margin:.5rem auto .75rem;max-width:56rem;width:calc(100% - 2rem);" +
+      "position:relative;padding:.5rem 3rem .5rem .9rem;border-radius:14px;background:#fff8e6;border:1.5px solid #f2c75c;color:#152238;" +
+      "font:600 .92rem/1.35 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;box-shadow:0 2px 8px rgba(21,34,56,.06);box-sizing:border-box}" +
+      "#kzk-qr-welcome .kqw-t{flex:1 1 14rem}#kzk-qr-welcome a.kqw-go{font-size:.92rem}" +
       "#kzk-qr-welcome a.kqw-go{display:inline-flex;align-items:center;min-height:44px;padding:0 .9rem;border-radius:999px;background:#0f5c5c;color:#fff;font-weight:800;text-decoration:none}" +
       "#kzk-qr-welcome a.kqw-go:hover,#kzk-qr-welcome a.kqw-go:focus{background:#0a4545}" +
-      "#kzk-qr-welcome button.kqw-x{min-width:44px;min-height:44px;border:0;background:transparent;color:#3d4f6f;font-size:1.4rem;line-height:1;cursor:pointer;border-radius:10px}" +
+      "#kzk-qr-welcome button.kqw-x{position:absolute;top:2px;right:2px;min-width:44px;min-height:44px;border:0;background:transparent;color:#3d4f6f;font-size:1.4rem;line-height:1;cursor:pointer;border-radius:10px}" +
       "#kzk-qr-welcome button.kqw-x:hover{background:rgba(15,92,92,.08)}" +
       "#kzk-qr-welcome a:focus-visible,#kzk-qr-welcome button:focus-visible{outline:3px solid #ffcf5a;outline-offset:2px}" +
       "@media print{#kzk-qr-welcome{display:none}}";
