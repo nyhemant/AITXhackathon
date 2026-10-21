@@ -1,0 +1,15 @@
+/* In-body internal link mesh (place "Explore more", card "Where to see"). Added 2026-10-21. */
+.kz-explore { margin: 1.4rem 0 1rem; padding: 1rem 1.1rem; border: 1px solid #d9e6e3; border-radius: 14px; background: #f7fbfa; }
+.kz-explore h2 { margin: 0 0 0.75rem; font-size: 1.15rem; line-height: 1.25; color: #0a4545; }
+.kz-explore-grid { display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
+@media (min-width: 760px) { .kz-explore-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.kz-explore h3, .kz-where h2 { margin: 0 0 0.4rem; font-size: 0.78rem; font-weight: 850; letter-spacing: 0.03em; text-transform: uppercase; color: #0a4545; }
+.kz-explore ul, .kz-where ul { list-style: none; margin: 0; padding: 0; }
+.kz-explore li, .kz-where li { margin: 0 0 0.4rem; line-height: 1.35; overflow-wrap: anywhere; }
+.kz-explore a, .kz-where a { color: #0a5c5c; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.kz-explore small, .kz-where small { color: #5b6b6a; font-size: 0.85rem; }
+.card-page .kz-where { order: 5; margin: 1.15rem 0 0; }
+.card-page .kz-where ul { display: grid; grid-template-columns: 1fr; gap: 0 1rem; }
+@media (min-width: 760px) { .card-page .kz-where ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.kz-see-all a { font-weight: 800; }
+@media print { .kz-explore, .kz-where { display: none !important; } }
