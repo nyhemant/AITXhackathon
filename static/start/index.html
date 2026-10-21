@@ -26,6 +26,13 @@
   <meta name="twitter:description" content="A virtual zoo for curious kids. Watch Live, explore Places, or open Cards — no signup, works on a phone." />
   <meta name="twitter:image" content="https://kidzookit.com/start/hero-world-map.jpg" />
   <link rel="stylesheet" href="/start/start.css?v=79" />
+  <style>
+    /* 2026-10-21: the H1 holds one clean sentence; the rotating visual line sits beside it (aria-hidden). Mirrors .start-hero h1. */
+    .start-hero .start-h1-wrap { margin: 0; color: #fffcf7; font-size: clamp(1.85rem, 4.8vw, 3rem); font-weight: 600; line-height: 1.12; letter-spacing: -0.025em; text-shadow: 0 1px 18px rgba(12, 10, 8, 0.35); }
+    @media (max-width: 640px) { .start-hero .start-h1-wrap { font-size: clamp(1.95rem, 8vw, 2.4rem); } }
+    @media (min-width: 721px) { .start-hero .start-h1-wrap .start-venue-line { white-space: nowrap; } .start-hero .start-h1-wrap { font-size: clamp(1.55rem, 2.6vw, 2.35rem); } }
+    @media (max-width: 720px) { .start-hero .start-h1-wrap { font-size: clamp(1.35rem, 6.2vw, 1.85rem); } }
+  </style>
 </head>
 <body class="start-body">
   <section class="start-hero" id="start-hero" aria-labelledby="start-heading">
@@ -89,10 +96,10 @@
       </div>
     </header>
     <div class="start-hero-copy">
-      <h1 id="start-heading">
-        <span class="sr-only">Turn the zoo into an expedition.</span>
+      <div class="start-h1-wrap">
+        <h1 id="start-heading" class="sr-only">Turn the zoo into an expedition.</h1>
         <span class="start-venue-line" aria-hidden="true">Turn the <span class="start-venue-slot" tabindex="0"><span class="start-venue-sizer" data-sizer="Zoo"></span><span class="start-venue-words" data-venue-rotator><span class="start-venue-word is-active">Zoo</span><span class="start-venue-word">Aquarium</span><span class="start-venue-word">Museum</span><span class="start-venue-word">Park</span></span></span> into an expedition.</span>
-      </h1>
+      </div>
       <div class="start-hero-guide">
         <nav class="start-routes" aria-label="Choose a path">
           <a class="start-route" href="/field-pack/virtual-field-trip/">Watch Live</a>
