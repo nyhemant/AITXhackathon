@@ -472,6 +472,9 @@ TYPE_LANDINGS = [
         "title": "Museums · KidZooKit",
         "h1": "Museums",
         "blurb": TYPE_HUB_LEAD,
+        "description": (
+            "Museum trips for kids: dinosaur halls, rockets, hands-on science and children's museums like AMNH, Perot and Air and Space. Talk prompts and printable hunts."
+        ),
         "map_type": "museum",
         "pitch": "",
     },
