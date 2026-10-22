@@ -95,6 +95,29 @@
     });
   });
 
+  // Defer below-the-fold slide photos until their section is within ~800px,
+  // so the first screen (hero map) gets the bandwidth. 2026-10-22.
+  function nearGate(el, margin) {
+    let near = !el || !("IntersectionObserver" in window);
+    const waiters = [];
+    if (!near) {
+      const gateIo = new IntersectionObserver(
+        (entries) => {
+          if (!entries.some((e) => e.isIntersecting)) return;
+          near = true;
+          gateIo.disconnect();
+          waiters.splice(0).forEach((fn) => fn());
+        },
+        { rootMargin: margin || "800px 0px" }
+      );
+      gateIo.observe(el);
+    }
+    return (fn) => {
+      if (near) fn();
+      else waiters.push(fn);
+    };
+  }
+
   function armPlate(img) {
     if (!img || img.getAttribute("src")) return;
     const src = img.getAttribute("data-src");
@@ -122,12 +145,16 @@
       return mobileMq.matches;
     }
 
+    const teachNear = nearGate(section);
+
     function armTeachPlates() {
-      if (isMobileTeach()) {
-        trackEl.querySelectorAll(".start-teach-slide img").forEach(armPlate);
-      } else if (stillEl) {
-        armPlate(stillEl);
-      }
+      teachNear(() => {
+        if (isMobileTeach()) {
+          trackEl.querySelectorAll(".start-teach-slide img").forEach(armPlate);
+        } else if (stillEl) {
+          armPlate(stillEl);
+        }
+      });
     }
 
     armTeachPlates();
@@ -364,13 +391,17 @@
       return mobileMq.matches;
     }
 
+    const goingNear = nearGate(section);
+
     function armGoingPlates() {
-      const hosts = isMobileGoing()
-        ? trackEl.querySelectorAll(".start-going-slide img")
-        : stillEl
-          ? stillEl.querySelectorAll("img")
-          : [];
-      hosts.forEach(armPlate);
+      goingNear(() => {
+        const hosts = isMobileGoing()
+          ? trackEl.querySelectorAll(".start-going-slide img")
+          : stillEl
+            ? stillEl.querySelectorAll("img")
+            : [];
+        hosts.forEach(armPlate);
+      });
     }
 
     let lastIndex = startIndex;
@@ -822,8 +853,23 @@
         showStill();
         return;
       }
-      armTeaser();
+      // Video downloads only once the laptop is near the screen (prearm below).
+      if (teaserNear) armTeaser();
       playTeaser();
+    }
+
+    let teaserNear = !("IntersectionObserver" in window);
+    if (!teaserNear) {
+      const prearm = new IntersectionObserver(
+        (entries) => {
+          if (!entries.some((e) => e.isIntersecting)) return;
+          teaserNear = true;
+          prearm.disconnect();
+          if (aligned && !reduceMotion && !hardFail) armTeaser();
+        },
+        { rootMargin: "400px 0px" }
+      );
+      prearm.observe(box);
     }
 
     if (plate.complete && plate.naturalWidth) onReady();
