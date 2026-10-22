@@ -4284,3 +4284,41 @@ body.landing-hub.landing-body {
     font-size: 1.15rem;
   }
 }
+
+/* 2026-10-22: phone map-hub type tabs. Five equal grid cells (66px at 390)
+   plus the 1rem .landing-hub size made "Aquariums"/"Museums" spill over their
+   neighbours. Content-sized, no-wrap tabs; scroll sideways only if the five
+   labels still do not fit. Keeps 44px touch targets and the focus ring. */
+@media (max-width: 480px) {
+  .place-type-tabs-map .place-type-seg,
+  .landing-hub .place-type-tabs-map .place-type-seg {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .place-type-tabs-map .place-type-seg::-webkit-scrollbar {
+    display: none;
+  }
+  .place-type-tabs-map .place-type-tab,
+  .landing-hub .place-type-tabs-map .place-type-tab {
+    flex: 1 0 auto;
+    min-width: 0;
+    white-space: nowrap;
+    padding: 8px 9px;
+    font-size: 0.84rem;
+    min-height: 44px;
+  }
+}
+@media (max-width: 374px) {
+  .place-type-tabs-map .place-type-tab,
+  .landing-hub .place-type-tabs-map .place-type-tab {
+    padding: 8px 6px;
+    font-size: 0.8rem;
+  }
+}
