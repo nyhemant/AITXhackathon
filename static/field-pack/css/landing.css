@@ -4322,3 +4322,43 @@ body.landing-hub.landing-body {
     font-size: 0.8rem;
   }
 }
+
+/* 2026-10-22 (b): phone "Places" tiles on the map hub. The 1.02rem
+   .landing-hub label size left no room for the count, so "Aquariums" and
+   "Museums" ran into "21"/"27" at 360-390px. On phones the count sits under
+   the label instead of beside it; tiles stay >=44px tall. */
+@media (max-width: 480px) {
+  .cat-place-hub {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: 0.5rem;
+    row-gap: 0;
+    padding: 0.45rem 0.65rem;
+  }
+  .cat-place-emoji {
+    grid-row: 1 / span 2;
+  }
+  .cat-place-label,
+  .landing-hub .cat-place-label {
+    grid-column: 2;
+    font-size: 0.98rem;
+    white-space: nowrap;
+  }
+  .cat-place-count {
+    grid-column: 2;
+    margin-left: 0;
+    font-size: 0.74rem;
+    line-height: 1.15;
+  }
+}
+@media (max-width: 340px) {
+  .cat-place-label,
+  .landing-hub .cat-place-label {
+    font-size: 0.9rem;
+  }
+  .cat-place-emoji {
+    font-size: 1.15rem;
+  }
+}
