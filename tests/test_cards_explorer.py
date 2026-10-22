@@ -91,7 +91,7 @@ class CardsExplorerTests(unittest.TestCase):
         title = re.search(r"<title>(.*?)</title>", self.html)
         self.assertIsNotNone(title)
         self.assertIn("Animal Cards", title.group(1))
-        self.assertIn("landing.css?v=104", self.html)
+        self.assertIn("landing.css?v=105", self.html)
         self.assertIn("cards-explorer.js?v=9", self.html)
 
     def test_explorer_is_samples_not_a_58_card_wall(self):
