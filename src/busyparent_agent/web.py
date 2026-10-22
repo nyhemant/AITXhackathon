@@ -1100,6 +1100,49 @@ def _safe_pwa_root_file(url_path: str) -> Path | None:
     return candidate if candidate.is_file() else None
 
 
+VERSIONED_ASSET_CACHE = "public, max-age=86400"
+_VERSIONED_SUFFIXES = {".css", ".js"}
+
+
+def _is_versioned_asset(request_path: str, file_path: Path) -> bool:
+    """True for CSS/JS fetched with a ?v=N cache-buster.
+
+    Every page references its CSS/JS as ``file.css?v=N`` and bumps N when the
+    file changes, so Cloudflare and browsers may keep that exact URL for a
+    day. HTML, unversioned files and the service worker stay ``no-cache``.
+    """
+    if file_path.suffix.lower() not in _VERSIONED_SUFFIXES or file_path.name == "sw.js":
+        return False
+    query = urlsplit(request_path).query
+    for part in query.split("&"):
+        key, _, value = part.partition("=")
+        if key == "v" and value:
+            return True
+    return False
+
+
+def _static_cache_control(request_path: str, file_path: Path) -> str:
+    """Cache-Control for start/printables/about/field-pack/shell files."""
+    if _is_versioned_asset(request_path, file_path):
+        return VERSIONED_ASSET_CACHE
+    if file_path.suffix.lower() in {".css", ".js", ".html", ".htm"}:
+        return "no-cache"
+    return "public, max-age=86400"
+
+
+class KidZooKitServer(ThreadingHTTPServer):
+    """ThreadingHTTPServer with a real listen backlog.
+
+    The stdlib default ``request_queue_size`` is 5. cloudflared opens one
+    connection per request (HTTP/1.0), so a single page view (10-17 assets)
+    could overflow the backlog and Cloudflare answered 502. 128 matches the
+    macOS ``kern.ipc.somaxconn`` default. Daemon threads never block shutdown.
+    """
+
+    request_queue_size = 128
+    daemon_threads = True
+
+
 def _dinner_preview_text(message_text: str) -> str:
     lines = [line.strip() for line in message_text.splitlines() if line.strip()]
     preview_lines = lines[:3]
@@ -1371,7 +1414,10 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(body)))
-            self.send_header("Cache-Control", "no-cache")
+            if _is_versioned_asset(self.path, shell_file):
+                self.send_header("Cache-Control", VERSIONED_ASSET_CACHE)
+            else:
+                self.send_header("Cache-Control", "no-cache")
             self.end_headers()
             self.wfile.write(body)
             return
@@ -1396,10 +1442,7 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(body)))
-            if start_file.suffix.lower() in {".css", ".js", ".html", ".htm"}:
-                self.send_header("Cache-Control", "no-cache")
-            else:
-                self.send_header("Cache-Control", "public, max-age=86400")
+            self.send_header("Cache-Control", _static_cache_control(self.path, start_file))
             self.end_headers()
             self.wfile.write(body)
             return
@@ -1409,10 +1452,7 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", _static_content_type(printables_file))
             self.send_header("Content-Length", str(len(body)))
-            if printables_file.suffix.lower() in {".css", ".js", ".html", ".htm"}:
-                self.send_header("Cache-Control", "no-cache")
-            else:
-                self.send_header("Cache-Control", "public, max-age=86400")
+            self.send_header("Cache-Control", _static_cache_control(self.path, printables_file))
             self.end_headers()
             self.wfile.write(body)
             return
@@ -1423,10 +1463,7 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(body)))
-            if about_file.suffix.lower() in {".css", ".js", ".html", ".htm"}:
-                self.send_header("Cache-Control", "no-cache")
-            else:
-                self.send_header("Cache-Control", "public, max-age=86400")
+            self.send_header("Cache-Control", _static_cache_control(self.path, about_file))
             self.end_headers()
             self.wfile.write(body)
             return
@@ -1437,11 +1474,8 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(body)))
-            # Avoid long stale CSS/JS at the edge while iterating
-            if field_pack_file.suffix.lower() in {".css", ".js", ".html", ".htm"}:
-                self.send_header("Cache-Control", "no-cache")
-            else:
-                self.send_header("Cache-Control", "public, max-age=86400")
+            # ?v= CSS/JS: 1 day at the edge; HTML/unversioned: always revalidate
+            self.send_header("Cache-Control", _static_cache_control(self.path, field_pack_file))
             self.end_headers()
             self.wfile.write(body)
             return
@@ -1761,7 +1795,7 @@ def main() -> None:
     args = parse_args()
     if args.no_rate_limit:
         set_limiter(RateLimiter(enabled=False))
-    server = ThreadingHTTPServer((args.host, args.port), WebHandler)
+    server = KidZooKitServer((args.host, args.port), WebHandler)
     url = f"http://{args.host}:{args.port}"
     print(f"{APP_TITLE}")
     print(f"Local web chat running at {url}")
