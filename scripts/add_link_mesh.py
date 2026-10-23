@@ -102,7 +102,9 @@ def load():
     cards = {}
     for f in sorted(CARDS.glob("*/index.html")):
         s = f.read_text(encoding="utf-8")
-        m = re.search(r'class="card-page-photo"[^>]*\salt="([^"]+)"', s) or re.search(r"<h1>(.*?)</h1>", s, re.S)
+        # 2026-10-23: hero alt is now a photo description; the card name lives in data-card-name.
+        m = (re.search(r'class="card-page-photo"[^>]*\sdata-card-name="([^"]+)"', s)
+             or re.search(r'class="card-page-photo"[^>]*\salt="([^"]+)"', s) or re.search(r"<h1>(.*?)</h1>", s, re.S))
         name = re.sub(r"<[^>]+>", "", m.group(1)).strip() if m else f.parent.name
         name = re.sub(r"^[^\w(]+", "", name).strip()
         cards[f.parent.name] = {"name": html.unescape(name), "path": f}
