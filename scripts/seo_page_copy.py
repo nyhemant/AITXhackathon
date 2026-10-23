@@ -139,3 +139,18 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
                   'intro': 'Choose a zoo, aquarium, museum, or park and get animal cards, talk '
                            'prompts, and a printable hunt for your visit. Or explore from home '
                            'with live cams and short films.'}}
+
+# 2026-10-23: museums hub gets "<Nav> for Kids" + a visible intro like the other hubs.
+# Title/description unchanged (same text as TYPE_LANDINGS). scripts/hub_photos.py writes the same H1/intro.
+PAGE_COPY["/field-pack/museums/"] = {
+    "title": "Museums · KidZooKit",
+    "description": (
+        "Museum trips for kids: dinosaur halls, rockets, hands-on science and children's museums "
+        "like AMNH, Perot and Air and Space. Talk prompts and printable hunts."
+    ),
+    "h1": "Museums for Kids",
+    "intro": (
+        "Pick a museum for a kid-sized plan: dinosaur halls, space and rockets, hands-on science "
+        "and children's museums, each with talk prompts and a printable sheet for your visit."
+    ),
+}
