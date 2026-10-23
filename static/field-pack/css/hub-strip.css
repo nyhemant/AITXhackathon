@@ -1,0 +1,13 @@
+/* Place hubs: curated animal card strip under "Start here". Added 2026-10-23. */
+.kz-hub-strip { margin: 0.5rem 0 1.6rem; }
+.kz-hub-strip h2 { margin: 0 0 0.6rem; }
+.kz-hub-strip ul { list-style: none; margin: 0; padding: 0 0 6px; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(7.5rem, 1fr); gap: 0.6rem; overflow-x: auto; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
+.kz-hub-strip li { scroll-snap-align: start; min-width: 0; }
+.kz-hub-strip li a { display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.92); border: 1.5px solid rgba(15,92,92,0.12); text-decoration: none; color: #0a4545; height: 100%; }
+.kz-hub-strip li a:hover, .kz-hub-strip li a:focus-visible { border-color: #0f5c5c; }
+.kz-hub-strip img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; display: block; background: #e8f2ee; }
+.kz-hub-strip li span { padding: 0.4rem 0.5rem 0.5rem; font-size: 0.85rem; font-weight: 750; line-height: 1.2; }
+.kz-hub-strip-all { margin: 0.5rem 0 0; }
+.kz-hub-strip-all a { color: #0a5c5c; font-weight: 800; }
+@media (min-width: 900px) { .kz-hub-strip ul { grid-auto-flow: row; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); overflow: visible; } }
+@media print { .kz-hub-strip { display: none !important; } }
