@@ -43,6 +43,14 @@ PRIMARY_MENU = (
 )
 
 
+HUB_MENU = (
+    ("/field-pack/zoos/", "Zoos"),
+    ("/field-pack/aquariums/", "Aquariums"),
+    ("/field-pack/museums/", "Museums"),
+    ("/field-pack/national-parks/", "Parks"),
+)
+
+
 class _Buf:
     def __init__(self):
         self._b = bytearray()
@@ -155,8 +163,12 @@ class IaPhaseBTests(unittest.TestCase):
         for path in SHELL_HTML:
             html = path.read_text(encoding="utf-8")
             items = _menu_items(html, "shell-menu") if 'id="shell-menu"' in html else _menu_items(html, "start-menu")
+            # 2026-10-23: Zoos/Aquariums/Museums/Parks sit nested under Places
+            # (scripts/shell_menu_hubs.py); the top-level doors are unchanged.
+            if 'id="shell-menu"' in html:
+                self.assertEqual([i for i in items if i in HUB_MENU], list(HUB_MENU), path.name)
             self.assertEqual(
-                [(href, label) for href, label in items],
+                [(href, label) for href, label in items if (href, label) not in HUB_MENU],
                 list(PRIMARY_MENU),
                 path.name,
             )
