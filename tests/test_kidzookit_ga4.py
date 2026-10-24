@@ -152,6 +152,25 @@ class KidZooKitGa4Test(unittest.TestCase):
             else:
                 self.assertEqual(payload["scripts"], [])
 
+    def test_ga4_config_turns_off_google_signals_and_ad_personalization(self):
+        shell_js = SHELL_JS.read_text(encoding="utf-8")
+        self.assertIn("allow_google_signals: false", shell_js)
+        self.assertIn("allow_ad_personalization_signals: false", shell_js)
+        self.assertNotIn("allow_google_signals: true", shell_js)
+        self.assertNotIn("allow_ad_personalization_signals: true", shell_js)
+
+    def test_site_analytics_never_sets_user_ids_or_user_properties(self):
+        for rel in (
+            "static/shell/shell.js",
+            "static/shell/qr-welcome.js",
+            "static/shell/related-links.js",
+            "static/field-pack/js/fp-analytics.js",
+            "static/start/start.js",
+        ):
+            text = (REPO / rel).read_text(encoding="utf-8")
+            for banned in ("user_id", "user_properties", "setUserId", "setUserProperties"):
+                self.assertNotIn(banned, text, f"{rel} must not use {banned}")
+
 
 if __name__ == "__main__":
     unittest.main()

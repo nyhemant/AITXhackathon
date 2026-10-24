@@ -247,6 +247,10 @@
       send_page_view: true,
       page_path: initialPath,
       page_title: document.title,
+      // Kids' site: no Google signals, no ad personalization. Event data stays
+      // product analytics only (slugs / enums, no names, emails or free text).
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
       // Required for GA4 Admin → DebugView (otherwise hits only appear in Realtime)
       debug_mode: debug,
     });
