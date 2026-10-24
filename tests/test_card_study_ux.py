@@ -64,7 +64,7 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertEqual(html.count("study-level-picker-bottom"), 0)
         self.assertIn('aria-label="Study level"', html)
         self.assertNotIn('aria-label="Study level at the end"', html)
-        self.assertIn("Got them all? Try Park Ranger", html)
+        self.assertIn("Skip ahead to Park Ranger", html)
         self.assertIn("study-next-tier", html)
         self.assertIn("A grown-up can help you try a harder set.", html)
         self.assertNotIn("Jump to a harder set any time.", html)
@@ -102,7 +102,7 @@ class CardStudyUxTests(unittest.TestCase):
         self.assertIn("Zoologist", zebra_main)
         zoo_html = study_talk_html(study_deck_for("zebra", "zoologist"))
         self.assertIn("Try next:", zoo_html)
-        self.assertNotIn("Got them all?", zoo_html)
+        self.assertNotIn("Skip ahead to", zoo_html)
         print_tpl = study_print_html_for("zebra")
         self.assertNotIn("study-level-picker", print_tpl)
         self.assertNotIn("study-foot", print_tpl)
@@ -131,7 +131,7 @@ class CardStudyUxTests(unittest.TestCase):
         js = STUDY_JS.read_text(encoding="utf-8")
         self.assertIn("function hasAnyAnswer(", js)
         self.assertIn("function paintNextTier(", js)
-        self.assertIn("Got them all? Try", js)
+        self.assertIn("Skip ahead to", js)
         self.assertIn("function exploreHtml(", js)
         self.assertIn('insertAdjacentHTML("afterend", nextExplore)', js)
         self.assertNotIn("function deepenHtml(", js)
@@ -423,8 +423,8 @@ class CardStudyUxTests(unittest.TestCase):
 
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "38")
-        self.assertEqual(STUDY_CARD_JS_VER, "17")
-        self.assertEqual(STUDY_CARD_CSS_VER, "14")
+        self.assertEqual(STUDY_CARD_JS_VER, "18")
+        self.assertEqual(STUDY_CARD_CSS_VER, "15")
         css = SEO_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-hero-links", css)
         self.assertIn("display: contents", css)
@@ -491,8 +491,8 @@ class CardStudyUxTests(unittest.TestCase):
                         'class="card-page-actions"', 1
                     )[0]
                 self.assertNotIn("More photos at", hero)
-                self.assertIn("study-card.js?v=17", html)
-                self.assertIn("study-card.css?v=14", html)
+                self.assertIn("study-card.js?v=18", html)
+                self.assertIn("study-card.css?v=15", html)
                 self.assertIn(f"seo-venue.css?v={CARD_SEO_CSS_VER}", html)
 
         warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))

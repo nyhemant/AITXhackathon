@@ -21369,7 +21369,7 @@ def _next_tier_html(card_id: str, current: str) -> str:
             f'<p class="study-next-tier no-print">'
             f'<button type="button" class="study-next-tier-btn" '
             f'data-study-pick="{_esc(nxt)}">'
-            f"Got them all? Try {_esc(name)} →</button></p>"
+            f"Skip ahead to {_esc(name)} →</button></p>"
         )
     ids = study_try_next_ids(card_id, n=1)
     if not ids:

@@ -218,7 +218,7 @@ class CuttlefishHardStudyCardTests(unittest.TestCase):
         self.assertEqual(html.count('role="group"'), 1)
         self.assertIn("study-next-tier", html)
         self.assertNotIn("study-level-picker-bottom", html)
-        self.assertIn("Got them all? Try", html)
+        self.assertIn("Skip ahead to", html)
         for stem in HARD_STEMS:
             self.assertNotIn(stem, html)
         for stem in EASY_STEMS:
