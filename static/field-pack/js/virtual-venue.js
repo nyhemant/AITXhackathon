@@ -214,10 +214,28 @@
     return "/field-pack/cards/" + encodeURIComponent(cid) + "/" + (ret ? "?from=" + encodeURIComponent(ret) : "");
   }
 
+  // Card-launched watch (?from=card): the quiz lives on animal cards (zoo and
+  // aquarium tabs). Museum / science / park stops have talk-about-it cards only.
+  function cardHasQuiz() {
+    return Boolean(config && (config.kind === "zoo" || config.kind === "aquarium"));
+  }
+
+  // Animal stops: say the animal ("Whale shark"), not the exhibit ("Whale Shark Hall").
+  function watchName(h) {
+    if (!h) return "";
+    const item = cardHasQuiz() ? itemFor(h) : null;
+    return (item && item.name) || h.label || "";
+  }
+
+  function quizHrefFor(h) {
+    return cardHrefFor(h) + "#quiz";
+  }
+
   function syncCardNav(h) {
     const nav = document.getElementById("vz-card-nav");
     const back = document.getElementById("vz-back-card");
     const nextBtn = document.getElementById("vz-next-stop");
+    const quiz = document.getElementById("vz-card-quiz");
     if (!nav) return;
     if (!fromCard()) {
       nav.hidden = true;
@@ -227,6 +245,22 @@
     if (back) {
       back.href = cardHrefFor(h);
       back.textContent = "Back to card";
+    }
+    if (quiz) {
+      const showQuiz = Boolean(h) && cardHasQuiz();
+      quiz.hidden = !showQuiz;
+      if (showQuiz) {
+        const name = watchName(h);
+        quiz.href = quizHrefFor(h);
+        quiz.textContent = name ? `Try the ${name} quiz →` : "Try the quiz →";
+        quiz.onclick = () =>
+          track("related_link_click", {
+            link_type: "watch_quiz",
+            animal_id: h.cardId || h.id,
+            venue_kind: (config && config.kind) || "zoo",
+            tab: currentTab(),
+          });
+      }
     }
     const nxt = h ? nextAfter(h.id) : null;
     if (nextBtn) {
@@ -1879,8 +1913,15 @@
     const nxt = nextHabitat();
     const unit = isSequential() ? "stops" : config.kind === "park" ? "parks" : "halls";
     const done = stampedOnWalk().length;
-    const count = `${done} of ${habs.length} ${unit}`;
-    const extra = isSequential()
+    // Card-launched single stop: name what is playing; "Seen" only after a real
+    // play / cam / map tap (see stampHabitat), never "1 of 1 · Path complete" on arrival.
+    const cardOne = fromCard() && habs.length === 1;
+    const count = cardOne
+      ? `Watching: ${watchName(habs[0]) || "this stop"}${done ? " · Seen ✓" : ""}`
+      : `${done} of ${habs.length} ${unit}`;
+    const extra = cardOne
+      ? ""
+      : isSequential()
       ? nxt
         ? ` · Next: ${nxt.label}`
         : habs.length
@@ -2379,6 +2420,20 @@
     }
   }
 
+  // Stop waiting for a real interaction before it counts as seen (card mode).
+  let pendingStamp = null;
+
+  function stampHabitat(h) {
+    if (!h || !config) return;
+    if (pendingStamp && pendingStamp.id === h.id) pendingStamp = null;
+    if (!stamps.includes(h.id)) {
+      stamps = stamps.concat([h.id]);
+      saveStamps(config.storageKey, stamps);
+    }
+    renderPassport();
+    markMapStamps();
+  }
+
   function openHabitat(id, fromEl, opts) {
     const h = habitatById(id);
     if (!h || !dialog) return;
@@ -2443,6 +2498,7 @@
             openCamPopup(cam.url, cam.camLabel || h.label || "Live");
           }
           track("cam_clicked", { animal_id: h.cardId || h.id, venue_kind: (config && config.kind) || "zoo", tab: currentTab() });
+          stampHabitat(h);
         };
       } else {
         camLink.removeAttribute("href");
@@ -2460,6 +2516,7 @@
           e.preventDefault();
           playHabitatFilm(h);
           track("film_clicked", { animal_id: h.cardId || h.id, venue_kind: (config && config.kind) || "zoo", tab: currentTab() });
+          stampHabitat(h);
         };
       } else {
         filmLink.removeAttribute("href");
@@ -2495,11 +2552,13 @@
     }
     if (challengeEl) challengeEl.textContent = h.challenge || "";
 
-    if (!stamps.includes(h.id)) {
-      stamps = stamps.concat([h.id]);
-      saveStamps(config.storageKey, stamps);
+    // Map taps and normal deep links stamp on open (unchanged). A card-launched
+    // auto-open waits until the kid presses play, opens the cam, or taps the map.
+    if (fromCard() && fromHash) {
+      pendingStamp = stamps.includes(h.id) ? null : h;
       renderPassport();
-      markMapStamps();
+    } else if (!stamps.includes(h.id)) {
+      stampHabitat(h);
     }
     if (!openedIds.includes(h.id)) openedIds.push(h.id);
 
@@ -2741,6 +2800,17 @@
     }
   });
   document.getElementById("vz-sound-tip-dismiss")?.addEventListener("click", () => hideSoundTip(true));
+  // Pressing play inside the embedded player moves focus into its iframe;
+  // the page only sees a window blur. Count that as a real watch (card mode).
+  window.addEventListener("blur", () => {
+    setTimeout(() => {
+      const a = document.activeElement;
+      if (!pendingStamp || !a || a.tagName !== "IFRAME") return;
+      if (!dialog || dialog.hidden || !dialog.contains(a)) return;
+      if (currentHabitatId && pendingStamp.id !== currentHabitatId) return;
+      stampHabitat(pendingStamp);
+    }, 0);
+  });
   document.getElementById("vz-next-stop")?.addEventListener("click", () => {
     const nxt = nextAfter(currentHabitatId || habitatHashId() || queryHabitat() || currentCardId);
     if (!nxt) return;
