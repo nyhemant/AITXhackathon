@@ -1,0 +1,40 @@
+"""The /privacy/ page exists, is routed, is in the sitemap and only states audited facts."""
+
+from __future__ import annotations
+
+import re
+import unittest
+from pathlib import Path
+
+from busyparent_agent.web import _safe_privacy_path
+
+ROOT = Path(__file__).resolve().parents[1]
+PAGE = ROOT / "static" / "privacy" / "index.html"
+
+
+class PrivacyPageTests(unittest.TestCase):
+    def test_routed(self):
+        self.assertEqual(_safe_privacy_path("/privacy/"), PAGE)
+        self.assertEqual(_safe_privacy_path("/privacy/index.html"), PAGE)
+        self.assertIsNone(_safe_privacy_path("/privacy/../web.py"))
+
+    def test_in_both_sitemaps(self):
+        for p in ("static/sitemap.xml", "static/field-pack/sitemap.xml"):
+            self.assertIn("<loc>https://kidzookit.com/privacy/</loc>", (ROOT / p).read_text())
+
+    def test_page_copy_rules(self):
+        html = PAGE.read_text(encoding="utf-8")
+        text = re.sub(r"<[^>]+>", " ", html)
+        self.assertNotRegex(text, r"(?i)\bfree\b")
+        self.assertIn("mailto:kidzookit@agentmail.to", html)
+        self.assertIn("Google Analytics", text)
+        for bad in ("guarantee", "COPPA compliant", "GDPR compliant"):
+            self.assertNotIn(bad.lower(), text.lower())
+
+    def test_footers_link_to_privacy(self):
+        for p in ("static/about/index.html", "static/start/index.html"):
+            self.assertIn('href="/privacy/"', (ROOT / p).read_text(), p)
+
+
+if __name__ == "__main__":
+    unittest.main()

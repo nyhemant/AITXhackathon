@@ -3496,6 +3496,7 @@ _SITEMAP_HUB_SOURCES: dict[str, tuple[Path, ...]] = {
         STATIC / "about" / "index.html",
         STATIC / "about" / "about.css",
     ),
+    "/privacy/": (STATIC / "privacy" / "index.html",),
     "/field-pack/": (
         FIELD / "index.html",
         FIELD / "js" / "landing-map.js",
@@ -3625,7 +3626,7 @@ def collect_sitemap_extra_urls() -> list[str]:
     extras = [f"/field-pack/{meta['path']}/" for meta in TYPE_LANDINGS]
     extras.append("/field-pack/cards/")
     extras.extend(f"/field-pack/cards/{cid}/" for cid in sorted(published_card_ids()))
-    extras.extend(["/field-pack/virtual-field-trip/", "/start/", "/about/"])
+    extras.extend(["/field-pack/virtual-field-trip/", "/start/", "/about/", "/privacy/"])
     extras.extend(published_printable_paths())
     return [u for u in extras if not is_redirect_only_url(u)]
 

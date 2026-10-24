@@ -58,6 +58,7 @@ from busyparent_agent.web import (
     ZOO_ALIAS_PATHS,
     _SITEMAP_URLS,
     _safe_about_path,
+    _safe_privacy_path,
     _safe_printables_path,
     _safe_field_pack_path,
     _safe_pwa_path,
@@ -247,6 +248,10 @@ def _served_status(path: str) -> int:
     if path == ABOUT_PREFIX:
         return 301
     if _safe_about_path(path) is not None:
+        return 200
+    if path == "/privacy":
+        return 301
+    if _safe_privacy_path(path) is not None:
         return 200
     if path == "/printables":
         return 301

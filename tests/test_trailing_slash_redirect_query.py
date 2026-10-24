@@ -40,7 +40,7 @@ QS = "utm_source=printable&utm_medium=qr&utm_campaign=chaperone-card"
 
 class TrailingSlashRedirectQueryTests(unittest.TestCase):
     def test_bare_hub_paths_keep_query_on_get_and_head(self):
-        for bare in ("/printables", "/field-pack", "/start", "/about"):
+        for bare in ("/printables", "/field-pack", "/start", "/about", "/privacy"):
             for method in ("do_GET", "do_HEAD"):
                 with self.subTest(path=bare, method=method):
                     h = _Handler(f"{bare}?{QS}")
@@ -49,7 +49,7 @@ class TrailingSlashRedirectQueryTests(unittest.TestCase):
                     self.assertEqual(h.sent["Location"], f"{bare}/?{QS}")
 
     def test_bare_hub_paths_without_query_stay_clean(self):
-        for bare in ("/printables", "/field-pack", "/start", "/about"):
+        for bare in ("/printables", "/field-pack", "/start", "/about", "/privacy"):
             for method in ("do_GET", "do_HEAD"):
                 with self.subTest(path=bare, method=method):
                     h = _Handler(bare)
@@ -58,7 +58,7 @@ class TrailingSlashRedirectQueryTests(unittest.TestCase):
                     self.assertEqual(h.sent["Location"], f"{bare}/")
 
     def test_redirect_target_is_never_a_loop(self):
-        for bare in ("/printables", "/field-pack", "/start", "/about"):
+        for bare in ("/printables", "/field-pack", "/start", "/about", "/privacy"):
             h = _Handler(f"{bare}/?{QS}")
             h.do_GET()
             self.assertEqual(h.code, 200, bare)
