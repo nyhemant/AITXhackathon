@@ -53,6 +53,8 @@ ZOO_ALIAS_PATHS = frozenset({"/zoo", "/zoo/"})
 # Educational About / FAQ — seek-out only; not a landing
 ABOUT_ROOT = REPO_ROOT / "static" / "about"
 ABOUT_PREFIX = "/about"
+PRIVACY_ROOT = REPO_ROOT / "static" / "privacy"
+PRIVACY_PREFIX = "/privacy"
 PRINTABLES_ROOT = REPO_ROOT / "static" / "printables"
 PRINTABLES_PREFIX = "/printables"
 SHELL_ROOT = REPO_ROOT / "static" / "shell"
@@ -1077,6 +1079,11 @@ def _safe_printables_path(url_path: str) -> Path | None:
     return _safe_mounted_static(url_path, PRINTABLES_PREFIX, PRINTABLES_ROOT)
 
 
+def _safe_privacy_path(url_path: str) -> Path | None:
+    """Resolve /privacy/... to a file under PRIVACY_ROOT, or None."""
+    return _safe_mounted_static(url_path, PRIVACY_PREFIX, PRIVACY_ROOT)
+
+
 def _safe_about_path(url_path: str) -> Path | None:
     """Resolve /about/... to a file under ABOUT_ROOT, or None."""
     return _safe_mounted_static(url_path, ABOUT_PREFIX, ABOUT_ROOT)
@@ -1387,6 +1394,12 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        if path == PRIVACY_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", _slash_location(self.path, PRIVACY_PREFIX))
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         # Same rule as /start and /about: one URL for the printables hub.
         if path == PRINTABLES_PREFIX:
             self.send_response(301)
@@ -1483,6 +1496,16 @@ class WebHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(body)
             return
+        privacy_file = _safe_privacy_path(path)
+        if privacy_file is not None:
+            body = privacy_file.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", _static_content_type(privacy_file))
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", _static_cache_control(self.path, privacy_file))
+            self.end_headers()
+            self.wfile.write(body)
+            return
         field_pack_file = _safe_field_pack_path(path)
         if field_pack_file is not None:
             body = field_pack_file.read_bytes()
@@ -1558,6 +1581,12 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        if path == PRIVACY_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", _slash_location(self.path, PRIVACY_PREFIX))
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         # Same 301s as do_GET so HEAD is not a second copy of the hub.
         if path == PRINTABLES_PREFIX:
             self.send_response(301)
@@ -1586,6 +1615,7 @@ class WebHandler(BaseHTTPRequestHandler):
         pwa_file = _safe_pwa_path(path)
         start_file = _safe_start_path(path)
         about_file = _safe_about_path(path)
+        privacy_file = _safe_privacy_path(path)
         printables_file = _safe_printables_path(path)
         field_pack_file = _safe_field_pack_path(path)
         if asset_path is not None and asset_path.exists():
@@ -1603,6 +1633,9 @@ class WebHandler(BaseHTTPRequestHandler):
         elif about_file is not None:
             content_type = _static_content_type(about_file)
             length = about_file.stat().st_size
+        elif privacy_file is not None:
+            content_type = _static_content_type(privacy_file)
+            length = privacy_file.stat().st_size
         elif printables_file is not None:
             content_type = _static_content_type(printables_file)
             length = printables_file.stat().st_size
