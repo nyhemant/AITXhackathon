@@ -6,10 +6,10 @@ only the <lastmod> values, then writes the identical copy to
 static/field-pack/sitemap.xml. Run after committing page changes (uncommitted edits
 are not seen by git). Added 2026-10-21.
 
-Note: scripts/generate_bdo_seo.py (full run or --sitemap-only) still uses its own
-rule (venue JSON date for place pages) and its own URL list (no /printables/*
-pages), so a generator run resets these dates and drops the printables URLs.
-Re-run this script afterwards.
+Note: scripts/generate_bdo_seo.py (full run or --sitemap-only) keeps the public
+URL list, including /printables/ pages, but lastmod follows the generator's
+source-file rule and the rewrite drops <image:image> entries. Re-run
+scripts/image_seo.py and then this script afterwards.
 """
 import re
 import subprocess

@@ -248,6 +248,8 @@ def _served_status(path: str) -> int:
         return 301
     if _safe_about_path(path) is not None:
         return 200
+    if path == "/printables":
+        return 301
     if _safe_printables_path(path) is not None:
         return 200
     if path == FIELD_PACK_PREFIX:
@@ -486,6 +488,8 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             "/zoo": 301,
             "/zoo/": 301,
             "/field-pack": 301,
+            "/printables": 301,
+            "/printables/": 200,
             "/": 301,
             "/field-pack/cards/acad-cadillac-view/": 404,
             "/field-pack/not-a-real-place/": 404,
@@ -494,6 +498,9 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             h = FakeHandler(path)
             h.do_GET()
             self.assertEqual(h._code, expect, path)
+            head = FakeHandler(path)
+            head.do_HEAD()
+            self.assertEqual(head._code, expect, path + " HEAD")
             self.assertEqual(_served_status(path), expect, path)
 
     def test_unpublished_cards_retarget_to_place_page(self):

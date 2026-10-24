@@ -1378,6 +1378,13 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        # Same rule as /start and /about: one URL for the printables hub.
+        if path == PRINTABLES_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", PRINTABLES_PREFIX + "/")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         # Trailing slash so relative CSS/JS/photo URLs resolve under /field-pack/
         if path == FIELD_PACK_PREFIX:
             self.send_response(301)
@@ -1539,6 +1546,19 @@ class WebHandler(BaseHTTPRequestHandler):
         if path == ABOUT_PREFIX:
             self.send_response(301)
             self.send_header("Location", ABOUT_PREFIX + "/")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        # Same 301s as do_GET so HEAD is not a second copy of the hub.
+        if path == PRINTABLES_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", PRINTABLES_PREFIX + "/")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        if path == FIELD_PACK_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", FIELD_PACK_PREFIX + "/")
             self.send_header("Content-Length", "0")
             self.end_headers()
             return

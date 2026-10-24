@@ -113,6 +113,33 @@ class SitemapTests(unittest.TestCase):
         robots = (REPO / "static" / "robots.txt").read_text(encoding="utf-8")
         self.assertIn(f"Sitemap: {SITE}/sitemap.xml", robots)
 
+    def test_committed_sitemap_is_exactly_the_public_pages(self):
+        static = REPO / "static"
+        pages = set()
+        for index in static.rglob("index.html"):
+            rel = index.relative_to(static).parent.as_posix()
+            pages.add(f"{SITE}/{rel}/")
+        text = (static / "sitemap.xml").read_text(encoding="utf-8")
+        locs = set(_LOC_RE.findall(text))
+        self.assertEqual(locs, pages)
+        for loc in locs:
+            path = loc[len(SITE) :]
+            self.assertTrue(loc.startswith(f"{SITE}/"), loc)
+            self.assertFalse(is_redirect_only_url(path), loc)
+            self.assertNotIn("1less.app", loc)
+            self.assertFalse(loc.startswith("http://"), loc)
+
+    def test_generator_keeps_printable_pages(self):
+        extras = collect_sitemap_extra_urls()
+        for path in (
+            "/printables/",
+            "/printables/animal-bingo/",
+            "/printables/scavenger-hunt/",
+            "/printables/zoo-day-journal/",
+        ):
+            self.assertIn(path, extras)
+            self.assertFalse(is_redirect_only_url(path))
+
     def test_canonical_ia_urls_present_redirects_omitted(self):
         extras = collect_sitemap_extra_urls()
         self.assertIn("/field-pack/virtual-field-trip/", extras)

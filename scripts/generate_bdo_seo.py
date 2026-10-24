@@ -13,8 +13,10 @@ Outputs:
 
 Sitemap <lastmod> is the newest git commit date (fallback: file mtime) of each
 URL's source file — venue JSON for place pages, the HTML/JS/CSS that backs
-hubs and cards. Redirect-only aliases are omitted. `--sitemap-only` rewrites
-the two sitemap.xml copies without regenerating pages.
+hubs and cards. Redirect-only aliases are omitted. Public /printables/ pages
+are included. `--sitemap-only` rewrites the two sitemap.xml copies without
+regenerating pages. A rewrite drops <image:image> tags; re-run
+scripts/image_seo.py and scripts/sitemap_lastmod_from_git.py afterwards.
 """
 
 from __future__ import annotations
@@ -3604,12 +3606,27 @@ def lastmod_for_url(url: str, *, git_lookup=None, today: str | None = None) -> s
     )
 
 
+def published_printable_paths() -> list[str]:
+    """Public /printables/ pages: the hub plus each activity page on disk."""
+    root = STATIC / "printables"
+    if not root.is_dir():
+        return []
+    paths: list[str] = []
+    if (root / "index.html").is_file():
+        paths.append("/printables/")
+    for page in sorted(root.glob("*/index.html")):
+        if page.is_file():
+            paths.append(f"/printables/{page.parent.name}/")
+    return paths
+
+
 def collect_sitemap_extra_urls() -> list[str]:
-    """Canonical extras: type hubs, cards hub + pages, VFT, Start, About."""
+    """Canonical extras: type hubs, cards, VFT, Start, About, printables."""
     extras = [f"/field-pack/{meta['path']}/" for meta in TYPE_LANDINGS]
     extras.append("/field-pack/cards/")
     extras.extend(f"/field-pack/cards/{cid}/" for cid in sorted(published_card_ids()))
     extras.extend(["/field-pack/virtual-field-trip/", "/start/", "/about/"])
+    extras.extend(published_printable_paths())
     return [u for u in extras if not is_redirect_only_url(u)]
 
 
@@ -6034,15 +6051,8 @@ def main() -> int:
     patch_landing_directory(venues)
     patch_places_data_hrefs(venues)
     type_urls = write_type_landings(venues)
-    cards_urls = write_cards_hub(venues)
-    if isinstance(cards_urls, str):
-        cards_urls = [cards_urls]
-    write_sitemap(
-        venues,
-        extra_urls=type_urls
-        + cards_urls
-        + ["/field-pack/virtual-field-trip/", "/start/", "/about/"],
-    )
+    write_cards_hub(venues)
+    write_sitemap(venues, extra_urls=collect_sitemap_extra_urls())
     write_robots()
     manifest = {
         "generated": TODAY,
