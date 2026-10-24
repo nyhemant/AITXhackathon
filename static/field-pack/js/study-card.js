@@ -8,12 +8,69 @@
  * and skip the session recent path (fp-study-recent, last ~8).
  * Species cards skip category/habitat hubs (generic Shark, freshwater fish,
  * kelp forest) until species peers cannot fill the row.
+ * Finish moment (2026-10-24): a tier is complete when every question has been
+ * answered correctly (retries count). The panel shows the real first-try count,
+ * then up to 3 next steps: next tier (or a related next animal after the last
+ * tier), ONE printable from the reviewed FP_QUIZ_PRINTABLES map
+ * (data/quiz_printables.json), and the card's Watch link when it has one.
+ * Events go through the shell's trackEvent (respects analytics-off; no PII):
+ * quiz_start, quiz_complete, quiz_tier_pick, quiz_next_click.
  */
 const FP_STUDY_RECENT_KEY = "fp-study-recent";
 const FP_STUDY_RECENT_MAX = 8;
 // Keep in sync with STUDY_TRY_NEXT_CATEGORY_IDS. Used when a cached catalog
 // has no categories list. card-kinds.tsv does not encode this split.
 const FP_STUDY_TRY_NEXT_CATEGORIES = ["freshwater-fish", "kelp-forest", "shark"];
+// Reviewed one-printable-per-card map. Keep in sync with data/quiz_printables.json.
+const FP_QUIZ_PRINTABLES = {
+  "african-lion": "scavenger-hunt",
+  "reticulated-giraffe": "scavenger-hunt",
+  "african-elephant": "scavenger-hunt",
+  "zebra": "scavenger-hunt",
+  "sumatran-tiger": "scavenger-hunt",
+  "cheetah": "scavenger-hunt",
+  "red-panda": "scavenger-hunt",
+  "ring-tailed-lemur": "scavenger-hunt",
+  "caribbean-flamingo": "scavenger-hunt",
+  "ostrich": "scavenger-hunt",
+  "african-penguin": "scavenger-hunt",
+  "nile-hippo": "scavenger-hunt",
+  "giant-panda": "animal-bingo",
+  "polar-bear": "animal-bingo",
+  "american-bison": "animal-bingo",
+  "elk": "animal-bingo",
+  "warthog": "animal-bingo",
+  "koala": "animal-bingo",
+  "two-toed-sloth": "animal-bingo",
+  "american-alligator": "animal-bingo",
+  "asian-small-clawed-otter": "animal-bingo",
+  "sea-otter": "animal-bingo",
+  "puffin": "animal-bingo",
+  "shark": "animal-bingo",
+  "whale-shark": "animal-bingo",
+  "stingray": "animal-bingo",
+  "manta-ray": "animal-bingo",
+  "sea-turtle": "animal-bingo",
+  "clownfish": "animal-bingo",
+  "crab": "animal-bingo",
+  "eel": "animal-bingo",
+  "freshwater-fish": "animal-bingo",
+  "seahorse": "animal-bingo",
+  "starfish": "animal-bingo",
+  "western-lowland-gorilla": "zoo-day-journal",
+  "chimpanzee": "zoo-day-journal",
+  "orangutan": "zoo-day-journal",
+  "galapagos-tortoise": "zoo-day-journal",
+  "octopus": "zoo-day-journal",
+  "cuttlefish": "zoo-day-journal",
+  "jellyfish": "zoo-day-journal",
+  "kelp-forest": "zoo-day-journal",
+};
+const FP_QUIZ_PRINTABLE_PAGES = {
+  "scavenger-hunt": { href: "/printables/scavenger-hunt/", label: "Print a zoo scavenger hunt" },
+  "animal-bingo": { href: "/printables/animal-bingo/", label: "Print animal bingo" },
+  "zoo-day-journal": { href: "/printables/zoo-day-journal/", label: "Print a zoo day journal" },
+};
 
 function FPStudyPickTryNextIds(current, recent, catalog, n) {
   const want = n == null ? 3 : Number(n) || 3;
@@ -93,6 +150,7 @@ function FPStudyRememberRecent(id, recent, hint, max) {
 if (typeof window !== "undefined") {
   window.FPStudyPickTryNextIds = FPStudyPickTryNextIds;
   window.FPStudyRememberRecent = FPStudyRememberRecent;
+  window.FP_QUIZ_PRINTABLES = FP_QUIZ_PRINTABLES;
 }
 
 (() => {
@@ -295,6 +353,170 @@ if (typeof window !== "undefined") {
     );
   }
 
+  function paintNudge(qEl, show) {
+    let el = qEl.querySelector(".study-nudge");
+    if (!el) {
+      el = document.createElement("p");
+      el.className = "study-nudge no-print";
+      el.setAttribute("role", "status");
+      el.setAttribute("aria-live", "polite");
+      const why = qEl.querySelector(".study-why");
+      if (why) why.insertAdjacentElement("beforebegin", el);
+      else qEl.appendChild(el);
+    }
+    if (show) {
+      el.textContent = "Not quite, try another!";
+      el.hidden = false;
+    } else {
+      el.textContent = "";
+      el.hidden = true;
+    }
+  }
+
+  function quizTrack(name, params) {
+    try {
+      if (typeof window.trackEvent === "function") window.trackEvent(name, params || {});
+    } catch (_) {
+      /* ignore */
+    }
+  }
+
+  // Per page view: which tiers were started / finished (no storage; passport is held).
+  const quizSeen = { started: {}, done: {} };
+
+  function doneCount(root) {
+    return questions(root).filter((qEl) => qEl.classList.contains("mission-ok")).length;
+  }
+
+  function firstTryCount(root) {
+    return questions(root).filter((qEl) => qEl.getAttribute("data-first") === "1").length;
+  }
+
+  function paintProgress(root) {
+    const total = questions(root).length;
+    let el = root.querySelector(".study-progress");
+    if (!total) {
+      if (el) el.remove();
+      return;
+    }
+    if (!el) {
+      el = document.createElement("p");
+      el.className = "study-progress no-print";
+      el.innerHTML =
+        '<span class="study-progress-pill"><span class="study-progress-bar" aria-hidden="true">' +
+        '<span class="study-progress-fill"></span></span><span class="study-progress-text"></span></span>';
+      const grid = root.querySelector(".study-grid");
+      if (grid) grid.insertAdjacentElement("afterend", el);
+      else return;
+    }
+    const n = doneCount(root);
+    el.querySelector(".study-progress-text").textContent = `${n} of ${total} done`;
+    const fill = el.querySelector(".study-progress-fill");
+    if (fill) fill.style.width = Math.round((100 * n) / total) + "%";
+    el.classList.toggle("is-complete", n === total);
+  }
+
+  function cardTitle(id) {
+    const catalog = window.FP_STUDY_TRY_NEXT;
+    const titles = (catalog && catalog.titles) || {};
+    if (titles[id]) return titles[id];
+    return String(id || "").replace(/-/g, " ");
+  }
+
+  function finishScoreText(total, first) {
+    if (first === total) {
+      return total === 1 ? "Right on the first try!" : `All ${total} right on the first try!`;
+    }
+    return `You got all ${total} in the end. ${first} of ${total} right on the first try.`;
+  }
+
+  function finishNextHtml(root, cardId, level) {
+    const items = [];
+    const levels = shippedLevels(cardId);
+    const cur = normalizeLevel(level) || "easy";
+    const idx = levels.indexOf(cur);
+    if (idx >= 0 && idx < levels.length - 1) {
+      const nxt = levels[idx + 1];
+      items.push(
+        `<li><button type="button" class="study-finish-link is-primary" data-study-pick="${esc(nxt)}" ` +
+          `data-quiz-next="next_tier">Try ${esc(levelDisplayName(nxt))} →</button></li>`
+      );
+    } else {
+      const ids = FPStudyPickTryNextIds(cardId, readStudyRecent(), window.FP_STUDY_TRY_NEXT, 1);
+      if (ids.length) {
+        items.push(
+          `<li><a class="study-finish-link is-primary" href="/field-pack/cards/${esc(ids[0])}/" ` +
+            `data-quiz-next="next_card">Meet the ${esc(cardTitle(ids[0]))} →</a></li>`
+        );
+      }
+    }
+    const sheet = FP_QUIZ_PRINTABLES[cardId];
+    const page = sheet && FP_QUIZ_PRINTABLE_PAGES[sheet];
+    if (page) {
+      items.push(
+        `<li><a class="study-finish-link" href="${esc(page.href)}" data-quiz-next="printable">${esc(page.label)}</a></li>`
+      );
+    }
+    const watch = document.querySelector("a.card-watch-live[href]");
+    if (watch) {
+      items.push(
+        `<li><a class="study-finish-link" href="${esc(watch.getAttribute("href"))}" data-quiz-next="watch">` +
+          `Watch the ${esc(cardTitle(cardId))} film</a></li>`
+      );
+    }
+    return items.slice(0, 3).join("");
+  }
+
+  function paintFinish(root) {
+    const foot = root.querySelector(".study-foot");
+    if (!foot) return;
+    const id = root.getAttribute("data-study-id") || "";
+    const level = root.getAttribute("data-study-level") || "easy";
+    const total = questions(root).length;
+    const first = firstTryCount(root);
+    const old = foot.querySelector(".study-finish");
+    if (old) old.remove();
+    const tierBtn = foot.querySelector(".study-next-tier");
+    if (tierBtn) tierBtn.hidden = true;
+    const next = finishNextHtml(root, id, level);
+    const html =
+      `<div class="study-finish no-print" role="status" aria-live="polite" tabindex="-1">` +
+      `<p class="study-finish-badge" aria-hidden="true"><span>★</span></p>` +
+      `<h3 class="study-finish-title">${esc(levelDisplayName(level))} complete!</h3>` +
+      `<p class="study-finish-score">${esc(finishScoreText(total, first))}</p>` +
+      (next ? `<p class="study-finish-kicker">What next?</p><ul class="study-finish-next">${next}</ul>` : "") +
+      `</div>`;
+    foot.insertAdjacentHTML("afterbegin", html);
+    const panel = foot.querySelector(".study-finish");
+    if (panel) {
+      try {
+        panel.focus({ preventScroll: true });
+        panel.scrollIntoView({ block: "nearest" });
+      } catch (_) {
+        /* ignore */
+      }
+    }
+  }
+
+  function afterAnswer(root) {
+    const id = root.getAttribute("data-study-id") || "";
+    const level = root.getAttribute("data-study-level") || "easy";
+    const tier = levelDisplayName(level);
+    const total = questions(root).length;
+    if (!quizSeen.started[level]) {
+      quizSeen.started[level] = true;
+      quizTrack("quiz_start", { card: id, tier });
+    }
+    paintProgress(root);
+    if (total && doneCount(root) === total && !root.querySelector(".study-foot .study-finish")) {
+      paintFinish(root);
+      if (!quizSeen.done[level]) {
+        quizSeen.done[level] = true;
+        quizTrack("quiz_complete", { card: id, tier, first_try_correct: firstTryCount(root), total });
+      }
+    }
+  }
+
   function markChoice(qEl, btn, revealed) {
     if (!qEl || !btn) return;
     if (btn.disabled || btn.classList.contains("is-wrong-pick")) return;
@@ -405,7 +627,7 @@ if (typeof window !== "undefined") {
       return (
         `<p class="study-next-tier no-print">` +
         `<button type="button" class="study-next-tier-btn" data-study-pick="${esc(nxt)}">` +
-        `Got them all? Try ${esc(name)} →</button></p>`
+        `Skip ahead to ${esc(name)} →</button></p>`
       );
     }
     const catalog = window.FP_STUDY_TRY_NEXT;
@@ -429,7 +651,10 @@ if (typeof window !== "undefined") {
     const html = nextTierHtml(id, level);
     const existing = foot.querySelector(".study-next-tier");
     if (existing) existing.remove();
+    const finish = foot.querySelector(".study-finish");
+    if (finish) finish.remove();
     if (html) foot.insertAdjacentHTML("beforeend", html);
+    paintProgress(root);
   }
 
   function revealAll(root, on) {
@@ -610,10 +835,28 @@ if (typeof window !== "undefined") {
 
   function bind(root) {
     root.addEventListener("click", (ev) => {
+      const nextLink = ev.target.closest("[data-quiz-next]");
+      if (nextLink && root.contains(nextLink)) {
+        quizTrack("quiz_next_click", {
+          link_type: nextLink.getAttribute("data-quiz-next") || "",
+          card: root.getAttribute("data-study-id") || "",
+          tier: levelDisplayName(root.getAttribute("data-study-level") || "easy"),
+        });
+      }
       const pick = ev.target.closest("[data-study-pick]");
       if (pick && root.contains(pick)) {
         const next = normalizeLevel(pick.getAttribute("data-study-pick")) || "easy";
         if (next !== (root.getAttribute("data-study-level") || "easy")) {
+          const via = pick.hasAttribute("data-quiz-next")
+            ? "finish"
+            : pick.classList.contains("study-next-tier-btn")
+              ? "skip_ahead"
+              : "picker";
+          quizTrack("quiz_tier_pick", {
+            card: root.getAttribute("data-study-id") || "",
+            tier: levelDisplayName(next),
+            via,
+          });
           selectLevel(root, next);
         } else {
           scrollStudyIntoView(root);
@@ -624,8 +867,17 @@ if (typeof window !== "undefined") {
       if (choice && root.contains(choice)) {
         const qEl = choice.closest(".study-q");
         if (!qEl || choice.disabled || choice.classList.contains("is-wrong-pick")) return;
-        markChoice(qEl, choice, root.getAttribute("data-revealed") === "1");
+        if (qEl.classList.contains("mission-ok")) return;
+        const revealed = root.getAttribute("data-revealed") === "1";
+        const isRight =
+          (choice.getAttribute("data-letter") || "").toUpperCase() ===
+          (qEl.getAttribute("data-correct") || "").toUpperCase();
+        // First pick per question decides "right on the first try" (not while answers are shown).
+        if (!qEl.hasAttribute("data-first")) qEl.setAttribute("data-first", isRight && !revealed ? "1" : "0");
+        markChoice(qEl, choice, revealed);
+        paintNudge(qEl, !isRight);
         paintScore(root);
+        afterAnswer(root);
         return;
       }
       const reveal = ev.target.closest("[data-study-reveal]");
