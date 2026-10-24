@@ -1149,6 +1149,15 @@ def _dinner_preview_text(message_text: str) -> str:
     return "\n".join(preview_lines)
 
 
+def _slash_location(raw_path: str, prefix: str) -> str:
+    """Trailing-slash Location for a bare hub path, keeping any query string.
+
+    A printed QR or shared link may carry utm_* params; a 301 must not drop them.
+    """
+    query = urlsplit(raw_path).query
+    return prefix + "/" + (("?" + query) if query else "")
+
+
 def _send_redirect(handler: "WebHandler", location: str, *, code: int = 301) -> None:
     handler.send_response(code)
     handler.send_header("Location", location)
@@ -1368,20 +1377,27 @@ class WebHandler(BaseHTTPRequestHandler):
         # First-time Field Trip Kit landing at /start/ (does not replace / or /field-pack/)
         if path == START_PREFIX:
             self.send_response(301)
-            self.send_header("Location", START_PREFIX + "/")
+            self.send_header("Location", _slash_location(self.path, START_PREFIX))
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
         if path == ABOUT_PREFIX:
             self.send_response(301)
-            self.send_header("Location", ABOUT_PREFIX + "/")
+            self.send_header("Location", _slash_location(self.path, ABOUT_PREFIX))
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        # Same rule as /start and /about: one URL for the printables hub.
+        if path == PRINTABLES_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", _slash_location(self.path, PRINTABLES_PREFIX))
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
         # Trailing slash so relative CSS/JS/photo URLs resolve under /field-pack/
         if path == FIELD_PACK_PREFIX:
             self.send_response(301)
-            self.send_header("Location", FIELD_PACK_PREFIX + "/")
+            self.send_header("Location", _slash_location(self.path, FIELD_PACK_PREFIX))
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
@@ -1532,13 +1548,26 @@ class WebHandler(BaseHTTPRequestHandler):
             return
         if path == START_PREFIX:
             self.send_response(301)
-            self.send_header("Location", START_PREFIX + "/")
+            self.send_header("Location", _slash_location(self.path, START_PREFIX))
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
         if path == ABOUT_PREFIX:
             self.send_response(301)
-            self.send_header("Location", ABOUT_PREFIX + "/")
+            self.send_header("Location", _slash_location(self.path, ABOUT_PREFIX))
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        # Same 301s as do_GET so HEAD is not a second copy of the hub.
+        if path == PRINTABLES_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", _slash_location(self.path, PRINTABLES_PREFIX))
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        if path == FIELD_PACK_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", _slash_location(self.path, FIELD_PACK_PREFIX))
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
