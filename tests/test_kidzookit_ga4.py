@@ -8,7 +8,16 @@ import subprocess
 import unittest
 from pathlib import Path
 
-from busyparent_agent.web import GA4_MEASUREMENT_ID, HTML, _html_for_request
+from busyparent_agent.web import (
+    ANALYTICS_COOKIE,
+    ANALYTICS_OFF_VALUE,
+    CLOUDFLARE_BEACON_SCRIPT_HOST,
+    GA4_MEASUREMENT_ID,
+    HTML,
+    SECURITY_HEADERS,
+    _html_for_request,
+    _security_headers_for,
+)
 
 REPO = Path(__file__).resolve().parents[1]
 SHELL_JS = REPO / "static" / "shell" / "shell.js"
@@ -170,6 +179,57 @@ class KidZooKitGa4Test(unittest.TestCase):
             text = (REPO / rel).read_text(encoding="utf-8")
             for banned in ("user_id", "user_properties", "setUserId", "setUserProperties"):
                 self.assertNotIn(banned, text, f"{rel} must not use {banned}")
+
+
+def _directives(csp: str) -> dict[str, list[str]]:
+    out = {}
+    for part in csp.split(";"):
+        bits = part.split()
+        if bits:
+            out[bits[0]] = bits[1:]
+    return out
+
+
+class CloudflareBeaconCspTest(unittest.TestCase):
+    """Cloudflare Web Analytics beacon: exactly one script host, nothing else loosened."""
+
+    def test_script_src_allows_only_the_exact_beacon_host(self):
+        self.assertEqual(CLOUDFLARE_BEACON_SCRIPT_HOST, "https://static.cloudflareinsights.com")
+        d = _directives(SECURITY_HEADERS["Content-Security-Policy"])
+        self.assertIn(CLOUDFLARE_BEACON_SCRIPT_HOST, d["script-src"])
+
+    def test_no_cloudflare_wildcard_and_no_connect_src_host(self):
+        # The beacon posts to /cdn-cgi/rum on our own origin, which connect-src 'self' covers.
+        d = _directives(SECURITY_HEADERS["Content-Security-Policy"])
+        for name, values in d.items():
+            for v in values:
+                if "cloudflare" in v:
+                    self.assertEqual((name, v), ("script-src", CLOUDFLARE_BEACON_SCRIPT_HOST))
+                    self.assertNotIn("*", v)
+        self.assertIn("'self'", d["connect-src"])
+        self.assertNotIn("cloudflareinsights", " ".join(d["connect-src"]))
+
+    def test_other_directives_unchanged_by_the_beacon(self):
+        d = _directives(SECURITY_HEADERS["Content-Security-Policy"])
+        self.assertEqual(d["default-src"], ["'self'"])
+        self.assertEqual(d["object-src"], ["'none'"])
+        self.assertEqual(d["frame-ancestors"], ["'none'"])
+        self.assertEqual(d["form-action"], ["'self'"])
+        self.assertEqual(d["img-src"], ["'self'", "data:", "https:"])
+        self.assertEqual(d["style-src"], ["'self'", "'unsafe-inline'"])
+        self.assertEqual(d["font-src"], ["'self'"])
+
+    def test_opted_out_visitors_do_not_get_the_beacon_host(self):
+        off = f"a=b; {ANALYTICS_COOKIE}={ANALYTICS_OFF_VALUE}"
+        opted_out = _security_headers_for(off)["Content-Security-Policy"]
+        self.assertNotIn("cloudflareinsights", opted_out)
+        self.assertIn("https://www.googletagmanager.com", opted_out)
+        default = _directives(SECURITY_HEADERS["Content-Security-Policy"])
+        out = _directives(opted_out)
+        default["script-src"].remove(CLOUDFLARE_BEACON_SCRIPT_HOST)
+        self.assertEqual(out, default)
+        self.assertIs(_security_headers_for(None), SECURITY_HEADERS)
+        self.assertIs(_security_headers_for("a=b"), SECURITY_HEADERS)
 
 
 if __name__ == "__main__":

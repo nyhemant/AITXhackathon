@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light" />
   <title>Privacy — KidZooKit</title>
-  <meta name="description" content="What KidZooKit collects: visit counts through Google Analytics, no accounts, no emails, and child names that never leave the page." />
+  <meta name="description" content="What KidZooKit collects: visit counts through Google Analytics and Cloudflare Web Analytics, no accounts, no emails, and child names that never leave the page." />
   <link rel="canonical" href="https://kidzookit.com/privacy/" />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="KidZooKit" />
   <meta property="og:title" content="Privacy — KidZooKit" />
-  <meta property="og:description" content="What KidZooKit collects: visit counts through Google Analytics, no accounts, no emails, and child names that never leave the page." />
+  <meta property="og:description" content="What KidZooKit collects: visit counts through Google Analytics and Cloudflare Web Analytics, no accounts, no emails, and child names that never leave the page." />
   <meta property="og:url" content="https://kidzookit.com/privacy/" />
   <link rel="stylesheet" href="/shell/shell.css?v=13" />
   <link rel="stylesheet" href="/about/about.css?v=11" />
@@ -50,7 +50,7 @@
 
     <p class="privacy-short">
       <strong>The short version:</strong> there are no accounts and no sign-ups. We count visits with Google Analytics
-      so we can see which pages help families. A child’s name typed on a hunt sheet stays on that page.
+      and check page speed with Cloudflare Web Analytics, so we can see which pages help families. A child’s name typed on a hunt sheet stays on that page.
     </p>
 
     <h2>What we don’t ask for</h2>
@@ -76,6 +76,15 @@
       Google says it doesn’t show IP addresses in its reports.
     </p>
 
+    <h2>Page speed and visits (Cloudflare)</h2>
+    <p>
+      The site also uses Cloudflare Web Analytics, a second counter that is separate from Google Analytics. It measures how
+      fast pages load and counts visits. It sends Cloudflare the page address, the type and version of your browser, and
+      page-load timings. Cloudflare describes this service as cookieless: it says it does not use cookies or local storage
+      for analytics and does not track individual people across websites. That is Cloudflare’s description, not a promise from us.
+      Cloudflare also delivers this site, so it sees the usual details of any web visit, like your IP address, whatever you choose below.
+    </p>
+
     <h2>What the counting is for</h2>
     <p>
       We use these counts only to see which pages and activities help families and to keep the site working.
@@ -84,7 +93,8 @@
 
     <h2>Cookies and IDs</h2>
     <ul class="about-path">
-      <li>Google Analytics saves small cookies named <code>_ga</code> and <code>_ga_XB8HKLF4XY</code> in your browser. They hold a random ID (not your name) so repeat visits can be counted as one browser. This is the only ID we found.</li>
+      <li>Google Analytics saves small cookies named <code>_ga</code> and <code>_ga_XB8HKLF4XY</code> in your browser. They hold a random ID (not your name) so repeat visits can be counted as one browser. This is the only ID we found saved in your browser.</li>
+      <li>Cloudflare Web Analytics saves no cookie or ID in your browser, according to Cloudflare.</li>
       <li>The site asks Google Analytics not to use Google signals or ad personalization.</li>
       <li>The only cookie of our own is <code>one_less_analytics</code>, and it is only saved if you choose the opt-out below.</li>
       <li>A few settings, like the last map view, a dismissed tip or the “Seen” marks on Watch Live, are kept in your browser and are not sent anywhere.</li>
@@ -98,7 +108,7 @@
 
     <h2>Turn counting off</h2>
     <p>
-      Visit <a href="/analytics/off">kidzookit.com/analytics/off</a> to stop Google Analytics in this browser.
+      Visit <a href="/analytics/off">kidzookit.com/analytics/off</a> to stop Google Analytics and the Cloudflare Web Analytics script in this browser.
       <a href="/analytics/on">kidzookit.com/analytics/on</a> turns it back on. Clearing your cookies also removes the Google ones.
     </p>
 
