@@ -171,6 +171,11 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn("Kunal", html)
         self.assertIn("Lamplighter", html)
         self.assertIn('class="about-why"', html)
+        # Owner decision 2026-10-25: /about/ names Arya’s Wildlife Project (curly apostrophe, as on /start/)
+        # without renaming anything: the product, title and h1 stay KidZooKit / About.
+        self.assertIn("Arya’s Wildlife Project is the name you’ll see on Start", html)
+        self.assertIn("<title>KidZooKit — At-Home Zoo for Kids</title>", html)
+        self.assertIn('<h1 id="about-heading">About</h1>', html)
         self.assertNotIn('id="for-ai-assistants"', html)
         self.assertNotIn("medical advice", html.lower())
         self.assertIn('id="faq"', html)
