@@ -494,13 +494,16 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-wordmark", self.css)
         self.assertIn("justify-content: space-between", self.css)
         self.assertIn("margin-left: auto", self.css)
-        # Start only: shell pages stay neutral for search arrivals.
+        # The wordmark lives on Start; the home page and shared shell stay neutral for search arrivals.
+        # Owner decision 2026-10-25: /about/ may mention the name once in its story paragraph (not as a wordmark).
         for other in (
             self.home,
             (REPO / "static" / "shell" / "shell.js").read_text(encoding="utf-8"),
-            (REPO / "static" / "about" / "index.html").read_text(encoding="utf-8"),
         ):
             self.assertNotIn("Wildlife Project", other)
+        about = (REPO / "static" / "about" / "index.html").read_text(encoding="utf-8")
+        self.assertEqual(about.count("Arya’s Wildlife Project"), 1)
+        self.assertNotIn("start-wordmark", about)
         menu_links = re.findall(r'<a\s+[^>]*href="([^"]+)"[^>]*>([^<]+)<', chrome)
         self.assertEqual(
             menu_links,
