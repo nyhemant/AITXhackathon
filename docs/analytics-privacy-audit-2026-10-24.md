@@ -6,8 +6,10 @@ Scope: what the live site sends to analytics. Source of truth is the code in
 Not legal advice. This lists what the code does, not what any law requires.
 
 ## What runs
-- Google Analytics 4 only, property `G-XB8HKLF4XY`, loaded from `www.googletagmanager.com` by `shell.js`.
-  No other analytics, ad, pixel or session-replay scripts were found.
+- Google Analytics 4, property `G-XB8HKLF4XY`, loaded from `www.googletagmanager.com` by `shell.js`.
+  No other ad, pixel or session-replay scripts were found.
+- Cloudflare Web Analytics (added 2026-10-25, see the section below). It is not in this repo: Cloudflare injects it
+  at the edge (auto-install), and the CSP now lets that one script run.
 - Skipped on localhost / private hosts, on `/dinner`, and when the visitor opted out
   (`/analytics/off` cookie `one_less_analytics`, or localStorage `1less_analytics_off`).
 - No consent banner and no Google consent mode. Nothing in the code sets `user_id`
@@ -46,16 +48,48 @@ Fields are slugs, enums, counts or flags; none is free text typed by a visitor.
 - Watch Live pages can embed YouTube (`youtube-nocookie.com`) and a live camera
   (`ams-28635.antmedia.cloud`) in frames. Those providers get the normal request data when a frame loads.
 - Images may come from `https:` hosts allowed by the CSP.
+- Cloudflare delivers the site and runs the Web Analytics beacon (above).
 
-## Changes in this PR
+## Cloudflare Web Analytics beacon (2026-10-25)
+Owner decision (Heymant, 2026-10-25): allow the Cloudflare beacon; analytics on at this early stage.
+- What it is: Cloudflare's auto-install adds `<script src="https://static.cloudflareinsights.com/beacon.min.js/v<hash>" data-cf-beacon=...>`
+  to HTML responses at the edge. Until now the CSP blocked it (`script-src-elem` violation in a real Chrome run on
+  `/start/`, a card, `/about/`, `/privacy/`), so it never ran.
+- CSP change (src/busyparent_agent/web.py): `script-src` gains exactly `https://static.cloudflareinsights.com`
+  (host only, no wildcard; matches the versioned path). Nothing else loosened.
+- No `connect-src` host was added. In a real Chrome run with the new script-src, the beacon POSTs to
+  `https://kidzookit.com/cdn-cgi/rum` (our own origin, already allowed by `connect-src 'self'`) and raised no other
+  violation. `cloudflareinsights.com` is only needed for a manually embedded beacon. A test fails if it is added.
+- What it sends (observed): page address including any query string, load and paint timings, browser family and
+  version, JS heap sizes, the Cloudflare site token and a random per-page-load id. No cookie or localStorage was set by
+  us in the run. Cloudflare's docs say it is cookieless, uses no client-side state for analytics and does not track
+  individual users across sites (https://developers.cloudflare.com/web-analytics/data-metrics/data-origin-and-collection/).
+  /privacy/ states this as Cloudflare's description, not our promise. Cloudflare also sees normal request data (IP
+  address) because it proxies the site.
+- Opt-out: visitors with the `one_less_analytics=off` cookie get a CSP without the beacon host
+  (`_security_headers_for`), so `/analytics/off` stops both GA4 and the beacon in that browser.
+- URL check (premium review ask): query parameters the site writes are enums (`level`, `habitat`, `tab`, `from`,
+  `type`, `find`). The two search boxes are GET forms with `name="q"`, but their submit handlers always `preventDefault`,
+  so typed text only reaches the URL if JavaScript fails. GA4 already receives the same URLs.
+- Still true, not changed: `'unsafe-inline'` remains in `script-src`; the injected tag has no SRI, so Cloudflare serves
+  whatever script is at that host (Cloudflare is already in the delivery path); GA4's persistent `_ga` id is the larger
+  kids'-site question below. This is not a legal sign-off.
+- Premium review: Opus 5.5 and GPT-6.1 Sol, 2026-10-25, notes in `/workspace/kidzookit-loop/2026-10-25-beacon-opus-sol-review.txt`.
+
+## GA4 data retention (2026-10-25)
+Heymant is fine with 14 months (the maximum for standard properties). It is a GA4 Admin setting
+(Admin > Data collection and retention > Event data retention), not in this repo, and no connector available to the
+agent can set it, so it is NOT confirmed as set and /privacy/ makes no retention claim yet.
+
+## Changes in the 2026-10-24 PR
 - GA4 config now sets `allow_google_signals: false` and `allow_ad_personalization_signals: false`.
   This only removes data use; no events were removed. Reaches browsers as the cached
   `shell.js?v=6` expires (Cloudflare and browser cache are 24 h).
 - Tests: signals / personalization stay off; no `user_id` / user properties.
 
 ## Open items for the owner (not changed here)
-- In GA4 Admin, confirm Google signals is off, data retention is set to the shortest option,
-  and no ads products are linked. These settings live in Google's console, not in this repo.
+- In GA4 Admin, confirm Google signals is off, event data retention is set (owner chose 14 months on 2026-10-25;
+  the older note here said shortest option), and no ads products are linked. These settings live in Google's console, not in this repo.
 - The persistent `_ga` client id remains. Laws for children's sites (for example COPPA in the U.S.)
   can treat persistent identifiers as personal information. Whether to keep analytics on at all,
   add consent, or move to cookieless counting is an owner / legal-advice decision.

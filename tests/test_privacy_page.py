@@ -43,6 +43,16 @@ class PrivacyPageTests(unittest.TestCase):
         self.assertNotIn("letter", payload)
         self.assertNotIn("answer", payload)
 
+    def test_describes_cloudflare_web_analytics_as_cloudflares_claim(self):
+        text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", PAGE.read_text(encoding="utf-8")))
+        self.assertIn("Cloudflare Web Analytics", text)
+        self.assertIn("Cloudflare describes this service as cookieless", text)
+        self.assertIn("That is Cloudflare’s description, not a promise from us", text)
+        self.assertIn("Cloudflare also delivers this site", text)
+        self.assertIn("stop Google Analytics and the Cloudflare Web Analytics script", text)
+        for bad in ("anonymous", "no tracking", "no personal information", "uses no cookies"):
+            self.assertNotIn(bad, text.lower())
+
     def test_footers_link_to_privacy(self):
         for p in ("static/about/index.html", "static/start/index.html"):
             self.assertIn('href="/privacy/"', (ROOT / p).read_text(), p)

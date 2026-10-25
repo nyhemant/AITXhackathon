@@ -77,12 +77,19 @@ ANALYTICS_OFF_VALUE = "off"
 # — do not re-embed gtag here.
 GA4_MEASUREMENT_ID = "G-XB8HKLF4XY"
 GA4_OPT_OUT_SNIPPET = """    <script>window.__1LESS_ANALYTICS_OFF__=true;</script>"""
+# Cloudflare Web Analytics beacon, injected at the edge by Cloudflare's auto-install.
+# Only the script host is allowed. Its data goes to /cdn-cgi/rum on kidzookit.com
+# itself, which connect-src 'self' already covers, so no connect-src host is added.
+# Visitors who opted out at /analytics/off get a CSP without this host (see
+# _security_headers_for), so the opt-out also stops the beacon.
+CLOUDFLARE_BEACON_SCRIPT_HOST = "https://static.cloudflareinsights.com"
 SECURITY_HEADERS = {
     # GA4 collect often hits regionN.google-analytics.com + analytics.google.com;
     # without those hosts, gtag loads but DebugView/Realtime stay empty.
     "Content-Security-Policy": (
         "default-src 'self'; "
-        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.googletagmanager.com; "
+        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.googletagmanager.com "
+        f"{CLOUDFLARE_BEACON_SCRIPT_HOST}; "
         "style-src 'self' 'unsafe-inline'; "
         # https: allows official venue map thumbnails hotlinked on Field Trip Kit pages
         "img-src 'self' data: https:; "
@@ -948,6 +955,17 @@ def _cookie_values(cookie_header: str | None) -> dict[str, str]:
 
 def _analytics_disabled(cookie_header: str | None) -> bool:
     return _cookie_values(cookie_header).get(ANALYTICS_COOKIE) == ANALYTICS_OFF_VALUE
+
+
+def _security_headers_for(cookie_header: str | None) -> dict[str, str]:
+    """SECURITY_HEADERS, minus the Cloudflare beacon host for opted-out visitors."""
+    if not _analytics_disabled(cookie_header):
+        return SECURITY_HEADERS
+    headers = dict(SECURITY_HEADERS)
+    headers["Content-Security-Policy"] = headers["Content-Security-Policy"].replace(
+        f" {CLOUDFLARE_BEACON_SCRIPT_HOST};", ";", 1
+    )
+    return headers
 
 
 def _html_for_request(cookie_header: str | None) -> str:
@@ -1834,7 +1852,8 @@ class WebHandler(BaseHTTPRequestHandler):
         super().end_headers()
 
     def _send_security_headers(self) -> None:
-        for name, value in SECURITY_HEADERS.items():
+        cookie_header = self.headers.get("Cookie") if getattr(self, "headers", None) else None
+        for name, value in _security_headers_for(cookie_header).items():
             self.send_header(name, value)
 
     def log_message(self, format: str, *args) -> None:
