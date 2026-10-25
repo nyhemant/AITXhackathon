@@ -31,6 +31,18 @@ class PrivacyPageTests(unittest.TestCase):
         for bad in ("guarantee", "COPPA compliant", "GDPR compliant"):
             self.assertNotIn(bad.lower(), text.lower())
 
+    def test_lists_quiz_counts_and_purpose(self):
+        """Quiz events (#368) and the purpose/safeguards notice stay described."""
+        text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", PAGE.read_text(encoding="utf-8")))
+        self.assertIn("right on the first try", text)
+        self.assertIn("the answers a child picks are not sent", text)
+        self.assertIn("What the counting is for", text)
+        self.assertIn("We don’t use them for ads", text)
+        js = (ROOT / "static" / "field-pack" / "js" / "study-card.js").read_text(encoding="utf-8")
+        payload = js.split('"quiz_complete", {', 1)[1].split("}", 1)[0]
+        self.assertNotIn("letter", payload)
+        self.assertNotIn("answer", payload)
+
     def test_footers_link_to_privacy(self):
         for p in ("static/about/index.html", "static/start/index.html"):
             self.assertIn('href="/privacy/"', (ROOT / p).read_text(), p)
