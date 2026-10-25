@@ -436,6 +436,11 @@
 
 
 /* ---- Quiz finish moment (2026-10-24) ---- */
+/* Room for the sticky progress pill when an answer cue scrolls into view. */
+.card-page .card-study-pack .study-nudge,
+.card-page .card-study-pack .study-why {
+  scroll-margin-bottom: 4.5rem;
+}
 .card-page .card-study-pack .study-nudge {
   margin: 0.45rem 0 0;
   font-size: 0.92rem;
