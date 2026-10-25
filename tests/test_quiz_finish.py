@@ -89,13 +89,30 @@ class QuizFinishCopyAndEventsTest(unittest.TestCase):
         self.assertIn("animation: none", tail)
 
 
+class AnswerCueVisibleTest(unittest.TestCase):
+    """The wrong-answer cue and the 'why' line must not hide under the sticky pill."""
+
+    def test_js_scrolls_cue_clear_of_pill(self):
+        js = (FP / "js" / "study-card.js").read_text(encoding="utf-8")
+        self.assertIn("function revealFeedback(qEl, isRight)", js)
+        self.assertIn(".study-progress", js.split("function revealFeedback", 1)[1][:900])
+        self.assertIn("prefers-reduced-motion: reduce", js.split("function revealFeedback", 1)[1][:1200])
+        self.assertIn("revealFeedback(qEl, isRight);", js)
+
+    def test_css_leaves_room_for_pill(self):
+        css = (FP / "css" / "study-card.css").read_text(encoding="utf-8")
+        block = css.split(".card-page .card-study-pack .study-why {\n  scroll-margin-bottom", 1)
+        self.assertEqual(len(block), 2)
+        self.assertIn(".card-page .card-study-pack .study-nudge,", css)
+
+
 class QuizAssetVersionGuardTest(unittest.TestCase):
     def test_card_pages_match_generator_versions(self):
         gen = GEN.read_text(encoding="utf-8")
         js_ver = re.search(r'STUDY_CARD_JS_VER = "(\d+)"', gen).group(1)
         css_ver = re.search(r'STUDY_CARD_CSS_VER = "(\d+)"', gen).group(1)
-        self.assertGreaterEqual(int(js_ver), 18)
-        self.assertGreaterEqual(int(css_ver), 15)
+        self.assertGreaterEqual(int(js_ver), 19)
+        self.assertGreaterEqual(int(css_ver), 16)
         n = 0
         for page in (FP / "cards").glob("*/index.html"):
             html = page.read_text(encoding="utf-8")

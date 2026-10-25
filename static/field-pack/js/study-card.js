@@ -373,6 +373,27 @@ if (typeof window !== "undefined") {
     }
   }
 
+  // Keep the answer cue on screen: the sticky progress pill sits at the bottom of
+  // the screen, so a cue that lands under it (or below the fold) is nudged into view.
+  function revealFeedback(qEl, isRight) {
+    try {
+      if (!qEl) return;
+      const el = isRight ? qEl.querySelector(".study-why") : qEl.querySelector(".study-nudge");
+      if (!el || el.hidden || typeof el.getBoundingClientRect !== "function") return;
+      const r = el.getBoundingClientRect();
+      if (!r.height) return;
+      const pill = document.querySelector(".card-study-pack .study-progress");
+      const ph = pill && !pill.hidden ? pill.getBoundingClientRect().height + 16 : 0;
+      const limit = (window.innerHeight || document.documentElement.clientHeight) - ph;
+      if (r.bottom <= limit && r.top >= 0) return;
+      const reduce =
+        window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      el.scrollIntoView({ block: "nearest", behavior: reduce ? "auto" : "smooth" });
+    } catch (_) {
+      /* ignore */
+    }
+  }
+
   function quizTrack(name, params) {
     try {
       if (typeof window.trackEvent === "function") window.trackEvent(name, params || {});
@@ -878,6 +899,8 @@ if (typeof window !== "undefined") {
         paintNudge(qEl, !isRight);
         paintScore(root);
         afterAnswer(root);
+        const finish = root.querySelector(".study-finish");
+        if (!finish || finish.hidden) revealFeedback(qEl, isRight);
         return;
       }
       const reveal = ev.target.closest("[data-study-reveal]");
