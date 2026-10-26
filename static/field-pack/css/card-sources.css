@@ -1,0 +1,14 @@
+/* Citable-card pilot box (2026-10-26). Loaded only on pilot cards. */
+.card-sources{margin:1.5rem 0 1rem;padding:.9rem 1rem;border:1px solid rgba(0,0,0,.12);border-radius:12px;background:#fbfaf6;font-size:.9rem;line-height:1.45;overflow-wrap:anywhere;scroll-margin-top:5rem}
+.card-sources-h{font-size:1.05rem;margin:0 0 .4rem}
+.card-sources p{margin:.35rem 0}
+.card-sources-checks{margin:.35rem 0 .5rem;padding-left:1.1rem}
+.card-sources-checks li{margin:.2rem 0}
+.card-sources a{text-decoration:underline}
+.card-sources-photo{color:#444}
+.card-cite{margin-top:.6rem;padding-top:.6rem;border-top:1px dashed rgba(0,0,0,.15)}
+.card-cite-h{font-weight:600}
+.card-cite-text{font-family:inherit;background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:8px;padding:.5rem .6rem;user-select:all;-webkit-user-select:all}
+.card-cite-copy{margin-top:.35rem;min-height:44px}
+.card-cite-status{min-height:1.2em;font-size:.85rem;color:#2d6a2d}
+@media print{.card-cite-copy,.card-cite-status{display:none}}

@@ -60,6 +60,7 @@ from animal_park_links import (  # noqa: E402
     animal_park_rail_html,
     park_animals_html,
 )
+import card_sources  # noqa: E402  (citable-card pilot, 2026-10-26)
 from study_cards import (  # noqa: E402
     STUDY_QUIZ_H2,
     default_study_deck_for,
@@ -5612,7 +5613,7 @@ def write_card_pages(
   <link rel="stylesheet" href="/shell/shell.css?v={SHELL_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
-  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={CARD_SEO_CSS_VER}" />{study_css_link}
+  <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={CARD_SEO_CSS_VER}" />{study_css_link}{card_sources.head_link(cid)}
 </head>
 <body class="landing-body card-page-body">
   <div class="app">
@@ -5633,6 +5634,7 @@ def write_card_pages(
       {actions_html}
       </div>
       {talk_html}
+      {card_sources.render_html(cid)}
       {try_next_html}
       {park_rail_html}
     </main>
@@ -5643,7 +5645,7 @@ def write_card_pages(
   <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script src="/field-pack/js/catalog.js?v={CATALOG_JS_VER}"></script>
   <script src="/field-pack/js/print-kit.js?v={PRINT_KIT_JS_VER}"></script>
-{study_scripts}  <script>
+{study_scripts}{card_sources.script_tag(cid)}  <script>
     (function () {{
       var KIT_SITES = {kit_sites_js};
       var KIT_NAMES = {kit_names_js};
