@@ -3313,7 +3313,7 @@
               "Hippos evolved from modern killer whales last century"
             ],
             "correct": "B",
-            "why": "Blood proteins, DNA, and the fossil record point to cetaceans — whales, dolphins, and porpoises — as the closest living relatives. Wikipedia cites a split tens of millions of years ago. Extinct anthracotheres sit on the hippo side of that split."
+            "why": "Blood proteins, DNA, and the fossil record point to cetaceans — whales, dolphins, and porpoises — as the closest living relatives. Wikipedia cites a split tens of millions of years ago; the exact million-year figures are debated. Extinct anthracotheres sit on the hippo side of that split."
           },
           {
             "slot": 3,
@@ -5544,7 +5544,7 @@
               "Chlamydia and koala retrovirus are major health threats in many wild populations"
             ],
             "correct": "C",
-            "why": "Wikipedia lists Chlamydia and koala retrovirus as major health threats in many wild populations."
+            "why": "Wikipedia lists Chlamydia and koala retrovirus as major health threats in many wild populations. Infection rates vary between populations."
           },
           {
             "slot": 10,
@@ -5946,7 +5946,7 @@
               "It is a brand of zoo snack"
             ],
             "correct": "A",
-            "why": "A chimpanzee simian immunodeficiency virus (SIVcpz) is the source of pandemic HIV-1 in humans."
+            "why": "A chimpanzee simian immunodeficiency virus (SIVcpz) is the source of pandemic HIV-1 in humans. Scientists still study the exact date and route."
           },
           {
             "slot": 8,
@@ -11375,7 +11375,7 @@
               "The letter means bison are extinct everywhere"
             ],
             "correct": "A",
-            "why": "Wikipedia lists American bison as Near Threatened. Huge wild herds were nearly wiped out in the late 1800s. Parks, tribes, and ranchers helped a slow comeback."
+            "why": "Wikipedia lists American bison as Near Threatened. Huge wild herds were nearly wiped out in the late 1800s. Parks, tribes, and ranchers helped a slow comeback. Treat the letter as a snapshot; herd counts change over time."
           },
           {
             "slot": 8,
@@ -13009,7 +13009,7 @@
               "They are the same group as insects and spiders"
             ],
             "correct": "A",
-            "why": "Wikipedia places true crabs in infraorder Brachyura. Counts are often near 7,000 species. They share a thick armored carapace and a short tail tucked under the body."
+            "why": "Wikipedia places true crabs in infraorder Brachyura. Counts are often near 7,000 species, and exact totals vary. They share a thick armored carapace and a short tail tucked under the body."
           },
           {
             "slot": 2,
@@ -13956,7 +13956,7 @@
               "They only live in space, so rivers never matter"
             ],
             "correct": "B",
-            "why": "Wikipedia ties freshwater eels to heavy fishing and farming in Asia and Europe. Dams, weirs, and lost habitat add more stress."
+            "why": "Wikipedia ties freshwater eels to heavy fishing and farming in Asia and Europe. Dams, weirs, and lost habitat add more stress. Threat status differs between eel species."
           },
           {
             "slot": 9,
@@ -14117,7 +14117,7 @@
               "Trade never touches Anguilla, and rivers have no barriers at all"
             ],
             "correct": "A",
-            "why": "Wikipedia ties young anguillid eels to dams and weirs that can block upstream climbs. Glass-eel fisheries and farm demand add more pressure on threatened Anguilla."
+            "why": "Wikipedia ties young anguillid eels to dams and weirs that can block upstream climbs. Glass-eel fisheries and farm demand add more pressure on threatened Anguilla. Threat status differs between eel species."
           }
         ]
       }
@@ -16859,7 +16859,7 @@
               "They never grow anything back"
             ],
             "correct": "B",
-            "why": "Many starfish can regenerate a damaged or lost arm. In a few kinds, more of the body can rebuild if part of the central disc remains."
+            "why": "Many starfish can regenerate a damaged or lost arm. In a few kinds, more of the body can rebuild if part of the central disc remains. Not every kind can regrow from a single arm."
           },
           {
             "slot": 9,

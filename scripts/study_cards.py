@@ -6644,7 +6644,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Hippos evolved from modern killer whales last century",
                         ],
                         "correct": "B",
-                        "why": "Blood proteins, DNA, and the fossil record point to cetaceans — whales, dolphins, and porpoises — as the closest living relatives. Wikipedia cites a split tens of millions of years ago; we keep that dating soft because the exact million-year figures are debated. Extinct anthracotheres sit on the hippo side of that split.",
+                        "why": "Blood proteins, DNA, and the fossil record point to cetaceans — whales, dolphins, and porpoises — as the closest living relatives. Wikipedia cites a split tens of millions of years ago; the exact million-year figures are debated. Extinct anthracotheres sit on the hippo side of that split.",
                     },
                     {
                         "slot": 3,
@@ -8866,7 +8866,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Chlamydia and koala retrovirus are major health threats in many wild populations",
                         ],
                         "correct": "C",
-                        "why": "Wikipedia lists Chlamydia and koala retrovirus as major health threats in many wild populations.",
+                        "why": "Wikipedia lists Chlamydia and koala retrovirus as major health threats in many wild populations. Infection rates vary between populations.",
                     },
                     {
                         "slot": 10,
@@ -9270,7 +9270,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "It is a brand of zoo snack",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia says a chimpanzee simian immunodeficiency virus (SIVcpz) is the source of pandemic HIV-1 in humans.",
+                        "why": "Wikipedia says a chimpanzee simian immunodeficiency virus (SIVcpz) is the source of pandemic HIV-1 in humans. Scientists still study the exact date and route.",
                     },
                     {
                         "slot": 8,
@@ -14737,7 +14737,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "The letter means bison are extinct everywhere",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia lists American bison as Near Threatened. Huge wild herds were nearly wiped out in the late 1800s. Parks, tribes, and ranchers helped a slow comeback. Treat the letter as a snapshot, and keep herd counts soft.",
+                        "why": "Wikipedia lists American bison as Near Threatened. Huge wild herds were nearly wiped out in the late 1800s. Parks, tribes, and ranchers helped a slow comeback. Treat the letter as a snapshot; herd counts change over time.",
                     },
                     {
                         "slot": 8,
@@ -16386,7 +16386,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "They are the same group as insects and spiders",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia places true crabs in infraorder Brachyura. Counts are often near 7,000 species. They share a thick armored carapace and a short tail tucked under the body.",
+                        "why": "Wikipedia places true crabs in infraorder Brachyura. Counts are often near 7,000 species, and exact totals vary. They share a thick armored carapace and a short tail tucked under the body.",
                     },
                     {
                         "slot": 2,
@@ -17348,7 +17348,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "They only live in space, so rivers never matter",
                         ],
                         "correct": "B",
-                        "why": "Wikipedia ties freshwater eels to heavy fishing and farming in Asia and Europe. Dams, weirs, and lost habitat add more stress.",
+                        "why": "Wikipedia ties freshwater eels to heavy fishing and farming in Asia and Europe. Dams, weirs, and lost habitat add more stress. Threat status differs between eel species.",
                     },
                     {
                         "slot": 9,
@@ -17518,7 +17518,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Trade never touches Anguilla, and rivers have no barriers at all",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia ties young anguillid eels to dams and weirs that can block upstream climbs. Glass-eel fisheries and farm demand add more pressure on threatened Anguilla.",
+                        "why": "Wikipedia ties young anguillid eels to dams and weirs that can block upstream climbs. Glass-eel fisheries and farm demand add more pressure on threatened Anguilla. Threat status differs between eel species.",
                     },
                 ],
             },
@@ -20218,7 +20218,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "They never grow anything back",
                         ],
                         "correct": "B",
-                        "why": "Wikipedia says many starfish can regenerate a damaged or lost arm. In a few kinds, more of the body can rebuild if part of the central disc remains. Edge cases stay soft — we do not lock a “from one arm” rule.",
+                        "why": "Wikipedia says many starfish can regenerate a damaged or lost arm. In a few kinds, more of the body can rebuild if part of the central disc remains. Not every kind can regrow from a single arm.",
                     },
                     {
                         "slot": 9,

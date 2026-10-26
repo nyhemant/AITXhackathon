@@ -37,6 +37,8 @@ FRAGMENT_CHECKS = (
 
 def displayed_strings(cards: dict):
     for cid, card in cards.items():
+        if card.get("source_note"):
+            yield f"{cid}/source_note", str(card["source_note"])
         for key in ("talk_about", "push_further"):
             for i, line in enumerate(card.get(key) or []):
                 yield f"{cid}/{key}[{i}]", str(line)
@@ -154,6 +156,43 @@ class StudyTextFragmentTests(unittest.TestCase):
         self.assertIn("About 220", right)
         self.assertNotIn("two hundred", right)
         self.assertIn("about 220", q["why"])
+
+    def test_scan_covers_stems_and_every_choice_including_distractors(self):
+        cards = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
+        keys = {k for k, _ in displayed_strings(cards)}
+        n_q = n_ch = 0
+        for cid, card in cards.items():
+            for level, pack in card["levels"].items():
+                for q in pack["questions"]:
+                    n_q += 1
+                    self.assertIn(f"{cid}/{level}/{q['id']}.stem", keys)
+                    for i in range(len(q["choices"])):
+                        n_ch += 1
+                        self.assertIn(f"{cid}/{level}/{q['id']}.choice[{i}]", keys)
+        self.assertGreater(n_q, 1200)
+        self.assertGreater(n_ch, n_q * 2)
+        fake = {"x": {"levels": {"easy": {"questions": [{
+            "id": "q", "stem": "Which one? and why", "why": "Fine.",
+            "choices": ["Right answer", "Wrong distractor. and more", "Other"]}]}}}}
+        flagged = [k for k, t in displayed_strings(fake) if fragment_problems(t)]
+        self.assertIn("x/easy/q.choice[1]", flagged)
+        self.assertIn("x/easy/q.stem", flagged)
+
+    def test_honesty_hedges_survive_the_stripper(self):
+        """Never lose a hedge: uncertain numbers keep their 'debated/varies' words."""
+        cards = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
+
+        def why(cid, level, qid):
+            return next(q for q in cards[cid]["levels"][level]["questions"] if q["id"] == qid)["why"]
+
+        self.assertIn("figures are debated", why("nile-hippo", "zoologist", "whale-clade"))
+        self.assertIn("estimates vary", why("two-toed-sloth", "zoologist", "species-split-soft"))
+        self.assertIn("as a snapshot", why("american-bison", "hard", "nt-recovery-soft"))
+        self.assertIn("Exact percents vary", why("shark", "zoologist", "ocean-declines-soft"))
+        self.assertIn("exact totals vary", why("crab", "hard", "brachyura-soft"))
+        self.assertIn("Not every kind", why("starfish", "easy", "regrow-soft"))
+        self.assertIn("Litter sizes vary", why("stingray", "easy", "live-young-soft"))
+        self.assertIn("Exact totals shift", why("stingray", "easy", "many-kinds-soft"))
 
 
 if __name__ == "__main__":
