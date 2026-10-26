@@ -290,7 +290,7 @@ class StudyTryNextRecentTests(unittest.TestCase):
         self.assertIn(f'STUDY_CARD_JS_VER = "{STUDY_CARD_JS_VER}"', seo)
         self.assertIn(f'STUDY_CARDS_DATA_JS_VER = "{STUDY_CARDS_DATA_JS_VER}"', seo)
         self.assertEqual(STUDY_CARD_JS_VER, "19")
-        self.assertEqual(STUDY_CARDS_DATA_JS_VER, "9")
+        self.assertEqual(STUDY_CARDS_DATA_JS_VER, "10")
 
     def test_js_helper_runtime_matches_python(self):
         node = shutil.which("node")

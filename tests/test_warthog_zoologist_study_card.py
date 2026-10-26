@@ -551,7 +551,7 @@ class WarthogZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", html)
         self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn("study-card.js?v=15", html)
-        self.assertIn("study-cards-data.js?v=9", html)
+        self.assertIn("study-cards-data.js?v=10", html)
         print_tpl = study_print_html_for("warthog")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)

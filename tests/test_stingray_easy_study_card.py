@@ -246,7 +246,7 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
         self.assertIn("mollusks", blob.lower())
         self.assertIn("spiracles", blob.lower())
         self.assertIn("ovoviviparous", blob.lower())
-        self.assertIn("two hundred", blob.lower())
+        self.assertIn("about 220", blob.lower())
         self.assertIn("stepped", blob.lower())
         self.assertEqual(WIKI_STINGRAY, "https://en.wikipedia.org/wiki/Stingray")
 
@@ -359,7 +359,7 @@ class StingrayEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=15", html)
         self.assertIn("study-card.css?v=13", html)
-        self.assertIn("study-cards-data.js?v=9", html)
+        self.assertIn("study-cards-data.js?v=10", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "stingray"', html)

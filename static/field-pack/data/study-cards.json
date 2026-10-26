@@ -3313,7 +3313,7 @@
               "Hippos evolved from modern killer whales last century"
             ],
             "correct": "B",
-            "why": "Blood proteins, DNA, and the fossil record point to cetaceans — whales, dolphins, and porpoises — as the closest living relatives. Wikipedia cites a split tens of millions of years ago; because the exact million-year figures are debated. Extinct anthracotheres sit on the hippo side of that split."
+            "why": "Blood proteins, DNA, and the fossil record point to cetaceans — whales, dolphins, and porpoises — as the closest living relatives. Wikipedia cites a split tens of millions of years ago; the exact million-year figures are debated. Extinct anthracotheres sit on the hippo side of that split."
           },
           {
             "slot": 3,
@@ -5544,7 +5544,7 @@
               "Chlamydia and koala retrovirus are major health threats in many wild populations"
             ],
             "correct": "C",
-            "why": "Wikipedia lists Chlamydia and koala retrovirus as major health threats in many wild populations. and do not lock one infection rate."
+            "why": "Wikipedia lists Chlamydia and koala retrovirus as major health threats in many wild populations. Infection rates vary between populations."
           },
           {
             "slot": 10,
@@ -5772,7 +5772,7 @@
               "They leave forever and never come back"
             ],
             "correct": "A",
-            "why": "Chimpanzee communities are territorial. Adult males often walk the edges of the home range and may clash with neighbours. here."
+            "why": "Chimpanzee communities are territorial. Adult males often walk the edges of the home range and may clash with neighbours."
           },
           {
             "slot": 5,
@@ -5946,7 +5946,7 @@
               "It is a brand of zoo snack"
             ],
             "correct": "A",
-            "why": "A chimpanzee simian immunodeficiency virus (SIVcpz) is the source of pandemic HIV-1 in humans. and do not lock one date or pathway story."
+            "why": "A chimpanzee simian immunodeficiency virus (SIVcpz) is the source of pandemic HIV-1 in humans. Scientists still study the exact date and route."
           },
           {
             "slot": 8,
@@ -8501,7 +8501,7 @@
               "Studies report big drops in some oceanic shark and ray numbers"
             ],
             "correct": "C",
-            "why": "Wikipedia cites studies that report big drops in some oceanic shark and ray numbers since about 1970., and not every kind dropped the same way."
+            "why": "Wikipedia cites studies that report big drops in some oceanic shark and ray numbers since about 1970. Exact percents vary, and not every kind dropped the same way."
           },
           {
             "slot": 7,
@@ -9357,7 +9357,7 @@
               "Roughly about 6–7 million years ago; Hoffmann’s ranges are also split by the Andes"
             ],
             "correct": "C",
-            "why": "Wikipedia cites molecular work that the two living kinds split about 6 to 7 million Hoffmann’s two-toed sloths also have ranges split by the Andes."
+            "why": "Wikipedia cites molecular work that the two living kinds split about 6 to 7 million years ago, though estimates vary. Hoffmann’s two-toed sloths also have ranges split by the Andes."
           },
           {
             "slot": 7,
@@ -11375,7 +11375,7 @@
               "The letter means bison are extinct everywhere"
             ],
             "correct": "A",
-            "why": "Wikipedia lists American bison as Near Threatened. Huge wild herds were nearly wiped out in the late 1800s. Parks, tribes, and ranchers helped a slow comeback. Treat the letter as a snapshot, and."
+            "why": "Wikipedia lists American bison as Near Threatened. Huge wild herds were nearly wiped out in the late 1800s. Parks, tribes, and ranchers helped a slow comeback. Treat the letter as a snapshot; herd counts change over time."
           },
           {
             "slot": 8,
@@ -12205,7 +12205,7 @@
               "It balances fish on its back and never uses its mouth"
             ],
             "correct": "B",
-            "why": "Wikipedia describes a muscular, grooved tongue and inward-facing serrations that hold fish while the puffin catches more. spines on the tongue and roof of the mouth help keep that row in place."
+            "why": "Wikipedia describes a muscular, grooved tongue and inward-facing serrations that hold fish while the puffin catches more. Spines on the tongue and roof of the mouth help keep that row in place."
           },
           {
             "slot": 6,
@@ -12685,7 +12685,7 @@
               "Clownfish are very popular pets; captive breeding can help take pressure off wild reefs"
             ],
             "correct": "C",
-            "why": "Clownfish are sought after in the aquarium trade, and many were taken from the wild. They are also bred in aquaculture. Captive-bred fish can ease pressure on reefs"
+            "why": "Clownfish are sought after in the aquarium trade, and many were taken from the wild. They are also bred in aquaculture. Captive-bred fish can ease pressure on reefs."
           },
           {
             "slot": 10,
@@ -13009,7 +13009,7 @@
               "They are the same group as insects and spiders"
             ],
             "correct": "A",
-            "why": "Wikipedia places true crabs in infraorder Brachyura. Counts are often near 7,000 species, but They share a thick armored carapace and a short tail tucked under the body."
+            "why": "Wikipedia places true crabs in infraorder Brachyura. Counts are often near 7,000 species, and exact totals vary. They share a thick armored carapace and a short tail tucked under the body."
           },
           {
             "slot": 2,
@@ -13061,7 +13061,7 @@
               "They are made of kitchen plates, not living animals"
             ],
             "correct": "B",
-            "why": "Wikipedia places porcelain crabs in Anomura, near squat lobsters. They are small and flattened. Many can drop a limb to escape"
+            "why": "Wikipedia places porcelain crabs in Anomura, near squat lobsters. They are small and flattened. Many can drop a limb to escape."
           },
           {
             "slot": 6,
@@ -13956,7 +13956,7 @@
               "They only live in space, so rivers never matter"
             ],
             "correct": "B",
-            "why": "Wikipedia ties freshwater eels to heavy fishing and farming in Asia and Europe. Dams, weirs, and lost habitat add more stress., and we do not lock one group letter."
+            "why": "Wikipedia ties freshwater eels to heavy fishing and farming in Asia and Europe. Dams, weirs, and lost habitat add more stress. Threat status differs between eel species."
           },
           {
             "slot": 9,
@@ -14117,7 +14117,7 @@
               "Trade never touches Anguilla, and rivers have no barriers at all"
             ],
             "correct": "A",
-            "why": "Wikipedia ties young anguillid eels to dams and weirs that can block upstream climbs. Glass-eel fisheries and farm demand add more pressure on threatened Anguilla., and we do not lock one group letter."
+            "why": "Wikipedia ties young anguillid eels to dams and weirs that can block upstream climbs. Glass-eel fisheries and farm demand add more pressure on threatened Anguilla. Threat status differs between eel species."
           }
         ]
       }
@@ -15105,7 +15105,7 @@
               "They never move at all"
             ],
             "correct": "B",
-            "why": "Mantas may breach or leap out of the water. Possible ideas include a signal or shaking off hitchhikers, but the reason is not known"
+            "why": "Mantas may breach or leap out of the water. Possible ideas include a signal or shaking off hitchhikers, but the reason is not known."
           },
           {
             "slot": 9,
@@ -15478,7 +15478,7 @@
               "Tiny colour cells (and friends) shift colour and pattern to match the scene"
             ],
             "correct": "C",
-            "why": "Octopuses use specialised skin cells to change colour for camouflage and signals. They can also change skin texture. for later."
+            "why": "Octopuses use specialised skin cells to change colour for camouflage and signals. They can also change skin texture."
           },
           {
             "slot": 4,
@@ -15785,7 +15785,7 @@
               "Cirrina is a plant family, so the names were never used for octopuses"
             ],
             "correct": "B",
-            "why": "Wikipedia’s molecular trees split traditional Cirrina (Cirromorphida) and Argonautoidea, so those groups look paraphyletic. Cirrate kinds sit toward the base. The old names are still useful labels, but they are not forever boxes"
+            "why": "Wikipedia’s molecular trees split traditional Cirrina (Cirromorphida) and Argonautoidea, so those groups look paraphyletic. Cirrate kinds sit toward the base. The old names are still useful labels, but they are not forever boxes."
           },
           {
             "slot": 6,
@@ -16688,7 +16688,7 @@
               "They sit with land horses in a forever mammal tree"
             ],
             "correct": "A",
-            "why": "Wikipedia places pygmy seahorses such as H. bargibanti in a deep molecular clade apart from many larger Hippocampus kinds. They hide on gorgonian corals and hydroids with extreme camouflage. — not “just small regular seahorses.”"
+            "why": "Wikipedia places pygmy seahorses such as H. bargibanti in a deep molecular clade apart from many larger Hippocampus kinds. They hide on gorgonian corals and hydroids with extreme camouflage."
           },
           {
             "slot": 8,
@@ -16859,7 +16859,7 @@
               "They never grow anything back"
             ],
             "correct": "B",
-            "why": "Many starfish can regenerate a damaged or lost arm. In a few kinds, more of the body can rebuild if part of the central disc remains. — we do not lock a “from one arm” rule."
+            "why": "Many starfish can regenerate a damaged or lost arm. In a few kinds, more of the body can rebuild if part of the central disc remains. Not every kind can regrow from a single arm."
           },
           {
             "slot": 9,
@@ -17007,7 +17007,7 @@
               "Tiny claw- or wrench-like ossicles that help keep the body surface clear of debris and settlers"
             ],
             "correct": "C",
-            "why": "Wikipedia: pedicellariae are small movable claw-like ossicles on many asteroids. They help clear algae, debris, and settling organisms. Some kinds also use them in feeding"
+            "why": "Wikipedia: pedicellariae are small movable claw-like ossicles on many asteroids. They help clear algae, debris, and settling organisms. Some kinds also use them in feeding."
           },
           {
             "slot": 10,
@@ -17048,7 +17048,7 @@
               "No orders — every kind is its own phylum"
             ],
             "correct": "A",
-            "why": "Wikipedia lists seven living orders in Asteroidea (Brisingida, Forcipulatida, Notomyotida, Paxillosida, Spinulosida, Valvatida, Velatida). We name a few and."
+            "why": "Wikipedia lists seven living orders in Asteroidea (Brisingida, Forcipulatida, Notomyotida, Paxillosida, Spinulosida, Valvatida, Velatida)."
           },
           {
             "slot": 2,
@@ -17087,7 +17087,7 @@
               "Arms never shed except in cartoons"
             ],
             "correct": "A",
-            "why": "Wikipedia notes an autotomy-promoting factor that, injected into another starfish, causes rapid arm shedding. and skip exact molecule names."
+            "why": "Wikipedia notes an autotomy-promoting factor that, injected into another starfish, causes rapid arm shedding."
           },
           {
             "slot": 5,
@@ -17100,7 +17100,7 @@
               "Gravity alone — the stomach always falls back in"
             ],
             "correct": "B",
-            "why": "Wikipedia: retraction and contraction of the cardiac stomach is activated by the neuropeptide NGFFYamide. and do not invent extra names."
+            "why": "Wikipedia: retraction and contraction of the cardiac stomach is activated by the neuropeptide NGFFYamide."
           },
           {
             "slot": 6,
@@ -17297,7 +17297,7 @@
               "Hatched only in bird nests"
             ],
             "correct": "B",
-            "why": "Wikipedia: stingrays are ovoviviparous and bear live young. Litter sizes vary; rather than locking one number."
+            "why": "Wikipedia: stingrays are ovoviviparous and bear live young. Litter sizes vary."
           },
           {
             "slot": 9,
@@ -17307,7 +17307,7 @@
             "choices": [
               "Exactly three kinds in one pond",
               "Only one kind on Earth",
-              "About two hundred known kinds worldwide"
+              "About 220 known kinds worldwide"
             ],
             "correct": "C",
             "why": "Wikipedia puts living stingrays at about 220 known species. Exact totals shift as scientists name or split kinds."
@@ -17434,7 +17434,7 @@
               "It has no venom at all — the spine is only a plastic toy"
             ],
             "correct": "B",
-            "why": "Wikipedia: unlike many venomous animals that store venom in a gland, the stingray stores venom within tissue cells on the spinal blade. Secretion mixes with mucus. Named proteins (e.g. cystatins kid-safe labels, not a full chem list."
+            "why": "Wikipedia: unlike many venomous animals that store venom in a gland, the stingray stores venom within tissue cells on the spinal blade. Secretion mixes with mucus. Proteins named in it include cystatins and galectin."
           },
           {
             "slot": 3,
