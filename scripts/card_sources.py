@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from html import escape as _esc
 
-CARD_SOURCES_CSS_VER = "2"
+CARD_SOURCES_CSS_VER = "3"
 CARD_SOURCES_JS_VER = "2"
 CHECKED_MONTH = "Oct 2026"
 CITE_ACCESSED_DEFAULT = "October 26, 2026"
