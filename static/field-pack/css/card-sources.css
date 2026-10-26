@@ -1,4 +1,6 @@
 /* Citable-card pilot box (2026-10-26). Loaded only on pilot cards. */
+/* main.card-page is a flex column with ordered children; quiz + try-next use order:3, so match it to stay after the quiz. */
+.card-page .card-sources{order:3}
 .card-sources{margin:1.5rem 0 1rem;padding:.9rem 1rem;border:1px solid rgba(0,0,0,.12);border-radius:12px;background:#fbfaf6;font-size:.9rem;line-height:1.45;overflow-wrap:anywhere;scroll-margin-top:5rem}
 .card-sources-h{font-size:1.05rem;margin:0 0 .4rem}
 .card-sources p{margin:.35rem 0}

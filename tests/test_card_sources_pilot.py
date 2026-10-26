@@ -41,6 +41,11 @@ class CardSourcesPilotTests(unittest.TestCase):
             self.assertTrue(0 < q < s < t, cid)
             self.assertIn(f'href="{cs.PILOT[cid]["wiki_url"]}"', html)
 
+    def test_box_keeps_quiz_flex_order(self):
+        # main.card-page is flex with order:3 on the quiz; an unordered box would jump above it.
+        css = (REPO / "static" / "field-pack" / "css" / "card-sources.css").read_text(encoding="utf-8")
+        self.assertRegex(css, r"\.card-page \.card-sources\{order:3\}")
+
     def test_other_cards_untouched(self):
         for d in CARDS.iterdir():
             if d.name in PILOT_IDS or not (d / "index.html").is_file():
