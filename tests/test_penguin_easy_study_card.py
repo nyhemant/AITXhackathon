@@ -282,7 +282,7 @@ class PenguinEasyStudyCardTests(unittest.TestCase):
         self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&from=card#habitat=african-penguin", main.replace("&amp;", "&"))
         self.assertIn("study-card.js?v=15", html)
         self.assertIn("study-card.css?v=13", html)
-        self.assertIn("study-cards-data.js?v=9", html)
+        self.assertIn("study-cards-data.js?v=10", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "african-penguin"', html)

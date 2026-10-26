@@ -347,7 +347,7 @@ class PuffinEasyStudyCardTests(unittest.TestCase):
         self.assertNotIn("card-print-note", main)
         self.assertIn("study-card.js?v=15", html)
         self.assertIn("study-card.css?v=13", html)
-        self.assertIn("study-cards-data.js?v=9", html)
+        self.assertIn("study-cards-data.js?v=10", html)
         self.assertIn('id="study-card-data"', html)
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "puffin"', html)

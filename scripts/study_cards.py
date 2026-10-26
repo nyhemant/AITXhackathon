@@ -2407,6 +2407,23 @@ def strip_jr_soft_choice_label(text: str) -> str:
     return strip_editorial_soft_display(text)
 
 
+_FRAGMENT_TAIL = re.compile(
+    r"(?:\b(?:and|or|but|so|the|a|an|to|of|with|that|because)|[—–,;:])\s*[.!?]?[”\"’]?$",
+    re.I,
+)
+
+
+def _is_sentence_fragment(sentence: str) -> bool:
+    """True when a trimmed sentence no longer reads as a whole sentence."""
+    t = str(sentence or "").strip()
+    if not t:
+        return True
+    first = t.lstrip("“\"‘'(—– ")[:1]
+    if first and first.isalpha() and first.islower():
+        return True
+    return bool(_FRAGMENT_TAIL.search(t))
+
+
 def strip_editorial_soft_display(text: str) -> str:
     """Remove authoring soft markers from user-visible study copy.
 
@@ -2427,6 +2444,13 @@ def strip_editorial_soft_display(text: str) -> str:
 
     # Tip label (before protecting titles that contain "care")
     s = re.sub(r"\bSoft care\s*:", "Care tip:", s, flags=re.I)
+    # Drop the label and capitalise what follows so no sentence starts lowercase.
+    s = re.sub(
+        r"\bSoft physiology\s*:\s*(\w)",
+        lambda m: m.group(1).upper(),
+        s,
+        flags=re.I,
+    )
     s = re.sub(r"\bSoft physiology\s*:", "", s, flags=re.I)
 
     s = _NATURAL_SOFT.sub(_protect, s)
@@ -2493,8 +2517,21 @@ def strip_editorial_soft_display(text: str) -> str:
         s = re.sub(pat, rep, s, flags=re.I)
 
     s = re.sub(r",?\s*so we keep [^.!?]{0,80}\bsoft\.?", ".", s, flags=re.I)
-    s = re.sub(r"(?:(?<=[.!?])\s*)?\bWe keep [^.!?]{0,80}\bsoft\.?", "", s, flags=re.I)
-    s = re.sub(r"^We keep [^.!?]{0,80}\bsoft\.?\s*", "", s, flags=re.I)
+    # "We keep … soft …" editorial notes go as WHOLE sentences (or a whole
+    # trailing clause up to the sentence end), never just up to the word "soft".
+    # Cutting at "soft" used to leave fragments on the page such as
+    # "… wild populations. and do not lock one infection rate."
+    s = re.sub(
+        r"\s*[—–;,]\s*we keep [^.!?]{0,80}\bsoft\b[^.!?]*([.!?])",
+        r"\1",
+        s,
+    )
+    s = re.sub(
+        r"(?:(?<=[.!?])\s*|^)We keep [^.!?]{0,80}\bsoft\b[^.!?]*(?:[.!?][”\"’]?)?\s*",
+        " ",
+        s,
+        flags=re.I,
+    )
     s = re.sub(r",?\s*so we stay soft(?:\s+on [^.!?]+)?\.?", ".", s, flags=re.I)
     s = re.sub(r"(?:(?<=[.!?])\s*)?\bWe stay soft(?:\s+on [^.!?]+)?\.?", "", s, flags=re.I)
     s = re.sub(r"^We stay soft(?:\s+on [^.!?]+)?\.?\s*", "", s, flags=re.I)
@@ -2524,7 +2561,11 @@ def strip_editorial_soft_display(text: str) -> str:
     )
 
     def _drop_soft_sentences(blob: str) -> str:
-        parts = re.split(r"(?<=[.!?])\s+", blob.strip()) if blob.strip() else []
+        # Split on sentence ends, but not after one-letter abbreviations
+        # (F. a. arctica, e.g. …) so a sentence is judged whole.
+        parts = (
+            re.split(r"(?<=[.!?])(?<!\b\w\.)\s+", blob.strip()) if blob.strip() else []
+        )
         kept: list[str] = []
         for part in parts:
             low = part.lower()
@@ -2549,7 +2590,11 @@ def strip_editorial_soft_display(text: str) -> str:
             if trimmed and not re.search(r"\bsoft\b", trimmed, re.I):
                 if not trimmed.endswith((".", "!", "?")) and len(trimmed) > 15:
                     trimmed += "."
-                kept.append(trimmed)
+                # Keep the trimmed sentence only if it still reads as a whole
+                # sentence; otherwise drop the WHOLE sentence (no fragments
+                # such as "Treat the letter as a snapshot, and.").
+                if not _is_sentence_fragment(trimmed):
+                    kept.append(trimmed)
         return " ".join(kept)
 
     s = _drop_soft_sentences(s)
@@ -8821,7 +8866,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Chlamydia and koala retrovirus are major health threats in many wild populations",
                         ],
                         "correct": "C",
-                        "why": "Wikipedia lists Chlamydia and koala retrovirus as major health threats in many wild populations. We keep the medical detail soft and do not lock one infection rate.",
+                        "why": "Wikipedia lists Chlamydia and koala retrovirus as major health threats in many wild populations.",
                     },
                     {
                         "slot": 10,
@@ -9048,7 +9093,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "They leave forever and never come back",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia says chimpanzee communities are territorial. Adult males often walk the edges of the home range and may clash with neighbours. We keep the clash soft here.",
+                        "why": "Wikipedia says chimpanzee communities are territorial. Adult males often walk the edges of the home range and may clash with neighbours.",
                     },
                     {
                         "slot": 5,
@@ -9225,7 +9270,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "It is a brand of zoo snack",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia says a chimpanzee simian immunodeficiency virus (SIVcpz) is the source of pandemic HIV-1 in humans. We keep the medical detail soft and do not lock one date or pathway story.",
+                        "why": "Wikipedia says a chimpanzee simian immunodeficiency virus (SIVcpz) is the source of pandemic HIV-1 in humans.",
                     },
                     {
                         "slot": 8,
@@ -11802,7 +11847,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Studies report big drops in some oceanic shark and ray numbers",
                         ],
                         "correct": "C",
-                        "why": "Wikipedia cites studies that report big drops in some oceanic shark and ray numbers since about 1970. Exact percents stay soft, and not every kind dropped the same way.",
+                        "why": "Wikipedia cites studies that report big drops in some oceanic shark and ray numbers since about 1970. Exact percents vary, and not every kind dropped the same way.",
                     },
                     {
                         "slot": 7,
@@ -12660,7 +12705,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Roughly about 6–7 million years ago (soft); Hoffmann’s ranges are also split by the Andes",
                         ],
                         "correct": "C",
-                        "why": "Wikipedia cites molecular work that the two living kinds split about 6 to 7 million years ago — that date stays soft. Hoffmann’s two-toed sloths also have ranges split by the Andes.",
+                        "why": "Wikipedia cites molecular work that the two living kinds split about 6 to 7 million years ago, though estimates vary. Hoffmann’s two-toed sloths also have ranges split by the Andes.",
                     },
                     {
                         "slot": 7,
@@ -16341,7 +16386,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "They are the same group as insects and spiders",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia places true crabs in infraorder Brachyura. Counts are often near 7,000 species, but we keep the exact number soft. They share a thick armored carapace and a short tail tucked under the body.",
+                        "why": "Wikipedia places true crabs in infraorder Brachyura. Counts are often near 7,000 species. They share a thick armored carapace and a short tail tucked under the body.",
                     },
                     {
                         "slot": 2,
@@ -17303,7 +17348,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "They only live in space, so rivers never matter",
                         ],
                         "correct": "B",
-                        "why": "Wikipedia ties freshwater eels to heavy fishing and farming in Asia and Europe. Dams, weirs, and lost habitat add more stress. We keep that pressure story soft, and we do not lock one group letter.",
+                        "why": "Wikipedia ties freshwater eels to heavy fishing and farming in Asia and Europe. Dams, weirs, and lost habitat add more stress.",
                     },
                     {
                         "slot": 9,
@@ -17473,7 +17518,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Trade never touches Anguilla, and rivers have no barriers at all",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia ties young anguillid eels to dams and weirs that can block upstream climbs. Glass-eel fisheries and farm demand add more pressure on threatened Anguilla. We keep that stacked-pressure story soft, and we do not lock one group letter.",
+                        "why": "Wikipedia ties young anguillid eels to dams and weirs that can block upstream climbs. Glass-eel fisheries and farm demand add more pressure on threatened Anguilla.",
                     },
                 ],
             },
@@ -18836,7 +18881,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Tiny colour cells (and friends) shift colour and pattern to match the scene",
                         ],
                         "correct": "C",
-                        "why": "Wikipedia says octopuses use specialised skin cells to change colour for camouflage and signals. They can also change skin texture. We keep the cell names soft for later.",
+                        "why": "Wikipedia says octopuses use specialised skin cells to change colour for camouflage and signals. They can also change skin texture.",
                     },
                     {
                         "slot": 4,
@@ -20394,7 +20439,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Arms never shed except in cartoons",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia notes an autotomy-promoting factor that, injected into another starfish, causes rapid arm shedding. We keep the chemistry soft and skip exact molecule names.",
+                        "why": "Wikipedia notes an autotomy-promoting factor that, injected into another starfish, causes rapid arm shedding.",
                     },
                     {
                         "slot": 5,
@@ -20407,7 +20452,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "Gravity alone — the stomach always falls back in",
                         ],
                         "correct": "B",
-                        "why": "Wikipedia: retraction and contraction of the cardiac stomach is activated by the neuropeptide NGFFYamide. We keep other peptide stories soft and do not invent extra names.",
+                        "why": "Wikipedia: retraction and contraction of the cardiac stomach is activated by the neuropeptide NGFFYamide.",
                     },
                     {
                         "slot": 6,
@@ -20605,12 +20650,12 @@ STUDY_CARDS: dict[str, dict] = {
                         "title": "Many kinds",
                         "stem": "About how many kinds of stingray are there, if we keep the count soft?",
                         "choices": [
-                            "About two hundred known kinds worldwide (soft)",
+                            "About 220 known kinds worldwide",
                             "Exactly three kinds in one pond",
                             "Only one kind on Earth",
                         ],
                         "correct": "A",
-                        "why": "Wikipedia puts living stingrays at about 220 known species. Exact totals shift as scientists name or split kinds, so we keep that soft.",
+                        "why": "Wikipedia puts living stingrays at about 220 known species. Exact totals shift as scientists name or split kinds.",
                     },
                     {
                         "slot": 10,
@@ -20726,7 +20771,7 @@ STUDY_CARDS: dict[str, dict] = {
                             "It has no venom at all — the spine is only a plastic toy",
                         ],
                         "correct": "B",
-                        "why": "Wikipedia: unlike many venomous animals that store venom in a gland, the stingray stores venom within tissue cells on the spinal blade. Secretion mixes with mucus. Named proteins (e.g. cystatins, galectin) stay soft kid-safe labels, not a full chem list.",
+                        "why": "Wikipedia: unlike many venomous animals that store venom in a gland, the stingray stores venom within tissue cells on the spinal blade. Secretion mixes with mucus. Proteins named in it include cystatins and galectin.",
                     },
                     {
                         "slot": 3,

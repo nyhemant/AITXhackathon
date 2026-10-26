@@ -337,7 +337,7 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-id="whale-shark"', html)
         self.assertIn('data-study-level="easy"', html)
         self.assertIn("study-card.js?v=15", html)
-        self.assertIn("study-cards-data.js?v=9", html)
+        self.assertIn("study-cards-data.js?v=10", html)
         print_tpl = study_print_html_for("whale-shark")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)
