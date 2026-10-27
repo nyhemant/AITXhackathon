@@ -9,7 +9,7 @@
 (function () {
   "use strict";
   var NEXT = {
-    "scavenger-hunt": ["Finished your Zoo & Park Scavenger Hunt?", "See what to try next", "/printables/scavenger-hunt/#next"],
+    "scavenger-hunt": ["Playing the Zoo & Park Scavenger Hunt?", "Pick a zoo hunt for next time", "/printables/scavenger-hunt/#next"],
     "animal-bingo": ["Finished your Animal Bingo sheet?", "Meet the animals behind your squares", "/printables/animal-bingo/#next"],
     "zoo-day-journal": ["Finished your Zoo Day Journal?", "Find the answer to your \u201cI wonder\u2026\u201d", "/printables/zoo-day-journal/#next"],
     "park-scavenger-hunt": ["Finished your Park & Backyard Hunt?", "Try the zoo scavenger hunt next", "/printables/scavenger-hunt/"],

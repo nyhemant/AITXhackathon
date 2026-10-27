@@ -42,6 +42,40 @@ class QrWelcomeTests(unittest.TestCase):
         self.assertNotIn("replaceState", js)  # UTMs stay in the URL
         self.assertNotIn("free", js.lower())
 
+    def test_version_bumped_everywhere(self):
+        for rel in QR_PAGES + PRINT_PAGES:
+            html = (STATIC / rel / "index.html").read_text(encoding="utf-8")
+            self.assertIn("/shell/qr-welcome.js?v=3", html, rel)
+
+    def test_scavenger_hunt_strip_reads_fine_mid_visit(self):
+        js = JS.read_text(encoding="utf-8")
+        m = re.search(r'"scavenger-hunt": \["([^"]+)", "([^"]+)", "([^"]+)"\]', js)
+        self.assertIsNotNone(m)
+        lead, button, href = m.groups()
+        self.assertNotIn("Finished", lead)
+        self.assertEqual(button, "Pick a zoo hunt for next time")
+        self.assertEqual(href, "/printables/scavenger-hunt/#next")
+
+    def test_generator_emits_tag_on_hubs_it_writes(self):
+        import sys
+        import tempfile
+        from unittest import mock
+        sys.path.insert(0, str(STATIC.parent / "scripts"))
+        import generate_bdo_seo as g
+        self.assertEqual(g.qr_welcome_tag(), '<script src="/shell/qr-welcome.js?v=3"></script>')
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(g, "FIELD", Path(tmp)):
+            for meta in g.TYPE_LANDINGS:
+                g.write_type_landing(meta, [])
+                html = (Path(tmp) / meta["path"] / "index.html").read_text(encoding="utf-8")
+                want = 1 if meta["path"] in g.QR_WELCOME_TYPE_LANDINGS else 0
+                self.assertEqual(html.count("/shell/qr-welcome.js?v=3"), want, meta["path"])
+                if want:
+                    self.assertLess(html.index("/shell/shell.js"), html.index("/shell/qr-welcome.js"))
+        src = (STATIC.parent / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
+        hub = src[src.index("def write_cards_hub("):]
+        hub = hub[: hub.index("\ndef ")]
+        self.assertIn("{qr_welcome_tag()}", hub)
+
 
 if __name__ == "__main__":
     unittest.main()

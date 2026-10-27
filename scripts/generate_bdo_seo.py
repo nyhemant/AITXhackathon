@@ -360,6 +360,15 @@ STYLES_CSS_VER = "44"
 CATALOG_JS_VER = "40"
 SHELL_CSS_VER = 13
 SHELL_JS_VER = "6"
+# /shell/qr-welcome.js (QR-scan next-step strip + printable_download). Hubs that
+# printed QR codes land on must keep loading it when they are regenerated.
+QR_WELCOME_JS_VER = "3"
+QR_WELCOME_TYPE_LANDINGS = ("zoos",)
+
+
+def qr_welcome_tag(defer: bool = False) -> str:
+    d = " defer" if defer else ""
+    return f'<script src="/shell/qr-welcome.js?v={QR_WELCOME_JS_VER}"{d}></script>'
 PRINT_KIT_JS_VER = "22"
 STUDY_CARD_JS_VER = "19"
 STUDY_CARD_CSS_VER = "16"
@@ -3464,6 +3473,7 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
     </main>
   </div>
   <script src="/shell/shell.js?v={SHELL_JS_VER}" defer></script>
+  {qr_welcome_tag(defer=True) if path in QR_WELCOME_TYPE_LANDINGS else ""}
 </body>
 </html>
 """
@@ -5418,6 +5428,7 @@ def write_cards_hub(venues: list[dict]) -> str:
     </footer>
   </div>
   <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
+  {qr_welcome_tag()}
   <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script src="/field-pack/js/cards-explorer.js?v={CARDS_EXPLORER_JS_VER}"></script>
 </body>
