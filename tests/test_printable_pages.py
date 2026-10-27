@@ -54,6 +54,28 @@ class PrintablePagesTests(unittest.TestCase):
             self.assertEqual(html.count('class="btn" href="/printables/pdf/letter/'), 1, slug)
             self.assertEqual(html.count('class="btn alt" href="/printables/pdf/a4/'), 1, slug)
 
+    def test_before_you_print_qa_is_sheet_specific(self):
+        """'Before you print' Q&A: natural questions, own answers per sheet, honest about pre-readers."""
+        answers = {}
+        for slug in PILOT:
+            html = self._html(slug)
+            m = re.search(r'<section class="box faq" id="before-you-print".*?</section>', html, re.S)
+            self.assertIsNotNone(m, slug)
+            sec = m.group(0)
+            self.assertIn('<h2 id="faq-h">Before you print</h2>', sec)
+            qs = re.findall(r"<h3>(.*?)</h3>", sec)
+            self.assertGreaterEqual(len(qs), 4, slug)
+            for q in qs:
+                self.assertTrue(q.endswith("?"), q)
+            ps = re.findall(r"<p>(.*?)</p>", sec, re.S)
+            self.assertEqual(len(ps), len(qs), slug)
+            answers[slug] = set(ps)
+            self.assertNotIn("free", sec.lower(), slug)
+            # Q&A comes before the Next step box
+            self.assertLess(html.index('id="before-you-print"'), html.index('id="next"'), slug)
+        a, b, c = (answers[s] for s in PILOT)
+        self.assertFalse(a & b or a & c or b & c, "an answer is pasted on more than one sheet page")
+
     def test_pages_use_shell_and_no_free_hook(self):
         for slug in PILOT:
             html = self._html(slug)
