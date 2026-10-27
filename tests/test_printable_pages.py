@@ -40,6 +40,20 @@ class PrintablePagesTests(unittest.TestCase):
             for href in re.findall(r'href="(/printables/[^"#]+)"', html):
                 self.assertIsNotNone(_safe_printables_path(href), f"{slug}: {href}")
 
+    def test_print_buttons_come_before_preview(self):
+        """Print buttons sit above the preview image so phones see them on the first screen."""
+        for slug in PILOT:
+            html = self._html(slug)
+            h1 = html.index("</h1>")
+            bar = html.index('class="printbar"')
+            letter = html.index(f'href="/printables/pdf/letter/{slug}.pdf"')
+            a4 = html.index(f'href="/printables/pdf/a4/{slug}-a4.pdf"')
+            img = html.index('<div class="hero">')
+            self.assertTrue(h1 < bar < letter < a4 < img, slug)
+            # exactly one Letter and one A4 print button (no duplicates that would double-count)
+            self.assertEqual(html.count('class="btn" href="/printables/pdf/letter/'), 1, slug)
+            self.assertEqual(html.count('class="btn alt" href="/printables/pdf/a4/'), 1, slug)
+
     def test_pages_use_shell_and_no_free_hook(self):
         for slug in PILOT:
             html = self._html(slug)
