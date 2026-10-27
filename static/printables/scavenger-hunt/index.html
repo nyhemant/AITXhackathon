@@ -34,6 +34,11 @@
     .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:1.5rem;align-items:start;margin:1rem 0 1.5rem}
     @media (max-width:640px){.hero{grid-template-columns:1fr}}
     .hero img{width:100%;max-width:26rem;height:auto;border-radius:12px;border:1.5px solid var(--border);background:#fff;box-shadow:0 4px 14px rgba(21,34,56,.08)}
+    .printbar{margin:0 0 .25rem}
+    .printbar .meta{margin:0 0 .4rem}
+    .printbar .btns{margin:.4rem 0 .35rem}
+    .printbar .use{margin:0}
+    @media (max-width:640px){.lead{margin-bottom:.6rem}.printbar .btns{gap:.5rem}.printbar .btn{padding:.6rem 1rem}.hero{margin-top:.75rem}}
     .meta{font-size:.95rem;font-weight:700;color:var(--teal-deep);margin:.25rem 0 .75rem}
     .btns{display:flex;flex-wrap:wrap;gap:.6rem;margin:.75rem 0}
     .btn{display:inline-flex;align-items:center;min-height:44px;padding:.7rem 1.2rem;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;text-decoration:none}
@@ -95,15 +100,17 @@
       <p class="crumbs"><a href="/printables/">&larr; All printables</a></p>
       <h1>Zoo &amp; Park Scavenger Hunt Printable</h1>
       <p class="lead">Sixteen things to spot at the zoo or park. Tick them off, count your finds, then draw your favorite.</p>
+      <div class="printbar" role="group" aria-label="Print this sheet">
+        <p class="meta">Ages 4&ndash;10 &middot; 20&ndash;45 min &middot; 1 page</p>
+        <div class="btns">
+          <a class="btn" href="/printables/pdf/letter/scavenger-hunt.pdf" download>Print PDF (US Letter)</a>
+          <a class="btn alt" href="/printables/pdf/a4/scavenger-hunt-a4.pdf" download>Print PDF (A4)</a>
+        </div>
+        <p class="use">Print at 100% scale. US Letter for North America, A4 for most other countries. No signup.</p>
+      </div>
       <div class="hero">
         <img src="/printables/img/scavenger-hunt.png" width="510" height="660" alt="Preview of the Zoo and Park Scavenger Hunt printable: sixteen check boxes, a drawing box and a QR code" />
         <div>
-          <p class="meta">Ages 4&ndash;10 &middot; 20&ndash;45 min &middot; 1 page</p>
-          <div class="btns">
-            <a class="btn" href="/printables/pdf/letter/scavenger-hunt.pdf" download>Print PDF (US Letter)</a>
-            <a class="btn alt" href="/printables/pdf/a4/scavenger-hunt-a4.pdf" download>Print PDF (A4)</a>
-          </div>
-          <p class="use">Print at 100% scale. US Letter for North America, A4 for most other countries. No signup.</p>
           <section class="box" aria-labelledby="inside-h">
             <h2 id="inside-h">What&rsquo;s on the sheet</h2>
             <ul class="inside">
