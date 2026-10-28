@@ -145,11 +145,12 @@ PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip fo
                            'with live cams and short films.'}}
 
 # 2026-10-23: museums hub gets "<Nav> for Kids" + a visible intro like the other hubs.
-# Title/description unchanged (same text as TYPE_LANDINGS). scripts/hub_photos.py writes the same H1/intro.
+# Title/description: same text as TYPE_LANDINGS. scripts/hub_photos.py writes the same H1/intro.
+# 2026-10-28: descriptive title (was "Museums · KidZooKit") and a 152-char description (was 157).
 PAGE_COPY["/field-pack/museums/"] = {
-    "title": "Museums · KidZooKit",
+    "title": "Museums for Kids: Talk Prompts & Printable Hunts | KidZooKit",
     "description": (
-        "Museum trips for kids: dinosaur halls, rockets, hands-on science and children's museums "
+        "Museums for kids: dinosaur halls, rockets, hands-on science and children's museums "
         "like AMNH, Perot and Air and Space. Talk prompts and printable hunts."
     ),
     "h1": "Museums for Kids",

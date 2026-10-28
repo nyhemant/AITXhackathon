@@ -61,6 +61,7 @@ from animal_park_links import (  # noqa: E402
     park_animals_html,
 )
 import card_sources  # noqa: E402  (citable-card pilot, 2026-10-26)
+import hub_seo_ld  # noqa: E402  (hub JSON-LD, 2026-10-28)
 from study_cards import (  # noqa: E402
     STUDY_QUIZ_H2,
     default_study_deck_for,
@@ -482,11 +483,11 @@ TYPE_LANDINGS = [
         "path": "museums",
         "kind": "museum",
         "nav": "Museums",
-        "title": "Museums · KidZooKit",
+        "title": "Museums for Kids: Talk Prompts & Printable Hunts | KidZooKit",
         "h1": "Museums",
         "blurb": TYPE_HUB_LEAD,
         "description": (
-            "Museum trips for kids: dinosaur halls, rockets, hands-on science and children's museums like AMNH, Perot and Air and Space. Talk prompts and printable hunts."
+            "Museums for kids: dinosaur halls, rockets, hands-on science and children's museums like AMNH, Perot and Air and Space. Talk prompts and printable hunts."
         ),
         "map_type": "museum",
         "pitch": "",
@@ -3453,6 +3454,10 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
   <meta property="og:description" content="{esc(serp_desc)}" />
   <meta property="og:url" content="{esc(url)}" />
   <meta property="og:image" content="{og_img}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{esc(meta["title"])}" />
+  <meta name="twitter:description" content="{esc(serp_desc)}" />
+  <meta name="twitter:image" content="{og_img}" />
   <base href="/field-pack/" />
   <link rel="stylesheet" href="/shell/shell.css?v={SHELL_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
@@ -5377,6 +5382,8 @@ def write_cards_hub(venues: list[dict]) -> str:
   <meta property="og:description" content="{esc(desc)}" />
   <meta property="og:url" content="{esc(url)}" />
   <meta property="og:image" content="{play_og}" />
+  <meta name="twitter:title" content="{esc(title)}" />
+  <meta name="twitter:description" content="{esc(desc)}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="{play_og}" />
   <base href="/field-pack/" />
@@ -5485,6 +5492,8 @@ def write_cards_hub(venues: list[dict]) -> str:
 </body>
 </html>
 """
+    # 2026-10-28: CollectionPage + ItemList built from the hub's own card links (scripts/hub_seo_ld.py).
+    html = hub_seo_ld.upsert_cards_hub(html)
     out_dir = FIELD / "cards"
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "index.html").write_text(html, encoding="utf-8")

@@ -1132,13 +1132,13 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-venue-sizer::before", self.css)
         self.assertIn("content: attr(data-sizer)", self.css)
         self.assertIn("wordWidth", self.js)
-        self.assertIn("<title>Turn the zoo into an expedition. · KidZooKit</title>", self.html)
+        self.assertIn("<title>Virtual Zoo for Kids: Live Cams &amp; Animal Cards | KidZooKit</title>", self.html)
         self.assertIn(
-            '<meta property="og:title" content="Turn the zoo into an expedition. · KidZooKit" />',
+            '<meta property="og:title" content="Virtual Zoo for Kids: Live Cams &amp; Animal Cards | KidZooKit" />',
             self.html,
         )
         self.assertIn(
-            '<meta name="twitter:title" content="Turn the zoo into an expedition. · KidZooKit" />',
+            '<meta name="twitter:title" content="Virtual Zoo for Kids: Live Cams &amp; Animal Cards | KidZooKit" />',
             self.html,
         )
         self.assertNotIn("A virtual zoo for curious kids like Arya and Kunal", self.html)
