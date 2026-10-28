@@ -64,6 +64,7 @@ import card_sources  # noqa: E402  (citable-card pilot, 2026-10-26)
 from study_cards import (  # noqa: E402
     STUDY_QUIZ_H2,
     default_study_deck_for,
+    study_deck_for as study_deck_for_level,
     study_talk_html,
     study_try_next_html,
     write_study_artifacts,
@@ -2005,6 +2006,56 @@ CARD_SEO = {
         ),
     },
 }
+
+
+# 2026-10-28: animal + sea-life card titles/descriptions use the "<Animal> Facts for Kids"
+# query shape (reviewer, NatGeo/Britannica pattern). Built only from the card's own name +
+# blurb; no new facts, never "Free". Titles aim for <=60 chars; descriptions must be <=155
+# (tests/test_card_seo_copy.py fails the build otherwise).
+CARD_TITLE_SUFFIX = " | KidZooKit"
+CARD_TITLE_PATTERNS = (
+    "{n} Facts for Kids: Quiz & Talk Prompts",
+    "{n} Facts for Kids: Quiz & Prompts",
+    "{n} Facts for Kids & Quiz",
+    "{n} Facts for Kids",
+)
+CARD_DESC_TAILS = (
+    "{n} facts for kids, a quiz with 3 levels, and talk prompts. Print it or use it on a visit.",
+    "{n} facts for kids, a quiz with 3 levels, and talk prompts.",
+    "{n} facts for kids and a quiz with 3 levels.",
+    "{n} facts for kids and a quiz.",
+)
+CARD_TITLE_SOFT_MAX = 60
+CARD_DESC_MAX = 155
+
+
+def title_case_name(name: str) -> str:
+    """"Asian small-clawed otter" -> "Asian Small-Clawed Otter" (keeps accents, slashes)."""
+    def cap(w: str) -> str:
+        return "-".join((p[:1].upper() + p[1:]) if p else p for p in w.split("-"))
+    return " ".join(cap(w) for w in name.split(" "))
+
+
+def animal_card_seo(name: str, blurb: str, *, quiz_levels: int = 3) -> dict[str, str]:
+    """Title + meta description for an animal / sea-life card page."""
+    tn = title_case_name(name)
+    title = ""
+    for pat in CARD_TITLE_PATTERNS:
+        title = pat.format(n=tn) + CARD_TITLE_SUFFIX
+        if len(title) <= CARD_TITLE_SOFT_MAX:
+            break
+    blurb = (blurb or "").strip()
+    if blurb and blurb[-1] not in ".!?":
+        blurb += "."
+    tails = CARD_DESC_TAILS if quiz_levels >= 3 else tuple(t for t in CARD_DESC_TAILS if "3 levels" not in t)
+    desc = ""
+    for tail in tails:
+        desc = ((blurb + " ") if blurb else "") + tail.format(n=name)
+        if len(desc) <= CARD_DESC_MAX:
+            break
+    if len(desc) > CARD_DESC_MAX:
+        desc = tails[0].format(n=name)  # very long blurb: drop it rather than cut mid-word
+    return {"title": title, "description": desc}
 
 
 def seo_hunt_label(v: dict) -> str:
@@ -5588,6 +5639,10 @@ def write_card_pages(
         blurb_html = f'<p class="card-page-blurb">{esc(blurb)}</p>' if blurb else ""
         card_seo = CARD_SEO.get(cid) or {}
         _approved = page_copy(f"/field-pack/cards/{cid}/")
+        if kind in ("animal", "sea_life"):
+            _levels = sum(1 for lv in ("easy", "hard", "zoologist") if study_deck_for_level(cid, lv))
+            card_seo = animal_card_seo(name, blurb, quiz_levels=_levels)
+            _approved = {}
         title = _approved.get("title") or card_seo.get("title") or f"{name} — KidZooKit"
         desc = _approved.get("description") or card_seo.get("description") or (
             (blurb + " " if blurb else "") + f"{name} card: photo and talk prompts."
@@ -5620,6 +5675,8 @@ def write_card_pages(
   <meta property="og:url" content="{esc(url)}" />
   <meta property="og:image" content="{esc(og_img)}" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{esc(title)}" />
+  <meta name="twitter:description" content="{esc(desc)}" />
   <meta name="twitter:image" content="{esc(og_img)}" />
   <link rel="stylesheet" href="/shell/shell.css?v={SHELL_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
