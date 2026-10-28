@@ -1,6 +1,10 @@
 """Approved SEO copy (title, meta description, H1, visible intro) for 13 KidZooKit pages.
 
 Source: docs/seo/seo-proposals.csv. Used by generate_bdo_seo.py and the static page patcher.
+
+2026-10-28: for animal / sea-life card pages, title + description now come from
+generate_bdo_seo.animal_card_seo() ("<Animal> Facts for Kids: ..."); only the h1/intro
+below are still used for the four card entries.
 """
 
 PAGE_COPY = {'/field-pack/virtual-field-trip/': {'title': 'Virtual Field Trip for Kids: Live Cams & Films | '
