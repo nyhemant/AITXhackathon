@@ -10,6 +10,13 @@ Post-processes the committed static HTML (it does NOT regenerate pages):
                     list of up to 8 place pages that feature the animal plus a
                     "see all" hub link, and "More cards" when the page has <3 "Try next".
   * /start/      -> one "Popular trips" line of place links.
+2026-10-28 (search visibility, internal links):
+  * card pages   -> a plain "Print for the trip" link to the ONE printable that
+                    data/quiz_printables.json (reviewed 2026-10-24) maps the card to.
+  * "Where to see" keeps up to WORLD_SLOTS of its 8 slots for places outside the US
+                    that feature the animal, spread so the least-linked ones go first.
+  * place pages  -> reciprocal "Nearby and similar places": a place with fewer than
+                    MIN_PLACE_INBOUND explore links gets listed back by the places it lists.
 Every block sits between <!-- kz-mesh:* --> markers so re-running replaces it.
 Clicks fire ``related_link_click`` (link_type only) via /shell/related-links.js,
 which uses the shell's trackEvent and so respects analytics-off.
@@ -51,6 +58,10 @@ PRINTABLE = {
     "park": ("/printables/", "Park scavenger hunt printable"),
 }
 PROPER = {"African", "American", "Asian", "Caribbean", "Galápagos", "Nile", "Sumatran", "Western", "Woven"}
+WORLD_SLOTS = 2
+MIN_PLACE_INBOUND = 3
+MAX_PLACE_PICKS = 6
+QUIZ_PRINTABLES = ROOT / "data" / "quiz_printables.json"
 START_TRIPS = ["bronx-zoo", "houston-zoo", "monterey-bay-aquarium", "shedd-aquarium", "yellowstone", "great-smoky-mountains"]
 
 E = lambda s: html.escape(str(s), quote=True)  # noqa: E731
@@ -115,11 +126,8 @@ def card_anchor(name: str) -> str:
     return f"{name} card"
 
 
-def place_block(v, places, cards):
+def place_picks(v, places):
     slug, grp = v["slug"], GROUP[v["type"]]
-    # animals to find first: up to 4 cards the page already features
-    feat = v["_cards"][:4]
-    # places: up to 3 closest of any type within 350 km, then nearest same group; total 5
     others = [p for p in places.values() if p["slug"] != slug]
     near = sorted((p for p in others if km(v, p) <= 350), key=lambda p: km(v, p))[:3]
     picks = list(near)
@@ -128,6 +136,38 @@ def place_block(v, places, cards):
             break
         if p not in picks:
             picks.append(p)
+    return near, picks
+
+
+def reciprocal_picks(places):
+    """slug -> (near, picks). Places listed by fewer than MIN_PLACE_INBOUND other places get
+    added back to the lists of the places they list themselves (existing distance picks only)."""
+    base = {s: place_picks(v, places) for s, v in places.items()}
+    inbound = {s: 0 for s in places}
+    for s, (_n, picks) in base.items():
+        for p in picks:
+            inbound[p["slug"]] += 1
+    out = {s: (n, list(pk)) for s, (n, pk) in base.items()}
+    for s in sorted(places, key=lambda x: (inbound[x], x)):
+        if inbound[s] >= MIN_PLACE_INBOUND:
+            continue
+        for p in base[s][1]:
+            lst = out[p["slug"]][1]
+            if inbound[s] >= MIN_PLACE_INBOUND:
+                break
+            if places[s] in lst or len(lst) >= MAX_PLACE_PICKS:
+                continue
+            lst.append(places[s])
+            inbound[s] += 1
+    return out
+
+
+def place_block(v, places, cards, picked=None):
+    slug, grp = v["slug"], GROUP[v["type"]]
+    # animals to find first: up to 4 cards the page already features
+    feat = v["_cards"][:4]
+    # places: up to 3 closest of any type within 350 km, then nearest same group; total 5
+    near, picks = picked if picked else place_picks(v, places)
     plabel = "Nearby and similar places" if near else f"More {HUB[v['type']][2]} to explore"
     pr_href, pr_text = PRINTABLE[grp]
     out = ['\n    <section class="kz-explore no-print" id="explore-more" aria-labelledby="explore-more-heading">',
@@ -167,6 +207,7 @@ def ensure_tags(s: str) -> str:
 
 def do_places(places, cards):
     report = {}
+    picked = reciprocal_picks(places)
     for v in places.values():
         f = v["_path"]
         s = f.read_text(encoding="utf-8")
@@ -181,7 +222,7 @@ def do_places(places, cards):
         # JSON-LD
         ld = breadcrumb_ld([("KidZooKit", "/start/"), ("All places", "/field-pack/"), (hub_label, hub), (v["name"], f"/field-pack/{v['slug']}/")])
         s = s.replace("</head>", "  " + wrap("crumb-ld", ld) + "\n</head>", 1)
-        block, feat, picks = place_block(v, places, cards)
+        block, feat, picks = place_block(v, places, cards, picked[v["slug"]])
         s, n2 = re.subn(r'(\n\s*<p class="seo-official)', lambda m: "\n    " + wrap("explore", block) + m.group(1), s, count=1)
         if not (n1 and n2):
             raise SystemExit(f"anchor not found in {f} crumb={n1} explore={n2}")
@@ -191,7 +232,26 @@ def do_places(places, cards):
     return report
 
 
+def load_quiz_printables():
+    d = json.loads(QUIZ_PRINTABLES.read_text(encoding="utf-8"))
+    return {cid: d["pages"][row["sheet"]] for cid, row in d["cards"].items() if row.get("sheet") in d["pages"]}
+
+
+def pick_hosts(hosts, used):
+    """Up to 8: US-first order as before, but keep WORLD_SLOTS for places outside the US
+    (least-shown first, so far-away pages are not always cut)."""
+    world = sorted((v for v in hosts if v.get("country") != "US"), key=lambda v: (used.get(v["slug"], 0), v["name"]))
+    world = world[:WORLD_SLOTS]
+    rest = [v for v in hosts if v not in world][: 8 - len(world)]
+    shown = [v for v in hosts if v in rest or v in world]  # keep the original ranking order
+    for v in shown:
+        used[v["slug"]] = used.get(v["slug"], 0) + 1
+    return shown
+
+
 def do_cards(places, cards):
+    printables = load_quiz_printables()
+    used = {}
     by_card = {cid: [] for cid in cards}
     for v in places.values():
         for cid in v["_cards"]:
@@ -201,7 +261,7 @@ def do_cards(places, cards):
     for cid, c in cards.items():
         f = c["path"]
         s = f.read_text(encoding="utf-8")
-        for n in ("where", "more-cards", "crumb", "crumb-ld"):
+        for n in ("print", "where", "more-cards", "crumb", "crumb-ld"):
             s = strip_block(s, n)
         name = c["name"]
         # crumb: KidZooKit · Cards · <Name>
@@ -217,8 +277,11 @@ def do_cards(places, cards):
             return (rank.get(item.get("presence"), 2), 0 if v.get("country") == "US" else 1, v["name"])
         hosts = sorted((v for v in by_card[cid] if v["slug"] not in linked), key=pr)
         extra = ""
+        sheet = printables.get(cid)
+        if sheet:
+            extra += "\n      " + wrap("print", f'<nav class="kz-where kz-print-sheet no-print" aria-label="Print for the trip"><h2>Print for the trip</h2><ul><li><a href="{E(sheet["href"])}" data-related-link="printable">{E(sheet["label"])}</a></li></ul></nav>')
         if hosts:
-            shown = hosts[:8]
+            shown = pick_hosts(hosts, used)
             types = [GROUP[v["type"]] for v in hosts]
             top = max(set(types), key=types.count)
             hub, _, plural = HUB[{"zoo": "zoo", "aquarium": "aquarium", "museum": "museum", "park": "national_park"}[top]]
