@@ -358,7 +358,7 @@ CARD_SEO_CSS_VER = "38"
 LANDING_CSS_VER = "105"
 LANDING_MAP_JS_VER = "89"
 LANDING_HOOK_JS_VER = "39"
-STYLES_CSS_VER = "44"
+STYLES_CSS_VER = "45"
 CATALOG_JS_VER = "40"
 SHELL_CSS_VER = 13
 SHELL_JS_VER = "6"
@@ -1037,7 +1037,7 @@ def catalog_more_links_html(
         )
     elif shared:
         bits.append(
-            '<a class="btn btn-ghost card-learn-more" hidden target="_blank" rel="noopener noreferrer">Learn more</a>'
+            '<a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">Learn more</a>'
         )
     if not bits:
         return ""
