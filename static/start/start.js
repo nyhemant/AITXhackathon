@@ -122,6 +122,12 @@
     if (!img || img.getAttribute("src")) return;
     const src = img.getAttribute("data-src");
     if (!src) return;
+    const pic = img.parentElement;
+    if (pic && pic.tagName === "PICTURE") {
+      pic.querySelectorAll("source[data-srcset]").forEach((so) => {
+        so.setAttribute("srcset", so.getAttribute("data-srcset"));
+      });
+    }
     const srcset = img.getAttribute("data-srcset");
     if (srcset) img.setAttribute("srcset", srcset);
     img.setAttribute("src", src);
