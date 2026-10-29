@@ -359,7 +359,7 @@ class TigerEasyStudyCardTests(unittest.TestCase):
         self.assertIn('"id": "sumatran-tiger"', html)
         self.assertNotIn("study-print-template", html)
         self.assertIn("print-kit.js?v=22", html)
-        self.assertIn("styles.css?v=44", html)
+        self.assertIn("styles.css?v=45", html)
         self.assertIn("<details class=\"study-teach\">", main)
         self.assertNotIn("<details class=\"study-teach\" open", main)
         self.assertNotIn("<div class=\"study-teach\">", main)

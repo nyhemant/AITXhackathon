@@ -232,3 +232,10 @@ body.about-body {
   margin: 0 auto 1.75rem;
   width: 100%;
 }
+
+/* 2026-10-29: FAQ questions are full-height tap targets (was 23px). */
+.about-faq summary {
+  padding: 10px 0;
+  min-height: 44px;
+  box-sizing: border-box;
+}

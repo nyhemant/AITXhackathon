@@ -2708,3 +2708,31 @@ a {
   color: #777;
   margin: .35em 0 0;
 }
+
+/* 2026-10-29 mobile polish: primary buttons ≥4.5:1 with white text (was #d9652e, 3.6:1). */
+.btn-primary {
+  background: #b9501f;
+}
+.btn-primary:hover {
+  background: #9f3f16;
+}
+
+/* 2026-10-29 tap targets ≥24px (most ≥30px): breadcrumbs, map PDF link, animal card titles, VFT film links. */
+.seo-crumbs a {
+  display: inline-block;
+  padding: 6px 2px;
+}
+.seo-map-ext-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 0;
+}
+.seo-home-card h3 a {
+  display: inline-block;
+  padding: 6px 0;
+}
+.vz-static-cam,
+.vz-static-film {
+  padding: 0.35rem 0;
+}
