@@ -1,4 +1,5 @@
-"""Card action controls: Watch | Photos on row 1; Print alone on row 2."""
+"""Card action controls: Watch | Take the quiz on row 1; Print on row 2; on quiz cards the outside
+"More photos at ..." link sits below Print (2026-10-29)."""
 
 from __future__ import annotations
 
@@ -61,11 +62,15 @@ class CardActionsResequenceTests(unittest.TestCase):
         self.assertIn("Watch film", primary)
         self.assertNotIn("Watch live", primary)
         self.assertEqual(primary.count("card-watch-live"), 1)
-        self.assertLess(primary.find("card-watch-live"), primary.find("card-page-photos"))
+        self.assertIn('class="btn btn-primary card-quiz-peer" href="#quiz">Take the quiz</a>', primary)
+        self.assertLess(primary.find("card-watch-live"), primary.find("card-quiz-peer"))
+        self.assertNotIn("card-page-photos", primary)
         self.assertIn("print-this-card", print_row)
         self.assertIn("US Letter or A4", print_row)
         self.assertNotIn("card-watch-live", print_row)
-        self.assertNotIn("card-page-photos", print_row)
+        # Outside photos link comes after Print, before the quiz section.
+        self.assertLess(print_row.find("print-this-card"), print_row.find("card-page-photos"))
+        self.assertLess(print_row.find("card-page-photos"), print_row.find('id="quiz"'))
 
     def test_photos_only_row(self):
         main = _main((FP / "cards" / "freshwater-fish" / "index.html").read_text(encoding="utf-8"))
@@ -73,7 +78,10 @@ class CardActionsResequenceTests(unittest.TestCase):
         primary = actions.split("card-page-actions-primary", 1)[1].split(
             "card-page-actions-print", 1
         )[0]
-        self.assertIn("card-page-photos", primary)
+        # Quiz card with no Watch: row 1 is the quiz jump; photos moved below Print.
+        self.assertIn("card-quiz-peer", primary)
+        self.assertNotIn("card-page-photos", primary)
+        self.assertLess(actions.find("print-this-card"), actions.find("card-page-photos"))
         self.assertNotIn("card-watch-live", actions)
 
     def test_neither_print_row(self):

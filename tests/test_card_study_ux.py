@@ -474,15 +474,15 @@ class CardStudyUxTests(unittest.TestCase):
                 )[0]
                 print_row = actions.split('class="card-page-actions-print"', 1)[1]
                 self.assertIn("card-watch-live", primary)
-                self.assertIn("More photos at", primary)
-                self.assertIn("card-page-photos", primary)
-                watch_at = primary.find("card-watch-live")
-                photos_at = primary.find("card-page-photos")
-                self.assertLess(watch_at, photos_at)
+                self.assertIn("card-quiz-peer", primary)
+                self.assertNotIn("More photos at", primary)
+                self.assertLess(primary.find("card-watch-live"), primary.find("card-quiz-peer"))
                 self.assertIn("print-this-card", print_row)
                 self.assertIn("print-spec", print_row)
                 self.assertNotIn("card-watch-live", print_row)
-                self.assertNotIn("card-page-photos", print_row)
+                # 2026-10-29: outside photos link sits below Print, still above the quiz section.
+                self.assertIn("More photos at", print_row)
+                self.assertLess(print_row.find("print-this-card"), print_row.find("card-page-photos"))
                 self.assertEqual(main.find('class="seo-watch-row"'), -1)
                 # Photos left the hero quiet row (Learn more may remain).
                 hero = ""

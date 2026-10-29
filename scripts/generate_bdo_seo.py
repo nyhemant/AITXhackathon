@@ -5620,8 +5620,10 @@ def write_card_pages(
                 f'<a class="btn btn-primary card-watch-live" href="{esc(watch_href)}">{esc(watch_cta)}</a>'
             )
         if study_deck:
+            # 2026-10-29: the quiz is the card's main action, so its in-page jump is always visible
+            # (it used to show only with ?from=<place>). Plain #quiz anchor, no new tracking.
             primary_bits.append(
-                '<a class="btn btn-primary card-quiz-peer" href="#quiz" hidden>Quiz</a>'
+                '<a class="btn btn-primary card-quiz-peer" href="#quiz">Take the quiz</a>'
             )
         elif vft_href and not watch_live:
             if vft_has_inpage_media(vft):
@@ -5634,7 +5636,9 @@ def write_card_pages(
                     f'<a class="btn btn-secondary" href="{vft_href}">{esc(PLACE_VFT_CTA)}</a>'
                 )
         photos_html = card_pictures_link_html(item)
-        if photos_html:
+        # Quiz cards: the outside "More photos at ..." link sits below Print, not beside the quiz entry.
+        photos_below_print = bool(study_deck and photos_html)
+        if photos_html and not photos_below_print:
             primary_bits.append(photos_html)
         if chrome_vid:
             primary_bits.append(
@@ -5660,7 +5664,8 @@ def write_card_pages(
             f'data-card-id="{esc(cid)}"{print_venue_attr}>{esc(CTA_PRINT_CARD)}</button>\n        '
             f'<p class="print-spec no-print">{esc(PRINT_SPEC)}</p>\n      </div>'
         )
-        actions_html = "\n      ".join(x for x in (primary_html, print_html) if x)
+        more_html = photos_html if photos_below_print else ""
+        actions_html = "\n      ".join(x for x in (primary_html, print_html, more_html) if x)
         blurb_html = f'<p class="card-page-blurb">{esc(blurb)}</p>' if blurb else ""
         card_seo = CARD_SEO.get(cid) or {}
         _approved = page_copy(f"/field-pack/cards/{cid}/")
