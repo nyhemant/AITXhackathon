@@ -146,9 +146,10 @@ class CardPageSparseChromeTests(unittest.TestCase):
                 self.assertIn("card-page-actions-print", actions)
                 self.assertNotIn("Explore at home", actions)
                 self.assertNotIn("nationalzoo.si.edu", actions)
-                # Hidden Quiz peer is extra only with ?from= a place. The standing row is Watch, Photos, Print.
+                # Standing actions (2026-10-29): Watch, Take the quiz, Print, then the outside photos link.
                 shown = re.sub(r"<a\b[^>]*\bhidden\b[^>]*>.*?</a>", "", actions)
-                self.assertLessEqual(shown.count('class="btn '), 3)
+                self.assertLessEqual(shown.count('class="btn '), 4)
+                self.assertIn(">Take the quiz</a>", shown)
 
     def test_print_spec_line_near_print_cta(self):
         for cid, html in self.pages.items():
