@@ -971,6 +971,21 @@ def pictures_link_label(url: str, explicit: str = "") -> str:
     return f"More photos at {source}"
 
 
+def _local_img_size_attrs(src: str) -> str:
+    """' width="W" height="H"' for a local /field-pack/ image (2026-10-29 CLS hint); '' if unknown."""
+    try:
+        if not str(src).startswith("/field-pack/"):
+            return ""
+        from PIL import Image  # optional; skip size hints when Pillow is missing
+
+        f = FIELD / str(src).split("?")[0][len("/field-pack/"):]
+        with Image.open(f) as im:
+            w, h = im.size
+        return f' width="{w}" height="{h}"'
+    except Exception:
+        return ""
+
+
 def card_pictures_link_html(item: dict, *, btn_class: str = "btn btn-secondary card-page-photos") -> str:
     """Outbound Photos CTA for the card action row (labeled source from #290)."""
     links = item.get("links") or {}
@@ -2451,7 +2466,7 @@ def map_card_html(mission_venue: dict) -> str:
       </div>
       <div class="seo-map-preview" id="seo-map-preview-panel" role="dialog" aria-label="Enlarged visitor map" hidden>
         <button type="button" class="seo-map-preview-close" aria-label="Close enlarged map">×</button>
-        <img src="{esc(img)}" alt="Enlarged visitor map" loading="lazy" decoding="async"{refpol} />
+        <img src="{esc(img)}" alt="Enlarged visitor map"{_local_img_size_attrs(img)} loading="lazy" decoding="async"{refpol} />
         <span class="seo-map-preview-cap">
           {esc(attr)}
           · <a class="seo-map-preview-ext" href="{esc(href)}" target="_blank" rel="noopener noreferrer">{esc(ext_label)}</a>
