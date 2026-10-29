@@ -39,7 +39,7 @@
   <section class="start-hero" id="start-hero" aria-labelledby="start-heading">
     <!-- Map pins are % of hero-world-map.jpg (1792×1008); left/top is the figurine center. Wrapper keeps that aspect and cover-crops; tall/mobile left-aligns so Americas stay in frame. -->
     <div class="start-hero-map">
-      <img
+      <picture style="display:contents"><source type="image/webp" srcset="/start/hero-world-map-1280-v1.webp 1280w, /start/hero-world-map-1792-v1.webp 1792w" sizes="max(100vw, calc(100svh * 1792 / 1008))" /><img
         class="start-hero-still"
         src="/start/hero-world-map.jpg"
         width="1792"
@@ -47,7 +47,7 @@
         alt="Stylized world map with eight animals"
         fetchpriority="high"
         decoding="async"
-      />
+      /></picture>
       <a class="start-hero-hotspot start-hero-pin-bison" data-hero-region="americas" href="/field-pack/cards/american-bison/" aria-label="American bison"></a>
       <a class="start-hero-hotspot start-hero-pin-panda" data-hero-region="east" href="/field-pack/cards/giant-panda/" aria-label="Giant panda"></a>
       <a class="start-hero-hotspot start-hero-pin-zebra" data-hero-region="east" href="/field-pack/cards/zebra/" aria-label="Zebra"></a>
@@ -59,13 +59,13 @@
       <!-- Front-only sample cards under Africa/zebra; % of map plate. pointer-events only on the links. -->
       <div class="start-hero-cards" aria-label="Sample KidZooKit playing cards">
         <a class="start-hero-card start-hero-card-koala" href="/field-pack/cards/koala/" aria-label="Koala card">
-          <img src="/start/playing-card-koala.png" width="360" height="505" alt="" decoding="async" fetchpriority="low" />
+          <picture style="display:contents"><source type="image/webp" srcset="/start/playing-card-koala-240-v1.webp 240w, /start/playing-card-koala-360-v1.webp 360w" sizes="120px" /><img src="/start/playing-card-koala.png" width="360" height="505" alt="" decoding="async" fetchpriority="low" /></picture>
         </a>
         <a class="start-hero-card start-hero-card-tiger" href="/field-pack/cards/sumatran-tiger/" aria-label="Sumatran tiger card">
-          <img src="/start/playing-card-tiger.png" width="360" height="505" alt="" decoding="async" fetchpriority="low" />
+          <picture style="display:contents"><source type="image/webp" srcset="/start/playing-card-tiger-240-v1.webp 240w, /start/playing-card-tiger-360-v1.webp 360w" sizes="120px" /><img src="/start/playing-card-tiger.png" width="360" height="505" alt="" decoding="async" fetchpriority="low" /></picture>
         </a>
         <a class="start-hero-card start-hero-card-zebra" href="/field-pack/cards/zebra/" aria-label="Zebra card">
-          <img src="/start/playing-card-zebra.png" width="360" height="505" alt="" decoding="async" fetchpriority="low" />
+          <picture style="display:contents"><source type="image/webp" srcset="/start/playing-card-zebra-240-v1.webp 240w, /start/playing-card-zebra-360-v1.webp 360w" sizes="120px" /><img src="/start/playing-card-zebra.png" width="360" height="505" alt="" decoding="async" fetchpriority="low" /></picture>
         </a>
       </div>
     </div>
@@ -136,6 +136,7 @@
           width="1792"
           height="1008"
         />
+        <source type="image/webp" srcset="/start/home-print-table-480-v1.webp 480w, /start/home-print-table-640-v1.webp 640w, /start/home-print-table-1024-v1.webp 1024w" sizes="100vw" />
         <img
           class="start-chapter-still"
           src="/start/home-print-table.jpg"
@@ -188,7 +189,7 @@
       </a>
       <div class="start-going-still" role="group" aria-label="Georgia Aquarium, Dallas Zoo, and San Diego Zoo">
         <a class="start-going-panel" data-going-place="georgia" href="/field-pack/georgia-aquarium/" aria-label="Georgia Aquarium">
-          <img
+          <picture style="display:contents"><source type="image/webp" data-srcset="/start/going-georgia-aquarium-480-v1.webp 480w, /start/going-georgia-aquarium-640-v1.webp 640w, /start/going-georgia-aquarium-1024-v1.webp 1024w" sizes="(min-width: 641px) 34vw, 100vw" /><img
             data-src="/start/going-georgia-aquarium.jpg?v=3"
             data-srcset="/start/going-georgia-aquarium-480.jpg?v=3 480w, /start/going-georgia-aquarium-640.jpg?v=3 640w, /start/going-georgia-aquarium.jpg?v=3 1024w"
             sizes="(min-width: 641px) 34vw, 100vw"
@@ -196,10 +197,10 @@
             height="1536"
             alt="child holding Georgia Aquarium hunt sheet with octopus behind"
             decoding="async"
-          />
+          /></picture>
         </a>
         <a class="start-going-panel" data-going-place="dallas" href="/field-pack/dallas-zoo/" aria-label="Dallas Zoo">
-          <img
+          <picture style="display:contents"><source type="image/webp" data-srcset="/start/going-giraffe-480-v1.webp 480w, /start/going-giraffe-640-v1.webp 640w, /start/going-giraffe-1024-v1.webp 1024w" sizes="(min-width: 641px) 34vw, 100vw" /><img
             data-src="/start/going-giraffe.jpg"
             data-srcset="/start/going-giraffe-480.jpg 480w, /start/going-giraffe-640.jpg 640w, /start/going-giraffe.jpg 1024w"
             sizes="(min-width: 641px) 34vw, 100vw"
@@ -207,10 +208,10 @@
             height="1536"
             alt="Child holding a Dallas Zoo mission page with reticulated giraffe checked, a giraffe behind the paper"
             decoding="async"
-          />
+          /></picture>
         </a>
         <a class="start-going-panel" data-going-place="sandiego" href="/field-pack/san-diego-zoo/" aria-label="San Diego Zoo">
-          <img
+          <picture style="display:contents"><source type="image/webp" data-srcset="/start/going-san-diego-zoo-480-v1.webp 480w, /start/going-san-diego-zoo-640-v1.webp 640w, /start/going-san-diego-zoo-1024-v1.webp 1024w" sizes="(min-width: 641px) 34vw, 100vw" /><img
             data-src="/start/going-san-diego-zoo.jpg?v=2"
             data-srcset="/start/going-san-diego-zoo-480.jpg?v=2 480w, /start/going-san-diego-zoo-640.jpg?v=2 640w, /start/going-san-diego-zoo.jpg?v=2 1024w"
             sizes="(min-width: 641px) 34vw, 100vw"
@@ -218,7 +219,7 @@
             height="1536"
             alt="child holding San Diego Zoo hunt sheet with panda/bamboo behind"
             decoding="async"
-          />
+          /></picture>
         </a>
       </div>
       <div class="start-going-carousel" role="region" aria-roledescription="carousel" aria-label="Georgia Aquarium, Dallas Zoo, and San Diego Zoo" hidden>
@@ -226,7 +227,7 @@
         <div class="start-going-track" id="start-going-track">
           <a class="start-going-slide" data-going-place="georgia" href="/field-pack/georgia-aquarium/" aria-label="Georgia Aquarium">
             <!-- Locked teaser: going-georgia-locked-octopus.jpg (also going-georgia-octopus-v2.jpg). No fish/whale swap. -->
-            <img
+            <picture style="display:contents"><source type="image/webp" data-srcset="/start/going-georgia-aquarium-480-v1.webp 480w, /start/going-georgia-aquarium-640-v1.webp 640w, /start/going-georgia-aquarium-1024-v1.webp 1024w" sizes="100vw" /><img
               data-src="/start/going-georgia-aquarium.jpg?v=3"
               data-srcset="/start/going-georgia-aquarium-480.jpg?v=3 480w, /start/going-georgia-aquarium-640.jpg?v=3 640w, /start/going-georgia-aquarium.jpg?v=3 1024w"
               sizes="100vw"
@@ -234,11 +235,11 @@
               height="1536"
               alt="child holding Georgia Aquarium hunt sheet with octopus behind"
               decoding="async"
-            />
+            /></picture>
             <span class="start-going-slide-fallback" aria-hidden="true">Georgia Aquarium</span>
           </a>
           <a class="start-going-slide" data-going-place="dallas" href="/field-pack/dallas-zoo/" aria-label="Dallas Zoo">
-            <img
+            <picture style="display:contents"><source type="image/webp" data-srcset="/start/going-giraffe-480-v1.webp 480w, /start/going-giraffe-640-v1.webp 640w, /start/going-giraffe-1024-v1.webp 1024w" sizes="100vw" /><img
               data-src="/start/going-giraffe.jpg"
               data-srcset="/start/going-giraffe-480.jpg 480w, /start/going-giraffe-640.jpg 640w, /start/going-giraffe.jpg 1024w"
               sizes="100vw"
@@ -246,11 +247,11 @@
               height="1536"
               alt="Child holding a Dallas Zoo mission page with reticulated giraffe checked, a giraffe behind the paper"
               decoding="async"
-            />
+            /></picture>
           </a>
           <a class="start-going-slide" data-going-place="sandiego" href="/field-pack/san-diego-zoo/" aria-label="San Diego Zoo">
             <!-- Locked teaser: going-san-diego-locked-v2.jpg (also going-san-diego-v2.jpg). Pure v2 only; no zoom variants. -->
-            <img
+            <picture style="display:contents"><source type="image/webp" data-srcset="/start/going-san-diego-zoo-480-v1.webp 480w, /start/going-san-diego-zoo-640-v1.webp 640w, /start/going-san-diego-zoo-1024-v1.webp 1024w" sizes="100vw" /><img
               data-src="/start/going-san-diego-zoo.jpg?v=2"
               data-srcset="/start/going-san-diego-zoo-480.jpg?v=2 480w, /start/going-san-diego-zoo-640.jpg?v=2 640w, /start/going-san-diego-zoo.jpg?v=2 1024w"
               sizes="100vw"
@@ -258,7 +259,7 @@
               height="1536"
               alt="child holding San Diego Zoo hunt sheet with panda/bamboo behind"
               decoding="async"
-            />
+            /></picture>
             <span class="start-going-slide-fallback" aria-hidden="true">San Diego Zoo</span>
           </a>
         </div>
@@ -394,6 +395,6 @@
   <script src="/shell/qr-welcome.js?v=3"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
   <script src="/pwa/register.js?v=1"></script>
-  <script src="/start/start.js?v=40"></script>
+  <script src="/start/start.js?v=41"></script>
 </body>
 </html>

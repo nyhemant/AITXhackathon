@@ -1200,7 +1200,7 @@ def card_hero_photo_html(
         return f'<p class="card-page-emoji" aria-hidden="true">{esc(emoji)}</p>'
     img = (
         f'<img class="card-page-photo" src="{esc(photo)}" alt="{esc(name)}" '
-        f'width="640" height="640" decoding="async"{pos_attr} />'
+        f'width="640" height="640" decoding="async"{pos_attr} fetchpriority="high" />'
     )
     if enlarge:
         return (
@@ -5411,6 +5411,7 @@ def write_cards_hub(venues: list[dict]) -> str:
         height="1536"
         alt="Animal cards on a kitchen table"
         decoding="async"
+        fetchpriority="high"
       />
       <div class="cards-play-copy">
         <h1 id="cards-play-heading">{esc(page_copy("/field-pack/cards/").get("h1") or CARDS_PLAY_H1)}</h1>
@@ -6152,6 +6153,10 @@ def main() -> int:
     print(f"  sitemap → static/sitemap.xml")
     print(f"  robots  → static/robots.txt")
     print(f"  URL list → static/field-pack/SEO_URLS.txt")
+    # 2026-10-29: versioned WebP <picture> pass (new files only, JPEG/PNG fallback kept).
+    import webp_picture  # noqa: E402
+
+    webp_picture.main([])
     return 0
 
 
