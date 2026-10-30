@@ -343,6 +343,12 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             return []
         if frag in VFT_TABS:
             return []
+        if frag.startswith("tab="):
+            # Place-page VFT state in the fragment (#tab=zoo&from=slug&habitat=…, 2026-10-30).
+            tab = frag.split("&", 1)[0][len("tab="):]
+            if tab in VFT_TABS:
+                return []
+            return [f"unknown VFT tab #{frag} on {path} from {sources[:2]}"]
         html = self._body_for(path)
         if frag not in _ids_on_page(html):
             return [f"missing id #{frag} on {path} ({target}) from {sources[:2]}"]

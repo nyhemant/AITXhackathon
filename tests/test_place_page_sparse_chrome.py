@@ -159,7 +159,7 @@ class PlacePageSparseChromeTests(unittest.TestCase):
                 self.assertIn('id="mission-open-btn"', hero)
                 self.assertIn('data-how="going-soon"', hero)
                 self.assertIn('data-how="not-going-yet"', hero)
-                self.assertIn("/field-pack/virtual-field-trip/?tab=", hero)
+                self.assertIn("/field-pack/virtual-field-trip/#tab=", hero)
                 self.assertIn(f"from={slug}", hero)
                 self.assertIn(FORK_HOME_CAPTION, hero)
                 self.assertNotIn("A one-page checklist to carry", hero)

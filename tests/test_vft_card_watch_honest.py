@@ -54,7 +54,7 @@ class VftCardWatchHonestTest(unittest.TestCase):
         self.assertGreaterEqual(n, 41)
 
     def test_asset_version_bumped(self):
-        self.assertIn("/field-pack/js/virtual-venue.js?v=110", self.html)
+        self.assertIn("/field-pack/js/virtual-venue.js?v=111", self.html)
 
 
 if __name__ == "__main__":
