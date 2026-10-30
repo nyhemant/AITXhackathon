@@ -997,6 +997,28 @@ def _tracking_skipped(
     )
 
 
+# Legacy root printables (/printables/pdf/X.pdf) are byte-identical to
+# /printables/pdf/letter/X.pdf. Both keep serving 200 (printed QR codes and old
+# links); the HTTP Link header tells search engines which copy is canonical.
+_LEGACY_ROOT_PDFS = frozenset({"animal-bingo.pdf", "carpool.pdf", "scavenger-hunt.pdf", "teacher-handout.pdf"})
+
+
+def _pdf_canonical_link(raw_path: str | None) -> str | None:
+    """``Link: <...>; rel="canonical"`` for a PDF under /printables/pdf/."""
+    if not raw_path:
+        return None
+    path = urlsplit(raw_path).path
+    prefix = "/printables/pdf/"
+    if not path.startswith(prefix) or not path.endswith(".pdf"):
+        return None
+    rest = path[len(prefix):]
+    if rest in _LEGACY_ROOT_PDFS:
+        rest = "letter/" + rest
+    if not re.fullmatch(r"(?:(?:letter|a4)/)?[a-z0-9][a-z0-9\-]*\.pdf", rest):
+        return None
+    return f'<{PUBLIC_SITE}{prefix}{rest}>; rel="canonical"'
+
+
 def _security_headers_for(
     cookie_header: str | None,
     user_agent: str | None = None,
@@ -1897,6 +1919,7 @@ class WebHandler(BaseHTTPRequestHandler):
 
     def send_response(self, code, message=None) -> None:
         self._kz_is_html = False
+        self._kz_is_pdf = False
         self._kz_cache_control_sent = False
         super().send_response(code, message)
 
@@ -1907,6 +1930,7 @@ class WebHandler(BaseHTTPRequestHandler):
         key = str(keyword).lower()
         if key == "content-type":
             self._kz_is_html = str(value).lower().startswith("text/html")
+            self._kz_is_pdf = str(value).lower().startswith("application/pdf")
         elif key == "cache-control":
             self._kz_cache_control_sent = True
             if (
@@ -1929,6 +1953,10 @@ class WebHandler(BaseHTTPRequestHandler):
             if not getattr(self, "_kz_cache_control_sent", False):
                 self.send_header("Cache-Control", "no-cache, no-transform")
             self._send_notrack_cookie()
+        if getattr(self, "_kz_is_pdf", False):
+            link = _pdf_canonical_link(getattr(self, "path", None))
+            if link:
+                self.send_header("Link", link)
         super().end_headers()
 
     def _send_notrack_cookie(self) -> None:

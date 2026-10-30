@@ -14,7 +14,6 @@ from generate_bdo_seo import (  # noqa: E402
     SEO_META_DESCRIPTIONS,
     SEO_TITLE_LABELS,
     TYPE_LANDINGS,
-    VENUE_TITLE_TAIL,
     meta_for,
     quiet_hero_lead,
     seo_hunt_label,
@@ -30,16 +29,21 @@ def _venue(slug: str, name: str, city: str = "Somewhere") -> dict:
 
 
 class GscCtrCopyTests(unittest.TestCase):
-    def test_shared_template_puts_parent_intent_early(self):
+    def test_shared_template_leads_with_scavenger_hunt(self):
+        # GSC queries are "<place> scavenger hunt" (2026-10-30): titles lead with it, <= 60 chars.
         label = seo_hunt_label(_venue("houston-zoo", "Houston Zoo", "Houston"))
-        self.assertEqual(label, f"Houston Zoo for Kids — {VENUE_TITLE_TAIL}")
-        self.assertLess(label.index("At-Home"), 60)
-        self.assertIn("Printable Hunt", label)
+        self.assertEqual(label, "Houston Zoo Scavenger Hunt for Kids")
         title = title_for(_venue("san-diego-zoo", "San Diego Zoo", "San Diego"))
-        # Approved SEO copy (docs/seo/seo-proposals.md) uses " | KidZooKit".
-        self.assertTrue(title.startswith("San Diego Zoo for Kids: Animal Cards"))
-        self.assertTrue(title.endswith(" | KidZooKit"))
-        self.assertIn("Printable Hunt", title)
+        self.assertEqual(title, "San Diego Zoo Scavenger Hunt for Kids · KidZooKit")
+        long_park = title_for(
+            _venue("black-canyon-gunnison", "Black Canyon of the Gunnison National Park", "Montrose")
+        )
+        self.assertTrue(long_park.startswith("Black Canyon of the Gunnison"))
+        self.assertIn("Scavenger Hunt", long_park)
+        self.assertLessEqual(len(long_park), 60)
+        desc = meta_for(_venue("houston-zoo", "Houston Zoo", "Houston"))
+        self.assertTrue(desc.startswith("Houston Zoo scavenger hunt for kids in Houston"))
+        self.assertLessEqual(len(desc), 155)
 
     def test_query_overrides_match_real_offers(self):
         field = title_for(_venue("field-museum", "Field Museum", "Chicago"))
@@ -76,7 +80,7 @@ class GscCtrCopyTests(unittest.TestCase):
         self.assertIn("Hippo Camp", memphis)
         self.assertNotIn("Simmons", memphis)
         sd = meta_for(_venue("san-diego-zoo", "San Diego Zoo", "San Diego"))
-        self.assertIn("printable hunt", sd)
+        self.assertIn("scavenger hunt", sd)
         self.assertLessEqual(len(sd), 155)
 
     def test_cam_flag_follows_venue_json(self):

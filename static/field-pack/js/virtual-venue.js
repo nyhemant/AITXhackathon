@@ -159,6 +159,9 @@
   function currentTab() {
     const hash = (location.hash || "").replace(/^#/, "");
     if (hash && !hash.startsWith("habitat=") && TAB_CONFIGS[hash]) return hash;
+    // Crawl-clean in-page links carry the tab in the fragment: #tab=aquarium&habitat=…
+    const hm = hash.match(/(?:^|&)tab=([^&]+)/);
+    if (hm && TAB_CONFIGS[decodeURIComponent(hm[1])]) return decodeURIComponent(hm[1]);
     const q = new URLSearchParams(location.search).get("tab");
     if (q && TAB_CONFIGS[q]) return q;
     const def = root.getAttribute("data-default-tab") || "zoo";
@@ -182,6 +185,11 @@
       // Keep that slug on return= so tabUrl / replaceState do not drop it.
       const from = (q.get("from") || "").trim();
       if (from && from !== "card") return from;
+      // Place pages link with the slug in the fragment (#tab=zoo&from=slug&habitat=…)
+      // so crawlers see one canonical URL instead of one ?from= URL per place.
+      const hm = (location.hash || "").match(/(?:^|[#&])from=([^&]+)/);
+      const hfrom = hm ? decodeURIComponent(hm[1]).trim() : "";
+      if (hfrom && hfrom !== "card") return hfrom;
       return "";
     } catch (_) {
       return "";
@@ -198,6 +206,15 @@
     if (fromCard() && hid) q.set("habitat", hid);
     const hash = hid ? "#habitat=" + encodeURIComponent(hid) : "#" + id;
     return location.pathname + "?" + q.toString() + hash;
+  }
+
+  // Crawlable href for tab / museum-chip links. Clicks are handled in JS (switchTab),
+  // so the href only matters to crawlers and open-in-new-tab. A plain #tab keeps every
+  // rendered link on the one canonical URL instead of minting ?tab=&return= variants
+  // (Search Console 2026-10-27: 188 "Alternate page with proper canonical").
+  // currentTab() and the hashchange handler already read a bare #<tab>.
+  function tabHref(id) {
+    return location.pathname + "#" + id;
   }
 
   function nextAfter(id) {
@@ -1809,7 +1826,7 @@
     row.classList.toggle("is-on", show);
     if (!row.querySelector("[data-tab]")) {
       row.innerHTML = MUSEUM_CHIPS.map((c) => {
-        return `<a class="vz-chip" href="${escapeHtml(tabUrl(c.id))}" data-tab="${escapeHtml(c.id)}">${escapeHtml(c.label)}</a>`;
+        return `<a class="vz-chip" href="${escapeHtml(tabHref(c.id))}" data-tab="${escapeHtml(c.id)}">${escapeHtml(c.label)}</a>`;
       }).join("");
     }
     row.querySelectorAll("[data-tab]").forEach((a) => {
@@ -1818,7 +1835,7 @@
       a.classList.toggle("is-on", on);
       if (on) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
-      a.setAttribute("href", tabUrl(id));
+      a.setAttribute("href", tabHref(id));
       if (!a.dataset.wired) {
         a.dataset.wired = "1";
         a.addEventListener("click", (e) => {
@@ -1838,7 +1855,7 @@
       nav.innerHTML = TAB_ORDER.map((t) => {
         const target = t.id === "museum" ? lastMuseumTab() : t.id;
         const venue = t.id === "museum" ? ' data-venue="museum"' : "";
-        return `<a class="vz-tab" href="${escapeHtml(tabUrl(target, ""))}" data-tab="${escapeHtml(t.id)}"${venue}>${escapeHtml(t.label)}</a>`;
+        return `<a class="vz-tab" href="${escapeHtml(tabHref(target))}" data-tab="${escapeHtml(t.id)}"${venue}>${escapeHtml(t.label)}</a>`;
       }).join("");
     }
     nav.querySelectorAll("[data-tab]").forEach((a) => {
@@ -1849,7 +1866,7 @@
       if (on) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
       const hrefId = venue === "museum" ? lastMuseumTab() : id;
-      a.setAttribute("href", tabUrl(hrefId, ""));
+      a.setAttribute("href", tabHref(hrefId));
       if (!a.dataset.wired) {
         a.dataset.wired = "1";
         a.addEventListener("click", (e) => {
@@ -2051,7 +2068,9 @@
   }
 
   function inPageFilmHref(habitatId) {
-    return habitatId ? tabUrl(currentTab(), habitatId) : "#";
+    // Fragment-only href: same canonical URL for crawlers (see tabHref).
+    if (!habitatId) return "#";
+    return location.pathname + "#tab=" + encodeURIComponent(currentTab()) + "&habitat=" + encodeURIComponent(habitatId);
   }
 
   function sealFilmControl(el, habitatId) {

@@ -1637,14 +1637,16 @@ def not_yet_vft_href(
     """Not yet fork: VFT tab + from=place; #habitat= when a real animal habitat exists."""
     tab = vft_tab_for_kind(venue_kind)
     pid = str(place_id or "").strip()
-    base = f"/field-pack/virtual-field-trip/?tab={esc(tab)}"
+    # State rides in the fragment (2026-10-30): crawlers see the one canonical VFT URL,
+    # not one ?tab=&from= URL per place. virtual-venue.js reads tab/from/habitat there.
+    base = f"/field-pack/virtual-field-trip/#tab={esc(tab)}"
     if pid:
         base += f"&from={esc(pid)}"
     hid = str(habitat_id or "").strip()
     if not hid:
         hid = first_vft_habitat_for_place(mission_venue, mission, card_items)
     if hid:
-        return f"{base}#habitat={esc(hid)}"
+        return f"{base}&habitat={esc(hid)}"
     return base
 
 
@@ -1995,11 +1997,11 @@ SEO_META_DESCRIPTIONS = {
         "Hippo Camp, plus a printable hunt — KidZooKit."
     ),
     "san-diego-zoo": (
-        "San Diego Zoo for kids: panda and koala cards, talk prompts, live cams, "
+        "San Diego Zoo scavenger hunt for kids: panda and koala cards, talk prompts, live cams, "
         "and a printable hunt — KidZooKit."
     ),
     "vancouver-aquarium": (
-        "Vancouver Aquarium for kids: otter, jelly, and sloth cards, talk prompts, "
+        "Vancouver Aquarium scavenger hunt for kids: otter, jelly, and sloth cards, talk prompts, "
         "and a printable hunt — KidZooKit."
     ),
     "singapore-night-safari": (
@@ -2007,7 +2009,7 @@ SEO_META_DESCRIPTIONS = {
         "for the evening visit — KidZooKit."
     ),
     "copenhagen-zoo": (
-        "Copenhagen Zoo for kids: panda, giraffe, and hippo cards, talk prompts, "
+        "Copenhagen Zoo scavenger hunt for kids: panda, giraffe, and hippo cards, talk prompts, "
         "and a printable hunt — KidZooKit."
     ),
 }
@@ -2074,22 +2076,45 @@ def animal_card_seo(name: str, blurb: str, *, quiz_levels: int = 3) -> dict[str,
     return {"title": title, "description": desc}
 
 
+# 2026-10-30: Search Console queries for place pages are "<place> scavenger hunt"
+# (e.g. "bronx zoo scavenger hunt"). Every place page offers a printable hunt, so the
+# title leads with "<Place> Scavenger Hunt for Kids" and stays within 60 characters.
+SCAVENGER_TITLE_TAIL = "Scavenger Hunt for Kids"
+TITLE_MAX = 60
+# Search name when the display name is too long (or has an aside) for a 60-char title.
+SEO_SHORT_NAMES = {
+    "frost-science": "Frost Science Museum",
+    "dallas-arboretum": "Dallas Arboretum",
+}
+
+
+def seo_place_name(v: dict) -> str:
+    """Place name for search titles: display name unless a short name is set."""
+    short = SEO_SHORT_NAMES.get(v.get("id") or "")
+    if short:
+        return short
+    return " ".join(str(v.get("name") or "").split())
+
+
 def seo_hunt_label(v: dict) -> str:
-    """Search/social title phrase (not the on-page H1). Dual-mode — not print-only."""
-    approved = page_copy(f"/field-pack/{v['id']}/").get("title")
-    if approved:
-        return approved.removesuffix(f" | {BRAND_NAME}")
+    """Search/social title phrase (not the on-page H1): "<Place> Scavenger Hunt for Kids"."""
     custom = SEO_TITLE_LABELS.get(v.get("id") or "")
     if custom:
         return custom
-    return f"{v['name']} for Kids — {VENUE_TITLE_TAIL}"
+    name = seo_place_name(v)
+    label = f"{name} {SCAVENGER_TITLE_TAIL}"
+    if len(label) > TITLE_MAX and name.endswith(" National Park"):
+        label = f"{name[: -len(' National Park')]} {SCAVENGER_TITLE_TAIL}"
+    if len(label) > TITLE_MAX:
+        label = f"{name} Scavenger Hunt"
+    return label
 
 
 def title_for(v: dict) -> str:
-    approved = page_copy(f"/field-pack/{v['id']}/").get("title")
-    if approved:
-        return approved
-    return f"{seo_hunt_label(v)} · {BRAND_NAME}"
+    """``<label> · KidZooKit`` when that fits in 60 characters, else the label alone."""
+    label = seo_hunt_label(v)
+    branded = f"{label} · {BRAND_NAME}"
+    return branded if len(branded) <= TITLE_MAX else label
 
 
 def venue_streams_public_cams(v: dict) -> bool:
@@ -2108,29 +2133,23 @@ def _clip_serp(text: str, limit: int = 155) -> str:
 
 
 def meta_for(v: dict) -> str:
-    approved = page_copy(f"/field-pack/{v['id']}/").get("description")
-    if approved:
-        return approved
     custom = SEO_META_DESCRIPTIONS.get(v.get("id") or "")
     if custom:
         return _clip_serp(custom)
     city = v["city"] or v["location"] or ""
-    # Keep well under ~155 chars so SERP/OG don't truncate mid-word.
+    # Keep well under ~155 chars so SERP/OG don't truncate mid-word. Lead with the
+    # query wording ("<place> scavenger hunt for kids") so the snippet matches it.
     # "live cams" only when this venue actually streams them.
-    name = v["name"]
+    name = " ".join(str(v["name"]).split())
     loc = f" in {city}" if city else ""
-    if venue_streams_public_cams(v):
-        base = (
-            f"{name}{loc}: animal cards, talk prompts, photos, and live cams at home. "
-            "Optional printable hunt — KidZooKit."
-        )
-    else:
-        base = (
-            f"{name}{loc}: animal cards, talk prompts, and photos at home. "
-            "Optional printable hunt — KidZooKit."
-        )
+    extras = "animal cards, talk prompts, photos, and live cams" if venue_streams_public_cams(v) else (
+        "animal cards, talk prompts, and photos"
+    )
+    base = f"{name} scavenger hunt for kids{loc}: print the hunt, then explore {extras} at home — KidZooKit."
     if len(base) > 155:
-        base = f"{name}{loc}: explore cards at home, or print a hunt — KidZooKit."
+        base = f"{name} scavenger hunt for kids{loc}: print the hunt or explore cards at home — KidZooKit."
+    if len(base) > 155:
+        base = f"{seo_place_name(v)} scavenger hunt for kids: print the hunt or explore cards at home — KidZooKit."
     return _clip_serp(base)
 
 

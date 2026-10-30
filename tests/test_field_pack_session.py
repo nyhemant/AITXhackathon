@@ -107,7 +107,7 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("Going soon", visible)
         self.assertIn("Not yet", visible)
         self.assertIn("Virtual zoo at home", visible)
-        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&amp;from=dallas-zoo", visible)
+        self.assertIn("/field-pack/virtual-field-trip/#tab=zoo&amp;from=dallas-zoo", visible)
         self.assertIn('id="at-home"', visible)
         self.assertNotIn('href="#at-home"', visible.split('id="at-home"', 1)[0])
         start = visible.split('id="route90-heading"', 1)[1].split("</section>", 1)[0]
@@ -131,7 +131,7 @@ class FlagshipSessionTests(unittest.TestCase):
         self.assertIn("Going soon", visible)
         self.assertIn("Not yet", visible)
         self.assertIn("Virtual zoo at home", visible)
-        self.assertIn("/field-pack/virtual-field-trip/?tab=zoo&amp;from=san-diego-zoo", visible)
+        self.assertIn("/field-pack/virtual-field-trip/#tab=zoo&amp;from=san-diego-zoo", visible)
         self.assertNotIn("What did you notice about the Koala?", visible)
 
     def test_lion_card_has_outing_six_and_cam(self):
