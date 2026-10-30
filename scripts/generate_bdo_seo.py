@@ -58,6 +58,7 @@ from field_pack_kit_tier import (  # noqa: E402
 )
 from animal_park_links import (  # noqa: E402
     animal_park_rail_html,
+    animals_for_park,
     park_animals_html,
 )
 import card_sources  # noqa: E402  (citable-card pilot, 2026-10-26)
@@ -353,7 +354,7 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "34"
+SEO_CSS_VER = "35"
 CARD_SEO_CSS_VER = "38"
 LANDING_CSS_VER = "105"
 LANDING_MAP_JS_VER = "89"
@@ -1833,7 +1834,7 @@ def pick(seed: str, options: list[str]) -> str:
 
 
 
-def practical_chips_html(practical: dict | None, last_v: str = "") -> str:
+def practical_chips_html(practical: dict | None, last_v: str = "", *, compact: bool = False) -> str:
     """Scannable venue facts — duration, energy, tickets, transit. No paragraph soup."""
     p = practical or {}
     chips: list[tuple[str, str]] = []
@@ -1852,8 +1853,11 @@ def practical_chips_html(practical: dict | None, last_v: str = "") -> str:
         f'<span class="seo-fact-v">{esc(val)}</span></li>'
         for k, val in chips
     )
+    # Compact row sits under the photo strip. Pages without a strip keep the
+    # original chip markup so their HTML does not move.
+    cls = "seo-fact-chips seo-fact-row" if compact else "seo-fact-chips"
     return f"""
-        <ul class="seo-fact-chips" aria-label="Visit facts">{lis}</ul>"""
+        <ul class="{cls}" aria-label="Visit facts">{lis}</ul>"""
 
 
 def unique_body(
@@ -2692,6 +2696,120 @@ def _card_thumb_img(
     )
 
 
+def _strip_photo_file(src: str):
+    """Local file for a field-pack photo src, or None when it is not on disk."""
+    path = (src or "").split("?", 1)[0].strip()
+    if not path or path.startswith("http"):
+        return None
+    if path.startswith("/field-pack/"):
+        path = path[len("/field-pack/") :]
+    if path.startswith("/") or ".." in path:
+        return None
+    f = FIELD / path
+    return f if f.is_file() else None
+
+
+def _strip_candidate(cid: str, photo: str, name: str, pos_src: dict | None = None) -> dict | None:
+    """One published card whose photo is already a file this place can show."""
+    cid = (cid or "").strip()
+    if not cid or cid not in published_card_ids():
+        return None
+    src = _photo_src(photo)
+    if not src and (FIELD / "photos" / f"{cid}.jpg").is_file():
+        src = f"photos/{cid}.jpg?v=img2"
+    if not src:
+        return None
+    bare = src.split("?", 1)[0]
+    if "np-hero-" in bare or "/media/maps/" in bare or bare.endswith(".pdf"):
+        return None
+    if _strip_photo_file(src) is None:
+        return None
+    depth = catalog_depth().get(cid) or {}
+    card_name = str(depth.get("name") or name or "").strip()
+    if not card_name or card_name == "Stop":
+        return None
+    return {
+        "id": cid,
+        "name": card_name,
+        "src": src,
+        "pos": _photo_position(pos_src or {}, depth),
+    }
+
+
+def picture_strip_sources(
+    v: dict,
+    mission_venue: dict | None,
+    mission: dict | None,
+    home_items: list[dict] | None,
+) -> list[dict]:
+    """Animal cards in the same order the page already links them.
+
+    Start-here, then park-animal thumbs, then the at-home list. That keeps
+    the link-mesh 'first cards' prefix stable when the strip is inserted
+    above those sections.
+    """
+    ordered: list[dict] = []
+    seen: set[str] = set()
+
+    def add(cand: dict | None) -> None:
+        if not cand or cand["id"] in seen:
+            return
+        seen.add(cand["id"])
+        ordered.append(cand)
+
+    feat_by_id = {f.get("id"): f for f in (v.get("featured") or []) if f.get("id")}
+    if mission_venue and mission:
+        for p in _route_90m_picks(mission_venue, mission):
+            cat_id = (p.get("catalog_id") or "").replace("_", "-") or str(p.get("id") or "").replace("_", "-")
+            feat = feat_by_id.get(cat_id) or feat_by_id.get(p.get("id") or "") or {}
+            add(
+                _strip_candidate(
+                    (p.get("catalog_id") or "").strip() or cat_id,
+                    str(feat.get("photo") or p.get("photo") or ""),
+                    str(feat.get("name") or _item_sheet_label(p) or ""),
+                    feat or p,
+                )
+            )
+    for animal in animals_for_park(str(v.get("id") or "")):
+        add(_strip_candidate(animal["id"], animal.get("photo") or "", animal.get("name") or "", animal))
+    for it in home_items or []:
+        add(
+            _strip_candidate(
+                str(it.get("id") or ""),
+                str(it.get("photo") or ""),
+                str(it.get("name") or ""),
+                it,
+            )
+        )
+    return ordered
+
+
+def picture_strip_html(place_id: str, items: list[dict]) -> str:
+    """Horizontal scroll of existing animal photos. Empty when the place has none."""
+    tiles: list[str] = []
+    for i, it in enumerate(items):
+        loading = "eager" if i < 3 else "lazy"
+        img = _card_thumb_img(it["src"], alt=it["name"], pos=it.get("pos") or "", loading=loading)
+        href = f"/field-pack/cards/{esc(it['id'])}/#from={esc(place_id)}"
+        tiles.append(f'<a class="seo-pic-tile" href="{href}">{img}</a>')
+    if not tiles:
+        return ""
+    return '<div class="seo-pic-strip">' + "".join(tiles) + "</div>"
+
+
+def hero_picture_block(strip_html: str, chips_html: str) -> str:
+    """Strip directly under the H1, with the visit-fact row beneath it.
+
+    No strip → empty, so the rest of the hero stays byte-for-byte.
+    """
+    if not strip_html:
+        return ""
+    block = "\n        " + strip_html
+    if chips_html.strip():
+        block += chips_html
+    return block
+
+
 def _route_90m_picks(mission_venue: dict, mission: dict) -> list[dict]:
     """Same pick order as the start-here section (print-safe route_90m, else mission finds)."""
     safe = _print_safe_items(mission_venue)
@@ -3077,9 +3195,15 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     lead = quiet_hero_lead(v, mission_venue)
     lead_html = f'<p class="lead">{esc(lead)}</p>' if lead else ""
     offer_html = ""  # fork cards already explain Going soon / Not yet
-    facts_html = (
-        practical_chips_html(practical, last_v)
-        + status_chip_html(mission_venue)
+    strip_html = picture_strip_html(
+        vid, picture_strip_sources(v, mission_venue, mission, home_items)
+    )
+    chips_html = practical_chips_html(practical, last_v, compact=bool(strip_html))
+    # Photos under the H1; Time/Tickets/Get there move to the compact row.
+    # No animal photos → chips stay where they were.
+    under_h1 = hero_picture_block(strip_html, chips_html)
+    facts_html = status_chip_html(mission_venue) if strip_html else (
+        chips_html + status_chip_html(mission_venue)
     )
     freshness_bottom = freshness_html(vid, "no-print seo-freshness-bottom")
 
@@ -3136,7 +3260,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     <article class="seo-article">
       <header class="seo-hero">
         <p class="promise-pill">{esc(loc_chip)}</p>
-        <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
+        <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>{under_h1}
         {seo_intro_html(f"/field-pack/{v['id']}/", "lead seo-intro")}
         {offer_html}
         {lead_html}
@@ -3227,6 +3351,10 @@ def render_venue_page(v: dict) -> str:
         own_public_cams=False,
     )
     _not_yet = not_yet_vft_href(_vid, _vkind, card_items=home_items)
+    under_h1 = hero_picture_block(
+        picture_strip_html(_vid, picture_strip_sources(v, None, None, home_items)),
+        "",
+    )
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
@@ -3284,7 +3412,7 @@ def render_venue_page(v: dict) -> str:
     <article class="seo-article">
       <header class="seo-hero">
         <p class="promise-pill">{esc(loc_chip)}</p>
-        <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>
+        <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>{under_h1}
         {seo_intro_html(f"/field-pack/{v['id']}/", "lead seo-intro")}
         {f'<p class="lead">{esc(quiet_hero_lead(v))}</p>' if quiet_hero_lead(v) else ""}
         {page_mission_chrome_html(home_href=_not_yet, home_sub=fork_home_sub_for_kind(_vkind), venue_kind=_vkind, place_id=_vid)}

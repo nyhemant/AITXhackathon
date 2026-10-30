@@ -72,6 +72,61 @@
   color: #0a4545;
   line-height: 1.25;
 }
+/* Picture-first: animal photos scroll inside the strip; the page does not. */
+.seo-venue-body .seo-article,
+.seo-venue-body .seo-hero,
+.landing-hub .landing-app,
+.landing-hub .map-section {
+  min-width: 0;
+}
+.seo-pic-strip {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin: 8px 0 10px;
+  padding: 0 0 6px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.seo-pic-tile {
+  flex: 0 0 auto;
+  display: block;
+  width: 76px;
+  height: 76px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid rgba(15, 92, 92, 0.14);
+  background: #dfe7f2;
+}
+.seo-pic-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.landing-hub .seo-pic-strip {
+  margin: 2px 0 12px;
+}
+/* Time / Tickets / Get there, one compact row under the photo strip. */
+.seo-fact-chips.seo-fact-row {
+  flex-wrap: nowrap;
+  gap: 6px;
+  margin: 0 0 10px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.seo-fact-chips.seo-fact-row .seo-fact-chip {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 6px 8px;
+}
 .seo-checked {
   margin: 0 0 12px;
   font-size: 0.78rem;

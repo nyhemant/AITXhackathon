@@ -349,6 +349,12 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             if tab in VFT_TABS:
                 return []
             return [f"unknown VFT tab #{frag} on {path} from {sources[:2]}"]
+        if frag.startswith("from="):
+            # Picture-strip card state (#from=<place>), same fragment form as VFT.
+            slug = unquote(frag.split("&", 1)[0][len("from=") :]).strip()
+            if slug in self.catalog["venueIds"]:
+                return []
+            return [f"unknown place fragment #{frag} on {path} from {sources[:2]}"]
         html = self._body_for(path)
         if frag not in _ids_on_page(html):
             return [f"missing id #{frag} on {path} ({target}) from {sources[:2]}"]
