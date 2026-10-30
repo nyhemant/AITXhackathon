@@ -5,6 +5,7 @@ from __future__ import annotations
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import argparse
 import json
+import re
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 from uuid import uuid4
@@ -957,9 +958,52 @@ def _analytics_disabled(cookie_header: str | None) -> bool:
     return _cookie_values(cookie_header).get(ANALYTICS_COOKIE) == ANALYTICS_OFF_VALUE
 
 
-def _security_headers_for(cookie_header: str | None) -> dict[str, str]:
-    """SECURITY_HEADERS, minus the Cloudflare beacon host for opted-out visitors."""
-    if not _analytics_disabled(cookie_header):
+# Headless browsers and automation (our own check runners, Lighthouse, scrapers).
+# Search crawlers are deliberately NOT here: they get the normal response
+# (shell.js skips GA4 for them in the browser instead).
+AUTOMATION_UA_RE = re.compile(
+    r"HeadlessChrome|Headless|Lighthouse|PTST|PhantomJS|Puppeteer|Playwright|Selenium|"
+    r"Cypress|python-requests|python-urllib|curl/|Wget|KidZooKitCheck|kz-verify",
+    re.IGNORECASE,
+)
+NOTRACK_PARAM = "notrack"
+
+
+def _query_wants_notrack(raw_path: str | None) -> bool:
+    """True for ?notrack=1, the opt-out our own check runners send."""
+    if not raw_path:
+        return False
+    for part in urlsplit(raw_path).query.split("&"):
+        key, _, value = part.partition("=")
+        if key == NOTRACK_PARAM and value == "1":
+            return True
+    return False
+
+
+def _is_automation_ua(user_agent: str | None) -> bool:
+    return bool(user_agent) and bool(AUTOMATION_UA_RE.search(user_agent or ""))
+
+
+def _tracking_skipped(
+    cookie_header: str | None,
+    user_agent: str | None = None,
+    raw_path: str | None = None,
+) -> bool:
+    """Opted out (cookie), ?notrack=1, or a headless / automation user agent."""
+    return (
+        _analytics_disabled(cookie_header)
+        or _query_wants_notrack(raw_path)
+        or _is_automation_ua(user_agent)
+    )
+
+
+def _security_headers_for(
+    cookie_header: str | None,
+    user_agent: str | None = None,
+    raw_path: str | None = None,
+) -> dict[str, str]:
+    """SECURITY_HEADERS, minus the Cloudflare beacon host when tracking is skipped."""
+    if not _tracking_skipped(cookie_header, user_agent, raw_path):
         return SECURITY_HEADERS
     headers = dict(SECURITY_HEADERS)
     headers["Content-Security-Policy"] = headers["Content-Security-Policy"].replace(
@@ -1847,13 +1891,66 @@ class WebHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def send_response(self, code, message=None) -> None:
+        self._kz_is_html = False
+        self._kz_cache_control_sent = False
+        super().send_response(code, message)
+
+    def send_header(self, keyword, value) -> None:
+        # Skipped-tracking HTML (opted out, ?notrack=1, headless/automation UA) gets
+        # Cache-Control no-transform, so Cloudflare does not inject its Web Analytics
+        # beacon. HTML only: CSS/JS/images are edge-cached and must stay compressible.
+        key = str(keyword).lower()
+        if key == "content-type":
+            self._kz_is_html = str(value).lower().startswith("text/html")
+        elif key == "cache-control":
+            self._kz_cache_control_sent = True
+            if (
+                getattr(self, "_kz_is_html", False)
+                and self._kz_tracking_skipped()
+                and "no-transform" not in str(value).lower()
+            ):
+                value = f"{value}, no-transform"
+        super().send_header(keyword, value)
+
+    def _kz_tracking_skipped(self) -> bool:
+        headers = getattr(self, "headers", None)
+        cookie_header = headers.get("Cookie") if headers else None
+        user_agent = headers.get("User-Agent") if headers else None
+        return _tracking_skipped(cookie_header, user_agent, getattr(self, "path", None))
+
     def end_headers(self) -> None:
         self._send_security_headers()
+        if getattr(self, "_kz_is_html", False) and self._kz_tracking_skipped():
+            if not getattr(self, "_kz_cache_control_sent", False):
+                self.send_header("Cache-Control", "no-cache, no-transform")
+            self._send_notrack_cookie()
         super().end_headers()
 
+    def _send_notrack_cookie(self) -> None:
+        """?notrack=1 sets the same opt-out cookie as /analytics/off (1 year)."""
+        raw_path = getattr(self, "path", None)
+        if not _query_wants_notrack(raw_path):
+            return
+        if urlsplit(raw_path).path.startswith("/analytics/"):
+            return
+        cookie_header = self.headers.get("Cookie") if self.headers else None
+        if _analytics_disabled(cookie_header):
+            return
+        self.send_header(
+            "Set-Cookie",
+            _analytics_cookie_header(
+                ANALYTICS_OFF_VALUE, self.headers.get("Host"), max_age=31_536_000
+            ),
+        )
+
     def _send_security_headers(self) -> None:
-        cookie_header = self.headers.get("Cookie") if getattr(self, "headers", None) else None
-        for name, value in _security_headers_for(cookie_header).items():
+        headers = getattr(self, "headers", None)
+        cookie_header = headers.get("Cookie") if headers else None
+        user_agent = headers.get("User-Agent") if headers else None
+        for name, value in _security_headers_for(
+            cookie_header, user_agent, getattr(self, "path", None)
+        ).items():
             self.send_header(name, value)
 
     def log_message(self, format: str, *args) -> None:

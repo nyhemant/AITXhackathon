@@ -93,3 +93,22 @@ agent can set it, so it is NOT confirmed as set and /privacy/ makes no retention
 - The persistent `_ga` client id remains. Laws for children's sites (for example COPPA in the U.S.)
   can treat persistent identifiers as personal information. Whether to keep analytics on at all,
   add consent, or move to cookieless counting is an owner / legal-advice decision.
+
+## Bot / self-traffic skip, page_print, retention (2026-10-30)
+- `shell.js` skips GA4 (not saved) when `navigator.webdriver` is true or the user agent is a headless browser,
+  automation tool or crawler (`AUTOMATION_UA_RE`, includes Googlebot/bingbot). Search crawlers still get the
+  normal server response; only the in-browser tag is skipped.
+- `?notrack=1` on any page = opt-out: shell.js saves `1less_analytics_off` and removes the flag from the address bar
+  (history.replaceState) so a shared link does not opt others out, and the server answers that HTML with the
+  same `one_less_analytics=off` cookie (1 year) as `/analytics/off`. No parallel mechanism.
+- Skipped-tracking HTML (cookie off, `?notrack=1`, or a headless/automation UA; NOT search crawlers) gets
+  `Cache-Control: ..., no-transform`, so Cloudflare does not inject the Web Analytics beacon (Cloudflare docs:
+  auto-install cannot modify a no-transform response), and a CSP without the beacon host. HTML only: CSS/JS/images
+  are edge-cached and must stay compressible.
+- New GA4 event `page_print` {page_kind: card|hub|place|virtual_trip|printable|start|other} on `beforeprint`
+  (print dialog opened, incl. cancelled: browser menu, Ctrl+P or our Print buttons), at most once per 5 s. No slug, no text; page address as
+  for every hit.
+- GA4 event data retention confirmed at 14 months in GA4 Admin (2026-10-30); /privacy/ now says so.
+- Our own check runners must opt out: cookie `one_less_analytics=off` and/or `?notrack=1`, and a UA containing
+  `KidZooKitCheck` (see /workspace/kidzookit-loop/kz_optout.py on the agent box).
+- Premium review 2026-10-30 (Opus 5.5 + GPT-6.1 Sol): adopted softer retention / robots wording, 'print window opened', notrack stripped from the URL. Notes: /workspace/kidzookit-loop/2026-10-30-seo-tracking-review.txt.

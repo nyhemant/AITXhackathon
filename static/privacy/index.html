@@ -51,7 +51,7 @@
   </header>
   <main class="about-main">
     <h1 id="privacy-heading">Privacy</h1>
-    <p class="privacy-date">Checked against the site on October 26, 2026. If something changes, this page changes too.</p>
+    <p class="privacy-date">Checked against the site on October 30, 2026. If something changes, this page changes too.</p>
 
     <p class="privacy-short">
       <strong>The short version:</strong> there are no accounts and no sign-ups. We count visits with Google Analytics
@@ -68,7 +68,8 @@
     <h2>What we count</h2>
     <p>
       KidZooKit uses Google Analytics 4. It tells us things like which pages are opened, which animal cards and places
-      are popular, whether a hunt was made or printed (with its age group and length), which films or cameras were opened,
+      are popular, whether a hunt was made or printed (with its age group and length), whether the print window was opened on a page (only the kind of page,
+      like an animal card or a printable), which films or cameras were opened,
       and whether a printed QR code brought someone here. It sees button and menu clicks, but nothing typed into a box.
     </p>
     <p>
@@ -83,6 +84,7 @@
       It receives the page address (including anything after a <code>?</code> or <code>#</code>, such as a QR code tag),
       the page title, and the usual details any website visit shares, like browser, device and IP address.
       Google says it doesn’t show IP addresses in its reports.
+      Google Analytics is set to keep event-level data for 14 months, then delete it; Google’s summary reports can stay longer.
     </p>
 
     <h2>Page speed and visits (Cloudflare)</h2>
@@ -119,6 +121,9 @@
     <p>
       Visit <a href="/analytics/off">kidzookit.com/analytics/off</a> to stop Google Analytics and the Cloudflare Web Analytics script in this browser.
       <a href="/analytics/on">kidzookit.com/analytics/on</a> turns it back on. Clearing your cookies also removes the Google ones.
+      Opening any page with <code>?notrack=1</code> at the end of its address does the same as the off link.
+      We also try not to count automated browsers and search-engine robots: the site skips Google Analytics for them, and
+      skips the Cloudflare script for automated test browsers.
     </p>
 
     <h2>Not found on the site</h2>
