@@ -1201,12 +1201,16 @@ def _ia_redirect(handler: "WebHandler") -> bool:
     return True
 
 
-_ROOT_PLAINTEXT_NAMES = frozenset({"robots.txt", "llms.txt", "llms-full.txt"})
-_ROOT_XML_NAMES = frozenset({"sitemap.xml"})
+# IndexNow key file (https://www.indexnow.org/documentation): /<key>.txt holds the key.
+# scripts/indexnow_ping.py submits URLs with it after a deploy. Keep this file forever.
+INDEXNOW_KEY = "3bc42332229236f514eedc55304b0835"
+_ROOT_PLAINTEXT_NAMES = frozenset({"robots.txt", "llms.txt", "llms-full.txt", f"{INDEXNOW_KEY}.txt"})
+# BingSiteAuth.xml: Bing Webmaster Tools ownership file. Keep it forever.
+_ROOT_XML_NAMES = frozenset({"sitemap.xml", "BingSiteAuth.xml"})
 
 
 def _is_allowed_static_root_name(name: str) -> bool:
-    """Allow robots.txt, sitemap.xml, llms.txt, and Google Search Console google*.html tags."""
+    """Allow robots.txt, sitemap.xml, llms.txt, BingSiteAuth.xml, the IndexNow key and google*.html tags."""
     if not name or "/" in name or "\\" in name or ".." in name:
         return False
     if name in _ROOT_PLAINTEXT_NAMES or name in _ROOT_XML_NAMES:
