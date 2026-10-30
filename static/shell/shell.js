@@ -78,7 +78,10 @@
    *
    * Opt out (persists in this browser):
    *   Visit https://kidzookit.com/analytics/off
-   *   or  ?analytics=off  /  ?no_ga=1  (saves localStorage)
+   *   or  ?analytics=off  /  ?no_ga=1  /  ?notrack=1  (saves localStorage;
+   *       ?notrack=1 also gets the one_less_analytics=off cookie from the server)
+   * Always skipped (not saved): navigator.webdriver, headless / automation /
+   *   crawler user agents (see AUTOMATION_UA_RE).
    *   or  localStorage.setItem('1less_analytics_off','1')
    *
    * Opt back in:
@@ -89,9 +92,22 @@
     try {
       const q = new URLSearchParams(location.search);
       const v = (q.get("analytics") || q.get("ga") || "").toLowerCase();
-      if (v === "off" || v === "0" || q.get("no_ga") === "1") {
-        localStorage.setItem(LS_OFF_KEY, "1");
+      // ?notrack=1 is the opt-out our own check runners use. The server also sets
+      // the one_less_analytics=off cookie on that response (same as /analytics/off).
+      if (v === "off" || v === "0" || q.get("no_ga") === "1" || q.get("notrack") === "1") {
         window.__1LESS_ANALYTICS_OFF__ = true;
+        if (q.get("notrack") === "1") {
+          // Drop the flag from the address bar so a copied/shared link does not
+          // opt someone else out. The opt-out itself is already saved.
+          try {
+            q.delete("notrack");
+            const rest = q.toString();
+            history.replaceState(history.state, "", location.pathname + (rest ? "?" + rest : "") + location.hash);
+          } catch (_) {
+            /* ignore */
+          }
+        }
+        localStorage.setItem(LS_OFF_KEY, "1");
         return "off";
       }
       if (v === "on" || v === "1") {
@@ -117,10 +133,26 @@
     }
   }
 
+  // Headless browsers, automation and crawlers are not visitors. Not persisted:
+  // this only skips the tag for that page load.
+  const AUTOMATION_UA_RE =
+    /HeadlessChrome|Headless|Lighthouse|PTST|GTmetrix|Pingdom|UptimeRobot|PhantomJS|Puppeteer|Playwright|Selenium|Cypress|python-requests|python-urllib|curl\/|Wget|KidZooKitCheck|kz-verify|Googlebot|Google-InspectionTool|GoogleOther|Storebot-Google|AdsBot-Google|Mediapartners-Google|APIs-Google|bingbot|BingPreview|msnbot|DuckDuckBot|YandexBot|Baiduspider|Applebot|facebookexternalhit|meta-externalagent|Twitterbot|Slackbot|Discordbot|LinkedInBot|Pinterestbot|AhrefsBot|SemrushBot|MJ12bot|DotBot|PetalBot|GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|Claude-User|PerplexityBot|CCBot|Bytespider|Amazonbot|\b(?:bot|crawler|spider)\b|[a-z]bot\/\d/i;
+
+  function isAutomatedVisitor() {
+    try {
+      if (navigator.webdriver === true) return true;
+      if (AUTOMATION_UA_RE.test(String(navigator.userAgent || ""))) return true;
+    } catch (_) {
+      /* ignore */
+    }
+    return false;
+  }
+
   function analyticsDisabled() {
     if (window.__1LESS_ANALYTICS_OFF__ === true) return true;
     if (isDinnerPath()) return true;
     if (isLocalDevHost()) return true;
+    if (isAutomatedVisitor()) return true;
     try {
       if (localStorage.getItem(LS_OFF_KEY) === "1") return true;
     } catch (_) {
@@ -179,6 +211,27 @@
       page_title: document.title,
       page_location: location.href,
     });
+  }
+
+  /** page_kind enum from the path only (no slugs, no query). */
+  function pageKind() {
+    const p = String(location.pathname || "");
+    if (/^\/field-pack\/cards\/[^/]+\/?$/.test(p)) return "card";
+    if (p === "/field-pack/" || /^\/field-pack\/(cards|zoos|aquariums|museums|national-parks)\/$/.test(p)) return "hub";
+    if (p.indexOf("/field-pack/virtual-field-trip/") === 0) return "virtual_trip";
+    if (/^\/field-pack\/[^/]+\/?$/.test(p)) return "place";
+    if (p.indexOf("/printables/") === 0) return "printable";
+    if (p.indexOf("/start/") === 0) return "start";
+    return "other";
+  }
+
+  let lastPrintAt = 0;
+
+  function sendPagePrint() {
+    const now = Date.now();
+    if (now - lastPrintAt < 5000) return;
+    lastPrintAt = now;
+    track("page_print", { page_kind: pageKind() });
   }
 
   function loadGtagScript(id) {
@@ -262,6 +315,9 @@
       );
     }
 
+    // Any print of a page (browser menu, Ctrl+P, or our Print buttons).
+    window.addEventListener("beforeprint", sendPagePrint);
+
     // Hash / History SPA routes do not auto-fire page_view
     window.addEventListener("hashchange", sendPageView);
     window.addEventListener("popstate", sendPageView);
@@ -276,6 +332,7 @@
     isDisabled: analyticsDisabled,
     isLocalDevHost,
     isDinnerPath,
+    isAutomatedVisitor,
   };
   // Back-compat for Dinner's trackEvent helper patterns
   window.trackEvent = track;
