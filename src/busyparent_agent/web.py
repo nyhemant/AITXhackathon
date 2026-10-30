@@ -1249,6 +1249,14 @@ def _slash_location(raw_path: str, prefix: str) -> str:
     return prefix + "/" + (("?" + query) if query else "")
 
 
+def _keep_query(location: str, raw_path: str) -> str:
+    """Append the request query (utm_*, QR tags) to a 301 Location that has none."""
+    query = urlsplit(raw_path).query
+    if not query or "?" in location:
+        return location
+    return location + "?" + query
+
+
 def _send_redirect(handler: "WebHandler", location: str, *, code: int = 301) -> None:
     handler.send_response(code)
     handler.send_header("Location", location)
@@ -1375,7 +1383,7 @@ class WebHandler(BaseHTTPRequestHandler):
             location = f"{PUBLIC_SITE}{START_PREFIX}/"
         else:
             location = START_PREFIX + "/"
-        _send_redirect(self, location, code=301)
+        _send_redirect(self, _keep_query(location, self.path), code=301)
 
     def _reject_if_rate_limited(self) -> bool:
         """Return True when this request was answered with 429."""
@@ -1463,7 +1471,7 @@ class WebHandler(BaseHTTPRequestHandler):
             return
         # Memorable alias: /zoo → first-time landing (not /field-pack/virtual-zoo/)
         if path in ZOO_ALIAS_PATHS:
-            _send_redirect(self, START_PREFIX + "/", code=301)
+            _send_redirect(self, _keep_query(START_PREFIX + "/", self.path), code=301)
             return
         # Dinner lives under /dinner (secondary product)
         if path in {DINNER_PATH, DINNER_PATH + "/"}:
@@ -1509,13 +1517,13 @@ class WebHandler(BaseHTTPRequestHandler):
         if path.startswith(FIELD_PACK_PREFIX + "/places/") and path.endswith(".html"):
             slug = path[len(FIELD_PACK_PREFIX + "/places/") : -len(".html")]
             if slug and "/" not in slug and ".." not in slug:
-                _send_redirect(self, f"{FIELD_PACK_PREFIX}/{slug}/", code=301)
+                _send_redirect(self, _keep_query(f"{FIELD_PACK_PREFIX}/{slug}/", self.path), code=301)
                 return
         # /field-pack/places/dallas-zoo → /field-pack/dallas-zoo/
         if path.startswith(FIELD_PACK_PREFIX + "/places/") and not path.endswith(".html"):
             slug = path[len(FIELD_PACK_PREFIX + "/places/") :].strip("/")
             if slug and "/" not in slug and ".." not in slug:
-                _send_redirect(self, f"{FIELD_PACK_PREFIX}/{slug}/", code=301)
+                _send_redirect(self, _keep_query(f"{FIELD_PACK_PREFIX}/{slug}/", self.path), code=301)
                 return
         asset_path = LOGO_ASSETS.get(path.lstrip("/"))
         if asset_path is not None:
@@ -1620,7 +1628,7 @@ class WebHandler(BaseHTTPRequestHandler):
             self._redirect_start_home()
             return
         if path in ZOO_ALIAS_PATHS:
-            _send_redirect(self, START_PREFIX + "/", code=301)
+            _send_redirect(self, _keep_query(START_PREFIX + "/", self.path), code=301)
             return
         if path in _SITEMAP_URLS:
             body = _sitemap_bytes()
@@ -1696,7 +1704,7 @@ class WebHandler(BaseHTTPRequestHandler):
                 slug = slug[: -len(".html")]
             slug = slug.strip("/")
             if slug and "/" not in slug and ".." not in slug:
-                _send_redirect(self, f"{FIELD_PACK_PREFIX}/{slug}/", code=301)
+                _send_redirect(self, _keep_query(f"{FIELD_PACK_PREFIX}/{slug}/", self.path), code=301)
                 return
         asset_path = LOGO_ASSETS.get(path.lstrip("/"))
         shell_file = _safe_shell_path(path)
