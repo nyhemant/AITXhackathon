@@ -351,8 +351,9 @@ class FieldPackInternalLinkTests(unittest.TestCase):
             return [f"unknown VFT tab #{frag} on {path} from {sources[:2]}"]
         if frag.startswith("from="):
             # Picture-strip card state (#from=<place>), same fragment form as VFT.
+            # #from=aotd is the Animal of the day tile, not a place slug.
             slug = unquote(frag.split("&", 1)[0][len("from=") :]).strip()
-            if slug in self.catalog["venueIds"]:
+            if slug in self.catalog["venueIds"] or slug == "aotd":
                 return []
             return [f"unknown place fragment #{frag} on {path} from {sources[:2]}"]
         html = self._body_for(path)
