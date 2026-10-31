@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v=38" />
   <link rel="stylesheet" href="/field-pack/css/cards-groups.css?v=1" />
   <link rel="stylesheet" href="/field-pack/css/aotd.css?v=1" />
+  <link rel="stylesheet" href="/field-pack/css/newsletter-v1.css?v=1" />
 </head>
 <body class="landing-body landing-hub cards-explorer">
   <div class="app landing-app landing-clean">
@@ -62,6 +63,24 @@
         </span>
       </a>
     </section><!-- /kz-aotd -->
+    <form class="kz-nl kz-nl--hub no-print" action="/api/newsletter" method="post" data-placement="cards_hub_aotd" novalidate aria-labelledby="kz-nl-h-hub">
+      <h2 class="kz-nl-h" id="kz-nl-h-hub">One animal + a quiz each week</h2>
+      <p class="kz-nl-sub">A real animal card, three quick questions and a printable, in your inbox once a week.</p>
+      <div class="kz-nl-fields">
+        <div class="kz-nl-field">
+          <label for="kz-nl-email-hub">Your email</label>
+          <input id="kz-nl-email-hub" name="email_address" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com" aria-describedby="kz-nl-privacy-hub kz-nl-msg-hub">
+        </div>
+        <div class="kz-nl-actions">
+          <button class="kz-nl-submit" type="submit">Send me the weekly animal</button>
+        </div>
+      </div>
+      <div class="kz-nl-hp" aria-hidden="true"><label for="kz-nl-website-hub">Website</label>
+        <input id="kz-nl-website-hub" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <input type="hidden" name="placement" value="cards_hub_aotd">
+      <p class="kz-nl-privacy" id="kz-nl-privacy-hub">Email only, nothing about your kids. Unsubscribe anytime. No spam. <a href="/privacy/">Privacy</a></p>
+      <p class="kz-nl-msg" id="kz-nl-msg-hub" role="status" aria-live="polite"></p>
+    </form>
     <section class="cards-play" id="cards-play" aria-labelledby="cards-play-heading">
       <picture style="display:contents"><source type="image/webp" srcset="/start/home-print-table-480-v1.webp 480w, /start/home-print-table-640-v1.webp 640w, /start/home-print-table-1024-v1.webp 1024w" sizes="(max-width: 720px) 100vw, 720px" /><img
         class="cards-play-still"
@@ -238,6 +257,7 @@
   <script src="/shell/shell.js?v=6"></script>
   <script src="/shell/qr-welcome.js?v=3"></script>
   <script src="/field-pack/js/fp-analytics.js?v=2"></script>
+  <script src="/field-pack/js/newsletter-v1.js?v=1"></script>
   <script src="/field-pack/js/cards-explorer.js?v=9"></script>
   <script src="/field-pack/js/cards-groups.js?v=1"></script>
   <script src="/field-pack/js/aotd.js?v=1" defer></script>

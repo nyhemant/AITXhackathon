@@ -10,6 +10,12 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 from uuid import uuid4
 
+from busyparent_agent.newsletter import (
+    NewsletterResult,
+    handle_newsletter,
+    parse_form_body,
+    response_for,
+)
 from busyparent_agent.rate_limit import evaluate_request, set_limiter, RateLimiter
 from busyparent_agent.service import APP_TITLE, create_dinner_decision_session
 from busyparent_agent.site import (
@@ -56,6 +62,9 @@ ABOUT_ROOT = REPO_ROOT / "static" / "about"
 ABOUT_PREFIX = "/about"
 PRIVACY_ROOT = REPO_ROOT / "static" / "privacy"
 PRIVACY_PREFIX = "/privacy"
+# No-JS thank-you / error pages for POST /api/newsletter. Not in the sitemap.
+NEWSLETTER_ROOT = REPO_ROOT / "static" / "newsletter"
+NEWSLETTER_PREFIX = "/newsletter"
 PRINTABLES_ROOT = REPO_ROOT / "static" / "printables"
 PRINTABLES_PREFIX = "/printables"
 SHELL_ROOT = REPO_ROOT / "static" / "shell"
@@ -1168,6 +1177,11 @@ def _safe_privacy_path(url_path: str) -> Path | None:
     return _safe_mounted_static(url_path, PRIVACY_PREFIX, PRIVACY_ROOT)
 
 
+def _safe_newsletter_path(url_path: str) -> Path | None:
+    """Resolve /newsletter/... to a file under NEWSLETTER_ROOT, or None."""
+    return _safe_mounted_static(url_path, NEWSLETTER_PREFIX, NEWSLETTER_ROOT)
+
+
 def _safe_about_path(url_path: str) -> Path | None:
     """Resolve /about/... to a file under ABOUT_ROOT, or None."""
     return _safe_mounted_static(url_path, ABOUT_PREFIX, ABOUT_ROOT)
@@ -1602,6 +1616,17 @@ class WebHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(body)
             return
+        newsletter_file = _safe_newsletter_path(path)
+        if newsletter_file is not None:
+            body = newsletter_file.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", _static_content_type(newsletter_file))
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-cache")
+            self.send_header("X-Robots-Tag", "noindex")
+            self.end_headers()
+            self.wfile.write(body)
+            return
         field_pack_file = _safe_field_pack_path(path)
         if field_pack_file is not None:
             body = field_pack_file.read_bytes()
@@ -1712,6 +1737,7 @@ class WebHandler(BaseHTTPRequestHandler):
         start_file = _safe_start_path(path)
         about_file = _safe_about_path(path)
         privacy_file = _safe_privacy_path(path)
+        newsletter_file = _safe_newsletter_path(path)
         printables_file = _safe_printables_path(path)
         field_pack_file = _safe_field_pack_path(path)
         if asset_path is not None and asset_path.exists():
@@ -1732,6 +1758,9 @@ class WebHandler(BaseHTTPRequestHandler):
         elif privacy_file is not None:
             content_type = _static_content_type(privacy_file)
             length = privacy_file.stat().st_size
+        elif newsletter_file is not None:
+            content_type = _static_content_type(newsletter_file)
+            length = newsletter_file.stat().st_size
         elif printables_file is not None:
             content_type = _static_content_type(printables_file)
             length = printables_file.stat().st_size
@@ -1758,6 +1787,9 @@ class WebHandler(BaseHTTPRequestHandler):
             return
         if path == "/api/scenario":
             self._handle_scenario()
+            return
+        if path == "/api/newsletter":
+            self._handle_newsletter()
             return
         self.send_error(404)
 
@@ -1913,6 +1945,47 @@ class WebHandler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
+
+    def _wants_json(self) -> bool:
+        headers = self.headers
+        accept = headers.get("Accept") if headers is not None else ""
+        return "application/json" in (accept or "").lower()
+
+    def _send_json_status(self, payload: dict, status: int) -> None:
+        body = json.dumps(payload, separators=(",", ":")).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("X-Robots-Tag", "noindex")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _handle_newsletter(self) -> None:
+        """POST /api/newsletter. Forwards to Kit. Does not log the email."""
+        wants_json = self._wants_json()
+        try:
+            length = int(self.headers.get("Content-Length", "0") or "0")
+        except (TypeError, ValueError):
+            length = -1
+        if length < 0 or length > 8_000:
+            spec = response_for(
+                NewsletterResult(ok=False, status=400, error="invalid_email"),
+                wants_json=wants_json,
+            )
+            self._finish_newsletter(spec)
+            return
+        raw = self.rfile.read(length) if length else b""
+        content_type = self.headers.get("Content-Type", "") if self.headers is not None else ""
+        fields = parse_form_body(raw, content_type)
+        result = handle_newsletter(fields, self._peer_ip() or "unknown")
+        self._finish_newsletter(response_for(result, wants_json=wants_json))
+
+    def _finish_newsletter(self, spec: dict) -> None:
+        if spec["kind"] == "json":
+            self._send_json_status(spec["body"], spec["status"])
+            return
+        _send_redirect(self, spec["location"], code=spec["status"])
 
     def _send_text(self, text: str, content_type: str) -> None:
         body = text.encode("utf-8")
