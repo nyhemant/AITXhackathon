@@ -5,7 +5,8 @@ from pathlib import Path
 
 FP = Path(__file__).resolve().parents[1] / "static" / "field-pack"
 ORDER = ["shell.js", "qr-welcome.js", "fp-analytics.js", "places-data.js", "catalog.js",
-         "print-maps.js", "print-kit.js", "mission-pilots.js", "landing-map.js", "landing-hook.js"]
+         "print-maps.js", "print-kit.js", "mission-pilots.js", "landing-map.js", "landing-hook.js",
+         "aotd.js"]
 
 
 class FieldPackFirstPaintTests(unittest.TestCase):

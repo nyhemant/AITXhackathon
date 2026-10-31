@@ -5380,6 +5380,45 @@ def _hub_filter_tabs_html(section_ids: list[str]) -> str:
 
 TRY_CARD_IDS = ("red-panda", "whale-shark", "octopus")
 
+# No-JS fallback for the Animal of the day tile. aotd.js swaps photo, name, and hook.
+AOTD_FALLBACK_ID = "red-panda"
+AOTD_FALLBACK_NAME = "Red panda"
+AOTD_FALLBACK_HOOK = "Rusty tree-climber with a ringed tail — not a giant panda!"
+AOTD_CSS_TAG = '<link rel="stylesheet" href="/field-pack/css/aotd.css?v=1" />'
+AOTD_JS_TAG = '<script src="/field-pack/js/aotd.js?v=1" defer></script>'
+
+
+def aotd_tile_html() -> str:
+    """Static Animal of the day tile. JS replaces the red-panda fallback."""
+    return (
+        "<!-- kz-aotd --><section class=\"aotd\" id=\"aotd\" aria-labelledby=\"aotd-heading\">\n"
+        "      <h2 id=\"aotd-heading\" class=\"aotd-kicker\">Animal of the day</h2>\n"
+        f'      <a class="aotd-link" id="aotd-link" href="/field-pack/cards/{AOTD_FALLBACK_ID}/#from=aotd">\n'
+        f'        <img class="aotd-photo" id="aotd-photo" src="/field-pack/photos/{AOTD_FALLBACK_ID}-320-v1.webp" '
+        'width="320" height="213" alt="" decoding="async" />\n'
+        "        <span class=\"aotd-copy\">\n"
+        f'          <span class="aotd-name" id="aotd-name">{esc(AOTD_FALLBACK_NAME)}</span>\n'
+        f'          <span class="aotd-hook" id="aotd-hook">{esc(AOTD_FALLBACK_HOOK)}</span>\n'
+        "        </span>\n"
+        "      </a>\n"
+        "    </section><!-- /kz-aotd -->"
+    )
+
+
+def ensure_aotd_on_landing(html: str) -> str:
+    """Keep the Animal of the day tile when the places hub is patched in place."""
+    if 'id="aotd"' not in html:
+        needle = "</header>"
+        i = html.find(needle)
+        if i != -1:
+            i += len(needle)
+            html = html[:i] + "\n      " + aotd_tile_html() + html[i:]
+    if "aotd.css" not in html:
+        html = html.replace("</head>", "    " + AOTD_CSS_TAG + "\n</head>", 1)
+    if "aotd.js" not in html:
+        html = html.replace("</body>", "    " + AOTD_JS_TAG + "\n</body>", 1)
+    return html
+
 
 def write_cards_hub(venues: list[dict]) -> str:
     """Static crawlable index of every Q&A card → /field-pack/cards/."""
@@ -5553,6 +5592,7 @@ def write_cards_hub(venues: list[dict]) -> str:
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={CARDS_LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={CARD_SEO_CSS_VER}" />
+  {AOTD_CSS_TAG}
 </head>
 <body class="landing-body landing-hub cards-explorer">
   <div class="app landing-app landing-clean">
@@ -5563,6 +5603,7 @@ def write_cards_hub(venues: list[dict]) -> str:
       </a>
 {nav_more_menu_html(current="cards")}
     </header>
+    {aotd_tile_html()}
     <section class="cards-play" id="cards-play" aria-labelledby="cards-play-heading">
       <img
         class="cards-play-still"
@@ -5652,6 +5693,7 @@ def write_cards_hub(venues: list[dict]) -> str:
   {qr_welcome_tag()}
   <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script src="/field-pack/js/cards-explorer.js?v={CARDS_EXPLORER_JS_VER}"></script>
+  {AOTD_JS_TAG}
 </body>
 </html>
 """
@@ -6171,6 +6213,7 @@ def patch_landing_directory(venues: list[dict]) -> None:
         html,
         count=1,
     )
+    html = ensure_aotd_on_landing(html)
 
     if 'href="/field-pack/cards/"' not in html:
         html = html.replace(

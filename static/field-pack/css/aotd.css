@@ -1,0 +1,62 @@
+/* Animal of the day — one tile, works at 390px, tap target is the whole link. */
+.aotd {
+  box-sizing: border-box;
+  width: auto;
+  margin: 0 0 14px;
+}
+.aotd-kicker {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0a4545;
+}
+.aotd-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 72px;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+  background: #fffcf7;
+  border: 1px solid rgba(10, 69, 69, 0.18);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.aotd-link:hover,
+.aotd-link:focus-visible {
+  border-color: rgba(10, 69, 69, 0.45);
+}
+.aotd-link:focus-visible {
+  outline: 3px solid #ffcf5a;
+  outline-offset: 2px;
+}
+.aotd-photo {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  object-fit: cover;
+  display: block;
+  background: #f4f1ea;
+}
+.aotd-copy {
+  min-width: 0;
+  padding: 8px 12px 8px 0;
+}
+.aotd-name {
+  display: block;
+  font-weight: 750;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  color: #0a4545;
+}
+.aotd-hook {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  color: #5c564c;
+  overflow-wrap: anywhere;
+}
