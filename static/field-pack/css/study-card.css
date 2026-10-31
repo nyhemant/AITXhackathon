@@ -495,6 +495,8 @@
 .card-page .card-study-pack .study-finish {
   position: relative;
   flex: 1 1 100%;
+  min-width: 0;
+  max-width: 100%;
   margin: 0 0 0.25rem;
   padding: 1rem 1rem 0.9rem;
   border-radius: 16px;
@@ -550,6 +552,12 @@
   flex-direction: column;
   gap: 0.45rem;
   align-items: stretch;
+  min-width: 0;
+  max-width: 100%;
+}
+.card-page .card-study-pack .study-finish-next > li {
+  min-width: 0;
+  max-width: 100%;
 }
 .card-page .card-study-pack .study-finish-link {
   appearance: none;
@@ -582,6 +590,29 @@
   color: #fff;
   outline: 3px solid rgba(15, 92, 92, 0.3);
   outline-offset: 2px;
+}
+.card-page .card-study-pack a.study-finish-animal {
+  justify-content: flex-start;
+  gap: 0.65rem;
+  min-height: 44px;
+  padding: 0.4rem 0.75rem 0.4rem 0.4rem;
+  border-radius: 14px;
+  text-align: left;
+}
+.card-page .card-study-pack .study-finish-animal-photo {
+  width: 72px;
+  height: 54px;
+  flex: 0 0 72px;
+  max-width: 28%;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #e7f3ee;
+}
+.card-page .card-study-pack .study-finish-animal-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 @media screen and (min-width: 700px) {
   .card-page .card-study-pack .study-finish-next {

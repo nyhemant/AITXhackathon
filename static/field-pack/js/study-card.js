@@ -10,9 +10,9 @@
  * kelp forest) until species peers cannot fill the row.
  * Finish moment (2026-10-24): a tier is complete when every question has been
  * answered correctly (retries count). The panel shows the real first-try count,
- * then up to 3 next steps: next tier (or a related next animal after the last
- * tier), ONE printable from the reviewed FP_QUIZ_PRINTABLES map
- * (data/quiz_printables.json), and the card's Watch link when it has one.
+ * then up to 3 next steps: a photo "Meet a new animal" button (same hub, skip
+ * this visit's recent list), the next tier when one remains, and ONE printable
+ * from the reviewed FP_QUIZ_PRINTABLES map (data/quiz_printables.json).
  * Events go through the shell's trackEvent (respects analytics-off; no PII):
  * quiz_start, quiz_complete, quiz_tier_pick, quiz_next_click.
  */
@@ -453,36 +453,40 @@ if (typeof window !== "undefined") {
 
   function finishNextHtml(root, cardId, level) {
     const items = [];
+    const ids = FPStudyPickTryNextIds(cardId, readStudyRecent(), window.FP_STUDY_TRY_NEXT, 1);
+    const hasAnimal = ids.length > 0;
+    if (hasAnimal) {
+      const cid = ids[0];
+      const name = cardTitle(cid);
+      const safe = esc(cid);
+      const title = esc(name);
+      const href = `/field-pack/cards/${safe}/#from=quiz-next`;
+      const photo = `/field-pack/photos/${safe}-320-v1.webp`;
+      items.push(
+        `<li><a class="study-finish-link study-finish-animal is-primary" href="${href}" ` +
+          `data-quiz-next="next_animal">` +
+          `<img class="study-finish-animal-photo" src="${photo}" alt="${title}" ` +
+          `width="160" height="120" loading="lazy" decoding="async" />` +
+          `<span class="study-finish-animal-label">Meet a new animal: ${title}</span>` +
+          `</a></li>`
+      );
+    }
     const levels = shippedLevels(cardId);
     const cur = normalizeLevel(level) || "easy";
     const idx = levels.indexOf(cur);
     if (idx >= 0 && idx < levels.length - 1) {
       const nxt = levels[idx + 1];
+      const primary = hasAnimal ? "" : " is-primary";
       items.push(
-        `<li><button type="button" class="study-finish-link is-primary" data-study-pick="${esc(nxt)}" ` +
+        `<li><button type="button" class="study-finish-link${primary}" data-study-pick="${esc(nxt)}" ` +
           `data-quiz-next="next_tier">Try ${esc(levelDisplayName(nxt))} →</button></li>`
       );
-    } else {
-      const ids = FPStudyPickTryNextIds(cardId, readStudyRecent(), window.FP_STUDY_TRY_NEXT, 1);
-      if (ids.length) {
-        items.push(
-          `<li><a class="study-finish-link is-primary" href="/field-pack/cards/${esc(ids[0])}/" ` +
-            `data-quiz-next="next_card">Meet the ${esc(cardTitle(ids[0]))} →</a></li>`
-        );
-      }
     }
     const sheet = FP_QUIZ_PRINTABLES[cardId];
     const page = sheet && FP_QUIZ_PRINTABLE_PAGES[sheet];
     if (page) {
       items.push(
         `<li><a class="study-finish-link" href="${esc(page.href)}" data-quiz-next="printable">${esc(page.label)}</a></li>`
-      );
-    }
-    const watch = document.querySelector("a.card-watch-live[href]");
-    if (watch) {
-      items.push(
-        `<li><a class="study-finish-link" href="${esc(watch.getAttribute("href"))}" data-quiz-next="watch">` +
-          `Watch the ${esc(cardTitle(cardId))} film</a></li>`
       );
     }
     return items.slice(0, 3).join("");

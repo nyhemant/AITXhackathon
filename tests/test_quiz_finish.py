@@ -65,8 +65,10 @@ class QuizFinishCopyAndEventsTest(unittest.TestCase):
             self.assertIn(f'"{name}"', self.js)
         self.assertIn("window.trackEvent", self.js)
         self.assertIn("first_try_correct", self.js)
-        for link_type in ("next_tier", "next_card", "printable", "watch"):
+        for link_type in ("next_tier", "next_animal", "printable"):
             self.assertIn(f'"{link_type}"', self.js)
+        self.assertNotIn('data-quiz-next="watch"', self.js)
+        self.assertNotIn('data-quiz-next="next_card"', self.js)
 
     def test_honest_copy(self):
         self.assertIn("Not quite, try another!", self.js)
