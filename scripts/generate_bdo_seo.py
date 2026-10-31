@@ -5786,9 +5786,11 @@ def write_card_pages(
             study_scripts = (
                 f'  <script src="/field-pack/js/study-cards-data.js?v={STUDY_CARDS_DATA_JS_VER}"></script>\n'
                 f'  <script src="/field-pack/js/study-card.js?v={STUDY_CARD_JS_VER}"></script>\n'
+                f'  <script src="/field-pack/js/newsletter-v1.js?v=1"></script>\n'
             )
             study_css_link = (
                 f'\n  <link rel="stylesheet" href="/field-pack/css/study-card.css?v={STUDY_CARD_CSS_VER}" />'
+                f'\n  <link rel="stylesheet" href="/field-pack/css/newsletter-v1.css?v=1" />'
             )
         more_links = catalog_more_links_html(item, shared=not show_venue_chrome, allow_cam=False, include_pictures=False)
         # One watch door lives in the action row. Hero photo is a lightbox, not a second cam.

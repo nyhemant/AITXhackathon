@@ -118,10 +118,14 @@ class SitemapTests(unittest.TestCase):
         pages = set()
         for index in static.rglob("index.html"):
             rel = index.relative_to(static).parent.as_posix()
+            # Thank-you and error pages for the newsletter form are noindex.
+            if rel == "newsletter" or rel.startswith("newsletter/"):
+                continue
             pages.add(f"{SITE}/{rel}/")
         text = (static / "sitemap.xml").read_text(encoding="utf-8")
         locs = set(_LOC_RE.findall(text))
         self.assertEqual(locs, pages)
+        self.assertFalse(any("/newsletter/" in loc for loc in locs))
         for loc in locs:
             path = loc[len(SITE) :]
             self.assertTrue(loc.startswith(f"{SITE}/"), loc)

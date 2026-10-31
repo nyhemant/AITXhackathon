@@ -1,0 +1,200 @@
+/* Weekly email box. Teal button: white on #d9652e is about 3.6:1, under AA. */
+.kz-nl {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 14px;
+  color: #152238;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  overflow-wrap: anywhere;
+}
+.kz-nl *,
+.kz-nl *::before,
+.kz-nl *::after {
+  box-sizing: border-box;
+}
+.kz-nl-h {
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: #152238;
+}
+.kz-nl-sub {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #3d4f6f;
+}
+.kz-nl-field label {
+  display: block;
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #152238;
+}
+.kz-nl input[type="email"] {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 44px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 2px solid #0f5c5c;
+  border-radius: 10px;
+  background: #fff;
+  color: #152238;
+  font-size: 16px;
+  line-height: 1.3;
+}
+.kz-nl-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+.kz-nl[hidden],
+.kz-nl-dismiss[hidden],
+.kz-nl-submit[hidden] {
+  display: none !important;
+}
+.kz-nl-submit,
+.kz-nl-dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  margin: 0;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+}
+.kz-nl-submit {
+  border: 2px solid #0a4545;
+  background: #0f5c5c;
+  color: #fff;
+}
+.kz-nl-submit:hover {
+  background: #0a4545;
+}
+.kz-nl-dismiss {
+  border: 2px solid #0f5c5c;
+  background: #fff;
+  color: #0a4545;
+}
+.kz-nl-privacy {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #3d4f6f;
+}
+.kz-nl-privacy a {
+  color: #0a4545;
+  font-weight: 700;
+}
+.kz-nl-msg {
+  margin: 8px 0 0;
+  min-height: 1.3em;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #152238;
+}
+.kz-nl-msg[data-state="ok"] {
+  color: #0a4545;
+  font-weight: 700;
+}
+.kz-nl-msg[data-state="error"] {
+  color: #7a1f1f;
+  font-weight: 700;
+}
+.kz-nl input:focus-visible,
+.kz-nl-submit:focus-visible,
+.kz-nl-dismiss:focus-visible,
+.kz-nl-privacy a:focus-visible {
+  outline: 3px solid #0a4545;
+  outline-offset: 2px;
+}
+/* Off-screen honeypot. Not display:none. Clipped so it does not widen the page. */
+.kz-nl-hp {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.kz-nl-hp input {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+}
+.kz-nl--hub {
+  padding: 12px;
+  border: 1px solid rgba(15, 92, 92, 0.22);
+  border-radius: 14px;
+  background: #f7fbf9;
+}
+.kz-nl--quiz {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(15, 92, 92, 0.22);
+  border-radius: 14px;
+  background: #fff;
+}
+.kz-nl--quiz .kz-nl-h {
+  font-size: 1.05rem;
+}
+.kz-nl--quiz .kz-nl-sub {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+@media (min-width: 720px) {
+  .kz-nl--hub .kz-nl-fields {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .kz-nl--hub .kz-nl-field {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .kz-nl--hub .kz-nl-actions {
+    flex: 0 0 auto;
+    flex-direction: row;
+    margin-top: 0;
+  }
+  .kz-nl--hub .kz-nl-submit {
+    width: auto;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 719px) {
+  .kz-nl-submit,
+  .kz-nl-dismiss {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kz-nl,
+  .kz-nl * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media print {
+  .kz-nl {
+    display: none !important;
+  }
+}
