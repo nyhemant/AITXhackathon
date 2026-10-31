@@ -24,6 +24,7 @@ from busyparent_agent.newsletter import (
     response_for,
     valid_email,
 )
+from busyparent_agent.rate_limit import RateLimiter, get_limiter, set_limiter
 from busyparent_agent.web import SECURITY_HEADERS, WebHandler
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -109,7 +110,7 @@ class NewsletterProxyTests(unittest.TestCase):
             status = 200
 
             def read(self, n):
-                return b"Success! Now check your email to confirm your subscription."
+                return b'{"status":"success"}'
 
             def __enter__(self):
                 return self
@@ -124,7 +125,7 @@ class NewsletterProxyTests(unittest.TestCase):
             captured["headers"] = dict(req.header_items())
             return Resp()
 
-        with patch("busyparent_agent.newsletter.urllib.request.urlopen", fake_urlopen):
+        with patch("busyparent_agent.newsletter._open_kit", fake_urlopen):
             posted = post_kit_subscription(EMAIL)
 
         self.assertTrue(posted.ok)
@@ -139,37 +140,76 @@ class NewsletterProxyTests(unittest.TestCase):
         joined = " ".join(f"{k}:{v}" for k, v in captured["headers"].items())
         self.assertNotIn(EMAIL, joined)
 
-    def test_already_subscribed_and_http_errors(self):
-        class Resp:
-            status = 200
+    def _open_returning(self, status: int, body: bytes, location: str | None = None):
+        headers = Message()
+        if location:
+            headers["Location"] = location
+        if 200 <= status < 300:
+            class Resp:
+                def __init__(self):
+                    self.status = status
+                    self.headers = headers
 
-            def read(self, n):
-                return b"You are already subscribed"
+                def read(self, n):
+                    return body
 
-            def __enter__(self):
-                return self
+                def __enter__(self):
+                    return self
 
-            def __exit__(self, *args):
-                return False
+                def __exit__(self, *args):
+                    return False
 
-        with patch("busyparent_agent.newsletter.urllib.request.urlopen", lambda *a, **k: Resp()):
-            posted = post_kit_subscription(EMAIL)
-        self.assertTrue(posted.ok)
-        self.assertTrue(posted.already)
+            return Resp()
+        return urllib.error.HTTPError(KIT_FORM_SUBSCRIBE_URL, status, "status", headers, io.BytesIO(body))
 
-        err = urllib.error.HTTPError(
-            KIT_FORM_SUBSCRIBE_URL, 422, "Unprocessable", Message(), io.BytesIO(b"nope")
+    def test_kit_success_and_failure_bodies(self):
+        """ck.5.js: ok only for JSON status success (or a non-form redirect)."""
+        cases = (
+            (200, b'{"status":"success"}', None, True, False),
+            (200, b'{"status":"success","message":"You are already subscribed"}', None, True, True),
+            (200, b'{"status":"quarantined","url":"https://app.kit.com/guard"}', None, True, False),
+            (200, b'{"status":"failed","errors":{"email_address":["parent@example.com is invalid"]}}', None, False, False),
+            (200, b"Success! Now check your email to confirm your subscription.", None, False, False),
+            (422, b'{"status":"failed"}', None, False, False),
+            (302, b"", "https://app.kit.com/forms/10124095/subscriptions", False, False),
+            (302, b"", "https://hemant-bhangale.kit.com/thanks", True, False),
         )
-        with patch("busyparent_agent.newsletter.urllib.request.urlopen", side_effect=err):
-            failed = post_kit_subscription(EMAIL)
-        self.assertFalse(failed.ok)
+        for status, body, location, expect_ok, expect_already in cases:
+            with self.subTest(status=status, body=body[:40], location=location):
+                opener = self._open_returning(status, body, location)
+                with patch("busyparent_agent.newsletter._open_kit", return_value=opener):
+                    posted = post_kit_subscription(EMAIL)
+                self.assertEqual(posted.ok, expect_ok)
+                self.assertEqual(posted.already, expect_already)
 
-        redirect = urllib.error.HTTPError(
-            KIT_FORM_SUBSCRIBE_URL, 302, "Found", Message(), io.BytesIO(b"")
-        )
-        with patch("busyparent_agent.newsletter.urllib.request.urlopen", side_effect=redirect):
-            moved = post_kit_subscription(EMAIL)
-        self.assertTrue(moved.ok)
+        records: list[str] = []
+
+        class Grab(logging.Handler):
+            def emit(self, record):
+                records.append(record.getMessage())
+
+        log = logging.getLogger("busyparent_agent.newsletter")
+        grab = Grab()
+        log.addHandler(grab)
+        previous = log.level
+        log.setLevel(logging.INFO)
+        try:
+            failed_body = b'{"status":"failed","errors":{"email_address":["parent@example.com is invalid"]}}'
+            with patch("busyparent_agent.newsletter._open_kit", return_value=self._open_returning(200, failed_body)):
+                result = handle_newsletter(
+                    {"email_address": EMAIL, "website": "", "placement": "quiz_finish"},
+                    "203.0.113.77",
+                )
+            self.assertFalse(result.ok)
+            self.assertEqual(result.error, "unavailable")
+        finally:
+            log.removeHandler(grab)
+            log.setLevel(previous)
+        blob = "\n".join(records)
+        self.assertNotIn(EMAIL, blob)
+        self.assertIn("outcome=failed", blob)
+        self.assertIn("placement=quiz_finish", blob)
+        self.assertEqual(blob.count("outcome="), 1)
 
     def test_logs_omit_the_email(self):
         email = "unique-parent-9f3a@example.com"
@@ -275,6 +315,50 @@ class NewsletterProxyTests(unittest.TestCase):
         self.assertEqual(args[0][1], "203.0.113.20")
         spec, _args = run("text/html", body)
         self.assertEqual(spec, {"kind": "redirect", "status": 303, "location": "/newsletter/thanks/"})
+
+    def test_cf_connecting_ip_gets_separate_buckets(self):
+        """Tunnel peer is 127.0.0.1; visitors are split by CF-Connecting-IP."""
+        previous = get_limiter()
+        set_limiter(RateLimiter(trust_proxy=True, enabled=True))
+        reset_newsletter_limits()
+        body = b"email_address=parent%40example.com&website=&placement=cards_hub_aotd"
+
+        def run(cf_ip: str | None, peer: str = "127.0.0.1"):
+            handler = object.__new__(WebHandler)
+            headers = {
+                "Accept": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Length": str(len(body)),
+            }
+            if cf_ip:
+                headers["CF-Connecting-IP"] = cf_ip
+            handler.headers = _Headers(headers)
+            handler.rfile = io.BytesIO(body)
+            handler.client_address = (peer, 9)
+            captured = {}
+            handler._finish_newsletter = lambda spec: captured.setdefault("spec", spec)
+            WebHandler._handle_newsletter(handler)
+            return captured["spec"]
+
+        try:
+            with patch(
+                "busyparent_agent.newsletter.post_kit_subscription",
+                return_value=KitPostResult(ok=True),
+            ) as posted:
+                for _ in range(5):
+                    spec = run("203.0.113.10")
+                    self.assertTrue(spec["body"]["ok"])
+                blocked = run("203.0.113.10")
+                self.assertEqual(blocked["body"], {"ok": False, "error": "rate_limited"})
+                other = run("203.0.113.11")
+                self.assertTrue(other["body"]["ok"])
+                # No forwarded header: the socket IP is its own bucket.
+                fallback = run(None, peer="198.51.100.40")
+                self.assertTrue(fallback["body"]["ok"])
+                self.assertEqual(posted.call_count, 7)
+        finally:
+            set_limiter(previous)
+            reset_newsletter_limits()
 
     def test_post_route_and_csp_stay_on_self(self):
         handler = object.__new__(WebHandler)

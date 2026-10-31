@@ -16,7 +16,13 @@ from busyparent_agent.newsletter import (
     parse_form_body,
     response_for,
 )
-from busyparent_agent.rate_limit import evaluate_request, set_limiter, RateLimiter
+from busyparent_agent.rate_limit import (
+    evaluate_request,
+    get_limiter,
+    resolve_client_ip,
+    set_limiter,
+    RateLimiter,
+)
 from busyparent_agent.service import APP_TITLE, create_dinner_decision_session
 from busyparent_agent.site import (
     CANONICAL_HOST,
@@ -1978,8 +1984,25 @@ class WebHandler(BaseHTTPRequestHandler):
         raw = self.rfile.read(length) if length else b""
         content_type = self.headers.get("Content-Type", "") if self.headers is not None else ""
         fields = parse_form_body(raw, content_type)
-        result = handle_newsletter(fields, self._peer_ip() or "unknown")
+        result = handle_newsletter(fields, self._newsletter_client_ip())
         self._finish_newsletter(response_for(result, wants_json=wants_json))
+
+    def _newsletter_client_ip(self) -> str:
+        """Visitor IP, same rules as the site rate limiter.
+
+        Behind the Cloudflare tunnel the socket is 127.0.0.1. Trust
+        CF-Connecting-IP only from that loopback/private peer, and fall
+        back to the socket address.
+        """
+        peer = self._peer_ip()
+        try:
+            trust_proxy = bool(get_limiter().trust_proxy)
+        except Exception:
+            trust_proxy = True
+        resolved = resolve_client_ip(peer, self.headers, trust_proxy=trust_proxy)
+        if resolved:
+            return resolved
+        return peer or "unknown"
 
     def _finish_newsletter(self, spec: dict) -> None:
         if spec["kind"] == "json":
