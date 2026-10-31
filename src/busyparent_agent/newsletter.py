@@ -8,7 +8,13 @@ https://hemant-bhangale.kit.com/ca4bfbdb8a/index.js
 contains
   <form action="https://app.kit.com/forms/10124095/subscriptions" method="post">
   <input name="email_address" type="email">
-The hosted page https://hemant-bhangale.kit.com/ca4bfbdb8a loads that script.
+The hosted page https://hemant-bhangale.kit.com/ca4bfbdb8a loads that script,
+which loads https://f.convertkit.com/ckjs/ck.5.js (X-CKJS-Version 6).
+That script POSTs the form with Accept: application/json and treats the
+reply as success only when response.ok and JSON status is "success"
+(or "quarantined", which it also sends down the success path). Any other
+status, including "failed", is an error. A non-JSON redirect is judged
+by its Location: back to this form's subscribe URL is not success.
 The authenticated API (POST https://api.kit.com/v4/forms/10124095/subscribers,
 X-Kit-Api-Key) is not used.
 
@@ -182,6 +188,92 @@ def _parse_multipart(raw: bytes, content_type: str) -> dict[str, str]:
     return out
 
 
+_SUCCESS_STATUSES = frozenset({"success", "quarantined"})
+_REDIRECT_STATUSES = frozenset({301, 302, 303, 307, 308})
+
+
+class _StopRedirect(urllib.request.HTTPRedirectHandler):
+    """Surface the redirect instead of following it, so Location can be read."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise urllib.error.HTTPError(req.full_url, code, msg, headers, fp)
+
+
+def _open_kit(request: urllib.request.Request, timeout: float):
+    opener = urllib.request.build_opener(_StopRedirect)
+    return opener.open(request, timeout=timeout)
+
+
+def _json_object(raw: bytes) -> dict | None:
+    text = raw.decode("utf-8", "replace").strip()
+    if not text or text[0] not in "{[":
+        return None
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def _header_value(headers, name: str) -> str | None:
+    if headers is None:
+        return None
+    getter = getattr(headers, "get", None)
+    if getter is None:
+        return None
+    value = getter(name)
+    if not value:
+        value = getter(name.lower())
+    if not value:
+        return None
+    return str(value).strip() or None
+
+
+def _redirect_means_success(location: str | None) -> bool:
+    """True when Kit sent the visitor somewhere other than this subscribe URL."""
+    if not location:
+        return False
+    lowered = location.strip().lower()
+    if not lowered or lowered.startswith(("javascript:", "data:")):
+        return False
+    if "status=failed" in lowered or "status=error" in lowered:
+        return False
+    bare = lowered.split("#", 1)[0].split("?", 1)[0].rstrip("/")
+    subscribe = KIT_FORM_SUBSCRIBE_URL.lower().rstrip("/")
+    if bare == subscribe or bare.endswith(f"/forms/{KIT_FORM_ID}/subscriptions"):
+        return False
+    return True
+
+
+def interpret_kit_response(status: int, body: bytes, location: str | None = None) -> KitPostResult:
+    """Match ck.5.js process(): JSON status, otherwise the redirect target.
+
+    ck.5.js (fetched 2026-10-31 from https://f.convertkit.com/ckjs/ck.5.js):
+      if (!response.ok) error
+      switch ((await response.json()).status) {
+        case "success": success
+        case "quarantined": success (after the guard)
+        default: error  // includes "failed"
+      }
+    A 3xx with no JSON status is success only when Location is not this form.
+    """
+    payload = _json_object(body)
+    if payload is not None and "status" in payload:
+        state = str(payload.get("status") or "").strip().lower()
+        if 200 <= status < 300 and state in _SUCCESS_STATUSES:
+            text = body.decode("utf-8", "replace").lower()
+            already = state == "success" and (
+                "already subscribed" in text
+                or "already a subscriber" in text
+                or "already on the list" in text
+            )
+            return KitPostResult(ok=True, already=already)
+        return KitPostResult(ok=False)
+    if status in _REDIRECT_STATUSES and _redirect_means_success(location):
+        return KitPostResult(ok=True)
+    return KitPostResult(ok=False)
+
+
 def post_kit_subscription(email: str, *, timeout: float = KIT_TIMEOUT_SECONDS) -> KitPostResult:
     """POST email_address to Kit's public form. The address is not logged."""
     payload = urllib.parse.urlencode({"email_address": email}).encode("ascii")
@@ -191,33 +283,26 @@ def post_kit_subscription(email: str, *, timeout: float = KIT_TIMEOUT_SECONDS) -
         method="POST",
         headers={
             "Content-Type": "application/x-www-form-urlencoded",
-            "Accept": "text/html,application/json;q=0.9",
+            "Accept": "application/json",
+            "X-CKJS-Version": "6",
             "User-Agent": KIT_USER_AGENT,
         },
     )
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            status = int(getattr(response, "status", 200) or 200)
+        with _open_kit(request, timeout) as response:
+            status = int(getattr(response, "status", None) or getattr(response, "code", 200) or 200)
             raw = response.read(16384)
+            location = _header_value(getattr(response, "headers", None), "Location")
     except urllib.error.HTTPError as exc:
         status = int(exc.code)
         try:
             raw = exc.read(16384)
         except Exception:
             raw = b""
-        if status in (301, 302, 303, 307, 308):
-            return KitPostResult(ok=True, already=False)
+        location = _header_value(getattr(exc, "headers", None), "Location")
     except (urllib.error.URLError, TimeoutError, OSError):
         return KitPostResult(ok=False)
-    if not 200 <= status < 300:
-        return KitPostResult(ok=False)
-    text = raw.decode("utf-8", "replace").lower()
-    already = (
-        "already subscribed" in text
-        or "already a subscriber" in text
-        or "already on the list" in text
-    )
-    return KitPostResult(ok=True, already=already)
+    return interpret_kit_response(status, raw, location)
 
 
 def handle_newsletter(
@@ -251,7 +336,7 @@ def handle_newsletter(
     if posted.ok:
         _log("ok", placement)
         return NewsletterResult(ok=True, status=200)
-    _log("unavailable", placement)
+    _log("failed", placement)
     return NewsletterResult(ok=False, status=502, error="unavailable")
 
 
