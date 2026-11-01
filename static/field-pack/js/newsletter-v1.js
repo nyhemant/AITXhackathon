@@ -1,7 +1,6 @@
 /**
- * Weekly email box.
- * Hub: enhance the static form (placement=cards_hub_aotd).
- * Card: after .study-finish (placement=quiz_finish). Not inside that live region.
+ * Weekly email box for grown-ups, on the printables pages only.
+ * Static forms: placement=printables_hub or placement=printable_sheet.
  * Events go through FPTrack / OneLessAnalytics.track so the opt-out is kept.
  * Never send the email address, or any hash of it, to analytics.
  */
@@ -29,13 +28,22 @@
   }
 
   function cleanPlacement(value) {
-    if (value === "quiz_finish" || value === "cards_hub_aotd") return value;
+    if (value === "printables_hub" || value === "printable_sheet") return value;
     return "other";
   }
 
   function track(name, placement) {
     var params = { placement: cleanPlacement(placement) };
     if (name === "sign_up") params.method = "newsletter";
+    // sign_up sends placement and method only. Drop any address-shaped value.
+    Object.keys(params).forEach(function (key) {
+      var value = params[key];
+      if (key === "email" || key === "email_address" || key === "mail") {
+        delete params[key];
+        return;
+      }
+      if (typeof value === "string" && value.indexOf("@") !== -1) delete params[key];
+    });
     if (typeof window.FPTrack === "function") {
       window.FPTrack(name, params);
       return;
@@ -60,29 +68,6 @@
       { threshold: 0.4 }
     );
     observer.observe(form);
-  }
-
-  function quizFormHtml() {
-    return (
-      '<form class="kz-nl kz-nl--quiz no-print" action="/api/newsletter" method="post" data-placement="quiz_finish" novalidate aria-labelledby="kz-nl-h-quiz">' +
-      '<h3 class="kz-nl-h" id="kz-nl-h-quiz">One animal + a quiz each week</h3>' +
-      '<p class="kz-nl-sub">A real animal card, three quick questions and a printable, in your inbox once a week.</p>' +
-      '<div class="kz-nl-fields">' +
-      '<div class="kz-nl-field">' +
-      '<label for="kz-nl-email-quiz">Your email</label>' +
-      '<input id="kz-nl-email-quiz" name="email_address" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com" aria-describedby="kz-nl-privacy-quiz kz-nl-msg-quiz">' +
-      "</div>" +
-      '<div class="kz-nl-actions">' +
-      '<button class="kz-nl-submit" type="submit">Send me the weekly animal</button>' +
-      '<button class="kz-nl-dismiss" type="button">No thanks</button>' +
-      "</div></div>" +
-      '<div class="kz-nl-hp" aria-hidden="true"><label for="kz-nl-website-quiz">Website</label>' +
-      '<input id="kz-nl-website-quiz" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
-      '<input type="hidden" name="placement" value="quiz_finish">' +
-      '<p class="kz-nl-privacy" id="kz-nl-privacy-quiz">Email only, nothing about your kids. Unsubscribe anytime. No spam. <a href="/privacy/">Privacy</a></p>' +
-      '<p class="kz-nl-msg" id="kz-nl-msg-quiz" role="status" aria-live="polite"></p>' +
-      "</form>"
-    );
   }
 
   function showStatus(form, kind, text) {
@@ -175,60 +160,16 @@
     });
   }
 
-  function mountQuiz(finish) {
-    if (storageGet(SUB_KEY) === "1" || storageGet(DISMISS_KEY) === "1") return;
-    var foot = finish.parentNode;
-    if (!foot || !foot.classList || !foot.classList.contains("study-foot")) return;
-    var existing = foot.querySelector(".kz-nl--quiz");
-    if (existing) {
-      if (finish.nextElementSibling !== existing) finish.insertAdjacentElement("afterend", existing);
-      return;
-    }
-    var holder = document.createElement("div");
-    holder.innerHTML = quizFormHtml();
-    var form = holder.firstElementChild;
-    if (!form) return;
-    finish.insertAdjacentElement("afterend", form);
-    bind(form);
-    watchView(form);
-  }
-
-  function syncQuiz() {
-    var feet = document.querySelectorAll(".study-foot");
-    for (var i = 0; i < feet.length; i++) {
-      var foot = feet[i];
-      var finish = foot.querySelector(".study-finish");
-      var form = foot.querySelector(".kz-nl--quiz");
-      if (!finish) {
-        if (form) form.remove();
-        continue;
-      }
-      mountQuiz(finish);
-    }
-  }
-
-  function observeQuiz() {
-    var feet = document.querySelectorAll(".study-foot");
-    if (!feet.length || typeof MutationObserver !== "function") return;
-    var observer = new MutationObserver(syncQuiz);
-    for (var i = 0; i < feet.length; i++) {
-      observer.observe(feet[i], { childList: true });
-    }
-    syncQuiz();
-  }
-
   function init() {
     var forms = document.querySelectorAll("form.kz-nl");
-    for (var i = 0; i < forms.length; i++) {
-      var form = forms[i];
-      if (storageGet(SUB_KEY) === "1") {
-        form.hidden = true;
-        continue;
-      }
-      bind(form);
-      watchView(form);
+    if (storageGet(SUB_KEY) === "1" || storageGet(DISMISS_KEY) === "1") {
+      for (var h = 0; h < forms.length; h++) forms[h].hidden = true;
+      return;
     }
-    observeQuiz();
+    for (var i = 0; i < forms.length; i++) {
+      bind(forms[i]);
+      watchView(forms[i]);
+    }
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

@@ -73,6 +73,7 @@
   <script type="application/ld+json">
 {"@context": "https://schema.org", "@graph": [{"@type": "LearningResource", "name": "Zoo & Park Scavenger Hunt Printable", "url": "https://kidzookit.com/printables/scavenger-hunt/", "description": "A one-page zoo and park scavenger hunt for kids: 16 things to spot, a box to draw a favorite find, and a QR code that opens zoo hunts and animal cards. Ages 4–10, US Letter and A4.", "image": "https://kidzookit.com/printables/img/scavenger-hunt.png", "inLanguage": "en", "learningResourceType": "Printable activity sheet", "isPartOf": {"@type": "CollectionPage", "name": "Play & Learn Printables for Kids", "url": "https://kidzookit.com/printables/"}, "encoding": [{"@type": "MediaObject", "contentUrl": "https://kidzookit.com/printables/pdf/letter/scavenger-hunt.pdf", "encodingFormat": "application/pdf", "name": "US Letter PDF"}, {"@type": "MediaObject", "contentUrl": "https://kidzookit.com/printables/pdf/a4/scavenger-hunt-a4.pdf", "encodingFormat": "application/pdf", "name": "A4 PDF"}], "typicalAgeRange": "4-10"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Printables", "item": "https://kidzookit.com/printables/"}, {"@type": "ListItem", "position": 2, "name": "Zoo & Park Scavenger Hunt", "item": "https://kidzookit.com/printables/scavenger-hunt/"}]}]}
   </script>
+  <link rel="stylesheet" href="/field-pack/css/newsletter-v1.css?v=2" />
 </head>
 <body>
   <header class="oneless-shell no-print" data-product="bdo">
@@ -171,6 +172,25 @@
         <h3>What does the QR code on the hunt open?</h3>
         <p>It opens the KidZooKit zoo list on a phone, so you can pick a zoo with its own animal hunt for your next visit. No app and no signup.</p>
       </section>
+      <form class="kz-nl kz-nl--parent no-print" action="/api/newsletter" method="post" data-placement="printable_sheet" novalidate aria-labelledby="kz-nl-h-sheet">
+        <h2 class="kz-nl-h" id="kz-nl-h-sheet">For grown-ups</h2>
+        <p class="kz-nl-sub">One animal card, a short quiz, and a printable, once a week.</p>
+        <div class="kz-nl-fields">
+          <div class="kz-nl-field">
+            <label for="kz-nl-email-sheet">Your email</label>
+            <input id="kz-nl-email-sheet" name="email_address" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com" aria-describedby="kz-nl-privacy-sheet kz-nl-msg-sheet">
+            <p class="kz-nl-privacy" id="kz-nl-privacy-sheet">We only use it to send the weekly KidZooKit email. We send the address to our email service (Kit) so Kit can deliver that email. Unsubscribe any time with the link in every email. <a href="/privacy/">Privacy</a></p>
+          </div>
+          <div class="kz-nl-actions">
+            <button class="kz-nl-submit" type="submit">Send me the weekly email</button>
+            <button class="kz-nl-dismiss" type="button">No thanks</button>
+          </div>
+        </div>
+        <div class="kz-nl-hp" aria-hidden="true"><label for="kz-nl-website-sheet">Website</label>
+          <input id="kz-nl-website-sheet" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <input type="hidden" name="placement" value="printable_sheet">
+        <p class="kz-nl-msg" id="kz-nl-msg-sheet" role="status" aria-live="polite"></p>
+      </form>
       <section class="box next" id="next" aria-labelledby="next-h">
         <h2 id="next-h">Just finished? Next step</h2>
         <p>Liked spotting things? Take the hunt to a real place next time.</p>
@@ -191,6 +211,7 @@
     </main>
   </div>
   <script src="/shell/shell.js?v=6"></script>
+  <script src="/field-pack/js/newsletter-v1.js?v=2"></script>
   <script src="/shell/qr-welcome.js?v=3"></script>
 </body>
 </html>

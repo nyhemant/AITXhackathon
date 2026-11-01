@@ -18,7 +18,9 @@ by its Location: back to this form's subscribe URL is not success.
 The authenticated API (POST https://api.kit.com/v4/forms/10124095/subscribers,
 X-Kit-Api-Key) is not used.
 
-This module stores nothing and never logs an email address.
+This module never logs an email address and does not write anything to disk.
+The signup limit is an in-memory map from visitor IP to recent attempt times
+(see newsletter_rate_limited). The map is cleared when the process restarts.
 """
 
 from __future__ import annotations
@@ -48,7 +50,7 @@ NEWSLETTER_LIMIT = 5
 NEWSLETTER_WINDOW_SECONDS = 3600.0
 _MAX_IPS = 8000
 
-_PLACEMENTS = frozenset({"quiz_finish", "cards_hub_aotd"})
+_PLACEMENTS = frozenset({"printables_hub", "printable_sheet"})
 _HONEYPOT = "website"
 
 _EMAIL_RE = re.compile(

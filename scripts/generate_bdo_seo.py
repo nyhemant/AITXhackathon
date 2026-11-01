@@ -5786,11 +5786,9 @@ def write_card_pages(
             study_scripts = (
                 f'  <script src="/field-pack/js/study-cards-data.js?v={STUDY_CARDS_DATA_JS_VER}"></script>\n'
                 f'  <script src="/field-pack/js/study-card.js?v={STUDY_CARD_JS_VER}"></script>\n'
-                f'  <script src="/field-pack/js/newsletter-v1.js?v=1"></script>\n'
             )
             study_css_link = (
                 f'\n  <link rel="stylesheet" href="/field-pack/css/study-card.css?v={STUDY_CARD_CSS_VER}" />'
-                f'\n  <link rel="stylesheet" href="/field-pack/css/newsletter-v1.css?v=1" />'
             )
         more_links = catalog_more_links_html(item, shared=not show_venue_chrome, allow_cam=False, include_pictures=False)
         # One watch door lives in the action row. Hero photo is a lightbox, not a second cam.
@@ -6248,6 +6246,107 @@ def patch_places_data_hrefs(venues: list[dict]) -> None:
     print("  patched places-data.js hrefs → /field-pack/<id>/")
 
 
+NEWSLETTER_JS_HREF = "/field-pack/js/newsletter-v1.js?v=2"
+NEWSLETTER_CSS_HREF = "/field-pack/css/newsletter-v1.css?v=2"
+NEWSLETTER_NOTICE = (
+    "We only use it to send the weekly KidZooKit email. "
+    "We send the address to our email service (Kit) so Kit can deliver that email. "
+    "Unsubscribe any time with the link in every email."
+)
+PRINTABLE_NEWSLETTER_SLUGS = ("scavenger-hunt", "animal-bingo", "zoo-day-journal")
+
+
+def newsletter_parent_form(placement: str) -> str:
+    """Grown-up signup. printables_hub on /printables/, printable_sheet on a sheet page."""
+    if placement == "printables_hub":
+        suffix = "printables"
+    elif placement == "printable_sheet":
+        suffix = "sheet"
+    else:
+        raise ValueError(placement)
+    return (
+        f'<form class="kz-nl kz-nl--parent no-print" action="/api/newsletter" method="post" '
+        f'data-placement="{placement}" novalidate aria-labelledby="kz-nl-h-{suffix}">\n'
+        f'  <h2 class="kz-nl-h" id="kz-nl-h-{suffix}">For grown-ups</h2>\n'
+        f'  <p class="kz-nl-sub">One animal card, a short quiz, and a printable, once a week.</p>\n'
+        f'  <div class="kz-nl-fields">\n'
+        f'    <div class="kz-nl-field">\n'
+        f'      <label for="kz-nl-email-{suffix}">Your email</label>\n'
+        f'      <input id="kz-nl-email-{suffix}" name="email_address" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com" aria-describedby="kz-nl-privacy-{suffix} kz-nl-msg-{suffix}">\n'
+        f'      <p class="kz-nl-privacy" id="kz-nl-privacy-{suffix}">{NEWSLETTER_NOTICE} '
+        f'<a href="/privacy/">Privacy</a></p>\n'
+        f"    </div>\n"
+        f'    <div class="kz-nl-actions">\n'
+        f'      <button class="kz-nl-submit" type="submit">Send me the weekly email</button>\n'
+        f'      <button class="kz-nl-dismiss" type="button">No thanks</button>\n'
+        f"    </div>\n"
+        f"  </div>\n"
+        f'  <div class="kz-nl-hp" aria-hidden="true"><label for="kz-nl-website-{suffix}">Website</label>\n'
+        f'    <input id="kz-nl-website-{suffix}" name="website" type="text" tabindex="-1" autocomplete="off"></div>\n'
+        f'  <input type="hidden" name="placement" value="{placement}">\n'
+        f'  <p class="kz-nl-msg" id="kz-nl-msg-{suffix}" role="status" aria-live="polite"></p>\n'
+        f"</form>"
+    )
+
+
+def _ensure_newsletter_asset(html: str, kind: str, href: str) -> str:
+    if href in html:
+        return html
+    if kind == "css":
+        tag = f'  <link rel="stylesheet" href="{href}" />\n'
+        return html.replace("</head>", tag + "</head>", 1)
+    tag = f'  <script src="{href}"></script>\n'
+    needle = '<script src="/shell/shell.js'
+    start = html.find(needle)
+    if start == -1:
+        return html.replace("</body>", tag + "</body>", 1)
+    end = html.find("</script>", start)
+    if end == -1:
+        return html.replace("</body>", tag + "</body>", 1)
+    end += len("</script>")
+    if html[end : end + 1] == "\n":
+        end += 1
+    return html[:end] + tag + html[end:]
+
+
+def _insert_newsletter_form(html: str, placement: str) -> str:
+    if 'class="kz-nl' in html:
+        return html
+    marker = 'aria-labelledby="tips-h"' if placement == "printables_hub" else 'id="before-you-print"'
+    start = html.find(marker)
+    if start == -1:
+        raise SystemExit(f"newsletter anchor missing for {placement}")
+    end = html.find("</section>", start)
+    if end == -1:
+        raise SystemExit(f"newsletter section end missing for {placement}")
+    end += len("</section>")
+    block = "\n".join(
+        ("      " + line) if line else line for line in newsletter_parent_form(placement).split("\n")
+    )
+    return html[:end] + "\n" + block + html[end:]
+
+
+def write_printable_newsletter() -> None:
+    """Put the grown-up email box on the printables hub and the three sheet pages.
+
+    Printables HTML is hand-maintained (this generator does not rebuild those
+    pages). A full run still inserts the box when it is missing, and never
+    puts it on card pages or the cards hub.
+    """
+    if re.search(r"(?i)\bfree\b", NEWSLETTER_NOTICE):
+        raise SystemExit("newsletter copy must not say Free")
+    root = STATIC / "printables"
+    pages = [(root / "index.html", "printables_hub")]
+    for slug in PRINTABLE_NEWSLETTER_SLUGS:
+        pages.append((root / slug / "index.html", "printable_sheet"))
+    for path, placement in pages:
+        html = path.read_text(encoding="utf-8")
+        html = _ensure_newsletter_asset(html, "css", NEWSLETTER_CSS_HREF)
+        html = _ensure_newsletter_asset(html, "js", NEWSLETTER_JS_HREF)
+        html = _insert_newsletter_form(html, placement)
+        path.write_text(html, encoding="utf-8")
+
+
 def _csv_flag(args: list[str], flag: str) -> set[str]:
     out: set[str] = set()
     i = 0
@@ -6365,6 +6464,7 @@ def main() -> int:
     print(f"  sitemap → static/sitemap.xml")
     print(f"  robots  → static/robots.txt")
     print(f"  URL list → static/field-pack/SEO_URLS.txt")
+    write_printable_newsletter()
     # 2026-10-29: versioned WebP <picture> pass (new files only, JPEG/PNG fallback kept).
     import webp_picture  # noqa: E402
 
