@@ -372,7 +372,7 @@ QR_WELCOME_TYPE_LANDINGS = ("zoos",)
 def qr_welcome_tag(defer: bool = False) -> str:
     d = " defer" if defer else ""
     return f'<script src="/shell/qr-welcome.js?v={QR_WELCOME_JS_VER}"{d}></script>'
-PRINT_KIT_JS_VER = "22"
+PRINT_KIT_JS_VER = "23"
 STUDY_CARD_JS_VER = "20"
 STUDY_CARD_CSS_VER = "17"
 STUDY_CARDS_DATA_JS_VER = "10"

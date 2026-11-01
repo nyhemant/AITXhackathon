@@ -62,6 +62,146 @@
     return Object.assign({}, base, { name: custom, displayName: custom });
   }
 
+  /** Catalog record for an item. Display-name copies keep the same id. */
+  function catalogRecord(item) {
+    const id = item && item.id;
+    if (!id || !window.FIELD_PACK_CATALOG) return null;
+    return window.FIELD_PACK_CATALOG[id] || null;
+  }
+
+  /** Plain catalog name. Study-card and Q&A titles use this, not a zone chip. */
+  function catalogName(item) {
+    const base = catalogRecord(item);
+    return (base && base.name) || (item && item.name) || "";
+  }
+
+  // Last words too generic to prove a "{zone} {animal}" split.
+  const GENERIC_ZONE_TAILS = {
+    fish: 1,
+    ray: 1,
+    jelly: 1,
+    jellies: 1,
+    star: 1,
+    eel: 1,
+    crab: 1,
+    bird: 1,
+    play: 1,
+    hall: 1,
+    sign: 1,
+    center: 1,
+    desk: 1,
+    talk: 1,
+    view: 1,
+  };
+
+  function collapseWs(s) {
+    return String(s || "").trim().replace(/\s+/g, " ");
+  }
+
+  /**
+   * Leftover prefix when a venue display name ends with the catalog name
+   * (or its last word). Empty when the split is not a clean animal suffix.
+   */
+  function displayZoneCandidate(catalogNameText, displayName) {
+    const display = collapseWs(displayName);
+    const base = collapseWs(catalogNameText);
+    if (!display || !base) return "";
+    if (display.toLowerCase() === base.toLowerCase()) return "";
+    const baseWords = base.split(" ");
+    let prefix = "";
+    let tailWords = 0;
+    const displayLower = display.toLowerCase();
+    for (let n = baseWords.length; n >= 1; n--) {
+      const tail = baseWords.slice(baseWords.length - n).join(" ");
+      if (tail.length < 3) continue;
+      const tailLower = tail.toLowerCase();
+      if (displayLower.endsWith(" " + tailLower)) {
+        prefix = display.slice(0, display.length - tail.length).trim();
+        tailWords = n;
+        break;
+      }
+    }
+    if (!prefix || prefix.length < 3) return "";
+    if (/['’]/.test(prefix)) return "";
+    const tailLast = baseWords[baseWords.length - 1].toLowerCase();
+    if (
+      tailWords === 1 &&
+      baseWords.length > 1 &&
+      (GENERIC_ZONE_TAILS[tailLast] || tailLast.length < 4)
+    ) {
+      return "";
+    }
+    return prefix;
+  }
+
+  function venueNameLabels(venue) {
+    return [venue && venue.name, venue && venue.shortName]
+      .filter(Boolean)
+      .map((s) => String(s).toLowerCase());
+  }
+
+  function prefixIsVenueIdentity(prefix, venue) {
+    const p = String(prefix || "").toLowerCase();
+    if (!p) return true;
+    return venueNameLabels(venue).some((label) => {
+      if (label === p || label.startsWith(p + " ") || label.endsWith(" " + p) || label.includes(" " + p + " ")) {
+        return true;
+      }
+      // Truncated venue title used as a stamp ("National Park of American Sa").
+      return p.length >= 8 && label.startsWith(p);
+    });
+  }
+
+  function venueInitials(name) {
+    return String(name || "")
+      .split(/[^A-Za-z0-9]+/)
+      .filter(Boolean)
+      .map((w) => w[0])
+      .join("")
+      .toLowerCase();
+  }
+
+  /**
+   * Zone label for a printed study card.
+   * A display-name prefix counts only when at least two animals at the venue
+   * share it, and it is not the venue's own name, initials, or a blanket stamp
+   * on most of the list. Otherwise return "" and the card says just "At {venue}".
+   */
+  function confirmedZonePrefix(venue, itemId) {
+    const names = venue && venue.itemDisplayNames;
+    if (!names || !itemId) return "";
+    const catalog = window.FIELD_PACK_CATALOG || {};
+    const counts = {};
+    const candidateFor = {};
+    const ids = Object.keys(names);
+    ids.forEach((id) => {
+      const record = catalog[id];
+      const prefix = record ? displayZoneCandidate(record.name, names[id]) : "";
+      candidateFor[id] = prefix;
+      if (!prefix) return;
+      const key = prefix.toLowerCase();
+      counts[key] = (counts[key] || 0) + 1;
+    });
+    const prefix = candidateFor[itemId] || "";
+    if (!prefix) return "";
+    if (prefixIsVenueIdentity(prefix, venue)) return "";
+    const initials = venueInitials(venue && venue.name);
+    const shortInitials = venueInitials(venue && venue.shortName);
+    if (prefix.toLowerCase() === initials || prefix.toLowerCase() === shortInitials) return "";
+    if (/\b(zoo|aquarium|museum)\b/i.test(prefix)) return "";
+    const n = counts[prefix.toLowerCase()] || 0;
+    if (n < 2) return "";
+    if (ids.length && n / ids.length > 0.75) return "";
+    return prefix;
+  }
+
+  /** "At San Diego Zoo: Panda Ridge" or "At San Diego Zoo" when no honest zone. */
+  function studyVenueLine(item, venue) {
+    if (!venue || !venue.name || venue.id === "catalog") return "";
+    const zone = confirmedZonePrefix(venue, item && item.id);
+    return zone ? `At ${venue.name}: ${zone}` : `At ${venue.name}`;
+  }
+
   function missionsFor(venue) {
     if (typeof window.fpMissionsForVenue === "function") return window.fpMissionsForVenue(venue);
     return window.FIELD_PACK_MISSIONS_ANIMALS || [];
@@ -554,7 +694,7 @@
       return { q: "Did you know?", a: blurb };
     }
 
-    const name = item.name || "This animal";
+    const name = catalogName(item) || "This animal";
     const key = item.key || {};
     const superpower = [].concat(key.superpower || []).filter(Boolean);
     // Only use superpower if we can phrase it as a real sentence (not bare tags alone).
@@ -631,10 +771,11 @@
     const photoPosStyle = photoPos
       ? ` style="--ps-photo-pos:${escapeAttr(String(photoPos))};object-position:${escapeAttr(String(photoPos))}"`
       : "";
+    const titleName = catalogName(item);
     const photoBlock = photo
       ? `<div class="ps-photo-fill">
           <div class="ps-photo-frame">
-            <img class="ps-photo-big" src="${escapeAttr(photo)}" alt="${escapeAttr(item.name || "Animal")}" decoding="async"${photoPosStyle} />
+            <img class="ps-photo-big" src="${escapeAttr(photo)}" alt="${escapeAttr(titleName || "Animal")}" decoding="async"${photoPosStyle} />
           </div>
           ${wowHtml}
         </div>`
@@ -657,7 +798,7 @@
         <div class="ps-banner"><h2>KIDZOOKIT</h2>
         <p>${escapeHtml(bannerNote)}</p></div>
         <header class="ps-head">
-          <h3>${escapeHtml(item.emoji || "")} ${escapeHtml(item.name)}</h3>
+          <h3>${escapeHtml(item.emoji || "")} ${escapeHtml(titleName)}</h3>
           <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span>
           &nbsp;&nbsp; <strong>Place:</strong> ${escapeHtml(venue.name)}</p>
         </header>
@@ -795,6 +936,10 @@
   }
 
   function buildStudyCardHtml(item, venue, deck) {
+    const name = catalogName(item);
+    const emoji = (item && item.emoji) || "";
+    const venueLine = studyVenueLine(item, venue);
+    const venueHtml = venueLine ? `<p class="ps-line">${escapeHtml(venueLine)}</p>\n      ` : "";
     const letters = ["A", "B", "C"];
     const qs = (deck && deck.questions) || [];
     const teach = (deck && deck.teach) || [];
@@ -824,7 +969,7 @@
       ? ` style="--ps-photo-pos:${escapeAttr(String(photoPos))};object-position:${escapeAttr(String(photoPos))}"`
       : "";
     const photoBlock = photo
-      ? `<div class="ps-study-photo"><img class="ps-photo-big" src="${escapeAttr(photo)}" alt="${escapeAttr(item.name || "Animal")}" decoding="async"${photoPosStyle} /></div>`
+      ? `<div class="ps-study-photo"><img class="ps-photo-big" src="${escapeAttr(photo)}" alt="${escapeAttr(name || "Animal")}" decoding="async"${photoPosStyle} /></div>`
       : "";
     const answers = qs
       .map((q) => {
@@ -848,14 +993,12 @@
         : "";
     const source = (deck && deck.source_note) || "Facts from Wikipedia, Lion.";
     const wiki = (deck && deck.source) || "https://en.wikipedia.org/wiki/Lion";
-    const name = (item && item.name) || "";
-    const emoji = (item && item.emoji) || "";
     const levelLabel = (deck && (deck.level_label || studyLevelName(deck.level))) || studyLevelName("easy");
     return `<div class="ps-study-front ps-page">
       <div class="ps-banner"><h2>KIDZOOKIT</h2>
       <p>${escapeHtml(name)} · ${escapeHtml(levelLabel)} · Circle one · Flip for answers</p></div>
       <header class="ps-head"><h3>${escapeHtml((emoji + " " + name).trim())}</h3>
-      <p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span></p>
+      ${venueHtml}<p class="ps-line"><strong>Explorer:</strong> <span class="write-in-line">________________</span></p>
       </header>
       ${teachHtml}
       <div class="ps-study-top">${photoBlock}<div class="ps-study-top-qs">${qs.slice(0, 2).map(qCard).join("")}</div></div>
@@ -1037,6 +1180,7 @@
       console.warn("[FPPrint] unknown item", itemId);
       return false;
     }
+    const explicitVenue = preferredVenueId ? getVenue(preferredVenueId) : null;
     const vid = preferredVenueId || venueIdForItem(itemId);
     let venue = vid ? getVenue(vid) : null;
     if (!venue) {
@@ -1058,7 +1202,7 @@
     if (!printSheet) return false;
     const deck = studyDeckFor(itemId);
     if (deck) {
-      printSheet.innerHTML = buildStudyCardHtml(resolved, venue, deck);
+      printSheet.innerHTML = buildStudyCardHtml(resolved, explicitVenue, deck);
       if (treasureSheet) treasureSheet.innerHTML = "";
       track("qa_catalog_printed", {
         item_id: resolved.id || itemId,
@@ -1071,7 +1215,7 @@
       return true;
     }
     printSheet.innerHTML = buildQaCardHtml(resolved, venue, {
-      bannerNote: `${resolved.name || itemId} · Q&A card · Circle answers · No scores`,
+      bannerNote: `${catalogName(resolved) || itemId} · Q&A card · Circle answers · No scores`,
       footer: "Catalog card · Field Trip Kit",
     });
     if (treasureSheet) treasureSheet.innerHTML = "";
