@@ -1,6 +1,7 @@
 /**
  * Weekly email box for grown-ups, on the printables pages only.
  * Static forms: placement=printables_hub or placement=printable_sheet.
+ * "See a sample email" opens /newsletter/sample/ in a dialog. With JS off, that href is the page.
  * Events go through FPTrack / OneLessAnalytics.track so the opt-out is kept.
  * Never send the email address, or any hash of it, to analytics.
  */
@@ -87,6 +88,169 @@
     }
   }
 
+  var sampleDialog = null;
+  var sampleOpener = null;
+  var sampleArticle = null;
+  var sampleRequest = null;
+
+  function clearNode(node) {
+    while (node.firstChild) node.removeChild(node.firstChild);
+  }
+
+  function tabbable(root) {
+    var nodes = root.querySelectorAll(
+      "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]"
+    );
+    var out = [];
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      if (el.tabIndex < 0) continue;
+      if (el.closest && el.closest("[hidden]")) continue;
+      out.push(el);
+    }
+    return out;
+  }
+
+  function trapTab(event) {
+    if (event.key !== "Tab") return;
+    var dialog = event.currentTarget;
+    var items = tabbable(dialog);
+    if (!items.length) {
+      event.preventDefault();
+      return;
+    }
+    var first = items[0];
+    var last = items[items.length - 1];
+    var active = document.activeElement;
+    if (event.shiftKey) {
+      if (active === first || !dialog.contains(active)) {
+        event.preventDefault();
+        last.focus();
+      }
+      return;
+    }
+    if (active === last || !dialog.contains(active)) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  function ensureSampleDialog() {
+    if (sampleDialog) return sampleDialog;
+    var dialog = document.createElement("dialog");
+    dialog.className = "kz-nl-dialog";
+    dialog.setAttribute("aria-labelledby", "kz-nl-sample-tag");
+    var head = document.createElement("div");
+    head.className = "kz-nl-dialog-head";
+    var tag = document.createElement("p");
+    tag.className = "kz-nl-sample-tag";
+    tag.id = "kz-nl-sample-tag";
+    tag.textContent = "Sample email";
+    var closeBtn = document.createElement("button");
+    closeBtn.type = "button";
+    closeBtn.className = "kz-nl-dialog-close";
+    closeBtn.textContent = "Close";
+    closeBtn.addEventListener("click", function () {
+      dialog.close();
+    });
+    head.appendChild(tag);
+    head.appendChild(closeBtn);
+    var body = document.createElement("div");
+    body.className = "kz-nl-dialog-body";
+    body.tabIndex = 0;
+    dialog.appendChild(head);
+    dialog.appendChild(body);
+    dialog.addEventListener("click", function (event) {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener("keydown", trapTab);
+    dialog.addEventListener("close", function () {
+      document.documentElement.classList.remove("kz-nl-modal-open");
+      var opener = sampleOpener;
+      if (!opener || typeof opener.focus !== "function") return;
+      opener.focus();
+      setTimeout(function () {
+        opener.focus();
+      }, 0);
+    });
+    document.body.appendChild(dialog);
+    sampleDialog = dialog;
+    return dialog;
+  }
+
+  function renderSample(body) {
+    clearNode(body);
+    if (!sampleArticle) {
+      body.textContent = "Loading the sample.";
+      return;
+    }
+    body.appendChild(document.importNode(sampleArticle, true));
+  }
+
+  function loadSample(href) {
+    if (sampleArticle) return Promise.resolve(sampleArticle);
+    if (sampleRequest) return sampleRequest;
+    sampleRequest = fetch(href, {
+      headers: { Accept: "text/html" },
+      credentials: "same-origin",
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error("status");
+        return res.text();
+      })
+      .then(function (html) {
+        var parsed = new DOMParser().parseFromString(html, "text/html");
+        var article = parsed.querySelector("#kz-sample-email") || parsed.querySelector("article");
+        if (!article) throw new Error("article");
+        sampleArticle = article;
+        return article;
+      })
+      .catch(function (err) {
+        sampleRequest = null;
+        throw err;
+      });
+    return sampleRequest;
+  }
+
+  function focusOpener(link) {
+    if (document.activeElement !== link && typeof link.focus === "function") link.focus();
+  }
+
+  function openSample(link, placement) {
+    var href = link.getAttribute("href") || "/newsletter/sample/";
+    if (typeof HTMLDialogElement !== "function" || typeof document.createElement("dialog").showModal !== "function") {
+      window.location.href = href;
+      return;
+    }
+    var dialog = ensureSampleDialog();
+    var body = dialog.querySelector(".kz-nl-dialog-body");
+    sampleOpener = link;
+    focusOpener(link);
+    renderSample(body);
+    if (!dialog.open) {
+      document.documentElement.classList.add("kz-nl-modal-open");
+      dialog.showModal();
+    }
+    var closeBtn = dialog.querySelector(".kz-nl-dialog-close");
+    if (closeBtn) closeBtn.focus();
+    track("newsletter_sample_open", placement);
+    loadSample(href)
+      .then(function () {
+        if (!dialog.open) return;
+        renderSample(body);
+      })
+      .catch(function () {
+        if (!dialog.open) return;
+        window.location.href = href;
+      });
+  }
+
+  function plainSampleClick(event) {
+    if (event.defaultPrevented || event.button !== 0) return false;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
+    return true;
+  }
+
   function bind(form) {
     if (form.getAttribute("data-nl-bound") === "1") return;
     form.setAttribute("data-nl-bound", "1");
@@ -95,6 +259,15 @@
       dismiss.addEventListener("click", function () {
         storageSet(DISMISS_KEY);
         form.remove();
+      });
+    }
+    var sampleLinks = form.querySelectorAll("a.kz-nl-sample");
+    var placement = cleanPlacement(form.getAttribute("data-placement"));
+    for (var s = 0; s < sampleLinks.length; s++) {
+      sampleLinks[s].addEventListener("click", function (event) {
+        if (!plainSampleClick(event)) return;
+        event.preventDefault();
+        openSample(event.currentTarget, placement);
       });
     }
     form.addEventListener("submit", function (event) {
