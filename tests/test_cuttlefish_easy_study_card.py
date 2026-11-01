@@ -372,7 +372,7 @@ class CuttlefishEasyStudyCardTests(unittest.TestCase):
         self.assertIn('"id": "cuttlefish"', html)
         self.assertNotIn('"id": "crab"', html)
         self.assertNotIn("study-print-template", html)
-        self.assertIn("print-kit.js?v=22", html)
+        self.assertIn("print-kit.js?v=23", html)
         self.assertIn("styles.css?v=45", html)
         self.assertIn('<details class="study-teach">', main)
         self.assertNotIn('<details class="study-teach" open', main)

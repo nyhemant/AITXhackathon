@@ -350,7 +350,7 @@ class TwoToedSlothEasyStudyCardTests(unittest.TestCase):
         self.assertIn('"level_label": "Junior Ranger"', html)
         self.assertIn('"id": "two-toed-sloth"', html)
         self.assertNotIn("study-print-template", html)
-        self.assertIn("print-kit.js?v=22", html)
+        self.assertIn("print-kit.js?v=23", html)
         self.assertIn("styles.css?v=45", html)
         self.assertIn('<details class="study-teach">', main)
         self.assertNotIn('<details class="study-teach" open', main)

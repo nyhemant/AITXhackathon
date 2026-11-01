@@ -336,7 +336,7 @@ class ElkEasyStudyCardTests(unittest.TestCase):
         self.assertIn('"id": "elk"', html)
         self.assertNotIn('"id": "american-bison"', html)
         self.assertNotIn("study-print-template", html)
-        self.assertIn("print-kit.js?v=22", html)
+        self.assertIn("print-kit.js?v=23", html)
         self.assertIn("styles.css?v=45", html)
         self.assertIn('<details class="study-teach">', main)
         self.assertNotIn('<details class="study-teach" open', main)
