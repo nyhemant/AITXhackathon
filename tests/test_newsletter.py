@@ -440,9 +440,8 @@ class NewsletterMarkupTests(unittest.TestCase):
         hub = (CARDS / "index.html").read_text(encoding="utf-8")
         start = START.read_text(encoding="utf-8")
         notice = (
-            "We only use it to send the weekly KidZooKit email. "
-            "We send the address to our email service (Kit) so Kit can deliver that email. "
-            "Unsubscribe any time with the link in every email."
+            "Your email is used only to send this weekly email. "
+            "Unsubscribe any time."
         )
 
         self.assertNotIn("quiz_finish", js)
@@ -488,6 +487,7 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertIn('href="/field-pack/css/newsletter-v1.css?v=2"', hub_page)
         self.assertIn("For grown-ups", hub_page)
         self.assertIn(notice, hub_page)
+        self.assertNotIn("email service (Kit)", hub_page)
         self.assertIn('href="/privacy/"', hub_page)
         self.assertIn('name="email_address"', hub_page)
         self.assertIn('name="website"', hub_page)
@@ -503,6 +503,7 @@ class NewsletterMarkupTests(unittest.TestCase):
             self.assertIn('src="/field-pack/js/newsletter-v1.js?v=2"', page, slug)
             self.assertIn("For grown-ups", page, slug)
             self.assertIn(notice, page, slug)
+            self.assertNotIn("email service (Kit)", page, slug)
             faq_end = page.find("</section>", page.find('id="before-you-print"'))
             box = page.find('class="kz-nl')
             self.assertLess(page.find('class="printbar"'), box, slug)
@@ -528,6 +529,9 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertNotIn("newsletter", card_src)
         self.assertNotIn("kz-nl", card_src)
         self.assertIn("def write_printable_newsletter(", gen)
+        self.assertIn("Your email is used only to send this weekly email.", gen)
+        self.assertIn('"Unsubscribe any time."', gen)
+        self.assertNotIn("email service (Kit)", gen)
 
     def test_privacy_names_kit_and_keeps_the_project_name(self):
         html = PRIVACY.read_text(encoding="utf-8")
