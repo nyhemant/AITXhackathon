@@ -28,7 +28,7 @@ from busyparent_agent.newsletter import (
     valid_email,
 )
 from busyparent_agent.rate_limit import RateLimiter, get_limiter, set_limiter
-from busyparent_agent.web import SECURITY_HEADERS, WebHandler
+from busyparent_agent.web import SECURITY_HEADERS, WebHandler, _safe_newsletter_path
 
 ROOT = Path(__file__).resolve().parents[1]
 CARDS = ROOT / "static" / "field-pack" / "cards"
@@ -483,8 +483,8 @@ class NewsletterMarkupTests(unittest.TestCase):
         hub_page = (printables / "index.html").read_text(encoding="utf-8")
         self.assertIn('data-placement="printables_hub"', hub_page)
         self.assertIn('value="printables_hub"', hub_page)
-        self.assertIn('src="/field-pack/js/newsletter-v1.js?v=2"', hub_page)
-        self.assertIn('href="/field-pack/css/newsletter-v1.css?v=2"', hub_page)
+        self.assertIn('src="/field-pack/js/newsletter-v1.js?v=3"', hub_page)
+        self.assertIn('href="/field-pack/css/newsletter-v1.css?v=3"', hub_page)
         self.assertIn("For grown-ups", hub_page)
         self.assertIn(notice, hub_page)
         self.assertNotIn("email service (Kit)", hub_page)
@@ -500,7 +500,7 @@ class NewsletterMarkupTests(unittest.TestCase):
             page = (printables / slug / "index.html").read_text(encoding="utf-8")
             self.assertIn('data-placement="printable_sheet"', page, slug)
             self.assertIn('value="printable_sheet"', page, slug)
-            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=2"', page, slug)
+            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=3"', page, slug)
             self.assertIn("For grown-ups", page, slug)
             self.assertIn(notice, page, slug)
             self.assertNotIn("email service (Kit)", page, slug)
@@ -514,6 +514,9 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertNotIn("newsletter-v1", start)
         self.assertNotIn("/api/newsletter", start)
         self.assertIn("Arya’s Wildlife Project", start)
+        self.assertIn('track("newsletter_sample_open", placement)', js)
+        self.assertIn("showModal", js)
+        self.assertIn('createElement("dialog")', js)
 
         css = CSS.read_text(encoding="utf-8")
         self.assertIn("min-height: 44px", css)
@@ -532,6 +535,70 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertIn("Your email is used only to send this weekly email.", gen)
         self.assertIn('"Unsubscribe any time."', gen)
         self.assertNotIn("email service (Kit)", gen)
+
+    def test_sample_email_link_page_and_sitemap(self):
+        notice = (
+            "Your email is used only to send this weekly email. "
+            "Unsubscribe any time."
+        )
+        sample_href = 'href="/newsletter/sample/"'
+        link = '<a class="kz-nl-sample" href="/newsletter/sample/">See a sample email</a>'
+        printables = ROOT / "static" / "printables"
+        pages = [printables / "index.html"]
+        for slug in ("scavenger-hunt", "animal-bingo", "zoo-day-journal"):
+            pages.append(printables / slug / "index.html")
+        for path in pages:
+            html = path.read_text(encoding="utf-8")
+            notice_at = html.find(notice)
+            privacy_at = html.find('href="/privacy/"', notice_at)
+            sample_at = html.find(sample_href, privacy_at)
+            self.assertGreater(notice_at, -1, path.name)
+            self.assertGreater(privacy_at, notice_at, path.name)
+            self.assertGreater(sample_at, privacy_at, path.name)
+            self.assertIn(link, html, path.name)
+            self.assertLess(html.find(">Privacy</a>"), sample_at, path.name)
+            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=3"', html, path.name)
+            self.assertIn('href="/field-pack/css/newsletter-v1.css?v=3"', html, path.name)
+
+        sample_path = ROOT / "static" / "newsletter" / "sample" / "index.html"
+        self.assertTrue(sample_path.is_file())
+        sample = sample_path.read_text(encoding="utf-8")
+        served = _safe_newsletter_path("/newsletter/sample/")
+        self.assertEqual(served, sample_path.resolve())
+        self.assertIn('content="noindex"', sample)
+        self.assertNotIn("<script", sample.lower())
+        self.assertNotIn("<img", sample.lower())
+        self.assertNotIn("utm_", sample)
+        self.assertNotIn("{{unsubscribe_url}}", sample)
+        # Sign-off and card links keep KidZooKit / kidzookit.com. The provider must not appear.
+        provider = re.sub(r"https://kidzookit\.com", "", sample)
+        provider = provider.replace("KidZooKit", "")
+        self.assertNotIn("kit.com", provider.lower())
+        self.assertNotIn("Kit", provider)
+        self.assertNotIn("Our ", sample)
+        self.assertIn("Every email has a one-click unsubscribe link.", sample)
+        self.assertIn("The zoo scavenger hunt has", sample)
+        self.assertIn("This week's animal: the red panda (it's not a bear)", sample)
+        self.assertIn("Hi there,", sample)
+        self.assertIn("Have a good week,", sample)
+        self.assertIn("KidZooKit", sample)
+        text = re.sub(r"<[^>]+>", " ", sample)
+        text = re.sub(r"\s+", " ", text)
+        self.assertNotRegex(text, r"\b[Oo]ur\b")
+        self.assertNotRegex(text, r"\b[Ww]e\b")
+        for sitemap in (
+            ROOT / "static" / "sitemap.xml",
+            ROOT / "static" / "field-pack" / "sitemap.xml",
+        ):
+            locs = sitemap.read_text(encoding="utf-8")
+            self.assertNotIn("/newsletter/sample/", locs)
+            self.assertNotIn("/newsletter/", locs)
+
+        gen = (ROOT / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
+        self.assertIn('href="/newsletter/sample/"', gen)
+        self.assertIn("See a sample email", gen)
+        self.assertIn("newsletter-v1.js?v=3", gen)
+        self.assertIn("newsletter-v1.css?v=3", gen)
 
     def test_privacy_names_kit_and_keeps_the_project_name(self):
         html = PRIVACY.read_text(encoding="utf-8")

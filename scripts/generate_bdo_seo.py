@@ -6246,8 +6246,8 @@ def patch_places_data_hrefs(venues: list[dict]) -> None:
     print("  patched places-data.js hrefs → /field-pack/<id>/")
 
 
-NEWSLETTER_JS_HREF = "/field-pack/js/newsletter-v1.js?v=2"
-NEWSLETTER_CSS_HREF = "/field-pack/css/newsletter-v1.css?v=2"
+NEWSLETTER_JS_HREF = "/field-pack/js/newsletter-v1.js?v=3"
+NEWSLETTER_CSS_HREF = "/field-pack/css/newsletter-v1.css?v=3"
 NEWSLETTER_NOTICE = (
     "Your email is used only to send this weekly email. "
     "Unsubscribe any time."
@@ -6273,7 +6273,8 @@ def newsletter_parent_form(placement: str) -> str:
         f'      <label for="kz-nl-email-{suffix}">Your email</label>\n'
         f'      <input id="kz-nl-email-{suffix}" name="email_address" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com" aria-describedby="kz-nl-privacy-{suffix} kz-nl-msg-{suffix}">\n'
         f'      <p class="kz-nl-privacy" id="kz-nl-privacy-{suffix}">{NEWSLETTER_NOTICE} '
-        f'<a href="/privacy/">Privacy</a></p>\n'
+        f'<a href="/privacy/">Privacy</a> '
+        f'<a class="kz-nl-sample" href="/newsletter/sample/">See a sample email</a></p>\n'
         f"    </div>\n"
         f'    <div class="kz-nl-actions">\n'
         f'      <button class="kz-nl-submit" type="submit">Send me the weekly email</button>\n'
@@ -6288,9 +6289,17 @@ def newsletter_parent_form(placement: str) -> str:
     )
 
 
+_NEWSLETTER_ASSET_RE = {
+    "css": re.compile(r'href="/field-pack/css/newsletter-v1\.css\?v=\d+"'),
+    "js": re.compile(r'src="/field-pack/js/newsletter-v1\.js\?v=\d+"'),
+}
+
+
 def _ensure_newsletter_asset(html: str, kind: str, href: str) -> str:
-    if href in html:
-        return html
+    pattern = _NEWSLETTER_ASSET_RE[kind]
+    attr = "href" if kind == "css" else "src"
+    if pattern.search(html):
+        return pattern.sub(f'{attr}="{href}"', html, count=1)
     if kind == "css":
         tag = f'  <link rel="stylesheet" href="{href}" />\n'
         return html.replace("</head>", tag + "</head>", 1)
@@ -6306,6 +6315,20 @@ def _ensure_newsletter_asset(html: str, kind: str, href: str) -> str:
     if html[end : end + 1] == "\n":
         end += 1
     return html[:end] + tag + html[end:]
+
+
+def _ensure_sample_link(html: str) -> str:
+    """Keep the sample link immediately after the Privacy link on an existing box."""
+    if 'href="/newsletter/sample/"' in html:
+        return html
+    needle = '<a href="/privacy/">Privacy</a>'
+    if needle not in html:
+        raise SystemExit("newsletter privacy link missing")
+    return html.replace(
+        needle,
+        needle + ' <a class="kz-nl-sample" href="/newsletter/sample/">See a sample email</a>',
+        1,
+    )
 
 
 def _insert_newsletter_form(html: str, placement: str) -> str:
@@ -6343,6 +6366,7 @@ def write_printable_newsletter() -> None:
         html = _ensure_newsletter_asset(html, "css", NEWSLETTER_CSS_HREF)
         html = _ensure_newsletter_asset(html, "js", NEWSLETTER_JS_HREF)
         html = _insert_newsletter_form(html, placement)
+        html = _ensure_sample_link(html)
         path.write_text(html, encoding="utf-8")
 
 
