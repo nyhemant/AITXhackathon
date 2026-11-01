@@ -1,4 +1,4 @@
-"""Same-origin Kit newsletter proxy and the two signup boxes."""
+"""Same-origin Kit newsletter proxy and the grown-up signup box."""
 
 from __future__ import annotations
 
@@ -15,10 +15,13 @@ from urllib.parse import parse_qs
 from busyparent_agent.newsletter import (
     KIT_FORM_SUBSCRIBE_URL,
     KIT_TIMEOUT_SECONDS,
+    NEWSLETTER_LIMIT,
+    NEWSLETTER_WINDOW_SECONDS,
     KitPostResult,
     NewsletterResult,
     handle_newsletter,
     parse_form_body,
+    placement_label,
     post_kit_subscription,
     reset_newsletter_limits,
     response_for,
@@ -197,7 +200,7 @@ class NewsletterProxyTests(unittest.TestCase):
             failed_body = b'{"status":"failed","errors":{"email_address":["parent@example.com is invalid"]}}'
             with patch("busyparent_agent.newsletter._open_kit", return_value=self._open_returning(200, failed_body)):
                 result = handle_newsletter(
-                    {"email_address": EMAIL, "website": "", "placement": "quiz_finish"},
+                    {"email_address": EMAIL, "website": "", "placement": "printable_sheet"},
                     "203.0.113.77",
                 )
             self.assertFalse(result.ok)
@@ -208,7 +211,7 @@ class NewsletterProxyTests(unittest.TestCase):
         blob = "\n".join(records)
         self.assertNotIn(EMAIL, blob)
         self.assertIn("outcome=failed", blob)
-        self.assertIn("placement=quiz_finish", blob)
+        self.assertIn("placement=printable_sheet", blob)
         self.assertEqual(blob.count("outcome="), 1)
 
     def test_logs_omit_the_email(self):
@@ -374,51 +377,137 @@ class NewsletterProxyTests(unittest.TestCase):
         self.assertNotIn("kit.com", csp)
         self.assertNotIn("convertkit.com", csp)
 
+    def test_parent_placements_only(self):
+        self.assertEqual(placement_label("printables_hub"), "printables_hub")
+        self.assertEqual(placement_label("printable_sheet"), "printable_sheet")
+        self.assertEqual(placement_label("quiz_finish"), "other")
+        self.assertEqual(placement_label("cards_hub_aotd"), "other")
+        self.assertEqual(placement_label("parent@example.com"), "other")
+
+    def test_redirect_urls_never_carry_the_address(self):
+        """No-JS thanks/oops URLs are fixed paths. The address is not a query parameter."""
+        email = "unique-parent-9f3a@example.com"
+        fixed = (
+            NewsletterResult(ok=True, status=200),
+            NewsletterResult(ok=True, status=200, already=True),
+            NewsletterResult(ok=False, status=400, error="invalid_email"),
+            NewsletterResult(ok=False, status=429, error="rate_limited"),
+            NewsletterResult(ok=False, status=502, error="unavailable"),
+            NewsletterResult(ok=False, status=400, error=email),
+        )
+        for result in fixed:
+            spec = response_for(result, wants_json=False)
+            self.assertNotIn(email, spec["location"])
+            self.assertNotIn("@", spec["location"])
+            query = spec["location"].split("?", 1)[1] if "?" in spec["location"] else ""
+            self.assertNotIn("email_address", query)
+            self.assertNotIn(email, query)
+        ok = handle_newsletter(
+            {"email_address": email, "website": "", "placement": "printables_hub"},
+            "203.0.113.50",
+            poster=lambda _address: KitPostResult(ok=True),
+        )
+        thanks = response_for(ok, wants_json=False)
+        self.assertEqual(thanks["location"], "/newsletter/thanks/")
+        self.assertNotIn(email, thanks["location"])
+        bad = handle_newsletter(
+            {"email_address": "not-an-email", "website": "", "placement": "printable_sheet"},
+            "203.0.113.51",
+            poster=lambda _address: (_ for _ in ()).throw(AssertionError("invalid email must not forward")),
+        )
+        oops = response_for(bad, wants_json=False)
+        self.assertEqual(oops["location"], "/newsletter/oops/?reason=email")
+        self.assertNotIn("@", oops["location"])
+        self.assertNotIn("email_address", oops["location"])
+
+    def test_signup_limit_is_an_in_memory_ip_counter(self):
+        """The newsletter limiter stores IP keys and timestamps in process memory only."""
+        src = (ROOT / "src" / "busyparent_agent" / "newsletter.py").read_text(encoding="utf-8")
+        fn = src.split("def newsletter_rate_limited", 1)[1].split("\ndef ", 1)[0]
+        self.assertEqual(NEWSLETTER_LIMIT, 5)
+        self.assertEqual(NEWSLETTER_WINDOW_SECONDS, 3600.0)
+        self.assertIn("_MAX_IPS = 8000", src)
+        self.assertIn('_hits: dict[str, deque[float]]', src)
+        self.assertIn('key = (ip or "unknown").strip()[:64] or "unknown"', fn)
+        self.assertNotIn("open(", fn)
+        self.assertNotIn("write", fn)
+        self.assertNotIn("email", fn)
+
 
 class NewsletterMarkupTests(unittest.TestCase):
-    def test_box_on_card_pages_and_hub_not_on_start(self):
+    def test_box_on_printables_only_not_on_cards_or_start(self):
         js = JS.read_text(encoding="utf-8")
         hub = (CARDS / "index.html").read_text(encoding="utf-8")
         start = START.read_text(encoding="utf-8")
-        card = (CARDS / "red-panda" / "index.html").read_text(encoding="utf-8")
+        notice = (
+            "We only use it to send the weekly KidZooKit email. "
+            "We send the address to our email service (Kit) so Kit can deliver that email. "
+            "Unsubscribe any time with the link in every email."
+        )
 
-        self.assertIn('src="/field-pack/js/newsletter-v1.js?v=1"', card)
-        self.assertIn('href="/field-pack/css/newsletter-v1.css?v=1"', card)
-        self.assertIn('value="quiz_finish"', js)
-        self.assertIn('name="email_address"', js)
-        self.assertIn('name="website"', js)
-        self.assertIn("One animal + a quiz each week", js)
-        self.assertIn("study-finish", js)
-        self.assertIn("afterend", js)
-        self.assertIn('class="kz-nl kz-nl--quiz no-print"', js)
+        self.assertNotIn("quiz_finish", js)
+        self.assertNotIn("cards_hub_aotd", js)
+        self.assertNotIn("study-finish", js)
+        self.assertNotIn("afterend", js)
         self.assertNotIn("gtag", js)
+        self.assertIn('value === "printables_hub"', js)
+        self.assertIn('value === "printable_sheet"', js)
         self.assertIn("FPTrack", js)
         self.assertIn("OneLessAnalytics", js)
         self.assertIn('json.ok === true', js)
-        self.assertIn('track("sign_up"', js)
+        self.assertIn('track("sign_up", placement)', js)
         self.assertIn("newsletter_view", js)
         self.assertIn('localStorage.setItem(key, "1")', js)
+        self.assertIn('indexOf("@")', js)
+        track_fn = js.split("function track(", 1)[1].split("function watchView", 1)[0]
+        self.assertNotIn(".value", track_fn)
+        self.assertNotIn("querySelector", track_fn)
+        self.assertIn('params = { placement: cleanPlacement(placement) }', track_fn)
+        self.assertIn('key === "email_address"', track_fn)
+        self.assertIn('params.method = "newsletter"', track_fn)
+        for call in re.findall(r"track\(([^)]*)\)", js):
+            self.assertNotIn("email", call)
+            self.assertNotIn("@", call)
 
-        study_pages = [p for p in CARDS.glob("*/index.html") if "study-card.js" in p.read_text(encoding="utf-8")]
-        self.assertGreaterEqual(len(study_pages), 42)
-        for path in study_pages:
+        for path in CARDS.glob("*/index.html"):
             html = path.read_text(encoding="utf-8")
-            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=1"', html, path.name)
-            self.assertIn('href="/field-pack/css/newsletter-v1.css?v=1"', html, path.name)
+            self.assertNotIn("kz-nl", html, path.parent.name)
+            self.assertNotIn("newsletter-v1", html, path.parent.name)
+        self.assertNotIn("kz-nl", hub)
+        self.assertNotIn("newsletter-v1", hub)
+        self.assertIn('id="aotd"', hub)
+        self.assertIn("Animal of the day", hub)
+        study = (ROOT / "static" / "field-pack" / "js" / "study-card.js").read_text(encoding="utf-8")
+        self.assertIn("Meet a new animal", study)
 
-        museum = (CARDS / "cm-art-lab" / "index.html").read_text(encoding="utf-8")
-        self.assertNotIn("newsletter-v1", museum)
+        printables = ROOT / "static" / "printables"
+        hub_page = (printables / "index.html").read_text(encoding="utf-8")
+        self.assertIn('data-placement="printables_hub"', hub_page)
+        self.assertIn('value="printables_hub"', hub_page)
+        self.assertIn('src="/field-pack/js/newsletter-v1.js?v=2"', hub_page)
+        self.assertIn('href="/field-pack/css/newsletter-v1.css?v=2"', hub_page)
+        self.assertIn("For grown-ups", hub_page)
+        self.assertIn(notice, hub_page)
+        self.assertIn('href="/privacy/"', hub_page)
+        self.assertIn('name="email_address"', hub_page)
+        self.assertIn('name="website"', hub_page)
+        self.assertIn('aria-live="polite"', hub_page)
+        self.assertLess(hub_page.rfind("Print PDF"), hub_page.find('class="kz-nl'))
+        self.assertLess(hub_page.find("Printing tips"), hub_page.find('class="kz-nl'))
+        self.assertNotRegex(hub_page, r"(?i)\bfree\b")
 
-        self.assertIn('data-placement="cards_hub_aotd"', hub)
-        self.assertIn('name="email_address"', hub)
-        self.assertIn('name="website"', hub)
-        self.assertIn('value="cards_hub_aotd"', hub)
-        self.assertIn("Send me the weekly animal", hub)
-        self.assertIn('href="/privacy/"', hub)
-        self.assertIn('aria-live="polite"', hub)
-        self.assertLess(hub.find("<!-- /kz-aotd -->"), hub.find('data-placement="cards_hub_aotd"'))
-        self.assertLess(hub.find('data-placement="cards_hub_aotd"'), hub.find('id="cards-play"'))
-        self.assertNotIn("No thanks", hub)
+        for slug in ("scavenger-hunt", "animal-bingo", "zoo-day-journal"):
+            page = (printables / slug / "index.html").read_text(encoding="utf-8")
+            self.assertIn('data-placement="printable_sheet"', page, slug)
+            self.assertIn('value="printable_sheet"', page, slug)
+            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=2"', page, slug)
+            self.assertIn("For grown-ups", page, slug)
+            self.assertIn(notice, page, slug)
+            faq_end = page.find("</section>", page.find('id="before-you-print"'))
+            box = page.find('class="kz-nl')
+            self.assertLess(page.find('class="printbar"'), box, slug)
+            self.assertLess(faq_end, box, slug)
+            self.assertNotRegex(page, r"(?i)\bfree\b")
 
         self.assertNotIn("kz-nl", start)
         self.assertNotIn("newsletter-v1", start)
@@ -431,6 +520,15 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertIn("left: -9999px", css)
         self.assertNotIn("display: none", css.split(".kz-nl-hp")[1].split("}")[0])
 
+        gen = (ROOT / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
+        hub_src = gen.split("def write_cards_hub(", 1)[1].split("\ndef write_card_pages(", 1)[0]
+        card_src = gen.split("def write_card_pages(", 1)[1].split("\ndef ", 1)[0]
+        self.assertNotIn("newsletter", hub_src)
+        self.assertNotIn("kz-nl", hub_src)
+        self.assertNotIn("newsletter", card_src)
+        self.assertNotIn("kz-nl", card_src)
+        self.assertIn("def write_printable_newsletter(", gen)
+
     def test_privacy_names_kit_and_keeps_the_project_name(self):
         html = PRIVACY.read_text(encoding="utf-8")
         text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))
@@ -439,6 +537,23 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertIn("double opt-in", text)
         self.assertIn("unsubscribe any time", text.lower())
         self.assertIn("We never ask for or store anything about children", text)
+        self.assertIn("pages for grown-ups", text)
+        self.assertIn("How long we keep things", text)
+        self.assertIn("14 months", text)
+        self.assertIn("property’s retention setting", text)
+        self.assertIn("No names or email addresses are sent to Google Analytics", text)
+        self.assertIn("aggregate visit counts", text)
+        self.assertIn("while you are subscribed", text)
+        self.assertIn("reply to any weekly email", text)
+        self.assertIn("kidzookit@agentmail.to", html)
+        self.assertIn("we will delete it from Kit", text)
+        self.assertIn("in-memory counter", text)
+        self.assertIn("Nothing is written to disk", text)
+        self.assertIn("one hour", text)
+        self.assertIn("trimmed to 64 characters", text)
+        self.assertIn("8,000", text)
+        self.assertNotIn("30 days", text)
+        self.assertNotIn("not combined", text.lower())
         self.assertNotRegex(text, r"(?i)\bfree\b")
         about = (ROOT / "static" / "about" / "index.html").read_text(encoding="utf-8")
         self.assertIn("Arya’s Wildlife Project", about)

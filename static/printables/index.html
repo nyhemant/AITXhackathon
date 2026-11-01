@@ -73,6 +73,7 @@
   <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CollectionPage","name":"Play & Learn Printables for Kids","url":"https://kidzookit.com/printables/","description":"Play-and-learn printable PDFs for kids in US Letter and A4: zoo and park scavenger hunts, animal bingo, carpool sheet, zoo day journal, teacher handout, and chaperone card."}
   </script>
+  <link rel="stylesheet" href="/field-pack/css/newsletter-v1.css?v=2" />
 </head>
 <body>
   <header class="oneless-shell no-print" data-product="bdo">
@@ -142,10 +143,30 @@
           <li>Want more? Try the <a href="/field-pack/virtual-field-trip/">virtual field trip</a> or browse <a href="/field-pack/cards/">animal cards</a>.</li>
         </ul>
       </section>
+      <form class="kz-nl kz-nl--parent no-print" action="/api/newsletter" method="post" data-placement="printables_hub" novalidate aria-labelledby="kz-nl-h-printables">
+        <h2 class="kz-nl-h" id="kz-nl-h-printables">For grown-ups</h2>
+        <p class="kz-nl-sub">One animal card, a short quiz, and a printable, once a week.</p>
+        <div class="kz-nl-fields">
+          <div class="kz-nl-field">
+            <label for="kz-nl-email-printables">Your email</label>
+            <input id="kz-nl-email-printables" name="email_address" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com" aria-describedby="kz-nl-privacy-printables kz-nl-msg-printables">
+            <p class="kz-nl-privacy" id="kz-nl-privacy-printables">We only use it to send the weekly KidZooKit email. We send the address to our email service (Kit) so Kit can deliver that email. Unsubscribe any time with the link in every email. <a href="/privacy/">Privacy</a></p>
+          </div>
+          <div class="kz-nl-actions">
+            <button class="kz-nl-submit" type="submit">Send me the weekly email</button>
+            <button class="kz-nl-dismiss" type="button">No thanks</button>
+          </div>
+        </div>
+        <div class="kz-nl-hp" aria-hidden="true"><label for="kz-nl-website-printables">Website</label>
+          <input id="kz-nl-website-printables" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <input type="hidden" name="placement" value="printables_hub">
+        <p class="kz-nl-msg" id="kz-nl-msg-printables" role="status" aria-live="polite"></p>
+      </form>
       <footer>Look, don't touch, and keep a quiet distance from wildlife.</footer>
     </main>
   </div>
   <script src="/shell/shell.js?v=6"></script>
+  <script src="/field-pack/js/newsletter-v1.js?v=2"></script>
   <script src="/shell/qr-welcome.js?v=3"></script>
 </body>
 </html>

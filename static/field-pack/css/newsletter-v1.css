@@ -160,6 +160,33 @@
   margin-bottom: 8px;
   font-size: 0.9rem;
 }
+.kz-nl--parent {
+  margin-top: 1.25rem;
+  padding: 12px 14px;
+  border: 1px solid rgba(15, 92, 92, 0.22);
+  border-radius: 14px;
+  background: #fff;
+}
+.kz-nl--parent .kz-nl-privacy {
+  margin-top: 6px;
+}
+@media (min-width: 720px) {
+  .kz-nl--parent .kz-nl-field {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(14rem, 1fr);
+    column-gap: 16px;
+    align-items: start;
+  }
+  .kz-nl--parent .kz-nl-field label,
+  .kz-nl--parent .kz-nl-field input {
+    grid-column: 1;
+  }
+  .kz-nl--parent .kz-nl-privacy {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin: 0;
+  }
+}
 @media (min-width: 720px) {
   .kz-nl--hub .kz-nl-fields {
     display: flex;
