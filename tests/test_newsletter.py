@@ -484,7 +484,7 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertIn('data-placement="printables_hub"', hub_page)
         self.assertIn('value="printables_hub"', hub_page)
         self.assertIn('src="/field-pack/js/newsletter-v1.js?v=3"', hub_page)
-        self.assertIn('href="/field-pack/css/newsletter-v1.css?v=3"', hub_page)
+        self.assertIn('href="/field-pack/css/newsletter-v1.css?v=4"', hub_page)
         self.assertIn("For grown-ups", hub_page)
         self.assertIn(notice, hub_page)
         self.assertNotIn("email service (Kit)", hub_page)
@@ -558,7 +558,7 @@ class NewsletterMarkupTests(unittest.TestCase):
             self.assertIn(link, html, path.name)
             self.assertLess(html.find(">Privacy</a>"), sample_at, path.name)
             self.assertIn('src="/field-pack/js/newsletter-v1.js?v=3"', html, path.name)
-            self.assertIn('href="/field-pack/css/newsletter-v1.css?v=3"', html, path.name)
+            self.assertIn('href="/field-pack/css/newsletter-v1.css?v=4"', html, path.name)
 
         sample_path = ROOT / "static" / "newsletter" / "sample" / "index.html"
         self.assertTrue(sample_path.is_file())
@@ -567,7 +567,17 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertEqual(served, sample_path.resolve())
         self.assertIn('content="noindex"', sample)
         self.assertNotIn("<script", sample.lower())
-        self.assertNotIn("<img", sample.lower())
+        heading_end = sample.find("</h1>")
+        hi_there = sample.find("Hi there,")
+        photo = sample[heading_end:hi_there]
+        img = re.search(r"<img\b[^>]*>", photo, flags=re.I)
+        self.assertIsNotNone(img)
+        tag = img.group(0)
+        self.assertIn('alt="A red panda"', tag)
+        self.assertIn('width="960"', tag)
+        self.assertIn('height="640"', tag)
+        self.assertIn('src="/field-pack/photos/red-panda.jpg?v=img2"', tag)
+        self.assertIn("/field-pack/photos/red-panda-960-v1.webp", photo)
         self.assertNotIn("utm_", sample)
         self.assertNotIn("{{unsubscribe_url}}", sample)
         # Sign-off and card links keep KidZooKit / kidzookit.com. The provider must not appear.
@@ -598,7 +608,7 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertIn('href="/newsletter/sample/"', gen)
         self.assertIn("See a sample email", gen)
         self.assertIn("newsletter-v1.js?v=3", gen)
-        self.assertIn("newsletter-v1.css?v=3", gen)
+        self.assertIn("newsletter-v1.css?v=4", gen)
 
     def test_privacy_names_kit_and_keeps_the_project_name(self):
         html = PRIVACY.read_text(encoding="utf-8")
