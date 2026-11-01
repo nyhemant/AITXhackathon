@@ -6247,7 +6247,7 @@ def patch_places_data_hrefs(venues: list[dict]) -> None:
 
 
 NEWSLETTER_JS_HREF = "/field-pack/js/newsletter-v1.js?v=3"
-NEWSLETTER_CSS_HREF = "/field-pack/css/newsletter-v1.css?v=3"
+NEWSLETTER_CSS_HREF = "/field-pack/css/newsletter-v1.css?v=4"
 NEWSLETTER_NOTICE = (
     "Your email is used only to send this weekly email. "
     "Unsubscribe any time."

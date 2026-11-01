@@ -336,6 +336,16 @@ html.kz-nl-modal-open body {
   font-size: clamp(1.2rem, 4vw, 1.6rem);
   line-height: 1.25;
 }
+.kz-sample-email .kz-sample-photo {
+  margin: 0 0 14px;
+}
+.kz-sample-email .kz-sample-photo img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
 .kz-sample-email p {
   margin: 0 0 12px;
 }
