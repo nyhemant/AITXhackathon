@@ -63,6 +63,8 @@ MIN_PLACE_INBOUND = 3
 MAX_PLACE_PICKS = 6
 QUIZ_PRINTABLES = ROOT / "data" / "quiz_printables.json"
 START_TRIPS = ["bronx-zoo", "houston-zoo", "monterey-bay-aquarium", "shedd-aquarium", "yellowstone", "great-smoky-mountains"]
+# Museums already featured on science cards (AMNH, Field, Smithsonian NHM). Not a long list.
+START_MUSEUMS = ["amnh", "field-museum", "smithsonian-natural-history"]
 
 E = lambda s: html.escape(str(s), quote=True)  # noqa: E731
 
@@ -322,12 +324,21 @@ def do_cards(places, cards):
     return report
 
 
+def _start_trip_line(places, slugs, label):
+    links = '<span aria-hidden="true"> · </span>'.join(
+        f'<a href="/field-pack/{slug}/" data-related-link="start_trip">{E(places[slug]["name"])}</a>' for slug in slugs)
+    return f'<p class="start-open-cards start-popular-trips"><span class="start-open-label">{E(label)}</span>\n      {links}\n    </p>'
+
+
 def do_start(places):
     f = STATIC / "start" / "index.html"
     s = strip_block(f.read_text(encoding="utf-8"), "start-trips")
-    links = '<span aria-hidden="true"> · </span>'.join(
-        f'<a href="/field-pack/{slug}/" data-related-link="start_trip">{E(places[slug]["name"])}</a>' for slug in START_TRIPS)
-    line = f'\n    ' + wrap("start-trips", f'<p class="start-open-cards start-popular-trips"><span class="start-open-label">Popular trips:</span>\n      {links}\n    </p>')
+    line = f'\n    ' + wrap(
+        "start-trips",
+        _start_trip_line(places, START_TRIPS, "Popular trips:")
+        + "\n    "
+        + _start_trip_line(places, START_MUSEUMS, "Museums:"),
+    )
     s, n = re.subn(r'(<nav class="start-chapter-pills" aria-label="Going this week">.*?</nav>)', lambda m: m.group(1) + line, s, count=1, flags=re.S)
     if not n:
         raise SystemExit("start anchor missing")
