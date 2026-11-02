@@ -429,6 +429,18 @@ body.start-body {
   margin: 0;
 }
 
+.start-answer {
+  margin: 0.45rem 0 0;
+  max-width: 36rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  color: rgba(255, 252, 247, 0.94);
+  text-shadow: 0 1px 12px rgba(12, 10, 8, 0.55);
+}
+
 .start-trust {
   margin: 0.5rem 0 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
@@ -1250,6 +1262,10 @@ body.start-body {
   .start-here-arrow {
     width: 2.7rem;
     height: 1.22rem;
+  }
+
+  .start-answer {
+    font-size: 0.88rem;
   }
 
   .start-trust {

@@ -72,7 +72,7 @@ class OriginCacheTests(unittest.TestCase):
         for path in (
             "/field-pack/css/landing.css?v=104",
             "/shell/shell.js?v=6",
-            "/start/start.css?v=79",
+            "/start/start.css?v=80",
             "/start/start.js?v=39",
             "/field-pack/js/fp-analytics.js?v=1",
         ):

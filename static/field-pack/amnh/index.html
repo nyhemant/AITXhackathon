@@ -31,6 +31,18 @@
 {"@context": "https://schema.org", "@type": "Article", "headline": "American Museum of Natural History for Kids — Explore at Home or Print a Hunt", "description": "American Museum of Natural History in New York: animal cards, talk prompts, photos, and live cams at home. Optional printable hunt — KidZooKit.", "author": {"@type": "Organization", "name": "KidZooKit"}, "publisher": {"@type": "Organization", "name": "KidZooKit", "url": "https://kidzookit.com"}, "mainEntityOfPage": "https://kidzookit.com/field-pack/amnh/", "about": {"@type": "Place", "name": "American Museum of Natural History", "address": "New York, New York"}}
   </script>
   <link rel="stylesheet" href="/field-pack/css/link-mesh.css?v=1" />
+  <style>
+    /* Print CTA sits under the title on a phone so it is on screen at 390px wide. */
+    @media (max-width: 480px) {
+      .seo-venue-body .seo-hero { display: flex; flex-direction: column; }
+      .seo-venue-body .seo-hero > * { order: 5; }
+      .seo-venue-body .seo-hero > .promise-pill { order: 1; }
+      .seo-venue-body .seo-hero > h1 { order: 2; }
+      .seo-venue-body .seo-hero > .seo-fork-wrap { order: 3; }
+      .seo-venue-body .seo-hero > .lead { order: 4; }
+      .seo-venue-body .seo-fork-card { min-height: 0; }
+    }
+  </style>
   <!-- kz-mesh:crumb-ld --><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "KidZooKit", "item": "https://kidzookit.com/start/"}, {"@type": "ListItem", "position": 2, "name": "All places", "item": "https://kidzookit.com/field-pack/"}, {"@type": "ListItem", "position": 3, "name": "Museums", "item": "https://kidzookit.com/field-pack/museums/"}, {"@type": "ListItem", "position": 4, "name": "American Museum of Natural History", "item": "https://kidzookit.com/field-pack/amnh/"}]}</script><!-- /kz-mesh:crumb-ld -->
 </head>
 <body class="landing-body seo-venue-body mission-venue-body" data-content-mode="curated">

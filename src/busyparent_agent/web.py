@@ -7,7 +7,7 @@ import argparse
 import json
 import re
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+from urllib.parse import parse_qsl, unquote, urlencode, urlsplit
 from uuid import uuid4
 
 from busyparent_agent.newsletter import (
@@ -1277,6 +1277,61 @@ def _keep_query(location: str, raw_path: str) -> str:
     return location + "?" + query
 
 
+def _normalize_malformed_utm_query(query: str) -> str | None:
+    """Query string with stray backticks removed from utm values.
+
+    Some printed QR codes put a trailing backtick on the utm_source value qr.
+    Those visits should land as utm_source=printable and utm_medium=qr,
+    matching the QR codes in static/printables/qr/. Other parameters stay.
+    A clean utm_source of qr, with no backtick, is left alone.
+
+    Returns the replacement query, or None when nothing is malformed.
+    """
+    if not query or ("`" not in query and "%60" not in query.lower()):
+        return None
+    pairs = parse_qsl(query, keep_blank_values=True)
+    cleaned: list[tuple[str, str]] = []
+    bad_qr_source = False
+    changed = False
+    for key, value in pairs:
+        original = value
+        if "`" in value:
+            value = value.replace("`", "").strip()
+            changed = True
+        if key == "utm_source" and "`" in original and value == "qr":
+            value = "printable"
+            bad_qr_source = True
+            changed = True
+        cleaned.append((key, value))
+    if bad_qr_source:
+        if any(key == "utm_medium" for key, _value in cleaned):
+            cleaned = [("utm_medium", "qr") if key == "utm_medium" else (key, value) for key, value in cleaned]
+        else:
+            inserted: list[tuple[str, str]] = []
+            for key, value in cleaned:
+                inserted.append((key, value))
+                if key == "utm_source":
+                    inserted.append(("utm_medium", "qr"))
+            cleaned = inserted
+        changed = True
+    if not changed:
+        return None
+    new_query = urlencode(cleaned, doseq=True)
+    if new_query == query:
+        return None
+    return new_query
+
+
+def malformed_utm_location(raw_path: str) -> str | None:
+    """Same path with a cleaned query, when a utm value carries a backtick."""
+    parts = urlsplit(raw_path)
+    new_query = _normalize_malformed_utm_query(parts.query)
+    if new_query is None:
+        return None
+    path = parts.path or "/"
+    return path + "?" + new_query if new_query else path
+
+
 def _send_redirect(handler: "WebHandler", location: str, *, code: int = 301) -> None:
     handler.send_response(code)
     handler.send_header("Location", location)
@@ -1391,6 +1446,19 @@ class WebHandler(BaseHTTPRequestHandler):
         _send_redirect(self, location, code=301)
         return True
 
+    def _redirect_if_malformed_utm(self) -> bool:
+        """301 a stray backtick in a utm value to the printable/qr pair.
+
+        Printed QR codes that already encode a backtick after the source qr
+        keep working: the path stays, other parameters stay, and the source
+        becomes printable with medium qr.
+        """
+        location = malformed_utm_location(self.path)
+        if not location:
+            return False
+        _send_redirect(self, location, code=301)
+        return True
+
     def _redirect_start_home(self) -> None:
         """Permanent redirect so ``/`` is not a second indexable homepage.
 
@@ -1441,6 +1509,8 @@ class WebHandler(BaseHTTPRequestHandler):
         if self._redirect_if_public_host():
             return
         if self._redirect_if_plain_http():
+            return
+        if self._redirect_if_malformed_utm():
             return
         path = urlsplit(self.path).path
         if path == "/analytics/off":
@@ -1653,6 +1723,8 @@ class WebHandler(BaseHTTPRequestHandler):
         if self._redirect_if_public_host():
             return
         if self._redirect_if_plain_http():
+            return
+        if self._redirect_if_malformed_utm():
             return
         path = urlsplit(self.path).path
         if path in {"/", "/index.html"}:

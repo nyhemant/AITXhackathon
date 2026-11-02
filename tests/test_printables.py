@@ -79,7 +79,12 @@ class PrintablesIntegrationTests(unittest.TestCase):
 class PrintablesWordingTests(unittest.TestCase):
     def test_no_free_wording_and_new_copy(self):
         html = (PRINTABLES_ROOT / "index.html").read_text()
-        self.assertNotIn("free", html.lower())
+        # Opening answer may say the printables are free. No other "free" hook.
+        allowed = (
+            "kidzookit is a free printable zoo, aquarium, and museum field trip kit "
+            "and animal study cards with quizzes, for kids about 4–8. printables are free."
+        )
+        self.assertNotIn("free", html.lower().replace(allowed, ""))
         self.assertIn("<h1>Play &amp; Learn Printables for Kids</h1>", html)
         self.assertIn("For home and classroom use; please link rather than re-host.", html)
         start = (PRINTABLES_ROOT.parent / "start" / "index.html").read_text()
