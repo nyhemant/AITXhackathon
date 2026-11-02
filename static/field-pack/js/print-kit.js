@@ -943,8 +943,10 @@
     const letters = ["A", "B", "C"];
     const qs = (deck && deck.questions) || [];
     const teach = (deck && deck.teach) || [];
+    const levelLabel = (deck && (deck.level_label || studyLevelName(deck.level))) || studyLevelName("easy");
+    const teachLabel = levelLabel;
     const teachHtml = teach.length
-      ? `<div class="ps-study-teach"><p class="ps-talk-label">Quick tips (Junior Ranger)</p><ul>${teach
+      ? `<div class="ps-study-teach"><p class="ps-talk-label">Quick tips (${escapeHtml(teachLabel)})</p><ul>${teach
           .map((t) => `<li>${escapeHtml(t)}</li>`)
           .join("")}</ul></div>`
       : "";
@@ -993,7 +995,6 @@
         : "";
     const source = (deck && deck.source_note) || "Facts from Wikipedia, Lion.";
     const wiki = (deck && deck.source) || "https://en.wikipedia.org/wiki/Lion";
-    const levelLabel = (deck && (deck.level_label || studyLevelName(deck.level))) || studyLevelName("easy");
     return `<div class="ps-study-front ps-page">
       <div class="ps-banner"><h2>KIDZOOKIT</h2>
       <p>${escapeHtml(name)} · ${escapeHtml(levelLabel)} · Circle one · Flip for answers</p></div>

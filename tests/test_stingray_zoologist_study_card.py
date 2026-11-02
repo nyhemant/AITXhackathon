@@ -152,7 +152,7 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_STINGRAY)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Stingray. Where sources disagree on exact numbers, we keep them approximate.")
-        self.assertEqual(deck["teach"], [])
+        self.assertGreaterEqual(len(deck["teach"]), 2)
         self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_STINGRAY_ZOOLOGIST, deck["level"]))
         self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_STINGRAY_ZOOLOGIST, deck["level"]))
         self.assertEqual(len(deck["questions"]), ZOOLOGIST_SLOTS)
@@ -175,8 +175,8 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(validate_deck(hard), [])
         self.assertEqual(validate_deck(zoo), [])
         broken_zoo = dict(zoo)
-        broken_zoo["teach"] = ["A leftover teach line."]
-        self.assertIn("zoologist deck must not include a teach strip", validate_deck(broken_zoo))
+        broken_zoo["teach"] = []
+        self.assertIn("teach strip empty", validate_deck(broken_zoo))
 
     def test_zoologist_slots_and_copy_are_locked(self):
         deck = study_deck_for("stingray", "zoologist")
@@ -288,8 +288,8 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", sheet)
         self.assertNotIn("Junior Ranger", sheet)
         self.assertNotIn("Park Ranger", sheet)
-        self.assertNotIn("Quick tips", sheet)
-        self.assertNotIn("ps-study-teach", sheet)
+        self.assertIn("Quick tips (Zoologist)", sheet)
+        self.assertIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         front, _, back = sheet.partition("ps-study-back")
@@ -310,7 +310,7 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
 
     def test_zoologist_screen_hides_empty_teach_but_keeps_deepen(self):
         html = study_talk_html(study_deck_for("stingray", "zoologist"))
-        self.assertNotIn("study-teach", html)
+        self.assertIn("study-teach", html)
         self.assertIn("Talk about it", html)
         self.assertIn("Push further", html)
         self.assertIn("Zoologist", html)
@@ -392,12 +392,12 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         zoo = payload["stingray"]["levels"]["zoologist"]
-        self.assertEqual(zoo["teach"], [])
+        self.assertGreaterEqual(len(zoo["teach"]), 2)
         self.assertEqual(len(zoo["questions"]), ZOOLOGIST_SLOTS)
         self.assertEqual([q["id"] for q in zoo["questions"]], list(ZOOLOGIST_IDS))
         self.assertEqual([q["correct"] for q in zoo["questions"]], list(SIGNED_LETTERS))
         self.assertIn("hard", payload["stingray"]["levels"])
-        self.assertEqual(payload["stingray"]["levels"]["hard"]["teach"], [])
+        self.assertGreaterEqual(len(payload["stingray"]["levels"]["hard"]["teach"]), 2)
         self.assertEqual(payload["stingray"]["levels"]["easy"]["teach"], [
             'Flattened ocean fish with a skeleton of cartilage (related to sharks)',
             "Eyes on top; mouth and gills on the underside",
@@ -406,7 +406,7 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
             "Usually shy — they sting when threatened or stepped on, not when chasing people",
         ])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn('"zoologist":{"teach":[]', data_js)
+        self.assertIn('"zoologist":{"teach":["', data_js)
         self.assertIn("families-manta-soft", data_js)
         self.assertIn("venom-tissue-soft", data_js)
         self.assertIn("uterine-milk-soft", data_js)
@@ -421,7 +421,7 @@ class StingrayZoologistStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn("study-card.js?v=15", html)
-        self.assertIn("study-cards-data.js?v=10", html)
+        self.assertIn("study-cards-data.js?v=11", html)
         print_tpl = study_print_html_for("stingray")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)

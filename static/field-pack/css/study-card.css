@@ -71,17 +71,25 @@
     padding: 0.3rem 0.48rem;
   }
 }
-.card-page .card-study-pack .study-teach {
+.card-page .study-teach {
   margin: 0 0 0.85rem;
   padding: 0.55rem 0.85rem 0.6rem;
   border-radius: 12px;
   background: #fff8e8;
   border: 1.5px solid rgba(15, 92, 92, 0.18);
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
-.card-page .card-study-pack .study-teach[open] {
+.card-page-actions-primary > .study-teach {
+  flex: 1 0 100%;
+  width: 100%;
+}
+.card-page .study-teach[open] {
   padding-bottom: 0.75rem;
 }
-.card-page .card-study-pack .study-teach-kicker {
+.card-page .study-teach-kicker {
   margin: 0;
   font-size: 0.78rem;
   font-weight: 850;
@@ -91,15 +99,16 @@
   cursor: pointer;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
   min-height: 32px;
 }
-.card-page .card-study-pack .study-teach-kicker::-webkit-details-marker {
+.card-page .study-teach-kicker::-webkit-details-marker {
   display: none;
 }
-.card-page .card-study-pack .study-teach-kicker::after {
+.card-page .study-teach-kicker::after {
   content: "+";
   flex: 0 0 auto;
   font-size: 1.1rem;
@@ -107,26 +116,26 @@
   line-height: 1;
   color: #0f5c5c;
 }
-.card-page .card-study-pack .study-teach[open] > .study-teach-kicker::after {
+.card-page .study-teach[open] > .study-teach-kicker::after {
   content: "–";
 }
-.card-page .card-study-pack .study-teach[open] > .study-teach-kicker {
+.card-page .study-teach[open] > .study-teach-kicker {
   margin-bottom: 0.35rem;
 }
-.card-page .card-study-pack .study-teach[open] .study-teach-hint {
+.card-page .study-teach[open] .study-teach-hint {
   display: none;
 }
-.card-page .card-study-pack .study-teach-hint {
+.card-page .study-teach-hint {
   font-weight: 650;
   letter-spacing: 0;
   text-transform: none;
   color: #3d4f6f;
 }
-.card-page .card-study-pack .study-teach ul {
+.card-page .study-teach ul {
   margin: 0;
   padding-left: 1.15em;
 }
-.card-page .card-study-pack .study-teach li {
+.card-page .study-teach li {
   margin: 0 0 0.25rem;
   font-weight: 650;
 }

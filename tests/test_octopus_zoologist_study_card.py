@@ -166,7 +166,7 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_OCTOPUS)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Octopus. Where sources disagree on exact numbers, we keep them approximate.")
-        self.assertEqual(deck["teach"], [])
+        self.assertGreaterEqual(len(deck["teach"]), 2)
         self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_OCTOPUS_ZOOLOGIST, deck["level"]))
         self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_OCTOPUS_ZOOLOGIST, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
@@ -185,8 +185,8 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(validate_deck(hard), [])
         self.assertEqual(validate_deck(zoo), [])
         broken_zoo = dict(zoo)
-        broken_zoo["teach"] = ["A leftover teach line."]
-        self.assertIn("zoologist deck must not include a teach strip", validate_deck(broken_zoo))
+        broken_zoo["teach"] = []
+        self.assertIn("teach strip empty", validate_deck(broken_zoo))
 
     def test_zoologist_slots_and_copy_are_locked(self):
         deck = study_deck_for("octopus", "zoologist")
@@ -331,8 +331,8 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", sheet)
         self.assertNotIn("Junior Ranger", sheet)
         self.assertNotIn("Park Ranger", sheet)
-        self.assertNotIn("Quick tips", sheet)
-        self.assertNotIn("ps-study-teach", sheet)
+        self.assertIn("Quick tips (Zoologist)", sheet)
+        self.assertIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         front, _, back = sheet.partition("ps-study-back")
@@ -353,7 +353,7 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
 
     def test_zoologist_screen_hides_empty_teach_but_keeps_deepen(self):
         html = study_talk_html(study_deck_for("octopus", "zoologist"))
-        self.assertNotIn("study-teach", html)
+        self.assertIn("study-teach", html)
         self.assertIn("Talk about it", html)
         self.assertIn("Push further", html)
         self.assertIn("Zoologist", html)
@@ -405,11 +405,11 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         zoo = payload["octopus"]["levels"]["zoologist"]
-        self.assertEqual(zoo["teach"], [])
+        self.assertGreaterEqual(len(zoo["teach"]), 2)
         self.assertEqual(len(zoo["questions"]), STUDY_SLOTS)
         self.assertEqual([q["id"] for q in zoo["questions"]], list(ZOOLOGIST_IDS))
         self.assertIn("hard", payload["octopus"]["levels"])
-        self.assertEqual(payload["octopus"]["levels"]["hard"]["teach"], [])
+        self.assertGreaterEqual(len(payload["octopus"]["levels"]["hard"]["teach"]), 2)
         self.assertEqual(payload["octopus"]["levels"]["easy"]["teach"], [
             "Soft-bodied sea animals with eight arms (molluscs, not fish)",
             "Arms have suckers that grip and help feel/taste what they touch",
@@ -418,7 +418,7 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
             "Almost no hard parts — they squeeze through tiny gaps (the beak is the hard bit)",
         ])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn('"zoologist":{"teach":[]', data_js)
+        self.assertIn('"zoologist":{"teach":["', data_js)
         self.assertIn("rna-edit-soft", data_js)
         self.assertIn("ttx-blue-ring-soft", data_js)
         self.assertIn("optic-gland-soft", data_js)
@@ -433,7 +433,7 @@ class OctopusZoologistStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn("study-card.js?v=15", html)
-        self.assertIn("study-cards-data.js?v=10", html)
+        self.assertIn("study-cards-data.js?v=11", html)
         print_tpl = study_print_html_for("octopus")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)

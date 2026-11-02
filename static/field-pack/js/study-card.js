@@ -305,12 +305,19 @@ if (typeof window !== "undefined") {
     return "fp-study-teach-open:" + String(id || "");
   }
 
-  function teachWasOpen(id) {
+  function teachShouldOpen(id) {
     try {
-      return sessionStorage.getItem(teachStorageKey(id)) === "1";
+      return sessionStorage.getItem(teachStorageKey(id)) !== "0";
     } catch (_) {
-      return false;
+      return true;
     }
+  }
+
+  function teachLevelName(level) {
+    if (typeof window.FPStudyLevelName === "function") return window.FPStudyLevelName(level);
+    if (level === "hard") return "Park Ranger";
+    if (level === "zoologist") return "Zoologist";
+    return "Junior Ranger";
   }
 
   function rememberTeachOpen(id, open) {
@@ -321,16 +328,30 @@ if (typeof window !== "undefined") {
     }
   }
 
-  function teachHtml(teach, id) {
+  function teachHtml(teach, id, level) {
     const lines = (teach || []).filter(Boolean);
     if (!lines.length) return "";
-    const openAttr = teachWasOpen(id) ? " open" : "";
+    const openAttr = teachShouldOpen(id) ? " open" : "";
+    const name = teachLevelName(level);
     return (
       `<details class="study-teach"${openAttr}>` +
-      `<summary class="study-teach-kicker">Quick tips (Junior Ranger) ` +
+      `<summary class="study-teach-kicker">Quick tips (${esc(name)}) ` +
       `<span class="study-teach-hint">— tap to open</span></summary>` +
       `<ul>${lines.map((line) => `<li>${esc(line)}</li>`).join("")}</ul></details>`
     );
+  }
+
+  function findTeach(root) {
+    return (root && root.querySelector(".study-teach")) || document.querySelector("details.study-teach");
+  }
+
+  // Watch film stays above the tips. Take the quiz sits under them.
+  function placeTeachBeforeQuiz() {
+    const teach = document.querySelector("details.study-teach");
+    const quizBtn = document.querySelector("a.card-quiz-peer");
+    if (!teach || !quizBtn || !quizBtn.parentNode) return;
+    if (teach.nextElementSibling === quizBtn) return;
+    quizBtn.parentNode.insertBefore(teach, quizBtn);
   }
 
   function exploreHtml(deck) {
@@ -753,16 +774,21 @@ if (typeof window !== "undefined") {
     if (!root || !deck) return;
     root.setAttribute("data-study-level", deck.level);
     root.setAttribute("data-revealed", "0");
-    const teach = root.querySelector(".study-teach");
-    const nextTeach = teachHtml(deck.teach, deck.id);
+    const teach = findTeach(root);
+    const nextTeach = teachHtml(deck.teach, deck.id, deck.level);
     if (teach && nextTeach) {
       teach.outerHTML = nextTeach;
     } else if (teach && !nextTeach) {
       teach.remove();
     } else if (!teach && nextTeach) {
-      const toolbar = root.querySelector(".study-toolbar");
-      if (toolbar) toolbar.insertAdjacentHTML("beforebegin", nextTeach);
+      const quizBtn = document.querySelector("a.card-quiz-peer");
+      if (quizBtn) quizBtn.insertAdjacentHTML("beforebegin", nextTeach);
+      else {
+        const toolbar = root.querySelector(".study-toolbar");
+        if (toolbar) toolbar.insertAdjacentHTML("beforebegin", nextTeach);
+      }
     }
+    placeTeachBeforeQuiz();
     const nextExplore = exploreHtml(deck);
     const explore = root.querySelector(".study-explore");
     if (explore) explore.remove();
@@ -940,8 +966,9 @@ if (typeof window !== "undefined") {
       paintPicker(root, root.getAttribute("data-study-level") || "easy");
       paintNextTier(root, root.getAttribute("data-study-level") || "easy");
       paintScore(root);
-      const details = root.querySelector("details.study-teach");
-      if (details && teachWasOpen(id)) details.open = true;
+      const details = findTeach(root);
+      if (details) details.open = teachShouldOpen(id);
+      placeTeachBeforeQuiz();
     }
     const deckEl = document.getElementById("study-card-data");
     if (deckEl && window.FP_STUDY_CARDS) {

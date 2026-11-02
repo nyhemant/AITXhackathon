@@ -113,7 +113,7 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_WHALE_SHARK)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Whale shark. Where sources disagree on exact numbers, we keep them approximate.")
-        self.assertEqual(deck["teach"], [])
+        self.assertGreaterEqual(len(deck["teach"]), 2)
         self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_WHALE_SHARK_ZOOLOGIST, deck["level"]))
         self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_WHALE_SHARK_ZOOLOGIST, deck["level"]))
         self.assertEqual(len(deck["questions"]), ZOOLOGIST_SLOTS)
@@ -132,8 +132,8 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         zoo = study_deck_for("whale-shark", "zoologist")
         self.assertEqual(validate_deck(zoo), [])
         broken_zoo = dict(zoo)
-        broken_zoo["teach"] = ["A leftover teach line."]
-        self.assertIn("zoologist deck must not include a teach strip", validate_deck(broken_zoo))
+        broken_zoo["teach"] = []
+        self.assertIn("teach strip empty", validate_deck(broken_zoo))
 
     def test_zoologist_slots_and_copy_are_locked(self):
         deck = study_deck_for("whale-shark", "zoologist")
@@ -254,8 +254,8 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", sheet)
         self.assertNotIn("Junior Ranger", sheet)
         self.assertNotIn("Park Ranger", sheet)
-        self.assertNotIn("Quick tips", sheet)
-        self.assertNotIn("ps-study-teach", sheet)
+        self.assertIn("Quick tips (Zoologist)", sheet)
+        self.assertIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         front, _, back = sheet.partition("ps-study-back")
@@ -274,7 +274,7 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
 
     def test_zoologist_screen_hides_empty_teach_but_keeps_deepen(self):
         html = study_talk_html(study_deck_for("whale-shark", "zoologist"))
-        self.assertNotIn("study-teach", html)
+        self.assertIn("study-teach", html)
         self.assertIn("Talk about it", html)
         self.assertIn("Push further", html)
         self.assertIn("Zoologist", html)
@@ -305,11 +305,11 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("whale-shark", payload)
         self.assertEqual(set(payload["whale-shark"]["levels"]), {"easy", "hard", "zoologist"})
         zoo = payload["whale-shark"]["levels"]["zoologist"]
-        self.assertEqual(zoo["teach"], [])
+        self.assertGreaterEqual(len(zoo["teach"]), 2)
         self.assertEqual(len(zoo["questions"]), ZOOLOGIST_SLOTS)
         self.assertEqual([q["id"] for q in zoo["questions"]], list(ZOOLOGIST_IDS))
         self.assertEqual([q["correct"] for q in zoo["questions"]], list(SIGNED_LETTERS))
-        self.assertEqual(payload["whale-shark"]["levels"]["hard"]["teach"], [])
+        self.assertGreaterEqual(len(payload["whale-shark"]["levels"]["hard"]["teach"]), 2)
         self.assertEqual(
             [q["stem"] for q in payload["whale-shark"]["levels"]["easy"]["questions"]],
             list(EASY_STEMS),
@@ -337,7 +337,7 @@ class WhaleSharkZoologistStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-id="whale-shark"', html)
         self.assertIn('data-study-level="easy"', html)
         self.assertIn("study-card.js?v=15", html)
-        self.assertIn("study-cards-data.js?v=10", html)
+        self.assertIn("study-cards-data.js?v=11", html)
         print_tpl = study_print_html_for("whale-shark")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)
