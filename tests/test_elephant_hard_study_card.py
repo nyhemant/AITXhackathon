@@ -112,7 +112,7 @@ class ElephantHardStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level_label"], "Park Ranger")
         self.assertEqual(deck["source"], WIKI_AFRICAN_ELEPHANT)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, African elephant / Elephant. Where sources disagree on exact numbers, we keep them approximate.")
-        self.assertEqual(deck["teach"], [])
+        self.assertGreaterEqual(len(deck["teach"]), 2)
         self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_ELEPHANT, deck["level"]))
         self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_ELEPHANT, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
@@ -127,8 +127,8 @@ class ElephantHardStudyCardTests(unittest.TestCase):
         broken_easy["teach"] = []
         self.assertIn("teach strip empty", validate_deck(broken_easy))
         broken_hard = dict(hard)
-        broken_hard["teach"] = ["A leftover teach line."]
-        self.assertIn("hard deck must not include a teach strip", validate_deck(broken_hard))
+        broken_hard["teach"] = []
+        self.assertIn("teach strip empty", validate_deck(broken_hard))
 
     def test_hard_slots_and_copy_are_locked(self):
         deck = study_deck_for("african-elephant", "hard")
@@ -177,8 +177,8 @@ class ElephantHardStudyCardTests(unittest.TestCase):
         html = outing_talk_html({"id": "african-elephant", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
         self.assertIn("Quick tips (Junior Ranger)", html)
-        self.assertIn("<details class=\"study-teach\">", html)
-        self.assertNotIn("<details class=\"study-teach\" open", html)
+        self.assertIn("<details class=\"study-teach\" open>", html)
+        self.assertIn("<details class=\"study-teach\" open", html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
         self.assertIn("Zoologist", html)
@@ -204,8 +204,8 @@ class ElephantHardStudyCardTests(unittest.TestCase):
         )
         self.assertIn("Park Ranger", sheet)
         self.assertNotIn("Junior Ranger", sheet)
-        self.assertNotIn("Quick tips", sheet)
-        self.assertNotIn("ps-study-teach", sheet)
+        self.assertIn("Quick tips (Park Ranger)", sheet)
+        self.assertIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         front, _, back = sheet.partition("ps-study-back")
@@ -245,7 +245,7 @@ class ElephantHardStudyCardTests(unittest.TestCase):
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         hard = payload["african-elephant"]["levels"]["hard"]
-        self.assertEqual(hard["teach"], [])
+        self.assertGreaterEqual(len(hard["teach"]), 2)
         self.assertEqual(len(hard["questions"]), STUDY_SLOTS)
         self.assertEqual([q["id"] for q in hard["questions"]], list(HARD_IDS))
         self.assertIn("zoologist", payload["african-elephant"]["levels"])
@@ -277,7 +277,7 @@ class ElephantHardStudyCardTests(unittest.TestCase):
         self.assertIn("Talk about it", back)
         self.assertIn("Push further", back)
         hard_html = study_talk_html(study_deck_for("african-elephant", "hard"))
-        self.assertNotIn("study-teach", hard_html)
+        self.assertIn("study-teach", hard_html)
         self.assertIn('<details class="study-explore', hard_html)
         self.assertIn("Explore more", hard_html)
         self.assertIn("Talk about it", hard_html)

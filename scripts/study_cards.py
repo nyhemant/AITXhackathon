@@ -2802,6 +2802,144 @@ def apply_easy_choice_soft_strip(cards: dict | None = None) -> None:
     """Backward-compatible alias — full display strip covers easy choices too."""
     apply_display_soft_strip(cards)
 
+
+_TEACH_SKIP_START = re.compile(r"^(correct|not quite|yes|no)\b", re.IGNORECASE)
+_TEACH_BAD_REF = re.compile(
+    r"\b(this answer|that choice|option)\b"
+    r"|\b(choice|letter|answer)\s+[ABC]\b"
+    r"|\([ABC]\)"
+    r"|\bnot\s+[ABC]\b"
+    r"|\b[ABC]\s+is\s+(?:correct|right|wrong)\b",
+    re.IGNORECASE,
+)
+_TEACH_PRONOUN_START = re.compile(
+    r"^(it|they|that|this|these|those|so|and|but|he|she|wikipedia)\b",
+    re.IGNORECASE,
+)
+_TEACH_SENTENCE_END = re.compile(r"[.!](?:[\"”'])?$|[?](?:[\"”'])?$")
+
+
+def _teach_tip_key(text: str) -> str:
+    """Compare tips across decks without tripping on case or a final period."""
+    cleaned = str(text or "").casefold().replace("’", "'").replace("“", '"').replace("”", '"')
+    cleaned = re.sub(r"\s+", " ", cleaned).strip().rstrip(".!?\"'")
+    return cleaned
+
+
+def _teach_sentences(why: str) -> list[str]:
+    """Whole sentences only. Splits on sentence boundaries, never mid-sentence."""
+    text = str(why or "").strip()
+    if not text:
+        return []
+    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z\"“])", text)
+    return [part.strip() for part in parts if part.strip()]
+
+
+def _teach_word_count(text: str) -> int:
+    return len(re.findall(r"\S+", text))
+
+
+def _teach_sentence_ok(sentence: str) -> bool:
+    """Standalone teaching sentence: no answer talk, about 30 words, verbatim."""
+    if not sentence or not _TEACH_SENTENCE_END.search(sentence):
+        return False
+    if _teach_word_count(sentence) > 30 or _teach_word_count(sentence) < 4:
+        return False
+    if _TEACH_SKIP_START.search(sentence):
+        return False
+    if _TEACH_BAD_REF.search(sentence):
+        return False
+    if re.search(r"\bFree\b", sentence):
+        return False
+    if sentence.rstrip().endswith(("—", "–")):
+        return False
+    return True
+
+
+def _teach_sentence_score(sentence: str, correct_choice: str) -> int:
+    """Prefer a sentence that stands alone and does not quote the keyed choice."""
+    count = _teach_word_count(sentence)
+    score = 1
+    if not _TEACH_PRONOUN_START.search(sentence):
+        score += 3
+    if 8 <= count <= 24:
+        score += 2
+    choice = str(correct_choice or "").strip()
+    if len(choice) > 24 and (choice in sentence or sentence.rstrip(".!?") in choice):
+        score -= 4
+    return score
+
+
+def teach_lines_from_whys(questions: list, used: set[str], *, limit: int = 5) -> list[str]:
+    """Pick 2–5 whole sentences already written in this deck's why fields."""
+    ranked: list[tuple[int, int, str]] = []
+    for index, question in enumerate(questions or []):
+        correct = ""
+        choices = list(question.get("choices") or [])
+        letter = str(question.get("correct") or "")
+        if letter in LETTERS and choices:
+            spot = LETTERS.index(letter)
+            if spot < len(choices):
+                correct = str(choices[spot])
+        for sentence in _teach_sentences(str(question.get("why") or "")):
+            if not _teach_sentence_ok(sentence):
+                continue
+            if _teach_tip_key(sentence) in used:
+                continue
+            ranked.append((_teach_sentence_score(sentence, correct), index, sentence))
+    ranked.sort(key=lambda item: (-item[0], item[1], item[2]))
+    picked: list[str] = []
+    seen_questions: set[int] = set()
+    for _score, index, sentence in ranked:
+        if index in seen_questions:
+            continue
+        key = _teach_tip_key(sentence)
+        if key in used:
+            continue
+        picked.append(sentence)
+        used.add(key)
+        seen_questions.add(index)
+        if len(picked) >= limit:
+            return picked
+    if len(picked) < 3:
+        for _score, _index, sentence in ranked:
+            key = _teach_tip_key(sentence)
+            if key in used:
+                continue
+            picked.append(sentence)
+            used.add(key)
+            if len(picked) >= limit:
+                break
+    return picked
+
+
+def apply_deeper_level_teach(cards: dict | None = None) -> None:
+    """Fill empty Park Ranger and Zoologist teach strips from that deck's whys.
+
+    Junior Ranger tips stay as authored. A sentence is used once per card.
+    """
+    src = STUDY_CARDS if cards is None else cards
+    for card in src.values():
+        levels = card.get("levels") or {}
+        used: set[str] = set()
+        easy = levels.get("easy") or {}
+        for line in easy.get("teach") or []:
+            key = _teach_tip_key(str(line))
+            if key:
+                used.add(key)
+        for level in ("hard", "zoologist"):
+            pack = levels.get(level)
+            if not pack:
+                continue
+            existing = [str(line) for line in (pack.get("teach") or []) if str(line).strip()]
+            if existing:
+                for line in existing:
+                    key = _teach_tip_key(line)
+                    if key:
+                        used.add(key)
+                continue
+            pack["teach"] = teach_lines_from_whys(list(pack.get("questions") or []), used)
+
 # Product display names — one map for screen, print, and later pickers.
 LEVEL_DISPLAY_NAMES = {
     "easy": "Junior Ranger",
@@ -21048,6 +21186,7 @@ STUDY_CARDS: dict[str, dict] = {
 apply_slot_letter_rotation()
 apply_display_soft_strip()
 apply_wikipedia_says_strip()
+apply_deeper_level_teach()
 
 
 def level_display_name(level: str | None = None) -> str:
@@ -21214,18 +21353,15 @@ def validate_deck(deck: dict) -> list[str]:
 
     """Return human-readable problems. Empty list means the deck is locked.
 
-    Easy requires a Learn-first teach strip. Hard and Zoologist are
-    answer-light (empty teach).
+    Every level needs a Learn-first teach strip. Park Ranger and
+    Zoologist tips are whole sentences copied from that deck's why text.
     """
     errors: list[str] = []
     if not deck:
         return ["missing deck"]
-    level = str(deck.get("level") or DEFAULT_LEVEL)
     teach = deck.get("teach") or []
-    if level not in ANSWER_LIGHT_LEVELS and not teach:
+    if not teach:
         errors.append("teach strip empty")
-    if level in ANSWER_LIGHT_LEVELS and teach:
-        errors.append(f"{level} deck must not include a teach strip")
     questions = deck.get("questions") or []
     if len(questions) not in (5, STUDY_SLOTS):
         errors.append(
@@ -21598,9 +21734,10 @@ def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
         foot_bits.append(next_tier)
     foot = f'<div class="study-foot no-print">{"".join(foot_bits)}</div>'
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
+    teach_label = _esc(level_display_name(str(level)))
     teach = (
-        f'<details class="study-teach">'
-        f'<summary class="study-teach-kicker">Quick tips (Junior Ranger) '
+        f'<details class="study-teach" open>'
+        f'<summary class="study-teach-kicker">Quick tips ({teach_label}) '
         f'<span class="study-teach-hint">— tap to open</span></summary>'
         f"<ul>{teach_items}</ul>"
         f"</details>"
@@ -21695,9 +21832,10 @@ def study_print_html(
 ) -> str:
     """A4 duplex-ready: front quiz + back answers. Each face is one 9.4in sheet."""
     questions = list(deck.get("questions") or [])
+    level_label = _esc(deck.get("level_label") or level_display_name(deck.get("level")))
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
     teach = (
-        f'<div class="ps-study-teach"><p class="ps-talk-label">Quick tips (Junior Ranger)</p>'
+        f'<div class="ps-study-teach"><p class="ps-talk-label">Quick tips ({level_label})</p>'
         f"<ul>{teach_items}</ul></div>"
         if teach_items
         else ""
@@ -21726,7 +21864,6 @@ def study_print_html(
         )
     source = _esc(deck.get("source_note") or "Facts from Wikipedia, Lion.")
     banner_name = f"{emoji} {name}".strip()
-    level_label = _esc(deck.get("level_label") or level_display_name(deck.get("level")))
     return (
         f'<div class="ps-study-front ps-page">'
         f'<div class="ps-banner"><h2>KIDZOOKIT</h2>'

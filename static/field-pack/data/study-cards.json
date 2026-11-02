@@ -156,7 +156,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "The lion is a large cat in the genus Panthera.",
+          "A pride’s stable core is related females and cubs.",
+          "Lions mostly hunt medium-sized and large hooved mammals such as zebra, wildebeest, and buffalo — not tiny prey as their main diet.",
+          "Lions have quick burst speed of about 48–59 km/h (30–37 mph) but little stamina, so they do not run long chases.",
+          "Habitat loss and conflict with people are key worries."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -291,7 +297,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "The flehmen face (open mouth, wrinkled nose) helps a lion sniff chemical signals.",
+          "Carnassials are blade-like cheek teeth — the upper fourth premolar and lower first molar — that shear meat.",
+          "Cave lions and American lions are extinct relatives, not living subspecies.",
+          "In some lions the dark tail tuft hides a small hard spur.",
+          "Females usually do not become ready to mate again until their cubs grow up or die."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -584,7 +596,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Giraffes and the okapi are the only living members of family Giraffidae.",
+          "“Camelopard” comes from Greek words for camel and leopard — a camel-like shape with leopard-like colouration.",
+          "Ossicones form from ossified cartilage, stay covered in skin, and fuse to the skull.",
+          "Males “neck” — swinging their necks and trying to land blows with their ossicones to decide who is dominant.",
+          "Giraffes can gallop roughly 30–37 mph in short bursts."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -719,7 +737,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Many researchers now recognize several living species — often four — and the reticulated giraffe as Giraffa reticulata.",
+          "Exact pressure readings vary, so we keep the “roughly double” idea.",
+          "Each bone is greatly lengthened — the neck did not gain a stack of extra bones.",
+          "Males use the flehmen response: tasting a female’s urine to detect oestrus.",
+          "Usually one calf is born; twins are rare."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -1012,7 +1036,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Published counts vary, so we do not lock one exact number.",
+          "Much of that communication is too low for humans, and it can travel far across the landscape.",
+          "Calves are usually born after about 22 months.",
+          "Her long memory of where water and food were in hard years can help the family survive drought.",
+          "Elephants replace these chewing teeth several times in a lifetime."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -1147,7 +1177,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Status labels have shifted, so we do not lock one letter.",
+          "The trunk, or proboscis, is a prehensile elongation of the nose and upper lip.",
+          "African elephants have two finger-like processes at the tip of the trunk.",
+          "Musth is a state in adult males: elevated testosterone, heightened aggression and sexual activity, plus temporal-gland secretions running down the face.",
+          "Calves are cared for by their mother and other young females in the group, a pattern called allomothering or alloparenting."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -1440,7 +1476,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Bare pink skin above the eye helps dump heat.",
+          "Keepers can use that to tell individuals apart.",
+          "New feathers are not waterproof yet, so the bird stays on land and fasts for weeks while the coat grows back.",
+          "Commercial fishing and warming seas have made sardines and anchovies harder to find near colonies.",
+          "Penguins once dug nest burrows into a thick guano (dung) layer."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -1575,7 +1617,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "African penguins sit in Spheniscus, the banded penguins.",
+          "Other living penguins breed in the New World or farther south.",
+          "African penguins have supraorbital salt glands above the eyes.",
+          "The dark back blends with the water from above, and the pale belly is harder to see from below.",
+          "When the bird is warmer, more blood reaches the facial patch (vasodilation), so it looks pinker."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -1868,7 +1916,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "The body turns those pigments into feather colour.",
+          "Flamingos feed with the head upside down and the bill inverted in the water, so the bent beak can filter food.",
+          "Hairy, comb-like lamellae line the bill and strain small food from mud and water.",
+          "Both the male and the female can feed the chick a crop-milk secretion from the upper digestive tract.",
+          "The American flamingo typically lays a single chalky-white egg on a mud mound."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -2003,7 +2057,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Molecular work groups flamingos with grebes in Mirandornithes.",
+          "A compound such as canthaxanthin is an example — we do not lock one chemical name.",
+          "Both parents secrete a fat-and-protein fluid from glands lining the upper digestive tract, not just the crop.",
+          "The large tongue works as a piston, drawing water in and pushing it out through the lamellae so tiny food stays behind.",
+          "In flamingos the lower mandible is larger, and they can raise the upper jaw as well as drop the lower."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -2296,7 +2356,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "After a big drink they can store water in the bladder and in body tissues.",
+          "Darwin saw that tortoises looked different from island to island.",
+          "In the 1800s, whalers and other sailors collected live tortoises because they lasted a long time on board without food or water.",
+          "Introduced goats compete for food and strip plants.",
+          "Lonesome George was the last known tortoise from Pinta Island."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -2431,7 +2497,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Counts and ranks shift as studies arrive, so we say roughly a dozen-plus taxa rather than locking one number.",
+          "Island-to-island shell divergence is a classic adaptive radiation: related lineages evolved different forms in different habitats.",
+          "The bony carapace is largely fused ribs and vertebrae.",
+          "Hybrids have been discussed, but the pure Pinta lineage is gone.",
+          "A living female turned up in recent years (late 2010s) and was taken to a breeding centre."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -2724,7 +2796,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "A leading idea today is that the stripe pattern helps deter biting flies.",
+          "Plains zebras form harems with a single stallion, several mares, and their recent offspring.",
+          "Young males often join bachelor groups until they are ready to start a harem of their own.",
+          "More specialised grazers such as wildebeest and gazelles follow the shorter growth.",
+          "Food passes through faster than in ruminants, so they are less selective and spend a lot of time eating."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -2859,7 +2937,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "The plains zebra is the most common and widespread of the three.",
+          "Later work also talks about a north–south continuum, so we do not lock “subspecies forever.”",
+          "Northern plains zebras tend to have narrower, more complete stripes.",
+          "Camouflage and heat-control ideas are still discussed, so the question is not closed.",
+          "A new stallion may push an unhealthy rival out gradually, without a big fight."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -3152,7 +3236,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Hippos typically do not display territorial behaviour on land while they graze.",
+          "Hippos rest near each other in the water, but grazing is a solitary activity and they typically come out at night to eat.",
+          "The most common hippo vocalisation is the wheeze-honk, which can travel over long distances in air.",
+          "After elephants and rhinoceroses, the hippopotamus is among the next-largest land mammals.",
+          "The red secretion is a natural sunscreen and can inhibit disease-causing bacteria."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -3287,7 +3377,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Food does not appear to be their source.",
+          "Blood proteins, DNA, and the fossil record point to cetaceans — whales, dolphins, and porpoises — as the closest living relatives.",
+          "A mitochondrial DNA study found low but significant differences among some named forms.",
+          "A population in Colombia descended from captives that escaped after Escobar’s death.",
+          "A hippo can hold its head partly above water and send a cry that travels through both water and air."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -3580,7 +3676,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Ground-level vegetation is a basic need; without it they are even more exposed to people.",
+          "Sumatran tigers strongly prefer uncultivated forests and make little use of plantations even when those plantings are nearby.",
+          "Camera-trap work also shows they tend to avoid forest edges.",
+          "Stripes tend to dissolve into spots near their ends, and lines of small dark spots sit between the regular stripes.",
+          "The largest remaining groups live in major national parks such as Kerinci Seblat and Gunung Leuser."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -3715,7 +3817,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Pocock’s older name P. t. sumatrae still turns up in books and records.",
+          "Listings have often treated the Sumatran tiger as Critically Endangered.",
+          "Survey methods and years differ, so we do not lock one head-count.",
+          "Hunting is real, but plantation expansion is a key forest-loss driver.",
+          "A vanished land bridge once connected island and mainland populations."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -4008,7 +4116,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "When ripe fruit is available they eat more fruit; when it is scarce they eat leaves, herbs, and bark.",
+          "Gorillas do not display territorial behavior, and neighboring groups often overlap ranges.",
+          "Males leave their natal group before maturity and go through a bachelor stage that can last several years, alone or in a nonbreeding group.",
+          "Seeds pass through the gut and land in dung, which helps many forest plants.",
+          "The western lowland gorilla is the subspecies almost always kept in zoos — nearly all zoo gorillas are this kind."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -4143,7 +4257,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Listings have often treated the western lowland gorilla as Critically Endangered, citing hunting and disease.",
+          "Some write-ups cite very high mortality, but percents and head-counts differ by site and year.",
+          "The simian virus (SIV) in gorillas sits near certain HIV-1 groups on the family tree.",
+          "Published percent shares differ by region and method, so we do not lock one number.",
+          "His parents were related carriers (an uncle and niece), which gave the first evidence of inbreeding in western lowland gorillas."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -4436,7 +4556,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Famous one-number records have been questioned, so we do not lock an exact figure.",
+          "Hunting by day helps it avoid larger, often night-active hunters like lions.",
+          "A flexible spine lets the body stretch and fold.",
+          "Cheetahs often eat quickly and may drag the meal toward cover.",
+          "Cheetahs prefer medium-sized hooved animals such as gazelles, impala, and springbok."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -4571,7 +4697,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "The cheetah (Acinonyx jubatus) is the only living member of the genus Acinonyx.",
+          "The claws lack a protective sheath and are only partly retractile.",
+          "Male cheetahs often live in coalitions, usually brothers from the same litter, though unrelated males may join.",
+          "We treat the timing and percents as snapshots, not locked figures.",
+          "The king cheetah’s blotchy, striped coat comes from a recessive Taqpep mutation — the same gene that shapes tabby patterns in house cats."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -4864,7 +4996,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "The red panda has a carnivore-style gut and cannot digest bamboo well — it passes through in hours.",
+          "Fallen logs and stumps help them reach bamboo leaves.",
+          "Red pandas favour steep slopes with dense bamboo cover, often near water.",
+          "Adults mark home-range or territorial edges with urine, faeces, and secretions from glands near the tail.",
+          "We do not lock a status letter — that grade is a snapshot and can change."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -4999,7 +5137,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Genetic studies put it with musteloids — raccoons, weasels, and skunks.",
+          "A status letter is a snapshot and can change.",
+          "Some genetic work suggests treating them as two species.",
+          "Both genomes show changes in limb-development genes that may help build the false thumb.",
+          "The false thumb is an extended radial sesamoid, a wrist bone."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -5292,7 +5436,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "We save the full family name for later.",
+          "Adult males communicate with loud bellows — a long series of deep, snoring inhalations and belching exhalations.",
+          "A male may rub his chest on a tree as he climbs.",
+          "Hundreds of eucalyptus species are available, but koalas strongly prefer a much smaller set of favourites.",
+          "Daytime is mostly rest while they digest their leafy food."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -5427,7 +5577,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "The koala (Phascolarctos cinereus) is the only living member of family Phascolarctidae.",
+          "Around the time a joey leaves the pouch, mom produces a faecal pap the joey eats.",
+          "Scientists treat this as convergent evolution for climbing and picking leaves.",
+          "Koalas are hindgut fermenters with a very long caecum — among the largest for an animal of this size.",
+          "A status letter is a snapshot and can change."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -5720,7 +5876,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Chimpanzees modify sticks and poke them into termite mounds.",
+          "Some chimpanzee communities crack hard nuts with a stone hammer on a root or rock used as an anvil.",
+          "Chimpanzee groups differ in how they use tools.",
+          "Adult males often walk the edges of the home range and may clash with neighbours.",
+          "We do not lock a status letter — that grade is a snapshot and can change."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -5855,7 +6017,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Chimpanzee autosomal DNA is extremely similar to ours in one-to-one sequence comparisons, often cited near a one-to-two-percent difference.",
+          "A possible fifth form is still debated, so we do not lock that extra split.",
+          "A community of many dozens can split into small parties during the day and come back together.",
+          "Scientists still study the exact date and route.",
+          "Chimpanzees have 48 chromosomes (24 pairs) while humans have 46 (23 pairs)."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -6148,7 +6316,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Dominant adult males make long calls that attract females and intimidate rivals.",
+          "Orangutans carefully build nests from branches and leaves for day and night use.",
+          "The closest orangutan bond is mother and young.",
+          "We do not lock a status letter — that grade is a snapshot and can change.",
+          "How local groups share extra tricks comes later."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -6283,7 +6457,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Unflanged males look more like females and may grow flanges later.",
+          "A throat sac acts as a resonating chamber.",
+          "African apes and humans sit on a different living branch.",
+          "A mother invests years in one offspring before the next.",
+          "Appendix I is a trade rule, not the same thing as an IUCN status letter."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -6576,7 +6756,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Bamboo is low in nutrition, so giant pandas need to eat often and spend much of the day feeding.",
+          "Bamboo does not build the fat reserves many other bears use for a long winter sleep.",
+          "Farming, deforestation, and broken-up habitat have pushed giant pandas out of many lowland forests.",
+          "The diet is almost entirely bamboo, but giant pandas still have bear-like teeth and will eat meat, fish, and eggs when available.",
+          "Giant pandas have large molars and powerful jaw muscles that crush and grind fibrous bamboo."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -6711,7 +6897,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "The red panda sits in a different family, Ailuridae.",
+          "Studies of its gut microbes look more like those of other carnivores than of ruminants.",
+          "A newborn cub is tiny compared with its mother — only a tiny fraction of her weight.",
+          "We do not lock an exact date in millions of years.",
+          "The IUCN Red List moved the giant panda from Endangered to Vulnerable in 2016."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -7004,7 +7196,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "How those scent glands are built comes later.",
+          "A newborn first clings to its mother’s belly, then rides on her back.",
+          "Ring-tailed lemurs are diurnal — active in daylight.",
+          "Ring-tailed lemurs are chatty primates with many calls.",
+          "Extra names for that tooth group come later."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -7139,7 +7337,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Bamboo lemurs are often named as closer kin.",
+          "Males have antebrachial (forearm) and brachial (shoulder) scent glands and mix those scents onto the tail for stink fights.",
+          "Strepsirrhines, including ring-tailed lemurs, keep a grooming (toilet) claw on the second toe of the hindfoot.",
+          "Females are receptive for only a short window — often described as a few hours — in a brief breeding season.",
+          "Monkeys and apes are dry-nosed haplorhines."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -7432,7 +7636,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "An ostrich has just two toes on each foot; most birds have four.",
+          "Ostriches can sprint very fast and also keep a strong steady pace — among the fastest two-legged runners.",
+          "Ostriches can kick hard with those powerful legs, and the kick goes forward.",
+          "Territorial males inflate the neck to boom and flap their wings as a courtship show.",
+          "Eggs go in a simple communal pit scraped in the ground."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -7567,7 +7777,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "A few lists still review the split, so we do not lock one forever rule.",
+          "The Arabian subspecies (S. c. syriacus) was hunted to extinction around the mid-20th century.",
+          "The ostrich sternum is flat and lacks the keel that flying birds use to attach large flight muscles.",
+          "Ostrich eyes are among the largest of any land vertebrate — often given as about the width of a large coin.",
+          "Ostrich eggs are the largest of any living bird, yet among the smallest relative to adult body size."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -7860,7 +8076,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "A scared warthog flees with a fast sprint — about as quick as a slow car.",
+          "Warthogs often run with the tail sticking straight up — a thin tail flag.",
+          "Warthogs wallow in mud to cope with heat and huddle together to cope with cold.",
+          "A separate desert warthog lives in drier parts of East Africa.",
+          "Facial glands help mark sleeping spots, feeding areas, and waterholes."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -7995,7 +8217,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Genus Phacochoerus is shared with the desert warthog.",
+          "The common warthog was once treated as a subspecies of P. aethiopicus.",
+          "Exact country maps stay contested, so we do not lock one forever map.",
+          "The calloused wrist pads form early in the fetus.",
+          "Sows have been seen nursing foster piglets if they lose their own litter."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -8288,7 +8516,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Sharks use jelly-filled pores called ampullae of Lorenzini to sense the weak electric fields living animals make — even prey hidden in sand.",
+          "Sharks do not have a gas-filled swim bladder.",
+          "Most sharks can pump water over the gills while resting.",
+          "A small number of kinds cannot pump water and must keep swimming to breathe.",
+          "Some sharks lay leathery egg cases, and others give birth to live pups."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -8423,7 +8657,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Modern sharks (Selachii) are the sister group to rays and skates (Batomorphi).",
+          "Shark-like fishes show up far back in the fossil record, including the Devonian.",
+          "Exact counts change as scientists split or lump kinds.",
+          "Many ocean-going kinds can be threatened, but a group card cannot share one Red List letter.",
+          "Exact percents vary, and not every kind dropped the same way."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -8716,7 +8956,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Long whiskers are feelers for murky water — not decoration.",
+          "Family groups often include older brothers and sisters.",
+          "A status letter is a snapshot and can change when new counts arrive.",
+          "Appendix I is a trade rule, not the same thing as an IUCN status letter.",
+          "Sea otters may hold paws while rafting so they do not drift apart."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -8851,7 +9097,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Molecular work places this otter as a close sister to smooth-coated otters (Lutrogale).",
+          "Otters are the Lutrinae group inside Mustelidae — the weasel family and kin.",
+          "Pups are born with closed eyes that open in the fifth week.",
+          "Wikipedia often uses Aonyx cinereus, and also lists Amblonyx cinereus and Lutra cinerea in older or other schemes.",
+          "That cluster sits next to the Lutra river-otter group."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -9144,7 +9396,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "The two living kinds are Linnaeus’s (C. didactylus) and Hoffmann’s (C. hoffmanni).",
+          "Food can take up to a month to digest because of their slow metabolism.",
+          "The three-way moth–algae story is better studied in three-toed sloths.",
+          "Sloth outer hair grows away from the extremities — the opposite of most mammals — so it sheds rain while they hang upside down.",
+          "Sloths are almost helpless on the ground but able to swim."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -9279,7 +9537,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Folivora is a name that means “leaf eaters.”",
+          "Two-toed (Choloepus) and three-toed (Bradypus) look alike but come from different sloth lines.",
+          "Newer molecular work ties them nearer extinct mylodontid ground sloths.",
+          "Living tree sloths are leftover tree-living members of that bigger sloth story.",
+          "Hoffmann’s two-toed sloths also have ranges split by the Andes."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -9572,7 +9836,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "A freshwater fish’s body stays saltier than the pond.",
+          "Many bony fish have a gas-filled swim bladder that helps them float at the right depth.",
+          "Most bony fish have a bony operculum that covers and protects the gills.",
+          "Salmon are often born in rivers and later go to sea; eels are often born at sea and later live in fresh water.",
+          "Most kinds are stenohaline — built for one salinity, not both."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -9707,7 +9977,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Familiar river and lake fish have fins supported by bony rays.",
+          "The vast majority of living ray-finned fishes are teleosts — advanced bony fish.",
+          "Any tree that includes all fish also includes land vertebrates, which we do not usually call fish.",
+          "Physoclist bladders lose that tube and use a gas gland instead.",
+          "Anadromous fish such as many salmon reproduce in fresh water after life at sea."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -10000,7 +10276,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Polar bears are closely related to brown bears.",
+          "A bear may wait at a breathing hole or ice edge for a seal to come up.",
+          "The bear primarily feeds on the seal’s energy-rich blubber.",
+          "Oil secretions help keep the coat from freezing.",
+          "Fur and a thick fat layer keep them warm, and overheating is something the body has to handle."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -10135,7 +10417,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Living polar bears sit in the genus Ursus.",
+          "Some taxonomists parked polar bears in Thalarctos for their marine traits.",
+          "Polar bears have delayed implantation — the fertilized embryo does not start true development until fall.",
+          "The female builds fat reserves, then hibernates and fasts in the maternity den.",
+          "The species is sexually dimorphic — adult females are much smaller than adult males."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -10428,7 +10716,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Dense fur plus a trapped air layer keeps them warm.",
+          "Dirty or oiled fur can let the cold in.",
+          "Eating sea urchins helps keep kelp from being chewed down into bare “urchin barrens.”",
+          "Otters tuck rocks and food there while they dive, then bring the stash to the surface.",
+          "Their metabolism runs high to stay warm in cold water."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -10563,7 +10857,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Asian small-clawed otters sit in Aonyx, and Eurasian river otters sit in Lutra.",
+          "Adult molars are flattened and rounded for crushing, not cutting.",
+          "The sea otter is a relative newcomer to a marine life.",
+          "The embryo can pause, so the whole gestation span varies.",
+          "Twins are rare, and usually only one survives."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -10856,7 +11156,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "American alligators are distinguished from American crocodiles by a broader U-shaped snout.",
+          "Tongue salt glands do not work the same way, so salt is harder for them to handle.",
+          "American alligators are less vulnerable to cold than American crocodiles and range farther from the equator.",
+          "The temperature at which the eggs develop helps decide hatchling sex.",
+          "Males use infrasound — very low sounds — during mating bellows."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -10991,7 +11297,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Living members are true alligators (Alligatorinae) plus caimans (Caimaninae) — about eight species.",
+          "Georges Cuvier created the genus Alligator from the English word alligator, which comes from Spanish el lagarto — “the lizard.”",
+          "The Alligatoridae page notes the lineages split long ago — on the order of tens of millions of years.",
+          "Airflow is unidirectional, looping through the lungs on the way in and out.",
+          "A long-term mark-and-recapture study found growth can slow and then stop as animals age."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -11284,7 +11596,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Plains bison tend to be smaller with a more rounded hump.",
+          "The only living bison species are the American bison and the European bison (wisent).",
+          "Bison swing that heavy head to clear snow and reach grass in winter.",
+          "Bison can look slow, then sprint very fast and jump high fences.",
+          "The hollows can hold water and give extra homes for prairie plants and bugs."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -11419,7 +11737,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "The two main kinds are often labeled subspecies: plains bison (B. b. bison) and wood bison (B. b. athabascae).",
+          "Leaving bison out of Bos would make that cattle genus incomplete.",
+          "American bison descended from Asian steppe bison (Bison priscus) that crossed into North America through Beringia during the Pleistocene.",
+          "Modern herds still show that genetic squeeze — less variety than the huge older herds.",
+          "Herds with little or no cattle DNA are rare and carefully managed."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -11712,7 +12036,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "The name comes from a Shawnee and Cree word meaning “white rump.”",
+          "Elk were long treated as a subspecies of European red deer (Cervus elaphus).",
+          "Some scientists debate how finely those kinds should be split.",
+          "Antlers are bone and can grow very fast.",
+          "When it rises later, velvet comes off and the antlers harden for the rut."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -11847,7 +12177,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "DNA places elk closer to sika deer (Cervus nippon) and Thorold’s deer (Cervus albirostris) than to western red deer.",
+          "Wapiti ancestors later reached North America across the Beringia land connection.",
+          "How many true subspecies exist is still debated.",
+          "Air can travel from the voice box through the nasal path to help make that sound.",
+          "Elk sit nearer the sika group, which also uses higher calls."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -12140,7 +12476,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Fratercula can be told as a “little brother of the north” name story.",
+          "The Atlantic puffin is the only puffin native to the Atlantic Ocean.",
+          "After breeding they are shed in a partial moult, so the winter bill looks less broad and less bright.",
+          "Spines on the tongue and roof of the mouth help keep that row in place.",
+          "Puffins swim underwater using their wings for propulsion."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -12275,7 +12617,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Other auks sit nearby but not in that small tribe.",
+          "Some scientists treat the differences as a gradual cline.",
+          "The horned puffin (Fratercula corniculata) of the North Pacific is the closest living relative of the Atlantic puffin.",
+          "Bright bill plates and face ornaments grow for breeding, then shed in a partial moult.",
+          "Warmer seas can shrink or move that food."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -12568,7 +12916,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "A common clue is thicker black outlines on the true orange clownfish.",
+          "If the breeding female disappears, the breeding male can change sex and take her place.",
+          "The largest fish is the breeding female, the next is the breeding male, and smaller fish wait their turn.",
+          "Clownfish acclimate by touching, nipping, and fanning tentacles over minutes to days.",
+          "Anemones may get cleaning, extra water flow, and help chasing anemone-eating fish."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -12703,7 +13057,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Classic names include the percula, clarkii, ephippium, akallopisos, and polymnus groups.",
+          "Other clownfish often specialize on one or a few hosts.",
+          "Smaller fish can suppress their own growth so they stay clearly smaller than the fish above them.",
+          "How much is built-in versus learned can differ by species.",
+          "Eggs hatch into planktonic larvae that drift in open water."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -12996,7 +13356,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Counts are often near 7,000 species, and exact totals vary.",
+          "A flat shell, tucked abdomen, and sideways walk keep showing up.",
+          "Hermit crabs have a soft, often coiled abdomen and occupy empty gastropod shells.",
+          "Crabs include many feeding styles — omnivores, plant-eaters, hunters, filter-feeders, and even some parasites.",
+          "Others, and horseshoe crabs as separate animals, can face habitat or harvest pressure."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -13131,7 +13497,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "The everyday word is polyphyletic: a crab-like form evolved independently multiple times.",
+          "An asymmetrical abdomen is a leftover hermit clue.",
+          "Examples include frog crabs (raninids) and odd fossils such as Callichimaera.",
+          "Treat IUCN letters as snapshots: American Limulus is often listed Vulnerable, and the tri-spine horseshoe crab Tachypleus tridentatus Endangered.",
+          "Crabs make up about 20% of marine crustaceans caught or farmed, amounting to about 1.5 million tonnes a year."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -13424,7 +13796,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Living species are often counted above 100, but names and counts are being reshuffled.",
+          "The cuttlebone is a chambered internal shell of aragonite.",
+          "Cephalopods like cuttlefish have two branchial hearts that send blood to the gills and one systemic heart that serves the rest of the body.",
+          "Their blood uses hemocyanin, a copper protein, so it can look blue-green — not red iron hemoglobin.",
+          "Some species go deeper, on the order of hundreds of meters."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -13559,7 +13937,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Metasepia nested inside Ascarosepion, so that older name became a junior synonym.",
+          "Among living coleoids, that chambered plan is rare and shared with Spirula.",
+          "Cuttlefish can also use stereopsis, so the brain compares both eyes for depth when they strike.",
+          "Each chromatophore is a pigment sac ringed by muscles under direct neural control.",
+          "Some can show courtship on one side and a female-like display on the other."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -13852,7 +14236,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Counts are often near eight suborders, twenty families, and a thousand species, but those numbers shift.",
+          "Freshwater eels in genus Anguilla grow in rivers and lakes, then return to the sea to breed.",
+          "Leaf larvae then drift on currents toward the continents.",
+          "Many anguillid elvers travel upstream and can be forced to climb obstructions such as weirs, dam walls, and natural waterfalls.",
+          "Treat letters as snapshots: European eel is often CR, American and Japanese freshwater eels EN, and the short-finned eel NT."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -13987,7 +14377,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "The shared trait is a flat leptocephalus larva.",
+          "Swamp eels and electric eels evolved long bodies on their own — they are unrelated look-alikes, not that sister group.",
+          "The electric eel (Electrophorus) is a South American knifefish in Gymnotiformes.",
+          "Many marine eel families are unlisted or carry different letters.",
+          "Glass-eel fisheries and farm demand add more pressure on threatened Anguilla."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -14280,7 +14676,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "The planula settles on a firm surface and grows into a polyp before later making swimming medusae.",
+          "Box jellyfish have more advanced vision than the other groups.",
+          "Blooms form when currents, nutrients, temperature, food, and other conditions line up.",
+          "Some invasive or bloom-forming kinds surge in new places, while habitats and other kinds shift.",
+          "Nematocysts are specialized stinging cells."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -14415,7 +14817,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Hydrozoa is the diverse sister branch and includes many medusae plus colonial siphonophores.",
+          "The swimming medusa appears later, after a polyp-first lifestyle.",
+          "Invasive or bloom-forming kinds can surge, while some coastal systems lose balance.",
+          "Exact counts and types vary by species.",
+          "Wikipedia describes medusozoans as typically showing tetramerous (four-part) radial symmetry — oral arms, radial canals, and other parts often come in fours."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -14708,7 +15116,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Familiar genera include Macrocystis, Nereocystis, Laminaria, and Ecklonia.",
+          "The holdfast anchors; it does not deliver nutrients.",
+          "Together they make sunny-to-shaded stories like a land forest.",
+          "Giant kelp (Macrocystis) can lengthen tens of centimeters vertically in a day in ideal cool, nutrient-rich water.",
+          "When otters are removed, urchins can boom and chew kelp down."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -14843,7 +15257,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Regional lists can run to dozens of kinds.",
+          "Moving from one to the other often needs a big push — disease, predators returning, or a temperature swing.",
+          "Alaska often treats sea otters as a keystone hunter of urchins.",
+          "When that subsidy runs out, they can climb and chew live holdfasts and clear a stand.",
+          "Tall canopy kinds such as Macrocystis or Alaria, stipitate understory kinds such as Eisenia or Ecklonia, and prostrate forms such as Laminaria can stack microhabitats much like a rainforest."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -15136,7 +15556,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "The gill arches have pinkish-brown gill rakers made of spongy tissue.",
+          "Foraging mantas flatten the horn-shaped cephalic fins to channel food into the mouth, and small particles collect on the tissue between the gill arches.",
+          "Mantas must keep swimming with their mouths open so oxygenated water keeps passing over their gills.",
+          "Gestation lasts over a year and brood size is usually one pup.",
+          "The newly named Atlantic manta’s status is still settling, so we keep the letters as snapshots."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -15271,7 +15697,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Keeping two genera made Mobula paraphyletic, so researchers sunk Manta into Mobula.",
+          "Exact ranks and heat jobs can still be discussed.",
+          "Fertilized eggs start in an egg case inside the mother.",
+          "Manta distributions are fragmented, with little evidence that subpopulations mingle.",
+          "Letters can change — they are not one forever score."
+        ],
         "talk_about": [
           "DNA put old Manta inside Mobula. Why did keeping two genera make the tree messy?",
           "Gill-raker lobes bounce tiny prey toward the throat. Why might that ricochet help?",
@@ -15574,7 +16006,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "A traditional split names finned deep-sea Cirrina (cirri plus fins) and typical Incirrina — the kinds most aquariums show.",
+          "During strong jetting the main heart becomes inactive, so the animal loses energy quickly and mostly crawls.",
+          "Haemocyanin, a copper-rich protein dissolved in the plasma (not packed in blood cells), carries oxygen and makes the blood bluish.",
+          "Arms can perform actions with a degree of independence from the brain in the head.",
+          "The veined octopus collects discarded coconut shells and uses them as a shelter — an example of tool use."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -15709,7 +16147,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Octopuses and other coleoid cephalopods edit RNA more than almost any other animals, especially in the nervous system, using ADAR enzymes.",
+          "All octopuses are venomous, but only blue-ringed kinds (Hapalochlaena) are known to be deadly to people.",
+          "Many novel genes show up in skin, suckers, and nerves.",
+          "Modern octopod genomes went through chromosomal fusions and rearrangements.",
+          "The old names are still useful labels, but they are not forever boxes."
+        ],
         "talk_about": [
           "Coleoid octopuses rewrite RNA more than almost any animal. Why might that trade slower DNA change?",
           "Blue-rings are the people-danger outlier. Why isn’t every octopus bite the same story?",
@@ -16013,7 +16457,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Six living kinds are hard-shelled cheloniids (family Cheloniidae).",
+          "Warmer nest sand produces more female hatchlings; cooler sand produces more males.",
+          "Different sea turtle kinds show various levels of philopatry.",
+          "Hatchlings and adults can use Earth’s field to stay on long ocean routes.",
+          "Reptile kidneys cannot produce urine saltier than seawater."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -16148,7 +16598,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Sea turtles are poikilotherms, but leatherbacks can keep a body temperature warmer than the surrounding water by gigantothermy — large size plus circulation tricks.",
+          "Each unit faces its own mix of threats, so one species can recover in one place and keep declining in another.",
+          "All sea turtle species are listed in CITES Appendix I, which tightly restricts international trade in the animals and their parts.",
+          "Turtle excluder devices in shrimp nets give turtles an escape opening so they can leave the net and surface to breathe.",
+          "Marine debris, especially plastic bags, can be mistaken for jellyfish."
+        ],
         "talk_about": [
           "One kind can look CR in one frame and closer to LC in another. Why aren’t those letters the same story?",
           "Escape doors in shrimp nets and plastic bags that look like jellyfish. How do those threats differ?",
@@ -16452,7 +16908,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Anatomical and molecular evidence shows seahorses are highly modified pipefish that swim upright.",
+          "Colour-bright dances and greetings help sync the pair so the male is ready when eggs are transferred.",
+          "Many species form pair bonds that last at least through a breeding season, but some switch mates more readily.",
+          "Seahorses have extremely simple digestive systems that lack a stomach, so they must eat constantly.",
+          "Seahorses swim extremely poorly and rest with the prehensile tail wound around a holdfast."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -16587,7 +17049,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Zebrafish knockouts of tbx4 also lack pelvic fins.",
+          "Many kinds are listed VU from trade and habitat loss.",
+          "International seahorse trade has been controlled under CITES since 2002, with all Hippocampus listed on Appendix II.",
+          "Once animals are ground into pills, it is harder to track juveniles and less-wanted kinds.",
+          "The upright look is linked to spreading seagrass after Oligocene tectonic events made more shallow seas."
+        ],
         "talk_about": [
           "Appendix II still needs permits. Why isn’t that the same as “safe forever”?",
           "Lost tooth genes go with a tube snout. Why might a sucking mouth replace chewing teeth?",
@@ -16890,7 +17358,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Water links through a stone canal to a ring canal around the mouth.",
+          "Muscular ampullae push fluid so the podium extends; muscles and valves help retract and grip.",
+          "Pyloric caeca in the arms help finish digestion.",
+          "Paine’s removals showed mussels can dominate and diversity drops when the predator is gone.",
+          "Outbreaks can kill large areas of living coral tissue."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -17025,7 +17499,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Different studies place different groups near the root.",
+          "Exact causes stay debated — we do not lock one germ.",
+          "We never lock one letter for all starfish.",
+          "Order placement (including awkward groups such as sea daisies in Velatida) is still discussed.",
+          "Wikipedia lists seven living orders in Asteroidea (Brisingida, Forcipulatida, Notomyotida, Paxillosida, Spinulosida, Valvatida, Velatida)."
+        ],
         "talk_about": [
           "Status can differ by kind. Why isn’t one letter the story for every sea star?",
           "Stretchy body tissue can go stiff or floppy in seconds. Why isn’t that just muscle?",
@@ -17328,7 +17808,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Locomotion splits into undulatory (more than one wave) and oscillatory (fewer waves / wing-like).",
+          "Most myliobatoids are marine, from coasts to deep water.",
+          "Spiracles move less volume than the mouth path, but enough while waiting in ambush.",
+          "We keep denser family lists for later.",
+          "Wikipedia: eyes are on top and the mouth underneath, so after capture they rely on smell and ampullae of Lorenzini — electroreceptors like sharks use — around the mouth."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -17398,7 +17884,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Mantas and devil rays sit in Mobulidae within that group.",
+          "Proteins named in it include cystatins and galectin.",
+          "In some species tooth morphology changes in mating season and returns afterward.",
+          "This is a group card — we never lock one letter for all stingrays.",
+          "Wikipedia: embryos absorb yolk first; after the sac is depleted the mother provides uterine “milk.”"
+        ],
         "talk_about": [
           "Status can differ by kind. Why isn’t one letter the story for every stingray?",
           "Venom sits in tissue on the spine, not a classic gland. Why?",
@@ -17571,7 +18063,13 @@
         ]
       },
       "hard": {
-        "teach": [],
+        "teach": [
+          "Letters can change — treat Endangered as a snapshot.",
+          "Ningaloo Reef, Yucatán Peninsula).",
+          "Wikipedia: Rhincodon typus is the only living species of Rhincodon and the only living member of family Rhincodontidae, within the carpet-shark order Orectolobiformes.",
+          "Wikipedia: mouths can hold hundreds of rows of tiny teeth plus filter pads for filter feeding — not for hunting people.",
+          "Wikipedia: specialized sieve-like gill pads (filter pads) and an active suction filter-feeding style let it process large volumes of water and catch plankton and small fish."
+        ],
         "questions": [
           {
             "slot": 1,
@@ -17641,7 +18139,13 @@
         ]
       },
       "zoologist": {
-        "teach": [],
+        "teach": [
+          "Like other sharks, whale sharks have dermal denticles (placoid scales) on the body.",
+          "Researchers use photo-identification of a standard flank area (often near the gills/pectoral) to feed global ID libraries and track re-sightings.",
+          "Methods still refine exact ages.",
+          "It also notes an extinct Rhincodon ferriolensis from the Late Burdigalian (Miocene) of Europe.",
+          "Wikipedia ties the Endangered listing to a large decline over recent decades from targeted fishing, bycatch in other fisheries, and collisions with large ships."
+        ],
         "questions": [
           {
             "slot": 1,

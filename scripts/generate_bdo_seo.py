@@ -372,10 +372,10 @@ QR_WELCOME_TYPE_LANDINGS = ("zoos",)
 def qr_welcome_tag(defer: bool = False) -> str:
     d = " defer" if defer else ""
     return f'<script src="/shell/qr-welcome.js?v={QR_WELCOME_JS_VER}"{d}></script>'
-PRINT_KIT_JS_VER = "23"
-STUDY_CARD_JS_VER = "20"
-STUDY_CARD_CSS_VER = "17"
-STUDY_CARDS_DATA_JS_VER = "10"
+PRINT_KIT_JS_VER = "24"
+STUDY_CARD_JS_VER = "21"
+STUDY_CARD_CSS_VER = "18"
+STUDY_CARDS_DATA_JS_VER = "11"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "22"
 FP_ANALYTICS_JS_VER = "2"
@@ -5772,6 +5772,11 @@ def write_card_pages(
             enlarge=bool(photo),
         )
         talk_html = outing_talk_html(item)
+        teach_block = ""
+        teach_match = re.search(r'<details class="study-teach" open>.*?</details>', talk_html)
+        if teach_match:
+            teach_block = teach_match.group(0)
+            talk_html = talk_html[: teach_match.start()] + talk_html[teach_match.end() :]
         study_deck = default_study_deck_for(cid)
         study_scripts = ""
         study_json_tag = ""
@@ -5811,6 +5816,9 @@ def write_card_pages(
         if study_deck:
             # 2026-10-29: the quiz is the card's main action, so its in-page jump is always visible
             # (it used to show only with ?from=<place>). Plain #quiz anchor, no new tracking.
+            # Watch film stays first. Tips sit above Take the quiz.
+            if teach_block:
+                primary_bits.append(teach_block)
             primary_bits.append(
                 '<a class="btn btn-primary card-quiz-peer" href="#quiz">Take the quiz</a>'
             )

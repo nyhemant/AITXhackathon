@@ -157,7 +157,7 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(deck["level_label"], "Zoologist")
         self.assertEqual(deck["source"], WIKI_MANTA_RAY)
         self.assertEqual(deck["source_note"], "Facts from Wikipedia, Manta ray. Where sources disagree on exact numbers, we keep them approximate.")
-        self.assertEqual(deck["teach"], [])
+        self.assertGreaterEqual(len(deck["teach"]), 2)
         self.assertEqual(deck["talk_about"], visible_prompts(TALK_ABOUT_MANTA_RAY_ZOOLOGIST, deck["level"]))
         self.assertEqual(deck["push_further"], visible_prompts(PUSH_FURTHER_MANTA_RAY_ZOOLOGIST, deck["level"]))
         self.assertEqual(len(deck["questions"]), STUDY_SLOTS)
@@ -176,8 +176,8 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
         self.assertEqual(validate_deck(hard), [])
         self.assertEqual(validate_deck(zoo), [])
         broken_zoo = dict(zoo)
-        broken_zoo["teach"] = ["A leftover teach line."]
-        self.assertIn("zoologist deck must not include a teach strip", validate_deck(broken_zoo))
+        broken_zoo["teach"] = []
+        self.assertIn("teach strip empty", validate_deck(broken_zoo))
 
     def test_zoologist_slots_and_copy_are_locked(self):
         deck = study_deck_for("manta-ray", "zoologist")
@@ -315,8 +315,8 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", sheet)
         self.assertNotIn("Junior Ranger", sheet)
         self.assertNotIn("Park Ranger", sheet)
-        self.assertNotIn("Quick tips", sheet)
-        self.assertNotIn("ps-study-teach", sheet)
+        self.assertIn("Quick tips (Zoologist)", sheet)
+        self.assertIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
         front, _, back = sheet.partition("ps-study-back")
@@ -337,7 +337,7 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
 
     def test_zoologist_screen_hides_empty_teach_but_keeps_deepen(self):
         html = study_talk_html(study_deck_for("manta-ray", "zoologist"))
-        self.assertNotIn("study-teach", html)
+        self.assertIn("study-teach", html)
         self.assertIn("Talk about it", html)
         self.assertIn("Push further", html)
         self.assertIn("Zoologist", html)
@@ -382,11 +382,11 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
     def test_published_artifacts_and_plumbing(self):
         payload = json.loads(STUDY_JSON.read_text(encoding="utf-8"))
         zoo = payload["manta-ray"]["levels"]["zoologist"]
-        self.assertEqual(zoo["teach"], [])
+        self.assertGreaterEqual(len(zoo["teach"]), 2)
         self.assertEqual(len(zoo["questions"]), STUDY_SLOTS)
         self.assertEqual([q["id"] for q in zoo["questions"]], list(ZOOLOGIST_IDS))
         self.assertIn("hard", payload["manta-ray"]["levels"])
-        self.assertEqual(payload["manta-ray"]["levels"]["hard"]["teach"], [])
+        self.assertGreaterEqual(len(payload["manta-ray"]["levels"]["hard"]["teach"]), 2)
         self.assertEqual(payload["manta-ray"]["levels"]["easy"]["teach"], [
             "Huge flat rays with wing-like fins",
             "Horn-shaped fins beside a wide forward mouth",
@@ -395,7 +395,7 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
             "Live in warm tropical and subtropical seas",
         ])
         data_js = STUDY_DATA_JS.read_text(encoding="utf-8")
-        self.assertIn('"zoologist":{"teach":[]', data_js)
+        self.assertIn('"zoologist":{"teach":["', data_js)
         self.assertIn("paraphyly-soft", data_js)
         self.assertIn("ricochet-filter-soft", data_js)
         self.assertIn("histotroph-soft", data_js)
@@ -410,7 +410,7 @@ class MantaRayZoologistStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="zoologist"', html)
         self.assertIn('data-study-pick="hard"', html)
         self.assertIn("study-card.js?v=15", html)
-        self.assertIn("study-cards-data.js?v=10", html)
+        self.assertIn("study-cards-data.js?v=11", html)
         print_tpl = study_print_html_for("manta-ray")
         self.assertIn("Junior Ranger", print_tpl)
         self.assertIn("Quick tips (Junior Ranger)", print_tpl)
