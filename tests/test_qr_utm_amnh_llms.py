@@ -14,8 +14,8 @@ TICK = chr(96)
 TEXT_SUFFIXES = {".py", ".js", ".html", ".css", ".md", ".txt", ".json", ".svg", ".xml"}
 SKIP_DIRS = {".git", "node_modules", "__pycache__", ".venv"}
 ANSWER = (
-    "KidZooKit is a free printable zoo, aquarium, and museum field trip kit "
-    "and animal study cards with quizzes, for kids about 4–8. Printables are free."
+    "KidZooKit is a printable zoo, aquarium, and museum field trip kit "
+    "and animal study cards with quizzes, for kids about 4–8."
 )
 KEY_LLMS = (
     "https://kidzookit.com/start/",

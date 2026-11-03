@@ -494,12 +494,7 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertIn('aria-live="polite"', hub_page)
         self.assertLess(hub_page.rfind("Print PDF"), hub_page.find('class="kz-nl'))
         self.assertLess(hub_page.find("Printing tips"), hub_page.find('class="kz-nl'))
-        # The opening answer may say printables are free. No other "free" hook.
-        plain = (
-            "KidZooKit is a free printable zoo, aquarium, and museum field trip kit "
-            "and animal study cards with quizzes, for kids about 4–8. Printables are free."
-        )
-        self.assertNotRegex(hub_page.replace(plain, ""), r"(?i)\bfree\b")
+        self.assertNotRegex(hub_page, r"(?i)\bfree\b")
 
         for slug in ("scavenger-hunt", "animal-bingo", "zoo-day-journal"):
             page = (printables / slug / "index.html").read_text(encoding="utf-8")
@@ -513,7 +508,7 @@ class NewsletterMarkupTests(unittest.TestCase):
             box = page.find('class="kz-nl')
             self.assertLess(page.find('class="printbar"'), box, slug)
             self.assertLess(faq_end, box, slug)
-            self.assertNotRegex(page.replace(plain, ""), r"(?i)\bfree\b")
+            self.assertNotRegex(page, r"(?i)\bfree\b")
 
         self.assertNotIn("kz-nl", start)
         self.assertNotIn("newsletter-v1", start)
