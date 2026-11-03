@@ -377,7 +377,7 @@ STUDY_CARD_JS_VER = "21"
 STUDY_CARD_CSS_VER = "18"
 STUDY_CARDS_DATA_JS_VER = "11"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
-MISSION_CSS_VER = "22"
+MISSION_CSS_VER = "23"
 FP_ANALYTICS_JS_VER = "2"
 MISSION_UI_JS_VER = "21"
 
