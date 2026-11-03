@@ -128,6 +128,39 @@ class AmnhAndLlmsTests(unittest.TestCase):
             self.assertNotIn(" we ", ANSWER.lower())
             self.assertNotIn(" our ", ANSWER.lower())
 
+    def test_each_page_keeps_its_own_lead_after_the_answer(self):
+        import sys
+        sys.path.insert(0, str(REPO / "scripts"))
+        from seo_page_copy import PAGE_COPY
+
+        leads = {
+            "field-pack/index.html": (
+                "Choose a zoo, aquarium, museum, or park and get animal cards, talk "
+                "prompts, and a printable hunt for your visit. Or explore from home "
+                "with live cams and short films."
+            ),
+            "field-pack/cards/index.html": (
+                "Pick an animal card to get a photo, quick tips, a quiz, and talk "
+                "prompts for a visit or a quiet afternoon at home. Every card has a "
+                "printable page, and black and white is fine."
+            ),
+            "printables/index.html": (
+                "Print a page and turn the visit into an expedition. Hunts, bingo and "
+                "games to spot, play and learn. US Letter and A4, no signup."
+            ),
+            "printables/scavenger-hunt/index.html": (
+                "Sixteen things to spot at the zoo or park. Tick them off, count your "
+                "finds, then draw your favorite."
+            ),
+        }
+        for rel, lead in leads.items():
+            html = (STATIC / rel).read_text(encoding="utf-8")
+            self.assertIn(f"{ANSWER} {lead}</p>", html, rel)
+            self.assertNotIn("free", lead.lower(), rel)
+        for path in ("/field-pack/", "/field-pack/cards/"):
+            rel = path.strip("/") + "/index.html"
+            self.assertEqual(PAGE_COPY[path]["intro"], f"{ANSWER} {leads[rel]}", path)
+
     def test_llms_txt_lists_key_pages_and_is_plain_text(self):
         text = (STATIC / "llms.txt").read_text(encoding="utf-8")
         for url in KEY_LLMS:
