@@ -77,17 +77,11 @@ class PrintablePagesTests(unittest.TestCase):
         self.assertFalse(a & b or a & c or b & c, "an answer is pasted on more than one sheet page")
 
     def test_pages_use_shell_and_no_free_hook(self):
-        # The opening answer may say printables are free. No other "free" hook.
-        allowed = (
-            "kidzookit is a free printable zoo, aquarium, and museum field trip kit "
-            "and animal study cards with quizzes, for kids about 4–8. printables are free."
-        )
         for slug in PILOT:
             html = self._html(slug)
             self.assertIn("/shell/shell.js", html)
             self.assertIn("oneless-shell", html)
-            rest = html.lower().replace(allowed, "")
-            self.assertNotIn("free", rest, slug)
+            self.assertNotIn("free", html.lower(), slug)
 
     def test_hub_links_pilot_pages_and_has_social_preview(self):
         html = (PRINTABLES_ROOT / "index.html").read_text(encoding="utf-8")
