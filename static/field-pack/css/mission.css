@@ -1039,3 +1039,47 @@ body.mission-hunt-alpha .mission-drawer-kicker {
   border: 1.5px solid rgba(15, 92, 92, 0.22);
   border-radius: 8px;
 }
+
+/* === Hunt style: stacked cards, not a pill (2026-11-03) ===
+   The pill shell (.mission-seg radius 999px + overflow hidden) clipped the stacked
+   Classic / Bonus / Challenge rows into an oval. Give each option its own rounded card. */
+#mission-hunt-seg.mission-seg-hunt {
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+}
+#mission-hunt-seg.mission-seg-hunt .mission-seg-btn {
+  border: 1.5px solid rgba(15, 92, 92, 0.18);
+  border-radius: 12px;
+  background: #fff;
+  min-height: 44px;
+  width: 100%;
+}
+#mission-hunt-seg.mission-seg-hunt .mission-seg-btn:last-child {
+  border-right: 1.5px solid rgba(15, 92, 92, 0.18);
+}
+#mission-hunt-seg.mission-seg-hunt .mission-seg-btn:hover,
+#mission-hunt-seg.mission-seg-hunt .mission-seg-btn:focus-visible {
+  background: #f0faf6;
+}
+#mission-hunt-seg.mission-seg-hunt .mission-seg-btn:focus-visible {
+  outline: 2px solid #0f5c5c;
+  outline-offset: 2px;
+}
+#mission-hunt-seg.mission-seg-hunt .mission-seg-btn.is-active {
+  background: #0f5c5c;
+  border-color: #0f5c5c;
+  color: #fff;
+}
+#mission-hunt-seg.mission-seg-hunt .mission-seg-btn[data-hunt="bonus"].is-active {
+  background: #8a6d3b;
+  border-color: #8a6d3b;
+}
+#mission-hunt-seg.mission-seg-hunt .mission-seg-btn[data-hunt="alpha"].is-active {
+  background: #4a5568;
+  border-color: #4a5568;
+}
+#mission-hunt-seg.mission-seg-hunt .mission-seg-btn.is-active .mission-seg-cap {
+  color: rgba(255, 255, 255, 0.92);
+}
