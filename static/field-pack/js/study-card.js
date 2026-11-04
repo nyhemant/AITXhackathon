@@ -336,7 +336,7 @@ if (typeof window !== "undefined") {
     return (
       `<details class="study-teach"${openAttr}>` +
       `<summary class="study-teach-kicker">Quick tips (${esc(name)}) ` +
-      `<span class="study-teach-hint">— tap to open</span></summary>` +
+      `<span class="study-teach-hint">— ${openAttr ? "tap to hide" : "tap to open"}</span></summary>` +
       `<ul>${lines.map((line) => `<li>${esc(line)}</li>`).join("")}</ul></details>`
     );
   }
@@ -990,3 +990,15 @@ if (typeof window !== "undefined") {
     boot();
   }
 })();
+
+/* 2026-11-04: keep the "tap to open / tap to hide" hint in step with the tips. */
+document.addEventListener(
+  "toggle",
+  (e) => {
+    const d = e.target;
+    if (!d || !d.matches || !d.matches("details.study-teach, details.study-explore")) return;
+    const hint = d.querySelector(":scope > summary .study-teach-hint, :scope > summary .study-explore-hint");
+    if (hint) hint.textContent = d.open ? "— tap to hide" : "— tap to open";
+  },
+  true
+);
