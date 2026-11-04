@@ -21738,7 +21738,7 @@ def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
     teach = (
         f'<details class="study-teach" open>'
         f'<summary class="study-teach-kicker">Quick tips ({teach_label}) '
-        f'<span class="study-teach-hint">— tap to open</span></summary>'
+        f'<span class="study-teach-hint">— tap to hide</span></summary>'
         f"<ul>{teach_items}</ul>"
         f"</details>"
         if teach_items

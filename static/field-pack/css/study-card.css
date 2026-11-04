@@ -647,3 +647,20 @@
     transition: none;
   }
 }
+
+/* ---- Parent-walk fixes (2026-11-04) ---- */
+/* Correct answer letter: white on dark green chip (about 9:1), readable on the green highlight. */
+.card-page .card-study-pack .study-choice.is-correct-pick .study-letter,
+.card-page .card-study-pack .study-choice.is-correct-key .study-letter {
+  color: #fff;
+  background: #0b4d2e;
+  border-radius: 0.35em;
+  padding: 0 0.3em;
+  text-align: center;
+}
+/* Phones: the progress pill sits in the page flow so it never covers an answer. */
+@media (max-width: 600px) {
+  .card-page .card-study-pack .study-progress {
+    position: static;
+  }
+}
