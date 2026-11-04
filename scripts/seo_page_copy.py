@@ -164,3 +164,12 @@ PAGE_COPY["/field-pack/museums/"] = {
         "and children's museums, each with talk prompts and a printable sheet for your visit."
     ),
 }
+
+
+# 2026-11-04: titles trimmed to <=60 chars, leading with the search phrase.
+PAGE_COPY["/field-pack/cards/"]["title"] = 'Animal Cards for Kids: Photos & Quizzes | KidZooKit'
+PAGE_COPY["/field-pack/aquariums/"]["title"] = 'Aquariums for Kids: Animal Cards & Hunts | KidZooKit'
+
+# 2026-11-04: thin venue/feature card titles ("Art Lab — KidZooKit") get context
+# already on the card. Used by generate_bdo_seo.py for non-animal cards.
+CARD_TITLES = {'cm-art-lab': "Art Lab for Kids: Children's Museum Card | KidZooKit", 'cm-imaginarium': "Imaginarium for Kids: Children's Museum Card | KidZooKit", 'cm-makery': "Creative Makery for Kids: Children's Museum | KidZooKit", 'cm-outdoor': "Outdoor Area for Kids: Children's Museum Card | KidZooKit", 'cm-toddler-garden': "Toddler Garden for Kids: Children's Museum | KidZooKit", 'cm-woven': "Woven Wonders for Kids: Children's Museum | KidZooKit", 'sci-aquarium-zone': 'Aquarium Zone for Kids: Science Museum Card | KidZooKit', 'sci-astronaut': 'Astronaut Life for Kids: Science Museum Card | KidZooKit', 'sci-dinosaur': 'Dinosaur Hall for Kids: Science Museum Card | KidZooKit', 'sci-hands-on': 'Hands-on Lab for Kids: Science Museum Card | KidZooKit', 'sci-mammal-hall': 'Mammal Hall for Kids: Science Museum Card | KidZooKit', 'sci-rainforest': 'Rainforest Dome for Kids: Science Museum | KidZooKit', 'sci-rocket': 'Rockets & Launch for Kids: Science Museum | KidZooKit', 'cuyahoga-towpath': 'Towpath Trail for Kids: Cuyahoga Valley | KidZooKit'}
