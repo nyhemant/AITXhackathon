@@ -114,6 +114,10 @@ def process(hub):
         html = html.replace('<script src="/shell/shell.js?v=6" defer></script>',
                             '<script src="/shell/shell.js?v=6" defer></script>\n  <script src="/shell/related-links.js?v=1" defer></script>', 1)
     if html != orig:
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from img_alt_fill import card_names, fill as _fill_alts
+        html = _fill_alts(html, card_names(str(Path(__file__).resolve().parents[1] / "static")))[0]
         path.write_text(html, encoding="utf-8")
         print("updated", path.relative_to(REPO))
 

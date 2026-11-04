@@ -3697,6 +3697,12 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
 """
     out_dir = FIELD / path
     out_dir.mkdir(parents=True, exist_ok=True)
+    # Give content photos a real alt from the name already beside them.
+    sys.path.insert(0, str(REPO / "scripts"))
+    from img_alt_fill import card_names, fill as _fill_alts
+    html = _fill_alts(html, card_names(str(STATIC)))[0]
+    from img_alt_fill import add_card_links
+    html = add_card_links(str(path).strip("/").split("/")[-1], html)
     (out_dir / "index.html").write_text(html, encoding="utf-8")
     return f"/field-pack/{path}/"
 
@@ -5870,7 +5876,8 @@ def write_card_pages(
             _levels = sum(1 for lv in ("easy", "hard", "zoologist") if study_deck_for_level(cid, lv))
             card_seo = animal_card_seo(name, blurb, quiz_levels=_levels)
             _approved = {}
-        title = _approved.get("title") or card_seo.get("title") or f"{name} — KidZooKit"
+        from seo_page_copy import CARD_TITLES as _CARD_TITLES
+        title = _approved.get("title") or card_seo.get("title") or _CARD_TITLES.get(cid) or f"{name} — KidZooKit"
         desc = _approved.get("description") or card_seo.get("description") or (
             (blurb + " " if blurb else "") + f"{name} card: photo and talk prompts."
         )
