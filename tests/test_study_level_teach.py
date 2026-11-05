@@ -89,7 +89,7 @@ class StudyLevelTeachTests(unittest.TestCase):
                 self.assertIn("Quick tips (Junior Ranger)", primary)
                 self.assertIn("study-cards-data.js?v=11", html)
                 self.assertIn("study-card.js?v=22", html)
-                self.assertIn("study-card.css?v=19", html)
+                self.assertIn("study-card.css?v=20", html)
                 self.assertEqual(html.count('class="study-teach"'), 1)
                 checked += 1
         self.assertGreaterEqual(checked, 42)
