@@ -2399,6 +2399,34 @@ body.has-hunt-sticky {
   .seo-sticky-print { width: 100%; }
 }
 
+/* Phones: slim sticky Print bar — hide Letter/A4 subline (already on Going-soon card) */
+@media (max-width: 480px) {
+  .seo-hunt-sticky {
+    flex-wrap: nowrap;
+    gap: 0.45rem 0.65rem;
+    padding: 0.45rem 0.75rem calc(0.45rem + env(safe-area-inset-bottom, 0px));
+  }
+  .seo-hunt-sticky-copy {
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
+  .seo-sticky-print-spec {
+    display: none;
+  }
+  .seo-sticky-print {
+    width: auto;
+    min-height: 2.5rem; /* ≥40px */
+    padding: 0.4rem 0.95rem;
+  }
+  body.has-hunt-sticky {
+    padding-bottom: max(5.25rem, calc(4.25rem + env(safe-area-inset-bottom, 0px)));
+  }
+  .seo-start-here,
+  #start-here {
+    scroll-margin-bottom: max(5.25rem, calc(4.25rem + env(safe-area-inset-bottom, 0px)));
+  }
+}
+
 /* Legacy mission-bar rules kept for older cached HTML; fork is primary */
 
 
