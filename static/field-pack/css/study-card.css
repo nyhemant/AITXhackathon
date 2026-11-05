@@ -122,9 +122,6 @@
 .card-page .study-teach[open] > .study-teach-kicker {
   margin-bottom: 0.35rem;
 }
-.card-page .study-teach[open] .study-teach-hint {
-  display: none;
-}
 .card-page .study-teach-hint {
   font-weight: 650;
   letter-spacing: 0;

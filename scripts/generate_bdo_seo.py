@@ -374,7 +374,7 @@ def qr_welcome_tag(defer: bool = False) -> str:
     return f'<script src="/shell/qr-welcome.js?v={QR_WELCOME_JS_VER}"{d}></script>'
 PRINT_KIT_JS_VER = "24"
 STUDY_CARD_JS_VER = "22"
-STUDY_CARD_CSS_VER = "19"
+STUDY_CARD_CSS_VER = "20"
 STUDY_CARDS_DATA_JS_VER = "11"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "23"
