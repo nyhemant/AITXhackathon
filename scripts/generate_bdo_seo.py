@@ -1038,7 +1038,7 @@ def catalog_more_links_html(
         )
     elif shared:
         bits.append(
-            '<a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">Learn more</a>'
+            '<a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">All places</a>'
         )
     if not bits:
         return ""
@@ -1985,6 +1985,7 @@ SEO_TITLE_LABELS = {
     "dallas-zoo": "Dallas Zoo Field Trip for Kids — Printable Hunt",
     "memphis-zoo": "Memphis Zoo Field Trip for Kids — Printable Hunt",
     "singapore-night-safari": "Singapore Night Safari for Kids — Printable Hunt",
+    "air-and-space": "Air and Space & Udvar-Hazy Scavenger Hunt for Kids",
 }
 
 SEO_META_DESCRIPTIONS = {
@@ -2015,6 +2016,14 @@ SEO_META_DESCRIPTIONS = {
     "copenhagen-zoo": (
         "Copenhagen Zoo scavenger hunt for kids: panda, giraffe, and hippo cards, talk prompts, "
         "and a printable hunt — KidZooKit."
+    ),
+    "california-science-center": (
+        "California Science Center scavenger hunt for kids in Los Angeles: a science museum hunt "
+        "you can print, or explore cards at home — KidZooKit."
+    ),
+    "air-and-space": (
+        "National Air and Space Museum scavenger hunt for kids: the National Mall or Udvar-Hazy "
+        "in Chantilly. Print the hunt or explore cards at home — KidZooKit."
     ),
 }
 
@@ -2157,6 +2166,77 @@ def meta_for(v: dict) -> str:
     return _clip_serp(base)
 
 
+
+def venue_last_checked_iso(mission_venue: dict | None, v: dict | None = None) -> str:
+    """A real YYYY-MM-DD already stored on the venue or its items. Never invent."""
+    cands: list[str] = []
+    srcs = [mission_venue or {}, v or {}]
+    for src in srcs:
+        for key in ("last_verified", "last_presence_audit", "lastVerified"):
+            raw = str(src.get(key) or "").strip()
+            if len(raw) >= 10 and raw[4] == "-" and raw[7] == "-":
+                raw = raw[:10]
+                if raw[0:4].isdigit():
+                    cands.append(raw)
+        for it in src.get("items") or []:
+            raw = str((it or {}).get("presence_checked") or "").strip()
+            if len(raw) >= 10 and raw[4] == "-" and raw[7] == "-":
+                raw = raw[:10]
+                if raw[0:4].isdigit():
+                    cands.append(raw)
+    return max(cands) if cands else ""
+
+
+def venue_last_checked_label(iso: str) -> str:
+    """Parent-facing date, e.g. August 9, 2026."""
+    if not iso or len(iso) < 10:
+        return ""
+    try:
+        y, m, d = int(iso[0:4]), int(iso[5:7]), int(iso[8:10])
+        import calendar as _cal
+        return f"{_cal.month_name[m]} {d}, {y}"
+    except (ValueError, IndexError):
+        return ""
+
+
+def venue_article_image_url(mission_venue: dict | None, v: dict | None, vid: str = "") -> str:
+    """Absolute URL of a photo already used for this place. Never the Dallas sample."""
+    dallas = "sample-mission-dallas-zoo"
+    hero = hero_illustration_path(mission_venue, vid)
+    if hero and dallas not in hero:
+        if hero.startswith("http"):
+            return hero.split("?")[0]
+        if hero.startswith("/"):
+            return f"{SITE}{hero.split('?')[0]}"
+        return f"{SITE}/field-pack/{hero.lstrip('/').split('?')[0]}"
+    # First picture-strip / featured photo already on the page.
+    for src in (mission_venue or {}, v or {}):
+        for it in (src.get("items") or src.get("featured") or []):
+            photo = str((it or {}).get("photo") or "").strip()
+            if not photo:
+                cid = str((it or {}).get("catalog_id") or (it or {}).get("id") or "").strip()
+                if cid and (FIELD / "photos" / f"{cid}.jpg").is_file():
+                    photo = f"/field-pack/photos/{cid}.jpg"
+            if not photo or dallas in photo:
+                continue
+            if photo.startswith("http"):
+                return photo.split("?")[0]
+            if photo.startswith("/"):
+                return f"{SITE}{photo.split('?')[0]}"
+            return f"{SITE}/field-pack/{photo.lstrip('/').split('?')[0]}"
+    return ""
+
+
+def last_checked_chip_html(iso: str) -> str:
+    """Visible 'Last checked' line. Empty when no real date exists."""
+    label = venue_last_checked_label(iso)
+    if not label:
+        return ""
+    return (
+        f'<p class="seo-last-checked">Last checked: {esc(label)}</p>'
+    )
+
+
 def venue_json_ld(v: dict, url: str) -> str:
     steps = []
     for i, t in enumerate((v.get("hunt") or [])[:HUNT_TEASER_MAX], 1):
@@ -2191,16 +2271,28 @@ def venue_json_ld(v: dict, url: str) -> str:
         "step": steps,
         "url": url,
     }
+    mission = load_mission_venue(str(v.get("id") or ""))
+    checked = venue_last_checked_iso(mission, v)
+    image = venue_article_image_url(mission, v, str(v.get("id") or ""))
     article = {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": hunt_name,
         "description": meta_for(v),
         "author": {"@type": "Organization", "name": BRAND_NAME},
-        "publisher": {"@type": "Organization", "name": BRAND_NAME, "url": SITE},
+        "publisher": {
+            "@type": "Organization",
+            "name": BRAND_NAME,
+            "url": f"{SITE}/start/",
+            "logo": {"@type": "ImageObject", "url": f"{SITE}/pwa/icon-512.png"},
+        },
         "mainEntityOfPage": url,
         "about": {"@type": "Place", "name": v["name"], "address": v.get("location") or ""},
     }
+    if image:
+        article["image"] = image
+    if checked:
+        article["dateModified"] = checked
     return json.dumps(howto, ensure_ascii=False) + "\n" + json.dumps(article, ensure_ascii=False)
 
 
@@ -5974,6 +6066,7 @@ def write_card_pages(
       var more = document.querySelector("a.card-learn-more");
       if (more && from && KIT_SITES[from]) {{
         more.href = KIT_SITES[from];
+        if (KIT_NAMES[from]) more.textContent = KIT_NAMES[from];
         more.removeAttribute("hidden");
       }}
       

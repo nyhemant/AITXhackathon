@@ -103,6 +103,7 @@
       var more = document.querySelector("a.card-learn-more");
       if (more && from && KIT_SITES[from]) {
         more.href = KIT_SITES[from];
+        if (KIT_NAMES[from]) more.textContent = KIT_NAMES[from];
         more.removeAttribute("hidden");
       }
       
