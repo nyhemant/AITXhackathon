@@ -26,13 +26,15 @@
   <meta name="twitter:title" content="Virtual Zoo for Kids: Live Cams &amp; Animal Cards | KidZooKit" />
   <meta name="twitter:description" content="A virtual zoo for curious kids. Watch Live, explore Places, or open Cards — no signup, works on a phone." />
   <meta name="twitter:image" content="https://kidzookit.com/start/hero-world-map.jpg" />
-  <link rel="stylesheet" href="/start/start.css?v=80" />
+  <link rel="stylesheet" href="/start/start.css?v=81" />
   <style>
-    /* 2026-10-21: the H1 holds one clean sentence; the rotating visual line sits beside it (aria-hidden). Mirrors .start-hero h1. */
-    .start-hero .start-h1-wrap { margin: 0; color: #fffcf7; font-size: clamp(1.85rem, 4.8vw, 3rem); font-weight: 600; line-height: 1.12; letter-spacing: -0.025em; text-shadow: 0 1px 18px rgba(12, 10, 8, 0.35); }
-    @media (max-width: 640px) { .start-hero .start-h1-wrap { font-size: clamp(1.95rem, 8vw, 2.4rem); } }
-    @media (min-width: 721px) { .start-hero .start-h1-wrap .start-venue-line { white-space: nowrap; } .start-hero .start-h1-wrap { font-size: clamp(1.55rem, 2.6vw, 2.35rem); } }
-    @media (max-width: 720px) { .start-hero .start-h1-wrap { font-size: clamp(1.35rem, 6.2vw, 1.85rem); } }
+    /* Visible H1 matches the document title. The rotating expedition line stays under it (aria-hidden; sr-only sentence remains). */
+    .start-hero .start-h1-wrap { margin: 0; color: #fffcf7; font-weight: 600; letter-spacing: -0.025em; text-shadow: 0 1px 18px rgba(12, 10, 8, 0.35); }
+    .start-hero .start-h1-wrap h1 { margin: 0 0 0.4em; font-size: clamp(1.55rem, 4.2vw, 2.15rem); font-weight: 600; line-height: 1.15; color: #fffcf7; }
+    .start-hero .start-h1-wrap .start-venue-line { display: inline; font-size: clamp(1.85rem, 4.8vw, 3rem); line-height: 1.12; }
+    @media (max-width: 640px) { .start-hero .start-h1-wrap h1 { font-size: clamp(1.45rem, 6.4vw, 1.85rem); } .start-hero .start-h1-wrap .start-venue-line { font-size: clamp(1.95rem, 8vw, 2.4rem); } }
+    @media (min-width: 721px) { .start-hero .start-h1-wrap .start-venue-line { white-space: nowrap; font-size: clamp(1.55rem, 2.6vw, 2.35rem); } .start-hero .start-h1-wrap h1 { font-size: clamp(1.45rem, 2.2vw, 1.9rem); } }
+    @media (max-width: 720px) { .start-hero .start-h1-wrap .start-venue-line { font-size: clamp(1.35rem, 6.2vw, 1.85rem); } }
   </style>
   <!-- kz-seo:hub-ld --><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://kidzookit.com/#website", "name": "KidZooKit", "url": "https://kidzookit.com/", "inLanguage": "en", "publisher": {"@id": "https://kidzookit.com/#organization"}}, {"@type": "Organization", "@id": "https://kidzookit.com/#organization", "name": "KidZooKit", "url": "https://kidzookit.com/", "logo": "https://kidzookit.com/pwa/icon-512.png"}]}</script><!-- /kz-seo:hub-ld -->
 </head>
@@ -99,10 +101,12 @@
     </header>
     <div class="start-hero-copy">
       <div class="start-h1-wrap">
-        <h1 id="start-heading" class="sr-only">Turn the zoo into an expedition.</h1>
+        <h1 id="start-heading">Virtual Zoo for Kids: Live Cams &amp; Animal Cards</h1>
+        <p class="sr-only">Turn the zoo into an expedition.</p>
         <span class="start-venue-line" aria-hidden="true">Turn the <span class="start-venue-slot" tabindex="0"><span class="start-venue-sizer" data-sizer="Zoo"></span><span class="start-venue-words" data-venue-rotator><span class="start-venue-word is-active">Zoo</span><span class="start-venue-word">Aquarium</span><span class="start-venue-word">Museum</span><span class="start-venue-word">Park</span></span></span> into an expedition.</span>
       </div>
       <p class="start-answer">KidZooKit is a printable zoo, aquarium, and museum field trip kit and animal study cards with quizzes, for kids about 4–8.</p>
+      <p class="start-answer-more">Watch live cams and short films at home, or open animal cards and printables for a zoo, aquarium, museum, or park day.</p>
       <div class="start-hero-guide">
         <nav class="start-routes" aria-label="Choose a path">
           <a class="start-route" href="/field-pack/virtual-field-trip/">Watch Live</a>

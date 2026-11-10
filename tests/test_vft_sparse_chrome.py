@@ -102,6 +102,16 @@ class VftSparseChromeTests(unittest.TestCase):
                 self.assertNotIn(phrase, cfg["h1"])
                 self.assertNotIn(phrase, cfg["lead"])
 
+    def test_js_does_not_swap_document_title_or_h1(self):
+        """Search keeps 'Virtual Field Trip' here and 'Virtual Zoo' on /start/."""
+        self.assertNotIn("document.title = config.title", self.js)
+        self.assertNotIn("title.textContent = config.h1", self.js)
+        self.assertIn("vz-subhead", self.js)
+        vft = self.pages[VFT_PAGES[0]]
+        self.assertIn('id="vz-title">Virtual Field Trip for Kids</h1>', vft)
+        self.assertIn('id="vz-subhead"', vft)
+        self.assertNotIn("Virtual Zoo for Kids", vft)
+
     def test_js_rewrites_lead_in_the_same_sparse_voice(self):
         self.assertIn("Your parks · lower 48", self.js)
         self.assertNotIn("Your parks on a real map of the lower 48", self.js)

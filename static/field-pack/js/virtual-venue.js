@@ -1883,13 +1883,15 @@
     showPanels(tab);
     const crumb = document.getElementById("vz-crumb-here");
     if (crumb && config) crumb.textContent = config.crumb || config.title || "Field trip";
-    const title = document.getElementById("vz-title");
+    // Keep the server <title> and h1#vz-title ("Virtual Field Trip…") so this
+    // page does not compete with /start/ ("Virtual Zoo for Kids") in search.
+    // The in-app venue heading lives in #vz-subhead.
+    const subhead = document.getElementById("vz-subhead");
     const lead = document.getElementById("vz-lead");
-    if (title && config && config.h1) title.textContent = config.h1;
+    if (subhead && config && config.h1) subhead.textContent = config.h1;
     if (lead && config && config.lead) {
       lead.textContent = isParkCustom() ? "Your parks · lower 48" : config.lead;
     }
-    if (config && config.title) document.title = config.title;
     if (mapMount && config) {
       mapMount.classList.toggle("is-wide", Boolean(config.mapClass) || config.kind === "park");
       mapMount.classList.toggle("is-pictorial", config.kind !== "park");

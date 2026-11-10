@@ -1154,6 +1154,16 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("218 places", self.html)
         self.assertNotIn("10,000 families", self.html)
         self.assertNotIn("testimonial", self.html.lower())
+        # Visible H1 matches the document title; the expedition sentence stays on the page.
+        self.assertIn(
+            '<h1 id="start-heading">Virtual Zoo for Kids: Live Cams &amp; Animal Cards</h1>',
+            self.html,
+        )
+        self.assertNotIn('<h1 id="start-heading" class="sr-only">', self.html)
+        self.assertIn('<p class="sr-only">Turn the zoo into an expedition.</p>', self.html)
+        self.assertIn("Watch live cams and short films at home", self.html)
+        self.assertIn("Arya’s Wildlife Project", self.html)
+
 
     def test_page_is_hero_chapters_and_about_footer(self):
         hero = self.html.find('id="start-hero"')
@@ -1340,7 +1350,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('preload="auto"', self.html)
         self.assertNotIn('preload="none"', self.html)
         self.assertIn('start.js?v=41', self.html)
-        self.assertIn("start.css?v=80", self.html)
+        self.assertIn("start.css?v=81", self.html)
         self.assertIn(" loop ", self.html)
         self.assertNotIn("youtube.com", self.html)
         self.assertNotIn("youtube-nocookie.com", self.html)

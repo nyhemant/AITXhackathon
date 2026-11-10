@@ -140,7 +140,7 @@ class PwaTests(unittest.TestCase):
         self.assertEqual(served._headers.get("Content-Type"), "application/javascript; charset=utf-8")
         self.assertEqual(served._headers.get("Cache-Control"), "no-cache")
         self.assertEqual(served._headers.get("Service-Worker-Allowed"), "/")
-        self.assertIn('FTK_SHELL_CACHE = "ftk-shell-v6"', self.sw)
+        self.assertIn('FTK_SHELL_CACHE = "ftk-shell-v7"', self.sw)
         self.assertIn("skipWaiting()", self.sw)
         self.assertIn("clients.claim()", self.sw)
         self.assertIn("networkFirst", self.sw)
@@ -170,13 +170,13 @@ class PwaTests(unittest.TestCase):
             self.assertIn('name="apple-mobile-web-app-title" content="KidZooKit"', html)
             self.assertIn('src="/pwa/register.js?v=1"', html)
             self.assertIn("viewport-fit=cover", html)
-        self.assertIn("start.css?v=80", self.start)
-        self.assertIn("/start/start.css?v=80", self.sw)
+        self.assertIn("start.css?v=81", self.start)
+        self.assertIn("/start/start.css?v=81", self.sw)
         self.assertIn(".start-pwa-tip", (REPO / "static" / "start" / "start.css").read_text(encoding="utf-8"))
         for html in self.vft.values():
             self.assertIn('href="/pwa/pwa.css?v=1"', html)
-            self.assertIn("virtual-venue.css?v=59", html)
-            self.assertIn("virtual-venue.js?v=111", html)
+            self.assertIn("virtual-venue.css?v=60", html)
+            self.assertIn("virtual-venue.js?v=112", html)
 
     def test_register_is_served_and_csp_allows_worker(self):
         js = _get("/pwa/register.js")
