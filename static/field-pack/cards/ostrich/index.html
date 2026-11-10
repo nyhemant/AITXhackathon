@@ -54,7 +54,7 @@
       <h1>🪶 Ostrich</h1>
       
       <p class="card-page-blurb">Biggest bird — can’t fly, runs fast.</p>
-      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">Learn more</a></div></div>
+      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">All places</a></div></div>
       <p class="card-page-next" hidden data-next-from="bogota-zoo"><a href="/field-pack/cards/nile-hippo/?from=bogota-zoo">Next: Hippo</a></p><p class="card-page-next" hidden data-next-from="manila-zoo"><a href="/field-pack/cards/freshwater-fish/?from=manila-zoo">Next: River / lake fish</a></p>
       <div class="card-page-actions">
       <div class="card-page-actions-primary">
@@ -110,6 +110,7 @@
       var more = document.querySelector("a.card-learn-more");
       if (more && from && KIT_SITES[from]) {
         more.href = KIT_SITES[from];
+        if (KIT_NAMES[from]) more.textContent = KIT_NAMES[from];
         more.removeAttribute("hidden");
       }
       

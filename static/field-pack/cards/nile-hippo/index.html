@@ -54,7 +54,7 @@
       <h1>🦛 Nile hippo</h1>
       
       <p class="card-page-blurb">Huge river giant that loves the water.</p>
-      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">Learn more</a></div></div>
+      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">All places</a></div></div>
       <p class="card-page-next" hidden data-next-from="cincinnati-zoo"><a href="/field-pack/cards/western-lowland-gorilla/?from=cincinnati-zoo">Next: Western lowland gorilla</a></p><p class="card-page-next" hidden data-next-from="calgary-zoo"><a href="/field-pack/cards/red-panda/?from=calgary-zoo">Next: Red panda</a></p><p class="card-page-next" hidden data-next-from="barcelona-zoo"><a href="/field-pack/cards/caribbean-flamingo/?from=barcelona-zoo">Next: Flamingo</a></p><p class="card-page-next" hidden data-next-from="delhi-zoo"><a href="/field-pack/cards/ostrich/?from=delhi-zoo">Next: Ostrich</a></p>
       <div class="card-page-actions">
       <div class="card-page-actions-primary">
@@ -110,6 +110,7 @@
       var more = document.querySelector("a.card-learn-more");
       if (more && from && KIT_SITES[from]) {
         more.href = KIT_SITES[from];
+        if (KIT_NAMES[from]) more.textContent = KIT_NAMES[from];
         more.removeAttribute("hidden");
       }
       

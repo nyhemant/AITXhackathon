@@ -54,7 +54,7 @@
       <h1>🦩 Caribbean flamingo</h1>
       
       <p class="card-page-blurb">Bright pink wader — long legs for shallow water.</p>
-      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">Learn more</a></div></div>
+      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">All places</a></div></div>
       <p class="card-page-next" hidden data-next-from="san-antonio-zoo"><a href="/field-pack/cards/african-lion/?from=san-antonio-zoo">Next: African lion</a></p><p class="card-page-next" hidden data-next-from="audubon-zoo"><a href="/field-pack/cards/western-lowland-gorilla/?from=audubon-zoo">Next: Western lowland gorilla</a></p>
       <div class="card-page-actions">
       <div class="card-page-actions-primary">
@@ -110,6 +110,7 @@
       var more = document.querySelector("a.card-learn-more");
       if (more && from && KIT_SITES[from]) {
         more.href = KIT_SITES[from];
+        if (KIT_NAMES[from]) more.textContent = KIT_NAMES[from];
         more.removeAttribute("hidden");
       }
       

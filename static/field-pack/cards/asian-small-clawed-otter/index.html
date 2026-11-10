@@ -54,7 +54,7 @@
       <h1>🦦 Asian small-clawed otter</h1>
       
       <p class="card-page-blurb">Playful swimmer — smallest otter.</p>
-      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">Learn more</a></div></div>
+      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">All places</a></div></div>
       <p class="card-page-next" hidden data-next-from="national-zoo"><a href="/field-pack/cards/red-panda/?from=national-zoo">Next: Red panda</a></p><p class="card-page-next" hidden data-next-from="point-defiance-zoo"><a href="/field-pack/cards/ring-tailed-lemur/?from=point-defiance-zoo">Next: Ring-tailed lemur</a></p><p class="card-page-next" hidden data-next-from="woodland-park-zoo"><a href="/field-pack/cards/ring-tailed-lemur/?from=woodland-park-zoo">Next: Ring-tailed lemur</a></p><p class="card-page-next" hidden data-next-from="dubai-aquarium"><a href="/field-pack/cards/shark/?from=dubai-aquarium">Next: Shark</a></p>
       <div class="card-page-actions">
       <div class="card-page-actions-primary">
@@ -110,6 +110,7 @@
       var more = document.querySelector("a.card-learn-more");
       if (more && from && KIT_SITES[from]) {
         more.href = KIT_SITES[from];
+        if (KIT_NAMES[from]) more.textContent = KIT_NAMES[from];
         more.removeAttribute("hidden");
       }
       

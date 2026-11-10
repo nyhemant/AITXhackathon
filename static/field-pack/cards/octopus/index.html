@@ -55,7 +55,7 @@
       <p class="card-page-blurb seo-intro">An octopus is a soft-bodied sea animal with eight sucker-lined arms. It can change color to hide and squeeze through tiny gaps. Read the quick tips, try the quiz, or print the card.</p>
       
       <p class="card-page-blurb">Eight arms and a big brain — master of hide-and-seek.</p>
-      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">Learn more</a></div></div>
+      <div class="card-hero-links no-print"><div class="action-row detail-links detail-links-quiet no-print"><a class="btn btn-ghost card-learn-more" href="/field-pack/" hidden target="_blank" rel="noopener noreferrer">All places</a></div></div>
       
       <div class="card-page-actions">
       <div class="card-page-actions-primary">
@@ -112,6 +112,7 @@
       var more = document.querySelector("a.card-learn-more");
       if (more && from && KIT_SITES[from]) {
         more.href = KIT_SITES[from];
+        if (KIT_NAMES[from]) more.textContent = KIT_NAMES[from];
         more.removeAttribute("hidden");
       }
       
