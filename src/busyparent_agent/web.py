@@ -1277,6 +1277,39 @@ def _keep_query(location: str, raw_path: str) -> str:
     return location + "?" + query
 
 
+
+def _index_dir_slash_redirect(raw_path: str) -> str | None:
+    """If a slashless URL is a directory index, 301 to the slash form.
+
+    Hubs like /about already have explicit 301s. Place, card, and type
+    pages were served as 200 at both /field-pack/adelaide-zoo and
+    /field-pack/adelaide-zoo/. Send the slashless form to the slash
+    URL and keep any query string (printed QR codes).
+    """
+    path = urlsplit(raw_path).path or "/"
+    if path.endswith("/") or path == "/":
+        return None
+    last = path.rsplit("/", 1)[-1]
+    if not last or "." in last:
+        return None
+    slashed = path + "/"
+    resolvers = (
+        _safe_field_pack_path,
+        _safe_start_path,
+        _safe_printables_path,
+        _safe_privacy_path,
+        _safe_newsletter_path,
+        _safe_about_path,
+        _safe_pwa_path,
+        _safe_shell_path,
+    )
+    for resolve in resolvers:
+        found = resolve(path) or resolve(slashed)
+        if found is not None and found.name == "index.html":
+            return _keep_query(slashed, raw_path)
+    return None
+
+
 def _normalize_malformed_utm_query(query: str) -> str | None:
     """Query string with stray backticks removed from utm values.
 
@@ -1503,6 +1536,54 @@ class WebHandler(BaseHTTPRequestHandler):
         if command != "HEAD":
             self.wfile.write(body)
 
+
+    _FRIENDLY_404 = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found | KidZooKit</title>
+  <meta name="robots" content="noindex">
+  <style>
+    body { font-family: Georgia, "Times New Roman", serif; margin: 0; background: #faf6ee; color: #241c14; }
+    main { max-width: 36rem; margin: 3rem auto; padding: 0 1.25rem; }
+    h1 { font-size: 1.8rem; }
+    ul { padding-left: 1.2rem; line-height: 1.8; }
+    a { color: #1f4b3a; }
+  </style>
+</head>
+<body>
+  <main>
+    <p>KidZooKit</p>
+    <h1>This page isn’t here</h1>
+    <p>That link may be old, or the address may have a typo. These pages still work:</p>
+    <ul>
+      <li><a href="/start/">Start</a> — live cams, animal cards, and printables</li>
+      <li><a href="/field-pack/cards/">Animal cards</a></li>
+      <li><a href="/printables/">Printables</a></li>
+      <li><a href="/field-pack/">Places</a> — zoos, aquariums, museums, and parks</li>
+    </ul>
+  </main>
+</body>
+</html>
+"""
+
+    def send_error(self, code: int, message: str | None = None, explain: str | None = None) -> None:
+        """Serve a friendly 404 that still returns HTTP 404. Other codes stay stock."""
+        if code != 404:
+            super().send_error(code, message, explain)
+            return
+        body = self._FRIENDLY_404.encode("utf-8")
+        self.send_response(404, message)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-cache")
+        self.send_header("X-Robots-Tag", "noindex")
+        self.end_headers()
+        command = getattr(self, "command", "GET")
+        if command != "HEAD":
+            self.wfile.write(body)
+
     def do_GET(self) -> None:
         if self._reject_if_rate_limited():
             return
@@ -1615,6 +1696,10 @@ class WebHandler(BaseHTTPRequestHandler):
             if slug and "/" not in slug and ".." not in slug:
                 _send_redirect(self, _keep_query(f"{FIELD_PACK_PREFIX}/{slug}/", self.path), code=301)
                 return
+        slash_to = _index_dir_slash_redirect(self.path)
+        if slash_to:
+            _send_redirect(self, slash_to, code=301)
+            return
         asset_path = LOGO_ASSETS.get(path.lstrip("/"))
         if asset_path is not None:
             if not asset_path.exists():
@@ -1809,6 +1894,10 @@ class WebHandler(BaseHTTPRequestHandler):
             if slug and "/" not in slug and ".." not in slug:
                 _send_redirect(self, _keep_query(f"{FIELD_PACK_PREFIX}/{slug}/", self.path), code=301)
                 return
+        slash_to = _index_dir_slash_redirect(self.path)
+        if slash_to:
+            _send_redirect(self, slash_to, code=301)
+            return
         asset_path = LOGO_ASSETS.get(path.lstrip("/"))
         shell_file = _safe_shell_path(path)
         pwa_file = _safe_pwa_path(path)
