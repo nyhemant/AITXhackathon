@@ -228,6 +228,15 @@ html[data-vft-print="1"] .vz-print-row,
   letter-spacing: -0.04em;
   line-height: 1.05;
 }
+.vz-subhead {
+  margin: 0 0 0.25rem;
+  color: #0a4545;
+  font-weight: 600;
+  font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.vz-subhead:empty { display: none; }
 .vz-lead {
   margin: 0 0 0.85rem;
   color: #5a6a84;
