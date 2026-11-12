@@ -51,6 +51,13 @@ COMPARISON_SLUGS = frozenset({
     "sequoia",
 })
 
+# Homepage-map venues outside the test set that get the same printable block
+# (2026-11-12). Not test pages and not comparison pages, so the pairs stay as set.
+PIN_SLUGS = frozenset({
+    "perot-museum",
+})
+BLOCK_SLUGS = TEST_SLUGS | PIN_SLUGS
+
 _ZOO_KINDS = frozenset({"zoo", "aquarium", "safari_zoo"})
 _CSS_HREF = "/field-pack/css/scav-top-v1.css?v=2"
 _JS_SRC = "/shell/qr-welcome.js?v=5"
@@ -199,8 +206,8 @@ def _list_html(lines: list[str]) -> str:
 
 
 def scav_top_block(slug: str) -> str:
-    """Hero block, or "" when slug is not one of the 12 test pages."""
-    if slug not in TEST_SLUGS:
+    """Hero block, or "" when slug is not a test page or a PIN_SLUGS page."""
+    if slug not in BLOCK_SLUGS:
         return ""
     venue = load_venue(slug)
     items = hunt_items(venue)
@@ -230,13 +237,13 @@ def scav_top_block(slug: str) -> str:
 
 
 def scav_top_css_tag(slug: str) -> str:
-    if slug not in TEST_SLUGS:
+    if slug not in BLOCK_SLUGS:
         return ""
     return f'<link rel="stylesheet" href="{_CSS_HREF}" />'
 
 
 def scav_top_script_tag(slug: str) -> str:
-    if slug not in TEST_SLUGS:
+    if slug not in BLOCK_SLUGS:
         return ""
     return f'<script src="{_JS_SRC}" defer></script>'
 
@@ -270,7 +277,7 @@ def patch_html(html: str, slug: str) -> str:
     Frozen head lines and every other existing line stay. The block and the
     sticky bar are replaced in place; the page is not regenerated.
     """
-    if slug not in TEST_SLUGS:
+    if slug not in BLOCK_SLUGS:
         return html
     block = "        " + scav_top_block(slug)
     if _SECTION_RE.search(html):
@@ -312,7 +319,7 @@ def patch_html(html: str, slug: str) -> str:
 
 def apply_test_pages() -> int:
     changed = 0
-    for slug in sorted(TEST_SLUGS):
+    for slug in sorted(BLOCK_SLUGS):
         path = FIELD / slug / "index.html"
         original = path.read_text(encoding="utf-8")
         updated = patch_html(original, slug)

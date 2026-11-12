@@ -73,6 +73,7 @@ from study_cards import (  # noqa: E402
     write_study_artifacts,
 )
 from scav_test_2026_11 import (  # noqa: E402
+    BLOCK_SLUGS,
     TEST_SLUGS,
     scav_top_block,
     scav_top_css_tag,
@@ -3014,7 +3015,7 @@ def sticky_hunt_bar_html(slug: str | None = None) -> str:
     The 12 test slugs use the same wording as the printable-hunt button and
     open the same drawer. Every other page keeps the count line and Print.
     """
-    if slug in TEST_SLUGS:
+    if slug in BLOCK_SLUGS:
         return sticky_single_print_html()
     return f"""
   <div class="seo-hunt-sticky no-print" id="seo-hunt-sticky" hidden>
@@ -3594,9 +3595,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         chips_html + status_chip_html(mission_venue)
     )
     freshness_bottom = freshness_html(vid, "no-print seo-freshness-bottom")
-    scav_block = scav_top_block(vid) if vid in TEST_SLUGS else ""
-    scav_css = scav_top_css_tag(vid) if vid in TEST_SLUGS else ""
-    scav_js = scav_top_script_tag(vid) if vid in TEST_SLUGS else ""
+    scav_block = scav_top_block(vid) if vid in BLOCK_SLUGS else ""
+    scav_css = scav_top_css_tag(vid) if vid in BLOCK_SLUGS else ""
+    scav_js = scav_top_script_tag(vid) if vid in BLOCK_SLUGS else ""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -3701,7 +3702,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=14"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v={MISSION_UI_TEST_VER if vid in TEST_SLUGS else MISSION_UI_JS_VER}"></script>
+  <script src="/field-pack/js/mission/mission-ui.js?v={MISSION_UI_TEST_VER if vid in BLOCK_SLUGS else MISSION_UI_JS_VER}"></script>
   {scav_js}
 </body>
 </html>
@@ -3753,9 +3754,9 @@ def render_venue_page(v: dict) -> str:
     desc = meta_for(v)
     og_img = OG_SHARE_IMAGE
     json_ld = venue_json_ld(v, url)
-    scav_block = scav_top_block(vid) if vid in TEST_SLUGS else ""
-    scav_css = scav_top_css_tag(vid) if vid in TEST_SLUGS else ""
-    scav_js = scav_top_script_tag(vid) if vid in TEST_SLUGS else ""
+    scav_block = scav_top_block(vid) if vid in BLOCK_SLUGS else ""
+    scav_css = scav_top_css_tag(vid) if vid in BLOCK_SLUGS else ""
+    scav_js = scav_top_script_tag(vid) if vid in BLOCK_SLUGS else ""
 
     return f"""<!DOCTYPE html>
 <html lang="en">

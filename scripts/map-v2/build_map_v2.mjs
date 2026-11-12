@@ -155,10 +155,19 @@ const groups = [
   { id: "baltimore", label: "Baltimore", members: [V("national-aquarium-baltimore", SH)], dx: -60, dy: 2, w: [-58, 8] },
   { id: "chicago", label: "Chicago", members: [V("shedd-aquarium", SH), V("lincoln-park-zoo", SH)], dx: -56, dy: -20, w: [-40, -30] },
   { id: "toronto", label: "Toronto", members: [V("toronto-zoo", SH)], dx: -4, dy: -32, w: [-12, -32] },
-  { id: "nashville", label: "Nashville", members: [V("nashville-adventure-science", "/field-pack/nashville-adventure-science/#printable-hunt")], dx: -20, dy: 36, w: [-34, 30] },
-  { id: "austin", label: "Austin", members: [V("austin-zoo", SH)], dx: 50, dy: 6, w: [50, 14] },
+  { id: "nashville", label: "Nashville", members: [V("nashville-adventure-science", "/field-pack/nashville-adventure-science/#printable-hunt")], dx: 27, dy: 47, w: [61, 61] },
+  { id: "austin", label: "Austin", members: [V("austin-zoo", SH)], dx: 27, dy: 47, w: [0, 46] },
   { id: "redwood", label: "Redwood", members: [V("redwood", PK)], dx: 52, dy: -4 },
-  { id: "joshua-tree", label: "Joshua Tree", members: [V("joshua-tree", PK)], dx: 52, dy: 30 },
+  { id: "joshua-tree", label: "Joshua Tree", members: [V("joshua-tree", PK)], dx: 52, dy: 30, w: [-33, -33] },
+  // 2026-11-12 additions: existing venue pages, same print links as the other zoos, parks and museums.
+  { id: "san-diego", label: "San Diego", members: [V("san-diego-zoo", SH)], dx: -54, dy: 22 },
+  // Dallas: the zoo and the Perot Museum share one dot (6 km apart), so each gets its own tag like New York.
+  { id: "dallas-zoo", label: "Dallas Zoo", members: [V("dallas-zoo", SH)], dx: 50, dy: 30, w: [56, 24], tagOnly: true },
+  { id: "perot-museum", label: "Perot Museum", members: [V("perot-museum", "/field-pack/perot-museum/#printable-hunt")], dx: 40, dy: -23, w: [-17, -29], tagOnly: true, noDot: true },
+  { id: "fort-worth-zoo", label: "Fort Worth Zoo", members: [V("fort-worth-zoo", SH)], dx: 45, dy: -78, w: [-75, 20] },
+  { id: "tampa", label: "Tampa", members: [V("tampa-zoo", SH)], dx: 44, dy: 32 },
+  { id: "yellowstone", label: "Yellowstone", members: [V("yellowstone", PK)], dx: 6, dy: 34, w: [38, 38] },
+  { id: "glacier", label: "Glacier", members: [V("glacier", PK)], dx: 50, dy: 0 },
 ];
 const animalInfo = {
   "american-bison": "American bison", "caribbean-flamingo": "Caribbean flamingo", "galapagos-tortoise": "Galápagos tortoise", "zebra": "Zebra",
