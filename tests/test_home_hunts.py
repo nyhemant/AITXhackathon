@@ -146,7 +146,7 @@ class HomeHuntsTests(unittest.TestCase):
         self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="home-venue-row"'))
         self.assertLess(self.html.find('id="home-venue-row"'), self.html.find('id="start-home"'))
         self.assertRegex(self.html, r'data-kzm-svg="/start/map-v2/[ab]-usa-v1\.svg\?v=1"')
-        self.assertIn("/start/home-map-v2.js?v=1", self.html)
+        self.assertIn("/start/home-map-v2.js?v=2", self.html)
         self.assertTrue((START / "home-map-v1.js").is_file())  # old URL keeps working
         self.assertIn('href="/field-pack/">See all places</a>', self.html)
         self.assertIn("/shell/qr-welcome.js?v=4", self.html)

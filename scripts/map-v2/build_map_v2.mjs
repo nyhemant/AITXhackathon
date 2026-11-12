@@ -150,7 +150,7 @@ const SH = "/printables/pdf/letter/scavenger-hunt.pdf", PK = "/printables/pdf/le
 const groups = [
   // New York: two venues a few km apart share one dot, so each gets its own tag (the tags are the tap targets).
   { id: "bronx-zoo", label: "Bronx Zoo", members: [V("bronx-zoo", SH)], dx: 14, dy: -50, w: [44, -46], tagOnly: true },
-  { id: "amnh", label: "Natural History\nMuseum", members: [V("amnh", "/field-pack/amnh/#printable-hunt")], dx: 64, dy: 8, w: [56, 14], tagOnly: true, noDot: true },
+  { id: "amnh", label: "Natural History\nMuseum", members: [V("amnh", "/field-pack/amnh/#printable-hunt")], dx: 58, dy: 0, w: [56, 14], tagOnly: true, noDot: true },
   { id: "dc", label: "Washington, DC", members: [V("air-and-space", "/field-pack/air-and-space/#printable-hunt"), V("national-zoo", SH)], dx: 12, dy: 54 },
   { id: "baltimore", label: "Baltimore", members: [V("national-aquarium-baltimore", SH)], dx: -60, dy: 2, w: [-58, 8] },
   { id: "chicago", label: "Chicago", members: [V("shedd-aquarium", SH), V("lincoln-park-zoo", SH)], dx: -56, dy: -20, w: [-40, -30] },
@@ -196,10 +196,10 @@ function fragment(dir) {
   }).join("\n          ");
   const places = `<div id="home-places-map" class="home-places-map kzm kzm-usa kzm-${dir}">
         <p class="kzm-hint" id="kzm-usa-hint" aria-hidden="true">Drag sideways to see more</p>
-        <div class="kzm-pan" id="kzm-usa-pan" data-start="0.674">
+        <div class="kzm-pan" id="kzm-usa-pan" data-start="0.735">
         <div class="kzm-plate" style="${ar(UW, UH)}" aria-label="Map of the United States with places that have a printable scavenger hunt">
           <div class="kzm-base" data-kzm-svg="/start/map-v2/${dir}-usa-v1.svg?v=1"></div>
-          <span class="kzm-snap" style="left:67.4%" aria-hidden="true"></span>
+          <span class="kzm-snap" style="left:73.5%" aria-hidden="true"></span>
           ${deco(DECO[dir].us)}${labels(LABELS.us)}
           <div class="home-pin-layer" id="home-pin-layer">
           ${pins}
