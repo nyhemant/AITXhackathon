@@ -1,4 +1,4 @@
-"""Printable hunts lead /start/ without changing the frozen title block."""
+"""Places map leads /start/ without changing the frozen title block."""
 
 from __future__ import annotations
 
@@ -32,6 +32,8 @@ FEATURED = [
 
 BANNED = re.compile(r"\b(?:free|we|our|us)\b|no-cost", re.I)
 HREF = re.compile(r'href="([^"]+)"')
+ZOO_PDF = "/printables/pdf/letter/scavenger-hunt.pdf"
+PARK_PDF = "/printables/pdf/letter/park-scavenger-hunt.pdf"
 
 
 def _git_show(path: str) -> str:
@@ -48,13 +50,21 @@ def _meta(html: str, attr: str) -> str:
     return match.group(1)
 
 
+def _print_href(vtype: str, slug: str) -> str:
+    if vtype in ("zoo", "aquarium"):
+        return ZOO_PDF
+    if vtype == "national_park":
+        return PARK_PDF
+    return f"/field-pack/{slug}/#printable-hunt"
+
+
 class HomeHuntsTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.html = HTML_PATH.read_text(encoding="utf-8")
         cls.main = _git_show("static/start/index.html")
-        cls.js = (START / "home-hunts-v1.js").read_text(encoding="utf-8")
-        cls.css = (START / "home-hunts-v1.css").read_text(encoding="utf-8")
+        cls.js = (START / "home-map-v1.js").read_text(encoding="utf-8")
+        cls.css = (START / "home-map-v1.css").read_text(encoding="utf-8")
 
     def test_title_meta_h1_and_canonical_match_main(self):
         for attr in (
@@ -96,92 +106,91 @@ class HomeHuntsTests(unittest.TestCase):
         self.assertEqual(h1, "Virtual Zoo for Kids: Live Cams &amp; Animal Cards")
         self.assertEqual(self.html.count("<h1"), 1)
 
-    def test_hunt_hero_leads_and_map_is_second(self):
-        hunts = self.html.find('id="home-hunts"')
-        heading = self.html.find('id="start-heading"')
-        at_home = self.html.find('id="start-at-home-heading"')
-        hero = self.html.find('id="start-hero"')
-        cams = self.html.find('id="start-home"')
-        self.assertTrue(0 < heading < hunts < at_home < hero < cams)
-        self.assertIn(
-            "Printable scavenger hunts for your next zoo, aquarium or museum trip",
+    def test_toggle_defaults_to_places_and_map_reuses_places_tile(self):
+        animals = re.search(
+            r'<button type="button" id="home-map-animals" aria-pressed="([^"]+)">Animals</button>',
             self.html,
         )
-        self.assertIn("Not going anywhere today? Explore from home", self.html)
-        self.assertIn('id="home-hunts-q"', self.html)
-        self.assertIn('href="/printables/"', self.html)
-        self.assertIn('href="/printables/scavenger-hunt/"', self.html)
-        self.assertIn(">All printables<", self.html)
-        self.assertIn(">Scavenger hunt printable<", self.html)
+        places = re.search(
+            r'<button type="button" id="home-map-places" aria-pressed="([^"]+)">Places</button>',
+            self.html,
+        )
+        self.assertIsNotNone(animals)
+        self.assertIsNotNone(places)
+        self.assertEqual(animals.group(1), "false")
+        self.assertEqual(places.group(1), "true")
+        self.assertIn('role="group" aria-label="Map"', self.html)
+        hero = re.search(r'<section class="start-hero"[^>]*>', self.html)
+        self.assertIsNotNone(hero)
+        self.assertIn("hidden", hero.group(0))
+        self.assertLess(self.html.find('id="start-heading"'), self.html.find('id="home-hunts"'))
+        self.assertLess(self.html.find('id="home-map-places"'), self.html.find('id="home-places-map"'))
+        self.assertLess(self.html.find('id="home-places-map"'), self.html.find('id="start-hero"'))
+        self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="home-venue-row"'))
+        self.assertLess(self.html.find('id="home-venue-row"'), self.html.find('id="start-home"'))
+        self.assertIn("fpProjectWorld", self.js)
+        self.assertIn("/field-pack/img/world-map.svg?v=2", self.js)
+        self.assertIn("/field-pack/js/places-data.js?v=27", self.js)
+        self.assertIn('href="/field-pack/">See all places</a>', self.html)
+        self.assertIn("/shell/qr-welcome.js?v=4", self.html)
+
+    def test_exactly_twelve_place_pins_and_valid_card_links(self):
+        pins = re.findall(
+            r'<button type="button" class="home-place-pin" data-home-pin="([^"]+)" '
+            r'data-name="([^"]+)" data-city="([^"]*)" data-print="([^"]+)" data-page="([^"]+)"',
+            self.html,
+        )
+        self.assertEqual([row[0] for row in pins], FEATURED)
+        self.assertEqual(self.html.count('class="home-place-pin"'), 12)
+        cards = re.findall(
+            r'<article class="home-venue-card" data-home-venue="([^"]+)">'
+            r'<p class="home-venue-name">([^<]*)</p>'
+            r'<p class="home-venue-city">([^<]*)</p>'
+            r'<a class="home-venue-print" data-kz-cta="home-map" href="([^"]+)">Print the scavenger hunt</a>'
+            r'<a class="home-venue-page" href="([^"]+)">See the full page</a>',
+            self.html,
+        )
+        self.assertEqual([row[0] for row in cards], FEATURED)
+        for slug, name, city, printed, page in cards:
+            venue = json.loads((VENUES / f"{slug}.json").read_text(encoding="utf-8"))
+            self.assertEqual(name, venue["name"])
+            self.assertEqual(city, venue["city"])
+            self.assertEqual(printed, _print_href(venue["type"], slug))
+            self.assertEqual(page, f"/field-pack/{slug}/")
+            self.assertTrue((FP / slug / "index.html").is_file(), slug)
+            if printed.endswith(".pdf"):
+                self.assertTrue((REPO / "static" / printed.lstrip("/")).is_file(), printed)
+            else:
+                self.assertTrue(printed.endswith("#printable-hunt"))
+        pin_prints = [row[3] for row in pins]
+        self.assertEqual(pin_prints, [row[3] for row in cards])
+        self.assertIn('data-kz-cta="home-map"', self.html)
+        self.assertIn("scroll-snap-type: x mandatory", self.css)
 
     def test_previous_links_and_arya_name_stay(self):
         old = set(HREF.findall(self.main))
         new = set(HREF.findall(self.html))
-        missing = sorted(old - new)
-        self.assertEqual(missing, [])
+        self.assertEqual(sorted(old - new), [])
         self.assertIn("Play &amp; learn printables", self.html)
-        self.assertEqual(self.html.count("Arya’s Wildlife Project"), self.main.count("Arya’s Wildlife Project"))
-        self.assertGreaterEqual(self.html.count("Arya’s Wildlife Project"), 1)
+        self.assertIn("Watch Live", self.html)
+        self.assertEqual(
+            self.html.count("Arya’s Wildlife Project"),
+            self.main.count("Arya’s Wildlife Project"),
+        )
         about = ABOUT.read_text(encoding="utf-8")
         main_about = _git_show("static/about/index.html")
         self.assertEqual(
             about.count("Arya’s Wildlife Project"),
             main_about.count("Arya’s Wildlife Project"),
         )
-        self.assertIn("Arya’s Wildlife Project", about)
-
-    def test_featured_cards_link_to_existing_place_pages(self):
-        cards = re.findall(
-            r'<a class="home-hunts-card" href="([^"]+)" data-home-hunt-slug="([^"]+)" '
-            r'data-home-hunt-name="([^"]+)" data-home-hunt-city="([^"]*)">',
-            self.html,
-        )
-        self.assertEqual([slug for _href, slug, _name, _city in cards], FEATURED)
-        for href, slug, name, city in cards:
-            self.assertEqual(href, f"/field-pack/{slug}/#printable-hunt")
-            self.assertTrue((FP / slug / "index.html").is_file(), slug)
-            venue = json.loads((VENUES / f"{slug}.json").read_text(encoding="utf-8"))
-            self.assertEqual(name, venue["name"])
-            self.assertEqual(city, venue["city"])
-            self.assertNotIn('fetchpriority="high"', href)
-
-        blob = self.js.split("var places = ", 1)[1].split(";", 1)[0]
-        places = json.loads(blob)
-        slugs = {row["slug"] for row in places}
-        self.assertTrue(set(FEATURED) <= slugs)
-        for row in places:
-            self.assertTrue((FP / row["slug"] / "index.html").is_file(), row["slug"])
-            venue = json.loads((VENUES / f"{row['slug']}.json").read_text(encoding="utf-8"))
-            self.assertEqual(row["name"], venue["name"])
-            self.assertEqual(row["city"], venue["city"])
-        self.assertIn("home_hunt_card_click", self.js)
-        self.assertIn("FPTrack", self.js)
-        self.assertIn('href="/start/home-hunts-v1.css?v=1"', self.html)
-        self.assertIn('src="/start/home-hunts-v1.js?v=1"', self.html)
-        eager = re.findall(r'<img class="home-hunts-photo"[^>]*>', self.html)
-        self.assertGreaterEqual(len(eager), 2)
-        lazy = [tag for tag in eager if 'loading="lazy"' in tag]
-        not_lazy = [tag for tag in eager if 'loading="lazy"' not in tag]
-        self.assertEqual(len(not_lazy), 2)
-        self.assertGreater(len(lazy), 0)
-        for tag in eager:
-            self.assertNotIn('fetchpriority="high"', tag)
-            self.assertIn("width=", tag)
-            self.assertIn("height=", tag)
 
     def test_new_copy_skips_banned_words(self):
         section = re.search(
-            r'<section id="home-hunts"[\s\S]*?</section>\s*'
-            r'<section id="start-at-home"[\s\S]*?<h2 id="start-at-home-heading">.*?</h2>',
+            r'<section id="home-hunts"[\s\S]*?</section>\s*<div class="start-rest"',
             self.html,
         )
         self.assertIsNotNone(section)
-        samples = [
-            section.group(0),
-            self.css,
-            self.js,
-        ]
-        for sample in samples:
+        for sample in (section.group(0), self.css, self.js):
             hit = BANNED.search(sample)
             self.assertIsNone(hit, hit.group(0) if hit else "")
 
