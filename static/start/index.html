@@ -27,7 +27,7 @@
   <meta name="twitter:description" content="A virtual zoo for curious kids. Watch Live, explore Places, or open Cards — no signup, works on a phone." />
   <meta name="twitter:image" content="https://kidzookit.com/start/hero-world-map.jpg" />
   <link rel="stylesheet" href="/start/start.css?v=81" />
-  <link rel="stylesheet" href="/start/home-map-v1.css?v=3" />
+  <link rel="stylesheet" href="/start/home-map-v1.css?v=4" />
   <link rel="stylesheet" href="/start/hero-common-v1.css?v=1" />
   <link rel="stylesheet" href="/start/hero-a-v1.css?v=1" />
   <style>
@@ -110,6 +110,7 @@
       </div>
       <section class="start-hero" id="start-hero" hidden aria-labelledby="start-heading">
     <!-- Map pins are % of hero-world-map.jpg (1792×1008); left/top is the figurine center. Wrapper keeps that aspect and cover-crops; tall/mobile left-aligns so Americas stay in frame. -->
+    <div class="start-hero-pan" id="start-hero-pan">
     <div class="start-hero-map">
       <picture style="display:contents"><source type="image/webp" srcset="/start/hero-world-map-1280-v1.webp 1280w, /start/hero-world-map-1792-v1.webp 1792w" sizes="max(100vw, calc(100svh * 1792 / 1008))" /><img
         class="start-hero-still"
@@ -141,6 +142,8 @@
         </a>
       </div>
     </div>
+    </div>
+    <p class="start-pan-hint" id="start-pan-hint" aria-hidden="true">Drag sideways to see more</p>
     <p class="start-map-coach" id="start-map-coach" hidden role="status">Tap an animal to open a card.</p>
     <div class="start-hero-copy">
       <div class="start-h1-wrap">
@@ -469,7 +472,7 @@
   <script src="/shell/related-links.js?v=1"></script>
   <script src="/shell/qr-welcome.js?v=4"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/start/home-map-v1.js?v=4"></script>
+  <script src="/start/home-map-v1.js?v=5"></script>
   <script src="/pwa/register.js?v=1"></script>
   <script src="/start/start.js?v=41"></script>
 </body>
