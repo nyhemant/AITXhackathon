@@ -55,8 +55,9 @@ class WebpPictureTests(unittest.TestCase):
                 self.assertIn('fetchpriority="high"', m.group(0), p)
                 self.assertNotIn('loading="lazy"', m.group(0), p)
         start = (STATIC / "start/index.html").read_text(encoding="utf-8")
-        self.assertIn("/start/hero-world-map-1280-v1.webp", start)
-        self.assertIn('src="/start/hero-world-map.jpg"', start)
+        # Map v2: the Animals plate is a lazy vector; the old raster stays on disk for old links.
+        self.assertIn('src="/start/map-v2/a-world-v1.svg"', start)
+        self.assertTrue((STATIC / "start/hero-world-map-1280-v1.webp").is_file())
 
     def test_pass_is_idempotent(self):
         for p in self.pages()[:6]:

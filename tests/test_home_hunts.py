@@ -31,13 +31,15 @@ FEATURED = [
     "joshua-tree",
 ]
 
-# Baltimore sits on the DC pin after the lower-48 frame, so it shares that pin.
+# Map v2: the detailed USA plate gives Baltimore, Bronx Zoo and AMNH their own tags.
 GROUPS = [
-    ("nyc", ["amnh", "bronx-zoo"]),
-    ("nashville", ["nashville-adventure-science"]),
-    ("dc", ["air-and-space", "national-zoo", "national-aquarium-baltimore"]),
+    ("bronx-zoo", ["bronx-zoo"]),
+    ("amnh", ["amnh"]),
+    ("dc", ["air-and-space", "national-zoo"]),
+    ("baltimore", ["national-aquarium-baltimore"]),
     ("chicago", ["shedd-aquarium", "lincoln-park-zoo"]),
     ("toronto", ["toronto-zoo"]),
+    ("nashville", ["nashville-adventure-science"]),
     ("austin", ["austin-zoo"]),
     ("redwood", ["redwood"]),
     ("joshua-tree", ["joshua-tree"]),
@@ -76,8 +78,10 @@ class HomeHuntsTests(unittest.TestCase):
     def setUpClass(cls):
         cls.html = HTML_PATH.read_text(encoding="utf-8")
         cls.main = _git_show("static/start/index.html")
-        cls.js = (START / "home-map-v1.js").read_text(encoding="utf-8")
-        cls.css = (START / "home-map-v1.css").read_text(encoding="utf-8")
+        cls.js = (START / "home-map-v2.js").read_text(encoding="utf-8")
+        css = sorted(START.glob("home-map-v2-?.css"))
+        assert len(css) == 1, css
+        cls.css = css[0].read_text(encoding="utf-8")
 
     def test_title_meta_h1_and_canonical_match_main(self):
         for attr in (
@@ -141,20 +145,20 @@ class HomeHuntsTests(unittest.TestCase):
         self.assertLess(self.html.find('id="home-places-map"'), self.html.find('id="start-hero"'))
         self.assertLess(self.html.find('id="start-hero"'), self.html.find('id="home-venue-row"'))
         self.assertLess(self.html.find('id="home-venue-row"'), self.html.find('id="start-home"'))
-        self.assertIn("fpProjectWorld", self.js)
-        self.assertIn("/field-pack/img/world-map.svg?v=2", self.js)
-        self.assertIn("/field-pack/js/places-data.js?v=27", self.js)
+        self.assertRegex(self.html, r'data-kzm-svg="/start/map-v2/[ab]-usa-v1\.svg\?v=1"')
+        self.assertIn("/start/home-map-v2.js?v=1", self.html)
+        self.assertTrue((START / "home-map-v1.js").is_file())  # old URL keeps working
         self.assertIn('href="/field-pack/">See all places</a>', self.html)
         self.assertIn("/shell/qr-welcome.js?v=4", self.html)
 
     def test_metro_pins_and_valid_card_links(self):
         pins = re.findall(
-            r'<button type="button" class="home-place-pin" data-home-pin="([^"]+)" '
+            r'<button type="button" class="home-place-pin[^"]*" data-home-pin="([^"]+)" '
             r'data-members="([^"]+)"',
             self.html,
         )
         self.assertEqual([row[0] for row in pins], [row[0] for row in GROUPS])
-        self.assertEqual(self.html.count('class="home-place-pin"'), len(GROUPS))
+        self.assertEqual(len(re.findall(r'class="home-place-pin[ "]', self.html)), len(GROUPS))
         member_slugs = []
         for gid, blob in pins:
             members = json.loads(html.unescape(blob))
@@ -168,11 +172,7 @@ class HomeHuntsTests(unittest.TestCase):
                 self.assertEqual(row["print"], _print_href(venue["type"], row["slug"]))
                 self.assertEqual(row["page"], f"/field-pack/{row['slug']}/")
         self.assertEqual(sorted(member_slugs), sorted(FEATURED))
-        self.assertIn("FRAME = { x: 136.78", self.js)
-        self.assertIn("MIN_GAP = 46", self.js)
-        self.assertIn("var BADGE = 20", self.js)
-        self.assertIn("var BADGE_TEXT = 13", self.js)
-        self.assertIn("min-width: 1000px", self.css)
+        self.assertIn("inset: -8px -3px", self.css)  # 44px tap target
         self.assertIn("Print the scavenger hunt", self.js)
         self.assertIn("See the full page", self.js)
         cards = re.findall(
