@@ -14,23 +14,21 @@ class StartFirstScreenTests(unittest.TestCase):
         cls.html = (START / "index.html").read_text(encoding="utf-8")
         cls.js = (START / "start.js").read_text(encoding="utf-8")
 
-    def test_hero_map_is_the_only_high_priority_image(self):
-        self.assertEqual(self.html.count('fetchpriority="high"'), 1)
-        hero = re.search(r'<img\s+class="start-hero-still"[^>]*>', self.html).group(0)
-        self.assertIn('fetchpriority="high"', hero)
-        self.assertNotIn('loading="lazy"', hero)
+    def test_hidden_animals_plate_waits_and_nothing_jumps_the_queue(self):
+        # Map v2: Places leads, so the hidden Animals world plate is lazy and no image is high priority.
+        self.assertEqual(self.html.count('fetchpriority="high"'), 0)
+        hero = re.search(r'<img\s+class="kzm-base start-hero-still"[^>]*>', self.html).group(0)
+        self.assertIn('loading="lazy"', hero)
+        self.assertIn('src="/start/map-v2/a-world-v1.svg"', hero)
 
     def test_hero_cards_yield_to_the_map(self):
-        cards = re.findall(r'<img\s+src="/start/playing-card-[a-z]+\.png"[^>]*>', self.html)
-        self.assertEqual(len(cards), 3)
-        for c in cards:
-            self.assertIn('fetchpriority="low"', c)
+        # Map v2 drops the playing-card stack from the Animals view; the files stay for old links.
+        self.assertEqual(re.findall(r'<img\s+src="/start/playing-card-[a-z]+\.png"[^>]*>', self.html), [])
+        for name in ("koala", "tiger", "zebra"):
+            self.assertTrue((START / f"playing-card-{name}.png").is_file(), name)
 
     def test_sample_cards_and_hunt_preview_have_alt(self):
         expected = {
-            "/start/playing-card-koala.png": "Sleepy eucalyptus climber — naps most of the day.",
-            "/start/playing-card-tiger.png": "Quiet striped hunter — built for the forest edge.",
-            "/start/playing-card-zebra.png": "Striped grassland runner — every pattern is unique.",
             "/printables/img/scavenger-hunt.png": "Zoo &amp; Park Scavenger Hunt",
         }
         for src, needle in expected.items():

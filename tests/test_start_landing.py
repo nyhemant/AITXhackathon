@@ -208,13 +208,13 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn('href="/field-pack/cards/"', chapter)
         self.assertIn('href="/field-pack/virtual-field-trip/"', chapter)
         self.assertIn('href="/field-pack/"', chapter)
-        self.assertIn('class="start-hero-map"', chapter)
-        self.assertIn('class="start-hero-still"', chapter)
-        self.assertIn('src="/start/hero-world-map.jpg"', chapter)
+        self.assertIn('class="kzm kzm-world kzm-a"', chapter)
+        self.assertIn('class="kzm-base start-hero-still"', chapter)
+        self.assertIn('src="/start/map-v2/a-world-v1.svg"', chapter)
         self.assertNotIn("hero-giraffe.jpg", self.html)
-        self.assertIn('width="1792"', chapter)
-        self.assertIn('height="1008"', chapter)
-        self.assertIn("Stylized world map with eight animals", chapter)
+        self.assertIn('width="2000"', chapter)
+        self.assertIn('height="932"', chapter)
+        self.assertIn("World map with eight animals", chapter)
         self.assertIn('content="https://kidzookit.com/start/hero-world-map.jpg"', self.html)
         self.assertIn('property="og:image"', self.html)
         self.assertIn('name="twitter:image"', self.html)
@@ -227,20 +227,20 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("start-door", chapter)
         self.assertNotIn('href="/field-pack/cards/flamingo/"', chapter)
         pins = re.findall(
-            r'<a class="start-hero-hotspot[^"]*" data-hero-region="([^"]+)" href="([^"]+)" aria-label="([^"]+)"></a>',
+            r'<a class="start-hero-hotspot[^"]*" data-hero-region="([^"]+)" href="([^"]+)" aria-label="([^"]+)"',
             chapter,
         )
         self.assertEqual(
             pins,
             [
                 ("americas", "/field-pack/cards/american-bison/", "American bison"),
-                ("east", "/field-pack/cards/giant-panda/", "Giant panda"),
-                ("east", "/field-pack/cards/zebra/", "Zebra"),
-                ("americas", "/field-pack/cards/galapagos-tortoise/", "Galápagos tortoise"),
                 ("americas", "/field-pack/cards/caribbean-flamingo/", "Caribbean flamingo"),
+                ("americas", "/field-pack/cards/galapagos-tortoise/", "Galápagos tortoise"),
+                ("east", "/field-pack/cards/zebra/", "Zebra"),
+                ("east", "/field-pack/cards/giant-panda/", "Giant panda"),
                 ("east", "/field-pack/cards/sumatran-tiger/", "Sumatran tiger"),
-                ("east", "/field-pack/cards/koala/", "Koala"),
                 ("east", "/field-pack/cards/whale-shark/", "Whale shark"),
+                ("east", "/field-pack/cards/koala/", "Koala"),
             ],
         )
         self.assertEqual(chapter.count('class="start-hero-hotspot'), 8)

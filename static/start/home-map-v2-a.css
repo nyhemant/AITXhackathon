@@ -1,0 +1,103 @@
+/* Home map v2 (mockup 2026-11-12): accurate Natural Earth base plates, pins placed by % in plate space.
+   641px and up: each plate shows whole (USA plate for Places, world plate for Animals).
+   640px and down: the plate keeps a fixed, taller height and pans sideways; vertical swipes still scroll the page. */
+.kzm { position: relative; }
+.hx-mapcard .home-places-map.kzm { align-self: center; aspect-ratio: auto; height: auto; min-height: 0; margin: 0; overflow: visible; background: none; box-shadow: none; border-radius: 14px; }
+.kzm-pan { position: relative; overflow: hidden; border-radius: 14px; }
+.kzm-plate { position: relative; width: 100%; aspect-ratio: var(--kzm-w) / var(--kzm-h); }
+.kzm-base { position: absolute; inset: 0; display: block; width: 100%; height: 100%; user-select: none; -webkit-user-drag: none; }
+.kzm-base svg { display: block; width: 100%; height: 100%; }
+.kzm-deco { position: absolute; height: auto; transform: translate(-50%, -50%); pointer-events: none; user-select: none; }
+.kzm-label { position: absolute; transform: translate(-50%, -50%); white-space: nowrap; text-align: center; line-height: 1.15; pointer-events: none; user-select: none; }
+
+/* Venue pins: the 44px button sits on the true point; the city tag is offset along a short leader. */
+.kzm .home-place-pin { visibility: visible; z-index: 2; }
+.kzm .home-place-pin::after { content: none; }
+.kzm .home-place-pin::before { width: 14px; height: 14px; margin: -7px 0 0 -7px; z-index: 2; }
+.kzm-lead { position: absolute; left: 50%; top: 50%; width: var(--len); height: 0; border-top: 1.5px solid currentColor; transform-origin: 0 0; transform: rotate(var(--ang)); pointer-events: none; }
+.kzm-tag {
+  position: absolute; left: 50%; top: 50%; z-index: 3;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  min-height: 30px; padding: 0 0.6rem; box-sizing: border-box;
+  white-space: nowrap; cursor: pointer;
+  transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy)));
+}
+/* 44px tall tap target around the 30px tag. */
+.kzm-tag::after { content: ""; position: absolute; inset: -8px -3px; }
+.kzm-tag b { display: inline-block; min-width: 20px; height: 20px; padding: 0 5px; box-sizing: border-box; border-radius: 10px; font: 800 12px/20px var(--hx-sans); text-align: center; }
+
+/* Animals: stickers sit on the habitat point; the name rides under them. */
+.kzm-animal { position: absolute; z-index: 2; display: block; width: 6.2%; min-width: 48px; transform: translate(-50%, -50%); text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.kzm-animal img { display: block; width: 100%; height: auto; }
+.kzm-name { position: absolute; left: 50%; top: 100%; transform: translate(-50%, -0.2rem); white-space: nowrap; pointer-events: none; }
+.kzm-name-right .kzm-name { left: 100%; top: 50%; transform: translate(-0.15rem, -50%); }
+
+.kzm-hint { display: none; }
+
+@media (min-width: 641px) {
+  .kzm-tag { transform: translate(calc(-50% + var(--dxw, var(--dx))), calc(-50% + var(--dyw, var(--dy)))); }
+  .kzm-lead { width: var(--lenw, var(--len)); transform: rotate(var(--angw, var(--ang))); }
+}
+
+/* The Animals section: copy sits under the map on every width so no land is covered. */
+.hx-mapcard .start-hero { min-height: 0; height: auto; overflow: hidden; border-radius: 14px; background: #2b3534; }
+.hx-mapcard .start-hero::after { display: none; }
+.hx-mapcard .start-hero-copy { position: relative; max-width: none; padding: 1rem clamp(1rem, 3vw, 2rem) 1.15rem; }
+
+@media (max-width: 640px) {
+  .kzm-usa { --kzm-ph: min(420px, 54svh); }
+  .kzm-world { --kzm-ph: min(400px, 52svh); }
+  .kzm-pan {
+    height: var(--kzm-ph);
+    overflow-x: auto; overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .kzm-pan::-webkit-scrollbar { display: none; }
+  /* Opening position without a blocking script: the browser snaps to the one .kzm-snap point
+     (East Coast / the Americas) on layout; home-map-v2.js then adds .is-loose so the drag glides. */
+  .kzm-pan { scroll-snap-type: x mandatory; }
+  .kzm-pan.is-loose { scroll-snap-type: none; }
+  .kzm-snap { position: absolute; top: 0; width: 1px; height: 1px; scroll-snap-align: center; pointer-events: none; }
+  .kzm-plate { width: calc(var(--kzm-ph) * var(--kzm-w) / var(--kzm-h)); height: 100%; aspect-ratio: auto; }
+  .kzm-hint {
+    display: block; position: absolute; top: 0.6rem; right: 0.6rem; z-index: 5; margin: 0;
+    padding: 0.35rem 0.7rem; border-radius: 999px;
+    background: rgba(255, 252, 247, 0.94); box-shadow: 0 1px 4px rgba(12, 10, 8, 0.18);
+    color: var(--hx-teal); font: 700 0.8rem/1.2 var(--hx-sans);
+    pointer-events: none; transition: opacity 0.4s ease;
+  }
+  .kzm-usa .kzm-hint { right: auto; left: 0.6rem; }
+  .kzm-hint.is-gone { opacity: 0; }
+  .kzm-animal { width: auto; min-width: 0; }
+  .kzm-tag { min-height: 28px; padding: 0 0.5rem; font-size: 0.8rem !important; }
+  .kzm-animal img { width: 58px; }
+}
+@media (prefers-reduced-motion: reduce) { .kzm-hint { transition: none; } }
+
+/* Two venues on one dot (New York): only the tags take taps, so each opens its own card. */
+.kzm .kzm-tagonly { pointer-events: none; }
+.kzm .kzm-tagonly .kzm-tag { pointer-events: auto; }
+.kzm .kzm-nodot::before { content: none; }
+.kzm [data-home-pin="amnh"] .kzm-tag { padding-top: 0.3rem; padding-bottom: 0.3rem; line-height: 1.1; text-align: left; }
+
+/* Direction A, "Explorer map": parchment land, watercolor sea, ink coast, storybook stickers and flourishes. */
+.kzm-a .kzm-pan { background: #bfdde3 url("/start/map-v2/tex-ocean-128-v1.webp") 0 0 / 256px repeat; box-shadow: inset 0 0 0 1px rgba(92, 66, 32, 0.35); }
+.kzm-a::after { content: ""; position: absolute; inset: 0; z-index: 4; border-radius: 14px; pointer-events: none; box-shadow: inset 0 0 0 4px rgba(251, 243, 223, 0.85), inset 0 0 0 5px rgba(92, 66, 32, 0.45), inset 0 0 36px rgba(120, 88, 40, 0.22); }
+.kzm-a .kzm-label { font-family: var(--hx-serif); font-style: italic; }
+.kzm-a .kzm-sea { color: #2d6a73; font-size: clamp(0.72rem, 1.05vw, 0.95rem); letter-spacing: 0.14em; opacity: 0.85; }
+.kzm-a .kzm-land { color: #6d5432; font-size: clamp(0.62rem, 0.85vw, 0.8rem); font-style: normal; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.75; }
+.kzm-a .kzm-big { font-size: clamp(0.8rem, 1.25vw, 1.15rem); letter-spacing: 0.35em; opacity: 0.5; }
+.kzm-a .kzm-deco { filter: drop-shadow(0 1px 1px rgba(80, 60, 30, 0.25)); opacity: 0.95; }
+.kzm-a .home-place-pin { color: #6b4f2a; }
+.kzm-a .home-place-pin::before { background: #c0531f; box-shadow: 0 0 0 2.5px #fbf3df, 0 0 0 3.5px #6b4f2a, 0 2px 5px rgba(60, 40, 10, 0.4); }
+.kzm-a .home-place-pin.is-open::before { background: #0b4f4a; }
+.kzm-a .kzm-lead { border-top: 1.5px dashed #6b4f2a; }
+.kzm-a .kzm-tag { border: 1.5px solid #6b4f2a; border-radius: 4px; background: #fbf3df; color: #3b2a17; font: 700 0.86rem/1 var(--hx-serif); box-shadow: 2px 2px 0 rgba(107, 79, 42, 0.35); }
+.kzm-a .kzm-tag b { background: #0b4f4a; color: #fbf3df; }
+.kzm-a .home-place-pin:hover .kzm-tag, .kzm-a .home-place-pin.is-open .kzm-tag { background: #c0531f; border-color: #8a3a12; color: #fff; }
+.kzm-a .kzm-animal img { filter: drop-shadow(0 3px 3px rgba(60, 40, 10, 0.35)); transition: transform 0.15s ease; }
+.kzm-a .kzm-animal:hover img { transform: scale(1.08) rotate(-3deg); }
+.kzm-a .kzm-name { padding: 0.12rem 0.45rem; border: 1px solid rgba(107, 79, 42, 0.6); border-radius: 3px; background: #fbf3df; color: #3b2a17; font: italic 700 clamp(0.66rem, 0.9vw, 0.8rem)/1.15 var(--hx-serif); }
