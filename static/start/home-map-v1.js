@@ -21,6 +21,7 @@
   var pins = Array.prototype.slice.call(document.querySelectorAll(".home-place-pin"));
   var svgEl = null;
   var placed = false;
+  var NS = "http://www.w3.org/2000/svg";
 
   function setMode(mode) {
     var places = mode !== "animals";
@@ -35,6 +36,7 @@
     if (!pin || !card) return;
     pins.forEach(function (other) {
       other.classList.toggle("is-open", other === pin);
+      if (other._dot) other._dot.setAttribute("fill", other === pin ? "#c9a227" : "#0a4545");
     });
     if (nameEl) nameEl.textContent = pin.getAttribute("data-name") || "";
     if (cityEl) cityEl.textContent = pin.getAttribute("data-city") || "";
@@ -44,7 +46,10 @@
   }
 
   function closePin() {
-    pins.forEach(function (pin) { pin.classList.remove("is-open"); });
+    pins.forEach(function (pin) {
+      pin.classList.remove("is-open");
+      if (pin._dot) pin._dot.setAttribute("fill", "#0a4545");
+    });
     if (card) card.hidden = true;
   }
 
@@ -88,33 +93,88 @@
     };
   }
 
-  function positionPins(points) {
-    if (!svgEl || !layer) return;
-    var box = layer.getBoundingClientRect();
-    var ctm = svgEl.getScreenCTM();
-    if (!ctm || !box.width || !box.height) return;
-    var used = [];
+  /* Screen scale from the viewBox and the SVG element's box.
+     meet uses the smaller axis. This does not wait on a flushed CTM. */
+  function userPerPx() {
+    var vb = svgEl.viewBox && svgEl.viewBox.baseVal;
+    var rect = svgEl.getBoundingClientRect();
+    if (!vb || !vb.width || !vb.height || !rect.width || !rect.height) return 0;
+    var scale = Math.min(rect.width / vb.width, rect.height / vb.height);
+    return scale > 0 ? 1 / scale : 0;
+  }
+
+  /* Chicago, DC, and NYC each have two venues on one projected point.
+     Keep the first on that point. Step the next ones one screen-gap
+     inland or north/south, never a growing multiple of the gap. */
+  function fan(points) {
+    var unit = userPerPx();
+    if (!unit) return points;
+    var gap = 14 * unit;
+    var placedPts = [];
+    var vb = svgEl.viewBox.baseVal;
     points.forEach(function (item) {
-      var sp = svgEl.createSVGPoint();
-      sp.x = item.x;
-      sp.y = item.y;
-      var screen = sp.matrixTransform(ctm);
-      var leftPx = screen.x - box.left;
-      var topPx = screen.y - box.top;
-      var n = 0;
-      while (n < 6 && used.some(function (prev) {
-        return Math.abs(prev.left - leftPx) < 22 && Math.abs(prev.top - topPx) < 22;
-      })) {
-        n += 1;
-        leftPx += n % 2 ? 20 : -20;
-        topPx += n > 2 ? 18 : 0;
+      var inland = ((vb.x + vb.width / 2) - item.x) >= 0 ? 1 : -1;
+      var tries = [
+        [0, 0],
+        [inland, 0],
+        [0, -1],
+        [0, 1],
+        [inland, -1],
+        [inland, 1]
+      ];
+      var x = item.x;
+      var y = item.y;
+      for (var i = 0; i < tries.length; i++) {
+        var tx = item.x + tries[i][0] * gap;
+        var ty = item.y + tries[i][1] * gap;
+        var blocked = placedPts.some(function (prev) {
+          return Math.hypot(prev.x - tx, prev.y - ty) < gap * 0.8;
+        });
+        if (!blocked) {
+          x = tx;
+          y = ty;
+          break;
+        }
       }
-      used.push({ left: leftPx, top: topPx });
-      item.pin.style.left = (leftPx / box.width) * 100 + "%";
-      item.pin.style.top = (topPx / box.height) * 100 + "%";
-      item.pin.classList.add("is-placed");
+      placedPts.push({ x: x, y: y });
+      item.fx = x;
+      item.fy = y;
     });
-    placed = true;
+    return points;
+  }
+
+  function drawDots(points) {
+    var unit = userPerPx() || 1;
+    var r = Math.max(2.2, 7 * unit);
+    points.forEach(function (item) {
+      var dot = document.createElementNS(NS, "circle");
+      dot.setAttribute("cx", item.fx);
+      dot.setAttribute("cy", item.fy);
+      dot.setAttribute("r", r);
+      dot.setAttribute("fill", "#0a4545");
+      dot.setAttribute("stroke", "#fffcf7");
+      dot.setAttribute("stroke-width", String(r * 0.28));
+      dot.setAttribute("class", "home-svg-pin");
+      dot.setAttribute("pointer-events", "none");
+      svgEl.appendChild(dot);
+      item.pin._dot = dot;
+    });
+  }
+
+  function syncButtons() {
+    if (!svgEl || !layer) return;
+    var layerBox = layer.getBoundingClientRect();
+    if (!layerBox.width || !layerBox.height) return;
+    pins.forEach(function (pin) {
+      var dot = pin._dot;
+      if (!dot) return;
+      var rect = dot.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+      pin.style.left = ((cx - layerBox.left) / layerBox.width) * 100 + "%";
+      pin.style.top = ((cy - layerBox.top) / layerBox.height) * 100 + "%";
+      pin.classList.add("is-placed");
+    });
   }
 
   function drawPlaces() {
@@ -136,13 +196,21 @@
         points.push({ pin: pin, x: pt.x, y: pt.y });
       });
       if (!points.length) return;
+      points.forEach(function (item) { item.fx = item.x; item.fy = item.y; });
       var box = frame(points);
       svgEl.setAttribute("viewBox", box.x + " " + box.y + " " + box.w + " " + box.h);
       svgEl.setAttribute("preserveAspectRatio", "xMidYMid meet");
       svgEl.style.width = "100%";
       svgEl.style.height = "100%";
-      requestAnimationFrame(function () {
-        positionPins(points);
+      function finish(tries) {
+        if (!userPerPx()) {
+          if (tries < 8) requestAnimationFrame(function () { finish(tries + 1); });
+          return;
+        }
+        fan(points);
+        drawDots(points);
+        syncButtons();
+        placed = true;
         var hash = "";
         try { hash = location.hash || ""; } catch (_) { hash = ""; }
         var wanted = (hash.match(/pin=([a-z0-9-]+)/) || [])[1];
@@ -150,7 +218,8 @@
           return pin.getAttribute("data-home-pin") === wanted;
         })[0];
         if (opener) openPin(opener);
-      });
+      }
+      requestAnimationFrame(function () { finish(0); });
     }).catch(function () {
       if (host) host.innerHTML = '<p class="home-map-loading">Map unavailable. The place list is under the map.</p>';
     });
@@ -162,6 +231,10 @@
   if (closeEl) closeEl.addEventListener("click", closePin);
   if (animalsBtn) animalsBtn.addEventListener("click", function () { setMode("animals"); });
   if (placesBtn) placesBtn.addEventListener("click", function () { setMode("places"); });
+  window.addEventListener("resize", syncButtons);
+  if (window.ResizeObserver && host) {
+    new ResizeObserver(syncButtons).observe(host);
+  }
 
   setMode("places");
 })();
