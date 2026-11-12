@@ -102,6 +102,14 @@ class OriginCacheTests(unittest.TestCase):
         served = _get("/pwa/icon-192.png")
         self.assertEqual(served._headers.get("Cache-Control"), "public, max-age=86400")
 
+    def test_printables_pdf_is_no_cache(self):
+        served = _get("/printables/pdf/letter/scavenger-hunt.pdf")
+        self.assertEqual(served._code, 200)
+        self.assertEqual(served._headers.get("Cache-Control"), "no-cache")
+        png = _get("/printables/img/scavenger-hunt.png")
+        self.assertEqual(png._code, 200)
+        self.assertEqual(png._headers.get("Cache-Control"), "public, max-age=86400")
+
     def test_is_versioned_asset(self):
         p = Path("x.css")
         self.assertTrue(_is_versioned_asset("/a/x.css?v=3", p))

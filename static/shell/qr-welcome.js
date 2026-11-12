@@ -3,7 +3,7 @@
  *   show one small, dismissible strip with ONE next step for that sheet.
  *   Once per session per sheet; never again after it has been dismissed twice.
  * - Fires GA4 events (campaign / slug / paper only, no personal data):
- *   qr_welcome_shown, qr_welcome_click, printable_download.
+ *   qr_welcome_shown, qr_welcome_click, printable_download (slug, paper, cta).
  * Leaves the URL (and its UTM tags) untouched. Does not modify shell.js.
  */
 (function () {
@@ -34,8 +34,10 @@
   function ssGet(k) { try { return window.sessionStorage.getItem(k); } catch (_) { return null; } }
   function ssSet(k, v) { try { window.sessionStorage.setItem(k, v); } catch (_) { /* blocked */ } }
 
-  /* ---- printable_download {slug, paper} on PDF links ---- */
-  document.addEventListener("click", function (ev) {
+  /* ---- printable_download {slug, paper, cta} on PDF links ---- */
+  /* Left click, and middle click (auxclick button 1). Right click stays quiet. */
+  function onPrintableLink(ev) {
+    if (ev.type === "auxclick" && ev.button !== 1) return;
     var a = ev.target && ev.target.closest ? ev.target.closest("a[href]") : null;
     if (!a) return;
     var path;
@@ -44,8 +46,14 @@
     if (!m) return;
     var paper = m[1] || "letter";
     var slug = m[2].replace(/-a4$/, "");
-    send("printable_download", { slug: slug, paper: paper });
-  }, true);
+    send("printable_download", {
+      slug: slug,
+      paper: paper,
+      cta: a.getAttribute("data-kz-cta") || ""
+    });
+  }
+  document.addEventListener("click", onPrintableLink, true);
+  document.addEventListener("auxclick", onPrintableLink, true);
 
   /* ---- QR welcome strip ---- */
   function campaign() {
