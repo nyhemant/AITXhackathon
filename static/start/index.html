@@ -27,6 +27,7 @@
   <meta name="twitter:description" content="A virtual zoo for curious kids. Watch Live, explore Places, or open Cards — no signup, works on a phone." />
   <meta name="twitter:image" content="https://kidzookit.com/start/hero-world-map.jpg" />
   <link rel="stylesheet" href="/start/start.css?v=81" />
+  <link rel="stylesheet" href="/start/home-map-v1.css?v=1" />
   <style>
     /* Visible H1 matches the document title. The rotating expedition line stays under it (aria-hidden; sr-only sentence remains). */
     .start-hero .start-h1-wrap { margin: 0; color: #fffcf7; font-weight: 600; letter-spacing: -0.025em; text-shadow: 0 1px 18px rgba(12, 10, 8, 0.35); }
@@ -39,7 +40,69 @@
   <!-- kz-seo:hub-ld --><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://kidzookit.com/#website", "name": "KidZooKit", "url": "https://kidzookit.com/", "inLanguage": "en", "publisher": {"@id": "https://kidzookit.com/#organization"}}, {"@type": "Organization", "@id": "https://kidzookit.com/#organization", "name": "KidZooKit", "url": "https://kidzookit.com/", "logo": "https://kidzookit.com/pwa/icon-512.png"}]}</script><!-- /kz-seo:hub-ld -->
 </head>
 <body class="start-body">
-  <section class="start-hero" id="start-hero" aria-labelledby="start-heading">
+      <header class="start-top">
+      <!-- Start-only personal signal. Deeper pages stay neutral for search arrivals. -->
+      <p class="start-wordmark">Arya’s Wildlife Project</p>
+      <div class="start-menu-wrap">
+        <button
+          type="button"
+          class="start-menu-btn"
+          id="start-menu-btn"
+          aria-expanded="false"
+          aria-controls="start-menu"
+          aria-label="Open menu"
+        >
+          <span class="start-menu-bars" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+        <nav id="start-menu" class="start-menu" hidden>
+          <a href="/start/" aria-current="page">Start</a>
+          <a href="/field-pack/cards/">Cards</a>
+          <a href="/field-pack/virtual-field-trip/">Watch Live</a>
+          <a href="/field-pack/">Places</a>
+          <a href="/printables/">Printables</a>
+          <a class="start-menu-grownup" href="/about/">About</a>
+        </nav>
+      </div>
+    </header>
+  <div class="home-hunts-h1">
+    <h1 id="start-heading">Virtual Zoo for Kids: Live Cams &amp; Animal Cards</h1>
+  </div>
+  <section id="home-hunts" class="home-hunts" aria-labelledby="home-hunts-tagline">
+    <h2 id="home-hunts-tagline" class="home-hunts-tagline">Printable scavenger hunts for your next zoo, aquarium or museum trip</h2>
+    <div class="home-map-toggle" role="group" aria-label="Map">
+      <button type="button" id="home-map-animals" aria-pressed="false">Animals</button>
+      <button type="button" id="home-map-places" aria-pressed="true">Places</button>
+    </div>
+    <div class="home-map-stage">
+      <div id="home-places-map" class="home-places-map">
+        <div id="home-places-canvas" class="home-places-canvas" aria-label="Places map">
+          <p class="home-map-loading">Loading map…</p>
+        </div>
+        <div class="home-pin-layer" id="home-pin-layer">
+                    <button type="button" class="home-place-pin" data-home-pin="amnh" data-name="American Museum of Natural History" data-city="New York" data-print="/field-pack/amnh/#printable-hunt" data-page="/field-pack/amnh/" aria-label="American Museum of Natural History, New York"></button>
+          <button type="button" class="home-place-pin" data-home-pin="nashville-adventure-science" data-name="Adventure Science Center" data-city="Nashville" data-print="/field-pack/nashville-adventure-science/#printable-hunt" data-page="/field-pack/nashville-adventure-science/" aria-label="Adventure Science Center, Nashville"></button>
+          <button type="button" class="home-place-pin" data-home-pin="air-and-space" data-name="National Air and Space Museum" data-city="Washington" data-print="/field-pack/air-and-space/#printable-hunt" data-page="/field-pack/air-and-space/" aria-label="National Air and Space Museum, Washington"></button>
+          <button type="button" class="home-place-pin" data-home-pin="national-aquarium-baltimore" data-name="National Aquarium" data-city="Baltimore" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/national-aquarium-baltimore/" aria-label="National Aquarium, Baltimore"></button>
+          <button type="button" class="home-place-pin" data-home-pin="shedd-aquarium" data-name="Shedd Aquarium" data-city="Chicago" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/shedd-aquarium/" aria-label="Shedd Aquarium, Chicago"></button>
+          <button type="button" class="home-place-pin" data-home-pin="lincoln-park-zoo" data-name="Lincoln Park Zoo" data-city="Chicago" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/lincoln-park-zoo/" aria-label="Lincoln Park Zoo, Chicago"></button>
+          <button type="button" class="home-place-pin" data-home-pin="toronto-zoo" data-name="Toronto Zoo" data-city="Toronto" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/toronto-zoo/" aria-label="Toronto Zoo, Toronto"></button>
+          <button type="button" class="home-place-pin" data-home-pin="austin-zoo" data-name="Austin Zoo" data-city="Austin" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/austin-zoo/" aria-label="Austin Zoo, Austin"></button>
+          <button type="button" class="home-place-pin" data-home-pin="national-zoo" data-name="Smithsonian National Zoo" data-city="Washington" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/national-zoo/" aria-label="Smithsonian National Zoo, Washington"></button>
+          <button type="button" class="home-place-pin" data-home-pin="bronx-zoo" data-name="Bronx Zoo" data-city="New York" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/bronx-zoo/" aria-label="Bronx Zoo, New York"></button>
+          <button type="button" class="home-place-pin" data-home-pin="redwood" data-name="Redwood National and State Parks" data-city="Crescent City" data-print="/printables/pdf/letter/park-scavenger-hunt.pdf" data-page="/field-pack/redwood/" aria-label="Redwood National and State Parks, Crescent City"></button>
+          <button type="button" class="home-place-pin" data-home-pin="joshua-tree" data-name="Joshua Tree National Park" data-city="Twentynine Palms" data-print="/printables/pdf/letter/park-scavenger-hunt.pdf" data-page="/field-pack/joshua-tree/" aria-label="Joshua Tree National Park, Twentynine Palms"></button>
+        </div>
+        <div id="home-pin-card" class="home-pin-card" hidden>
+          <p class="home-pin-name" id="home-pin-name"></p>
+          <p class="home-pin-city" id="home-pin-city"></p>
+          <a class="home-pin-print" id="home-pin-print" data-kz-cta="home-map" href="/field-pack/amnh/#printable-hunt">Print the scavenger hunt</a>
+          <a class="home-pin-page" id="home-pin-page" href="/field-pack/amnh/">See the full page</a>
+          <button type="button" class="home-pin-close" id="home-pin-close" aria-label="Close place">Close</button>
+        </div>
+      </div>
+      <section class="start-hero" id="start-hero" hidden aria-labelledby="start-heading">
     <!-- Map pins are % of hero-world-map.jpg (1792×1008); left/top is the figurine center. Wrapper keeps that aspect and cover-crops; tall/mobile left-aligns so Americas stay in frame. -->
     <div class="start-hero-map">
       <picture style="display:contents"><source type="image/webp" srcset="/start/hero-world-map-1280-v1.webp 1280w, /start/hero-world-map-1792-v1.webp 1792w" sizes="max(100vw, calc(100svh * 1792 / 1008))" /><img
@@ -73,35 +136,8 @@
       </div>
     </div>
     <p class="start-map-coach" id="start-map-coach" hidden role="status">Tap an animal to open a card.</p>
-    <header class="start-top">
-      <!-- Start-only personal signal. Deeper pages stay neutral for search arrivals. -->
-      <p class="start-wordmark">Arya’s Wildlife Project</p>
-      <div class="start-menu-wrap">
-        <button
-          type="button"
-          class="start-menu-btn"
-          id="start-menu-btn"
-          aria-expanded="false"
-          aria-controls="start-menu"
-          aria-label="Open menu"
-        >
-          <span class="start-menu-bars" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </span>
-        </button>
-        <nav id="start-menu" class="start-menu" hidden>
-          <a href="/start/" aria-current="page">Start</a>
-          <a href="/field-pack/cards/">Cards</a>
-          <a href="/field-pack/virtual-field-trip/">Watch Live</a>
-          <a href="/field-pack/">Places</a>
-          <a href="/printables/">Printables</a>
-          <a class="start-menu-grownup" href="/about/">About</a>
-        </nav>
-      </div>
-    </header>
     <div class="start-hero-copy">
       <div class="start-h1-wrap">
-        <h1 id="start-heading">Virtual Zoo for Kids: Live Cams &amp; Animal Cards</h1>
         <p class="sr-only">Turn the zoo into an expedition.</p>
         <span class="start-venue-line" aria-hidden="true">Turn the <span class="start-venue-slot" tabindex="0"><span class="start-venue-sizer" data-sizer="Zoo"></span><span class="start-venue-words" data-venue-rotator><span class="start-venue-word is-active">Zoo</span><span class="start-venue-word">Aquarium</span><span class="start-venue-word">Museum</span><span class="start-venue-word">Park</span></span></span> into an expedition.</span>
       </div>
@@ -116,6 +152,23 @@
       </div>
       <p class="start-trust">No signup · works on a phone</p>
     </div>
+  </section>
+    </div>
+    <div class="home-venue-row" id="home-venue-row" tabindex="0">
+            <article class="home-venue-card" data-home-venue="amnh"><p class="home-venue-name">American Museum of Natural History</p><p class="home-venue-city">New York</p><a class="home-venue-print" data-kz-cta="home-map" href="/field-pack/amnh/#printable-hunt">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/amnh/">See the full page</a></article>
+      <article class="home-venue-card" data-home-venue="nashville-adventure-science"><p class="home-venue-name">Adventure Science Center</p><p class="home-venue-city">Nashville</p><a class="home-venue-print" data-kz-cta="home-map" href="/field-pack/nashville-adventure-science/#printable-hunt">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/nashville-adventure-science/">See the full page</a></article>
+      <article class="home-venue-card" data-home-venue="air-and-space"><p class="home-venue-name">National Air and Space Museum</p><p class="home-venue-city">Washington</p><a class="home-venue-print" data-kz-cta="home-map" href="/field-pack/air-and-space/#printable-hunt">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/air-and-space/">See the full page</a></article>
+      <article class="home-venue-card" data-home-venue="national-aquarium-baltimore"><p class="home-venue-name">National Aquarium</p><p class="home-venue-city">Baltimore</p><a class="home-venue-print" data-kz-cta="home-map" href="/printables/pdf/letter/scavenger-hunt.pdf">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/national-aquarium-baltimore/">See the full page</a></article>
+      <article class="home-venue-card" data-home-venue="shedd-aquarium"><p class="home-venue-name">Shedd Aquarium</p><p class="home-venue-city">Chicago</p><a class="home-venue-print" data-kz-cta="home-map" href="/printables/pdf/letter/scavenger-hunt.pdf">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/shedd-aquarium/">See the full page</a></article>
+      <article class="home-venue-card" data-home-venue="lincoln-park-zoo"><p class="home-venue-name">Lincoln Park Zoo</p><p class="home-venue-city">Chicago</p><a class="home-venue-print" data-kz-cta="home-map" href="/printables/pdf/letter/scavenger-hunt.pdf">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/lincoln-park-zoo/">See the full page</a></article>
+      <article class="home-venue-card" data-home-venue="toronto-zoo"><p class="home-venue-name">Toronto Zoo</p><p class="home-venue-city">Toronto</p><a class="home-venue-print" data-kz-cta="home-map" href="/printables/pdf/letter/scavenger-hunt.pdf">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/toronto-zoo/">See the full page</a></article>
+      <article class="home-venue-card" data-home-venue="austin-zoo"><p class="home-venue-name">Austin Zoo</p><p class="home-venue-city">Austin</p><a class="home-venue-print" data-kz-cta="home-map" href="/printables/pdf/letter/scavenger-hunt.pdf">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/austin-zoo/">See the full page</a></article>
+      <article class="home-venue-card" data-home-venue="national-zoo"><p class="home-venue-name">Smithsonian National Zoo</p><p class="home-venue-city">Washington</p><a class="home-venue-print" data-kz-cta="home-map" href="/printables/pdf/letter/scavenger-hunt.pdf">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/national-zoo/">See the full page</a></article>
+      <article class="home-venue-card" data-home-venue="bronx-zoo"><p class="home-venue-name">Bronx Zoo</p><p class="home-venue-city">New York</p><a class="home-venue-print" data-kz-cta="home-map" href="/printables/pdf/letter/scavenger-hunt.pdf">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/bronx-zoo/">See the full page</a></article>
+      <article class="home-venue-card" data-home-venue="redwood"><p class="home-venue-name">Redwood National and State Parks</p><p class="home-venue-city">Crescent City</p><a class="home-venue-print" data-kz-cta="home-map" href="/printables/pdf/letter/park-scavenger-hunt.pdf">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/redwood/">See the full page</a></article>
+      <article class="home-venue-card" data-home-venue="joshua-tree"><p class="home-venue-name">Joshua Tree National Park</p><p class="home-venue-city">Twentynine Palms</p><a class="home-venue-print" data-kz-cta="home-map" href="/printables/pdf/letter/park-scavenger-hunt.pdf">Print the scavenger hunt</a><a class="home-venue-page" href="/field-pack/joshua-tree/">See the full page</a></article>
+    </div>
+    <p class="home-all-places"><a href="/field-pack/">See all places</a></p>
   </section>
 
   <div class="start-rest" id="start-rest" aria-hidden="true"></div>
@@ -403,6 +456,7 @@
   <script src="/shell/related-links.js?v=1"></script>
   <script src="/shell/qr-welcome.js?v=4"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
+  <script src="/start/home-map-v1.js?v=1"></script>
   <script src="/pwa/register.js?v=1"></script>
   <script src="/start/start.js?v=41"></script>
 </body>
