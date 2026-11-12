@@ -24,6 +24,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import struct
 import subprocess
 import sys
 from datetime import date
@@ -354,7 +355,7 @@ OUTING_TALK_EXHIBIT = (
     },
 )
 
-SEO_CSS_VER = "36"
+SEO_CSS_VER = "37"
 CARD_SEO_CSS_VER = "38"
 LANDING_CSS_VER = "105"
 LANDING_MAP_JS_VER = "89"
@@ -2227,6 +2228,283 @@ def venue_article_image_url(mission_venue: dict | None, v: dict | None, vid: str
     return ""
 
 
+_PLACE_PHOTO_KINDS = frozenset({"zoo", "aquarium", "museum"})
+_PLACE_PHOTO_WIDTHS = (480, 640, 960)
+
+
+def _has_real_place_hero(mission_venue: dict | None, vid: str) -> bool:
+    """National-park (and any other) hero already on the page. Leave those pages alone."""
+    hero = hero_illustration_path(mission_venue, vid)
+    return bool(hero) and "sample-mission-dallas-zoo" not in hero
+
+
+def _image_pixel_size(path: Path) -> tuple[int, int]:
+    """Width and height from the file header. Pillow is optional."""
+    data = path.read_bytes()
+    if data[:8] == b"\x89PNG\r\n\x1a\n" and len(data) >= 24:
+        w, h = struct.unpack(">II", data[16:24])
+        if w and h:
+            return int(w), int(h)
+    if data[:2] == b"\xff\xd8":
+        i = 2
+        while i + 9 < len(data):
+            if data[i] != 0xFF:
+                i += 1
+                continue
+            marker = data[i + 1]
+            if marker in (0xC0, 0xC1, 0xC2):
+                h, w = struct.unpack(">HH", data[i + 5 : i + 9])
+                if w and h:
+                    return int(w), int(h)
+            if marker in (0xD8, 0xD9):
+                i += 2
+                continue
+            if i + 4 > len(data):
+                break
+            seglen = struct.unpack(">H", data[i + 2 : i + 4])[0]
+            i += 2 + seglen
+    if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+        j = data.find(b"VP8X")
+        if j != -1 and j + 18 <= len(data):
+            payload = data[j + 8 : j + 18]
+            w = 1 + int.from_bytes(payload[4:7], "little")
+            h = 1 + int.from_bytes(payload[7:10], "little")
+            if w and h:
+                return w, h
+        j = data.find(b"VP8 ")
+        if j != -1:
+            k = data.find(b"\x9d\x01\x2a", j)
+            if k != -1 and k + 7 <= len(data):
+                w = struct.unpack("<H", data[k + 3 : k + 5])[0] & 0x3FFF
+                h = struct.unpack("<H", data[k + 5 : k + 7])[0] & 0x3FFF
+                if w and h:
+                    return int(w), int(h)
+    return (640, 640)
+
+
+def _listed_animal_photo_file(it: dict) -> Path | None:
+    """Repo photo of this catalog animal. Never the shared Dallas sample."""
+    cid = str(it.get("catalog_id") or "").strip()
+    candidates: list[Path] = []
+    if cid:
+        for ext in (".jpg", ".jpeg", ".png", ".webp"):
+            candidates.append(FIELD / "photos" / f"{cid}{ext}")
+    raw = str(it.get("photo") or "").split("?", 1)[0].strip()
+    if raw and "sample-mission-dallas-zoo" not in raw:
+        rel = raw
+        if rel.startswith("/field-pack/"):
+            rel = rel[len("/field-pack/") :]
+        elif rel.startswith("/"):
+            rel = ""
+        if rel and ".." not in rel and not rel.startswith("http"):
+            candidates.append(FIELD / rel)
+    for path in candidates:
+        if not path.is_file():
+            continue
+        if "sample-mission-dallas-zoo" in path.name:
+            continue
+        if path.suffix.lower() not in {".jpg", ".jpeg", ".png", ".webp"}:
+            continue
+        if "np-hero-" in path.name or "/media/maps/" in str(path):
+            continue
+        return path
+    return None
+
+
+def venue_listed_animal_photo(mission_venue: dict | None, vid: str = "") -> dict | None:
+    """One photo of an animal on this venue's own items list.
+
+    Zoo, aquarium, and museum pages only. Parks and any page that already has a
+    hero stay untouched. Wonder finds and hunt lines without a catalog_id are
+    not this venue's animal list. Returns None when nothing qualifies.
+    """
+    mission = mission_venue or {}
+    vid = vid or str(mission.get("slug") or "")
+    if venue_type_kind(mission) not in _PLACE_PHOTO_KINDS:
+        return None
+    if _has_real_place_hero(mission, vid):
+        return None
+    depth = catalog_depth()
+    for it in mission.get("items") or []:
+        if not isinstance(it, dict):
+            continue
+        fid = str(it.get("id") or "")
+        if fid.startswith("w_") or str(it.get("zone") or "").lower() == "wonder":
+            continue
+        cid = str(it.get("catalog_id") or "").strip()
+        if not cid:
+            continue
+        if not _item_presence_ok(it, mission):
+            continue
+        card = depth.get(cid) or {}
+        name = str(card.get("name") or "").strip() or _item_sheet_label(it)
+        if not name or re.search(r"\bfree\b", name, re.I):
+            continue
+        path = _listed_animal_photo_file(it)
+        if path is None:
+            continue
+        try:
+            rel = path.relative_to(FIELD).as_posix()
+        except ValueError:
+            continue
+        pack = str(card.get("packTemplate") or "")
+        exhibit = pack == "exhibits" or cid.startswith(("sci-", "cm-"))
+        if exhibit:
+            caption = f"{name} — one of the stops on this hunt"
+        else:
+            caption = f"{name} — one of the animals on this hunt"
+        width, height = _image_pixel_size(path)
+        variants: list[str] = []
+        for w in _PLACE_PHOTO_WIDTHS:
+            webp = path.with_name(f"{path.stem}-{w}-v1.webp")
+            if webp.is_file():
+                variants.append(f"{webp.relative_to(FIELD).as_posix()} {w}w")
+        return {
+            "catalog_id": cid,
+            "name": name,
+            "caption": caption,
+            "alt": name,
+            "rel": rel,
+            "abs_url": f"{SITE}/field-pack/{rel}",
+            "width": width,
+            "height": height,
+            "srcset": ", ".join(variants),
+            "pos": _photo_position(card, it),
+        }
+    return None
+
+
+def place_photo_figure(photo: dict) -> str:
+    """Modest photo under the H1. Eager, sized, existing WebP variants when present."""
+    srcset = ""
+    if photo.get("srcset"):
+        srcset = (
+            f'<source type="image/webp" srcset="{esc(photo["srcset"])}" '
+            f'sizes="(max-width: 420px) 220px, 220px" />'
+        )
+    pos = _photo_position_attr(photo.get("pos") or "")
+    picture = (
+        f'<picture>{srcset}<img src="{esc(photo["rel"])}" alt="{esc(photo["alt"])}" '
+        f'width="{int(photo["width"])}" height="{int(photo["height"])}" '
+        f'loading="eager" decoding="async"{pos} /></picture>'
+        if srcset
+        else (
+            f'<img src="{esc(photo["rel"])}" alt="{esc(photo["alt"])}" '
+            f'width="{int(photo["width"])}" height="{int(photo["height"])}" '
+            f'loading="eager" decoding="async"{pos} />'
+        )
+    )
+    return (
+        f'<figure class="seo-place-photo">{picture}'
+        f'<figcaption>{esc(photo["caption"])}</figcaption></figure>'
+    )
+
+
+def _bump_seo_css_ver(html: str) -> str:
+    return re.sub(
+        r'(href="/field-pack/css/seo-venue\.css\?v=)\d+',
+        rf"\g<1>{SEO_CSS_VER}",
+        html,
+        count=1,
+    )
+
+
+def _insert_place_photo_figure(html: str, figure: str) -> str:
+    html = re.sub(
+        r"\n?\s*<figure class=\"seo-place-photo\">.*?</figure>",
+        "",
+        html,
+        count=1,
+        flags=re.S,
+    )
+    m = re.search(r"<h1\b[^>]*>.*?</h1>", html, re.S)
+    if not m:
+        return html
+    return html[: m.end()] + "\n        " + figure + html[m.end() :]
+
+
+def _swap_share_image(html: str, abs_url: str) -> str:
+    html = re.sub(
+        r'(<meta\s+property="og:image"\s+content=")[^"]+(")',
+        rf"\g<1>{abs_url}\2",
+        html,
+        count=1,
+    )
+    html = re.sub(
+        r'(<meta\s+name="twitter:image"\s+content=")[^"]+(")',
+        rf"\g<1>{abs_url}\2",
+        html,
+        count=1,
+    )
+    return html
+
+
+# Pages whose tests lock seo-venue.css to SEO_CSS_VER even when they get no photo.
+_SEO_CSS_LOCK_PAGES = (
+    "index.html",
+    "yellowstone/index.html",
+    "cairo-zoo/index.html",
+    "houston-zoo/index.html",
+    "dallas-zoo/index.html",
+)
+
+
+def apply_listed_place_photos() -> int:
+    """Insert a listed-animal photo into existing place pages. Add only.
+
+    Does not rebuild the page, so titles, descriptions, H1s, and other visible
+    lines stay as they are. Parks and pages that already have a hero are left
+    byte-for-byte except the shared CSS cache-bust on the locked pages.
+    """
+    shown: list[tuple[str, str, str]] = []
+    skipped: list[tuple[str, str]] = []
+    unchanged_hero = 0
+    unchanged_kind = 0
+    for path in sorted(VENUE_DATA_DIR.glob("*.json")):
+        mission = json.loads(path.read_text(encoding="utf-8"))
+        vid = str(mission.get("slug") or path.stem)
+        kind = venue_type_kind(mission)
+        page = FIELD / vid / "index.html"
+        if not page.is_file():
+            continue
+        if kind not in _PLACE_PHOTO_KINDS:
+            unchanged_kind += 1
+            continue
+        if _has_real_place_hero(mission, vid):
+            unchanged_hero += 1
+            continue
+        photo = venue_listed_animal_photo(mission, vid)
+        if not photo:
+            skipped.append((vid, kind))
+            continue
+        html = page.read_text(encoding="utf-8")
+        html = _swap_share_image(html, photo["abs_url"])
+        html = _insert_place_photo_figure(html, place_photo_figure(photo))
+        html = _bump_seo_css_ver(html)
+        page.write_text(html, encoding="utf-8")
+        shown.append((vid, photo["catalog_id"], photo["name"]))
+    for rel in _SEO_CSS_LOCK_PAGES:
+        page = FIELD / rel
+        if not page.is_file():
+            continue
+        html = page.read_text(encoding="utf-8")
+        bumped = _bump_seo_css_ver(html)
+        if bumped != html:
+            page.write_text(bumped, encoding="utf-8")
+    print(f"place photos shown: {len(shown)}")
+    print(f"place photos skipped (no listed animal photo): {len(skipped)}")
+    print(f"unchanged hero pages among zoo/aquarium/museum: {unchanged_hero}")
+    print(f"unchanged other kinds (parks and the rest): {unchanged_kind}")
+    for vid, cid, name in shown[:12]:
+        print(f"  photo {vid} -> {cid} ({name})")
+    if len(shown) > 12:
+        print(f"  … {len(shown) - 12} more")
+    print("skipped:")
+    for vid, kind in skipped:
+        print(f"  skip {kind} {vid}")
+    return 0
+
+
 def last_checked_chip_html(iso: str) -> str:
     """Visible 'Last checked' line. Empty when no real date exists."""
     label = venue_last_checked_label(iso)
@@ -3260,9 +3538,13 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     h1 = h1_for(v)
     title = title_for(v)
     desc = meta_for(v)
+    listed_photo = venue_listed_animal_photo(mission_venue, vid)
+    place_photo = ("\n        " + place_photo_figure(listed_photo)) if listed_photo else ""
     hero_abs = hero_illustration_path(mission_venue, vid)
     hero_src = hero_img_src(mission_venue, vid, bust="q2")
-    if hero_abs.startswith("http"):
+    if listed_photo:
+        og_img = listed_photo["abs_url"]
+    elif hero_abs.startswith("http"):
         og_img = hero_abs.split("?")[0]
     elif hero_abs.startswith("/"):
         og_img = f"{SITE}{hero_abs.split('?')[0]}"
@@ -3352,7 +3634,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     <article class="seo-article">
       <header class="seo-hero">
         <p class="promise-pill">{esc(loc_chip)}</p>
-        <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>{under_h1}
+        <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>{place_photo}{under_h1}
         {seo_intro_html(f"/field-pack/{v['id']}/", "lead seo-intro")}
         {offer_html}
         {lead_html}
@@ -6493,6 +6775,8 @@ def _csv_flag(args: list[str], flag: str) -> set[str]:
 
 
 def main() -> int:
+    if "--place-photos" in sys.argv[1:]:
+        return apply_listed_place_photos()
     only_venues = _csv_flag(sys.argv[1:], "--only")
     only_cards = _csv_flag(sys.argv[1:], "--cards")
     cards_only = "--cards-only" in sys.argv[1:]

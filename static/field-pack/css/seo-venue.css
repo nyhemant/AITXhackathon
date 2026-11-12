@@ -1654,6 +1654,31 @@ a.seo-map-card:focus-visible {
   .seo-park-hero { max-height: 200px; border-radius: 14px; }
 }
 
+/* Modest listed-animal photo under the H1. Parks keep .seo-park-hero. */
+.seo-place-photo {
+  margin: 0.65rem 0 0.75rem;
+  max-width: 28rem;
+}
+.seo-place-photo img {
+  width: auto;
+  max-width: min(220px, 100%);
+  height: auto;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  background: #e8f2ee;
+}
+.seo-place-photo figcaption {
+  margin: 0.35rem 0 0;
+  max-width: 28rem;
+  font-size: 0.82rem;
+  font-weight: 650;
+  line-height: 1.35;
+  color: #3d4f6f;
+}
+
 /* th-safety: shared rule in styles.css (do not duplicate here) */
 
 /* Dual-mode place page: at-home first, print secondary */

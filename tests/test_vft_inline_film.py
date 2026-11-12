@@ -381,7 +381,7 @@ class VftInlineFilmTests(unittest.TestCase):
     def test_cache_bump(self):
         for html in self.pages.values():
             self.assertIn("virtual-venue.js?v=112", html)
-            self.assertIn("virtual-venue.css?v=60", html)
+            self.assertIn("virtual-venue.css?v=61", html)
         self.assertIn("virtual-zoo.json?v=28", self.js)
         self.assertIn("virtual-aquarium.json?v=27", self.js)
         self.assertIn("zoo-film-library.json?v=11", self.js)
