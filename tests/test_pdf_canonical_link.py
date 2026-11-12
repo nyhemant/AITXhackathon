@@ -2,6 +2,9 @@
 
 Legacy root PDFs (/printables/pdf/X.pdf) are byte-identical to /printables/pdf/letter/X.pdf.
 Both keep answering 200 (printed QR codes, old links); the header names the letter copy.
+
+A4 twins (/printables/pdf/a4/X-a4.pdf) also keep answering 200 and name the letter copy.
+Letter files name themselves.
 """
 from __future__ import annotations
 
@@ -14,6 +17,15 @@ from busyparent_agent.web import KidZooKitServer, WebHandler, _pdf_canonical_lin
 
 REPO = Path(__file__).resolve().parents[1]
 PDF = REPO / "static" / "printables" / "pdf"
+A4_TWINS = (
+    "animal-bingo",
+    "carpool",
+    "chaperone-card",
+    "park-scavenger-hunt",
+    "scavenger-hunt",
+    "teacher-handout",
+    "zoo-day-journal",
+)
 
 
 class PdfCanonicalLinkTest(unittest.TestCase):
@@ -46,15 +58,23 @@ class PdfCanonicalLinkTest(unittest.TestCase):
                 f'<https://kidzookit.com/printables/pdf/letter/{name}>; rel="canonical"',
             )
 
-    def test_letter_and_a4_are_self_canonical(self):
-        r = self._req("GET", "/printables/pdf/a4/zoo-day-journal-a4.pdf")
-        self.assertEqual(r.status, 200)
+    def test_a4_twins_point_at_letter_and_letter_is_self_canonical(self):
+        self.assertEqual(len(A4_TWINS), 7)
+        for name in A4_TWINS:
+            self.assertTrue((PDF / "letter" / f"{name}.pdf").is_file(), name)
+            self.assertTrue((PDF / "a4" / f"{name}-a4.pdf").is_file(), name)
+            letter = f'<https://kidzookit.com/printables/pdf/letter/{name}.pdf>; rel="canonical"'
+            r = self._req("GET", f"/printables/pdf/a4/{name}-a4.pdf?utm_source=qr")
+            self.assertEqual(r.status, 200, name)
+            self.assertEqual(r.getheader("Link"), letter, name)
+            r = self._req("GET", f"/printables/pdf/letter/{name}.pdf")
+            self.assertEqual(r.status, 200, name)
+            self.assertEqual(r.getheader("Link"), letter, name)
+        # An A4 name outside the twin set stays self-canonical.
         self.assertEqual(
-            r.getheader("Link"),
-            '<https://kidzookit.com/printables/pdf/a4/zoo-day-journal-a4.pdf>; rel="canonical"',
+            _pdf_canonical_link("/printables/pdf/a4/not-a-twin-a4.pdf"),
+            '<https://kidzookit.com/printables/pdf/a4/not-a-twin-a4.pdf>; rel="canonical"',
         )
-        r = self._req("HEAD", "/printables/pdf/letter/zoo-day-journal.pdf")
-        self.assertIn("letter/zoo-day-journal.pdf", r.getheader("Link") or "")
 
     def test_html_gets_no_link_header(self):
         r = self._req("GET", "/printables/")

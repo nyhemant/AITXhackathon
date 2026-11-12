@@ -1017,6 +1017,19 @@ def _tracking_skipped(
 # links); the HTTP Link header tells search engines which copy is canonical.
 _LEGACY_ROOT_PDFS = frozenset({"animal-bingo.pdf", "carpool.pdf", "scavenger-hunt.pdf", "teacher-handout.pdf"})
 
+# Same printable on Letter and A4 paper. Letter is the canonical URL; the A4
+# file still answers 200. Stems match static/printables/pdf/letter/<stem>.pdf
+# and static/printables/pdf/a4/<stem>-a4.pdf.
+_A4_LETTER_TWINS = frozenset({
+    "animal-bingo",
+    "carpool",
+    "chaperone-card",
+    "park-scavenger-hunt",
+    "scavenger-hunt",
+    "teacher-handout",
+    "zoo-day-journal",
+})
+
 
 def _pdf_canonical_link(raw_path: str | None) -> str | None:
     """``Link: <...>; rel="canonical"`` for a PDF under /printables/pdf/."""
@@ -1029,6 +1042,10 @@ def _pdf_canonical_link(raw_path: str | None) -> str | None:
     rest = path[len(prefix):]
     if rest in _LEGACY_ROOT_PDFS:
         rest = "letter/" + rest
+    elif rest.startswith("a4/") and rest.endswith("-a4.pdf"):
+        stem = rest[len("a4/"):-len("-a4.pdf")]
+        if stem in _A4_LETTER_TWINS:
+            rest = f"letter/{stem}.pdf"
     if not re.fullmatch(r"(?:(?:letter|a4)/)?[a-z0-9][a-z0-9\-]*\.pdf", rest):
         return None
     return f'<{PUBLIC_SITE}{prefix}{rest}>; rel="canonical"'
