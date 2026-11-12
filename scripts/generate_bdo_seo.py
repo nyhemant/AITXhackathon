@@ -366,7 +366,7 @@ SHELL_CSS_VER = 13
 SHELL_JS_VER = "6"
 # /shell/qr-welcome.js (QR-scan next-step strip + printable_download). Hubs that
 # printed QR codes land on must keep loading it when they are regenerated.
-QR_WELCOME_JS_VER = "3"
+QR_WELCOME_JS_VER = "4"
 QR_WELCOME_TYPE_LANDINGS = ("zoos",)
 
 

@@ -5,10 +5,14 @@ from __future__ import annotations
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import argparse
 import json
+import os
 import re
+import threading
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import parse_qsl, unquote, urlencode, urlsplit
 from uuid import uuid4
+from zoneinfo import ZoneInfo
 
 from busyparent_agent.newsletter import (
     NewsletterResult,
@@ -1250,12 +1254,138 @@ def _is_versioned_asset(request_path: str, file_path: Path) -> bool:
 
 
 def _static_cache_control(request_path: str, file_path: Path) -> str:
-    """Cache-Control for start/printables/about/field-pack/shell files."""
+    """Cache-Control for start/printables/about/field-pack/shell files.
+
+    PDFs under /printables/pdf/ stay no-cache so Cloudflare revalidates every
+    hit (the download counter only sees requests that reach origin). Images
+    keep a one-day public cache.
+    """
+    url_path = urlsplit(request_path).path
+    if url_path.startswith("/printables/pdf/") and file_path.suffix.lower() == ".pdf":
+        return "no-cache"
     if _is_versioned_asset(request_path, file_path):
         return VERSIONED_ASSET_CACHE
     if file_path.suffix.lower() in {".css", ".js", ".html", ".htm"}:
         return "no-cache"
     return "public, max-age=86400"
+
+
+# PDF download counts. Outside the repo. Counts only — never IP, UA, or the
+# full Referer (host bucket only). A write failure must not change the response.
+_PDF_COUNT_LOCK = threading.Lock()
+_PDF_COUNT_TZ = ZoneInfo("America/Chicago")
+_PDF_COUNT_BOT_UA_RE = re.compile(
+    r"bot|crawl|spider|slurp|preview|facebookexternalhit",
+    re.IGNORECASE,
+)
+_PDF_COUNT_KEY_RE = re.compile(
+    r"^/printables/pdf/(?:(letter|a4)/)?([a-z0-9-]+)\.pdf$"
+)
+
+
+def _pdf_counts_dir() -> Path:
+    raw = os.environ.get("KZK_COUNTS_DIR", "").strip()
+    if raw:
+        return Path(raw)
+    return Path.home() / ".kidzookit" / "counts"
+
+
+def _pdf_count_key(raw_path: str | None) -> str | None:
+    """``letter/scavenger-hunt`` or ``a4/scavenger-hunt``. Query string is dropped."""
+    if not raw_path:
+        return None
+    path = urlsplit(raw_path).path
+    match = _PDF_COUNT_KEY_RE.fullmatch(path)
+    if not match:
+        return None
+    paper = match.group(1) or "letter"
+    stem = match.group(2)
+    if stem.endswith("-a4"):
+        stem = stem[: -len("-a4")]
+    if not stem:
+        return None
+    return f"{paper}/{stem}"
+
+
+def _pdf_referer_bucket(referer: str | None) -> str:
+    """Host only. kidzookit.com = site; google./bing./duckduckgo. = search; else other."""
+    host = ""
+    if referer:
+        try:
+            host = (urlsplit(referer).hostname or "").lower().rstrip(".")
+        except ValueError:
+            host = ""
+    if host == "kidzookit.com" or host.endswith(".kidzookit.com"):
+        return "site"
+    if host:
+        for needle in ("google.", "bing.", "duckduckgo."):
+            if f".{needle}" in f".{host}":
+                return "search"
+    return "other"
+
+
+def _pdf_download_should_count(handler: BaseHTTPRequestHandler, file_path: Path) -> str | None:
+    """Return the count key, or None when this response must not be counted."""
+    if getattr(handler, "command", "GET") != "GET":
+        return None
+    if file_path.suffix.lower() != ".pdf":
+        return None
+    headers = getattr(handler, "headers", None)
+    cookie = headers.get("Cookie") if headers is not None else None
+    user_agent = headers.get("User-Agent") if headers is not None else None
+    raw_path = getattr(handler, "path", None)
+    if _tracking_skipped(cookie, user_agent, raw_path):
+        return None
+    if user_agent and _PDF_COUNT_BOT_UA_RE.search(user_agent):
+        return None
+    if headers is not None:
+        range_header = headers.get("Range")
+        if range_header is not None and not str(range_header).startswith("bytes=0-"):
+            return None
+    return _pdf_count_key(raw_path)
+
+
+def _note_pdf_download(handler: BaseHTTPRequestHandler, file_path: Path) -> None:
+    """Count one printable PDF GET. Swallows every error."""
+    try:
+        key = _pdf_download_should_count(handler, file_path)
+        if not key:
+            return
+        headers = getattr(handler, "headers", None)
+        referer = headers.get("Referer") if headers is not None else None
+        bucket = _pdf_referer_bucket(referer)
+        if bucket not in {"site", "search", "other"}:
+            return
+        now = datetime.now(_PDF_COUNT_TZ)
+        day_key = now.strftime("%Y-%m-%d")
+        dest = _pdf_counts_dir() / f"pdf-counts-{now.strftime('%Y-%m')}.json"
+        with _PDF_COUNT_LOCK:
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            data: dict = {}
+            if dest.is_file():
+                loaded = json.loads(dest.read_text(encoding="utf-8"))
+                if not isinstance(loaded, dict):
+                    return
+                data = loaded
+            day = data.get(day_key)
+            if not isinstance(day, dict):
+                day = {}
+                data[day_key] = day
+            row = day.get(key)
+            if not isinstance(row, dict):
+                row = {}
+                day[key] = row
+            current = row.get(bucket, 0)
+            row[bucket] = (current if isinstance(current, int) else 0) + 1
+            tmp = dest.with_name(dest.name + f".{os.getpid()}.tmp")
+            with tmp.open("w", encoding="utf-8") as fh:
+                json.dump(data, fh, indent=2, sort_keys=True)
+                fh.write("\n")
+                fh.flush()
+                os.fsync(fh.fileno())
+            os.replace(tmp, dest)
+    except Exception:
+        return
 
 
 class KidZooKitServer(ThreadingHTTPServer):
@@ -1766,6 +1896,9 @@ class WebHandler(BaseHTTPRequestHandler):
         printables_file = _safe_printables_path(path)
         if printables_file is not None:
             body = printables_file.read_bytes()
+            # Count before the body so a client that has the bytes already
+            # sees a finished tally. Errors here never change the response.
+            _note_pdf_download(self, printables_file)
             self.send_response(200)
             self.send_header("Content-Type", _static_content_type(printables_file))
             self.send_header("Content-Length", str(len(body)))
@@ -1924,6 +2057,7 @@ class WebHandler(BaseHTTPRequestHandler):
         newsletter_file = _safe_newsletter_path(path)
         printables_file = _safe_printables_path(path)
         field_pack_file = _safe_field_pack_path(path)
+        pdf_cache_file = None
         if asset_path is not None and asset_path.exists():
             content_type = _image_content_type(asset_path)
             length = asset_path.stat().st_size
@@ -1948,6 +2082,8 @@ class WebHandler(BaseHTTPRequestHandler):
         elif printables_file is not None:
             content_type = _static_content_type(printables_file)
             length = printables_file.stat().st_size
+            if urlsplit(self.path).path.startswith("/printables/pdf/"):
+                pdf_cache_file = printables_file
         elif field_pack_file is not None:
             content_type = _static_content_type(field_pack_file)
             length = field_pack_file.stat().st_size
@@ -1957,6 +2093,8 @@ class WebHandler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(length))
+        if pdf_cache_file is not None:
+            self.send_header("Cache-Control", _static_cache_control(self.path, pdf_cache_file))
         self.end_headers()
 
     def do_POST(self) -> None:
