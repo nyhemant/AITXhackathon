@@ -219,6 +219,29 @@ class HomeHuntsTests(unittest.TestCase):
         self.assertIn("min-height: 44px", hero)
         self.assertIn("/start/hero-common-v1.css?v=2", self.html)
 
+    def test_places_map_is_full_width_without_start_here_box(self):
+        """The Start here side panel is gone; sample venue cards stay under the map."""
+        self.assertNotIn('class="hx-feature"', self.html)
+        self.assertNotIn('aria-label="Start here"', self.html)
+        self.assertNotIn("hx-feature-label", self.html)
+        self.assertNotIn(">Start here<", self.html)
+        self.assertIn('id="home-venue-row"', self.html)
+        self.assertEqual(len(re.findall(r'<article class="home-venue-card"', self.html)), len(FEATURED))
+        self.assertIn('id="kzm-usa-pan"', self.html)
+        self.assertIn('id="kzm-usa-hint"', self.html)
+        self.assertIn("Drag sideways to see more", self.html)
+        self.assertIn("touch-action: pan-x pan-y", self.css)
+        self.assertIn('id="home-pin-card"', self.html)
+        self.assertIn('id="home-pin-close"', self.html)
+        self.assertIn("keydown", self.js)
+        self.assertIn("Escape", self.js)
+        hero_a = (START / "hero-a-v1.css").read_text(encoding="utf-8")
+        self.assertNotIn("minmax(0, 1.8fr) minmax(0, 1fr)", hero_a)
+        self.assertNotIn(".hx-feature", hero_a)
+        self.assertIn(".hx-mapcard .home-places-map,", hero_a)
+        self.assertIn("width: 100%", hero_a)
+        self.assertIn("/start/hero-a-v1.css?v=2", self.html)
+
     def test_previous_links_and_arya_name_stay(self):
         old = {href.split("?", 1)[0] for href in HREF.findall(self.main)}
         new = {href.split("?", 1)[0] for href in HREF.findall(self.html)}
