@@ -259,6 +259,23 @@
     pin.addEventListener("click", function () { openPin(pin); });
   });
   if (closeEl) closeEl.addEventListener("click", closePin);
+  /* Escape closes an open card (focus goes back to its pin). On wider screens a click
+     outside the card and the pins closes it too, so pins under the card stay reachable. */
+  var WIDE = window.matchMedia ? window.matchMedia("(min-width: 721px)") : null;
+  document.addEventListener("keydown", function (event) {
+    if (!card || card.hidden) return;
+    if (event.key !== "Escape" && event.key !== "Esc") return;
+    var open = pins.filter(function (pin) { return pin.classList.contains("is-open"); })[0];
+    closePin();
+    if (open && typeof open.focus === "function") open.focus();
+  });
+  document.addEventListener("click", function (event) {
+    if (!card || card.hidden || !WIDE || !WIDE.matches) return;
+    var target = event.target;
+    if (!target || !target.closest || !document.documentElement.contains(target)) return;
+    if (card.contains(target) || target.closest(".home-place-pin")) return;
+    closePin();
+  });
   if (animalsBtn) animalsBtn.addEventListener("click", function () { setMode("animals"); });
   if (placesBtn) placesBtn.addEventListener("click", function () { setMode("places"); });
   window.addEventListener("resize", syncButtons);
