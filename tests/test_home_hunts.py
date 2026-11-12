@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import html
 import json
 import re
 import subprocess
@@ -28,6 +29,18 @@ FEATURED = [
     "bronx-zoo",
     "redwood",
     "joshua-tree",
+]
+
+# Baltimore sits on the DC pin after the lower-48 frame, so it shares that pin.
+GROUPS = [
+    ("nyc", ["amnh", "bronx-zoo"]),
+    ("nashville", ["nashville-adventure-science"]),
+    ("dc", ["air-and-space", "national-zoo", "national-aquarium-baltimore"]),
+    ("chicago", ["shedd-aquarium", "lincoln-park-zoo"]),
+    ("toronto", ["toronto-zoo"]),
+    ("austin", ["austin-zoo"]),
+    ("redwood", ["redwood"]),
+    ("joshua-tree", ["joshua-tree"]),
 ]
 
 BANNED = re.compile(r"\b(?:free|we|our|us)\b|no-cost", re.I)
@@ -134,14 +147,31 @@ class HomeHuntsTests(unittest.TestCase):
         self.assertIn('href="/field-pack/">See all places</a>', self.html)
         self.assertIn("/shell/qr-welcome.js?v=4", self.html)
 
-    def test_exactly_twelve_place_pins_and_valid_card_links(self):
+    def test_metro_pins_and_valid_card_links(self):
         pins = re.findall(
             r'<button type="button" class="home-place-pin" data-home-pin="([^"]+)" '
-            r'data-name="([^"]+)" data-city="([^"]*)" data-print="([^"]+)" data-page="([^"]+)"',
+            r'data-members="([^"]+)"',
             self.html,
         )
-        self.assertEqual([row[0] for row in pins], FEATURED)
-        self.assertEqual(self.html.count('class="home-place-pin"'), 12)
+        self.assertEqual([row[0] for row in pins], [row[0] for row in GROUPS])
+        self.assertEqual(self.html.count('class="home-place-pin"'), len(GROUPS))
+        member_slugs = []
+        for gid, blob in pins:
+            members = json.loads(html.unescape(blob))
+            slugs = [row["slug"] for row in members]
+            self.assertEqual(slugs, dict(GROUPS)[gid])
+            member_slugs.extend(slugs)
+            for row in members:
+                venue = json.loads((VENUES / f"{row['slug']}.json").read_text(encoding="utf-8"))
+                self.assertEqual(row["name"], venue["name"])
+                self.assertEqual(row["city"], venue["city"])
+                self.assertEqual(row["print"], _print_href(venue["type"], row["slug"]))
+                self.assertEqual(row["page"], f"/field-pack/{row['slug']}/")
+        self.assertEqual(sorted(member_slugs), sorted(FEATURED))
+        self.assertIn("FRAME = { x: 136.78", self.js)
+        self.assertIn("MIN_GAP = 46", self.js)
+        self.assertIn("Print the scavenger hunt", self.js)
+        self.assertIn("See the full page", self.js)
         cards = re.findall(
             r'<article class="home-venue-card" data-home-venue="([^"]+)">'
             r'<p class="home-venue-name">([^<]*)</p>'
@@ -162,14 +192,13 @@ class HomeHuntsTests(unittest.TestCase):
                 self.assertTrue((REPO / "static" / printed.lstrip("/")).is_file(), printed)
             else:
                 self.assertTrue(printed.endswith("#printable-hunt"))
-        pin_prints = [row[3] for row in pins]
-        self.assertEqual(pin_prints, [row[3] for row in cards])
         self.assertIn('data-kz-cta="home-map"', self.html)
+        self.assertIn('id="home-pin-list"', self.html)
         self.assertIn("scroll-snap-type: x mandatory", self.css)
 
     def test_previous_links_and_arya_name_stay(self):
-        old = set(HREF.findall(self.main))
-        new = set(HREF.findall(self.html))
+        old = {href.split("?", 1)[0] for href in HREF.findall(self.main)}
+        new = {href.split("?", 1)[0] for href in HREF.findall(self.html)}
         self.assertEqual(sorted(old - new), [])
         self.assertIn("Play &amp; learn printables", self.html)
         self.assertIn("Watch Live", self.html)

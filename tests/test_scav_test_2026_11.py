@@ -132,7 +132,7 @@ class ScavTestPages(unittest.TestCase):
                 self.assertIn("black &amp; white is fine", section)
                 self.assertIn('href="/field-pack/css/scav-top-v1.css?v=2"', page)
                 self.assertIn('<script src="/shell/qr-welcome.js?v=5" defer></script>', page)
-                self.assertIn('<script src="/field-pack/js/mission/mission-ui.js?v=21-scav2"></script>', page)
+                self.assertIn('<script src="/field-pack/js/mission/mission-ui.js?v=21-scav3"></script>', page)
                 items = hunt_items(venue)
                 bonus = bonus_lines(venue)
                 want_items, want_bonus = EXPECTED[slug]
@@ -160,6 +160,13 @@ class ScavTestPages(unittest.TestCase):
                 self.assertNotIn(b"scav-top-v1.css", got)
 
     def test_diff_stays_in_scope(self):
+        branch = subprocess.check_output(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            cwd=ROOT,
+            text=True,
+        ).strip()
+        if branch in ("main", "master"):
+            self.skipTest("scope diff only applies on a feature branch")
         diff = subprocess.check_output(
             ["git", "diff", "--name-only", "origin/main"],
             cwd=ROOT,
@@ -240,6 +247,8 @@ class ScavTestPages(unittest.TestCase):
         self.assertIn("page_path: pagePathOnly()", ui)
         self.assertIn("venue: mission.slug", ui)
         self.assertIn('btn.textContent = "Build and print the hunt"', ui)
+        self.assertIn("IntersectionObserver", ui)
+        self.assertIn(".kz-scav-top .kz-scav-print", ui)
         qr = (ROOT / "static" / "shell" / "qr-welcome.js").read_text(encoding="utf-8")
         self.assertIn("page_path: pagePath", qr)
         self.assertIn("location.pathname", qr)

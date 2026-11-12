@@ -27,7 +27,7 @@
   <meta name="twitter:description" content="A virtual zoo for curious kids. Watch Live, explore Places, or open Cards — no signup, works on a phone." />
   <meta name="twitter:image" content="https://kidzookit.com/start/hero-world-map.jpg" />
   <link rel="stylesheet" href="/start/start.css?v=81" />
-  <link rel="stylesheet" href="/start/home-map-v1.css?v=1" />
+  <link rel="stylesheet" href="/start/home-map-v1.css?v=2" />
   <style>
     /* Visible H1 matches the document title. The rotating expedition line stays under it (aria-hidden; sr-only sentence remains). */
     .start-hero .start-h1-wrap { margin: 0; color: #fffcf7; font-weight: 600; letter-spacing: -0.025em; text-shadow: 0 1px 18px rgba(12, 10, 8, 0.35); }
@@ -80,27 +80,20 @@
         <div id="home-places-canvas" class="home-places-canvas" aria-label="Places map">
           <p class="home-map-loading">Loading map…</p>
         </div>
-        <div class="home-pin-layer" id="home-pin-layer">
-                    <button type="button" class="home-place-pin" data-home-pin="amnh" data-name="American Museum of Natural History" data-city="New York" data-print="/field-pack/amnh/#printable-hunt" data-page="/field-pack/amnh/" aria-label="American Museum of Natural History, New York"></button>
-          <button type="button" class="home-place-pin" data-home-pin="nashville-adventure-science" data-name="Adventure Science Center" data-city="Nashville" data-print="/field-pack/nashville-adventure-science/#printable-hunt" data-page="/field-pack/nashville-adventure-science/" aria-label="Adventure Science Center, Nashville"></button>
-          <button type="button" class="home-place-pin" data-home-pin="air-and-space" data-name="National Air and Space Museum" data-city="Washington" data-print="/field-pack/air-and-space/#printable-hunt" data-page="/field-pack/air-and-space/" aria-label="National Air and Space Museum, Washington"></button>
-          <button type="button" class="home-place-pin" data-home-pin="national-aquarium-baltimore" data-name="National Aquarium" data-city="Baltimore" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/national-aquarium-baltimore/" aria-label="National Aquarium, Baltimore"></button>
-          <button type="button" class="home-place-pin" data-home-pin="shedd-aquarium" data-name="Shedd Aquarium" data-city="Chicago" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/shedd-aquarium/" aria-label="Shedd Aquarium, Chicago"></button>
-          <button type="button" class="home-place-pin" data-home-pin="lincoln-park-zoo" data-name="Lincoln Park Zoo" data-city="Chicago" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/lincoln-park-zoo/" aria-label="Lincoln Park Zoo, Chicago"></button>
-          <button type="button" class="home-place-pin" data-home-pin="toronto-zoo" data-name="Toronto Zoo" data-city="Toronto" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/toronto-zoo/" aria-label="Toronto Zoo, Toronto"></button>
-          <button type="button" class="home-place-pin" data-home-pin="austin-zoo" data-name="Austin Zoo" data-city="Austin" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/austin-zoo/" aria-label="Austin Zoo, Austin"></button>
-          <button type="button" class="home-place-pin" data-home-pin="national-zoo" data-name="Smithsonian National Zoo" data-city="Washington" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/national-zoo/" aria-label="Smithsonian National Zoo, Washington"></button>
-          <button type="button" class="home-place-pin" data-home-pin="bronx-zoo" data-name="Bronx Zoo" data-city="New York" data-print="/printables/pdf/letter/scavenger-hunt.pdf" data-page="/field-pack/bronx-zoo/" aria-label="Bronx Zoo, New York"></button>
-          <button type="button" class="home-place-pin" data-home-pin="redwood" data-name="Redwood National and State Parks" data-city="Crescent City" data-print="/printables/pdf/letter/park-scavenger-hunt.pdf" data-page="/field-pack/redwood/" aria-label="Redwood National and State Parks, Crescent City"></button>
-          <button type="button" class="home-place-pin" data-home-pin="joshua-tree" data-name="Joshua Tree National Park" data-city="Twentynine Palms" data-print="/printables/pdf/letter/park-scavenger-hunt.pdf" data-page="/field-pack/joshua-tree/" aria-label="Joshua Tree National Park, Twentynine Palms"></button>
+                <div class="home-pin-layer" id="home-pin-layer">
+          <button type="button" class="home-place-pin" data-home-pin="nyc" data-members="[{&quot;slug&quot;: &quot;amnh&quot;, &quot;name&quot;: &quot;American Museum of Natural History&quot;, &quot;city&quot;: &quot;New York&quot;, &quot;print&quot;: &quot;/field-pack/amnh/#printable-hunt&quot;, &quot;page&quot;: &quot;/field-pack/amnh/&quot;}, {&quot;slug&quot;: &quot;bronx-zoo&quot;, &quot;name&quot;: &quot;Bronx Zoo&quot;, &quot;city&quot;: &quot;New York&quot;, &quot;print&quot;: &quot;/printables/pdf/letter/scavenger-hunt.pdf&quot;, &quot;page&quot;: &quot;/field-pack/bronx-zoo/&quot;}]" aria-label="New York, 2 places"></button>
+          <button type="button" class="home-place-pin" data-home-pin="nashville" data-members="[{&quot;slug&quot;: &quot;nashville-adventure-science&quot;, &quot;name&quot;: &quot;Adventure Science Center&quot;, &quot;city&quot;: &quot;Nashville&quot;, &quot;print&quot;: &quot;/field-pack/nashville-adventure-science/#printable-hunt&quot;, &quot;page&quot;: &quot;/field-pack/nashville-adventure-science/&quot;}]" aria-label="Adventure Science Center, Nashville"></button>
+          <button type="button" class="home-place-pin" data-home-pin="dc" data-members="[{&quot;slug&quot;: &quot;air-and-space&quot;, &quot;name&quot;: &quot;National Air and Space Museum&quot;, &quot;city&quot;: &quot;Washington&quot;, &quot;print&quot;: &quot;/field-pack/air-and-space/#printable-hunt&quot;, &quot;page&quot;: &quot;/field-pack/air-and-space/&quot;}, {&quot;slug&quot;: &quot;national-zoo&quot;, &quot;name&quot;: &quot;Smithsonian National Zoo&quot;, &quot;city&quot;: &quot;Washington&quot;, &quot;print&quot;: &quot;/printables/pdf/letter/scavenger-hunt.pdf&quot;, &quot;page&quot;: &quot;/field-pack/national-zoo/&quot;}, {&quot;slug&quot;: &quot;national-aquarium-baltimore&quot;, &quot;name&quot;: &quot;National Aquarium&quot;, &quot;city&quot;: &quot;Baltimore&quot;, &quot;print&quot;: &quot;/printables/pdf/letter/scavenger-hunt.pdf&quot;, &quot;page&quot;: &quot;/field-pack/national-aquarium-baltimore/&quot;}]" aria-label="Washington and Baltimore, 3 places"></button>
+          <button type="button" class="home-place-pin" data-home-pin="chicago" data-members="[{&quot;slug&quot;: &quot;shedd-aquarium&quot;, &quot;name&quot;: &quot;Shedd Aquarium&quot;, &quot;city&quot;: &quot;Chicago&quot;, &quot;print&quot;: &quot;/printables/pdf/letter/scavenger-hunt.pdf&quot;, &quot;page&quot;: &quot;/field-pack/shedd-aquarium/&quot;}, {&quot;slug&quot;: &quot;lincoln-park-zoo&quot;, &quot;name&quot;: &quot;Lincoln Park Zoo&quot;, &quot;city&quot;: &quot;Chicago&quot;, &quot;print&quot;: &quot;/printables/pdf/letter/scavenger-hunt.pdf&quot;, &quot;page&quot;: &quot;/field-pack/lincoln-park-zoo/&quot;}]" aria-label="Chicago, 2 places"></button>
+          <button type="button" class="home-place-pin" data-home-pin="toronto" data-members="[{&quot;slug&quot;: &quot;toronto-zoo&quot;, &quot;name&quot;: &quot;Toronto Zoo&quot;, &quot;city&quot;: &quot;Toronto&quot;, &quot;print&quot;: &quot;/printables/pdf/letter/scavenger-hunt.pdf&quot;, &quot;page&quot;: &quot;/field-pack/toronto-zoo/&quot;}]" aria-label="Toronto Zoo, Toronto"></button>
+          <button type="button" class="home-place-pin" data-home-pin="austin" data-members="[{&quot;slug&quot;: &quot;austin-zoo&quot;, &quot;name&quot;: &quot;Austin Zoo&quot;, &quot;city&quot;: &quot;Austin&quot;, &quot;print&quot;: &quot;/printables/pdf/letter/scavenger-hunt.pdf&quot;, &quot;page&quot;: &quot;/field-pack/austin-zoo/&quot;}]" aria-label="Austin Zoo, Austin"></button>
+          <button type="button" class="home-place-pin" data-home-pin="redwood" data-members="[{&quot;slug&quot;: &quot;redwood&quot;, &quot;name&quot;: &quot;Redwood National and State Parks&quot;, &quot;city&quot;: &quot;Crescent City&quot;, &quot;print&quot;: &quot;/printables/pdf/letter/park-scavenger-hunt.pdf&quot;, &quot;page&quot;: &quot;/field-pack/redwood/&quot;}]" aria-label="Redwood National and State Parks, Crescent City"></button>
+          <button type="button" class="home-place-pin" data-home-pin="joshua-tree" data-members="[{&quot;slug&quot;: &quot;joshua-tree&quot;, &quot;name&quot;: &quot;Joshua Tree National Park&quot;, &quot;city&quot;: &quot;Twentynine Palms&quot;, &quot;print&quot;: &quot;/printables/pdf/letter/park-scavenger-hunt.pdf&quot;, &quot;page&quot;: &quot;/field-pack/joshua-tree/&quot;}]" aria-label="Joshua Tree National Park, Twentynine Palms"></button>
         </div>
-        <div id="home-pin-card" class="home-pin-card" hidden>
-          <p class="home-pin-name" id="home-pin-name"></p>
-          <p class="home-pin-city" id="home-pin-city"></p>
-          <a class="home-pin-print" id="home-pin-print" data-kz-cta="home-map" href="/field-pack/amnh/#printable-hunt">Print the scavenger hunt</a>
-          <a class="home-pin-page" id="home-pin-page" href="/field-pack/amnh/">See the full page</a>
-          <button type="button" class="home-pin-close" id="home-pin-close" aria-label="Close place">Close</button>
-        </div>
+      </div>
+      <div id="home-pin-card" class="home-pin-card" hidden>
+        <div id="home-pin-list"></div>
+        <button type="button" class="home-pin-close" id="home-pin-close" aria-label="Close place">Close</button>
       </div>
       <section class="start-hero" id="start-hero" hidden aria-labelledby="start-heading">
     <!-- Map pins are % of hero-world-map.jpg (1792×1008); left/top is the figurine center. Wrapper keeps that aspect and cover-crops; tall/mobile left-aligns so Americas stay in frame. -->
@@ -456,7 +449,7 @@
   <script src="/shell/related-links.js?v=1"></script>
   <script src="/shell/qr-welcome.js?v=4"></script>
   <script src="/field-pack/js/fp-analytics.js?v=1"></script>
-  <script src="/start/home-map-v1.js?v=1"></script>
+  <script src="/start/home-map-v1.js?v=2"></script>
   <script src="/pwa/register.js?v=1"></script>
   <script src="/start/start.js?v=41"></script>
 </body>

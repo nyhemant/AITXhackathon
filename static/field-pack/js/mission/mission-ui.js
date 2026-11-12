@@ -578,6 +578,31 @@
       ", " +
       huntChipLabel(state.hunt);
   }
+  function watchTopPrint(bar) {
+    const topBtn = document.querySelector(".kz-scav-top .kz-scav-print");
+    const narrow = window.matchMedia("(max-width: 480px)");
+    let topVisible = true;
+    function showBar(on) {
+      bar.hidden = !on;
+      document.body.classList.toggle("has-hunt-sticky", on);
+    }
+    if (!topBtn || typeof IntersectionObserver !== "function") {
+      showBar(true);
+      return;
+    }
+    const io = new IntersectionObserver(function (entries) {
+      topVisible = entries[0].isIntersecting;
+      showBar(!(narrow.matches && topVisible));
+    }, { threshold: 0.4 });
+    io.observe(topBtn);
+    if (narrow.addEventListener) {
+      narrow.addEventListener("change", function () {
+        showBar(!(narrow.matches && topVisible));
+      });
+    }
+    showBar(!narrow.matches);
+  }
+
   function syncStickyHuntBar(mission) {
     const bar = document.getElementById("seo-hunt-sticky");
     if (!bar) return;
@@ -589,8 +614,7 @@
       if (singleLabel) singleLabel.hidden = true;
       const spec = bar.querySelector(".seo-sticky-print-spec");
       if (spec) spec.hidden = true;
-      bar.hidden = false;
-      document.body.classList.add("has-hunt-sticky");
+      watchTopPrint(bar);
       return;
     }
     const label = document.getElementById("seo-hunt-sticky-label");
