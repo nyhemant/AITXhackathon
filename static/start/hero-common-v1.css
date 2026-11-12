@@ -94,6 +94,36 @@ body.start-body > header.start-top {
   font-weight: 650;
   line-height: 1.2;
 }
+/* Phone only: a Print action sits in the existing map bar so a hunt is on the
+   first screen without shrinking the map. Desktop and iPad keep the hint. */
+.hx-mapprint { display: none; }
+@media (max-width: 640px) {
+  .hx-maphint { display: none; }
+  .hx-mapprint {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin: 0;
+    padding: 0.15rem 0.55rem;
+    max-width: calc(100% - 11.2rem);
+    box-sizing: border-box;
+    border: 1.5px solid var(--hx-teal);
+    border-radius: 999px;
+    background: var(--hx-paper);
+    color: var(--hx-teal);
+    font-family: var(--hx-sans);
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: left;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .hx-mapprint:focus-visible {
+    outline: 2px solid var(--hx-teal);
+    outline-offset: 2px;
+  }
+}
 .hx-mapcard .home-map-toggle {
   order: 2;
   margin: 0;
