@@ -1,0 +1,135 @@
+/* Test-page scavenger hunt under the title. Not linked from comparison pages. */
+
+.kz-scav-top {
+  margin: 0.25rem 0 0.75rem;
+  max-width: 40rem;
+}
+
+.kz-scav-top h2 {
+  margin: 0 0 0.3rem;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  color: #0a4545;
+  letter-spacing: -0.02em;
+}
+
+.kz-scav-intro {
+  margin: 0 0 0.55rem;
+  font-size: 0.98rem;
+  font-weight: 650;
+  line-height: 1.4;
+  color: #2a3d55;
+}
+
+.kz-scav-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  align-items: center;
+  margin: 0 0 0.3rem;
+}
+
+.kz-scav-print {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: #0f5c5c;
+  color: #fff;
+  font: 800 1rem/1.2 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.kz-scav-print:hover,
+.kz-scav-print:focus-visible {
+  background: #0a4545;
+  outline: 3px solid #ffcf5a;
+  outline-offset: 2px;
+}
+
+.kz-scav-pdf {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 750;
+  color: #0f5c5c;
+}
+
+.kz-scav-spec {
+  margin: 0 0 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: #3d4f6f;
+}
+
+.kz-scav-bonus-h {
+  margin: 0.85rem 0 0.4rem;
+  font-size: 1rem;
+  color: #0a4545;
+}
+
+/* Same checkbox row as .seo-hunt-list */
+.kz-scav-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.kz-scav-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1.5px solid rgba(15, 92, 92, 0.12);
+  font-weight: 700;
+  color: #0a4545;
+  line-height: 1.35;
+}
+
+.kz-scav-list .seo-hunt-box {
+  flex: 0 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  color: #0f5c5c;
+  opacity: 0.75;
+}
+
+@media (max-width: 480px) {
+  .seo-venue-body .seo-hero {
+    display: flex;
+    flex-direction: column;
+  }
+  .seo-venue-body .seo-hero > * {
+    order: 5;
+  }
+  .seo-venue-body .seo-hero > .promise-pill {
+    order: 1;
+  }
+  .seo-venue-body .seo-hero > h1 {
+    order: 2;
+  }
+  .seo-venue-body .seo-hero > .kz-scav-top {
+    order: 3;
+  }
+  .seo-venue-body .seo-hero > .seo-fork-wrap {
+    order: 3;
+  }
+  .seo-venue-body .seo-hero > .lead {
+    order: 4;
+  }
+  .kz-scav-print {
+    width: 100%;
+  }
+}
+
+@media print {
+  .kz-scav-top {
+    display: none !important;
+  }
+}

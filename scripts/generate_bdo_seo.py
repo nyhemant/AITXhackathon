@@ -72,6 +72,12 @@ from study_cards import (  # noqa: E402
     study_try_next_html,
     write_study_artifacts,
 )
+from scav_test_2026_11 import (  # noqa: E402
+    TEST_SLUGS,
+    scav_top_block,
+    scav_top_css_tag,
+    scav_top_script_tag,
+)
 
 FIELD = REPO / "static" / "field-pack"
 VENUE_DATA_DIR = FIELD / "data" / "venues"
@@ -3580,6 +3586,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         chips_html + status_chip_html(mission_venue)
     )
     freshness_bottom = freshness_html(vid, "no-print seo-freshness-bottom")
+    scav_block = scav_top_block(vid) if vid in TEST_SLUGS else ""
+    scav_css = scav_top_css_tag(vid) if vid in TEST_SLUGS else ""
+    scav_js = scav_top_script_tag(vid) if vid in TEST_SLUGS else ""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -3607,6 +3616,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v={MISSION_CSS_VER}" />
+  {scav_css}
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -3634,7 +3644,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     <article class="seo-article">
       <header class="seo-hero">
         <p class="promise-pill">{esc(loc_chip)}</p>
-        <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>{place_photo}{under_h1}
+        <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>{scav_block}{place_photo}{under_h1}
         {seo_intro_html(f"/field-pack/{v['id']}/", "lead seo-intro")}
         {offer_html}
         {lead_html}
@@ -3684,6 +3694,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/print-maps.js?v=5"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=14"></script>
   <script src="/field-pack/js/mission/mission-ui.js?v={MISSION_UI_JS_VER}"></script>
+  {scav_js}
 </body>
 </html>
 """
@@ -3734,6 +3745,9 @@ def render_venue_page(v: dict) -> str:
     desc = meta_for(v)
     og_img = OG_SHARE_IMAGE
     json_ld = venue_json_ld(v, url)
+    scav_block = scav_top_block(vid) if vid in TEST_SLUGS else ""
+    scav_css = scav_top_css_tag(vid) if vid in TEST_SLUGS else ""
+    scav_js = scav_top_script_tag(vid) if vid in TEST_SLUGS else ""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -3760,6 +3774,7 @@ def render_venue_page(v: dict) -> str:
   <link rel="stylesheet" href="/field-pack/css/styles.css?v={STYLES_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
+  {scav_css}
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
   </script>
@@ -3786,7 +3801,7 @@ def render_venue_page(v: dict) -> str:
     <article class="seo-article">
       <header class="seo-hero">
         <p class="promise-pill">{esc(loc_chip)}</p>
-        <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>{under_h1}
+        <h1>{esc(v.get('emoji',''))} {esc(h1)}</h1>{scav_block}{under_h1}
         {seo_intro_html(f"/field-pack/{v['id']}/", "lead seo-intro")}
         {f'<p class="lead">{esc(quiet_hero_lead(v))}</p>' if quiet_hero_lead(v) else ""}
         {page_mission_chrome_html(home_href=_not_yet, home_sub=fork_home_sub_for_kind(_vkind), venue_kind=_vkind, place_id=_vid)}
@@ -3844,6 +3859,7 @@ def render_venue_page(v: dict) -> str:
       }});
     }})();
   </script>
+  {scav_js}
 </body>
 </html>
 """
