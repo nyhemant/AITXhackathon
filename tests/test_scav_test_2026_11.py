@@ -23,6 +23,7 @@ from scav_test_2026_11 import (  # noqa: E402
     item_line,
     load_venue,
     scav_top_block,
+    sticky_single_print_html,
 )
 
 FIELD = ROOT / "static" / "field-pack"
@@ -128,9 +129,10 @@ class ScavTestPages(unittest.TestCase):
                     'data-kz-cta="scav-top">Build and print the hunt</button>',
                     section,
                 )
-                self.assertIn("US Letter or A4 · black &amp; white is fine", section)
-                self.assertIn('href="/field-pack/css/scav-top-v1.css?v=1"', page)
-                self.assertIn('<script src="/shell/qr-welcome.js?v=4" defer></script>', page)
+                self.assertIn("black &amp; white is fine", section)
+                self.assertIn('href="/field-pack/css/scav-top-v1.css?v=2"', page)
+                self.assertIn('<script src="/shell/qr-welcome.js?v=5" defer></script>', page)
+                self.assertIn('<script src="/field-pack/js/mission/mission-ui.js?v=21-scav2"></script>', page)
                 items = hunt_items(venue)
                 bonus = bonus_lines(venue)
                 want_items, want_bonus = EXPECTED[slug]
@@ -145,7 +147,7 @@ class ScavTestPages(unittest.TestCase):
                 self._assert_no_banned_name(plain, venue)
                 self._assert_pdfs(section, venue)
                 self._assert_frozen(page, origin)
-                self._assert_additive(origin, page)
+                self._assert_scoped_edit(origin, page)
 
     def test_comparison_pages_are_byte_identical(self):
         for slug in sorted(COMPARISON_SLUGS):
@@ -177,18 +179,104 @@ class ScavTestPages(unittest.TestCase):
             self.assertNotIn(f"static/field-pack/{slug}/index.html", names)
         self.assertIn("scripts/scav_test_2026_11.py", names)
         self.assertIn("scripts/generate_bdo_seo.py", names)
+        self.assertIn("scripts/pdf_counts_report.py", names)
         self.assertIn("static/field-pack/css/scav-top-v1.css", names)
+        self.assertIn("static/field-pack/js/mission/mission-ui.js", names)
+        self.assertIn("static/shell/qr-welcome.js", names)
         self.assertIn("src/busyparent_agent/web.py", names)
         self.assertIn("docs/download-metric.md", names)
+
+    def test_pdf_labels_are_distinct(self):
+        for slug in sorted(TEST_SLUGS):
+            with self.subTest(slug=slug):
+                section = _section(_page(slug))
+                venue = load_venue(slug)
+                labels = re.findall(r'class="kz-scav-pdf"[^>]*>([^<]+)</a>', section)
+                kind = venue.get("type")
+                if kind == "museum":
+                    self.assertEqual(labels, ["Trip journal"])
+                    self.assertIn("US Letter or A4 · black &amp; white is fine", section)
+                    continue
+                self.assertEqual(labels, ["PDF, US Letter", "PDF, A4"])
+                self.assertEqual(len(set(labels)), 2)
+                self.assertIn('<p class="kz-scav-spec">black &amp; white is fine</p>', section)
+                self.assertNotIn("US Letter or A4", section)
+                for href in re.findall(r'href="(/printables/pdf/[^"]+\.pdf)"', section):
+                    self.assertIn(f'href="{href}" download data-kz-cta="scav-top"', section)
+                name = "Park &amp; Backyard Hunt" if kind == "national_park" else "Zoo &amp; Park Scavenger Hunt"
+                self.assertIn(f'class="kz-scav-pdf-name">{name}</span>', section)
+
+    def test_one_print_wording_on_test_pages(self):
+        for slug in sorted(TEST_SLUGS):
+            with self.subTest(slug=slug):
+                page = _page(slug)
+                sticky = re.search(
+                    r'<div class="seo-hunt-sticky no-print" id="seo-hunt-sticky".*?</div>',
+                    page,
+                    re.S,
+                )
+                self.assertIsNotNone(sticky, slug)
+                block = sticky.group(0)
+                text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", block)).strip()
+                self.assertEqual(text, "Build and print the hunt")
+                self.assertIn('data-kz-scav-print="1"', block)
+                self.assertIn('data-how="print-hunt"', block)
+                self.assertIn('data-kz-cta="scav-top"', block)
+                self.assertNotIn("Suggested stops", page)
+                self.assertNotIn(">Print</button>", block)
+                print_ctas = [
+                    label.strip()
+                    for label in re.findall(r'data-how="print-hunt"[^>]*>([^<]+)</', page)
+                    if re.search(r"print", label, re.I)
+                ]
+                self.assertEqual(set(print_ctas), {"Build and print the hunt"})
+                self.assertEqual(print_ctas.count("Build and print the hunt"), 2)
+                self.assertIn('id="mission-print-btn">Print</button>', page)
+                self.assertIn(sticky_single_print_html().lstrip("\n"), page)
+
+    def test_sticky_script_is_gated_and_events_carry_page_path(self):
+        ui = (FIELD / "js" / "mission" / "mission-ui.js").read_text(encoding="utf-8")
+        self.assertIn('bar.getAttribute("data-kz-scav-print") === "1"', ui)
+        self.assertIn("page_path: pagePathOnly()", ui)
+        self.assertIn("venue: mission.slug", ui)
+        self.assertIn('btn.textContent = "Build and print the hunt"', ui)
+        qr = (ROOT / "static" / "shell" / "qr-welcome.js").read_text(encoding="utf-8")
+        self.assertIn("page_path: pagePath", qr)
+        self.assertIn("location.pathname", qr)
+
+    def test_generator_fragments_match_test_pages(self):
+        import generate_bdo_seo as gen
+
+        venues = {row["id"]: row for row in gen.load_venues()}
+        for slug in ("lincoln-park-zoo", "amnh", "redwood", "dallas-zoo"):
+            mission = gen.load_mission_venue(slug)
+            html = gen.render_mission_venue_page(venues[slug], mission)
+            with self.subTest(slug=slug):
+                if slug in TEST_SLUGS:
+                    self.assertIn(scav_top_block(slug), html)
+                    self.assertIn(sticky_single_print_html().strip(), html)
+                    self.assertNotIn("Suggested stops · Print", html)
+                else:
+                    self.assertNotIn("printable-hunt", html)
+                    self.assertNotIn("data-kz-scav-print", html)
+                    self.assertIn("Suggested stops · Print (1 page)", html)
+                    self.assertIn(
+                        'id="seo-sticky-print" data-how="print-hunt">Print</button>',
+                        html,
+                    )
 
     def _assert_pdfs(self, section: str, venue: dict) -> None:
         hrefs = re.findall(r'href="(/printables/pdf/[^"]+\.pdf)"', section)
         kind = venue.get("type")
+        labels = re.findall(r'class="kz-scav-pdf"[^>]*>([^<]+)</a>', section)
         if kind == "museum":
             self.assertEqual(hrefs, [])
+            self.assertEqual(labels, ["Trip journal"])
             self.assertIn('href="/printables/zoo-day-journal/"', section)
             self.assertIn(">Trip journal</a>", section)
+            self.assertIn("US Letter or A4 · black &amp; white is fine", section)
             return
+        self.assertEqual(labels, ["PDF, US Letter", "PDF, A4"])
         if kind == "national_park":
             self.assertEqual(hrefs, [
                 "/printables/pdf/letter/park-scavenger-hunt.pdf",
@@ -239,29 +327,45 @@ class ScavTestPages(unittest.TestCase):
             self.assertEqual(_tag(page, pattern), _tag(origin, pattern), pattern)
         self.assertEqual(_ld_blocks(page), _ld_blocks(origin))
 
-    def _assert_additive(self, origin: str, page: str) -> None:
-        old = [line for line in origin.splitlines() if line.strip()]
-        new = [line for line in page.splitlines() if line.strip()]
-        idx = 0
-        for line in old:
-            found = None
-            for j in range(idx, len(new)):
-                if new[j] == line:
-                    found = j
-                    break
-            self.assertIsNotNone(found, "missing origin line: " + line[:180])
-            idx = found + 1
+    def _assert_scoped_edit(self, origin: str, page: str) -> None:
+        import difflib
+
+        diff = difflib.unified_diff(origin.splitlines(), page.splitlines(), lineterm="")
+        for line in diff:
+            if not line.startswith(("+", "-")) or line.startswith(("+++", "---")):
+                continue
+            body = line[1:]
+            self.assertTrue(_page_edit_ok(body), "unexpected line edit: " + body[:220])
+
+
+def _page_edit_ok(body: str) -> bool:
+    markers = (
+        "printable-hunt",
+        "kz-scav",
+        "scav-top-v1.css",
+        "seo-hunt-sticky",
+        "seo-sticky-print",
+        "seo-hunt-sticky-label",
+        "seo-sticky-print-spec",
+        "data-kz-scav-print",
+        "/shell/qr-welcome.js?v=",
+        "/field-pack/js/mission/mission-ui.js?v=",
+    )
+    return any(marker in body for marker in markers)
 
 
 def _in_scope(path: str) -> bool:
     if path in {
         "scripts/scav_test_2026_11.py",
         "scripts/generate_bdo_seo.py",
+        "scripts/pdf_counts_report.py",
         "src/busyparent_agent/web.py",
         "static/shell/qr-welcome.js",
         "static/field-pack/css/scav-top-v1.css",
+        "static/field-pack/js/mission/mission-ui.js",
         "docs/download-metric.md",
         "tests/test_pdf_download_counter.py",
+        "tests/test_pdf_counts_report.py",
         "tests/test_scav_test_2026_11.py",
         "tests/test_origin_cache.py",
         "tests/test_qr_welcome.py",

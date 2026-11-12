@@ -44,6 +44,8 @@ class QrWelcomeTests(unittest.TestCase):
         self.assertIn("auxclick", js)
         self.assertIn('ev.button !== 1', js)
         self.assertIn('a.getAttribute("data-kz-cta") || ""', js)
+        self.assertIn("page_path: pagePath", js)
+        self.assertIn("location.pathname", js)
 
     def test_version_bumped_everywhere(self):
         for rel in QR_PAGES + PRINT_PAGES:

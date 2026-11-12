@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,9 +52,23 @@ COMPARISON_SLUGS = frozenset({
 })
 
 _ZOO_KINDS = frozenset({"zoo", "aquarium", "safari_zoo"})
-_CSS_HREF = "/field-pack/css/scav-top-v1.css?v=1"
-_JS_SRC = "/shell/qr-welcome.js?v=4"
+_CSS_HREF = "/field-pack/css/scav-top-v1.css?v=2"
+_JS_SRC = "/shell/qr-welcome.js?v=5"
+# Test pages get their own cache key for mission-ui.js so the sticky bar code
+# (data-kz-scav-print) is not served from a cached older copy. Comparison pages
+# keep the generator's MISSION_UI_JS_VER.
+MISSION_UI_TEST_VER = "21-scav2"
+PRINT_ACTION = "Build and print the hunt"
 E = lambda s: html.escape(str(s), quote=True)  # noqa: E731
+_SECTION_RE = re.compile(
+    r'[ \t]*<section class="kz-scav-top no-print" id="printable-hunt".*?</section>',
+    re.S,
+)
+_OLD_STICKY = """  <div class="seo-hunt-sticky no-print" id="seo-hunt-sticky" hidden>
+    <p class="seo-hunt-sticky-copy" id="seo-hunt-sticky-label"><span id="seo-hunt-count"></span>Suggested stops · Print (1 page)</p>
+    <button type="button" class="btn btn-primary seo-sticky-print" id="seo-sticky-print" data-how="print-hunt">Print</button>
+    <p class="print-spec seo-sticky-print-spec">US Letter or A4 · black &amp; white is fine</p>
+  </div>"""
 
 
 def load_venue(slug: str) -> dict:
@@ -133,33 +148,45 @@ def intro_text(venue: dict, stop_count: int) -> str:
     return f"{first} {second}"
 
 
-def _pdf_links(pairs: tuple[tuple[str, str], ...]) -> str:
-    anchors = []
-    for href, label in pairs:
-        anchors.append(
-            f'<a class="kz-scav-pdf" href="{E(href)}" download data-kz-cta="scav-top">{E(label)}</a>'
-        )
-    return "".join(anchors)
+def _pdf_pair(name: str, letter_href: str, a4_href: str) -> str:
+    """One sheet name, two paper-size buttons. Labels differ."""
+    return (
+        '<span class="kz-scav-pdfs">'
+        f'<span class="kz-scav-pdf-name">{E(name)}</span>'
+        f'<a class="kz-scav-pdf" href="{E(letter_href)}" download data-kz-cta="scav-top">PDF, US Letter</a>'
+        f'<a class="kz-scav-pdf" href="{E(a4_href)}" download data-kz-cta="scav-top">PDF, A4</a>'
+        "</span>"
+    )
 
 
 def secondary_html(venue: dict) -> str:
     kind = str(venue.get("type") or "")
     if kind in _ZOO_KINDS:
-        return _pdf_links((
-            ("/printables/pdf/letter/scavenger-hunt.pdf", "Zoo & Park Scavenger Hunt (PDF)"),
-            ("/printables/pdf/a4/scavenger-hunt-a4.pdf", "Zoo & Park Scavenger Hunt (PDF)"),
-        ))
+        return _pdf_pair(
+            "Zoo & Park Scavenger Hunt",
+            "/printables/pdf/letter/scavenger-hunt.pdf",
+            "/printables/pdf/a4/scavenger-hunt-a4.pdf",
+        )
     if kind == "national_park":
-        return _pdf_links((
-            ("/printables/pdf/letter/park-scavenger-hunt.pdf", "Park & Backyard Hunt (PDF)"),
-            ("/printables/pdf/a4/park-scavenger-hunt-a4.pdf", "Park & Backyard Hunt (PDF)"),
-        ))
+        return _pdf_pair(
+            "Park & Backyard Hunt",
+            "/printables/pdf/letter/park-scavenger-hunt.pdf",
+            "/printables/pdf/a4/park-scavenger-hunt-a4.pdf",
+        )
     if kind == "museum":
         return (
             '<a class="kz-scav-pdf" href="/printables/zoo-day-journal/" '
             'data-kz-cta="scav-top">Trip journal</a>'
         )
     return ""
+
+
+def spec_html(venue: dict) -> str:
+    """Paper size stays in the link labels, so the spec line keeps the ink note."""
+    kind = str(venue.get("type") or "")
+    if kind in _ZOO_KINDS or kind == "national_park":
+        return '<p class="kz-scav-spec">black &amp; white is fine</p>'
+    return '<p class="kz-scav-spec">US Letter or A4 · black &amp; white is fine</p>'
 
 
 def _list_html(lines: list[str]) -> str:
@@ -192,10 +219,10 @@ def scav_top_block(slug: str) -> str:
         f'<p class="kz-scav-intro">{E(intro_text(venue, len(items)))}</p>'
         '<p class="kz-scav-actions">'
         '<button type="button" class="kz-scav-print" data-how="print-hunt" '
-        'data-kz-cta="scav-top">Build and print the hunt</button>'
+        f'data-kz-cta="scav-top">{PRINT_ACTION}</button>'
         f"{secondary_html(venue)}"
         "</p>"
-        '<p class="kz-scav-spec">US Letter or A4 · black &amp; white is fine</p>'
+        f"{spec_html(venue)}"
         f"{_list_html([item_line(item) for item in items])}"
         f"{bonus_html}"
         "</section>"
@@ -214,6 +241,22 @@ def scav_top_script_tag(slug: str) -> str:
     return f'<script src="{_JS_SRC}" defer></script>'
 
 
+def sticky_single_print_html() -> str:
+    """Sticky bar for test pages: same label and drawer as the hunt button.
+
+    Leading newline matches the generator's previous sticky snippet.
+    """
+    return (
+        "\n"
+        '  <div class="seo-hunt-sticky no-print" id="seo-hunt-sticky" '
+        'data-kz-scav-print="1" hidden>\n'
+        '    <button type="button" class="btn btn-primary seo-sticky-print" '
+        'id="seo-sticky-print" data-how="print-hunt" data-kz-cta="scav-top">'
+        f"{PRINT_ACTION}</button>\n"
+        "  </div>"
+    )
+
+
 def _insert_before(html: str, marker: str, snippet: str) -> str:
     idx = html.find(marker)
     if idx < 0:
@@ -222,19 +265,44 @@ def _insert_before(html: str, marker: str, snippet: str) -> str:
 
 
 def patch_html(html: str, slug: str) -> str:
-    """Insert the block, stylesheet, and qr-welcome tag. Existing lines stay."""
+    """Refresh the hunt block and fold the sticky Print bar into it.
+
+    Frozen head lines and every other existing line stay. The block and the
+    sticky bar are replaced in place; the page is not regenerated.
+    """
     if slug not in TEST_SLUGS:
         return html
-    block = scav_top_block(slug)
-    if 'id="printable-hunt"' not in html:
+    block = "        " + scav_top_block(slug)
+    if _SECTION_RE.search(html):
+        html = _SECTION_RE.sub(block, html, count=1)
+    else:
         h1 = html.find("</h1>")
         if h1 < 0:
             raise SystemExit(f"{slug}: no h1")
-        # Keep the h1 line intact. The block is the next line.
         line_end = html.find("\n", h1)
         if line_end < 0:
             raise SystemExit(f"{slug}: h1 line has no newline")
-        html = html[: line_end + 1] + "        " + block + "\n" + html[line_end + 1 :]
+        html = html[: line_end + 1] + block + "\n" + html[line_end + 1 :]
+    sticky = sticky_single_print_html().lstrip("\n")
+    if _OLD_STICKY in html:
+        html = html.replace(_OLD_STICKY, sticky, 1)
+    elif 'data-kz-scav-print="1"' not in html:
+        raise SystemExit(f"{slug}: sticky bar not found")
+    else:
+        html = re.sub(
+            r'  <div class="seo-hunt-sticky no-print" id="seo-hunt-sticky" data-kz-scav-print="1" hidden>\n.*?\n  </div>',
+            sticky,
+            html,
+            count=1,
+            flags=re.S,
+        )
+    html = html.replace('href="/field-pack/css/scav-top-v1.css?v=1"', f'href="{_CSS_HREF}"')
+    html = re.sub(r'src="/shell/qr-welcome\.js\?v=[^"]*"', f'src="{_JS_SRC}"', html)
+    html = re.sub(
+        r'src="/field-pack/js/mission/mission-ui\.js\?v=[^"]*"',
+        f'src="/field-pack/js/mission/mission-ui.js?v={MISSION_UI_TEST_VER}"',
+        html,
+    )
     if _CSS_HREF not in html:
         html = _insert_before(html, "</head>", "  " + scav_top_css_tag(slug))
     if "qr-welcome.js" not in html:
