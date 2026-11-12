@@ -166,7 +166,7 @@ class VftFirstRunTests(unittest.TestCase):
 
     def test_cache_bumps_point_at_new_assets(self):
         for html in self.pages.values():
-            self.assertIn("virtual-venue.css?v=60", html)
+            self.assertIn("virtual-venue.css?v=61", html)
             self.assertIn("virtual-venue.js?v=112", html)
         self.assertIn("virtual-zoo.json?v=28", self.js)
 
@@ -188,7 +188,7 @@ class VftFirstRunTests(unittest.TestCase):
         for path, html in self.pages.items():
             with self.subTest(page=str(path.relative_to(REPO))):
                 print_row = re.search(
-                    r'<div class="vz-print-row[^"]*" id="print">[\s\S]*?</div>\s*</main>',
+                    r'<div class="vz-print-row[^"]*" id="print">[\s\S]*?</div>',
                     html,
                 )
                 self.assertIsNotNone(print_row)

@@ -1226,3 +1226,60 @@ html[data-vft-print="1"] .vz-print-row,
   outline: 2px solid #c45c26;
   outline-offset: 2px;
 }
+
+/* Explore next: three distinct cards at the bottom of the virtual field trip. */
+.vz-next {
+  margin: 1.15rem 0 0.25rem;
+}
+.vz-next h2 {
+  margin: 0 0 0.55rem;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: #0a4545;
+}
+.vz-next-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+.vz-next-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 44px;
+  padding: 0.4rem 0.7rem 0.4rem 0.4rem;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #0a4545;
+  font-weight: 750;
+  line-height: 1.25;
+  border: 1.5px solid transparent;
+}
+.vz-next-card img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex: 0 0 auto;
+  background: #e7eee8;
+}
+.vz-next-animals {
+  background: #e7f6ee;
+  border-color: rgba(15, 92, 92, 0.28);
+}
+.vz-next-place {
+  background: #fff4e4;
+  border-color: rgba(180, 110, 40, 0.35);
+}
+.vz-next-print {
+  background: #e8eef8;
+  border-color: rgba(46, 78, 140, 0.28);
+}
+.vz-next-card:hover,
+.vz-next-card:focus-visible {
+  outline: 2px solid #0a4545;
+  outline-offset: 2px;
+}
+@media (min-width: 720px) {
+  .vz-next-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

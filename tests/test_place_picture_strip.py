@@ -20,11 +20,19 @@ def _hero(html: str) -> str:
     return html.split('class="seo-hero"', 1)[1].split("</header>", 1)[0]
 
 
+def _after_optional_place_photo(fragment: str) -> str:
+    """A listed-animal figure may sit between the H1 and the thumbnail strip."""
+    rest = fragment.lstrip()
+    if rest.startswith('<figure class="seo-place-photo">'):
+        rest = rest.split("</figure>", 1)[1].lstrip()
+    return rest
+
+
 def _strip_after_h1(hero: str) -> str:
-    after = hero.split("</h1>", 1)[1]
-    if not after.lstrip().startswith('<div class="seo-pic-strip">'):
-        raise AssertionError("photo strip is not the first element under the H1")
-    return after.lstrip().split("</div>", 1)[0]
+    after = _after_optional_place_photo(hero.split("</h1>", 1)[1])
+    if not after.startswith('<div class="seo-pic-strip">'):
+        raise AssertionError("photo strip is not the first thumbnail row under the H1")
+    return after.split("</div>", 1)[0]
 
 
 def _tiles(strip_inner: str) -> list[tuple[str, str]]:
@@ -53,7 +61,7 @@ class PlacePictureStripTests(unittest.TestCase):
         self.assertGreaterEqual(eager, 1)
         self.assertLessEqual(eager, 3)
         if "seo-fact-chips" in hero:
-            rest = hero.split("</h1>", 1)[1].lstrip()
+            rest = _after_optional_place_photo(hero.split("</h1>", 1)[1])
             rest = rest.split("</div>", 1)[1].lstrip()
             self.assertTrue(
                 rest.startswith('<ul class="seo-fact-chips seo-fact-row"'),
