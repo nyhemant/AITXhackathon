@@ -43,7 +43,16 @@ GROUPS = [
     ("austin", ["austin-zoo"]),
     ("redwood", ["redwood"]),
     ("joshua-tree", ["joshua-tree"]),
+    # 2026-11-12: map-only pins (not in the venue-card row or the scavenger test set).
+    ("san-diego", ["san-diego-zoo"]),
+    ("dallas-zoo", ["dallas-zoo"]),
+    ("perot-museum", ["perot-museum"]),
+    ("fort-worth-zoo", ["fort-worth-zoo"]),
+    ("tampa", ["tampa-zoo"]),
+    ("yellowstone", ["yellowstone"]),
+    ("glacier", ["glacier"]),
 ]
+MAP_ONLY = ["san-diego-zoo", "dallas-zoo", "perot-museum", "fort-worth-zoo", "tampa-zoo", "yellowstone", "glacier"]
 
 BANNED = re.compile(r"\b(?:free|we|our|us)\b|no-cost", re.I)
 HREF = re.compile(r'href="([^"]+)"')
@@ -171,7 +180,7 @@ class HomeHuntsTests(unittest.TestCase):
                 self.assertEqual(row["city"], venue["city"])
                 self.assertEqual(row["print"], _print_href(venue["type"], row["slug"]))
                 self.assertEqual(row["page"], f"/field-pack/{row['slug']}/")
-        self.assertEqual(sorted(member_slugs), sorted(FEATURED))
+        self.assertEqual(sorted(member_slugs), sorted(FEATURED + MAP_ONLY))
         self.assertIn("inset: -8px -3px", self.css)  # 44px tap target
         self.assertIn("Print the scavenger hunt", self.js)
         self.assertIn("See the full page", self.js)

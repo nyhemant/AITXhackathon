@@ -7958,7 +7958,7 @@
       "challenges": [
         {
           "id": "pe_dino",
-          "text": "T. Boone Pickens Life Then and Now: find teeth OR footprints — which first?",
+          "text": "T. Boone Pickens Life Then and Now Hall: find teeth OR footprints. Which comes first?",
           "age_fit": [
             "2-3",
             "4-5",
@@ -7968,7 +7968,7 @@
         },
         {
           "id": "pe_sports",
-          "text": "Sports / being human: try one challenge that makes you breathe harder",
+          "text": "Lamar Hunt Family Sports Hall: try one challenge that makes you breathe harder",
           "age_fit": [
             "4-5",
             "6-8",
@@ -7977,7 +7977,7 @@
         },
         {
           "id": "pe_space",
-          "text": "Earth/space: point to something farther than the building (on a screen or model)",
+          "text": "Expanding Universe Hall: point to something farther away than the Moon",
           "age_fit": [
             "4-5",
             "6-8",
@@ -7996,7 +7996,26 @@
         },
         {
           "id": "pe_compare",
-          "text": "Dino hall vs life sciences: which feels more “alive”? Why?",
+          "text": "Dinosaur hall vs Discovering Life Hall: which feels more “alive”? Why?",
+          "age_fit": [
+            "4-5",
+            "6-8",
+            "adult"
+          ]
+        },
+        {
+          "id": "pe_mammoth",
+          "text": "Rees-Jones Foundation Dynamic Earth Hall: find the mammoth fossil",
+          "age_fit": [
+            "2-3",
+            "4-5",
+            "6-8",
+            "adult"
+          ]
+        },
+        {
+          "id": "pe_birds",
+          "text": "Rose Hall of Birds: find one clue that links dinosaurs to birds",
           "age_fit": [
             "4-5",
             "6-8",
@@ -8006,11 +8025,13 @@
       ],
       "easter_egg": "★ Easter egg: from a window or overlook, point to downtown Dallas — one building you’ll remember",
       "easter_egg_little": "★ Easter egg: free explore only after two hard stops",
-      "researched": "2026-08-08",
-      "status": "researched",
       "sources": [
-        "https://www.perotmuseum.org/"
-      ]
+        "https://www.perotmuseum.org/",
+        "https://www.perotmuseum.org/exhibits/",
+        "https://www.perotmuseum.org/exhibits/halls/rose-hall-of-birds/"
+      ],
+      "researched": "2026-11-12",
+      "status": "researched"
     },
     "perth-zoo": {
       "tagline": "Perth Zoo bonus · Australian bush + Asian primates",
