@@ -57,7 +57,7 @@ _JS_SRC = "/shell/qr-welcome.js?v=5"
 # Test pages get their own cache key for mission-ui.js so the sticky bar code
 # (data-kz-scav-print) is not served from a cached older copy. Comparison pages
 # keep the generator's MISSION_UI_JS_VER.
-MISSION_UI_TEST_VER = "21-scav2"
+MISSION_UI_TEST_VER = "21-scav3"
 PRINT_ACTION = "Build and print the hunt"
 E = lambda s: html.escape(str(s), quote=True)  # noqa: E731
 _SECTION_RE = re.compile(

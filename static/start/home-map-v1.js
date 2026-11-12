@@ -1,11 +1,14 @@
 /* Places mode reuses fpProjectWorld + world-map.svg from the Places page.
-   landing-map.js stays on /field-pack/: it needs that page's filter controls
-   and draws the full catalog, not these 12 pins. */
+   Pins are circles inside that SVG, so the viewBox moves land and pins together.
+   landing-map.js stays on /field-pack/: it needs that page's filter controls. */
 (function () {
   "use strict";
 
   var TILE = "/field-pack/img/world-map.svg?v=2";
   var PLACES_JS = "/field-pack/js/places-data.js?v=27";
+  /* Lower 48 plus southern Ontario, with room so a 44px target is not clipped. */
+  var FRAME = { x: 136.78, y: 96.5, w: 194.5, h: 101.44 };
+  var MIN_GAP = 46;
   var animalsBtn = document.getElementById("home-map-animals");
   var placesBtn = document.getElementById("home-map-places");
   var placesMap = document.getElementById("home-places-map");
@@ -13,10 +16,7 @@
   var host = document.getElementById("home-places-canvas");
   var layer = document.getElementById("home-pin-layer");
   var card = document.getElementById("home-pin-card");
-  var nameEl = document.getElementById("home-pin-name");
-  var cityEl = document.getElementById("home-pin-city");
-  var printEl = document.getElementById("home-pin-print");
-  var pageEl = document.getElementById("home-pin-page");
+  var listEl = document.getElementById("home-pin-list");
   var closeEl = document.getElementById("home-pin-close");
   var pins = Array.prototype.slice.call(document.querySelectorAll(".home-place-pin"));
   var svgEl = null;
@@ -30,18 +30,40 @@
     if (placesMap) placesMap.hidden = !places;
     if (animalMap) animalMap.hidden = places;
     if (places && !placed) drawPlaces();
+    if (places && placed) syncButtons();
+  }
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function membersOf(pin) {
+    try {
+      return JSON.parse(pin.getAttribute("data-members") || "[]");
+    } catch (_) {
+      return [];
+    }
   }
 
   function openPin(pin) {
-    if (!pin || !card) return;
+    if (!pin || !card || !listEl) return;
+    var members = membersOf(pin);
     pins.forEach(function (other) {
       other.classList.toggle("is-open", other === pin);
       if (other._dot) other._dot.setAttribute("fill", other === pin ? "#c9a227" : "#0a4545");
     });
-    if (nameEl) nameEl.textContent = pin.getAttribute("data-name") || "";
-    if (cityEl) cityEl.textContent = pin.getAttribute("data-city") || "";
-    if (printEl) printEl.setAttribute("href", pin.getAttribute("data-print") || "#");
-    if (pageEl) pageEl.setAttribute("href", pin.getAttribute("data-page") || "#");
+    listEl.innerHTML = members.map(function (m) {
+      return '<div class="home-pin-venue">' +
+        '<p class="home-pin-name">' + esc(m.name) + '</p>' +
+        '<p class="home-pin-city">' + esc(m.city) + '</p>' +
+        '<a class="home-pin-print" data-kz-cta="home-map" href="' + esc(m.print) + '">Print the scavenger hunt</a>' +
+        '<a class="home-pin-page" href="' + esc(m.page) + '">See the full page</a>' +
+        '</div>';
+    }).join("");
     card.hidden = false;
   }
 
@@ -72,92 +94,86 @@
     return pt;
   }
 
-  function frame(points) {
-    var minX = Infinity;
-    var minY = Infinity;
-    var maxX = -Infinity;
-    var maxY = -Infinity;
-    points.forEach(function (p) {
-      if (p.x < minX) minX = p.x;
-      if (p.y < minY) minY = p.y;
-      if (p.x > maxX) maxX = p.x;
-      if (p.y > maxY) maxY = p.y;
-    });
-    var padX = Math.max(24, (maxX - minX) * 0.28);
-    var padY = Math.max(16, (maxY - minY) * 0.55);
-    return {
-      x: Math.max(0, minX - padX),
-      y: Math.max(0, minY - padY),
-      w: Math.min(1000, maxX + padX) - Math.max(0, minX - padX),
-      h: Math.min(500, maxY + padY) - Math.max(0, minY - padY)
-    };
-  }
-
-  /* Screen scale from the viewBox and the SVG element's box.
-     meet uses the smaller axis. This does not wait on a flushed CTM. */
-  function userPerPx() {
-    var vb = svgEl.viewBox && svgEl.viewBox.baseVal;
+  function pxPerUser() {
     var rect = svgEl.getBoundingClientRect();
-    if (!vb || !vb.width || !vb.height || !rect.width || !rect.height) return 0;
-    var scale = Math.min(rect.width / vb.width, rect.height / vb.height);
-    return scale > 0 ? 1 / scale : 0;
+    if (!rect.width || !rect.height) return 0;
+    return Math.min(rect.width / FRAME.w, rect.height / FRAME.h);
   }
 
-  /* Chicago, DC, and NYC each have two venues on one projected point.
-     Keep the first on that point. Step the next ones one screen-gap
-     inland or north/south, never a growing multiple of the gap. */
-  function fan(points) {
-    var unit = userPerPx();
-    if (!unit) return points;
-    var gap = 14 * unit;
-    var placedPts = [];
-    var vb = svgEl.viewBox.baseVal;
-    points.forEach(function (item) {
-      var inland = ((vb.x + vb.width / 2) - item.x) >= 0 ? 1 : -1;
-      var tries = [
-        [0, 0],
-        [inland, 0],
-        [0, -1],
-        [0, 1],
-        [inland, -1],
-        [inland, 1]
-      ];
-      var x = item.x;
-      var y = item.y;
-      for (var i = 0; i < tries.length; i++) {
-        var tx = item.x + tries[i][0] * gap;
-        var ty = item.y + tries[i][1] * gap;
-        var blocked = placedPts.some(function (prev) {
-          return Math.hypot(prev.x - tx, prev.y - ty) < gap * 0.8;
-        });
-        if (!blocked) {
-          x = tx;
-          y = ty;
-          break;
+  /* Push metro pins apart in SVG units until their 44px targets do not overlap. */
+  function separate(items) {
+    var scale = pxPerUser();
+    if (!scale) return;
+    items.forEach(function (item) {
+      item.fx = item.x;
+      item.fy = item.y;
+    });
+    var guard = 0;
+    var moved = true;
+    while (moved && guard < 40) {
+      moved = false;
+      guard += 1;
+      for (var i = 0; i < items.length; i++) {
+        for (var j = i + 1; j < items.length; j++) {
+          var dx = (items[j].fx - items[i].fx) * scale;
+          var dy = (items[j].fy - items[i].fy) * scale;
+          var dist = Math.hypot(dx, dy);
+          if (dist >= MIN_GAP) continue;
+          var push = ((MIN_GAP - dist) / 2 + 0.4) / scale;
+          var ux = dist ? dx / dist : 1;
+          var uy = dist ? dy / dist : 0;
+          items[i].fx -= ux * push;
+          items[i].fy -= uy * push;
+          items[j].fx += ux * push;
+          items[j].fy += uy * push;
+          moved = true;
         }
       }
-      placedPts.push({ x: x, y: y });
-      item.fx = x;
-      item.fy = y;
-    });
-    return points;
+    }
   }
 
-  function drawDots(points) {
-    var unit = userPerPx() || 1;
-    var r = Math.max(2.2, 7 * unit);
-    points.forEach(function (item) {
+  function drawDots(items) {
+    var scale = pxPerUser() || 1;
+    var r = 7 / scale;
+    items.forEach(function (item) {
       var dot = document.createElementNS(NS, "circle");
       dot.setAttribute("cx", item.fx);
       dot.setAttribute("cy", item.fy);
       dot.setAttribute("r", r);
       dot.setAttribute("fill", "#0a4545");
       dot.setAttribute("stroke", "#fffcf7");
-      dot.setAttribute("stroke-width", String(r * 0.28));
+      dot.setAttribute("stroke-width", String(2 / scale));
       dot.setAttribute("class", "home-svg-pin");
       dot.setAttribute("pointer-events", "none");
       svgEl.appendChild(dot);
       item.pin._dot = dot;
+      var count = membersOf(item.pin).length;
+      if (count > 1) {
+        var badge = document.createElementNS(NS, "g");
+        badge.setAttribute("pointer-events", "none");
+        var bx = item.fx + r * 0.85;
+        var by = item.fy - r * 0.85;
+        var plate = document.createElementNS(NS, "circle");
+        plate.setAttribute("cx", bx);
+        plate.setAttribute("cy", by);
+        plate.setAttribute("r", 6.5 / scale);
+        plate.setAttribute("fill", "#fffcf7");
+        plate.setAttribute("stroke", "#0a4545");
+        plate.setAttribute("stroke-width", String(1 / scale));
+        var num = document.createElementNS(NS, "text");
+        num.setAttribute("x", bx);
+        num.setAttribute("y", by);
+        num.setAttribute("text-anchor", "middle");
+        num.setAttribute("dominant-baseline", "central");
+        num.setAttribute("fill", "#0a4545");
+        num.setAttribute("font-size", String(8 / scale));
+        num.setAttribute("font-family", "system-ui, sans-serif");
+        num.setAttribute("font-weight", "700");
+        num.textContent = String(count);
+        badge.appendChild(plate);
+        badge.appendChild(num);
+        svgEl.appendChild(badge);
+      }
     });
   }
 
@@ -187,36 +203,47 @@
       if (!svgEl || typeof window.fpProjectWorld !== "function") return;
       var byId = {};
       (window.FP_PLACES || []).forEach(function (place) { byId[place.id] = place; });
-      var points = [];
+      var items = [];
       pins.forEach(function (pin) {
-        var place = byId[pin.getAttribute("data-home-pin")];
-        if (!place) return;
-        var pt = project(place);
-        if (!pt) return;
-        points.push({ pin: pin, x: pt.x, y: pt.y });
+        var members = membersOf(pin);
+        var xs = [];
+        var ys = [];
+        members.forEach(function (m) {
+          var place = byId[m.slug];
+          if (!place) return;
+          var pt = project(place);
+          if (!pt) return;
+          xs.push(pt.x);
+          ys.push(pt.y);
+        });
+        if (!xs.length) return;
+        var x = xs.reduce(function (a, b) { return a + b; }, 0) / xs.length;
+        var y = ys.reduce(function (a, b) { return a + b; }, 0) / ys.length;
+        items.push({ pin: pin, x: x, y: y });
       });
-      if (!points.length) return;
-      points.forEach(function (item) { item.fx = item.x; item.fy = item.y; });
-      var box = frame(points);
-      svgEl.setAttribute("viewBox", box.x + " " + box.y + " " + box.w + " " + box.h);
+      if (!items.length) return;
+      svgEl.setAttribute("viewBox", FRAME.x + " " + FRAME.y + " " + FRAME.w + " " + FRAME.h);
       svgEl.setAttribute("preserveAspectRatio", "xMidYMid meet");
       svgEl.style.width = "100%";
       svgEl.style.height = "100%";
       function finish(tries) {
-        if (!userPerPx()) {
+        if (!pxPerUser()) {
           if (tries < 8) requestAnimationFrame(function () { finish(tries + 1); });
           return;
         }
-        fan(points);
-        drawDots(points);
+        separate(items);
+        drawDots(items);
         syncButtons();
         placed = true;
         var hash = "";
         try { hash = location.hash || ""; } catch (_) { hash = ""; }
         var wanted = (hash.match(/pin=([a-z0-9-]+)/) || [])[1];
-        var opener = wanted && pins.filter(function (pin) {
-          return pin.getAttribute("data-home-pin") === wanted;
-        })[0];
+        var opener = null;
+        if (wanted) {
+          opener = pins.filter(function (pin) {
+            return membersOf(pin).some(function (m) { return m.slug === wanted; });
+          })[0];
+        }
         if (opener) openPin(opener);
       }
       requestAnimationFrame(function () { finish(0); });
