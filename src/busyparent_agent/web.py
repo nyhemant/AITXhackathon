@@ -1270,8 +1270,9 @@ def _static_cache_control(request_path: str, file_path: Path) -> str:
     return "public, max-age=86400"
 
 
-# PDF download counts. Outside the repo. Counts only — never IP, UA, or the
-# full Referer (host bucket only). A write failure must not change the response.
+# PDF download counts. Outside the repo. Counts only — never IP, UA, query,
+# fragment, or the full Referer. Host bucket, plus the path when the host is
+# kidzookit.com. A write failure must not change the response.
 _PDF_COUNT_LOCK = threading.Lock()
 _PDF_COUNT_TZ = ZoneInfo("America/Chicago")
 _PDF_COUNT_BOT_UA_RE = re.compile(
@@ -1281,6 +1282,9 @@ _PDF_COUNT_BOT_UA_RE = re.compile(
 _PDF_COUNT_KEY_RE = re.compile(
     r"^/printables/pdf/(?:(letter|a4)/)?([a-z0-9-]+)\.pdf$"
 )
+_PDF_PAGE_RE = re.compile(r"^/[a-z0-9/_-]*$")
+_PDF_PAGE_MAX = 120
+_PDF_PAGE_OTHER = "other-page"
 
 
 def _pdf_counts_dir() -> Path:
@@ -1322,6 +1326,42 @@ def _pdf_referer_bucket(referer: str | None) -> str:
             if f".{needle}" in f".{host}":
                 return "search"
     return "other"
+
+
+def _pdf_referer_page(referer: str | None) -> str | None:
+    """Path to store when the Referer host is kidzookit.com. None otherwise.
+
+    Query and fragment are dropped. The path is percent-decoded, lowercased,
+    and dot-segments are removed. A trailing slash stays. It is then cut to
+    120 characters. A result that is not ``^/[a-z0-9/_-]*$`` is ``other-page``.
+    """
+    if _pdf_referer_bucket(referer) != "site":
+        return None
+    try:
+        raw_path = urlsplit(referer or "").path
+    except ValueError:
+        return _PDF_PAGE_OTHER
+    path = unquote(raw_path or "/").replace("\\", "/").lower()
+    trailing = path.endswith("/") and path != "/"
+    parts: list[str] = []
+    for seg in path.split("/"):
+        if seg in ("", "."):
+            continue
+        if seg == "..":
+            if parts:
+                parts.pop()
+            continue
+        parts.append(seg)
+    path = "/" + "/".join(parts)
+    if trailing and path != "/":
+        path += "/"
+    while "//" in path:
+        path = path.replace("//", "/")
+    if len(path) > _PDF_PAGE_MAX:
+        path = path[:_PDF_PAGE_MAX]
+    if _PDF_PAGE_RE.fullmatch(path) is None:
+        return _PDF_PAGE_OTHER
+    return path
 
 
 def _pdf_download_should_count(handler: BaseHTTPRequestHandler, file_path: Path) -> str | None:
@@ -1377,6 +1417,15 @@ def _note_pdf_download(handler: BaseHTTPRequestHandler, file_path: Path) -> None
                 day[key] = row
             current = row.get(bucket, 0)
             row[bucket] = (current if isinstance(current, int) else 0) + 1
+            if bucket == "site":
+                page = _pdf_referer_page(referer)
+                if page:
+                    pages = row.get("pages")
+                    if not isinstance(pages, dict):
+                        pages = {}
+                        row["pages"] = pages
+                    current_page = pages.get(page, 0)
+                    pages[page] = (current_page if isinstance(current_page, int) else 0) + 1
             tmp = dest.with_name(dest.name + f".{os.getpid()}.tmp")
             with tmp.open("w", encoding="utf-8") as fh:
                 json.dump(data, fh, indent=2, sort_keys=True)

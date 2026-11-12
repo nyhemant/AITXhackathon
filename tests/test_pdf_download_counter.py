@@ -1,8 +1,9 @@
 """Server-side printable PDF download counter.
 
 Counts a GET of a file under /printables/pdf/ only. Stores
-{date: {"paper/stem": {"site"|"search"|"other": n}}} in
-$KZK_COUNTS_DIR/pdf-counts-YYYY-MM.json. Never stores IP, UA, the full
+{date: {"paper/stem": {"site"|"search"|"other": n, "pages"?: {path: n}}}} in
+$KZK_COUNTS_DIR/pdf-counts-YYYY-MM.json. pages is only the referring path
+when the Referer host is kidzookit.com. Never stores IP, UA, the full
 Referer, or a query string. A write failure must not change the response.
 """
 from __future__ import annotations
@@ -17,7 +18,12 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from busyparent_agent.rate_limit import RateLimiter, get_limiter, set_limiter
-from busyparent_agent.web import KidZooKitServer, WebHandler, _pdf_canonical_link
+from busyparent_agent.web import (
+    KidZooKitServer,
+    WebHandler,
+    _pdf_canonical_link,
+    _pdf_referer_page,
+)
 
 REPO = Path(__file__).resolve().parents[1]
 PDF_ROOT = REPO / "static" / "printables" / "pdf"
@@ -134,7 +140,7 @@ class PdfDownloadCounterTests(unittest.TestCase):
 
     def test_file_holds_no_ip_ua_or_referrer(self):
         marker = "PdfCountUA-203.0.113.9-Unique"
-        referer = "https://kidzookit.com/field-pack/amnh/?q=SECRET203.0.113.9"
+        referer = "https://kidzookit.com/field-pack/amnh/?q=SECRET203.0.113.9#mission"
         status, _hdrs, _body = self._req(
             "GET",
             LETTER,
@@ -174,14 +180,68 @@ class PdfDownloadCounterTests(unittest.TestCase):
         self.assertNotIn("SECRET", text)
         self.assertNotIn("utm", text)
         self.assertNotIn("?", text)
+        self.assertNotIn("#", text)
+        self.assertNotIn("mission", text)
         day = next(iter(data))
-        self.assertEqual(data[day]["letter/scavenger-hunt"], {"site": 1})
+        self.assertEqual(
+            data[day]["letter/scavenger-hunt"],
+            {"pages": {"/field-pack/amnh/": 1}, "site": 1},
+        )
         self.assertEqual(data[day]["letter/animal-bingo"], {"search": 1})
         self.assertEqual(data[day]["a4/scavenger-hunt"], {"search": 1})
         self.assertEqual(data[day]["letter/carpool"], {"search": 1})
         self.assertEqual(data[day]["letter/teacher-handout"], {"other": 1})
-        for row in data[day].values():
-            self.assertTrue(set(row) <= {"site", "search", "other"})
+        for key, row in data[day].items():
+            self.assertTrue(set(row) <= {"site", "search", "other", "pages"}, key)
+            if key != "letter/scavenger-hunt":
+                self.assertNotIn("pages", row)
+
+    def test_page_path_recorded_query_stripped_external_not_a_page(self):
+        long_path = "/field-pack/" + ("a" * 140) + "/"
+        cases = (
+            (
+                "/printables/pdf/letter/park-scavenger-hunt.pdf",
+                "https://www.kidzookit.com/field-pack/lincoln-park-zoo/?utm=SECRET#part",
+                "letter/park-scavenger-hunt",
+                {"pages": {"/field-pack/lincoln-park-zoo/": 1}, "site": 1},
+            ),
+            (
+                "/printables/pdf/a4/park-scavenger-hunt-a4.pdf",
+                "https://example.com/field-pack/dallas-zoo/?q=1",
+                "a4/park-scavenger-hunt",
+                {"other": 1},
+            ),
+            (
+                "/printables/pdf/letter/chaperone-card.pdf",
+                "https://kidzookit.com/bad path/?q=HIDDEN",
+                "letter/chaperone-card",
+                {"pages": {"other-page": 1}, "site": 1},
+            ),
+            (
+                "/printables/pdf/letter/zoo-day-journal.pdf",
+                "https://kidzookit.com" + long_path + "?q=DROP",
+                "letter/zoo-day-journal",
+                {"pages": {long_path.lower()[:120]: 1}, "site": 1},
+            ),
+        )
+        for url, referer, key, want in cases:
+            status, _hdrs, _body = self._req("GET", url, {"Referer": referer})
+            self.assertEqual(status, 200, url)
+        _path, data = self._count_file()
+        text = _path.read_text(encoding="utf-8")
+        self.assertNotIn("SECRET", text)
+        self.assertNotIn("HIDDEN", text)
+        self.assertNotIn("DROP", text)
+        self.assertNotIn("utm", text)
+        self.assertNotIn("example.com", text)
+        self.assertNotIn("dallas-zoo", text)
+        self.assertNotIn("?", text)
+        self.assertNotIn("#", text)
+        day = next(iter(data))
+        for _url, _referer, key, want in cases:
+            self.assertEqual(data[day][key], want, key)
+        self.assertEqual(len(long_path.lower()[:120]), 120)
+        self.assertNotIn("pages", data[day]["a4/park-scavenger-hunt"])
 
     def test_pdf_cache_control_no_cache_and_png_stays_public(self):
         status, hdrs, _body = self._req("GET", LETTER)
@@ -240,6 +300,36 @@ class PdfDownloadCounterTests(unittest.TestCase):
                 self.assertEqual(hdrs.get("cache-control"), "no-cache", url)
         self.assertGreaterEqual(len(seen), 18)
         self.assertEqual(len(seen), len(set(seen)))
+
+
+class PdfRefererPageUnitTests(unittest.TestCase):
+    def test_normalizes_path_and_drops_query_and_fragment(self):
+        referer = "https://KIDZOOKIT.com/Field-Pack/AMNH/../lincoln-park-zoo/?q=SECRET#mission"
+        self.assertEqual(
+            _pdf_referer_page(referer),
+            "/field-pack/lincoln-park-zoo/",
+        )
+
+    def test_external_and_non_host_are_not_pages(self):
+        self.assertIsNone(_pdf_referer_page("https://example.com/field-pack/amnh/"))
+        self.assertIsNone(_pdf_referer_page("https://www.google.com/search?q=zoo"))
+        self.assertIsNone(_pdf_referer_page("https://notkidzookit.com/field-pack/amnh/"))
+        self.assertIsNone(_pdf_referer_page(None))
+        self.assertIsNone(_pdf_referer_page(""))
+
+    def test_invalid_path_is_other_page_and_long_path_is_cut(self):
+        self.assertEqual(
+            _pdf_referer_page("https://kidzookit.com/has space/"),
+            "other-page",
+        )
+        self.assertEqual(
+            _pdf_referer_page("https://kidzookit.com/café/"),
+            "other-page",
+        )
+        long_path = "/" + ("b" * 200)
+        got = _pdf_referer_page("https://sub.kidzookit.com" + long_path + "?q=1")
+        self.assertEqual(got, long_path[:120])
+        self.assertEqual(len(got), 120)
 
 
 if __name__ == "__main__":

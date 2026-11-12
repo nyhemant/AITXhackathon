@@ -77,6 +77,7 @@ from scav_test_2026_11 import (  # noqa: E402
     scav_top_block,
     scav_top_css_tag,
     scav_top_script_tag,
+    sticky_single_print_html,
 )
 
 FIELD = REPO / "static" / "field-pack"
@@ -3006,8 +3007,14 @@ def customize_after_stops_html() -> str:
     </p>"""
 
 
-def sticky_hunt_bar_html() -> str:
-    """Bottom sticky: live animal count + primary print action."""
+def sticky_hunt_bar_html(slug: str | None = None) -> str:
+    """Bottom sticky: live animal count + primary print action.
+
+    The 12 test slugs use the same wording as the printable-hunt button and
+    open the same drawer. Every other page keeps the count line and Print.
+    """
+    if slug in TEST_SLUGS:
+        return sticky_single_print_html()
     return f"""
   <div class="seo-hunt-sticky no-print" id="seo-hunt-sticky" hidden>
     <p class="seo-hunt-sticky-copy" id="seo-hunt-sticky-label"><span id="seo-hunt-count"></span>Suggested stops · Print (1 page)</p>
@@ -3493,7 +3500,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     _vkind = str(v.get("type") or "")
     _vid = str(v.get("id") or "")
     customize = customize_after_stops_html()
-    sticky = sticky_hunt_bar_html()
+    sticky = sticky_hunt_bar_html(vid)
     # Catalog ids already shown in “start here” — don’t repeat in shortlist grid
     start_exclude = _start_here_catalog_ids(mission_venue, mission)
     practical = mission_venue.get("practical") or {}

@@ -48,12 +48,43 @@
   outline-offset: 2px;
 }
 
+.kz-scav-pdfs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.45rem;
+}
+
+.kz-scav-pdf-name {
+  font-weight: 750;
+  color: #0a4545;
+}
+
 .kz-scav-pdf {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 44px;
-  font-weight: 750;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(15, 92, 92, 0.45);
+  background: #fff;
   color: #0f5c5c;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.kz-scav-pdf:hover,
+.kz-scav-pdf:focus-visible {
+  background: #f3fafa;
+  outline: 3px solid #ffcf5a;
+  outline-offset: 2px;
+}
+
+/* Test pages only: this file is not linked from comparison pages. */
+.seo-hunt-sticky[data-kz-scav-print="1"] .seo-sticky-print {
+  flex: 1 1 auto;
+  width: 100%;
 }
 
 .kz-scav-spec {

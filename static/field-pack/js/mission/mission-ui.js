@@ -449,10 +449,19 @@
     } catch (_) {}
   }
 
+  function pagePathOnly() {
+    try {
+      return location.pathname || "/";
+    } catch (_) {
+      return "/";
+    }
+  }
+
   function printMission(mission) {
     track("mission_printed", {
       venue: mission.slug,
       venue_slug: mission.slug,
+      page_path: pagePathOnly(),
       venue_type: venueTypeForAnalytics(mission),
       age_band: mission.age,
       time_length: mission.time,
@@ -571,8 +580,21 @@
   }
   function syncStickyHuntBar(mission) {
     const bar = document.getElementById("seo-hunt-sticky");
+    if (!bar) return;
+    // Test pages set this attribute. Same label as #printable-hunt, same drawer.
+    if (bar.getAttribute("data-kz-scav-print") === "1") {
+      const btn = document.getElementById("seo-sticky-print");
+      if (btn) btn.textContent = "Build and print the hunt";
+      const singleLabel = document.getElementById("seo-hunt-sticky-label");
+      if (singleLabel) singleLabel.hidden = true;
+      const spec = bar.querySelector(".seo-sticky-print-spec");
+      if (spec) spec.hidden = true;
+      bar.hidden = false;
+      document.body.classList.add("has-hunt-sticky");
+      return;
+    }
     const label = document.getElementById("seo-hunt-sticky-label");
-    if (!bar || !label) return;
+    if (!label) return;
     const n = (mission && mission.finds && mission.finds.length) || 0;
     const noun = n === 1 ? "animal" : "animals";
     // route_90m defaults are suggested stops until the parent engages.
