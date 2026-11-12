@@ -207,6 +207,17 @@ class HomeHuntsTests(unittest.TestCase):
         self.assertIn('data-kz-cta="home-map"', self.html)
         self.assertIn('id="home-pin-list"', self.html)
         self.assertIn("scroll-snap-type: x mandatory", self.css)
+        self.assertIn(
+            '<a class="hx-mapprint" data-kz-cta="home-map" href="/field-pack/amnh/#printable-hunt">Print a scavenger hunt</a>',
+            self.html,
+        )
+        self.assertIn('<p class="hx-maphint">Tap a pin to print</p>', self.html)
+        hero = (START / "hero-common-v1.css").read_text(encoding="utf-8")
+        self.assertIn(".hx-mapprint { display: none; }", hero)
+        self.assertIn("@media (max-width: 640px)", hero)
+        self.assertIn(".hx-maphint { display: none; }", hero)
+        self.assertIn("min-height: 44px", hero)
+        self.assertIn("/start/hero-common-v1.css?v=2", self.html)
 
     def test_previous_links_and_arya_name_stay(self):
         old = {href.split("?", 1)[0] for href in HREF.findall(self.main)}
