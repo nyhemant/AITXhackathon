@@ -53,7 +53,11 @@ COMPARISON_SLUGS = frozenset({
 
 _ZOO_KINDS = frozenset({"zoo", "aquarium", "safari_zoo"})
 _CSS_HREF = "/field-pack/css/scav-top-v1.css?v=2"
-_JS_SRC = "/shell/qr-welcome.js?v=4"
+_JS_SRC = "/shell/qr-welcome.js?v=5"
+# Test pages get their own cache key for mission-ui.js so the sticky bar code
+# (data-kz-scav-print) is not served from a cached older copy. Comparison pages
+# keep the generator's MISSION_UI_JS_VER.
+MISSION_UI_TEST_VER = "21-scav2"
 PRINT_ACTION = "Build and print the hunt"
 E = lambda s: html.escape(str(s), quote=True)  # noqa: E731
 _SECTION_RE = re.compile(
@@ -293,6 +297,12 @@ def patch_html(html: str, slug: str) -> str:
             flags=re.S,
         )
     html = html.replace('href="/field-pack/css/scav-top-v1.css?v=1"', f'href="{_CSS_HREF}"')
+    html = re.sub(r'src="/shell/qr-welcome\.js\?v=[^"]*"', f'src="{_JS_SRC}"', html)
+    html = re.sub(
+        r'src="/field-pack/js/mission/mission-ui\.js\?v=[^"]*"',
+        f'src="/field-pack/js/mission/mission-ui.js?v={MISSION_UI_TEST_VER}"',
+        html,
+    )
     if _CSS_HREF not in html:
         html = _insert_before(html, "</head>", "  " + scav_top_css_tag(slug))
     if "qr-welcome.js" not in html:

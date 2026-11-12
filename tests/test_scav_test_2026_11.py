@@ -131,7 +131,8 @@ class ScavTestPages(unittest.TestCase):
                 )
                 self.assertIn("black &amp; white is fine", section)
                 self.assertIn('href="/field-pack/css/scav-top-v1.css?v=2"', page)
-                self.assertIn('<script src="/shell/qr-welcome.js?v=4" defer></script>', page)
+                self.assertIn('<script src="/shell/qr-welcome.js?v=5" defer></script>', page)
+                self.assertIn('<script src="/field-pack/js/mission/mission-ui.js?v=21-scav2"></script>', page)
                 items = hunt_items(venue)
                 bonus = bonus_lines(venue)
                 want_items, want_bonus = EXPECTED[slug]
@@ -347,6 +348,8 @@ def _page_edit_ok(body: str) -> bool:
         "seo-hunt-sticky-label",
         "seo-sticky-print-spec",
         "data-kz-scav-print",
+        "/shell/qr-welcome.js?v=",
+        "/field-pack/js/mission/mission-ui.js?v=",
     )
     return any(marker in body for marker in markers)
 
