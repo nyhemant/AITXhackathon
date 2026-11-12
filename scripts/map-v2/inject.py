@@ -14,7 +14,7 @@ for d in 'ab':
     h=h[:i]+world+h[j:]
     h=h.replace('<link rel="stylesheet" href="/start/hero-a-v1.css?v=1" />','<link rel="stylesheet" href="/start/hero-a-v1.css?v=1" />\n  <link rel="stylesheet" href="/start/home-map-v2-%s.css?v=1" />\n  <link rel="preload" href="/start/map-v2/%s-usa-v1.svg?v=1" as="fetch" crossorigin />'%(d,d))
     h=h.replace('<!-- Map pins are % of hero-world-map.jpg (1792×1008); left/top is the figurine center. Wrapper keeps that aspect and cover-crops; tall/mobile left-aligns so Americas stay in frame. -->','<!-- Map v2: animals sit on their habitat points as % of the world plate (a-world-v1.svg, 2000×932). Phones pan sideways; 641px and up shows the whole plate. -->')
-    h=h.replace('<script src="/start/home-map-v1.js?v=5"></script>','<script src="/start/home-map-v2.js?v=1"></script>')
+    h=h.replace('<script src="/start/home-map-v1.js?v=5"></script>','<script src="/start/home-map-v2.js?v=2"></script>')
     assert 'home-map-v2.js' in h and 'map-v2-%s'%d in h
     open(f'/workspace/kz-map-mock/static/start/mock-{d}.html','w').write(h)
     print(d,len(h))

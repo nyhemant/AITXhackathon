@@ -100,6 +100,8 @@
   }
 
   var WIDE = window.matchMedia ? window.matchMedia("(min-width: 1000px)") : null;
+  /* A click outside closes the card from 721px up (iPad portrait too); phones keep it until Close. */
+  var OUTSIDE = window.matchMedia ? window.matchMedia("(min-width: 721px)") : null;
   var REDUCED = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)").matches : false;
 
   /* A sideways drag never opens a card: ignore a click that ends more than 10px from where it began. */
@@ -123,7 +125,7 @@
     if (open && typeof open.focus === "function") open.focus();
   });
   document.addEventListener("click", function (event) {
-    if (!card || card.hidden || !WIDE || !WIDE.matches) return;
+    if (!card || card.hidden || !OUTSIDE || !OUTSIDE.matches) return;
     var target = event.target;
     if (!target || !target.closest || !document.documentElement.contains(target)) return;
     if (card.contains(target) || target.closest(".home-place-pin")) return;
