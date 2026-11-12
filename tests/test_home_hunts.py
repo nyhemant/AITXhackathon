@@ -170,6 +170,9 @@ class HomeHuntsTests(unittest.TestCase):
         self.assertEqual(sorted(member_slugs), sorted(FEATURED))
         self.assertIn("FRAME = { x: 136.78", self.js)
         self.assertIn("MIN_GAP = 46", self.js)
+        self.assertIn("var BADGE = 20", self.js)
+        self.assertIn("var BADGE_TEXT = 13", self.js)
+        self.assertIn("min-width: 1000px", self.css)
         self.assertIn("Print the scavenger hunt", self.js)
         self.assertIn("See the full page", self.js)
         cards = re.findall(

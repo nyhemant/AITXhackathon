@@ -9,6 +9,9 @@
   /* Lower 48 plus southern Ontario, with room so a 44px target is not clipped. */
   var FRAME = { x: 136.78, y: 96.5, w: 194.5, h: 101.44 };
   var MIN_GAP = 46;
+  /* Count plate is 20px across with 13px type, in the same SVG units as the land. */
+  var BADGE = 20;
+  var BADGE_TEXT = 13;
   var animalsBtn = document.getElementById("home-map-animals");
   var placesBtn = document.getElementById("home-map-places");
   var placesMap = document.getElementById("home-places-map");
@@ -156,17 +159,17 @@
         var plate = document.createElementNS(NS, "circle");
         plate.setAttribute("cx", bx);
         plate.setAttribute("cy", by);
-        plate.setAttribute("r", 6.5 / scale);
+        plate.setAttribute("r", (BADGE / 2) / scale);
         plate.setAttribute("fill", "#fffcf7");
         plate.setAttribute("stroke", "#0a4545");
-        plate.setAttribute("stroke-width", String(1 / scale));
+        plate.setAttribute("stroke-width", String(1.5 / scale));
         var num = document.createElementNS(NS, "text");
         num.setAttribute("x", bx);
         num.setAttribute("y", by);
         num.setAttribute("text-anchor", "middle");
         num.setAttribute("dominant-baseline", "central");
         num.setAttribute("fill", "#0a4545");
-        num.setAttribute("font-size", String(8 / scale));
+        num.setAttribute("font-size", String(BADGE_TEXT / scale));
         num.setAttribute("font-family", "system-ui, sans-serif");
         num.setAttribute("font-weight", "700");
         num.textContent = String(count);
