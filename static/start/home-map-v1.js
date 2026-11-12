@@ -283,5 +283,17 @@
     new ResizeObserver(syncButtons).observe(host);
   }
 
+  /* Phone: the Animals map opens on the Americas and pans sideways. The hint goes after the first drag. */
+  var pan = document.getElementById("start-hero-pan");
+  var hint = document.getElementById("start-pan-hint");
+  if (pan && hint) {
+    var onPan = function () {
+      if (pan.scrollLeft < 8) return;
+      hint.classList.add("is-gone");
+      pan.removeEventListener("scroll", onPan);
+    };
+    pan.addEventListener("scroll", onPan, { passive: true });
+  }
+
   setMode("places");
 })();

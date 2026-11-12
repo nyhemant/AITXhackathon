@@ -326,3 +326,101 @@ body.start-body > header.start-top {
     overflow: auto;
   }
 }
+
+/* Animals map inside the map card (2026-11-12).
+   start.css sizes the plate from the viewport (100svh), which is wider than the card on
+   iPad landscape and desktop, so Asia and Australia were cut off on the right.
+   641px and up: the hero takes the plate's own shape, so the whole map shows.
+   640px and down: the plate still opens on the Americas and a sideways drag pans it. */
+.start-hero-pan {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.start-pan-hint {
+  display: none;
+}
+
+@media (min-width: 641px) {
+  .hx-mapcard .start-hero {
+    min-height: 0;
+    height: auto;
+    border-radius: 14px;
+    background: #2b3534;
+  }
+
+  /* The map keeps the plate's own shape; the words sit under it so no land is covered. */
+  .hx-mapcard .start-hero-pan {
+    position: relative;
+    inset: auto;
+    aspect-ratio: 1792 / 1008;
+    overflow: hidden;
+  }
+
+  .hx-mapcard .start-hero::after {
+    display: none;
+  }
+
+  .hx-mapcard .start-hero-copy {
+    position: relative;
+    max-width: none;
+    padding: 1.1rem clamp(1.25rem, 3vw, 2rem) 1.2rem;
+  }
+
+  .hx-mapcard .start-hero-map {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hx-mapcard .start-hero-pan {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .hx-mapcard .start-hero-pan::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hx-mapcard .start-hero-hotspot[data-hero-region="east"] {
+    display: block;
+  }
+
+  .hx-mapcard .start-pan-hint {
+    display: block;
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    z-index: 2;
+    margin: 0;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(255, 252, 247, 0.92);
+    box-shadow: 0 1px 4px rgba(12, 10, 8, 0.18);
+    color: #0a4545;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .hx-mapcard .start-pan-hint.is-gone {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hx-mapcard .start-pan-hint {
+    transition: none;
+  }
+}
