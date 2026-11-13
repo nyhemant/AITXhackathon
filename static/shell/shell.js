@@ -210,6 +210,7 @@
       page_path: path,
       page_title: document.title,
       page_location: location.href,
+      page_kind: pageKind(),
     });
   }
 

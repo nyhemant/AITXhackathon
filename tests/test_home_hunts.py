@@ -249,13 +249,12 @@ class HomeHuntsTests(unittest.TestCase):
     def test_previous_links_and_arya_name_stay(self):
         old = {href.split("?", 1)[0] for href in HREF.findall(self.main)}
         new = {href.split("?", 1)[0] for href in HREF.findall(self.html)}
-        # Start print links now go to the HTML hunt; the letter PDFs stay on disk and keep working.
-        allowed = {
+        self.assertEqual(sorted(old - new), [])
+        # Letter PDFs were unlinked from start cards in #434; the files themselves stay.
+        for path in (
             "/printables/pdf/letter/park-scavenger-hunt.pdf",
             "/printables/pdf/letter/scavenger-hunt.pdf",
-        }
-        self.assertEqual(set(old - new), allowed)
-        for path in allowed:
+        ):
             self.assertTrue((REPO / "static" / path.lstrip("/")).is_file(), path)
         self.assertIn("Play &amp; learn printables", self.html)
         self.assertIn("Watch Live", self.html)

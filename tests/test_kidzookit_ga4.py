@@ -114,8 +114,8 @@ class KidZooKitGa4Test(unittest.TestCase):
 
     def test_dinner_html_loads_shell_but_does_not_embed_gtag(self):
         html = _html_for_request(None)
-        self.assertIn("/shell/shell.js?v=6", html)
-        self.assertIn("/shell/shell.js?v=6", HTML)
+        self.assertIn("/shell/shell.js?v=7", html)
+        self.assertIn("/shell/shell.js?v=7", HTML)
         self.assertNotIn("googletagmanager.com/gtag/js", html)
         self.assertNotIn(KIDZOOKIT_ID, html)
         self.assertNotIn(OLD_1LESS_ID, html)
@@ -127,9 +127,10 @@ class KidZooKitGa4Test(unittest.TestCase):
             "static/field-pack/index.html",
         ):
             text = (REPO / rel).read_text(encoding="utf-8")
-            self.assertIn("/shell/shell.js?v=6", text, rel)
+            self.assertIn("/shell/shell.js?v=7", text, rel)
             self.assertNotIn("/shell/shell.js?v=4", text, rel)
             self.assertNotIn("/shell/shell.js?v=5", text, rel)
+            self.assertNotIn("/shell/shell.js?v=6", text, rel)
 
     @unittest.skipUnless(shutil.which("node"), "node required to simulate gtag init")
     def test_shell_skips_gtag_on_dinner_and_loads_on_zoo_paths(self):

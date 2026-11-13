@@ -372,7 +372,7 @@ LANDING_HOOK_JS_VER = "39"
 STYLES_CSS_VER = "45"
 CATALOG_JS_VER = "40"
 SHELL_CSS_VER = 13
-SHELL_JS_VER = "6"
+SHELL_JS_VER = "7"
 # /shell/qr-welcome.js (QR-scan next-step strip + printable_download). Hubs that
 # printed QR codes land on must keep loading it when they are regenerated.
 QR_WELCOME_JS_VER = "4"

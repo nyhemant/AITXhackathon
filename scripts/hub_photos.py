@@ -111,8 +111,8 @@ def process(hub):
         html = re.sub(r'(<link rel="stylesheet" href="/field-pack/css/seo-venue.css\?v=\d+" />)',
                       r'\1\n  <link rel="stylesheet" href="/field-pack/css/hub-strip.css?v=1" />', html, count=1)
     if "related-links.js" not in html:
-        html = html.replace('<script src="/shell/shell.js?v=6" defer></script>',
-                            '<script src="/shell/shell.js?v=6" defer></script>\n  <script src="/shell/related-links.js?v=1" defer></script>', 1)
+        html = html.replace('<script src="/shell/shell.js?v=7" defer></script>',
+                            '<script src="/shell/shell.js?v=7" defer></script>\n  <script src="/shell/related-links.js?v=1" defer></script>', 1)
     if html != orig:
         import sys as _sys
         _sys.path.insert(0, str(Path(__file__).resolve().parent))
