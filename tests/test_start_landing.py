@@ -336,7 +336,12 @@ class StartLandingTests(unittest.TestCase):
         )
         self.assertIsNotNone(home)
         chapter = home.group(0)
-        self.assertIn('<span class="sr-only">A flamingo&apos;s awake. Look!</span>', chapter)
+        self.assertIn('<h2 id="start-home-heading" class="sr-only">A flamingo&apos;s awake. Look!</h2>', chapter)
+        home_h2 = re.search(r'<h2 id="start-home-heading"[^>]*>[\s\S]*?</h2>', chapter)
+        self.assertIsNotNone(home_h2)
+        self.assertEqual(re.sub(r'<[^>]+>', '', home_h2.group(0)).strip(), "A flamingo&apos;s awake. Look!")
+        for word in ("giraffe", "penguin", "tiger", "zebra", "koala"):
+            self.assertNotIn(word, home_h2.group(0))
         self.assertIn("data-wildlife-rotator", chapter)
         self.assertIn("start-wildlife-word", chapter)
         self.assertIn('data-sizer="flamingo"', chapter)
@@ -1102,6 +1107,20 @@ class StartLandingTests(unittest.TestCase):
             "Put the zoo, aquarium, museum, or park day in their hands.",
             self.html,
         )
+        self.assertIn(
+            '<h2 id="start-going-heading" class="sr-only">Put the zoo day in their hands.</h2>',
+            self.html,
+        )
+        going_h2 = re.search(
+            r'<h2 id="start-going-heading"[^>]*>[\s\S]*?</h2>', self.html
+        )
+        self.assertIsNotNone(going_h2)
+        self.assertEqual(
+            re.sub(r"<[^>]+>", "", going_h2.group(0)).strip(),
+            "Put the zoo day in their hands.",
+        )
+        for word in ("aquarium", "museum", "park"):
+            self.assertNotIn(word, going_h2.group(0))
         self.assertIn("A flamingo&apos;s awake. Look!", self.html)
         self.assertNotIn("A hippo&apos;s awake. Look.", self.html)
         self.assertIn(".start-wildlife-line", self.css)
