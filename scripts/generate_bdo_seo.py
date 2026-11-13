@@ -6451,6 +6451,39 @@ def write_card_pages(
     return urls
 
 
+
+def _all_places_list_html(by_type: dict[str, list[dict]], n_places: int) -> str:
+    """Closed directory of every place — links live in the raw HTML for crawlers."""
+    sections: list[str] = []
+    for meta in _TYPE_DIR_META:
+        kind = meta["kind"]
+        items = sorted(
+            by_type.get(kind) or [],
+            key=lambda x: ((x.get("name") or "").lower(), (x.get("id") or "")),
+        )
+        if not items:
+            continue
+        lis = "\n            ".join(
+            f'<li><a href="/field-pack/{esc(v["id"])}/">{esc(v.get("name") or v["id"])}</a></li>'
+            for v in items
+        )
+        sections.append(
+            f'<section class="all-places-group" data-place-kind="{esc(kind)}">\n'
+            f'            <h3 class="all-places-group-title">{esc(meta["label"])} '
+            f'<span class="all-places-count">{len(items)}</span></h3>\n'
+            f'            <ul class="all-places-ul">\n            {lis}\n            </ul>\n'
+            f"          </section>"
+        )
+    body = "\n          ".join(sections)
+    return (
+        f'<details class="all-places-dir" id="all-places-dir">\n'
+        f'            <summary class="all-places-sum">All {n_places} places</summary>\n'
+        f'            <nav class="all-places-nav" aria-label="All places">\n'
+        f"          {body}\n            </nav>\n"
+        f"          </details>"
+    )
+
+
 def patch_landing_directory(venues: list[dict]) -> None:
     """T5: thin cards teaser + compact places. Full animal list is /field-pack/cards/ only."""
     index = FIELD / "index.html"
@@ -6563,11 +6596,13 @@ def patch_landing_directory(venues: list[dict]) -> None:
     )
 
     n_places = len(venues)
+    all_places_html = _all_places_list_html(by_type, n_places)
 
     places_inner = (
         f'<div class="cat-places-compact" id="cat-places-compact">\n'
         f"            {hubs_html}\n"
         f"            {popular_html}\n"
+        f"            {all_places_html}\n"
         f"          </div>"
     )
     cards_inner = (

@@ -262,6 +262,39 @@ class HubExplorerTests(unittest.TestCase):
         doors = re.findall(r'class="start-door"', self.start)
         self.assertEqual(len(doors), 0)
 
+    def test_landing_html_lists_every_place_as_a_link(self):
+        self.assertIn("all-places-dir.css?v=1", self.html)
+        self.assertIn('id="all-places-dir"', self.html)
+        self.assertIn(">All 221 places<", self.html)
+        self.assertIn('data-place-count-build="221"', self.html)
+        block = self.html.split('id="all-places-dir"', 1)[1].split("</details>", 1)[0]
+        hrefs = re.findall(r'href="(/field-pack/[^/"]+/)"', block)
+        hubs = {
+            "/field-pack/zoos/",
+            "/field-pack/aquariums/",
+            "/field-pack/museums/",
+            "/field-pack/national-parks/",
+        }
+        places = [h for h in hrefs if h not in hubs]
+        self.assertEqual(len(places), 221)
+        self.assertEqual(len(set(places)), 221)
+        for slug in (
+            "/field-pack/dallas-zoo/",
+            "/field-pack/amnh/",
+            "/field-pack/childrens-museum-perot/",
+            "/field-pack/yellowstone/",
+            "/field-pack/georgia-aquarium/",
+        ):
+            self.assertIn(slug, places)
+        # List sits in the raw Places block, not only after the map script.
+        places_body = self.html.split("<!-- SEO:PLACES-BODY:START -->", 1)[1].split(
+            "<!-- SEO:PLACES-BODY:END -->", 1
+        )[0]
+        self.assertIn('id="all-places-dir"', places_body)
+        self.assertIn("/field-pack/yellowstone/", places_body)
+
+
+
 
 if __name__ == "__main__":
     unittest.main()
