@@ -76,6 +76,9 @@ def _meta(html: str, attr: str) -> str:
 
 
 def _print_href(vtype: str, slug: str) -> str:
+    page = FP / slug / "index.html"
+    if page.is_file() and 'id="printable-hunt"' in page.read_text(encoding="utf-8"):
+        return f"/field-pack/{slug}/#printable-hunt"
     if vtype in ("zoo", "aquarium"):
         return ZOO_PDF
     if vtype == "national_park":
@@ -246,7 +249,14 @@ class HomeHuntsTests(unittest.TestCase):
     def test_previous_links_and_arya_name_stay(self):
         old = {href.split("?", 1)[0] for href in HREF.findall(self.main)}
         new = {href.split("?", 1)[0] for href in HREF.findall(self.html)}
-        self.assertEqual(sorted(old - new), [])
+        # Start print links now go to the HTML hunt; the letter PDFs stay on disk and keep working.
+        allowed = {
+            "/printables/pdf/letter/park-scavenger-hunt.pdf",
+            "/printables/pdf/letter/scavenger-hunt.pdf",
+        }
+        self.assertEqual(set(old - new), allowed)
+        for path in allowed:
+            self.assertTrue((REPO / "static" / path.lstrip("/")).is_file(), path)
         self.assertIn("Play &amp; learn printables", self.html)
         self.assertIn("Watch Live", self.html)
         self.assertEqual(
@@ -259,6 +269,13 @@ class HomeHuntsTests(unittest.TestCase):
             about.count("Arya’s Wildlife Project"),
             main_about.count("Arya’s Wildlife Project"),
         )
+
+    def test_start_card_and_hunt_links_are_clean(self):
+        self.assertNotIn("?from=", self.html)
+        # Featured print links go to the HTML hunt, not the letter PDF.
+        for slug in FEATURED:
+            self.assertIn(f'href="/field-pack/{slug}/#printable-hunt"', self.html)
+        self.assertNotIn('class="home-venue-print" data-kz-cta="home-map" href="/printables/pdf/', self.html)
 
     def test_new_copy_skips_banned_words(self):
         section = re.search(
