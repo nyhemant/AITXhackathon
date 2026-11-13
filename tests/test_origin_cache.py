@@ -71,7 +71,7 @@ class OriginCacheTests(unittest.TestCase):
     def test_versioned_css_js_are_edge_cacheable(self):
         for path in (
             "/field-pack/css/landing.css?v=104",
-            "/shell/shell.js?v=7",
+            "/shell/shell.js?v=8",
             "/start/start.css?v=81",
             "/start/start.js?v=39",
             "/field-pack/js/fp-analytics.js?v=1",

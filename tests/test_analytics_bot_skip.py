@@ -53,12 +53,14 @@ class ShellJsSkipTest(unittest.TestCase):
 
     def test_page_print_event_is_enum_only(self):
         self.assertIn('track("page_print", { page_kind: pageKind() });', SHELL_JS)
-        self.assertIn("page_kind: pageKind()", SHELL_JS)
         self.assertIn('track("page_view", {', SHELL_JS)
-        # page_kind is sent on page_view as well as page_print, from the existing helper.
         self.assertRegex(
             SHELL_JS,
             r'track\("page_view", \{[\s\S]*page_kind: pageKind\(\)',
+        )
+        self.assertRegex(
+            SHELL_JS,
+            r'gtag\("config", GA4_MEASUREMENT_ID, \{[\s\S]*page_kind: pageKind\(\)',
         )
         self.assertIn('addEventListener("beforeprint", sendPagePrint)', SHELL_JS)
 
@@ -124,7 +126,7 @@ class ServerTest(unittest.TestCase):
         r = self._get("/field-pack/cards/whale-shark/", ua=HEADLESS)
         self.assertIn("no-transform", r.getheader("Cache-Control") or "")
         self.assertIsNone(r.getheader("Set-Cookie"))
-        a = self._get("/shell/shell.js?v=7", ua=HEADLESS)
+        a = self._get("/shell/shell.js?v=8", ua=HEADLESS)
         self.assertEqual(a.status, 200)
         self.assertNotIn("no-transform", a.getheader("Cache-Control") or "")
 

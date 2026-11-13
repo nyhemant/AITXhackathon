@@ -345,7 +345,7 @@ HTML = """<!doctype html>
           </div>
         </div>
       </header>
-      <script src="/shell/shell.js?v=7" defer></script>
+      <script src="/shell/shell.js?v=8" defer></script>
       <header class="hero">
         <div class="brand-lockup">
           <img class="brand-logo brand-logo-wrap" src="/1LessPrimaryLogo.png?v=transparent-square" alt="KidZooKit logo" width="800" height="800" />
