@@ -95,7 +95,7 @@
       "display_label": "Crown Family PlayLab / hands-on",
       "presence_note": "PlayLab exists for younger kids — confirm branding",
       "presence_source": "official_animals_page",
-      "presence_url": "https://www.fieldmuseum.org/exhibitions/crown-family-playlab"
+      "presence_url": "https://www.fieldmuseum.org/exhibition/halls-and-galleries/crown-family-playlab"
     },
     {
       "id": "sci_rainforest",
@@ -195,7 +195,7 @@
       "presence": "verified",
       "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
-      "presence_url": "https://www.fieldmuseum.org/exhibitions/evolving-planet",
+      "presence_url": "https://www.fieldmuseum.org/exhibition/halls-and-galleries/evolving-planet",
       "display_label": "Tully Monster",
       "core": false
     },
@@ -221,7 +221,7 @@
       "presence": "verified",
       "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
-      "presence_url": "https://www.fieldmuseum.org/exhibitions/evolving-planet",
+      "presence_url": "https://www.fieldmuseum.org/exhibition/halls-and-galleries/evolving-planet",
       "display_label": "Giant ground sloth",
       "core": false
     },
@@ -255,7 +255,7 @@
       "id": "fm_egypt",
       "label": "Inside Ancient Egypt",
       "emoji": "🏺",
-      "one_liner": "Find an animal mummy.",
+      "one_liner": "Find an animal mummy. Open until February 2027 while the Africa and Egypt halls are rebuilt.",
       "tags": [
         "read"
       ],
@@ -273,7 +273,7 @@
       "presence": "verified",
       "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
-      "presence_url": "https://www.fieldmuseum.org/exhibitions/inside-ancient-egypt",
+      "presence_url": "https://www.fieldmuseum.org/exhibition/halls-and-galleries/inside-ancient-egypt",
       "display_label": "Inside Ancient Egypt",
       "core": false
     },
@@ -299,7 +299,7 @@
       "presence": "verified",
       "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
-      "presence_url": "https://www.fieldmuseum.org/exhibitions/grainger-hall-gems",
+      "presence_url": "https://www.fieldmuseum.org/exhibition/halls-and-galleries/grainger-hall-gems",
       "display_label": "Grainger Hall of Gems",
       "core": false
     },
@@ -345,7 +345,7 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
+  "research_notes": "map-img 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/ [2026-11-16] SEO gate B2: Field Museum moved its exhibition pages to /exhibition/halls-and-galleries/; source URLs updated. Inside Ancient Egypt stays open until February 2027 (official closure notice), then closes for the new Africa and Egypt galleries (spring 2028)",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -381,11 +381,11 @@
     "https://www.fieldmuseum.org/",
     "https://www.fieldmuseum.org/exhibition/halls-and-galleries/evolving-planet",
     "https://www.fieldmuseum.org/exhibitions",
-    "https://www.fieldmuseum.org/exhibitions/crown-family-playlab",
+    "https://www.fieldmuseum.org/exhibition/halls-and-galleries/crown-family-playlab",
     "https://www.datocms-assets.com/44232/1763650453-2026-tour-operator-packet.pdf",
-    "https://www.fieldmuseum.org/exhibitions/evolving-planet",
-    "https://www.fieldmuseum.org/exhibitions/inside-ancient-egypt",
-    "https://www.fieldmuseum.org/exhibitions/grainger-hall-gems"
+    "https://www.fieldmuseum.org/exhibition/halls-and-galleries/evolving-planet",
+    "https://www.fieldmuseum.org/exhibition/halls-and-galleries/inside-ancient-egypt",
+    "https://www.fieldmuseum.org/exhibition/halls-and-galleries/grainger-hall-gems"
   ],
   "bonus_hunt": {
     "tagline": "Field Museum bonus · SUE + Evolving Planet",
