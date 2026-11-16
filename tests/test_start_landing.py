@@ -750,7 +750,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("start-going-hit", chapter)
         hit = re.search(r'<a class="start-chapter-hit start-going-hit"[^>]*>[\s\S]*?</a>', chapter)
         self.assertIsNotNone(hit)
-        self.assertIn('href="/field-pack/dallas-zoo/"', hit.group(0))
+        self.assertIn('href="/printables/scavenger-hunt/"', hit.group(0))
         self.assertIn('src="/start/going-giraffe.jpg"', hit.group(0))
         self.assertNotIn("srcset=", hit.group(0))
         self.assertNotIn("data-srcset=", hit.group(0))
@@ -760,7 +760,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn("Put the", chapter)
         self.assertIn("day in their hands.", chapter)
         self.assertIn("data-going-venue-rotator", chapter)
-        self.assertIn('href="/field-pack/dallas-zoo/"', chapter)
+        self.assertNotIn('href="/field-pack/dallas-zoo/"', chapter)
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
         self.assertEqual(len(pills), 1, pills)
         self.assertIn('href="/field-pack/"', pills[0])
@@ -771,7 +771,7 @@ class StartLandingTests(unittest.TestCase):
             chapter,
         )
         self.assertIsNotNone(secondary)
-        self.assertEqual(secondary.group(1), "/field-pack/dallas-zoo/")
+        self.assertEqual(secondary.group(1), "/field-pack/georgia-aquarium/")
         self.assertEqual(secondary.group(2), "Sample visit")
         self.assertLess(chapter.find("Explore Places Near You"), chapter.find(">Sample visit<"))
         still = re.search(r'<div class="start-going-still"[^>]*>([\s\S]*?)</div>', chapter)
@@ -782,7 +782,7 @@ class StartLandingTests(unittest.TestCase):
             panels,
             [
                 "/field-pack/georgia-aquarium/",
-                "/field-pack/dallas-zoo/",
+                "/printables/scavenger-hunt/",
                 "/field-pack/san-diego-zoo/",
             ],
         )
@@ -798,7 +798,7 @@ class StartLandingTests(unittest.TestCase):
             slides,
             [
                 "/field-pack/georgia-aquarium/",
-                "/field-pack/dallas-zoo/",
+                "/printables/scavenger-hunt/",
                 "/field-pack/san-diego-zoo/",
             ],
         )
@@ -1220,8 +1220,8 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("map-host", self.html)
         self.assertTrue(DALLAS.is_file())
         self.assertIsNotNone(_safe_field_pack_path("/field-pack/dallas-zoo/"))
-        self.assertEqual(self.html.count('href="/field-pack/dallas-zoo/"'), 4)
-        self.assertEqual(self.html.count('href="/field-pack/georgia-aquarium/"'), 2)
+        self.assertEqual(self.html.count('href="/field-pack/dallas-zoo/"'), 0)
+        self.assertEqual(self.html.count('href="/field-pack/georgia-aquarium/"'), 3)
         self.assertEqual(self.html.count('href="/field-pack/san-diego-zoo/"'), 2)
 
     def test_chapter_pills_are_locked_and_under_the_box(self):
@@ -1273,7 +1273,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIsNotNone(secondary)
         self.assertEqual(
             (secondary.group(1), secondary.group(2)),
-            ("/field-pack/dallas-zoo/", "Sample visit"),
+            ("/field-pack/georgia-aquarium/", "Sample visit"),
         )
         self.assertEqual(self.html.count('class="start-going-secondary"'), 1)
         teach = chapters["start-teach"].group(0)

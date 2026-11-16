@@ -114,9 +114,9 @@ class BrandHomeTests(unittest.TestCase):
         self.assertIn('id="start-menu-btn"', html)
         pills = re.findall(r'<a class="start-pill" href="([^"]+)">([^<]+)</a>', html)
         self.assertIn(("/field-pack/", "Explore Places Near You"), pills)
-        self.assertNotIn(("/field-pack/dallas-zoo/", "Sample visit"), pills)
+        self.assertNotIn(("/field-pack/georgia-aquarium/", "Sample visit"), pills)
         self.assertIn(
-            'class="start-going-secondary" href="/field-pack/dallas-zoo/">Sample visit</a>',
+            'class="start-going-secondary" href="/field-pack/georgia-aquarium/">Sample visit</a>',
             html,
         )
 

@@ -247,7 +247,10 @@ class HomeHuntsTests(unittest.TestCase):
     def test_previous_links_and_arya_name_stay(self):
         old = {href.split("?", 1)[0] for href in HREF.findall(self.main)}
         new = {href.split("?", 1)[0] for href in HREF.findall(self.html)}
-        self.assertEqual(sorted(old - new), [])
+        # 2026-11-16: /start/ stopped linking the Dallas Zoo comparison page (Dec 10 test);
+        # the page itself still serves 200.
+        self.assertEqual(sorted(old - new - {"/field-pack/dallas-zoo/"}), [])
+        self.assertTrue((REPO / "static" / "field-pack" / "dallas-zoo" / "index.html").is_file())
         # Letter PDFs were unlinked from start cards in #434; the files themselves stay.
         for path in (
             "/printables/pdf/letter/park-scavenger-hunt.pdf",
