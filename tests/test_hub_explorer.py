@@ -98,12 +98,13 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIn("Explore Places Near You", pills[0])
         self.assertNotIn("Sample visit", pills[0])
         self.assertIn(
-            'class="start-going-secondary" href="/field-pack/dallas-zoo/">Sample visit</a>',
+            'class="start-going-secondary" href="/field-pack/georgia-aquarium/">Sample visit</a>',
             chapter,
         )
         self.assertNotIn("Explore zoos", chapter)
         self.assertNotIn("Explore aquariums", chapter)
-        self.assertIn('href="/field-pack/dallas-zoo/"', chapter)
+        # 2026-11-16: no /start/ link to the Dallas Zoo comparison page (Dec 10 test).
+        self.assertNotIn('href="/field-pack/dallas-zoo/"', chapter)
         self.assertIn("start-going-hit", chapter)
         home = re.search(
             r'<section class="start-chapter" id="start-home"[\s\S]*?</section>',
@@ -112,7 +113,8 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIsNotNone(home)
         self.assertNotIn("/field-pack/dallas-zoo/", home.group(0))
         self.assertNotIn("Open Dallas Zoo", self.start)
-        self.assertEqual(self.start.count('href="/field-pack/dallas-zoo/"'), 4)
+        self.assertEqual(self.start.count('href="/field-pack/dallas-zoo/"'), 0)
+        self.assertEqual(self.start.count('href="/printables/scavenger-hunt/"') >= 3, True)
 
     def test_hub_is_map_first_place_explorer(self):
         self.assertIn("landing-hub", self.html)
