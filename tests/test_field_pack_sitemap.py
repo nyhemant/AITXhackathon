@@ -121,6 +121,9 @@ class SitemapTests(unittest.TestCase):
             # Thank-you and error pages for the newsletter form are noindex.
             if rel == "newsletter" or rel.startswith("newsletter/"):
                 continue
+            # noindex pages stay out of the sitemap (2026-11-16: two thin Starter places).
+            if 'content="noindex' in index.read_text(encoding="utf-8").split("</head>", 1)[0]:
+                continue
             pages.add(f"{SITE}/{rel}/")
         text = (static / "sitemap.xml").read_text(encoding="utf-8")
         locs = set(_LOC_RE.findall(text))

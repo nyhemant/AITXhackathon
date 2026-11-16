@@ -2121,6 +2121,18 @@ def seo_place_name(v: dict) -> str:
     return " ".join(str(v.get("name") or "").split())
 
 
+# 2026-11-16: thin Starter pages ("No cards for this place yet") with ~0 Search Console
+# impressions in 3 months. Served 200 with noindex,follow and left out of the sitemap until
+# they are deepened from an official source. Cairo and Mumbai stay indexed (they get impressions).
+NOINDEX_PLACE_SLUGS = frozenset({"ecoparque-ba", "stockholm-skansen"})
+
+
+def apply_place_robots(slug: str, html: str) -> str:
+    if slug not in NOINDEX_PLACE_SLUGS:
+        return html
+    return html.replace('<meta name="robots" content="index,follow" />', '<meta name="robots" content="noindex,follow" />', 1)
+
+
 LEGACY_LD_TAIL = " for Kids — Explore at Home or Print a Hunt"
 LEGACY_LD_SLUGS = (TEST_SLUGS | COMPARISON_SLUGS) - {"air-and-space", "dallas-zoo"}
 
@@ -4312,7 +4324,7 @@ def write_sitemap(
             urls.append(u)
         else:
             urls.append(f"{SITE}{u}")
-    urls += [f"{SITE}/field-pack/{v['id']}/" for v in venues]
+    urls += [f"{SITE}/field-pack/{v['id']}/" for v in venues if v["id"] not in NOINDEX_PLACE_SLUGS]
     stamp = lastmod_fn or lastmod_for_url
     body = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -6932,6 +6944,7 @@ def main() -> int:
         else:
             html = render_venue_page(v)
         html = with_field_trip_block(v["id"], html)
+        html = apply_place_robots(v["id"], html)
         (out_dir / "index.html").write_text(html, encoding="utf-8")
         urls.append(f"/field-pack/{v['id']}/")
         text = re.sub(r"<[^>]+>", " ", html)
