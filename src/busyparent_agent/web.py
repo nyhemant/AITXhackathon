@@ -1585,13 +1585,15 @@ INDEXNOW_KEY = "3bc42332229236f514eedc55304b0835"
 _ROOT_PLAINTEXT_NAMES = frozenset({"robots.txt", "llms.txt", "llms-full.txt", f"{INDEXNOW_KEY}.txt"})
 # BingSiteAuth.xml: Bing Webmaster Tools ownership file. Keep it forever.
 _ROOT_XML_NAMES = frozenset({"sitemap.xml", "BingSiteAuth.xml"})
+# favicon.ico: browsers and Google ask for /favicon.ico at the root (2026-11-16).
+_ROOT_ICON_NAMES = frozenset({"favicon.ico"})
 
 
 def _is_allowed_static_root_name(name: str) -> bool:
     """Allow robots.txt, sitemap.xml, llms.txt, BingSiteAuth.xml, the IndexNow key and google*.html tags."""
     if not name or "/" in name or "\\" in name or ".." in name:
         return False
-    if name in _ROOT_PLAINTEXT_NAMES or name in _ROOT_XML_NAMES:
+    if name in _ROOT_PLAINTEXT_NAMES or name in _ROOT_XML_NAMES or name in _ROOT_ICON_NAMES:
         return True
     return name.startswith("google") and name.endswith(".html")
 
@@ -1613,6 +1615,8 @@ def _safe_static_root_file(url_path: str) -> Path | None:
 
 
 def _root_static_content_type(path: Path) -> str:
+    if path.name in _ROOT_ICON_NAMES:
+        return "image/x-icon"
     if path.name.startswith("google") and path.suffix.lower() == ".html":
         return "text/html; charset=utf-8"
     if path.name in _ROOT_PLAINTEXT_NAMES or path.suffix.lower() == ".txt":

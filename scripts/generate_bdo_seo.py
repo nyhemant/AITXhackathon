@@ -3624,6 +3624,9 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <meta name="description" content="{esc(desc)}" />
   <link rel="canonical" href="{esc(url)}" />
   <meta name="robots" content="index,follow" />
+  <link rel="icon" href="/favicon.ico?v=1" sizes="48x48" />
+  <link rel="icon" type="image/png" href="/pwa/favicon-96-v1.png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/pwa/apple-touch-icon.png" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="{BRAND_NAME}" />
   <meta property="og:title" content="{esc(title)}" />
@@ -3783,6 +3786,9 @@ def render_venue_page(v: dict) -> str:
   <meta name="description" content="{esc(desc)}" />
   <link rel="canonical" href="{esc(url)}" />
   <meta name="robots" content="index,follow" />
+  <link rel="icon" href="/favicon.ico?v=1" sizes="48x48" />
+  <link rel="icon" type="image/png" href="/pwa/favicon-96-v1.png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/pwa/apple-touch-icon.png" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="{BRAND_NAME}" />
   <meta property="og:title" content="{esc(title)}" />
@@ -4025,6 +4031,9 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
   <meta name="description" content="{esc(serp_desc)}" />
   <link rel="canonical" href="{esc(url)}" />
   <meta name="robots" content="index,follow" />
+  <link rel="icon" href="/favicon.ico?v=1" sizes="48x48" />
+  <link rel="icon" type="image/png" href="/pwa/favicon-96-v1.png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/pwa/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="{BRAND_NAME}" />
   <meta property="og:title" content="{esc(meta["title"])}" />
@@ -5998,6 +6007,9 @@ def write_cards_hub(venues: list[dict]) -> str:
   <meta name="description" content="{esc(desc)}" />
   <link rel="canonical" href="{esc(url)}" />
   <meta name="robots" content="index,follow" />
+  <link rel="icon" href="/favicon.ico?v=1" sizes="48x48" />
+  <link rel="icon" type="image/png" href="/pwa/favicon-96-v1.png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/pwa/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="{BRAND_NAME}" />
   <meta property="og:title" content="{esc(title)}" />
@@ -6318,6 +6330,9 @@ def write_card_pages(
   <meta name="description" content="{esc(desc)}" />
   <link rel="canonical" href="{esc(url)}" />
   <meta name="robots" content="index,follow" />
+  <link rel="icon" href="/favicon.ico?v=1" sizes="48x48" />
+  <link rel="icon" type="image/png" href="/pwa/favicon-96-v1.png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/pwa/apple-touch-icon.png" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="{esc(title)}" />
   <meta property="og:description" content="{esc(desc)}" />
