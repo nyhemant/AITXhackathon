@@ -104,6 +104,162 @@
       "presence_source": "official_animals_page",
       "display_label": "Ostrich",
       "core": true
+    },
+    {
+      "id": "nzp_tiger",
+      "label": "Bengal tiger",
+      "emoji": "🐅",
+      "one_liner": "Find the stripes.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Zoo grounds",
+      "qa_card": {
+        "question": "What did you notice about the Bengal tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
+      "display_label": "Bengal tiger",
+      "core": false
+    },
+    {
+      "id": "nzp_lion",
+      "label": "Asiatic lion",
+      "emoji": "🦁",
+      "one_liner": "Is the lion awake or resting?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Zoo grounds",
+      "qa_card": {
+        "question": "What did you notice about the Asiatic lion?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
+      "display_label": "Asiatic lion",
+      "core": false
+    },
+    {
+      "id": "nzp_rhino",
+      "label": "Indian rhinoceros",
+      "emoji": "🦏",
+      "one_liner": "One horn on its nose. Can you see it?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Zoo grounds",
+      "qa_card": {
+        "question": "What did you notice about the Indian rhinoceros?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
+      "display_label": "Indian rhinoceros",
+      "core": false
+    },
+    {
+      "id": "nzp_sloth_bear",
+      "label": "Sloth bear",
+      "emoji": "🐻",
+      "one_liner": "Shaggy fur and long claws.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Zoo grounds",
+      "qa_card": {
+        "question": "What did you notice about the Sloth bear?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
+      "display_label": "Sloth bear",
+      "core": false
+    },
+    {
+      "id": "nzp_barasingha",
+      "label": "Barasingha (swamp deer)",
+      "emoji": "🦌",
+      "one_liner": "Count the antler points.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Zoo grounds",
+      "qa_card": {
+        "question": "What did you notice about the Barasingha (swamp deer)?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
+      "display_label": "Barasingha (swamp deer)",
+      "core": false
+    },
+    {
+      "id": "nzp_gharial",
+      "label": "Gharial",
+      "emoji": "🐊",
+      "one_liner": "A crocodile cousin with a long thin nose.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Zoo grounds",
+      "qa_card": {
+        "question": "What did you notice about the Gharial?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
+      "display_label": "Gharial",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -125,7 +281,7 @@
     "nile_hippo",
     "ostrich"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (nzpnewdelhi.gov.in CZA inventory 2024–25). Short published-card overlap stays short.",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (nzpnewdelhi.gov.in CZA inventory 2024–25). Short published-card overlap stays short. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "audited",
   "do_not_list": [
     {

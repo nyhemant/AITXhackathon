@@ -132,6 +132,84 @@
       "display_label": "Hippo",
       "core": false,
       "presence_note": "Official city circuit: hipopótamos. Soft Hippo."
+    },
+    {
+      "id": "bpr_axolotl",
+      "label": "Axolotl",
+      "emoji": "🦎",
+      "one_liner": "An amphibian that can regrow body parts.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Reino dos Axolotes",
+      "qa_card": {
+        "question": "What did you notice about the Axolotl?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://bioparquedorio.com.br/visite/",
+      "display_label": "Axolotl",
+      "core": false
+    },
+    {
+      "id": "bpr_reptiles",
+      "label": "Vila dos Répteis",
+      "emoji": "🐊",
+      "one_liner": "Find a snake, a caiman, or a turtle.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Vila dos Répteis",
+      "qa_card": {
+        "question": "What did you notice about the Vila dos Répteis?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://bioparquedorio.com.br/visite/",
+      "display_label": "Vila dos Répteis",
+      "core": false
+    },
+    {
+      "id": "bpr_primates",
+      "label": "Ilha dos Primatas",
+      "emoji": "🐒",
+      "one_liner": "Find an Amazon monkey on the island.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Ilha dos Primatas",
+      "qa_card": {
+        "question": "What did you notice about the Ilha dos Primatas?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://bioparquedorio.com.br/visite/",
+      "display_label": "Ilha dos Primatas",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -152,7 +230,7 @@
     "orangutan",
     "two_toed_sloth"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (bioparquedorio.com.br + Prefeitura 2021 circuit). bioparque.org.br was down — Starter.",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (bioparquedorio.com.br + Prefeitura 2021 circuit). bioparque.org.br was down — Starter. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {

@@ -47,6 +47,188 @@
       "presence_source": "official_animals_page",
       "display_label": "Asian small-clawed otter",
       "core": true
+    },
+    {
+      "id": "ns_elephant",
+      "label": "Asian elephant",
+      "emoji": "🐘",
+      "one_liner": "Listen for the elephants after dark.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Night Safari",
+      "qa_card": {
+        "question": "What did you notice about the Asian elephant?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
+      "display_label": "Asian elephant",
+      "core": false
+    },
+    {
+      "id": "ns_pangolin",
+      "label": "Sunda pangolin",
+      "emoji": "🦔",
+      "one_liner": "Find the animal covered in scales.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Pangolin Trail",
+      "qa_card": {
+        "question": "What did you notice about the Sunda pangolin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
+      "display_label": "Sunda pangolin",
+      "core": false
+    },
+    {
+      "id": "ns_devil",
+      "label": "Tasmanian devil",
+      "emoji": "🐾",
+      "one_liner": "Spot the small black devil.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tasmanian Devil Trail",
+      "qa_card": {
+        "question": "What did you notice about the Tasmanian devil?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
+      "display_label": "Tasmanian devil",
+      "core": false
+    },
+    {
+      "id": "ns_tapir",
+      "label": "Malayan tapir",
+      "emoji": "🐗",
+      "one_liner": "Black and white, like a big cookie.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Night Safari",
+      "qa_card": {
+        "question": "What did you notice about the Malayan tapir?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
+      "display_label": "Malayan tapir",
+      "core": false
+    },
+    {
+      "id": "ns_white_tiger",
+      "label": "White tiger",
+      "emoji": "🐅",
+      "one_liner": "A tiger with dark stripes on white fur.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Night Safari",
+      "qa_card": {
+        "question": "What did you notice about the White tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
+      "display_label": "White tiger",
+      "core": false
+    },
+    {
+      "id": "ns_rhino",
+      "label": "Indian rhinoceros",
+      "emoji": "🦏",
+      "one_liner": "Count the horns: just one!",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Night Safari",
+      "qa_card": {
+        "question": "What did you notice about the Indian rhinoceros?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
+      "display_label": "Indian rhinoceros",
+      "core": false
+    },
+    {
+      "id": "ns_fishing_cat",
+      "label": "Fishing cat",
+      "emoji": "🐈",
+      "one_liner": "A cat that likes water. Can you find it?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Night Safari",
+      "qa_card": {
+        "question": "What did you notice about the Fishing cat?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
+      "display_label": "Fishing cat",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -65,7 +247,7 @@
   "route_90m": [
     "asian_small_clawed_otter"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (mandai.com Night Safari animals). One published catalog overlap; short stays short. Not Singapore Zoo.",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (mandai.com Night Safari animals). One published catalog overlap; short stays short. Not Singapore Zoo. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "audited",
   "do_not_list": [
     {

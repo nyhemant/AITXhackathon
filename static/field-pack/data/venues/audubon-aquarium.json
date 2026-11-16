@@ -101,6 +101,136 @@
       "presence_source": "official_animals_page",
       "display_label": "Stingray",
       "core": true
+    },
+    {
+      "id": "aud_white_gator",
+      "label": "White alligator",
+      "emoji": "🐊",
+      "one_liner": "Find the alligator that is white.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Down the Bayou",
+      "qa_card": {
+        "question": "What did you notice about the White alligator?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://audubonnatureinstitute.org/aquarium",
+      "display_label": "White alligator",
+      "core": false
+    },
+    {
+      "id": "aud_gulf",
+      "label": "Gulf of America Exhibit",
+      "emoji": "🌊",
+      "one_liner": "Find the biggest fish in the Gulf tank.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Gulf of America Exhibit",
+      "qa_card": {
+        "question": "What did you notice about the Gulf of America Exhibit?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://audubonnatureinstitute.org/aquarium",
+      "display_label": "Gulf of America Exhibit",
+      "core": false
+    },
+    {
+      "id": "aud_cownose",
+      "label": "Cownose ray",
+      "emoji": "🐟",
+      "one_liner": "Watch the rays flap like wings.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Ray touch pool",
+      "qa_card": {
+        "question": "What did you notice about the Cownose ray?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://audubonnatureinstitute.org/aquarium",
+      "display_label": "Cownose ray",
+      "core": false
+    },
+    {
+      "id": "aud_maya",
+      "label": "Maya Tunnel",
+      "emoji": "🐠",
+      "one_liner": "Walk under the fish in the tunnel.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Maya Tunnel",
+      "qa_card": {
+        "question": "What did you notice about the Maya Tunnel?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://audubonnatureinstitute.org/aquarium",
+      "display_label": "Maya Tunnel",
+      "core": false
+    },
+    {
+      "id": "aud_bayou",
+      "label": "Down the Bayou",
+      "emoji": "🌿",
+      "one_liner": "Find a swamp animal hiding in the plants.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Down the Bayou",
+      "qa_card": {
+        "question": "What did you notice about the Down the Bayou?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://audubonnatureinstitute.org/aquarium",
+      "display_label": "Down the Bayou",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -122,7 +252,7 @@
     "shark",
     "stingray"
   ],
-  "research_notes": "[2026-08-23] Wave 4: official aquarium landing only. Combined zoo+aquarium directory not used for extra cards. Short overlap. No invented verify date.",
+  "research_notes": "[2026-08-23] Wave 4: official aquarium landing only. Combined zoo+aquarium directory not used for extra cards. Short overlap. No invented verify date. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {

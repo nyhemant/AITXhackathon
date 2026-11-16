@@ -215,7 +215,7 @@ class Wave2bKindFilterTests(unittest.TestCase):
         venues = _load_catalog_venues()
         for slug in WAVE2B:
             data = _load_venue(slug)
-            cids = [it.get("catalog_id") for it in data.get("items") or []]
+            cids = [it.get("catalog_id") for it in data.get("items") or [] if it.get("catalog_id")]  # gate B2: card-less official-source finds have no catalog card
             self.assertTrue(cids, slug)
             self.assertGreaterEqual(len(cids), 3, slug)
             for cid in cids:
@@ -232,7 +232,7 @@ class Wave2bKindFilterTests(unittest.TestCase):
         venues = _load_catalog_venues()
         for slug in WAVE2B:
             data = _load_venue(slug)
-            cids = [it.get("catalog_id") for it in data.get("items") or []]
+            cids = [it.get("catalog_id") for it in data.get("items") or [] if it.get("catalog_id")]  # gate B2: card-less official-source finds have no catalog card
             self.assertEqual(venues[slug]["animalIds"], cids, slug)
             self.assertEqual(venues[slug]["featuredAnimalIds"][:3], cids[:3], slug)
             self.assertEqual(data.get("route_90m"), WAVE2B_ROUTES[slug], slug)
@@ -289,7 +289,7 @@ class Wave2bHonestyTests(unittest.TestCase):
         data = _load_venue("san-diego-safari-park")
         self.assertEqual(data.get("type"), "safari_zoo")
         self.assertEqual(data.get("route_90m"), WAVE2B_ROUTES["san-diego-safari-park"])
-        cids = [it.get("catalog_id") for it in data.get("items") or []]
+        cids = [it.get("catalog_id") for it in data.get("items") or [] if it.get("catalog_id")]  # gate B2: card-less official-source finds have no catalog card
         self.assertEqual(cids[:3], ["african-elephant", "reticulated-giraffe", "sumatran-tiger"])
         self.assertNotIn("giant-panda", cids)
         self.assertNotIn("koala", cids)

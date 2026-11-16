@@ -172,7 +172,7 @@ class Wave2aKindFilterTests(unittest.TestCase):
         venues = _load_catalog_venues()
         for slug in WAVE2A:
             data = _load_venue(slug)
-            cids = [it.get("catalog_id") for it in data.get("items") or []]
+            cids = [it.get("catalog_id") for it in data.get("items") or [] if it.get("catalog_id")]  # gate B2: card-less official-source finds have no catalog card
             self.assertTrue(cids, slug)
             for cid in cids:
                 self.assertIn(cid, kinds, f"{slug} unknown slug {cid}")
@@ -209,7 +209,7 @@ class Wave2aKindFilterTests(unittest.TestCase):
         venues = _load_catalog_venues()
         for slug in WAVE2A:
             data = _load_venue(slug)
-            cids = [it.get("catalog_id") for it in data.get("items") or []]
+            cids = [it.get("catalog_id") for it in data.get("items") or [] if it.get("catalog_id")]  # gate B2: card-less official-source finds have no catalog card
             self.assertEqual(venues[slug]["animalIds"], cids, slug)
             featured = [it.get("catalog_id") for it in data.get("items") or [] if it.get("core")][:6]
             self.assertEqual(venues[slug]["featuredAnimalIds"][:3], cids[:3], slug)

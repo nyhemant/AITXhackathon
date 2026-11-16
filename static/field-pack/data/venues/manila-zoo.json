@@ -101,6 +101,162 @@
       "presence_source": "official_animals_page",
       "display_label": "River / lake fish",
       "core": true
+    },
+    {
+      "id": "mnl_tiger",
+      "label": "Bengal tiger",
+      "emoji": "🐅",
+      "one_liner": "Find the stripes.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Bengal tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.manilazoo.ph/animals",
+      "display_label": "Bengal tiger",
+      "core": false
+    },
+    {
+      "id": "mnl_deer",
+      "label": "Philippine deer",
+      "emoji": "🦌",
+      "one_liner": "A small deer found only in the Philippines.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Philippine deer?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.manilazoo.ph/animals",
+      "display_label": "Philippine deer",
+      "core": false
+    },
+    {
+      "id": "mnl_cassowary",
+      "label": "Double-wattled cassowary",
+      "emoji": "🦤",
+      "one_liner": "A big bird that can't fly. Find its helmet.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Double-wattled cassowary?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.manilazoo.ph/animals",
+      "display_label": "Double-wattled cassowary",
+      "core": false
+    },
+    {
+      "id": "mnl_croc",
+      "label": "Estuarine crocodile",
+      "emoji": "🐊",
+      "one_liner": "Is the crocodile's mouth open?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Estuarine crocodile?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.manilazoo.ph/animals",
+      "display_label": "Estuarine crocodile",
+      "core": false
+    },
+    {
+      "id": "mnl_eagle",
+      "label": "Philippine serpent eagle",
+      "emoji": "🦅",
+      "one_liner": "Find the eagle's sharp eyes.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Philippine serpent eagle?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.manilazoo.ph/animals",
+      "display_label": "Philippine serpent eagle",
+      "core": false
+    },
+    {
+      "id": "mnl_macaque",
+      "label": "Celebes black ape",
+      "emoji": "🐒",
+      "one_liner": "A black monkey with a crest on its head.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Celebes black ape?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.manilazoo.ph/animals",
+      "display_label": "Celebes black ape",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -121,7 +277,7 @@
     "ostrich",
     "freshwater_fish"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (manilazoo.ph about + official animals JS bundle). Short overlap stays short.",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (manilazoo.ph about + official animals JS bundle). Short overlap stays short. [2026-11-16] SEO gate B2: added official-list animals; Asian elephant left out on purpose (Mali died in 2023 though the animals page still lists the species)",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -242,7 +398,8 @@
   "presence_sources": [
     "https://www.manilazoo.ph/",
     "https://manilazoo.ph/about-us",
-    "https://manilazoo.ph/animals"
+    "https://manilazoo.ph/animals",
+    "https://www.manilazoo.ph/animals"
   ],
   "bonus_hunt": {
     "tagline": "Manila bonus · lion + ostrich + freshwater fish",
