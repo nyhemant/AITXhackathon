@@ -71,7 +71,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://korkeasaari.fi/en/animal/snow-leopard/",
       "display_label": "Snow leopard",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "kor_wolverine",
@@ -97,7 +98,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://korkeasaari.fi/en/animal/wolverine/",
       "display_label": "Wolverine",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "kor_takin",
@@ -123,7 +125,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://korkeasaari.fi/en/animal/takin/",
       "display_label": "Takin",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "kor_brown_bear",
@@ -149,7 +152,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://korkeasaari.fi/en/animal/brown-bear/",
       "display_label": "Brown bear",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "kor_amur_leopard",
@@ -175,7 +179,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://korkeasaari.fi/en/animal/amur-leopard/",
       "display_label": "Amur leopard",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     }
   ],
   "content_mode": "curated",

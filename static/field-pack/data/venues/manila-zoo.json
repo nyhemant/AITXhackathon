@@ -126,7 +126,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Bengal tiger",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnl_deer",
@@ -152,7 +153,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Philippine deer",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnl_cassowary",
@@ -178,7 +180,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Double-wattled cassowary",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnl_croc",
@@ -204,7 +207,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Estuarine crocodile",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnl_eagle",
@@ -230,7 +234,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Philippine serpent eagle",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnl_macaque",
@@ -256,7 +261,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Celebes black ape",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     }
   ],
   "content_mode": "curated",

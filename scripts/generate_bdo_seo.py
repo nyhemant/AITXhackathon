@@ -1675,6 +1675,25 @@ def cam_disclaimer_peers(venue_kind: str) -> str:
     return "other zoos"
 
 
+_ANIMAL_HUBS = frozenset({"wildlife", "sealife"})
+
+
+def home_card_is_animal(it: dict) -> bool:
+    """True for a living-animal talk card: a wildlife/sealife catalog card, or a card-less
+    venue find marked find_kind == "animal". Halls, exhibits, fossils and park stops are not."""
+    from field_pack_catalog_kind import load_card_kinds
+
+    global _CARD_KINDS_CACHE
+    try:
+        kinds = _CARD_KINDS_CACHE
+    except NameError:
+        kinds = _CARD_KINDS_CACHE = load_card_kinds()
+    if str(it.get("find_kind") or "") == "animal":
+        return True
+    cid = str(it.get("id") or "").strip()
+    return (kinds.get(cid) or {}).get("hub") in _ANIMAL_HUBS
+
+
 def home_session_html(
     items: list[dict],
     *,
@@ -1749,6 +1768,11 @@ def home_session_html(
             f"live at {esc(peers)}.</p>"
         )
     n_home = len(cards)
+    # Follow-up 2026-11-16: the label counts animals only (catalog wildlife/sealife cards,
+    # or card-less finds marked find_kind "animal"), not halls or exhibits. Frozen pages keep
+    # the old count until the ~2026-12-10 judge date.
+    if venue_id not in FROZEN_PLACE_SLUGS:
+        n_home = sum(1 for raw in items[:12] if str(raw.get("id") or "").strip() and home_card_is_animal(raw))
     plural = "s" if n_home != 1 else ""
     count_label = (
         f"{n_home} animal{plural} with talk cards"
@@ -2890,6 +2914,7 @@ def _featured_from_mission(mission_venue: dict, catalog_v: dict | None = None) -
                     "links": feat.get("links") or {},
                     "packTemplate": feat.get("packTemplate") or "",
                     "qa_card": it.get("qa_card") or {},
+                    "find_kind": it.get("find_kind") or "",
                 }
             )
         )

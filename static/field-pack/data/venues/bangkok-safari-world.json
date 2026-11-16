@@ -184,7 +184,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.safariworld.com/showtime/",
       "display_label": "Sea lion show",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "swb_dolphin",
@@ -210,7 +211,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.safariworld.com/showtime/",
       "display_label": "Dolphin show",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "swb_kangaroo",
@@ -236,7 +238,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.safariworld.com/showtime/",
       "display_label": "Camp Kangaroo",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "swb_giraffe",
@@ -262,7 +265,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.safariworld.com/showtime/",
       "display_label": "Giraffe Feeding",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "swb_aviary",

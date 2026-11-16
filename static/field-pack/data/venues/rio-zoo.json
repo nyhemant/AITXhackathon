@@ -157,7 +157,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://bioparquedorio.com.br/visite/",
       "display_label": "Axolotl",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "bpr_reptiles",

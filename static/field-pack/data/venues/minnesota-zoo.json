@@ -181,7 +181,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://mnzoo.org/blog/animals/amur-tiger/",
       "display_label": "Amur tiger",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnz_sea_otter",
@@ -207,7 +208,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://mnzoo.org/blog/animals/sea-otter/",
       "display_label": "Sea otter",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnz_brown_bear",
@@ -233,7 +235,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://mnzoo.org/blog/animals/brown-bear/",
       "display_label": "Brown bear",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnz_moose",
@@ -259,7 +262,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://mnzoo.org/blog/animals/moose/",
       "display_label": "Moose",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnz_malayan_tapir",
@@ -285,7 +289,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://mnzoo.org/blog/animals/malayan-tapir/",
       "display_label": "Malayan tapir",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnz_hawaiian_monk_seals",
@@ -311,7 +316,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://mnzoo.org/blog/animals/hawaiian-monk-seals/",
       "display_label": "Hawaiian monk seal",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnz_bactrian_camel",
@@ -337,7 +343,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://mnzoo.org/blog/animals/bactrian-camel/",
       "display_label": "Bactrian camel",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "mnz_american_bison",
@@ -363,7 +370,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://mnzoo.org/blog/animals/american-bison/",
       "display_label": "American bison",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     }
   ],
   "content_mode": "curated",

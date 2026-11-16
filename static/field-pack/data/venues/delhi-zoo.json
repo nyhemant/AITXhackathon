@@ -129,7 +129,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
       "display_label": "Bengal tiger",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "nzp_lion",
@@ -155,7 +156,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
       "display_label": "Asiatic lion",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "nzp_rhino",
@@ -181,7 +183,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
       "display_label": "Indian rhinoceros",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "nzp_sloth_bear",
@@ -207,7 +210,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
       "display_label": "Sloth bear",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "nzp_barasingha",
@@ -233,7 +237,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
       "display_label": "Barasingha (swamp deer)",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "nzp_gharial",
@@ -259,7 +264,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://nzpnewdelhi.gov.in/en/page/animals_inventory",
       "display_label": "Gharial",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     }
   ],
   "content_mode": "curated",

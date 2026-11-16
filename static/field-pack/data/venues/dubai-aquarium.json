@@ -178,7 +178,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.thedubaiaquarium.com/",
       "display_label": "Royal Croc duo (crocodiles)",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "dxb_penguin",
@@ -204,7 +205,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.thedubaiaquarium.com/",
       "display_label": "Penguins",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "dxb_tunnel",

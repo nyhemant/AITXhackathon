@@ -159,7 +159,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.alainzoo.com/en/discover/animals/arabian-oryx",
       "display_label": "Arabian oryx",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "aaz_southern_white_rhino",
@@ -185,7 +186,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.alainzoo.com/en/discover/animals/southern-white-rhino",
       "display_label": "Southern white rhino",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "aaz_sand_cat",
@@ -211,7 +213,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.alainzoo.com/en/discover/animals/sand-cat",
       "display_label": "Arabian sand cat",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "aaz_gorilla",
@@ -237,7 +240,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.alainzoo.com/en/discover/animals/gorilla",
       "display_label": "Gorilla",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "aaz_sheikh_zayed",

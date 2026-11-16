@@ -126,7 +126,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://audubonnatureinstitute.org/aquarium",
       "display_label": "White alligator",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "aud_gulf",
@@ -178,7 +179,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://audubonnatureinstitute.org/aquarium",
       "display_label": "Cownose ray",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "aud_maya",
