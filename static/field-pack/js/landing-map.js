@@ -1,5 +1,5 @@
 (() => {
-  const allPlaces = window.FP_PLACES || [];
+  const allPlaces = (window.FP_PLACES || []).filter((p) => p.listed !== false);
   window.FP_READY_STRIP = {
     us: [
       "dallas-zoo",

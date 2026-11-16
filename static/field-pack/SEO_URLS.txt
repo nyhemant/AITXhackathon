@@ -11,13 +11,9 @@ https://kidzookit.com/field-pack/athens-attica-zoo/
 https://kidzookit.com/field-pack/auckland-zoo/
 https://kidzookit.com/field-pack/bangkok-safari-world/
 https://kidzookit.com/field-pack/barcelona-zoo/
-https://kidzookit.com/field-pack/beijing-zoo/
 https://kidzookit.com/field-pack/bangalore-bannerghatta/
 https://kidzookit.com/field-pack/berlin-zoo/
-https://kidzookit.com/field-pack/bogota-zoo/
 https://kidzookit.com/field-pack/budapest-zoo/
-https://kidzookit.com/field-pack/ecoparque-ba/
-https://kidzookit.com/field-pack/cairo-zoo/
 https://kidzookit.com/field-pack/calgary-zoo/
 https://kidzookit.com/field-pack/two-oceans-aquarium/
 https://kidzookit.com/field-pack/copenhagen-zoo/
@@ -45,7 +41,6 @@ https://kidzookit.com/field-pack/montreal-biodome/
 https://kidzookit.com/field-pack/moscow-zoo/
 https://kidzookit.com/field-pack/mumbai-byculla-zoo/
 https://kidzookit.com/field-pack/munich-zoo/
-https://kidzookit.com/field-pack/nairobi-safari-walk/
 https://kidzookit.com/field-pack/osaka-aquarium/
 https://kidzookit.com/field-pack/paris-zoo/
 https://kidzookit.com/field-pack/perth-zoo/
@@ -53,12 +48,10 @@ https://kidzookit.com/field-pack/prague-zoo/
 https://kidzookit.com/field-pack/rio-zoo/
 https://kidzookit.com/field-pack/rome-bioparco/
 https://kidzookit.com/field-pack/santiago-zoo/
-https://kidzookit.com/field-pack/lotte-aquarium-seoul/
 https://kidzookit.com/field-pack/seoul-zoo/
 https://kidzookit.com/field-pack/shanghai-ocean-aquarium/
 https://kidzookit.com/field-pack/singapore-night-safari/
 https://kidzookit.com/field-pack/singapore-zoo/
-https://kidzookit.com/field-pack/stockholm-skansen/
 https://kidzookit.com/field-pack/taronga-zoo/
 https://kidzookit.com/field-pack/sao-paulo-zoo/
 https://kidzookit.com/field-pack/taipei-zoo/
