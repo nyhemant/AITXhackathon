@@ -1323,6 +1323,7 @@ window.FP_PLACES = [
   },
   {
     id: "stockholm-skansen",
+    listed: false, // noindex place: page stays live, not shown on the hub map/finder
     name: "Skansen",
     city: "Stockholm",
     state: "",
@@ -1612,6 +1613,7 @@ window.FP_PLACES = [
   },
   {
     id: "nairobi-safari-walk",
+    listed: false, // noindex place: page stays live, not shown on the hub map/finder
     name: "Nairobi Safari Walk",
     city: "Nairobi",
     state: "",
@@ -1629,6 +1631,7 @@ window.FP_PLACES = [
   },
   {
     id: "cairo-zoo",
+    listed: false, // noindex place: page stays live, not shown on the hub map/finder
     name: "Giza Zoo",
     city: "Cairo",
     state: "",
@@ -1731,6 +1734,7 @@ window.FP_PLACES = [
   },
   {
     id: "ecoparque-ba",
+    listed: false, // noindex place: page stays live, not shown on the hub map/finder
     name: "Ecoparque Buenos Aires",
     city: "Buenos Aires",
     state: "",
@@ -1816,6 +1820,7 @@ window.FP_PLACES = [
   },
   {
     id: "bogota-zoo",
+    listed: false, // noindex place: page stays live, not shown on the hub map/finder
     name: "Jaime Duque Park Zoo",
     city: "Bogotá",
     state: "",
@@ -1918,6 +1923,7 @@ window.FP_PLACES = [
   },
   {
     id: "lotte-aquarium-seoul",
+    listed: false, // noindex place: page stays live, not shown on the hub map/finder
     name: "Lotte World Aquarium",
     city: "Seoul",
     state: "",
@@ -1969,6 +1975,7 @@ window.FP_PLACES = [
   },
   {
     id: "beijing-zoo",
+    listed: false, // noindex place: page stays live, not shown on the hub map/finder
     name: "Beijing Zoo",
     city: "Beijing",
     state: "",

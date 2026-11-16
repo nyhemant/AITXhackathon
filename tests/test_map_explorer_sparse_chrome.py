@@ -178,7 +178,7 @@ class MapExplorerSparseChromeTests(unittest.TestCase):
         self.assertNotIn('id="waiting-cities"', self.html)
         self.assertIn('id="cat-places-compact"', self.html)
         self.assertIn('id="cat-popular"', self.html)
-        self.assertIn("218 places worldwide", self.html)
+        self.assertIn("214 places worldwide", self.html)
 
     def test_chrome_drops_essays_faq_and_duplicate_pitch(self):
         chrome = _chrome(self.html)

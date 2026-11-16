@@ -3997,7 +3997,8 @@ def write_type_landing(meta: dict, venues: list[dict]) -> str:
     """Write /field-pack/<path>/index.html type hub. Returns path URL."""
     kind = meta["kind"]
     path = meta["path"]
-    filtered = [v for v in venues if venue_type_kind(v) == kind]
+    # Follow-up 2026-11-16: noindex places stay live but are not listed on hubs.
+    filtered = [v for v in venues if venue_type_kind(v) == kind and v.get("id") not in NOINDEX_PLACE_SLUGS]
     filtered.sort(key=lambda v: ((v.get("city") or "").lower(), (v.get("name") or "").lower()))
 
     # Directory by continent (same as main landing)
@@ -6620,6 +6621,8 @@ def patch_landing_directory(venues: list[dict]) -> None:
 
     by_type: dict[str, list[dict]] = {m["kind"]: [] for m in _TYPE_DIR_META}
     for v in venues:
+        if v.get("id") in NOINDEX_PLACE_SLUGS:  # follow-up 2026-11-16: live, not listed
+            continue
         kind = venue_type_kind(v)
         if kind in by_type:
             by_type[kind].append(v)
@@ -6723,7 +6726,7 @@ def patch_landing_directory(venues: list[dict]) -> None:
         + "</div></div>"
     )
 
-    n_places = len(venues)
+    n_places = sum(len(x) for x in by_type.values())
     all_places_html = _all_places_list_html(by_type, n_places)
 
     places_inner = (
@@ -6788,6 +6791,12 @@ def patch_landing_directory(venues: list[dict]) -> None:
     html = re.sub(
         r"<span data-place-count>\d+</span>",
         f"<span data-place-count>{n_places}</span>",
+        html,
+        count=1,
+    )
+    html = re.sub(
+        r"<noscript><p class=\"map-count-quiet\">\d+ places worldwide</p></noscript>",
+        f'<noscript><p class="map-count-quiet">{n_places} places worldwide</p></noscript>',
         html,
         count=1,
     )
@@ -7055,8 +7064,9 @@ def main() -> int:
     write_robots()
     manifest = {
         "generated": TODAY,
-        "count": len(urls),
-        "urls": [f"{SITE}{u}" for u in urls],
+        # Follow-up 2026-11-16: noindex places are live but not listed for Search Console.
+        "count": len([u for u in urls if u.strip("/").split("/")[-1] not in NOINDEX_PLACE_SLUGS]),
+        "urls": [f"{SITE}{u}" for u in urls if u.strip("/").split("/")[-1] not in NOINDEX_PLACE_SLUGS],
         "type_landings": [f"{SITE}{u}" for u in type_urls],
         "landing": f"{SITE}/field-pack/",
     }

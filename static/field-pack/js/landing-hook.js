@@ -1,5 +1,5 @@
 (() => {
-  const places = window.FP_PLACES || [];
+  const places = (window.FP_PLACES || []).filter((p) => p.listed !== false);
   const chips = document.getElementById("city-chips");
   const citySelect = document.getElementById("city-select");
 

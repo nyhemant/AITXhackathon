@@ -111,6 +111,8 @@ def load():
             if cid not in seen and (CARDS / cid / "index.html").exists():
                 seen.append(cid)
         v["_cards"] = seen
+        # Follow-up 2026-11-16: noindex places keep their own links but are never a link target.
+        v["_noindex"] = '<meta name="robots" content="noindex' in s
         places[v["slug"]] = v
     cards = {}
     for f in sorted(CARDS.glob("*/index.html")):
@@ -130,7 +132,7 @@ def card_anchor(name: str) -> str:
 
 def place_picks(v, places):
     slug, grp = v["slug"], GROUP[v["type"]]
-    others = [p for p in places.values() if p["slug"] != slug]
+    others = [p for p in places.values() if p["slug"] != slug and not p.get("_noindex")]
     near = sorted((p for p in others if km(v, p) <= 350), key=lambda p: km(v, p))[:3]
     picks = list(near)
     for p in sorted((p for p in others if GROUP[p["type"]] == grp), key=lambda p: (km(v, p), p["slug"])):
@@ -151,7 +153,7 @@ def reciprocal_picks(places):
             inbound[p["slug"]] += 1
     out = {s: (n, list(pk)) for s, (n, pk) in base.items()}
     for s in sorted(places, key=lambda x: (inbound[x], x)):
-        if inbound[s] >= MIN_PLACE_INBOUND:
+        if inbound[s] >= MIN_PLACE_INBOUND or places[s].get("_noindex"):
             continue
         for p in base[s][1]:
             lst = out[p["slug"]][1]
@@ -256,6 +258,8 @@ def do_cards(places, cards):
     used = {}
     by_card = {cid: [] for cid in cards}
     for v in places.values():
+        if v.get("_noindex"):
+            continue
         for cid in v["_cards"]:
             by_card[cid].append(v)
     rank = {"verified": 0, "high": 1}

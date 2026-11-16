@@ -54,10 +54,12 @@ class NoindexThin(unittest.TestCase):
         self.assertEqual(gen.apply_place_notice("cairo-zoo", gen.apply_place_notice("cairo-zoo", lead)).count("seo-place-notice"), 1)
         self.assertEqual(gen.apply_place_notice("mumbai-byculla-zoo", lead), lead)
 
-    def test_hub_still_links_them(self):
+    def test_pages_stay_live_off_hubs(self):
+        # Follow-up 2026-11-16: hubs no longer list noindex places; the pages still exist.
         hub = (ROOT / "static/field-pack/index.html").read_text(encoding="utf-8")
         for slug in NOINDEX:
-            self.assertIn(f'href="/field-pack/{slug}/"', hub)
+            self.assertNotIn(f'href="/field-pack/{slug}/"', hub)
+            self.assertTrue((ROOT / f"static/field-pack/{slug}/index.html").is_file())
 
 
 if __name__ == "__main__":
