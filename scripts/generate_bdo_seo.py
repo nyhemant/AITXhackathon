@@ -1701,7 +1701,11 @@ def home_session_html(
         extra = real_extra_qa_html(it)
         watch = watch_links_html(it)
         vft = it.get("vft") or {}
-        if str(vft.get("cam_url") or "").strip():
+        # 2026-11-16 gate B3: only a rendered cam row earns the "same animals live"
+        # line (Helsinki showed it with 0 cams). Frozen test pages keep old logic.
+        if str(vft.get("cam_url") or "").strip() and (
+            'class="seo-watch-link"' in watch or venue_id in FROZEN_PLACE_SLUGS
+        ):
             has_cam_links = True
         href = start_here_card_href(cid, venue_id)
         # No public card page — stay on this place-page card, do not invent one.
@@ -2135,6 +2139,8 @@ def apply_place_robots(slug: str, html: str) -> str:
 
 LEGACY_LD_TAIL = " for Kids — Explore at Home or Print a Hunt"
 LEGACY_LD_SLUGS = (TEST_SLUGS | COMPARISON_SLUGS) - {"air-and-space", "dallas-zoo"}
+# The 24 scavenger test/comparison pages: byte-frozen until about 2026-12-10.
+FROZEN_PLACE_SLUGS = frozenset(TEST_SLUGS | COMPARISON_SLUGS)
 
 
 def seo_hunt_label(v: dict) -> str:
@@ -3369,6 +3375,12 @@ def mission_drawer_html(mission_venue: dict, mission: dict) -> str:
         f"<span>{esc(c.get('text') or '')}</span></li>"
         for c in mission.get("challenges") or []
     )
+    # 2026-11-16 gate B3: mission-ui.js renderSheet() fills both lists when the
+    # drawer opens, so a server copy only duplicates the on-page Finds list.
+    # The 24 frozen scavenger test/comparison pages keep the old markup.
+    if vid not in FROZEN_PLACE_SLUGS:
+        finds_html = ""
+        ch_html = ""
     return f"""
   <span id="mission" class="mission-hash-alias" hidden></span>
   <span id="print" class="mission-hash-alias" hidden></span>
