@@ -2133,9 +2133,25 @@ def seo_hunt_label(v: dict) -> str:
     return label
 
 
+# 2026-11-16 (pulled forward from Nov 24; freeze lifted Nov 15): the 12 scavenger-hunt
+# TEST pages add "Printable" to the search title only (H1, LD and the 12 comparison
+# pages are unchanged). Judge with the rest of the test around 2026-12-10.
+SCAV_PRINTABLE_TITLE_SLUGS = TEST_SLUGS
+
+
+def printable_title_label(label: str) -> str:
+    """"<Place> Scavenger Hunt for Kids" -> "<Place> Printable Scavenger Hunt for Kids" (<=60)."""
+    out = label.replace(" Scavenger Hunt", " Printable Scavenger Hunt", 1)
+    if len(out) > TITLE_MAX and out.endswith(" for Kids"):
+        out = out[: -len(" for Kids")]
+    return out
+
+
 def title_for(v: dict) -> str:
     """``<label> · KidZooKit`` when that fits in 60 characters, else the label alone."""
     label = seo_hunt_label(v)
+    if (v.get("id") or "") in SCAV_PRINTABLE_TITLE_SLUGS:
+        label = printable_title_label(label)
     branded = f"{label} · {BRAND_NAME}"
     return branded if len(branded) <= TITLE_MAX else label
 

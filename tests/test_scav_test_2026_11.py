@@ -322,12 +322,11 @@ class ScavTestPages(unittest.TestCase):
                 self.assertNotIn(name.lower(), remaining.lower(), name)
 
     def _assert_frozen(self, page: str, origin: str) -> None:
+        # Titles (title/og:title/twitter:title) got "Printable" on 2026-11-16; they are
+        # pinned in tests/test_scav_printable_titles_2026_11_16.py.
         patterns = (
-            r"<title>.*?</title>",
             r'<meta name="description" content="[^"]*"\s*/?>',
-            r'<meta property="og:title" content="[^"]*"\s*/?>',
             r'<meta property="og:description" content="[^"]*"\s*/?>',
-            r'<meta name="twitter:title" content="[^"]*"\s*/?>',
             r'<meta name="twitter:description" content="[^"]*"\s*/?>',
             r"<h1[^>]*>.*?</h1>",
             r'<link rel="canonical" href="[^"]*"\s*/?>',
@@ -359,6 +358,9 @@ def _page_edit_ok(body: str) -> bool:
         "data-kz-scav-print",
         "/shell/qr-welcome.js?v=",
         "/field-pack/js/mission/mission-ui.js?v=",
+        "<title>",
+        '<meta property="og:title"',
+        '<meta name="twitter:title"',
     )
     return any(marker in body for marker in markers)
 
