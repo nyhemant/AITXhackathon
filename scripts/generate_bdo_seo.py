@@ -75,6 +75,7 @@ from study_cards import (  # noqa: E402
 )
 from scav_test_2026_11 import (  # noqa: E402
     BLOCK_SLUGS,
+    COMPARISON_SLUGS,
     TEST_SLUGS,
     scav_top_block,
     scav_top_css_tag,
@@ -2120,6 +2121,10 @@ def seo_place_name(v: dict) -> str:
     return " ".join(str(v.get("name") or "").split())
 
 
+LEGACY_LD_TAIL = " for Kids — Explore at Home or Print a Hunt"
+LEGACY_LD_SLUGS = (TEST_SLUGS | COMPARISON_SLUGS) - {"air-and-space", "dallas-zoo"}
+
+
 def seo_hunt_label(v: dict) -> str:
     """Search/social title phrase (not the on-page H1): "<Place> Scavenger Hunt for Kids"."""
     custom = SEO_TITLE_LABELS.get(v.get("id") or "")
@@ -2555,6 +2560,10 @@ def venue_json_ld(v: dict, url: str) -> str:
         steps = [{"@type": "HowToStep", "position": 1, "text": f"Explore {v['name']} with kids using the shortlist."}]
 
     hunt_name = seo_hunt_label(v)
+    # 2026-11-16: LD name/headline match the title. The 24 scavenger test/comparison pages
+    # keep the legacy LD text until the ~2026-12-10 judge date (they stay byte-identical).
+    if (v.get("id") or "") in LEGACY_LD_SLUGS:
+        hunt_name = f"{v['name']}{LEGACY_LD_TAIL}"
     howto = {
         "@context": "https://schema.org",
         "@type": "HowTo",
