@@ -2153,6 +2153,28 @@ def apply_place_robots(slug: str, html: str) -> str:
     return html.replace('<meta name="robots" content="index,follow" />', '<meta name="robots" content="noindex,follow" />', 1)
 
 
+# Follow-up 2026-11-16: a place page may only promise live cams in its JSON-LD or meta
+# description when it renders at least one "Live from …" cam row. Pages with only films say
+# films; pages with neither say cards and photos. Frozen test/comparison pages are untouched.
+_LIVE_ROW = '<span class="seo-watch-source">Live'
+_FILM_ROW = '<span class="seo-watch-source">Film'
+
+
+def apply_cam_honesty(slug: str, html: str) -> str:
+    if slug in FROZEN_PLACE_SLUGS or _LIVE_ROW in html:
+        return html
+    films = _FILM_ROW in html
+    html = html.replace(
+        "talk prompts, photos, and live cams",
+        "talk prompts, photos, and films" if films else "talk prompts, and photos",
+    )
+    html = html.replace(
+        '"Phone or laptop (cards, photos, cams)"',
+        '"Phone or laptop (cards, photos, films)"' if films else '"Phone or laptop (cards and photos)"',
+    )
+    return html
+
+
 LEGACY_LD_TAIL = " for Kids — Explore at Home or Print a Hunt"
 LEGACY_LD_SLUGS = (TEST_SLUGS | COMPARISON_SLUGS) - {"air-and-space", "dallas-zoo"}
 # The 24 scavenger test/comparison pages: byte-frozen until about 2026-12-10.
@@ -6974,6 +6996,7 @@ def main() -> int:
         html = with_field_trip_block(v["id"], html)
         html = apply_place_robots(v["id"], html)
         html = apply_place_notice(v["id"], html)
+        html = apply_cam_honesty(v["id"], html)
         (out_dir / "index.html").write_text(html, encoding="utf-8")
         urls.append(f"/field-pack/{v['id']}/")
         text = re.sub(r"<[^>]+>", " ", html)
