@@ -36,6 +36,7 @@ sys.path.insert(0, str(REPO / "src"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from busyparent_agent.site import PUBLIC_SITE  # noqa: E402
 from seo_page_copy import PAGE_COPY  # noqa: E402
+from field_trip_blocks_v1 import with_field_trip_block  # noqa: E402
 from busyparent_agent.url_aliases import (  # noqa: E402
     CARD_SLUG_ALIASES,
     PRINT_PATH,
@@ -6921,6 +6922,7 @@ def main() -> int:
                 html = render_venue_page(v)
         else:
             html = render_venue_page(v)
+        html = with_field_trip_block(v["id"], html)
         (out_dir / "index.html").write_text(html, encoding="utf-8")
         urls.append(f"/field-pack/{v['id']}/")
         text = re.sub(r"<[^>]+>", " ", html)
