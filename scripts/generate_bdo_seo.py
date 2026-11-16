@@ -2429,12 +2429,12 @@ def place_photo_figure(photo: dict) -> str:
     picture = (
         f'<picture>{srcset}<img src="{esc(photo["rel"])}" alt="{esc(photo["alt"])}" '
         f'width="{int(photo["width"])}" height="{int(photo["height"])}" '
-        f'loading="eager" decoding="async"{pos} /></picture>'
+        f'loading="eager" fetchpriority="high" decoding="async"{pos} /></picture>'
         if srcset
         else (
             f'<img src="{esc(photo["rel"])}" alt="{esc(photo["alt"])}" '
             f'width="{int(photo["width"])}" height="{int(photo["height"])}" '
-            f'loading="eager" decoding="async"{pos} />'
+            f'loading="eager" fetchpriority="high" decoding="async"{pos} />'
         )
     )
     return (
