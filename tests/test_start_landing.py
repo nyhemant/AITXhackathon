@@ -1154,13 +1154,13 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-venue-sizer::before", self.css)
         self.assertIn("content: attr(data-sizer)", self.css)
         self.assertIn("wordWidth", self.js)
-        self.assertIn("<title>Virtual Zoo for Kids: Live Cams &amp; Animal Cards | KidZooKit</title>", self.html)
+        self.assertIn("<title>Virtual Zoo for Kids: Animal Cards &amp; Quizzes | KidZooKit</title>", self.html)
         self.assertIn(
-            '<meta property="og:title" content="Virtual Zoo for Kids: Live Cams &amp; Animal Cards | KidZooKit" />',
+            '<meta property="og:title" content="Virtual Zoo for Kids: Animal Cards &amp; Quizzes | KidZooKit" />',
             self.html,
         )
         self.assertIn(
-            '<meta name="twitter:title" content="Virtual Zoo for Kids: Live Cams &amp; Animal Cards | KidZooKit" />',
+            '<meta name="twitter:title" content="Virtual Zoo for Kids: Animal Cards &amp; Quizzes | KidZooKit" />',
             self.html,
         )
         self.assertNotIn("A virtual zoo for curious kids like Arya and Kunal", self.html)
@@ -1178,7 +1178,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("testimonial", self.html.lower())
         # Visible H1 matches the document title; the expedition sentence stays on the page.
         self.assertIn(
-            '<h1 id="start-heading">Virtual Zoo for Kids: Live Cams &amp; Animal Cards</h1>',
+            '<h1 id="start-heading">Virtual Zoo for Kids: Animal Cards &amp; Quizzes</h1>',
             self.html,
         )
         self.assertNotIn('<h1 id="start-heading" class="sr-only">', self.html)
