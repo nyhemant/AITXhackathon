@@ -94,10 +94,12 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-planet",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
       "display_label": "Earth / planet Earth",
-      "presence_note": "Earth galleries (volcanoes, earthquakes) — not space planetarium. Soft Earth."
+      "presence_note": "Earth galleries (volcanoes, earthquakes) — not space planetarium. Soft Earth.",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html"
     },
     {
       "id": "sci_hands_on",
@@ -148,6 +150,140 @@
       "presence_checked": "2026-08-08",
       "display_label": "Free explore",
       "presence_note": "Valid."
+    },
+    {
+      "id": "nhm_hope_whale",
+      "label": "Hope the blue whale",
+      "emoji": "🐋",
+      "one_liner": "Walk under the blue whale skeleton — look up!",
+      "tags": [
+        "wow",
+        "big"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hintze Hall",
+      "qa_card": {
+        "question": "What did you notice about the Hope the blue whale?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+      "display_label": "Hope the blue whale",
+      "core": false
+    },
+    {
+      "id": "nhm_stegosaurus",
+      "label": "Stegosaurus",
+      "emoji": "🦕",
+      "one_liner": "Find the plates along its back.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Earth Hall",
+      "qa_card": {
+        "question": "What did you notice about the Stegosaurus?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+      "display_label": "Stegosaurus",
+      "core": false
+    },
+    {
+      "id": "nhm_dodo",
+      "label": "Dodo",
+      "emoji": "🦤",
+      "one_liner": "Find the extinct dodo in the Birds gallery.",
+      "tags": [
+        "birds",
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Birds gallery",
+      "qa_card": {
+        "question": "What did you notice about the Dodo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+      "display_label": "Dodo",
+      "core": false
+    },
+    {
+      "id": "nhm_quake",
+      "label": "Earthquake simulator",
+      "emoji": "🌋",
+      "one_liner": "Feel the room shake — hold on!",
+      "tags": [
+        "hands",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Volcanoes and Earthquakes",
+      "qa_card": {
+        "question": "What did you notice about the Earthquake simulator?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+      "display_label": "Earthquake simulator",
+      "core": false
+    },
+    {
+      "id": "nhm_fern",
+      "label": "Fern the Diplodocus",
+      "emoji": "🌿",
+      "one_liner": "Bronze Diplodocus in the gardens — how long is its tail?",
+      "tags": [
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Gardens",
+      "qa_card": {
+        "question": "What did you notice about the Fern the Diplodocus?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+      "display_label": "Fern the Diplodocus",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -169,7 +305,7 @@
     "sci_mammal_hall",
     "cm_free_explore"
   ],
-  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -195,7 +331,8 @@
   "presence_sources": [
     "https://www.nhm.ac.uk/",
     "https://www.nhm.ac.uk/visit.html",
-    "https://www.nhm.ac.uk/visit/exhibitions.html"
+    "https://www.nhm.ac.uk/visit/exhibitions.html",
+    "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html"
   ],
   "bonus_hunt": {
     "tagline": "NHM London bonus · dinosaurs + Hintze Hall energy",

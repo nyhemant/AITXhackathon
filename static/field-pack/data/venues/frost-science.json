@@ -219,13 +219,145 @@
         "answer": "Something about how it moves, its shape, or its home in the water!"
       },
       "catalog_id": "sci-dinosaur",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
       "display_label": "Feathers to the Stars / dinosaurs",
-      "presence_note": "Not a full dinosaur hall"
+      "presence_note": "Not a full dinosaur hall",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.frostscience.org/exhibitions-featured/"
+    },
+    {
+      "id": "frs_dig",
+      "label": "The Dig",
+      "emoji": "🦴",
+      "one_liner": "Find a fossil.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "The Dig",
+      "qa_card": {
+        "question": "What did you notice about the The Dig?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.frostscience.org/exhibitions-featured/",
+      "display_label": "The Dig",
+      "core": false
+    },
+    {
+      "id": "frs_power",
+      "label": "Power of Science",
+      "emoji": "🔋",
+      "one_liner": "Find something powered by science.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Power of Science",
+      "qa_card": {
+        "question": "What did you notice about the Power of Science?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.frostscience.org/exhibitions-featured/",
+      "display_label": "Power of Science",
+      "core": false
+    },
+    {
+      "id": "frs_melab",
+      "label": "meLab",
+      "emoji": "🫀",
+      "one_liner": "Learn something about your body.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "meLab",
+      "qa_card": {
+        "question": "What did you notice about the meLab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.frostscience.org/exhibitions-featured/",
+      "display_label": "meLab",
+      "core": false
+    },
+    {
+      "id": "frs_sunspot",
+      "label": "The Sun Spot",
+      "emoji": "☀️",
+      "one_liner": "Find something bright and sunny.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "The Sun Spot",
+      "qa_card": {
+        "question": "What did you notice about the The Sun Spot?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.frostscience.org/exhibitions-featured/",
+      "display_label": "The Sun Spot",
+      "core": false
+    },
+    {
+      "id": "frs_river",
+      "label": "River of Grass",
+      "emoji": "🌾",
+      "one_liner": "Find a plant or animal from Florida.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "River of Grass",
+      "qa_card": {
+        "question": "What did you notice about the River of Grass?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.frostscience.org/exhibitions-featured/",
+      "display_label": "River of Grass",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/frost-science.jpg",
     "visitor_map_page": "https://www.frostscience.org/museum-map-and-guides/",
@@ -244,7 +376,7 @@
     "stingray",
     "sci_planet"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {

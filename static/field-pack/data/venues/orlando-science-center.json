@@ -176,9 +176,168 @@
       "presence_checked": "2026-08-08",
       "display_label": "Make",
       "presence_note": "Maker activities under other names."
+    },
+    {
+      "id": "osc_extreme",
+      "label": "Extreme Sports",
+      "emoji": "🛹",
+      "one_liner": "Find the science in a sport.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Extreme Sports",
+      "qa_card": {
+        "question": "What did you notice about the Extreme Sports?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.osc.org/exhibits",
+      "display_label": "Extreme Sports",
+      "core": false
+    },
+    {
+      "id": "osc_life",
+      "label": "Life",
+      "emoji": "🐢",
+      "one_liner": "Find an animal and its habitat.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Life",
+      "qa_card": {
+        "question": "What did you notice about the Life?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.osc.org/exhibits",
+      "display_label": "Life",
+      "core": false
+    },
+    {
+      "id": "osc_kidstown",
+      "label": "KidsTown",
+      "emoji": "🏡",
+      "one_liner": "Play in a small town for little kids.",
+      "tags": [
+        "play",
+        "hands",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "KidsTown",
+      "qa_card": {
+        "question": "What did you notice about the KidsTown?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.osc.org/exhibits",
+      "display_label": "KidsTown",
+      "core": false
+    },
+    {
+      "id": "osc_kinetic",
+      "label": "Kinetic Zone",
+      "emoji": "⚡",
+      "one_liner": "Find something that moves.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Kinetic Zone",
+      "qa_card": {
+        "question": "What did you notice about the Kinetic Zone?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.osc.org/exhibits",
+      "display_label": "Kinetic Zone",
+      "core": false
+    },
+    {
+      "id": "osc_dinodigs",
+      "label": "DinoDigs",
+      "emoji": "🦖",
+      "one_liner": "Find a dinosaur.",
+      "tags": [
+        "wow",
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "DinoDigs",
+      "qa_card": {
+        "question": "What did you notice about the DinoDigs?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.osc.org/exhibits",
+      "display_label": "DinoDigs",
+      "core": false
+    },
+    {
+      "id": "osc_planet",
+      "label": "Our Planet, Our Solar System",
+      "emoji": "🪐",
+      "one_liner": "Find Earth on the map of space.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Our Planet, Our Solar System",
+      "qa_card": {
+        "question": "What did you notice about the Our Planet, Our Solar System?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.osc.org/exhibits",
+      "display_label": "Our Planet, Our Solar System",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.osc.org/",
@@ -196,7 +355,7 @@
     "sci_planet",
     "sci_dinosaur"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official exhibits-page halls; the exhibits page shows an upcoming 'Exhibit Hall Closure' event, so check the calendar before going",
   "list_confidence": "partial",
   "do_not_list": [
     {

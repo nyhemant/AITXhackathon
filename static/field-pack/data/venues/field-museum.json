@@ -90,10 +90,12 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-hands-on",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
       "display_label": "Crown Family PlayLab / hands-on",
-      "presence_note": "PlayLab exists for younger kids — confirm branding"
+      "presence_note": "PlayLab exists for younger kids — confirm branding",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.fieldmuseum.org/exhibitions/crown-family-playlab"
     },
     {
       "id": "sci_rainforest",
@@ -143,6 +145,190 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Free explore"
+    },
+    {
+      "id": "fm_maximo",
+      "label": "Máximo the Titanosaur",
+      "emoji": "🦕",
+      "one_liner": "Stand by its leg. How tall are you next to it?",
+      "tags": [
+        "wow",
+        "big"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Stanley Field Hall",
+      "qa_card": {
+        "question": "What did you notice about the Máximo the Titanosaur?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.datocms-assets.com/44232/1763650453-2026-tour-operator-packet.pdf",
+      "display_label": "Máximo the Titanosaur",
+      "core": false
+    },
+    {
+      "id": "fm_tully",
+      "label": "Tully Monster",
+      "emoji": "🐛",
+      "one_liner": "Find Illinois' state fossil, the Tully Monster.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Evolving Planet",
+      "qa_card": {
+        "question": "What did you notice about the Tully Monster?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.fieldmuseum.org/exhibitions/evolving-planet",
+      "display_label": "Tully Monster",
+      "core": false
+    },
+    {
+      "id": "fm_sloth",
+      "label": "Giant ground sloth",
+      "emoji": "🦥",
+      "one_liner": "A sloth as big as an elephant! Find its claws.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Evolving Planet",
+      "qa_card": {
+        "question": "What did you notice about the Giant ground sloth?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.fieldmuseum.org/exhibitions/evolving-planet",
+      "display_label": "Giant ground sloth",
+      "core": false
+    },
+    {
+      "id": "fm_tsavo",
+      "label": "Lions of Tsavo",
+      "emoji": "🦁",
+      "one_liner": "Find the two famous lions.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Field Museum",
+      "qa_card": {
+        "question": "What did you notice about the Lions of Tsavo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.datocms-assets.com/44232/1763650453-2026-tour-operator-packet.pdf",
+      "display_label": "Lions of Tsavo",
+      "core": false
+    },
+    {
+      "id": "fm_egypt",
+      "label": "Inside Ancient Egypt",
+      "emoji": "🏺",
+      "one_liner": "Find an animal mummy.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Inside Ancient Egypt",
+      "qa_card": {
+        "question": "What did you notice about the Inside Ancient Egypt?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.fieldmuseum.org/exhibitions/inside-ancient-egypt",
+      "display_label": "Inside Ancient Egypt",
+      "core": false
+    },
+    {
+      "id": "fm_gems",
+      "label": "Grainger Hall of Gems",
+      "emoji": "💎",
+      "one_liner": "Find the sparkliest gem.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Grainger Hall of Gems",
+      "qa_card": {
+        "question": "What did you notice about the Grainger Hall of Gems?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.fieldmuseum.org/exhibitions/grainger-hall-gems",
+      "display_label": "Grainger Hall of Gems",
+      "core": false
+    },
+    {
+      "id": "fm_elephants",
+      "label": "Fighting African elephants",
+      "emoji": "🐘",
+      "one_liner": "Two elephants locked tusks. Find them.",
+      "tags": [
+        "wow",
+        "big"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Field Museum",
+      "qa_card": {
+        "question": "What did you notice about the Fighting African elephants?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.datocms-assets.com/44232/1763650453-2026-tour-operator-packet.pdf",
+      "display_label": "Fighting African elephants",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -159,7 +345,7 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "map-img 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -194,7 +380,12 @@
   "presence_sources": [
     "https://www.fieldmuseum.org/",
     "https://www.fieldmuseum.org/exhibition/halls-and-galleries/evolving-planet",
-    "https://www.fieldmuseum.org/exhibitions"
+    "https://www.fieldmuseum.org/exhibitions",
+    "https://www.fieldmuseum.org/exhibitions/crown-family-playlab",
+    "https://www.datocms-assets.com/44232/1763650453-2026-tour-operator-packet.pdf",
+    "https://www.fieldmuseum.org/exhibitions/evolving-planet",
+    "https://www.fieldmuseum.org/exhibitions/inside-ancient-egypt",
+    "https://www.fieldmuseum.org/exhibitions/grainger-hall-gems"
   ],
   "bonus_hunt": {
     "tagline": "Field Museum bonus · SUE + Evolving Planet",

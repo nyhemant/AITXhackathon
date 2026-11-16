@@ -68,10 +68,12 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-planet",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
       "display_label": "Planet / space hall",
-      "presence_note": "Planetarium typical; confirm show schedule on azscience.org."
+      "presence_note": "Planetarium typical; confirm show schedule on azscience.org.",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.azscience.org/experience/dorrance-planetarium/"
     },
     {
       "id": "sci_rocket",
@@ -200,9 +202,191 @@
       "presence_checked": "2026-08-08",
       "display_label": "Space shuttle / orbiter",
       "presence_note": "No permanent orbiter like California Science Center; do not promise shuttle."
+    },
+    {
+      "id": "azs_all_about_me",
+      "label": "All About Me",
+      "emoji": "🫀",
+      "one_liner": "Find out how your body works.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "All About Me",
+      "qa_card": {
+        "question": "What did you notice about the All About Me?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.azscience.org/experience/all-exhibitions/",
+      "display_label": "All About Me",
+      "core": false
+    },
+    {
+      "id": "azs_create",
+      "label": "CREATE Inside",
+      "emoji": "🛠️",
+      "one_liner": "Make something new.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "CREATE Inside",
+      "qa_card": {
+        "question": "What did you notice about the CREATE Inside?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.azscience.org/experience/all-exhibitions/",
+      "display_label": "CREATE Inside",
+      "core": false
+    },
+    {
+      "id": "azs_flight",
+      "label": "Flight Zone",
+      "emoji": "✈️",
+      "one_liner": "Make something fly.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Flight Zone",
+      "qa_card": {
+        "question": "What did you notice about the Flight Zone?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.azscience.org/experience/all-exhibitions/",
+      "display_label": "Flight Zone",
+      "core": false
+    },
+    {
+      "id": "azs_skycycle",
+      "label": "Evans Family SkyCycle",
+      "emoji": "🚲",
+      "one_liner": "Find the bike up high. Would you ride it?",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Evans Family SkyCycle",
+      "qa_card": {
+        "question": "What did you notice about the Evans Family SkyCycle?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.azscience.org/experience/all-exhibitions/",
+      "display_label": "Evans Family SkyCycle",
+      "core": false
+    },
+    {
+      "id": "azs_cavescape",
+      "label": "CaveScape",
+      "emoji": "🦇",
+      "one_liner": "Find something in the cave.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "CaveScape",
+      "qa_card": {
+        "question": "What did you notice about the CaveScape?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.azscience.org/experience/all-exhibitions/",
+      "display_label": "CaveScape",
+      "core": false
+    },
+    {
+      "id": "azs_forces",
+      "label": "Forces of Nature",
+      "emoji": "🌪️",
+      "one_liner": "Find a storm or a volcano.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Forces of Nature",
+      "qa_card": {
+        "question": "What did you notice about the Forces of Nature?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.azscience.org/experience/all-exhibitions/",
+      "display_label": "Forces of Nature",
+      "core": false
+    },
+    {
+      "id": "azs_solarville",
+      "label": "SolarVille",
+      "emoji": "☀️",
+      "one_liner": "See how sun power runs a town.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "SolarVille",
+      "qa_card": {
+        "question": "What did you notice about the SolarVille?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.azscience.org/experience/all-exhibitions/",
+      "display_label": "SolarVille",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/arizona-science-center.jpg",
     "visitor_map_page": "https://www.azscience.org/visit/plan-your-visit/map/",
@@ -221,7 +405,7 @@
     "sci_planet",
     "cm_free_explore"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -232,7 +416,9 @@
     }
   ],
   "presence_sources": [
-    "https://www.azscience.org/"
+    "https://www.azscience.org/",
+    "https://www.azscience.org/experience/dorrance-planetarium/",
+    "https://www.azscience.org/experience/all-exhibitions/"
   ],
   "bonus_hunt": {
     "tagline": "Arizona Science Center bonus · Planetarium + Kid pick",
