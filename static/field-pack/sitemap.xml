@@ -685,12 +685,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kidzookit.com/field-pack/ecoparque-ba/</loc>
-    <lastmod>2026-11-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://kidzookit.com/field-pack/cairo-zoo/</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -933,12 +927,6 @@
   <url>
     <loc>https://kidzookit.com/field-pack/singapore-zoo/</loc>
     <lastmod>2026-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://kidzookit.com/field-pack/stockholm-skansen/</loc>
-    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
