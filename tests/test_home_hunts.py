@@ -99,20 +99,22 @@ class HomeHuntsTests(unittest.TestCase):
     def test_title_meta_h1_and_canonical_match_main(self):
         for attr in (
             'name="description"',
-            'property="og:title"',
             'property="og:description"',
             'property="og:url"',
             'property="og:image"',
             'property="og:type"',
             'property="og:site_name"',
             'name="twitter:card"',
-            'name="twitter:title"',
             'name="twitter:description"',
             'name="twitter:image"',
         ):
             self.assertEqual(_meta(self.html, attr), _meta(self.main, attr), attr)
+        # 2026-11-16: title/og/twitter/H1 dropped "Live Cams" (the Virtual Field Trip owns it).
         title = re.search(r"<title>(.*?)</title>", self.html).group(1)
-        self.assertEqual(title, re.search(r"<title>(.*?)</title>", self.main).group(1))
+        self.assertEqual(title, "Virtual Zoo for Kids: Animal Cards &amp; Quizzes | KidZooKit")
+        self.assertEqual(_meta(self.html, 'property="og:title"'), title)
+        self.assertEqual(_meta(self.html, 'name="twitter:title"'), title)
+        self.assertNotIn("Live Cams", title)
         canon = re.search(r'<link rel="canonical" href="([^"]+)"', self.html).group(1)
         self.assertEqual(
             canon,
@@ -129,11 +131,7 @@ class HomeHuntsTests(unittest.TestCase):
         ).group(1)
         self.assertEqual(ld, main_ld)
         h1 = re.search(r'<h1 id="start-heading">(.*?)</h1>', self.html).group(1)
-        self.assertEqual(
-            h1,
-            re.search(r'<h1 id="start-heading">(.*?)</h1>', self.main).group(1),
-        )
-        self.assertEqual(h1, "Virtual Zoo for Kids: Live Cams &amp; Animal Cards")
+        self.assertEqual(h1, "Virtual Zoo for Kids: Animal Cards &amp; Quizzes")
         self.assertEqual(self.html.count("<h1"), 1)
 
     def test_toggle_defaults_to_places_and_map_reuses_places_tile(self):
