@@ -185,7 +185,7 @@ class Wave4KindFilterTests(unittest.TestCase):
         for slug in WAVE4:
             data = _load_venue(slug)
             self.assertEqual(data.get("type"), "aquarium", slug)
-            cids = [it.get("catalog_id") for it in data.get("items") or []]
+            cids = [it.get("catalog_id") for it in data.get("items") or [] if it.get("catalog_id")]  # gate B2: card-less official-source finds have no catalog card
             if slug not in SHORT:
                 self.assertGreaterEqual(len(cids), 3, slug)
             for cid in cids:
@@ -203,7 +203,7 @@ class Wave4KindFilterTests(unittest.TestCase):
         venues = _load_catalog_venues()
         for slug in WAVE4:
             data = _load_venue(slug)
-            cids = [it.get("catalog_id") for it in data.get("items") or []]
+            cids = [it.get("catalog_id") for it in data.get("items") or [] if it.get("catalog_id")]  # gate B2: card-less official-source finds have no catalog card
             self.assertEqual(venues[slug]["animalIds"], cids, slug)
             self.assertEqual(venues[slug]["featuredAnimalIds"][:3], cids[:3], slug)
             self.assertEqual(data.get("route_90m"), WAVE4_ROUTES[slug], slug)
@@ -269,6 +269,11 @@ class Wave4HonestyTests(unittest.TestCase):
             data = _load_venue(slug)
             for it in data.get("items") or []:
                 cid = it.get("catalog_id")
+                if cid is None:
+                    # Card-less find (gate B2): must be verified against a named source page.
+                    self.assertEqual(it.get("presence"), "verified", f"{slug} {it.get('id')}")
+                    self.assertTrue(str(it.get("presence_url") or "").startswith("http"), f"{slug} {it.get('id')}")
+                    continue
                 self.assertIn(cid, kinds, f"{slug} invented {cid}")
                 self.assertTrue((FP / "cards" / cid / "index.html").is_file(), f"{slug} unpublished {cid}")
 
