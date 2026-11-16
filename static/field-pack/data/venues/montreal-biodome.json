@@ -42,11 +42,12 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-penguin",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
       "display_label": "Penguin",
-      "presence_note": "Subantarctic / Labrador Coast penguin habitat verified as concept; confirm species. Soft Penguin."
+      "presence_note": "Subantarctic / Labrador Coast penguin habitat verified as concept; confirm species. Soft Penguin.",
+      "presence_url": "https://calendrier.espacepourlavie.ca/"
     },
     {
       "id": "two_toed_sloth",
@@ -231,6 +232,58 @@
       "presence_checked": "2026-08-08",
       "display_label": "Sea turtle",
       "presence_note": "Not confirmed as Biodome icon."
+    },
+    {
+      "id": "bio_puffin",
+      "label": "Atlantic puffin",
+      "emoji": "🐧",
+      "one_liner": "Find the bird with the colorful beak.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Labrador Coast",
+      "qa_card": {
+        "question": "What did you notice about the Atlantic puffin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://calendrier.espacepourlavie.ca/",
+      "display_label": "Atlantic puffin",
+      "core": false
+    },
+    {
+      "id": "bio_maple",
+      "label": "Laurentian Maple Forest",
+      "emoji": "🍁",
+      "one_liner": "Find an animal hiding in the forest.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Laurentian Maple Forest",
+      "qa_card": {
+        "question": "What did you notice about the Laurentian Maple Forest?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://espacepourlavie.ca/en/biodome",
+      "display_label": "Laurentian Maple Forest",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -251,7 +304,7 @@
     "sci_aquarium_zone",
     "african_penguin"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -270,7 +323,8 @@
   "last_presence_audit": "2026-08-08",
   "presence_sources": [
     "https://espacepourlavie.ca/en/biodome",
-    "https://espacepourlavie.ca/en"
+    "https://espacepourlavie.ca/en",
+    "https://calendrier.espacepourlavie.ca/"
   ],
   "bonus_hunt": {
     "tagline": "Biodôme bonus · five ecosystems second look",

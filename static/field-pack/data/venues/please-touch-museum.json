@@ -232,9 +232,165 @@
       "presence_checked": "2026-08-08",
       "display_label": "Free explore",
       "presence_note": "Core product."
+    },
+    {
+      "id": "ptm_food",
+      "label": "Food & Family",
+      "emoji": "🍎",
+      "one_liner": "Cook a pretend meal.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Food & Family",
+      "qa_card": {
+        "question": "What did you notice about the Food & Family?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.pleasetouchmuseum.org/learn/exhibits/",
+      "display_label": "Food & Family",
+      "core": false
+    },
+    {
+      "id": "ptm_carousel",
+      "label": "Woodside Park Dentzel Carousel",
+      "emoji": "🎠",
+      "one_liner": "Pick a carousel animal.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Woodside Park Dentzel Carousel",
+      "qa_card": {
+        "question": "What did you notice about the Woodside Park Dentzel Carousel?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.pleasetouchmuseum.org/learn/exhibits/",
+      "display_label": "Woodside Park Dentzel Carousel",
+      "core": false
+    },
+    {
+      "id": "ptm_river",
+      "label": "River Adventures",
+      "emoji": "🚤",
+      "one_liner": "Float a boat down the river.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "River Adventures",
+      "qa_card": {
+        "question": "What did you notice about the River Adventures?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.pleasetouchmuseum.org/learn/exhibits/all/river-adventures/",
+      "display_label": "River Adventures",
+      "core": false
+    },
+    {
+      "id": "ptm_wonderland",
+      "label": "Wonderland",
+      "emoji": "🐇",
+      "one_liner": "Follow the rabbit through Wonderland.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Wonderland",
+      "qa_card": {
+        "question": "What did you notice about the Wonderland?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.pleasetouchmuseum.org/map/",
+      "display_label": "Wonderland",
+      "core": false
+    },
+    {
+      "id": "ptm_roadside",
+      "label": "Roadside Attractions",
+      "emoji": "🚌",
+      "one_liner": "Drive the bus.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Roadside Attractions",
+      "qa_card": {
+        "question": "What did you notice about the Roadside Attractions?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.pleasetouchmuseum.org/map/",
+      "display_label": "Roadside Attractions",
+      "core": false
+    },
+    {
+      "id": "ptm_centennial",
+      "label": "Centennial Innovations",
+      "emoji": "🏛️",
+      "one_liner": "Find something old and something new.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Centennial Innovations",
+      "qa_card": {
+        "question": "What did you notice about the Centennial Innovations?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.pleasetouchmuseum.org/learn/exhibits/all/centennial-innovations/",
+      "display_label": "Centennial Innovations",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
     "visitor_map_page": "https://www.pleasetouchmuseum.org/map/",
@@ -252,12 +408,16 @@
     "cm_outdoor",
     "cm_free_explore"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [],
   "presence_sources": [
     "https://www.pleasetouchmuseum.org/",
-    "https://www.pleasetouchmuseum.org/exhibits/"
+    "https://www.pleasetouchmuseum.org/exhibits/",
+    "https://www.pleasetouchmuseum.org/learn/exhibits/",
+    "https://www.pleasetouchmuseum.org/learn/exhibits/all/river-adventures/",
+    "https://www.pleasetouchmuseum.org/map/",
+    "https://www.pleasetouchmuseum.org/learn/exhibits/all/centennial-innovations/"
   ],
   "bonus_hunt": {
     "tagline": "Please Touch Museum bonus · Little kids",

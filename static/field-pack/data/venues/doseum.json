@@ -173,9 +173,217 @@
       "presence": "medium",
       "presence_checked": "2026-08-08",
       "display_label": "Free explore"
+    },
+    {
+      "id": "dos_little_town",
+      "label": "Little Town",
+      "emoji": "🏘️",
+      "one_liner": "Shop, cook, and play in a kid-size town.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Little Town",
+      "qa_card": {
+        "question": "What did you notice about the Little Town?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.thedoseum.org/exhibits",
+      "display_label": "Little Town",
+      "core": false
+    },
+    {
+      "id": "dos_spy",
+      "label": "Semmes Foundation Spy Academy",
+      "emoji": "🕵️",
+      "one_liner": "Crack a code like a spy.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Semmes Foundation Spy Academy",
+      "qa_card": {
+        "question": "What did you notice about the Semmes Foundation Spy Academy?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.thedoseum.org/exhibits",
+      "display_label": "Semmes Foundation Spy Academy",
+      "core": false
+    },
+    {
+      "id": "dos_imagine",
+      "label": "Imagine It!",
+      "emoji": "🎨",
+      "one_liner": "Make up a story and act it out.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Imagine It!",
+      "qa_card": {
+        "question": "What did you notice about the Imagine It!?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.thedoseum.org/exhibits",
+      "display_label": "Imagine It!",
+      "core": false
+    },
+    {
+      "id": "dos_sensations",
+      "label": "Sensations Studio",
+      "emoji": "🌈",
+      "one_liner": "Try a sound, light, or touch you've never felt.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sensations Studio",
+      "qa_card": {
+        "question": "What did you notice about the Sensations Studio?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.thedoseum.org/exhibits",
+      "display_label": "Sensations Studio",
+      "core": false
+    },
+    {
+      "id": "dos_force",
+      "label": "Force Course",
+      "emoji": "🎢",
+      "one_liner": "Roll it, push it, watch it go.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Force Course",
+      "qa_card": {
+        "question": "What did you notice about the Force Course?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.thedoseum.org/exhibits",
+      "display_label": "Force Course",
+      "core": false
+    },
+    {
+      "id": "dos_innovation",
+      "label": "Zachry Innovation Station",
+      "emoji": "🔧",
+      "one_liner": "Build something that moves.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Zachry Innovation Station",
+      "qa_card": {
+        "question": "What did you notice about the Zachry Innovation Station?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.thedoseum.org/exhibits",
+      "display_label": "Zachry Innovation Station",
+      "core": false
+    },
+    {
+      "id": "dos_bubble",
+      "label": "Pop! A Bubble Lab",
+      "emoji": "🫧",
+      "one_liner": "Make the biggest bubble you can.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Pop! A Bubble Lab",
+      "qa_card": {
+        "question": "What did you notice about the Pop! A Bubble Lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.thedoseum.org/exhibits",
+      "display_label": "Pop! A Bubble Lab",
+      "core": false
+    },
+    {
+      "id": "dos_outdoors",
+      "label": "Big Outdoors",
+      "emoji": "🌳",
+      "one_liner": "Climb and splash outside.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Big Outdoors",
+      "qa_card": {
+        "question": "What did you notice about the Big Outdoors?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.thedoseum.org/exhibits",
+      "display_label": "Big Outdoors",
+      "core": false
     }
   ],
-  "content_mode": "hybrid",
+  "content_mode": "curated",
   "media": {
     "visitor_map_url": "/field-pack/media/maps/doseum.jpg",
     "visitor_map_page": "https://www.thedoseum.org/",
@@ -192,7 +400,7 @@
   "route_90m": [
     "cm_outdoor"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {
