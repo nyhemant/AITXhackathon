@@ -278,8 +278,8 @@ class HubExplorerTests(unittest.TestCase):
             "/field-pack/national-parks/",
         }
         places = [h for h in hrefs if h not in hubs]
-        self.assertEqual(len(places), 221)
-        self.assertEqual(len(set(places)), 221)
+        self.assertEqual(len(places), 214)
+        self.assertEqual(len(set(places)), 214)
         for slug in (
             "/field-pack/dallas-zoo/",
             "/field-pack/amnh/",

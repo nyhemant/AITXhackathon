@@ -153,7 +153,7 @@ def reciprocal_picks(places):
             inbound[p["slug"]] += 1
     out = {s: (n, list(pk)) for s, (n, pk) in base.items()}
     for s in sorted(places, key=lambda x: (inbound[x], x)):
-        if inbound[s] >= MIN_PLACE_INBOUND:
+        if inbound[s] >= MIN_PLACE_INBOUND or places[s].get("_noindex"):
             continue
         for p in base[s][1]:
             lst = out[p["slug"]][1]
