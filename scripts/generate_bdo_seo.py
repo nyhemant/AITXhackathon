@@ -3716,7 +3716,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
         <span class="footer-dot">·</span>
         <a href="{NAV_ABOUT_HREF}">About</a>
         <span class="footer-dot">·</span>
-        <a href="mailto:{CONTACT_MAIL}">Contact</a>
+        <!--email_off--><a href="mailto:{CONTACT_MAIL}">Contact</a><!--/email_off-->
       </p>
       <p class="footer-privacy">Kid names stay on your device. We don’t collect accounts or emails for hunts.</p>
     </footer>
@@ -6128,7 +6128,7 @@ def write_cards_hub(venues: list[dict]) -> str:
         <span class="footer-dot">·</span>
         <a href="/about/">About</a>
         <span class="footer-dot">·</span>
-        <a href="mailto:{CONTACT_MAIL}">Contact</a>
+        <!--email_off--><a href="mailto:{CONTACT_MAIL}">Contact</a><!--/email_off-->
       </p>
     </footer>
   </div>
