@@ -51,7 +51,7 @@
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Arvin Gottlieb Planetarium",
       "emoji": "🪐",
       "one_liner": "Space moments.",
       "tags": [
@@ -69,15 +69,16 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-planet",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
-      "display_label": "Planet / space hall",
-      "presence_note": "Space/planetarium-style experiences historically at Science City; confirm current."
+      "display_label": "Arvin Gottlieb Planetarium",
+      "presence_note": "Space/planetarium-style experiences historically at Science City; confirm current.",
+      "presence_url": "https://sciencecity.unionstation.org/"
     },
     {
       "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
+      "label": "Dig Site and Dino Lab",
       "emoji": "🦖",
       "one_liner": "Dinos if featured.",
       "tags": [
@@ -95,10 +96,12 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-dinosaur",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Dinosaur hall",
-      "presence_note": "Dino content sometimes present; confirm current exhibits."
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "display_label": "Dig Site and Dino Lab",
+      "presence_note": "Dino content sometimes present; confirm current exhibits.",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://sciencecity.unionstation.org/"
     },
     {
       "id": "cm_free_explore",
@@ -146,14 +149,14 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-rocket",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "display_label": "Rockets & launch",
-      "presence_note": "Space theme possible; confirm label."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "cm_makery",
-      "label": "Creative Makery",
+      "label": "Goppert Creative Corner",
       "emoji": "🔧",
       "one_liner": "Build, invent, problem-solve with your hands.",
       "tags": [
@@ -173,11 +176,12 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-makery",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
-      "display_label": "Creative Makery",
-      "presence_note": "Maker-style activities common."
+      "display_label": "Goppert Creative Corner",
+      "presence_note": "Maker-style activities common.",
+      "presence_url": "https://sciencecity.unionstation.org/"
     },
     {
       "id": "cm_imaginarium",
@@ -200,10 +204,10 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-imaginarium",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "display_label": "Imaginarium",
-      "presence_note": "Imaginative play zones common."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "sci_shuttle",
@@ -226,10 +230,168 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "sci-shuttle",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "display_label": "Space shuttle / orbiter",
-      "presence_note": "Space theme possible; confirm."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
+    },
+    {
+      "id": "sc_kinetic",
+      "label": "Kinetic Climber",
+      "emoji": "🧗",
+      "one_liner": "Find the Kinetic Climber. How high can you go?",
+      "tags": [
+        "play",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Kinetic Climber",
+      "qa_card": {
+        "question": "What did you notice about the Kinetic Climber?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://sciencecity.unionstation.org/",
+      "display_label": "Kinetic Climber",
+      "core": false
+    },
+    {
+      "id": "sc_skybike",
+      "label": "SkyBike",
+      "emoji": "🚲",
+      "one_liner": "Find the SkyBike. Would you ride it?",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "SkyBike",
+      "qa_card": {
+        "question": "What did you notice about the SkyBike?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://sciencecity.unionstation.org/",
+      "display_label": "SkyBike",
+      "core": false
+    },
+    {
+      "id": "sc_lever",
+      "label": "Giant Lever",
+      "emoji": "🏋️",
+      "one_liner": "Can you lift something heavy with the Giant Lever?",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Giant Lever",
+      "qa_card": {
+        "question": "What did you notice about the Giant Lever?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://sciencecity.unionstation.org/",
+      "display_label": "Giant Lever",
+      "core": false
+    },
+    {
+      "id": "sc_sphere",
+      "label": "Science on a Sphere",
+      "emoji": "🌍",
+      "one_liner": "Find Earth on the big glowing sphere.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Science on a Sphere",
+      "qa_card": {
+        "question": "What did you notice about the Science on a Sphere?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://sciencecity.unionstation.org/",
+      "display_label": "Science on a Sphere",
+      "core": false
+    },
+    {
+      "id": "sc_engineerium",
+      "label": "Engineerium",
+      "emoji": "⚙️",
+      "one_liner": "Build something and test it.",
+      "tags": [
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Engineerium",
+      "qa_card": {
+        "question": "What did you notice about the Engineerium?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://sciencecity.unionstation.org/",
+      "display_label": "Engineerium",
+      "core": false
+    },
+    {
+      "id": "sc_brain",
+      "label": "Amazing Brain",
+      "emoji": "🧠",
+      "one_liner": "Find one trick your brain plays on you.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Amazing Brain",
+      "qa_card": {
+        "question": "What did you notice about the Amazing Brain?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://sciencecity.unionstation.org/",
+      "display_label": "Amazing Brain",
+      "core": false
     }
   ],
   "content_mode": "hybrid",
@@ -246,15 +408,16 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sci_hands_on",
-    "sci_planet",
-    "cm_free_explore"
+    "sci_dinosaur",
+    "sc_kinetic",
+    "sc_skybike"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [ok] [2026-11-16] SEO gate B2: named exhibits from the official Science City page; 'Creative Makery' was a Perot name and is now Goppert Creative Corner; Imaginarium, space-shuttle and rocket-launch stops are not on the Science City list, so they are marked absent",
   "list_confidence": "partial",
   "do_not_list": [],
   "presence_sources": [
-    "https://www.unionstation.org/sciencecity"
+    "https://www.unionstation.org/sciencecity",
+    "https://sciencecity.unionstation.org/"
   ],
   "bonus_hunt": {
     "tagline": "Science City at Union Station bonus · Science City",
@@ -342,5 +505,13 @@
     "sources": [
       "https://www.unionstation.org/sciencecity"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "sci_dinosaur",
+    "sc_kinetic",
+    "sc_skybike",
+    "sc_lever",
+    "sc_sphere",
+    "cm_makery"
+  ]
 }

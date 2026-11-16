@@ -51,7 +51,7 @@
     },
     {
       "id": "sci_planet",
-      "label": "Planetarium",
+      "label": "Charles Hayden Planetarium",
       "emoji": "🪐",
       "one_liner": "Space show if ticketed.",
       "tags": [
@@ -70,10 +70,11 @@
       },
       "catalog_id": "sci-planet",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
-      "display_label": "Planetarium",
-      "presence_note": "Charles Hayden Planetarium."
+      "display_label": "Charles Hayden Planetarium",
+      "presence_note": "Charles Hayden Planetarium.",
+      "presence_url": "https://www.mos.org/visit/planetarium"
     },
     {
       "id": "sci_dinosaur",
@@ -103,7 +104,7 @@
     },
     {
       "id": "sci_aquarium_zone",
-      "label": "Live animals (verify)",
+      "label": "Live Animal Care Center",
       "emoji": "🐠",
       "one_liner": "Small live collections inside science floors.",
       "tags": [
@@ -121,10 +122,12 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-aquarium-zone",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Live animals (verify)",
-      "presence_note": "Live animal/tank corners sometimes present; not a full aquarium."
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "display_label": "Live Animal Care Center",
+      "presence_note": "Live animal/tank corners sometimes present; not a full aquarium.",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mos.org/visit/exhibits/live-animal-care-center"
     },
     {
       "id": "cm_free_explore",
@@ -203,6 +206,111 @@
       "presence_checked": "2026-08-08",
       "display_label": "Space exhibits",
       "presence_note": "Space content exists via planetarium/exhibits; not a rocket garden like KSC."
+    },
+    {
+      "id": "mos_lightning",
+      "label": "Theater of Electricity",
+      "emoji": "⚡",
+      "one_liner": "Watch giant sparks fly in the Lightning! show.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Theater of Electricity",
+      "qa_card": {
+        "question": "What did you notice about the Theater of Electricity?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mos.org/visit/live-presentations/lightning",
+      "display_label": "Theater of Electricity",
+      "core": false
+    },
+    {
+      "id": "mos_human_life",
+      "label": "Hall of Human Life",
+      "emoji": "🫀",
+      "one_liner": "Find out one thing your body does without you thinking.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Green Wing, Level 2",
+      "qa_card": {
+        "question": "What did you notice about the Hall of Human Life?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mos.org/visit/exhibits/hall-human-life",
+      "display_label": "Hall of Human Life",
+      "core": false
+    },
+    {
+      "id": "mos_habitats",
+      "label": "New England Habitats",
+      "emoji": "🦌",
+      "one_liner": "Find an animal in the life-size dioramas.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "New England Habitats",
+      "qa_card": {
+        "question": "What did you notice about the New England Habitats?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mos.org/visit/exhibits/new-england-habitats",
+      "display_label": "New England Habitats",
+      "core": false
+    },
+    {
+      "id": "mos_arctic",
+      "label": "Arctic Adventure",
+      "emoji": "🦊",
+      "one_liner": "Fly a pretend drone to find an Arctic fox.",
+      "tags": [
+        "hands",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Arctic Adventure",
+      "qa_card": {
+        "question": "What did you notice about the Arctic Adventure?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.mos.org/visit/exhibits/arctic-adventure-exploring-technology",
+      "display_label": "Arctic Adventure",
+      "core": false
     }
   ],
   "content_mode": "hybrid",
@@ -220,11 +328,11 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sci_hands_on",
+    "mos_lightning",
     "sci_planet",
-    "sci_dinosaur"
+    "mos_human_life"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "R1 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official mos.org exhibit pages; the Butterfly Garden was not used (no current official page)",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -242,7 +350,13 @@
   ],
   "presence_sources": [
     "https://www.mos.org/",
-    "https://mos.org/exhibits-activities/exhibits"
+    "https://mos.org/exhibits-activities/exhibits",
+    "https://www.mos.org/visit/planetarium",
+    "https://www.mos.org/visit/exhibits/live-animal-care-center",
+    "https://www.mos.org/visit/live-presentations/lightning",
+    "https://www.mos.org/visit/exhibits/hall-human-life",
+    "https://www.mos.org/visit/exhibits/new-england-habitats",
+    "https://www.mos.org/visit/exhibits/arctic-adventure-exploring-technology"
   ],
   "bonus_hunt": {
     "tagline": "Museum of Science bonus · Open explore + Dinosaurs / life",
@@ -319,5 +433,13 @@
     "sources": [
       "https://www.mos.org/"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "mos_lightning",
+    "sci_planet",
+    "mos_human_life",
+    "mos_habitats",
+    "mos_arctic",
+    "sci_aquarium_zone"
+  ]
 }

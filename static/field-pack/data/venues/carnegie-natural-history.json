@@ -377,11 +377,11 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sci_dinosaur",
-    "sci_mammal_hall",
-    "sci_hands_on"
+    "cmnh_dinos",
+    "cmnh_quarry",
+    "cmnh_bugs"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added long-term exhibitions only; Egypt on the Nile (opens 1 May 2027) and other temporary shows left out",
+  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added long-term exhibitions only; Egypt on the Nile (opens 1 May 2027) and other temporary shows left out [2026-11-16] SEO gate B2: hunt now shows the sourced long-term exhibitions",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -481,5 +481,13 @@
     "sources": [
       "https://carnegiemnh.org/"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "cmnh_dinos",
+    "cmnh_quarry",
+    "cmnh_bugs",
+    "cmnh_africa",
+    "cmnh_gems",
+    "cmnh_birds"
+  ]
 }

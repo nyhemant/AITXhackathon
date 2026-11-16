@@ -50,7 +50,7 @@
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Dorrance Planetarium",
       "emoji": "🪐",
       "one_liner": "Sky show if ticketed.",
       "tags": [
@@ -70,7 +70,7 @@
       "catalog_id": "sci-planet",
       "presence": "verified",
       "presence_checked": "2026-11-16",
-      "display_label": "Planet / space hall",
+      "display_label": "Dorrance Planetarium",
       "presence_note": "Planetarium typical; confirm show schedule on azscience.org.",
       "presence_source": "official_animals_page",
       "presence_url": "https://www.azscience.org/experience/dorrance-planetarium/"
@@ -401,11 +401,11 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sci_hands_on",
-    "sci_planet",
-    "cm_free_explore"
+    "azs_create",
+    "azs_flight",
+    "azs_skycycle"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
+  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/ [2026-11-16] SEO gate B2: hunt now shows the sourced exhibitions",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -484,5 +484,13 @@
     "sources": [
       "https://www.azscience.org/"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "azs_create",
+    "azs_flight",
+    "azs_skycycle",
+    "azs_all_about_me",
+    "azs_forces",
+    "sci_planet"
+  ]
 }

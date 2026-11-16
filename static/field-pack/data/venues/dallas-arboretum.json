@@ -93,10 +93,12 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-toddler-garden",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
       "display_label": "Rory Meyers Children's Adventure Garden",
-      "presence_note": "Children's Adventure Garden is the kid anchor — map toddler stop there."
+      "presence_note": "Children's Adventure Garden is the kid anchor — map toddler stop there.",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dallasarboretum.org/visitor-information/gardens-and-pavilions/"
     },
     {
       "id": "sci_hands_on",
@@ -118,10 +120,10 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-hands-on",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "display_label": "Hands-on lab",
-      "presence_note": "Educational interactives in children's garden — not a science lab."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "cm_art_lab",
@@ -145,10 +147,10 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-art-lab",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "display_label": "Art / nature create",
-      "presence_note": "Soft activity stop only."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "cm_waterfall",
@@ -172,10 +174,168 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-waterfall",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "display_label": "Waterfall play",
-      "presence_note": "Water features exist seasonally; not a waterpark."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
+    },
+    {
+      "id": "da_toad",
+      "label": "Toad Corner",
+      "emoji": "🐸",
+      "one_liner": "Walk the crape myrtle tunnel to the toad fountain.",
+      "tags": [
+        "outdoor",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Crape Myrtle Allee",
+      "qa_card": {
+        "question": "What did you notice about the Toad Corner?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dallasarboretum.org/visitor-information/gardens-and-pavilions/",
+      "display_label": "Toad Corner",
+      "core": false
+    },
+    {
+      "id": "da_lay",
+      "label": "Lay Grotto waterfall",
+      "emoji": "🐟",
+      "one_liner": "Find the waterfall and the koi pond.",
+      "tags": [
+        "outdoor",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Lay Family Garden",
+      "qa_card": {
+        "question": "What did you notice about the Lay Grotto waterfall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dallasarboretum.org/visitor-information/gardens-and-pavilions/",
+      "display_label": "Lay Grotto waterfall",
+      "core": false
+    },
+    {
+      "id": "da_tasteful",
+      "label": "A Tasteful Place",
+      "emoji": "🥕",
+      "one_liner": "Find a vegetable you have eaten before.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "A Tasteful Place",
+      "qa_card": {
+        "question": "What did you notice about the A Tasteful Place?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dallasarboretum.org/visitor-information/gardens-and-pavilions/",
+      "display_label": "A Tasteful Place",
+      "core": false
+    },
+    {
+      "id": "da_rill",
+      "label": "Red Maple Rill",
+      "emoji": "🍁",
+      "one_liner": "Find a maple leaf by the stream. What color is it?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Nancy Rutchik Red Maple Rill",
+      "qa_card": {
+        "question": "What did you notice about the Red Maple Rill?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dallasarboretum.org/visitor-information/gardens-and-pavilions/",
+      "display_label": "Red Maple Rill",
+      "core": false
+    },
+    {
+      "id": "da_color",
+      "label": "Jonsson Color Garden",
+      "emoji": "🌷",
+      "one_liner": "Find the brightest flower bed.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Margaret Elizabeth Jonsson Color Garden",
+      "qa_card": {
+        "question": "What did you notice about the Jonsson Color Garden?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dallasarboretum.org/visitor-information/gardens-and-pavilions/",
+      "display_label": "Jonsson Color Garden",
+      "core": false
+    },
+    {
+      "id": "da_pecan",
+      "label": "Pecan Grove",
+      "emoji": "🌳",
+      "one_liner": "Find a shady spot under the big trees.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Pecan Grove",
+      "qa_card": {
+        "question": "What did you notice about the Pecan Grove?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dallasarboretum.org/visitor-information/gardens-and-pavilions/",
+      "display_label": "Pecan Grove",
+      "core": false
     }
   ],
   "content_mode": "hybrid",
@@ -193,11 +353,11 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "cm_outdoor",
     "cm_toddler_garden",
-    "cm_free_explore"
+    "da_toad",
+    "da_lay"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added named gardens from the official gardens-and-pavilions page; 'Hands-on lab', 'Art / nature create' and 'Waterfall play' are not on that page, so they are marked absent",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -220,7 +380,8 @@
     }
   ],
   "presence_sources": [
-    "https://www.dallasarboretum.org/"
+    "https://www.dallasarboretum.org/",
+    "https://www.dallasarboretum.org/visitor-information/gardens-and-pavilions/"
   ],
   "bonus_hunt": {
     "tagline": "Dallas Arboretum bonus · Gardens + Kid lead",
@@ -286,5 +447,13 @@
     "sources": [
       "https://www.dallasarboretum.org/"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "cm_toddler_garden",
+    "da_toad",
+    "da_lay",
+    "da_tasteful",
+    "da_rill",
+    "da_color"
+  ]
 }

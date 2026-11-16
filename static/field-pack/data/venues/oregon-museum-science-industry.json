@@ -355,11 +355,11 @@
     "Leave while happy"
   ],
   "route_90m": [
+    "omsi_sub",
     "omsi_playground",
-    "sci_planet",
-    "sci_dinosaur"
+    "omsi_chem"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official exhibits-page headings; first route stop is now the named Science Playground instead of a generic hands-on stop",
+  "research_notes": "R1 hybrid 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official exhibits-page headings; first route stop is now the named Science Playground instead of a generic hands-on stop [2026-11-16] SEO gate B2: hunt now shows the sourced exhibits",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -444,5 +444,13 @@
     "sources": [
       "https://omsi.edu/"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "omsi_sub",
+    "omsi_playground",
+    "omsi_chem",
+    "omsi_paleo",
+    "omsi_turbine",
+    "omsi_life"
+  ]
 }

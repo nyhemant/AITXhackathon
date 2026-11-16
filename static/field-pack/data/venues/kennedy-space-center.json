@@ -40,12 +40,14 @@
       },
       "catalog_id": "sci-shuttle",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Space Shuttle Atlantis"
+      "presence_checked": "2026-11-16",
+      "display_label": "Space Shuttle Atlantis",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.kennedyspacecenter.com/explore-attractions/space-shuttle-atlantis"
     },
     {
       "id": "sci_rocket",
-      "label": "Rocket Garden / Saturn V",
+      "label": "Rocket Garden",
       "emoji": "🚀",
       "one_liner": "Tall rockets outdoors you can walk among.",
       "tags": [
@@ -65,8 +67,10 @@
       },
       "catalog_id": "sci-rocket",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Rocket Garden / Saturn V"
+      "presence_checked": "2026-11-16",
+      "display_label": "Rocket Garden",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.kennedyspacecenter.com/explore-attractions/all-attractions/rocket-garden"
     },
     {
       "id": "sci_astronaut",
@@ -188,6 +192,110 @@
       "presence": "high",
       "presence_checked": "2026-08-08",
       "display_label": "Rocket Garden outdoors"
+    },
+    {
+      "id": "ksc_slx",
+      "label": "Shuttle Launch Experience",
+      "emoji": "🚀",
+      "one_liner": "Feel what a shuttle launch might be like.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Shuttle Launch Experience",
+      "qa_card": {
+        "question": "What did you notice about the Shuttle Launch Experience?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.kennedyspacecenter.com/explore-attractions/space-shuttle-atlantis/shuttle-launch-experience",
+      "display_label": "Shuttle Launch Experience",
+      "core": false
+    },
+    {
+      "id": "ksc_gateway",
+      "label": "Gateway: The Deep Space Launch Complex",
+      "emoji": "🛰️",
+      "one_liner": "Find a real spacecraft and a future one.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Gateway: The Deep Space Launch Complex",
+      "qa_card": {
+        "question": "What did you notice about the Gateway: The Deep Space Launch Complex?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.kennedyspacecenter.com/explore-attractions/gateway-the-deep-space-launch-complex",
+      "display_label": "Gateway: The Deep Space Launch Complex",
+      "core": false
+    },
+    {
+      "id": "ksc_heroes",
+      "label": "Heroes and Legends",
+      "emoji": "👩‍🚀",
+      "one_liner": "Find an astronaut you would like to meet.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Heroes and Legends",
+      "qa_card": {
+        "question": "What did you notice about the Heroes and Legends?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.kennedyspacecenter.com/explore-attractions/heroes-and-legends",
+      "display_label": "Heroes and Legends",
+      "core": false
+    },
+    {
+      "id": "ksc_apollo",
+      "label": "Apollo/Saturn V Center",
+      "emoji": "🌕",
+      "one_liner": "Ride the bus tour to the giant Saturn V rocket.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Apollo/Saturn V Center",
+      "qa_card": {
+        "question": "What did you notice about the Apollo/Saturn V Center?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.kennedyspacecenter.com/explore-attractions/",
+      "display_label": "Apollo/Saturn V Center",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -204,7 +312,7 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added named attractions from the official explore-attractions pages",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -216,12 +324,18 @@
   ],
   "route_90m": [
     "sci_shuttle",
-    "sci_rocket",
-    "sci_astronaut"
+    "ksc_slx",
+    "ksc_gateway"
   ],
   "last_presence_audit": "2026-08-08",
   "presence_sources": [
-    "https://www.kennedyspacecenter.com/"
+    "https://www.kennedyspacecenter.com/",
+    "https://www.kennedyspacecenter.com/explore-attractions/space-shuttle-atlantis",
+    "https://www.kennedyspacecenter.com/explore-attractions/all-attractions/rocket-garden",
+    "https://www.kennedyspacecenter.com/explore-attractions/space-shuttle-atlantis/shuttle-launch-experience",
+    "https://www.kennedyspacecenter.com/explore-attractions/gateway-the-deep-space-launch-complex",
+    "https://www.kennedyspacecenter.com/explore-attractions/heroes-and-legends",
+    "https://www.kennedyspacecenter.com/explore-attractions/"
   ],
   "bonus_hunt": {
     "tagline": "KSC bonus · Rocket Garden + Atlantis energy",
@@ -288,5 +402,13 @@
     ],
     "researched": "2026-08-08",
     "status": "researched"
-  }
+  },
+  "classic_find_ids": [
+    "sci_shuttle",
+    "ksc_slx",
+    "ksc_gateway",
+    "ksc_heroes",
+    "ksc_apollo",
+    "sci_rocket"
+  ]
 }

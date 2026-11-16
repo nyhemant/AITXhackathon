@@ -351,11 +351,11 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sci_hands_on",
-    "sci_planet",
-    "sci_dinosaur"
+    "osc_dinodigs",
+    "osc_kinetic",
+    "osc_kidstown"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official exhibits-page halls; the exhibits page shows an upcoming 'Exhibit Hall Closure' event, so check the calendar before going",
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official exhibits-page halls; the exhibits page shows an upcoming 'Exhibit Hall Closure' event, so check the calendar before going [2026-11-16] SEO gate B2: hunt now shows the sourced exhibits",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -450,5 +450,13 @@
     "sources": [
       "https://www.osc.org/"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "osc_dinodigs",
+    "osc_kinetic",
+    "osc_kidstown",
+    "osc_extreme",
+    "osc_planet",
+    "osc_life"
+  ]
 }
