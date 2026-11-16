@@ -310,11 +310,11 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sci_dinosaur",
+    "perot_mammoth",
     "sci_hands_on",
-    "cm_free_explore"
+    "sci_mammal_hall"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor] [2026-11-16] SEO gate B2: added official exhibits-page halls and named the generic finds after the official hall names on perotmuseum.org/exhibits",
+  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor] [2026-11-16] SEO gate B2: added official exhibits-page halls and named the generic finds after the official hall names on perotmuseum.org/exhibits [2026-11-16] SEO gate B2: hunt now shows the sourced halls",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -416,5 +416,13 @@
     ],
     "researched": "2026-11-12",
     "status": "researched"
-  }
+  },
+  "classic_find_ids": [
+    "perot_mammoth",
+    "sci_hands_on",
+    "sci_mammal_hall",
+    "sci_planet",
+    "perot_birds",
+    "perot_gems"
+  ]
 }

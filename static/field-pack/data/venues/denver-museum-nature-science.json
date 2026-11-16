@@ -171,6 +171,195 @@
       "presence_checked": "2026-08-08",
       "display_label": "Kid choice",
       "presence_note": "Generic pad"
+    },
+    {
+      "id": "dm_battle",
+      "label": "Allosaurus vs. Stegosaurus",
+      "emoji": "🦕",
+      "one_liner": "Find the two dinosaurs in a battle, and the long Diplodocus behind them.",
+      "tags": [
+        "wow",
+        "big"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Prehistoric Journey",
+      "qa_card": {
+        "question": "What did you notice about the Allosaurus vs. Stegosaurus?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dmns.org/exhibitions/permanent-exhibitions",
+      "display_label": "Allosaurus vs. Stegosaurus",
+      "core": false
+    },
+    {
+      "id": "dm_trex",
+      "label": "Giant T. rex skull",
+      "emoji": "🦖",
+      "one_liner": "Stand next to the giant T. rex skull. Who has more teeth?",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Prehistoric Journey",
+      "qa_card": {
+        "question": "What did you notice about the Giant T. rex skull?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dmns.org/exhibitions/permanent-exhibitions",
+      "display_label": "Giant T. rex skull",
+      "core": false
+    },
+    {
+      "id": "dm_parasaur",
+      "label": "Parasaurolophus",
+      "emoji": "🦕",
+      "one_liner": "Climb on the friendly Parasaurolophus.",
+      "tags": [
+        "play",
+        "kids",
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Discovery Zone",
+      "qa_card": {
+        "question": "What did you notice about the Parasaurolophus?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dmns.org/exhibitions/permanent-exhibitions",
+      "display_label": "Parasaurolophus",
+      "core": false
+    },
+    {
+      "id": "dm_waterway",
+      "label": "Water Way",
+      "emoji": "💧",
+      "one_liner": "Splash in the Colorado-themed Water Way. Pack dry clothes!",
+      "tags": [
+        "play",
+        "kids",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Discovery Zone",
+      "qa_card": {
+        "question": "What did you notice about the Water Way?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dmns.org/exhibitions/permanent-exhibitions",
+      "display_label": "Water Way",
+      "core": false
+    },
+    {
+      "id": "dm_launch",
+      "label": "Launch simulator",
+      "emoji": "🚀",
+      "one_liner": "Feel the rumble of a rocket launch.",
+      "tags": [
+        "wow",
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Space Odyssey",
+      "qa_card": {
+        "question": "What did you notice about the Launch simulator?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dmns.org/exhibitions/permanent-exhibitions",
+      "display_label": "Launch simulator",
+      "core": false
+    },
+    {
+      "id": "dm_bears",
+      "label": "Bears and Sea Mammals Hall",
+      "emoji": "🐻",
+      "one_liner": "Find the black bear cubs and the fur seal pup.",
+      "tags": [
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Wildlife Halls",
+      "qa_card": {
+        "question": "What did you notice about the Bears and Sea Mammals Hall?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dmns.org/exhibitions/permanent-exhibitions",
+      "display_label": "Bears and Sea Mammals Hall",
+      "core": false
+    },
+    {
+      "id": "dm_tykes",
+      "label": "Tykes Peak",
+      "emoji": "🧗",
+      "one_liner": "Climb the log and go down the slide.",
+      "tags": [
+        "play",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Expedition Health",
+      "qa_card": {
+        "question": "What did you notice about the Tykes Peak?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.dmns.org/exhibitions/permanent-exhibitions",
+      "display_label": "Tykes Peak",
+      "core": false
     }
   ],
   "content_mode": "hybrid",
@@ -187,11 +376,11 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sci_dinosaur",
-    "sci_mammal_hall",
-    "sci_planet"
+    "dm_battle",
+    "dm_trex",
+    "dm_parasaur"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "R1 hybrid 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added named stops from the official permanent-exhibitions page; the exhibitions page banner (16 Nov 2026) says the Northern & Rare Birds and Birds of the Americas halls are closed starting Nov 9, so no bird-hall find was added",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -209,7 +398,8 @@
   ],
   "presence_sources": [
     "https://www.dmns.org/",
-    "https://www.dmns.org/exhibitions/permanent-exhibitions/"
+    "https://www.dmns.org/exhibitions/permanent-exhibitions/",
+    "https://www.dmns.org/exhibitions/permanent-exhibitions"
   ],
   "bonus_hunt": {
     "tagline": "DMNS bonus · dioramas + space/planet deep cuts",
@@ -276,5 +466,13 @@
     "sources": [
       "https://www.dmns.org/"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "dm_battle",
+    "dm_trex",
+    "dm_parasaur",
+    "dm_waterway",
+    "dm_launch",
+    "dm_bears"
+  ]
 }

@@ -376,7 +376,7 @@
     "stingray",
     "sci_planet"
   ],
-  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
+  "research_notes": "R1 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/ [2026-11-16] SEO gate B2: hunt now shows the sourced exhibitions",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -476,5 +476,13 @@
     "sources": [
       "https://www.frostscience.org/"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "shark",
+    "stingray",
+    "sci_planet",
+    "frs_dig",
+    "frs_melab",
+    "frs_river"
+  ]
 }

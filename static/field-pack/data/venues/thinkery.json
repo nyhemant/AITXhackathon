@@ -42,11 +42,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-makery",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
       "display_label": "Creative Makery",
-      "presence_note": "Maker / invent spaces are core Thinkery brand."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "cm_imaginarium",
@@ -68,11 +68,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-imaginarium",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
       "display_label": "Imaginarium",
-      "presence_note": "Imaginative play zones core."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "cm_waterfall",
@@ -95,11 +95,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-waterfall",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
       "display_label": "Waterfall play",
-      "presence_note": "Signature water play feature historically; confirm open seasonally."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "cm_toddler_garden",
@@ -122,11 +122,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-toddler-garden",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
       "display_label": "Toddler Garden",
-      "presence_note": "Toddler areas standard."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "cm_outdoor",
@@ -149,11 +149,11 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "cm-outdoor",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
       "display_label": "Outdoor Area",
-      "presence_note": "Outdoor play present on campus."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "cm_woven",
@@ -177,10 +177,10 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-woven",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "display_label": "Woven Wonders",
-      "presence_note": "Named zone — confirm current floor plan label."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "cm_art_lab",
@@ -204,11 +204,11 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-art-lab",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
       "display_label": "Art Lab",
-      "presence_note": "Art/create labs core."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "cm_free_explore",
@@ -236,6 +236,169 @@
       "presence_source": "official_animals_page",
       "display_label": "Free explore",
       "presence_note": "Free-explore is the museum mode."
+    },
+    {
+      "id": "th_innovators",
+      "label": "Innovators' Workshop",
+      "emoji": "🔧",
+      "one_liner": "Build something on the Simple Machine Wall.",
+      "tags": [
+        "hands",
+        "play"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Innovators' Workshop",
+      "qa_card": {
+        "question": "What did you notice about the Innovators' Workshop?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://thinkeryaustin.org/exhibits/innovators-workshop/",
+      "display_label": "Innovators' Workshop",
+      "core": false
+    },
+    {
+      "id": "th_currents",
+      "label": "Currents",
+      "emoji": "💧",
+      "one_liner": "Make the water drum. You will get wet!",
+      "tags": [
+        "water",
+        "play",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Currents",
+      "qa_card": {
+        "question": "What did you notice about the Currents?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://thinkeryaustin.org/exhibits/currents/",
+      "display_label": "Currents",
+      "core": false
+    },
+    {
+      "id": "th_backyard",
+      "label": "Our Backyard Climber",
+      "emoji": "🧗",
+      "one_liner": "Climb up to the orb at the top of the Climber.",
+      "tags": [
+        "outdoor",
+        "play",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Our Backyard Climber",
+      "qa_card": {
+        "question": "What did you notice about the Our Backyard Climber?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://thinkeryaustin.org/exhibits/our-backyard/",
+      "display_label": "Our Backyard Climber",
+      "core": false
+    },
+    {
+      "id": "th_light",
+      "label": "Light Lab",
+      "emoji": "💡",
+      "one_liner": "Freeze your shadow on the wall.",
+      "tags": [
+        "hands",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Light Lab",
+      "qa_card": {
+        "question": "What did you notice about the Light Lab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://thinkeryaustin.org/exhibits/light-lab/",
+      "display_label": "Light Lab",
+      "core": false
+    },
+    {
+      "id": "th_spark",
+      "label": "Spark Shop",
+      "emoji": "🧱",
+      "one_liner": "Race along the Flow Wall track.",
+      "tags": [
+        "hands"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Spark Shop",
+      "qa_card": {
+        "question": "What did you notice about the Spark Shop?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://thinkeryaustin.org/exhibits/spark-shop/",
+      "display_label": "Spark Shop",
+      "core": false
+    },
+    {
+      "id": "th_market",
+      "label": "Fresh! Farmers Market",
+      "emoji": "🥚",
+      "one_liner": "Collect eggs from the chicken coop.",
+      "tags": [
+        "play",
+        "kids"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Fresh! Farmers Market",
+      "qa_card": {
+        "question": "What did you notice about the Fresh! Farmers Market?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://thinkeryaustin.org/exhibits/fresh-farmers-market/",
+      "display_label": "Fresh! Farmers Market",
+      "core": false
     }
   ],
   "content_mode": "hybrid",
@@ -252,16 +415,22 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "cm_waterfall",
-    "cm_makery",
-    "cm_toddler_garden"
+    "th_innovators",
+    "th_currents",
+    "th_backyard"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [ok] [2026-11-16] SEO gate B2: named exhibits from the official thinkeryaustin.org/exhibits pages (Mueller); Creative Makery, Imaginarium, Woven Wonders, Art Lab, Toddler Garden and Waterfall play are Perot children's-museum names, not Thinkery's, so they are marked absent",
   "list_confidence": "partial",
   "do_not_list": [],
   "presence_sources": [
     "https://thinkeryaustin.org/",
-    "existing full pack"
+    "existing full pack",
+    "https://thinkeryaustin.org/exhibits/innovators-workshop/",
+    "https://thinkeryaustin.org/exhibits/currents/",
+    "https://thinkeryaustin.org/exhibits/our-backyard/",
+    "https://thinkeryaustin.org/exhibits/light-lab/",
+    "https://thinkeryaustin.org/exhibits/spark-shop/",
+    "https://thinkeryaustin.org/exhibits/fresh-farmers-market/"
   ],
   "bonus_hunt": {
     "tagline": "Thinkery bonus · Imagine",
@@ -361,5 +530,13 @@
     "sources": [
       "https://thinkeryaustin.org/"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "th_innovators",
+    "th_currents",
+    "th_backyard",
+    "th_light",
+    "th_spark",
+    "th_market"
+  ]
 }

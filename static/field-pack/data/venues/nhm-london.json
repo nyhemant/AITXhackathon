@@ -76,7 +76,7 @@
     },
     {
       "id": "sci_planet",
-      "label": "Earth / planet Earth",
+      "label": "Earth Hall sculpture",
       "emoji": "🪐",
       "one_liner": "Earth galleries.",
       "tags": [
@@ -96,7 +96,7 @@
       "catalog_id": "sci-planet",
       "presence": "verified",
       "presence_checked": "2026-11-16",
-      "display_label": "Earth / planet Earth",
+      "display_label": "Earth Hall sculpture",
       "presence_note": "Earth galleries (volcanoes, earthquakes) — not space planetarium. Soft Earth.",
       "presence_source": "official_animals_page",
       "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html"
@@ -301,11 +301,11 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sci_dinosaur",
-    "sci_mammal_hall",
-    "cm_free_explore"
+    "nhm_hope_whale",
+    "nhm_stegosaurus",
+    "nhm_quake"
   ],
-  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
+  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/ [2026-11-16] SEO gate B2: hunt now shows the sourced map finds",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -398,5 +398,13 @@
       "https://www.nhm.ac.uk/",
       "Dinosaurs, Hintze Hall, mammals"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "nhm_hope_whale",
+    "nhm_stegosaurus",
+    "nhm_quake",
+    "nhm_dodo",
+    "nhm_fern",
+    "sci_planet"
+  ]
 }

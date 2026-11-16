@@ -21,7 +21,7 @@
   "items": [
     {
       "id": "sci_rainforest",
-      "label": "Rainforest dome",
+      "label": "Osher Rainforest",
       "emoji": "🌿",
       "one_liner": "Four-story living rainforest dome — look for birds and butterflies.",
       "tags": [
@@ -41,9 +41,10 @@
       },
       "catalog_id": "sci-rainforest",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
-      "display_label": "Rainforest dome"
+      "display_label": "Osher Rainforest",
+      "presence_url": "https://www.calacademy.org/exhibits/osher-rainforest"
     },
     {
       "id": "shark",
@@ -175,7 +176,7 @@
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Morrison Planetarium",
       "emoji": "🪐",
       "one_liner": "Morrison Planetarium show if ticketed.",
       "tags": [
@@ -194,9 +195,10 @@
       },
       "catalog_id": "sci-planet",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
-      "display_label": "Planet / space hall"
+      "display_label": "Morrison Planetarium",
+      "presence_url": "https://www.calacademy.org/exhibits/morrison-planetarium"
     },
     {
       "id": "sci_hands_on",
@@ -273,6 +275,33 @@
       "presence_checked": "2026-08-08",
       "display_label": "Clownfish",
       "presence_note": "Plausible for this venue type; subspecies/exact species not hard-confirmed on official list extract."
+    },
+    {
+      "id": "cal_reef",
+      "label": "Philippine Coral Reef",
+      "emoji": "🐠",
+      "one_liner": "Look down: rays swim under your feet.",
+      "tags": [
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Steinhart Aquarium",
+      "qa_card": {
+        "question": "What did you notice about the Philippine Coral Reef?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.calacademy.org/exhibits/philippine-coral-reef",
+      "display_label": "Philippine Coral Reef",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -289,18 +318,21 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-page 2026-08-07 · presence-audit 2026-08-08 [ok]",
+  "research_notes": "map-page 2026-08-07 · presence-audit 2026-08-08 [ok] [2026-11-16] SEO gate B2: named the rainforest and planetarium after the official exhibit pages and added Philippine Coral Reef",
   "list_confidence": "audited",
   "do_not_list": [],
   "route_90m": [
     "sci_rainforest",
-    "shark",
-    "sci_planet"
+    "cal_reef",
+    "shark"
   ],
   "last_presence_audit": "2026-08-08",
   "presence_sources": [
     "https://www.calacademy.org/exhibits",
-    "https://www.calacademy.org/"
+    "https://www.calacademy.org/",
+    "https://www.calacademy.org/exhibits/osher-rainforest",
+    "https://www.calacademy.org/exhibits/morrison-planetarium",
+    "https://www.calacademy.org/exhibits/philippine-coral-reef"
   ],
   "bonus_hunt": {
     "tagline": "Cal Academy bonus · Rainforest + Steinhart + penguins",
@@ -379,5 +411,13 @@
     ],
     "researched": "2026-08-08",
     "status": "researched"
-  }
+  },
+  "classic_find_ids": [
+    "sci_rainforest",
+    "cal_reef",
+    "shark",
+    "african_penguin",
+    "sci_planet",
+    "seahorse"
+  ]
 }

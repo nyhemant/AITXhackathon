@@ -23,7 +23,7 @@
   "items": [
     {
       "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
+      "label": "Hall of Fossils – Deep Time",
       "emoji": "🦖",
       "one_liner": "Deep-time bones for instant wow.",
       "tags": [
@@ -43,10 +43,11 @@
       },
       "catalog_id": "sci-dinosaur",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
-      "display_label": "Dinosaur hall",
-      "presence_note": "Deep Time fossil hall."
+      "display_label": "Hall of Fossils – Deep Time",
+      "presence_note": "Deep Time fossil hall.",
+      "presence_url": "https://naturalhistory.si.edu/visit/museum-map"
     },
     {
       "id": "sci_mammal_hall",
@@ -95,15 +96,16 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-aquarium-zone",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
       "display_label": "Ocean Hall",
-      "presence_note": "Sant Ocean Hall — not a full aquarium."
+      "presence_note": "Sant Ocean Hall — not a full aquarium.",
+      "presence_url": "https://naturalhistory.si.edu/visit/museum-map"
     },
     {
       "id": "sci_hands_on",
-      "label": "Hands-on lab",
+      "label": "Q?rius",
       "emoji": "🔬",
       "one_liner": "Hands-on corners when available.",
       "tags": [
@@ -121,11 +123,12 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-hands-on",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
       "presence_source": "official_animals_page",
-      "display_label": "Hands-on lab",
-      "presence_note": "Discovery Room / family spaces."
+      "display_label": "Q?rius",
+      "presence_note": "Discovery Room / family spaces.",
+      "presence_url": "https://naturalhistory.si.edu/visit/museum-map"
     },
     {
       "id": "cm_free_explore",
@@ -175,10 +178,10 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "sci-planet",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "display_label": "Planet / space hall",
-      "presence_note": "Meteorites/geology present; not a planetarium."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "cm_imaginarium",
@@ -201,10 +204,10 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "cm-imaginarium",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "display_label": "Imaginarium",
-      "presence_note": "Family imaginative play spaces rotate."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
     },
     {
       "id": "sci_rainforest",
@@ -228,10 +231,141 @@
         "answer": "Tell a grown-up one thing you saw, touched, or built!"
       },
       "catalog_id": "sci-rainforest",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
+      "presence": "absent",
+      "presence_checked": "2026-11-16",
       "display_label": "Rainforest dome",
-      "presence_note": "Butterfly/tropical exhibits sometimes offered — confirm current."
+      "presence_note": "Not on the venue's official exhibit list (checked 2026-11-16)."
+    },
+    {
+      "id": "nm_elephant",
+      "label": "African elephant",
+      "emoji": "🐘",
+      "one_liner": "Look up at the giant elephant in the Rotunda.",
+      "tags": [
+        "wow",
+        "big"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Rotunda",
+      "qa_card": {
+        "question": "What did you notice about the African elephant?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://naturalhistory.si.edu/visit/museum-map",
+      "display_label": "African elephant",
+      "core": false
+    },
+    {
+      "id": "nm_hope",
+      "label": "Hope Diamond",
+      "emoji": "💎",
+      "one_liner": "Find the big blue diamond.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Gems and Minerals",
+      "qa_card": {
+        "question": "What did you notice about the Hope Diamond?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://naturalhistory.si.edu/visit/museum-map",
+      "display_label": "Hope Diamond",
+      "core": false
+    },
+    {
+      "id": "nm_moai",
+      "label": "Moai",
+      "emoji": "🗿",
+      "one_liner": "Find the giant stone head.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Ground Floor",
+      "qa_card": {
+        "question": "What did you notice about the Moai?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://naturalhistory.si.edu/visit/museum-map",
+      "display_label": "Moai",
+      "core": false
+    },
+    {
+      "id": "nm_origins",
+      "label": "Human Origins",
+      "emoji": "🧒",
+      "one_liner": "Find a face of an early human.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Human Origins",
+      "qa_card": {
+        "question": "What did you notice about the Human Origins?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://naturalhistory.si.edu/visit/museum-map",
+      "display_label": "Human Origins",
+      "core": false
+    },
+    {
+      "id": "nm_fossilab",
+      "label": "FossiLab",
+      "emoji": "🔬",
+      "one_liner": "Peek through the window at the fossil lab.",
+      "tags": [
+        "read"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hall of Fossils – Deep Time",
+      "qa_card": {
+        "question": "What did you notice about the FossiLab?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://naturalhistory.si.edu/visit/museum-map",
+      "display_label": "FossiLab",
+      "core": false
     }
   ],
   "content_mode": "hybrid",
@@ -249,14 +383,15 @@
   ],
   "route_90m": [
     "sci_dinosaur",
-    "sci_mammal_hall",
+    "nm_elephant",
     "sci_aquarium_zone"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [minor]",
+  "research_notes": "R2 hybrid 2026-08-07 · web-map 2026-08-07 · presence-audit 2026-08-08 [minor] [2026-11-16] SEO gate B2: named finds from the official museum map (as of June 18, 2026); 'Imaginarium', 'Planet / space hall' and 'Rainforest dome' are not on the map, so they are marked absent; Live Insect Zoo is temporarily closed and was not added",
   "list_confidence": "partial",
   "do_not_list": [],
   "presence_sources": [
-    "https://naturalhistory.si.edu/"
+    "https://naturalhistory.si.edu/",
+    "https://naturalhistory.si.edu/visit/museum-map"
   ],
   "bonus_hunt": {
     "tagline": "NMNH bonus · fossils + ocean hall energy",
@@ -324,5 +459,13 @@
     ],
     "researched": "2026-08-08",
     "status": "researched"
-  }
+  },
+  "classic_find_ids": [
+    "sci_dinosaur",
+    "nm_elephant",
+    "sci_aquarium_zone",
+    "nm_hope",
+    "nm_moai",
+    "nm_origins"
+  ]
 }

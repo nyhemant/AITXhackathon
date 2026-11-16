@@ -37,7 +37,11 @@
       ],
       "zone": "Imaginarium",
       "catalog_id": "cm-imaginarium",
-      "core": true
+      "core": true,
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/childrens-museum/"
     },
     {
       "id": "woven",
@@ -56,11 +60,15 @@
       ],
       "zone": "Woven Wonders",
       "catalog_id": "cm-woven",
-      "core": true
+      "core": true,
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/childrens-museum/"
     },
     {
       "id": "water",
-      "label": "Water play",
+      "label": "Programmable waterfall",
       "emoji": "💧",
       "one_liner": "Water play if the pumps are on.",
       "tags": [
@@ -76,11 +84,16 @@
       ],
       "zone": "Water",
       "catalog_id": "cm-waterfall",
-      "core": true
+      "core": true,
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
+      "display_label": "Programmable waterfall"
     },
     {
       "id": "makery",
-      "label": "Makery",
+      "label": "Creative Makery",
       "emoji": "🔧",
       "one_liner": "Make something with your hands, then take it or toss it.",
       "tags": [
@@ -95,7 +108,12 @@
       ],
       "zone": "Makery",
       "catalog_id": "cm-makery",
-      "core": true
+      "core": true,
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
+      "display_label": "Creative Makery"
     },
     {
       "id": "toddler",
@@ -113,7 +131,11 @@
       ],
       "zone": "Toddler Garden",
       "catalog_id": "cm-toddler-garden",
-      "core": true
+      "core": true,
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/childrens-museum/"
     },
     {
       "id": "outdoor",
@@ -137,7 +159,7 @@
     },
     {
       "id": "art",
-      "label": "Art lab",
+      "label": "Art Lab",
       "emoji": "🖼️",
       "one_liner": "Come-and-go art — mess is allowed.",
       "tags": [
@@ -153,7 +175,12 @@
       ],
       "zone": "",
       "catalog_id": "cm-art-lab",
-      "core": true
+      "core": true,
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
+      "display_label": "Art Lab"
     },
     {
       "id": "explore",
@@ -206,7 +233,7 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07",
+  "research_notes": "map-img 2026-08-07 · map-page 2026-08-07 [2026-11-16] SEO gate B2: sourced every hunt find to the official Moody Family Children's Museum page",
   "list_confidence": "partial",
   "bonus_hunt": {
     "tagline": "Children’s Museum Perot bonus · make, splash, climb",
@@ -277,5 +304,21 @@
     ],
     "researched": "2026-08-08",
     "status": "researched"
-  }
+  },
+  "presence_sources": [
+    "https://www.perotmuseum.org/exhibits/halls/childrens-museum/"
+  ],
+  "route_90m": [
+    "imaginarium",
+    "woven",
+    "makery"
+  ],
+  "classic_find_ids": [
+    "imaginarium",
+    "woven",
+    "makery",
+    "toddler",
+    "art",
+    "water"
+  ]
 }

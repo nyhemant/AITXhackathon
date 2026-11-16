@@ -285,6 +285,85 @@
       "presence_url": "https://espacepourlavie.ca/en/biodome",
       "display_label": "Laurentian Maple Forest",
       "core": false
+    },
+    {
+      "id": "bio_tropical",
+      "label": "Tropical Rainforest",
+      "emoji": "🌴",
+      "one_liner": "Feel how warm and wet it is. Find an animal in the trees.",
+      "tags": [
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tropical Rainforest",
+      "qa_card": {
+        "question": "What did you notice about the Tropical Rainforest?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "reliable_source",
+      "presence_url": "https://www.musees.qc.ca/en/discover-museums/museums-of-quebec/biodome-or-espace-pour-la-vie/",
+      "display_label": "Tropical Rainforest",
+      "core": false
+    },
+    {
+      "id": "bio_gulf",
+      "label": "Gulf of St. Lawrence",
+      "emoji": "🐟",
+      "one_liner": "Find a fish in the big sea tank.",
+      "tags": [
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Gulf of St. Lawrence",
+      "qa_card": {
+        "question": "What did you notice about the Gulf of St. Lawrence?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "reliable_source",
+      "presence_url": "https://www.musees.qc.ca/en/discover-museums/museums-of-quebec/biodome-or-espace-pour-la-vie/",
+      "display_label": "Gulf of St. Lawrence",
+      "core": false
+    },
+    {
+      "id": "bio_subantarctic",
+      "label": "Sub-Antarctic Islands",
+      "emoji": "🐧",
+      "one_liner": "Find the penguins behind the wall of ice.",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sub-Antarctic Islands",
+      "qa_card": {
+        "question": "What did you notice about the Sub-Antarctic Islands?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "reliable_source",
+      "presence_url": "https://www.musees.qc.ca/en/discover-museums/museums-of-quebec/biodome-or-espace-pour-la-vie/",
+      "display_label": "Sub-Antarctic Islands",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -301,11 +380,11 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "sci_rainforest",
-    "sci_aquarium_zone",
-    "african_penguin"
+    "bio_tropical",
+    "bio_maple",
+    "bio_gulf"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
+  "research_notes": "R2 hybrid 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/ [2026-11-16] SEO gate B2: hunt now walks the five named Biodôme ecosystems (Société des musées du Québec list; the official site redirects to its calendar)",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -325,7 +404,8 @@
   "presence_sources": [
     "https://espacepourlavie.ca/en/biodome",
     "https://espacepourlavie.ca/en",
-    "https://calendrier.espacepourlavie.ca/"
+    "https://calendrier.espacepourlavie.ca/",
+    "https://www.musees.qc.ca/en/discover-museums/museums-of-quebec/biodome-or-espace-pour-la-vie/"
   ],
   "bonus_hunt": {
     "tagline": "Biodôme bonus · five ecosystems second look",
@@ -393,5 +473,13 @@
     "sources": [
       "https://espacepourlavie.ca/en/biodome"
     ]
-  }
+  },
+  "classic_find_ids": [
+    "bio_tropical",
+    "bio_maple",
+    "bio_gulf",
+    "bio_puffin",
+    "bio_subantarctic",
+    "african_penguin"
+  ]
 }
