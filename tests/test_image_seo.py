@@ -18,8 +18,9 @@ class ImageSeoTest(unittest.TestCase):
         self.assertEqual(raw, (FP / "sitemap.xml").read_text(encoding="utf-8"))
         root = ET.fromstring(raw.encode("utf-8"))
         urls = root.findall("s:url", NS)
-        # 291 since 2026-11-16: ecoparque-ba and stockholm-skansen are noindex (out of the sitemap).
-        self.assertEqual(len(urls), 291)
+        # 286 since gate B2 (2026-11-16): 7 noindex place pages are out of the sitemap
+        # (ecoparque-ba, stockholm-skansen, cairo-zoo, nairobi-safari-walk, bogota-zoo, beijing-zoo, lotte-aquarium-seoul).
+        self.assertEqual(len(urls), 286)
         imgs = {u.find("s:loc", NS).text: [i.find("i:loc", NS).text for i in u.findall("i:image", NS)] for u in urls}
         cards = [k for k in imgs if re.search(r"/field-pack/cards/[^/]+/$", k)]
         self.assertGreaterEqual(len(cards), 58)
