@@ -46,6 +46,136 @@
       "presence_source": "official_animals_page",
       "display_label": "Red panda",
       "core": true
+    },
+    {
+      "id": "kor_snow_leopard",
+      "label": "Snow leopard",
+      "emoji": "🐆",
+      "one_liner": "Find the long fluffy tail.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Snow leopard?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://korkeasaari.fi/en/animal/snow-leopard/",
+      "display_label": "Snow leopard",
+      "core": false
+    },
+    {
+      "id": "kor_wolverine",
+      "label": "Wolverine",
+      "emoji": "🦡",
+      "one_liner": "Wolverines are small but strong. Can you see one?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Wolverine?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://korkeasaari.fi/en/animal/wolverine/",
+      "display_label": "Wolverine",
+      "core": false
+    },
+    {
+      "id": "kor_takin",
+      "label": "Takin",
+      "emoji": "🐂",
+      "one_liner": "A big shaggy goat-cow. Find its horns.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Takin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://korkeasaari.fi/en/animal/takin/",
+      "display_label": "Takin",
+      "core": false
+    },
+    {
+      "id": "kor_brown_bear",
+      "label": "Brown bear",
+      "emoji": "🐻",
+      "one_liner": "Is the bear awake or napping?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Brown bear?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://korkeasaari.fi/en/animal/brown-bear/",
+      "display_label": "Brown bear",
+      "core": false
+    },
+    {
+      "id": "kor_amur_leopard",
+      "label": "Amur leopard",
+      "emoji": "🐆",
+      "one_liner": "Find a leopard with thick winter fur.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Amur leopard?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://korkeasaari.fi/en/animal/amur-leopard/",
+      "display_label": "Amur leopard",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -65,7 +195,7 @@
   "route_90m": [
     "red_panda"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (korkeasaari.fi). Animals index is JS-thin — Starter. Short overlap stays short.",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (korkeasaari.fi). Animals index is JS-thin — Starter. Short overlap stays short. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -193,7 +323,12 @@
     "https://www.korkeasaari.fi/en/animals/",
     "https://korkeasaari.fi/en/animal/red-panda/",
     "https://korkeasaari.fi/en/animal/amur-tiger/",
-    "https://korkeasaari.fi/en/animal/asiatic-lion/"
+    "https://korkeasaari.fi/en/animal/asiatic-lion/",
+    "https://korkeasaari.fi/en/animal/snow-leopard/",
+    "https://korkeasaari.fi/en/animal/wolverine/",
+    "https://korkeasaari.fi/en/animal/takin/",
+    "https://korkeasaari.fi/en/animal/brown-bear/",
+    "https://korkeasaari.fi/en/animal/amur-leopard/"
   ],
   "bonus_hunt": {
     "tagline": "Korkeasaari bonus · red panda",

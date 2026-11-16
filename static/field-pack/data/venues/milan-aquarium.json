@@ -127,6 +127,136 @@
       "presence_source": "official_animals_page",
       "display_label": "Shark",
       "core": false
+    },
+    {
+      "id": "acm_sturgeon",
+      "label": "Sturgeon",
+      "emoji": "🐟",
+      "one_liner": "A 'living fossil' fish. Find its bony plates.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "River mouth",
+      "qa_card": {
+        "question": "What did you notice about the Sturgeon?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.acquariodimilano.it/acquario/percorso-espositivo",
+      "display_label": "Sturgeon",
+      "core": false
+    },
+    {
+      "id": "acm_red_sea",
+      "label": "Red Sea coral reef tank",
+      "emoji": "🪸",
+      "one_liner": "Find the brightest coral fish.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tropical tank",
+      "qa_card": {
+        "question": "What did you notice about the Red Sea coral reef tank?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.acquariodimilano.it/acquario/percorso-espositivo",
+      "display_label": "Red Sea coral reef tank",
+      "core": false
+    },
+    {
+      "id": "acm_trout",
+      "label": "Trout",
+      "emoji": "🐟",
+      "one_liner": "Find a fish from a cold mountain stream.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Alpine stream tanks",
+      "qa_card": {
+        "question": "What did you notice about the Trout?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.acquariodimilano.it/acquario/percorso-espositivo",
+      "display_label": "Trout",
+      "core": false
+    },
+    {
+      "id": "acm_tench",
+      "label": "Tench",
+      "emoji": "🐟",
+      "one_liner": "A green-gold lake fish.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Lake Como tank",
+      "qa_card": {
+        "question": "What did you notice about the Tench?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.acquariodimilano.it/acquario/percorso-espositivo",
+      "display_label": "Tench",
+      "core": false
+    },
+    {
+      "id": "acm_garden",
+      "label": "Aquarium garden",
+      "emoji": "🌿",
+      "one_liner": "Find a pond plant outside.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Garden",
+      "qa_card": {
+        "question": "What did you notice about the Aquarium garden?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.acquariodimilano.it/acquario/percorso-espositivo",
+      "display_label": "Aquarium garden",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -147,7 +277,7 @@
     "jellyfish",
     "stingray"
   ],
-  "research_notes": "[2026-08-23] Wave 4: acquariodimilano.it percorso (acquariocivicomilano.eu is parked). Thin civic list. No invented verify date.",
+  "research_notes": "[2026-08-23] Wave 4: acquariodimilano.it percorso (acquariocivicomilano.eu is parked). Thin civic list. No invented verify date. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {

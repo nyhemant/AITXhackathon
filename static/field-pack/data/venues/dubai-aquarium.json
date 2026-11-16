@@ -153,6 +153,84 @@
       "presence_source": "official_animals_page",
       "display_label": "River / lake fish",
       "core": false
+    },
+    {
+      "id": "dxb_croc",
+      "label": "Royal Croc duo (crocodiles)",
+      "emoji": "🐊",
+      "one_liner": "Meet King Jock and Queen Missy, the crocodiles.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Underwater Zoo",
+      "qa_card": {
+        "question": "What did you notice about the Royal Croc duo (crocodiles)?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.thedubaiaquarium.com/",
+      "display_label": "Royal Croc duo (crocodiles)",
+      "core": false
+    },
+    {
+      "id": "dxb_penguin",
+      "label": "Penguins",
+      "emoji": "🐧",
+      "one_liner": "Find Rain the penguin.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Underwater Zoo",
+      "qa_card": {
+        "question": "What did you notice about the Penguins?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.thedubaiaquarium.com/",
+      "display_label": "Penguins",
+      "core": false
+    },
+    {
+      "id": "dxb_tunnel",
+      "label": "Aquarium tunnel",
+      "emoji": "🐠",
+      "one_liner": "Walk under sharks and rays in the tunnel.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tunnel",
+      "qa_card": {
+        "question": "What did you notice about the Aquarium tunnel?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.thedubaiaquarium.com/",
+      "display_label": "Aquarium tunnel",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -173,7 +251,7 @@
     "shark",
     "stingray"
   ],
-  "research_notes": "[2026-08-23] Wave 4: thedubaiaquarium.com encounters + ticket copy. No public species inventory. Short overlap. No invented verify date.",
+  "research_notes": "[2026-08-23] Wave 4: thedubaiaquarium.com encounters + ticket copy. No public species inventory. Short overlap. No invented verify date. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {

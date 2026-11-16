@@ -156,6 +156,214 @@
       "presence_source": "official_animals_page",
       "display_label": "Shark",
       "core": false
+    },
+    {
+      "id": "mnz_amur_tiger",
+      "label": "Amur tiger",
+      "emoji": "🐅",
+      "one_liner": "The biggest cat. Find its stripes.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Minnesota Zoo",
+      "qa_card": {
+        "question": "What did you notice about the Amur tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://mnzoo.org/blog/animals/amur-tiger/",
+      "display_label": "Amur tiger",
+      "core": false
+    },
+    {
+      "id": "mnz_sea_otter",
+      "label": "Sea otter",
+      "emoji": "🦦",
+      "one_liner": "Is the otter floating on its back?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Minnesota Zoo",
+      "qa_card": {
+        "question": "What did you notice about the Sea otter?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://mnzoo.org/blog/animals/sea-otter/",
+      "display_label": "Sea otter",
+      "core": false
+    },
+    {
+      "id": "mnz_brown_bear",
+      "label": "Brown bear",
+      "emoji": "🐻",
+      "one_liner": "Is the bear swimming or napping?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Minnesota Zoo",
+      "qa_card": {
+        "question": "What did you notice about the Brown bear?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://mnzoo.org/blog/animals/brown-bear/",
+      "display_label": "Brown bear",
+      "core": false
+    },
+    {
+      "id": "mnz_moose",
+      "label": "Moose",
+      "emoji": "🫎",
+      "one_liner": "Find the moose's big nose.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Minnesota Zoo",
+      "qa_card": {
+        "question": "What did you notice about the Moose?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://mnzoo.org/blog/animals/moose/",
+      "display_label": "Moose",
+      "core": false
+    },
+    {
+      "id": "mnz_malayan_tapir",
+      "label": "Malayan tapir",
+      "emoji": "🐗",
+      "one_liner": "Black and white like a cookie.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Minnesota Zoo",
+      "qa_card": {
+        "question": "What did you notice about the Malayan tapir?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://mnzoo.org/blog/animals/malayan-tapir/",
+      "display_label": "Malayan tapir",
+      "core": false
+    },
+    {
+      "id": "mnz_hawaiian_monk_seals",
+      "label": "Hawaiian monk seal",
+      "emoji": "🦭",
+      "one_liner": "Watch the seal swim upside down.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Minnesota Zoo",
+      "qa_card": {
+        "question": "What did you notice about the Hawaiian monk seal?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://mnzoo.org/blog/animals/hawaiian-monk-seals/",
+      "display_label": "Hawaiian monk seal",
+      "core": false
+    },
+    {
+      "id": "mnz_bactrian_camel",
+      "label": "Bactrian camel",
+      "emoji": "🐫",
+      "one_liner": "Count the humps: two!",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Minnesota Zoo",
+      "qa_card": {
+        "question": "What did you notice about the Bactrian camel?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://mnzoo.org/blog/animals/bactrian-camel/",
+      "display_label": "Bactrian camel",
+      "core": false
+    },
+    {
+      "id": "mnz_american_bison",
+      "label": "American bison",
+      "emoji": "🦬",
+      "one_liner": "Find the shaggy hump.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Minnesota Zoo",
+      "qa_card": {
+        "question": "What did you notice about the American bison?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://mnzoo.org/blog/animals/american-bison/",
+      "display_label": "American bison",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -177,7 +385,7 @@
     "red_panda",
     "ring_tailed_lemur"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 2b public list pass (mnzoo.org/animals complete directory). Shark is on the official zoo animals index (Discovery Bay).",
+  "research_notes": "[2026-08-23] Official-source Wave 2b public list pass (mnzoo.org/animals complete directory). Shark is on the official zoo animals index (Discovery Bay). [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -238,7 +446,15 @@
   "presence_sources": [
     "https://mnzoo.org/animals/",
     "https://mnzoo.org/blog/animals/african-penguin/",
-    "https://mnzoo.org/"
+    "https://mnzoo.org/",
+    "https://mnzoo.org/blog/animals/amur-tiger/",
+    "https://mnzoo.org/blog/animals/sea-otter/",
+    "https://mnzoo.org/blog/animals/brown-bear/",
+    "https://mnzoo.org/blog/animals/moose/",
+    "https://mnzoo.org/blog/animals/malayan-tapir/",
+    "https://mnzoo.org/blog/animals/hawaiian-monk-seals/",
+    "https://mnzoo.org/blog/animals/bactrian-camel/",
+    "https://mnzoo.org/blog/animals/american-bison/"
   ],
   "bonus_hunt": {
     "tagline": "Minnesota bonus · penguins + red panda + Tropics Trail",

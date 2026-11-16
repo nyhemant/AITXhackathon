@@ -19,7 +19,190 @@
     "energy_note": "heat",
     "best_start": "One garden + animal loop."
   },
-  "items": [],
+  "items": [
+    {
+      "id": "byc_penguin",
+      "label": "Humboldt penguin",
+      "emoji": "🐧",
+      "one_liner": "Count the penguins swimming. The exhibit may close for an expansion, so check before going.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Penguin exhibit",
+      "qa_card": {
+        "question": "What did you notice about the Humboldt penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
+      "display_label": "Humboldt penguin",
+      "core": false
+    },
+    {
+      "id": "byc_tiger",
+      "label": "Bengal tiger",
+      "emoji": "🐅",
+      "one_liner": "Find the stripes on the Bengal tiger.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Big cats",
+      "qa_card": {
+        "question": "What did you notice about the Bengal tiger?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
+      "display_label": "Bengal tiger",
+      "core": false
+    },
+    {
+      "id": "byc_leopard",
+      "label": "Indian leopard",
+      "emoji": "🐆",
+      "one_liner": "Spots, not stripes: find the leopard.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Big cats",
+      "qa_card": {
+        "question": "What did you notice about the Indian leopard?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
+      "display_label": "Indian leopard",
+      "core": false
+    },
+    {
+      "id": "byc_hippo",
+      "label": "Hippopotamus",
+      "emoji": "🦛",
+      "one_liner": "Is the hippo in the water or on land?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Hippo pond",
+      "qa_card": {
+        "question": "What did you notice about the Hippopotamus?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
+      "display_label": "Hippopotamus",
+      "core": false
+    },
+    {
+      "id": "byc_barasingha",
+      "label": "Barasingha (swamp deer)",
+      "emoji": "🦌",
+      "one_liner": "Count the points on the antlers.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Deer",
+      "qa_card": {
+        "question": "What did you notice about the Barasingha (swamp deer)?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
+      "display_label": "Barasingha (swamp deer)",
+      "core": false
+    },
+    {
+      "id": "byc_sarus",
+      "label": "Sarus crane",
+      "emoji": "🪶",
+      "one_liner": "Find the tall grey crane with a red head.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Birds",
+      "qa_card": {
+        "question": "What did you notice about the Sarus crane?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
+      "display_label": "Sarus crane",
+      "core": false
+    },
+    {
+      "id": "byc_hyena",
+      "label": "Hyena",
+      "emoji": "🐾",
+      "one_liner": "Spot the hyena's big ears.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Carnivores",
+      "qa_card": {
+        "question": "What did you notice about the Hyena?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
+      "display_label": "Hyena",
+      "core": false
+    }
+  ],
   "content_mode": "curated",
   "media": {
     "visitor_map_url": "",
@@ -34,7 +217,7 @@
     "Leave while happy"
   ],
   "route_90m": [],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (mcgm.gov.in zoo plan). Stale / future-plan copy only — Starter, no invented cards.",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (mcgm.gov.in zoo plan). Stale / future-plan copy only — Starter, no invented cards. [2026-11-16] SEO gate B2: added 7 animals from the official BMC zoo site species list; penguin-exhibit expansion caveat from TOI 17 Jul 2026",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -160,7 +343,8 @@
   ],
   "presence_sources": [
     "https://www.mcgm.gov.in/irj/servlet/prt/portal/prtroot/com.mcgm.ahome_placestovisit.Zooplan",
-    "https://portal.mcgm.gov.in/irj/servlet/prt/portal/prtroot/com.mcgm.ahome_placestovisit.Zooplan"
+    "https://portal.mcgm.gov.in/irj/servlet/prt/portal/prtroot/com.mcgm.ahome_placestovisit.Zooplan",
+    "https://themumbaizoo-ticket.mcgm.gov.in/"
   ],
   "bonus_hunt": {
     "tagline": "Byculla bonus · garden map",

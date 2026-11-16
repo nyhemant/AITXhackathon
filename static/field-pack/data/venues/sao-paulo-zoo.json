@@ -103,6 +103,162 @@
       "display_label": "Hippo",
       "core": true,
       "presence_note": "Official homepage: hippos. Soft Hippo."
+    },
+    {
+      "id": "spz_tamarin",
+      "label": "Black lion tamarin",
+      "emoji": "🐒",
+      "one_liner": "A tiny monkey with a golden rump.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Black lion tamarin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://zoologico.com.br/animals",
+      "display_label": "Black lion tamarin",
+      "core": false
+    },
+    {
+      "id": "spz_macaw",
+      "label": "Blue-winged macaw",
+      "emoji": "🦜",
+      "one_liner": "Find the green parrot with blue wings.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Blue-winged macaw?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://zoologico.com.br/animals",
+      "display_label": "Blue-winged macaw",
+      "core": false
+    },
+    {
+      "id": "spz_amazon",
+      "label": "Red-tailed amazon",
+      "emoji": "🦜",
+      "one_liner": "A green parrot with a purple face.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Red-tailed amazon?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://zoologico.com.br/animals",
+      "display_label": "Red-tailed amazon",
+      "core": false
+    },
+    {
+      "id": "spz_hawk_eagle",
+      "label": "Ornate hawk-eagle",
+      "emoji": "🦅",
+      "one_liner": "Look for the crest on its head.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Ornate hawk-eagle?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://zoologico.com.br/animals",
+      "display_label": "Ornate hawk-eagle",
+      "core": false
+    },
+    {
+      "id": "spz_blackbuck",
+      "label": "Blackbuck",
+      "emoji": "🦌",
+      "one_liner": "An antelope with twisty horns.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Blackbuck?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://zoologico.com.br/animals",
+      "display_label": "Blackbuck",
+      "core": false
+    },
+    {
+      "id": "spz_tinamou",
+      "label": "Solitary tinamou",
+      "emoji": "🐦",
+      "one_liner": "A round forest bird that walks more than it flies.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Solitary tinamou?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://zoologico.com.br/animals",
+      "display_label": "Solitary tinamou",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -123,7 +279,7 @@
     "chimpanzee",
     "nile_hippo"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (zoologico.com.br homepage). Animals page is JS-thin — Starter.",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (zoologico.com.br homepage). Animals page is JS-thin — Starter. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {

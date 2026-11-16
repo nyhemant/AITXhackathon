@@ -128,6 +128,162 @@
       "presence_source": "official_animals_page",
       "display_label": "Asian small-clawed otter",
       "core": true
+    },
+    {
+      "id": "ocp_king_penguin",
+      "label": "King penguin",
+      "emoji": "🐧",
+      "one_liner": "Find the orange patch on the king penguin.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "South Pole Spectacular",
+      "qa_card": {
+        "question": "What did you notice about the King penguin?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.oceanpark.com.hk/en/experience/attractions",
+      "display_label": "King penguin",
+      "core": false
+    },
+    {
+      "id": "ocp_sawfish",
+      "label": "Sawfish",
+      "emoji": "🦈",
+      "one_liner": "Its nose looks like a saw!",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Shark Mystique",
+      "qa_card": {
+        "question": "What did you notice about the Sawfish?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.oceanpark.com.hk/en/experience/attractions",
+      "display_label": "Sawfish",
+      "core": false
+    },
+    {
+      "id": "ocp_salamander",
+      "label": "Chinese giant salamander",
+      "emoji": "🦎",
+      "one_liner": "The biggest salamander in the world.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Giant Panda Adventure",
+      "qa_card": {
+        "question": "What did you notice about the Chinese giant salamander?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.oceanpark.com.hk/en/experience/attractions",
+      "display_label": "Chinese giant salamander",
+      "core": false
+    },
+    {
+      "id": "ocp_snub_monkey",
+      "label": "Sichuan golden snub-nosed monkey",
+      "emoji": "🐒",
+      "one_liner": "Golden fur and a tiny nose.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sichuan Treasures",
+      "qa_card": {
+        "question": "What did you notice about the Sichuan golden snub-nosed monkey?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.oceanpark.com.hk/en/experience/attractions",
+      "display_label": "Sichuan golden snub-nosed monkey",
+      "core": false
+    },
+    {
+      "id": "ocp_arapaima",
+      "label": "Arapaima",
+      "emoji": "🐟",
+      "one_liner": "A giant river fish. How long is it?",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Rainforest",
+      "qa_card": {
+        "question": "What did you notice about the Arapaima?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.oceanpark.com.hk/en/experience/attractions",
+      "display_label": "Arapaima",
+      "core": false
+    },
+    {
+      "id": "ocp_croc_lizard",
+      "label": "Chinese crocodile lizard",
+      "emoji": "🦎",
+      "one_liner": "A lizard with a crocodile tail.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Reptile exhibit",
+      "qa_card": {
+        "question": "What did you notice about the Chinese crocodile lizard?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.oceanpark.com.hk/en/experience/attractions",
+      "display_label": "Chinese crocodile lizard",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -148,7 +304,7 @@
     "red_panda",
     "two_toed_sloth"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (oceanpark.com.hk). Zoo|both cards only; aquarium-only leftovers dropped.",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (oceanpark.com.hk). Zoo|both cards only; aquarium-only leftovers dropped. [2026-11-16] SEO gate B2: added official attractions-page animals; North Pole Encounter skipped (closed until Q1 2027)",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -289,7 +445,8 @@
     "https://www.oceanpark.com.hk/en/experience/attractions/attractions/giant-panda-adventure",
     "https://www.oceanpark.com.hk/en/experience/attractions/attractions/panda-village",
     "https://www.oceanpark.com.hk/en/park-experience/sloth-and-friends-studio",
-    "https://www.oceanpark.com.hk/en/experience/attractions/attractions/south-pole-spectacular"
+    "https://www.oceanpark.com.hk/en/experience/attractions/attractions/south-pole-spectacular",
+    "https://www.oceanpark.com.hk/en/experience/attractions"
   ],
   "bonus_hunt": {
     "tagline": "Ocean Park bonus · pandas + sloth + otter",

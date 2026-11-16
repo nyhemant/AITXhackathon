@@ -160,6 +160,162 @@
       "display_label": "Two-toed sloth",
       "core": false,
       "presence_note": "Official 2024 report lists Linne's two-toed sloth young."
+    },
+    {
+      "id": "dvz_rhino",
+      "label": "Greater one-horned rhinoceros",
+      "emoji": "🦏",
+      "one_liner": "Find the one horn.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Greater one-horned rhinoceros?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://denverzoo.org/animals/",
+      "display_label": "Greater one-horned rhinoceros",
+      "core": false
+    },
+    {
+      "id": "dvz_horse",
+      "label": "Przewalski's horse",
+      "emoji": "🐎",
+      "one_liner": "A wild horse with a short mane.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Przewalski's horse?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://denverzoo.org/animals/",
+      "display_label": "Przewalski's horse",
+      "core": false
+    },
+    {
+      "id": "dvz_kangaroo",
+      "label": "Red kangaroo",
+      "emoji": "🦘",
+      "one_liner": "Is the kangaroo hopping?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Red kangaroo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://denverzoo.org/animals/",
+      "display_label": "Red kangaroo",
+      "core": false
+    },
+    {
+      "id": "dvz_hornbill",
+      "label": "Great hornbill",
+      "emoji": "🐦",
+      "one_liner": "Find the yellow helmet on its beak.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Great hornbill?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://denverzoo.org/animals/",
+      "display_label": "Great hornbill",
+      "core": false
+    },
+    {
+      "id": "dvz_bongo",
+      "label": "Eastern bongo",
+      "emoji": "🦌",
+      "one_liner": "Count the white stripes.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Eastern bongo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://denverzoo.org/animals/",
+      "display_label": "Eastern bongo",
+      "core": false
+    },
+    {
+      "id": "dvz_zebra",
+      "label": "Grevy's zebra",
+      "emoji": "🦓",
+      "one_liner": "Thin stripes and big round ears.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Grevy's zebra?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://denverzoo.org/animals/",
+      "display_label": "Grevy's zebra",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -181,7 +337,7 @@
     "orangutan",
     "african_penguin"
   ],
-  "research_notes": "[2026-08-23] Wave 2a: official animals index is incomplete (“not all animals represented”). Short Starter list from published zoo/both cards named on official Denver pages. No invented verify date.",
+  "research_notes": "[2026-08-23] Wave 2a: official animals index is incomplete (“not all animals represented”). Short Starter list from published zoo/both cards named on official Denver pages. No invented verify date. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {

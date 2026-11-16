@@ -159,6 +159,136 @@
       "presence_source": "official_animals_page",
       "display_label": "River / lake fish",
       "core": false
+    },
+    {
+      "id": "swb_sea_lion",
+      "label": "Sea lion show",
+      "emoji": "🦭",
+      "one_liner": "Clap when the sea lion does.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Marine Park",
+      "qa_card": {
+        "question": "What did you notice about the Sea lion show?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.safariworld.com/showtime/",
+      "display_label": "Sea lion show",
+      "core": false
+    },
+    {
+      "id": "swb_dolphin",
+      "label": "Dolphin show",
+      "emoji": "🐬",
+      "one_liner": "Count the dolphin jumps.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Marine Park",
+      "qa_card": {
+        "question": "What did you notice about the Dolphin show?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.safariworld.com/showtime/",
+      "display_label": "Dolphin show",
+      "core": false
+    },
+    {
+      "id": "swb_kangaroo",
+      "label": "Camp Kangaroo",
+      "emoji": "🦘",
+      "one_liner": "Find a kangaroo with a pouch.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Marine Park",
+      "qa_card": {
+        "question": "What did you notice about the Camp Kangaroo?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.safariworld.com/showtime/",
+      "display_label": "Camp Kangaroo",
+      "core": false
+    },
+    {
+      "id": "swb_giraffe",
+      "label": "Giraffe Feeding",
+      "emoji": "🦒",
+      "one_liner": "How long is a giraffe's tongue?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Giraffe Feeding",
+      "qa_card": {
+        "question": "What did you notice about the Giraffe Feeding?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.safariworld.com/showtime/",
+      "display_label": "Giraffe Feeding",
+      "core": false
+    },
+    {
+      "id": "swb_aviary",
+      "label": "Tree House Aviary",
+      "emoji": "🦜",
+      "one_liner": "Find the brightest bird.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Tree House Aviary & Kitchen",
+      "qa_card": {
+        "question": "What did you notice about the Tree House Aviary?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.safariworld.com/showtime/",
+      "display_label": "Tree House Aviary",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -180,7 +310,7 @@
     "orangutan",
     "reticulated_giraffe"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (safariworld.com + official investor PDF). safariworldbangkok.com is a partner site — ignored.",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (safariworld.com + official investor PDF). safariworldbangkok.com is a partner site — ignored. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -283,7 +413,8 @@
   "presence_sources": [
     "https://www.safariworld.com/",
     "https://ticket.safariworld.com/",
-    "https://www.safariworld.com/investor/home/pdf/2558_2/e2_2.pdf"
+    "https://www.safariworld.com/investor/home/pdf/2558_2/e2_2.pdf",
+    "https://www.safariworld.com/showtime/"
   ],
   "bonus_hunt": {
     "tagline": "Safari World bonus · zebra + orangutan + giraffe",

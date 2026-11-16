@@ -134,6 +134,136 @@
       "display_label": "Hippo",
       "core": false,
       "presence_note": "Official homepage alt: Two hippos swimming. Soft Hippo."
+    },
+    {
+      "id": "aaz_arabian_oryx",
+      "label": "Arabian oryx",
+      "emoji": "🦌",
+      "one_liner": "Find the long straight horns.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Arabian oryx?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.alainzoo.com/en/discover/animals/arabian-oryx",
+      "display_label": "Arabian oryx",
+      "core": false
+    },
+    {
+      "id": "aaz_southern_white_rhino",
+      "label": "Southern white rhino",
+      "emoji": "🦏",
+      "one_liner": "Two horns. Which one is bigger?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Southern white rhino?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.alainzoo.com/en/discover/animals/southern-white-rhino",
+      "display_label": "Southern white rhino",
+      "core": false
+    },
+    {
+      "id": "aaz_sand_cat",
+      "label": "Arabian sand cat",
+      "emoji": "🐈",
+      "one_liner": "A tiny desert cat with big ears.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Arabian sand cat?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.alainzoo.com/en/discover/animals/sand-cat",
+      "display_label": "Arabian sand cat",
+      "core": false
+    },
+    {
+      "id": "aaz_gorilla",
+      "label": "Gorilla",
+      "emoji": "🦍",
+      "one_liner": "Is the gorilla eating?",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Animals",
+      "qa_card": {
+        "question": "What did you notice about the Gorilla?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.alainzoo.com/en/discover/animals/gorilla",
+      "display_label": "Gorilla",
+      "core": false
+    },
+    {
+      "id": "aaz_sheikh_zayed",
+      "label": "Sheikh Zayed Desert Learning Centre",
+      "emoji": "🏜️",
+      "one_liner": "Find a desert animal in the galleries.",
+      "tags": [
+        "indoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Sheikh Zayed Desert Learning Centre",
+      "qa_card": {
+        "question": "What did you notice about the Sheikh Zayed Desert Learning Centre?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.alainzoo.com/en/about",
+      "display_label": "Sheikh Zayed Desert Learning Centre",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -155,7 +285,7 @@
     "african_lion",
     "zebra"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (alainzoo.ae SPA + booking). No working English mammal directory — Starter.",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (alainzoo.ae SPA + booking). No working English mammal directory — Starter. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -265,7 +395,12 @@
     "https://www.alainzoo.ae/",
     "https://alainzoo.ae/en",
     "https://online.alainzoo.ae/",
-    "https://alainzoo.ae/explore-zoo/animals/reptiles"
+    "https://alainzoo.ae/explore-zoo/animals/reptiles",
+    "https://www.alainzoo.com/en/discover/animals/arabian-oryx",
+    "https://www.alainzoo.com/en/discover/animals/southern-white-rhino",
+    "https://www.alainzoo.com/en/discover/animals/sand-cat",
+    "https://www.alainzoo.com/en/discover/animals/gorilla",
+    "https://www.alainzoo.com/en/about"
   ],
   "bonus_hunt": {
     "tagline": "Al Ain bonus · giraffes + lions + zebra",
