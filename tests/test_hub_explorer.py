@@ -133,7 +133,7 @@ class HubExplorerTests(unittest.TestCase):
         self.assertIn('id="us-map"', self.html)
         self.assertNotIn('id="ready-grid"', self.html)
         self.assertIn('id="cat-places-compact"', self.html)
-        self.assertIn("218 places worldwide", self.html)
+        self.assertIn("214 places worldwide", self.html)
         self.assertIn('href="/field-pack/zoos/"', self.html)
         self.assertIn('href="/field-pack/aquariums/"', self.html)
         self.assertIn('href="/field-pack/museums/"', self.html)
@@ -142,7 +142,7 @@ class HubExplorerTests(unittest.TestCase):
 
     def test_try_a_place_leads_with_dallas_us_samples(self):
         js = (FP / "js" / "landing-map.js").read_text(encoding="utf-8")
-        self.assertIn("landing-map.js?v=89", self.html)
+        self.assertIn("landing-map.js?v=90", self.html)
         ready = re.search(r"window\.FP_READY_STRIP = \{([\s\S]*?)\n  \};", js)
         self.assertIsNotNone(ready)
         block = ready.group(1)
@@ -267,8 +267,8 @@ class HubExplorerTests(unittest.TestCase):
     def test_landing_html_lists_every_place_as_a_link(self):
         self.assertIn("all-places-dir.css?v=1", self.html)
         self.assertIn('id="all-places-dir"', self.html)
-        self.assertIn(">All 221 places<", self.html)
-        self.assertIn('data-place-count-build="221"', self.html)
+        self.assertIn(">All 214 places<", self.html)
+        self.assertIn('data-place-count-build="214"', self.html)
         block = self.html.split('id="all-places-dir"', 1)[1].split("</details>", 1)[0]
         hrefs = re.findall(r'href="(/field-pack/[^/"]+/)"', block)
         hubs = {

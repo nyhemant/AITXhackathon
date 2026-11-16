@@ -10,7 +10,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FP = ROOT / "static" / "field-pack"
 DATA = json.loads((ROOT / "data" / "quiz_printables.json").read_text(encoding="utf-8"))
-THIN = ["helsinki-zoo", "johannesburg-zoo", "moscow-zoo", "nairobi-safari-walk", "stockholm-skansen", "voyageurs"]
+# Follow-up 2026-11-16: nairobi-safari-walk and stockholm-skansen are noindex and get no inbound mesh links.
+THIN = ["helsinki-zoo", "johannesburg-zoo", "moscow-zoo", "voyageurs"]
 
 
 def _block(s: str, name: str) -> str:

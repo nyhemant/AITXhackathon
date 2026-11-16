@@ -20,8 +20,8 @@ class FlagshipSessionTests(unittest.TestCase):
         html = (FP / "index.html").read_text(encoding="utf-8")
         about = (REPO / "static" / "about" / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("Places loading", html)
-        self.assertIn("218 places worldwide", html)
-        self.assertIn("<noscript><p class=\"map-count-quiet\">218 places worldwide</p></noscript>", html)
+        self.assertIn("214 places worldwide", html)
+        self.assertIn("<noscript><p class=\"map-count-quiet\">214 places worldwide</p></noscript>", html)
         self.assertNotIn(
             "Use the at-home cards and session together; print is optional for a group visit.",
             html,
