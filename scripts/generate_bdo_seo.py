@@ -2128,7 +2128,23 @@ def seo_place_name(v: dict) -> str:
 # 2026-11-16: thin Starter pages ("No cards for this place yet") with ~0 Search Console
 # impressions in 3 months. Served 200 with noindex,follow and left out of the sitemap until
 # they are deepened from an official source. Cairo and Mumbai stay indexed (they get impressions).
-NOINDEX_PLACE_SLUGS = frozenset({"ecoparque-ba", "stockholm-skansen"})
+NOINDEX_PLACE_SLUGS = frozenset({
+    "ecoparque-ba", "stockholm-skansen",
+    # SEO gate B2 (2026-11-16): fewer than 5 sourced place-specific finds, or closed.
+    "cairo-zoo", "nairobi-safari-walk", "bogota-zoo", "beijing-zoo", "lotte-aquarium-seoul",
+})
+# Honest status line shown under the lead on a place page (gate B2, 2026-11-16).
+PLACE_NOTICES = {
+    "cairo-zoo": 'Giza Zoo has been closed for redevelopment since July 2023. No official reopening date has been announced as of November 2026, so check before planning a visit.',
+}
+
+
+def apply_place_notice(slug: str, html: str) -> str:
+    note = PLACE_NOTICES.get(slug)
+    if not note or "seo-place-notice" in html:
+        return html
+    return re.sub(r'(<p class="lead">.*?</p>\n)', lambda m: m.group(1) + f'        <p class="seo-place-notice"><strong>Closed:</strong> {note}</p>\n', html, count=1)
+
 
 
 def apply_place_robots(slug: str, html: str) -> str:
@@ -6957,6 +6973,7 @@ def main() -> int:
             html = render_venue_page(v)
         html = with_field_trip_block(v["id"], html)
         html = apply_place_robots(v["id"], html)
+        html = apply_place_notice(v["id"], html)
         (out_dir / "index.html").write_text(html, encoding="utf-8")
         urls.append(f"/field-pack/{v['id']}/")
         text = re.sub(r"<[^>]+>", " ", html)
