@@ -257,7 +257,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://calendrier.espacepourlavie.ca/",
       "display_label": "Atlantic puffin",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "bio_maple",

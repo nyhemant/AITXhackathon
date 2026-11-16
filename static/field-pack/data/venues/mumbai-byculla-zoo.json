@@ -44,7 +44,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
       "display_label": "Humboldt penguin",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "byc_tiger",
@@ -70,7 +71,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
       "display_label": "Bengal tiger",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "byc_leopard",
@@ -96,7 +98,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
       "display_label": "Indian leopard",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "byc_hippo",
@@ -122,7 +125,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
       "display_label": "Hippopotamus",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "byc_barasingha",
@@ -148,7 +152,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
       "display_label": "Barasingha (swamp deer)",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "byc_sarus",
@@ -174,7 +179,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
       "display_label": "Sarus crane",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "byc_hyena",
@@ -200,7 +206,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://themumbaizoo-ticket.mcgm.gov.in/",
       "display_label": "Hyena",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     }
   ],
   "content_mode": "curated",

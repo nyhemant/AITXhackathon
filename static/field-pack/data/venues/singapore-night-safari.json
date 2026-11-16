@@ -72,7 +72,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
       "display_label": "Asian elephant",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "ns_pangolin",
@@ -98,7 +99,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
       "display_label": "Sunda pangolin",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "ns_devil",
@@ -124,7 +126,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
       "display_label": "Tasmanian devil",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "ns_tapir",
@@ -150,7 +153,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
       "display_label": "Malayan tapir",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "ns_white_tiger",
@@ -176,7 +180,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
       "display_label": "White tiger",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "ns_rhino",
@@ -202,7 +207,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
       "display_label": "Indian rhinoceros",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "ns_fishing_cat",
@@ -228,7 +234,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.mandai.com/en/night-safari/animals-and-zones.html",
       "display_label": "Fishing cat",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     }
   ],
   "content_mode": "curated",

@@ -128,7 +128,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.pdza.org/rocky-shores/",
       "display_label": "Walrus",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "pdz_sea_otter",
@@ -154,7 +155,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.pdza.org/rocky-shores/",
       "display_label": "Sea otter",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "pdz_sea_lion",
@@ -180,7 +182,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.pdza.org/rocky-shores/",
       "display_label": "California sea lion",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "pdz_magellanic",
@@ -206,7 +209,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.pdza.org/rocky-shores/",
       "display_label": "Magellanic penguin",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "pdz_muskox",
@@ -232,7 +236,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.pdza.org/arctic-tundra/",
       "display_label": "Muskox",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "pdz_red_wolf",
@@ -258,7 +263,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.pdza.org/red-wolf-woods/",
       "display_label": "Red wolf",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "pdz_jellies",
@@ -284,7 +290,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.pdza.org/pacific-seas-aquarium/",
       "display_label": "Jellies",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     }
   ],
   "content_mode": "curated",

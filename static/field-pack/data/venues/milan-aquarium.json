@@ -152,7 +152,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.acquariodimilano.it/acquario/percorso-espositivo",
       "display_label": "Sturgeon",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "acm_red_sea",
@@ -204,7 +205,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.acquariodimilano.it/acquario/percorso-espositivo",
       "display_label": "Trout",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "acm_tench",
@@ -230,7 +232,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://www.acquariodimilano.it/acquario/percorso-espositivo",
       "display_label": "Tench",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "acm_garden",

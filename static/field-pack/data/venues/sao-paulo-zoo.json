@@ -128,7 +128,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://zoologico.com.br/animals",
       "display_label": "Black lion tamarin",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "spz_macaw",
@@ -154,7 +155,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://zoologico.com.br/animals",
       "display_label": "Blue-winged macaw",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "spz_amazon",
@@ -180,7 +182,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://zoologico.com.br/animals",
       "display_label": "Red-tailed amazon",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "spz_hawk_eagle",
@@ -206,7 +209,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://zoologico.com.br/animals",
       "display_label": "Ornate hawk-eagle",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "spz_blackbuck",
@@ -232,7 +236,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://zoologico.com.br/animals",
       "display_label": "Blackbuck",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "spz_tinamou",
@@ -258,7 +263,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://zoologico.com.br/animals",
       "display_label": "Solitary tinamou",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     }
   ],
   "content_mode": "curated",

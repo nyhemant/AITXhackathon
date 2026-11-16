@@ -185,7 +185,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://denverzoo.org/animals/",
       "display_label": "Greater one-horned rhinoceros",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "dvz_horse",
@@ -211,7 +212,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://denverzoo.org/animals/",
       "display_label": "Przewalski's horse",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "dvz_kangaroo",
@@ -237,7 +239,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://denverzoo.org/animals/",
       "display_label": "Red kangaroo",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "dvz_hornbill",
@@ -263,7 +266,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://denverzoo.org/animals/",
       "display_label": "Great hornbill",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "dvz_bongo",
@@ -289,7 +293,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://denverzoo.org/animals/",
       "display_label": "Eastern bongo",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     },
     {
       "id": "dvz_zebra",
@@ -315,7 +320,8 @@
       "presence_source": "official_animals_page",
       "presence_url": "https://denverzoo.org/animals/",
       "display_label": "Grevy's zebra",
-      "core": false
+      "core": false,
+      "find_kind": "animal"
     }
   ],
   "content_mode": "curated",
