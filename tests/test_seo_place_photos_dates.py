@@ -54,7 +54,8 @@ class PlacePhotoDateTests(unittest.TestCase):
 
     def test_california_science_center_keeps_title_and_names_la(self):
         html = (FIELD / "california-science-center" / "index.html").read_text(encoding="utf-8")
-        self.assertIn("<title>California Science Center Scavenger Hunt for Kids</title>", html)
+        # 2026-11-16 unfreeze (A): query title for "science museum scavenger hunt los angeles".
+        self.assertIn("<title>LA Science Museum Scavenger Hunt: California Science Center</title>", html)
         desc = re.search(r'<meta name="description" content="(.*?)" />', html).group(1)
         self.assertIn("Los Angeles", desc)
         self.assertIn("science museum", desc.lower())

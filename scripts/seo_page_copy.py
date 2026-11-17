@@ -185,3 +185,52 @@ PAGE_COPY["/field-pack/cal-academy/"] = {
         "Coral Reef, the penguins and the Morrison Planetarium."
     ),
 }
+
+
+# 2026-11-16 unfreeze (A): Heymant lifted the scavenger-test freeze on Nov 15. Same
+# treatment as cal-academy. Facts: official pages logged in weekly-2026-11-16/evidence-v1.md.
+PAGE_COPY["/field-pack/museum-of-science-industry-chi/"] = {
+    "h1": "Chicago Science Museum Scavenger Hunt: Museum of Science and Industry",
+    "intro": (
+        "Looking for a science museum scavenger hunt in Chicago? The Griffin Museum of Science "
+        "and Industry in Hyde Park has the U-505 Submarine, a World War II U-boat, and Science "
+        "Storms, where kids can step into a tornado. Print the hunt below and tick off the U-505, "
+        "Science Storms, the Henry Crown Space Center and The Great Train Story."
+    ),
+}
+PAGE_COPY["/field-pack/national-aquarium-baltimore/"] = {
+    "h1": "Aquarium Scavenger Hunt Near Washington DC: National Aquarium, Baltimore",
+    "intro": (
+        "Looking for an aquarium scavenger hunt near Washington DC? The National Aquarium is not "
+        "in DC: it is in Baltimore, on the Inner Harbor, 38 miles from DC (about an hour by car). "
+        "Print the hunt below and look for Atlantic puffins, a two-toed sloth in the rain forest, "
+        "Jellies Invasion and Shark Alley."
+    ),
+}
+PAGE_COPY["/field-pack/aquarium-of-the-pacific/"] = {
+    "h1": "Los Angeles Area Aquarium Scavenger Hunt: Aquarium of the Pacific, Long Beach",
+    "intro": (
+        "Looking for an aquarium scavenger hunt in Los Angeles? The Aquarium of the Pacific is in "
+        "Long Beach, in Los Angeles County. Print the hunt below and look for southern sea otters, "
+        "tufted puffins, Shark Lagoon and the jellies."
+    ),
+}
+PAGE_COPY["/field-pack/amnh/"] = {
+    "h1": "AMNH Scavenger Hunt: American Museum of Natural History",
+    "intro": (
+        "Looking for a museum of natural history scavenger hunt? The American Museum of Natural "
+        "History (AMNH) in New York has two dinosaur halls with Tyrannosaurus rex, a 94-foot blue "
+        "whale model in the Hall of Ocean Life, and the Rose Center for Earth and Space. Print the "
+        "hunt below and tick off the dinosaurs, the mammal dioramas, the Hall of Ocean Life and "
+        "the planetarium."
+    ),
+}
+PAGE_COPY["/field-pack/california-science-center/"] = {
+    "h1": "Los Angeles Science Museum Scavenger Hunt: California Science Center",
+    "intro": (
+        "Looking for a science museum scavenger hunt in Los Angeles? The California Science "
+        "Center in Exposition Park is home to Space Shuttle Endeavour, standing in launch "
+        "position in the Samuel Oschin Shuttle Gallery. Print the hunt below and tick off "
+        "Endeavour, the rockets, the hands-on labs and the ecosystems galleries."
+    ),
+}
