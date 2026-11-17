@@ -68,6 +68,13 @@ UNFROZEN_CHANGED_SLUGS = frozenset({
     "calgary-zoo",
     "toronto-zoo",
     "joshua-tree",
+    # unfreeze 2026-11-16 (C): no cam row, so no cam claims (matches #446 / #450)
+    "banff",
+    "discovery-place",
+    "nashville-adventure-science",
+    "redwood",
+    "sequoia",
+    "air-and-space",  # HowTo tool said "cams" with films only
 })
 
 # Homepage-map venues outside the test set that get the same printable block
