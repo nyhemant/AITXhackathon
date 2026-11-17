@@ -9,14 +9,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from scav_test_2026_11 import COMPARISON_SLUGS, TEST_SLUGS  # noqa: E402
+from scav_test_2026_11 import COMPARISON_SLUGS, TEST_SLUGS, UNFROZEN_CHANGED_SLUGS  # noqa: E402
 
 ANCHOR = re.compile(r'<a [^>]*href="mailto:[^"]*"[^>]*>[^<]*</a>')
 
 
 class EmailOff(unittest.TestCase):
     def test_every_mailto_anchor_is_wrapped_outside_the_24(self):
-        frozen = {f"static/field-pack/{s}/index.html" for s in TEST_SLUGS | COMPARISON_SLUGS}
+        # 2026-11-17: pages changed since the freeze lift got email_off with the ask@ switch.
+        frozen = {f"static/field-pack/{s}/index.html" for s in (TEST_SLUGS | COMPARISON_SLUGS) - UNFROZEN_CHANGED_SLUGS}
         wrapped = 0
         for p in sorted((ROOT / "static").glob("**/*.html")):
             rel = p.relative_to(ROOT).as_posix()

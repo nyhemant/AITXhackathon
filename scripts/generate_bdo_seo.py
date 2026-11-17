@@ -96,7 +96,18 @@ PLACES_JS = FIELD / "js" / "places-data.js"
 SITE = PUBLIC_SITE
 SITE_HOST = PUBLIC_SITE.split("://", 1)[-1]
 BRAND_NAME = "KidZooKit"
-CONTACT_MAIL = "kidzookit@agentmail.to"
+CONTACT_MAIL = "ask@kidzookit.com"
+# 2026-11-17: public contact moved to ask@kidzookit.com. The 10 scav test/comparison pages still
+# byte-identical to the freeze keep the old address (it still receives mail) until they are next changed.
+LEGACY_CONTACT_MAIL = "kidzookit@agentmail.to"
+
+
+def apply_contact_guard(slug: str, html: str) -> str:
+    from scav_test_2026_11 import COMPARISON_SLUGS, TEST_SLUGS, UNFROZEN_CHANGED_SLUGS
+
+    if slug in (TEST_SLUGS | COMPARISON_SLUGS) - UNFROZEN_CHANGED_SLUGS:
+        return html.replace(CONTACT_MAIL, LEGACY_CONTACT_MAIL)
+    return html
 TODAY = date.today().isoformat()
 
 RESERVED = {
@@ -7078,6 +7089,7 @@ def main() -> int:
         html = apply_place_robots(v["id"], html)
         html = apply_place_notice(v["id"], html)
         html = apply_cam_honesty(v["id"], html)
+        html = apply_contact_guard(v["id"], html)
         (out_dir / "index.html").write_text(html, encoding="utf-8")
         urls.append(f"/field-pack/{v['id']}/")
         text = re.sub(r"<[^>]+>", " ", html)

@@ -626,7 +626,7 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertIn("aggregate visit counts", text)
         self.assertIn("while you are subscribed", text)
         self.assertIn("reply to any weekly email", text)
-        self.assertIn("kidzookit@agentmail.to", html)
+        self.assertIn("ask@kidzookit.com", html)
         self.assertIn("we will delete it from Kit", text)
         self.assertIn("in-memory counter", text)
         self.assertIn("Nothing is written to disk", text)
