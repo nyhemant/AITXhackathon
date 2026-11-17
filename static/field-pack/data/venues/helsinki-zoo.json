@@ -35,7 +35,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "Animals",
+      "zone": "Cat Valley",
       "qa_card": {
         "question": "What did you notice about the Red panda?",
         "answer": "Tell a grown-up one thing you saw!"
@@ -45,7 +45,8 @@
       "presence_checked": "2026-08-23",
       "presence_source": "official_animals_page",
       "display_label": "Red panda",
-      "core": true
+      "core": true,
+      "presence_url": "https://korkeasaari.fi/en/animal/red-panda/"
     },
     {
       "id": "kor_snow_leopard",
@@ -61,7 +62,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "Animals",
+      "zone": "Cat Valley",
       "qa_card": {
         "question": "What did you notice about the Snow leopard?",
         "answer": "Tell a grown-up one thing you saw!"
@@ -88,7 +89,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "Animals",
+      "zone": "Korpi",
       "qa_card": {
         "question": "What did you notice about the Wolverine?",
         "answer": "Tell a grown-up one thing you saw!"
@@ -142,7 +143,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "Animals",
+      "zone": "Bear Castle",
       "qa_card": {
         "question": "What did you notice about the Brown bear?",
         "answer": "Tell a grown-up one thing you saw!"
@@ -169,7 +170,7 @@
         "6-8",
         "9+"
       ],
-      "zone": "Animals",
+      "zone": "Cat Valley",
       "qa_card": {
         "question": "What did you notice about the Amur leopard?",
         "answer": "Tell a grown-up one thing you saw!"
@@ -200,7 +201,7 @@
   "route_90m": [
     "red_panda"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (korkeasaari.fi). Animals index is JS-thin — Starter. Short overlap stays short. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (korkeasaari.fi). Animals index is JS-thin — Starter. Short overlap stays short. [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/ [2026-11-16] SEO gate B2: weekly 2026-11-16 item 4: zone names from the location line on each korkeasaari.fi animal page; takin page lists no location, kept as Animals",
   "list_confidence": "partial",
   "do_not_list": [
     {
