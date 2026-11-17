@@ -2227,7 +2227,8 @@ _FILM_ROW = '<span class="seo-watch-source">Film'
 
 
 def apply_cam_honesty(slug: str, html: str) -> str:
-    if slug in FROZEN_PLACE_SLUGS or _LIVE_ROW in html:
+    # Unfreeze 2026-11-16 (C): pages changed since the freeze lift get the same rule.
+    if (slug in FROZEN_PLACE_SLUGS and slug not in UNFROZEN_CHANGED_SLUGS) or _LIVE_ROW in html:
         return html
     films = _FILM_ROW in html
     html = html.replace(
