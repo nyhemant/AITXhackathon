@@ -174,10 +174,12 @@ def intro_text(venue: dict, stop_count: int) -> str:
     name = str(venue.get("name") or "").strip()
     city = str(venue.get("city") or "").strip()
     duration = str((venue.get("practical") or {}).get("typical_duration") or "").strip()
+    # "An 8-stop", "An 11-stop", "An 18-stop" (2026-11-16 grammar fix).
+    art = "An" if str(stop_count).startswith("8") or stop_count in (11, 18) else "A"
     if city:
-        first = f"A {stop_count}-stop hunt for {name} in {city}."
+        first = f"{art} {stop_count}-stop hunt for {name} in {city}."
     else:
-        first = f"A {stop_count}-stop hunt for {name}."
+        first = f"{art} {stop_count}-stop hunt for {name}."
     if duration:
         second = (
             f"Plan on {duration}; print it before you go, then tick boxes as kids find each stop."
