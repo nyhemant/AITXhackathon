@@ -55,6 +55,8 @@ COMPARISON_SLUGS = frozenset({
 # (2026-11-12). Not test pages and not comparison pages, so the pairs stay as set.
 PIN_SLUGS = frozenset({
     "perot-museum",
+    # 2026-11-16 weekly: page for "science museum scavenger hunt san francisco".
+    "cal-academy",
 })
 BLOCK_SLUGS = TEST_SLUGS | PIN_SLUGS
 
