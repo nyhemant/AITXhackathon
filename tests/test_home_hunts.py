@@ -249,7 +249,9 @@ class HomeHuntsTests(unittest.TestCase):
         new = {href.split("?", 1)[0] for href in HREF.findall(self.html)}
         # 2026-11-16: /start/ stopped linking the Dallas Zoo comparison page (Dec 10 test);
         # the page itself still serves 200.
-        self.assertEqual(sorted(old - new - {"/field-pack/dallas-zoo/"}), [])
+        # 2026-11-17: the contact mailto moved to ask@kidzookit.com.
+        self.assertEqual(sorted(old - new - {"/field-pack/dallas-zoo/", "mailto:kidzookit@agentmail.to"}), [])
+        self.assertIn("mailto:ask@kidzookit.com", new)
         self.assertTrue((REPO / "static" / "field-pack" / "dallas-zoo" / "index.html").is_file())
         # Letter PDFs were unlinked from start cards in #434; the files themselves stay.
         for path in (

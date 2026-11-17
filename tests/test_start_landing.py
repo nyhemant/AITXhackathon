@@ -1349,7 +1349,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIsNotNone(foot)
         self.assertIn('href="/about/"', foot.group(0))
         self.assertIn('href="/about/#faq"', foot.group(0))
-        self.assertIn("mailto:kidzookit@agentmail.to", foot.group(0))
+        self.assertIn("mailto:ask@kidzookit.com", foot.group(0))
         self.assertIn(">FAQ<", foot.group(0))
         self.assertIn(">Contact<", foot.group(0))
         self.assertNotIn("Zoo and aquarium first", foot.group(0))

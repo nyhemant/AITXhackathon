@@ -26,7 +26,7 @@ class PrivacyPageTests(unittest.TestCase):
         html = PAGE.read_text(encoding="utf-8")
         text = re.sub(r"<[^>]+>", " ", html)
         self.assertNotRegex(text, r"(?i)\bfree\b")
-        self.assertIn("mailto:kidzookit@agentmail.to", html)
+        self.assertIn("mailto:ask@kidzookit.com", html)
         self.assertIn("Google Analytics", text)
         for bad in ("guarantee", "COPPA compliant", "GDPR compliant"):
             self.assertNotIn(bad.lower(), text.lower())
