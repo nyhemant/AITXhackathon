@@ -12,7 +12,7 @@
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Anhinga / boardwalk wildlife — short wetland loop, not the whole 'Glades.",
+  "tagline": "Starter list: American alligators on the Anhinga Trail, then anhingas and turtles.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Entrance pass; mosquito season is real — repellent helps.",
@@ -202,7 +202,7 @@
     },
     {
       "id": "np_wildlife_watch",
-      "label": "American alligator (from boardwalk)",
+      "label": "American alligator",
       "emoji": "🐊",
       "one_liner": "Stay on the boardwalk — never lean to the water.",
       "tags": [
@@ -214,16 +214,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Boardwalk",
+      "zone": "Anhinga Trail",
       "qa_card": {
         "question": "What did you notice at the American alligator (from boardwalk)?",
         "answer": "Tell a grown-up one thing you saw, heard, or felt!"
       },
       "catalog_id": "american-alligator",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "presence_source": "nps_official_research",
-      "display_label": "American alligator (from boardwalk)"
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "display_label": "American alligator",
+      "presence_url": "https://www.nps.gov/ever/planyourvisit/anhinga-trail.htm"
     },
     {
       "id": "np_river",
@@ -249,6 +250,115 @@
       "presence_checked": "2026-08-08",
       "presence_source": "nps_official_research",
       "display_label": "Slough water"
+    },
+    {
+      "id": "ev_anhinga",
+      "label": "Anhinga",
+      "emoji": "🐦",
+      "one_liner": "Find the bird swimming with only its neck above the water.",
+      "tags": [
+        "birds",
+        "water",
+        "wow"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Anhinga Trail",
+      "qa_card": {
+        "question": "What did you notice about the Anhinga?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nps.gov/thingstodo/birding-along-the-anhinga-trail.htm",
+      "display_label": "Anhinga",
+      "core": false
+    },
+    {
+      "id": "ev_turtle",
+      "label": "Turtles",
+      "emoji": "🐢",
+      "one_liner": "Count the turtles near the water.",
+      "tags": [
+        "water",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Anhinga Trail",
+      "qa_card": {
+        "question": "What did you notice about the Turtles?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nps.gov/ever/planyourvisit/anhinga-trail.htm",
+      "display_label": "Turtles",
+      "core": false
+    },
+    {
+      "id": "ev_heron",
+      "label": "Great blue heron",
+      "emoji": "🪶",
+      "one_liner": "Find a tall bird standing very still in the water.",
+      "tags": [
+        "birds",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Anhinga Trail",
+      "qa_card": {
+        "question": "What did you notice about the Great blue heron?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nps.gov/thingstodo/birding-along-the-anhinga-trail.htm",
+      "display_label": "Great blue heron",
+      "core": false
+    },
+    {
+      "id": "ev_gallinule",
+      "label": "Purple gallinule",
+      "emoji": "💜",
+      "one_liner": "December to March: look for a purple bird hopping on lily pads.",
+      "tags": [
+        "birds",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Anhinga Trail",
+      "qa_card": {
+        "question": "What did you notice about the Purple gallinule?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nps.gov/thingstodo/birding-along-the-anhinga-trail.htm",
+      "display_label": "Purple gallinule",
+      "core": false
     }
   ],
   "content_mode": "curated",
@@ -268,15 +378,17 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "np_visitor_center",
-    "anhinga_boardwalk",
-    "np_wetland"
+    "np_wildlife_watch",
+    "ev_anhinga",
+    "ev_turtle"
   ],
-  "research_notes": "NP Phase 1a pilot 2026-08-08 · slice-focused kit · label scrub 2026-08-09",
+  "research_notes": "NP Phase 1a pilot 2026-08-08 · slice-focused kit · label scrub 2026-08-09 [2026-11-16] SEO gate B2: weekly 2026-11-16 item 3 (Honolulu pattern): animal-led starter list and named Anhinga Trail animals from nps.gov",
   "list_confidence": "partial",
   "do_not_list": [],
   "presence_sources": [
-    "https://www.nps.gov/ever/"
+    "https://www.nps.gov/ever/",
+    "https://www.nps.gov/ever/planyourvisit/anhinga-trail.htm",
+    "https://www.nps.gov/thingstodo/birding-along-the-anhinga-trail.htm"
   ],
   "last_presence_audit": "2026-08-08",
   "bonus_hunt": {
