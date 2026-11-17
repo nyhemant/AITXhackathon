@@ -1451,7 +1451,12 @@ def item_public_href(item_id: str, venue_id: str = "", *, extra_query: str = "")
         href = f"/field-pack/cards/{esc(iid)}/"
         q = (extra_query or "").lstrip("?&")
         if q:
-            href += "?" + q
+            # Weekly 2026-11-16: noindex places pass from= in the fragment so crawlers
+            # never follow a ?from=<noindex place> card URL. Old ?from= URLs still work.
+            if q.startswith("from=") and q[5:] in NOINDEX_PLACE_SLUGS:
+                href += "#" + q
+            else:
+                href += "?" + q
         return href
     if vid:
         return f"/field-pack/{esc(vid)}/#at-home"
@@ -2173,6 +2178,10 @@ def apply_place_notice(slug: str, html: str) -> str:
     note = PLACE_NOTICES.get(slug)
     if not note or "seo-place-notice" in html:
         return html
+    # Weekly 2026-11-16: the closure line is the first thing on the page, above the hero.
+    top = '<article class="seo-article">\n'
+    if top in html:
+        return html.replace(top, top + f'      <p class="seo-place-notice"><strong>Closed:</strong> {note}</p>\n', 1)
     return re.sub(r'(<p class="lead">.*?</p>\n)', lambda m: m.group(1) + f'        <p class="seo-place-notice"><strong>Closed:</strong> {note}</p>\n', html, count=1)
 
 
@@ -6485,7 +6494,7 @@ def write_card_pages(
     (function () {{
       var KIT_SITES = {kit_sites_js};
       var KIT_NAMES = {kit_names_js};
-      var from = new URLSearchParams(window.location.search).get("from");
+      var from = new URLSearchParams(window.location.search).get("from") || new URLSearchParams((window.location.hash || "").slice(1)).get("from");
       if (!from || !KIT_SITES[from]) {{
         try {{
           var refPath = new URL(document.referrer || "", window.location.href).pathname || "";
