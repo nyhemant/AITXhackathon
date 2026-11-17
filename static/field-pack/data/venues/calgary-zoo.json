@@ -12,7 +12,7 @@
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Destination Africa gorillas and hippos, then Exploration Asia red pandas — Humboldt penguins, not African.",
+  "tagline": "Starter list: western lowland gorillas, then hippos and red pandas.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "West gate/Imagine Asia construction may alter paths through 2028/29 — check calgaryzoo.com before visit.",
@@ -244,6 +244,34 @@
       "presence_source": "official_animals_page",
       "display_label": "Ostrich",
       "core": false
+    },
+    {
+      "id": "polar_bear",
+      "label": "Polar bear",
+      "emoji": "🐻‍❄️",
+      "one_liner": "Find the world's largest bear. Is it swimming or resting?",
+      "tags": [
+        "wow",
+        "water"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Wild Canada",
+      "qa_card": {
+        "question": "What did you notice about the Polar bear?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.calgaryzoo.com/plan-your-visit/animal-zones/wild-canada/polar-bears/",
+      "display_label": "Polar bear",
+      "core": false,
+      "catalog_id": "polar-bear"
     }
   ],
   "content_mode": "curated",
@@ -265,7 +293,7 @@
     "nile_hippo",
     "red_panda"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3a public list pass (calgaryzoo.com mammals + Destination Africa + Penguin Plunge).",
+  "research_notes": "[2026-08-23] Official-source Wave 3a public list pass (calgaryzoo.com mammals + Destination Africa + Penguin Plunge). [2026-11-16] SEO gate B2: unfreeze 2026-11-16 (B, Honolulu pattern): Starter-list tagline; polar bear (catalog card) from the calgaryzoo.com Wild Canada page",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -316,7 +344,8 @@
     "https://www.calgaryzoo.com/care-conservation/our-animals/mammals/",
     "https://www.calgaryzoo.com/plan-your-visit/animal-zones/destination-africa/",
     "https://www.calgaryzoo.com/plan-your-visit/animal-zones/penguin-plunge/",
-    "https://www.calgaryzoo.com/plan-your-visit/animal-zones/exploration-asia/red-pandas/"
+    "https://www.calgaryzoo.com/plan-your-visit/animal-zones/exploration-asia/red-pandas/",
+    "https://www.calgaryzoo.com/plan-your-visit/animal-zones/wild-canada/polar-bears/"
   ],
   "bonus_hunt": {
     "tagline": "Calgary bonus · Destination Africa + Exploration Asia",

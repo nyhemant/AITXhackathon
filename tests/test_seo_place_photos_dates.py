@@ -12,10 +12,11 @@ STATIC = REPO / "static"
 FIELD = STATIC / "field-pack"
 GEN = (REPO / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
 
+# calgary-zoo dateModified moved to 2026-11-16 with the unfreeze (B) polar-bear find.
 PLACES = {
     "sequoia": ("2026-08-09", "August 9, 2026", "np-hero-sequoia.jpg"),
     "taronga-zoo": ("2026-08-23", "August 23, 2026", "koala.jpg"),
-    "calgary-zoo": ("2026-08-23", "August 23, 2026", "western-lowland-gorilla.jpg"),
+    "calgary-zoo": ("2026-11-16", "August 23, 2026", "western-lowland-gorilla.jpg"),
     "amnh": ("2026-08-08", "August 8, 2026", "sci-dinosaur.jpg"),
 }
 

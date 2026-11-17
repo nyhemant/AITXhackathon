@@ -7546,6 +7546,7 @@ window.FIELD_PACK_VENUES = {
       "zebra": "Hartmann's zebra",
       "ring-tailed-lemur": "Land of Lemurs lemur",
       "ostrich": "Southern ostrich",
+      "polar-bear": "Wild Canada polar bear",
     },
     featuredAnimalIds: [
       "western-lowland-gorilla",
@@ -7563,7 +7564,8 @@ window.FIELD_PACK_VENUES = {
       "reticulated-giraffe",
       "zebra",
       "ring-tailed-lemur",
-      "ostrich"
+      "ostrich",
+      "polar-bear"
     ],
     treasureHunt: [
       { id: "th1", text: "Find the Destination Africa gorilla family" },

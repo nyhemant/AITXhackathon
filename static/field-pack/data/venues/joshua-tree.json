@@ -12,7 +12,7 @@
   "last_verified": "2026-08-09",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Joshua Tree — desert gardens and rock piles; short loops near the visitor center.",
+  "tagline": "Starter list: desert spiny lizards on the rocks, then roadrunners and Gambel's quail. Sightings aren't promised.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Entrance pass; timed entry possible peak seasons.",
@@ -222,6 +222,116 @@
       "presence_checked": "2026-08-08",
       "presence_source": "nps_official_research",
       "display_label": "Joshua Tree ranger talk (if offered)"
+    },
+    {
+      "id": "jt_spiny_lizard",
+      "label": "Desert spiny lizard",
+      "emoji": "🦎",
+      "one_liner": "Check sunny rocks for a lizard.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Rocks",
+      "qa_card": {
+        "question": "What did you notice about the Desert spiny lizard?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nps.gov/jotr/learn/nature/animals.htm",
+      "display_label": "Desert spiny lizard",
+      "core": false,
+      "find_kind": "animal"
+    },
+    {
+      "id": "jt_roadrunner",
+      "label": "Roadrunner",
+      "emoji": "🐦",
+      "one_liner": "Spot a roadrunner on the ground.",
+      "tags": [
+        "birds",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice about the Roadrunner?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nps.gov/jotr/learn/nature/animals.htm",
+      "display_label": "Roadrunner",
+      "core": false,
+      "find_kind": "animal"
+    },
+    {
+      "id": "jt_gambels_quail",
+      "label": "Gambel's quail",
+      "emoji": "🐦",
+      "one_liner": "Count the quail you see.",
+      "tags": [
+        "birds",
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice about the Gambel's quail?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nps.gov/jotr/learn/nature/animals.htm",
+      "display_label": "Gambel's quail",
+      "core": false,
+      "find_kind": "animal"
+    },
+    {
+      "id": "jt_ground_squirrel",
+      "label": "Antelope ground squirrel",
+      "emoji": "🐿️",
+      "one_liner": "Look for a small squirrel with a white tail.",
+      "tags": [
+        "outdoor"
+      ],
+      "age_fit": [
+        "2-3",
+        "4-5",
+        "6-8",
+        "9+"
+      ],
+      "zone": "Open",
+      "qa_card": {
+        "question": "What did you notice about the Antelope ground squirrel?",
+        "answer": "Tell a grown-up one thing you saw!"
+      },
+      "presence": "verified",
+      "presence_checked": "2026-11-16",
+      "presence_source": "official_animals_page",
+      "presence_url": "https://www.nps.gov/jotr/learn/nature/animals.htm",
+      "display_label": "Antelope ground squirrel",
+      "core": false,
+      "find_kind": "animal"
     }
   ],
   "content_mode": "curated",
@@ -241,15 +351,16 @@
     "Leave while happy"
   ],
   "route_90m": [
-    "np_visitor_center",
-    "np_giant_tree",
-    "np_scenic_overlook"
+    "jt_spiny_lizard",
+    "jt_roadrunner",
+    "jt_gambels_quail"
   ],
-  "research_notes": "NP Phase 1b 2026-08-08 · slice-focused kit · label scrub 2026-08-09",
+  "research_notes": "NP Phase 1b 2026-08-08 · slice-focused kit · label scrub 2026-08-09 [2026-11-16] SEO gate B2: unfreeze 2026-11-16 (B, Honolulu pattern): animal-first Start here from NPS commonly-seen species",
   "list_confidence": "partial",
   "do_not_list": [],
   "presence_sources": [
-    "https://www.nps.gov/jotr/"
+    "https://www.nps.gov/jotr/",
+    "https://www.nps.gov/jotr/learn/nature/animals.htm"
   ],
   "last_presence_audit": "2026-08-08",
   "bonus_hunt": {

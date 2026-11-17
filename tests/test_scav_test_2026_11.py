@@ -42,7 +42,7 @@ EXPECTED = {
     "national-zoo": (10, 6),
     "bronx-zoo": (7, 4),
     "redwood": (8, 10),
-    "joshua-tree": (8, 10),
+    "joshua-tree": (12, 10),  # unfreeze B 2026-11-16: +4 NPS animals
 }
 
 
