@@ -51,12 +51,31 @@ COMPARISON_SLUGS = frozenset({
     "sequoia",
 })
 
+# 2026-11-15: Heymant lifted the freeze ("lifting freeze unless you have critical
+# reasons to freeze. We are not waiting and watching."). At ChiefGrok's direction the
+# pages below changed from 2026-11-16 evening CT, so the controlled scavenger-hunt
+# comparison is confounded from then (TEST NOTE in kidzookit-loop/LOG.md and baseline.md).
+# Byte-identity guards now skip these slugs and still hold for the rest of the 24.
+FREEZE_LIFTED_ON = "2026-11-15"
+UNFROZEN_CHANGED_SLUGS = frozenset({
+    # weekly 2026-11-16 (A): query pages
+    "museum-of-science-industry-chi",
+    "national-aquarium-baltimore",
+    "aquarium-of-the-pacific",
+    "amnh",
+    "california-science-center",
+})
+
 # Homepage-map venues outside the test set that get the same printable block
 # (2026-11-12). Not test pages and not comparison pages, so the pairs stay as set.
 PIN_SLUGS = frozenset({
     "perot-museum",
     # 2026-11-16 weekly: page for "science museum scavenger hunt san francisco".
     "cal-academy",
+    # 2026-11-16 unfreeze (A): comparison pages that now answer a big query.
+    "museum-of-science-industry-chi",
+    "aquarium-of-the-pacific",
+    "california-science-center",
 })
 BLOCK_SLUGS = TEST_SLUGS | PIN_SLUGS
 

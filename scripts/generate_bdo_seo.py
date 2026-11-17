@@ -2033,9 +2033,36 @@ SEO_TITLE_LABELS = {
     "air-and-space": "Air and Space & Udvar-Hazy Scavenger Hunt for Kids",
     # 2026-11-16 weekly: GSC query "science museum scavenger hunt san francisco" lands here.
     "cal-academy": "San Francisco Science Museum Scavenger Hunt: Cal Academy",
+    # 2026-11-16 unfreeze (A): one page per big query; facts in weekly-2026-11-16/evidence-v1.md.
+    "museum-of-science-industry-chi": "Chicago Science Museum Scavenger Hunt: Griffin MSI",
+    "national-aquarium-baltimore": "DC-Area Aquarium Printable Scavenger Hunt: National Aquarium",
+    "aquarium-of-the-pacific": "LA-Area Aquarium Scavenger Hunt: Aquarium of the Pacific",
+    "amnh": "AMNH Printable Scavenger Hunt: Museum of Natural History",
+    "california-science-center": "LA Science Museum Scavenger Hunt: California Science Center",
 }
 
 SEO_META_DESCRIPTIONS = {
+    # 2026-11-16 unfreeze (A)
+    "museum-of-science-industry-chi": (
+        "Science museum scavenger hunt in Chicago: print a Museum of Science and Industry "
+        "hunt with the U-505 Submarine and Science Storms — KidZooKit."
+    ),
+    "national-aquarium-baltimore": (
+        "Aquarium scavenger hunt near Washington DC: the National Aquarium is in Baltimore, "
+        "38 miles from DC. Print a hunt with puffins and sharks — KidZooKit."
+    ),
+    "aquarium-of-the-pacific": (
+        "Aquarium scavenger hunt in the Los Angeles area: print an Aquarium of the Pacific "
+        "(Long Beach) hunt with sea otters and Shark Lagoon — KidZooKit."
+    ),
+    "amnh": (
+        "Museum of natural history scavenger hunt: print an AMNH hunt in New York with the "
+        "T. rex, the blue whale and the Rose Center — KidZooKit."
+    ),
+    "california-science-center": (
+        "Science museum scavenger hunt in Los Angeles: print a California Science Center "
+        "hunt with Space Shuttle Endeavour — KidZooKit."
+    ),
     "cal-academy": (
         "Science museum scavenger hunt in San Francisco: print a California Academy of "
         "Sciences hunt with the Osher Rainforest and penguins — KidZooKit."
@@ -2242,6 +2269,8 @@ SCAV_PRINTABLE_TITLE_SLUGS = TEST_SLUGS
 
 def printable_title_label(label: str) -> str:
     """"<Place> Scavenger Hunt for Kids" -> "<Place> Printable Scavenger Hunt for Kids" (<=60)."""
+    if "Printable" in label:  # query labels that already say it (2026-11-16 unfreeze)
+        return label
     out = label.replace(" Scavenger Hunt", " Printable Scavenger Hunt", 1)
     if len(out) > TITLE_MAX and out.endswith(" for Kids"):
         out = out[: -len(" for Kids")]

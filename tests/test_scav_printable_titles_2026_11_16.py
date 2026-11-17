@@ -16,15 +16,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from scav_test_2026_11 import COMPARISON_SLUGS, TEST_SLUGS  # noqa: E402
+from scav_test_2026_11 import COMPARISON_SLUGS, TEST_SLUGS, UNFROZEN_CHANGED_SLUGS  # noqa: E402
 
 FIELD = ROOT / "static" / "field-pack"
 
 TEST_TITLES = {
-    "amnh": "American Museum of Natural History Printable Scavenger Hunt",
+    "amnh": "AMNH Printable Scavenger Hunt: Museum of Natural History",  # query page 2026-11-16
     "nashville-adventure-science": "Adventure Science Center Printable Scavenger Hunt for Kids",
     "air-and-space": "Air and Space & Udvar-Hazy Printable Scavenger Hunt for Kids",
-    "national-aquarium-baltimore": "National Aquarium Printable Scavenger Hunt for Kids",
+    "national-aquarium-baltimore": "DC-Area Aquarium Printable Scavenger Hunt: National Aquarium",  # query page 2026-11-16
     "shedd-aquarium": "Shedd Aquarium Printable Scavenger Hunt for Kids · KidZooKit",
     "lincoln-park-zoo": "Lincoln Park Zoo Printable Scavenger Hunt for Kids",
     "toronto-zoo": "Toronto Zoo Printable Scavenger Hunt for Kids · KidZooKit",
@@ -96,6 +96,8 @@ class ScavPrintableTitles(unittest.TestCase):
 
     def test_comparison_pages_untouched(self):
         for slug, digest in sorted(COMPARISON_SHA256.items()):
+            if slug in UNFROZEN_CHANGED_SLUGS:  # freeze lifted 2026-11-15 (Heymant); changed pages are listed in UNFROZEN_CHANGED_SLUGS
+                continue
             with self.subTest(slug=slug):
                 raw = (FIELD / slug / "index.html").read_bytes()
                 self.assertEqual(hashlib.sha256(raw).hexdigest(), digest)
