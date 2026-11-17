@@ -1776,7 +1776,7 @@ def home_session_html(
     # Follow-up 2026-11-16: the label counts animals only (catalog wildlife/sealife cards,
     # or card-less finds marked find_kind "animal"), not halls or exhibits. Frozen pages keep
     # the old count until the ~2026-12-10 judge date.
-    if venue_id not in FROZEN_PLACE_SLUGS:
+    if venue_id not in FROZEN_PLACE_SLUGS or venue_id in UNFROZEN_CHANGED_SLUGS:
         n_home = sum(1 for raw in items[:12] if str(raw.get("id") or "").strip() and home_card_is_animal(raw))
     plural = "s" if n_home != 1 else ""
     count_label = (
@@ -2245,6 +2245,8 @@ LEGACY_LD_TAIL = " for Kids — Explore at Home or Print a Hunt"
 LEGACY_LD_SLUGS = (TEST_SLUGS | COMPARISON_SLUGS) - {"air-and-space", "dallas-zoo"}
 # The 24 scavenger test/comparison pages: byte-frozen until about 2026-12-10.
 FROZEN_PLACE_SLUGS = frozenset(TEST_SLUGS | COMPARISON_SLUGS)
+# Freeze lifted 2026-11-15 (Heymant). Pages edited since then use the current rules.
+from scav_test_2026_11 import UNFROZEN_CHANGED_SLUGS  # noqa: E402
 
 
 def seo_hunt_label(v: dict) -> str:

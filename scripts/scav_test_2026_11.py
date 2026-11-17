@@ -64,6 +64,10 @@ UNFROZEN_CHANGED_SLUGS = frozenset({
     "aquarium-of-the-pacific",
     "amnh",
     "california-science-center",
+    # unfreeze 2026-11-16 (B): Honolulu pattern
+    "calgary-zoo",
+    "toronto-zoo",
+    "joshua-tree",
 })
 
 # Homepage-map venues outside the test set that get the same printable block
