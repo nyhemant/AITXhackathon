@@ -173,3 +173,15 @@ PAGE_COPY["/field-pack/aquariums/"]["title"] = 'Aquariums for Kids: Animal Cards
 # 2026-11-04: thin venue/feature card titles ("Art Lab — KidZooKit") get context
 # already on the card. Used by generate_bdo_seo.py for non-animal cards.
 CARD_TITLES = {'cm-art-lab': "Art Lab for Kids: Children's Museum Card | KidZooKit", 'cm-imaginarium': "Imaginarium for Kids: Children's Museum Card | KidZooKit", 'cm-makery': "Creative Makery for Kids: Children's Museum | KidZooKit", 'cm-outdoor': "Outdoor Area for Kids: Children's Museum Card | KidZooKit", 'cm-toddler-garden': "Toddler Garden for Kids: Children's Museum | KidZooKit", 'cm-woven': "Woven Wonders for Kids: Children's Museum | KidZooKit", 'sci-aquarium-zone': 'Aquarium Zone for Kids: Science Museum Card | KidZooKit', 'sci-astronaut': 'Astronaut Life for Kids: Science Museum Card | KidZooKit', 'sci-dinosaur': 'Dinosaur Hall for Kids: Science Museum Card | KidZooKit', 'sci-hands-on': 'Hands-on Lab for Kids: Science Museum Card | KidZooKit', 'sci-mammal-hall': 'Mammal Hall for Kids: Science Museum Card | KidZooKit', 'sci-rainforest': 'Rainforest Dome for Kids: Science Museum | KidZooKit', 'sci-rocket': 'Rockets & Launch for Kids: Science Museum | KidZooKit', 'cuyahoga-towpath': 'Towpath Trail for Kids: Cuyahoga Valley | KidZooKit'}
+
+# 2026-11-16 weekly: one page per big scavenger-hunt query. Facts: official calacademy.org
+# exhibit pages (evidence: kidzookit-loop/weekly-2026-11-16/evidence-v1.md).
+PAGE_COPY["/field-pack/cal-academy/"] = {
+    "h1": "San Francisco Science Museum Scavenger Hunt: California Academy of Sciences",
+    "intro": (
+        "Looking for a science museum scavenger hunt in San Francisco? The California Academy "
+        "of Sciences has an aquarium, a planetarium, a rainforest and a natural history museum "
+        "under one roof. Print the hunt below and tick off the Osher Rainforest, the Philippine "
+        "Coral Reef, the penguins and the Morrison Planetarium."
+    ),
+}

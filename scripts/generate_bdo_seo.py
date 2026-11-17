@@ -2026,9 +2026,15 @@ SEO_TITLE_LABELS = {
     "memphis-zoo": "Memphis Zoo Field Trip for Kids — Printable Hunt",
     "singapore-night-safari": "Singapore Night Safari for Kids — Printable Hunt",
     "air-and-space": "Air and Space & Udvar-Hazy Scavenger Hunt for Kids",
+    # 2026-11-16 weekly: GSC query "science museum scavenger hunt san francisco" lands here.
+    "cal-academy": "San Francisco Science Museum Scavenger Hunt: Cal Academy",
 }
 
 SEO_META_DESCRIPTIONS = {
+    "cal-academy": (
+        "Science museum scavenger hunt in San Francisco: print a California Academy of "
+        "Sciences hunt with the Osher Rainforest and penguins — KidZooKit."
+    ),
     "field-museum": (
         "Field Museum scavenger hunt for kids in Chicago: SUE the T. rex, "
         "mammal halls, and a printable sheet — KidZooKit."
