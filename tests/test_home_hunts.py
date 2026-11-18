@@ -131,7 +131,8 @@ class HomeHuntsTests(unittest.TestCase):
         ).group(1)
         self.assertEqual(ld, main_ld)
         h1 = re.search(r'<h1 id="start-heading">(.*?)</h1>', self.html).group(1)
-        self.assertEqual(h1, "Virtual Zoo for Kids: Animal Cards &amp; Quizzes")
+        # 2026-11-18 landing pass: the visible headline is the H1 (title freeze lifted); <title> unchanged.
+        self.assertEqual(h1, "Printable scavenger hunts for your next zoo, aquarium or museum trip")
         self.assertEqual(self.html.count("<h1"), 1)
 
     def test_toggle_defaults_to_places_and_map_reuses_places_tile(self):
