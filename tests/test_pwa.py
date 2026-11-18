@@ -140,7 +140,7 @@ class PwaTests(unittest.TestCase):
         self.assertEqual(served._headers.get("Content-Type"), "application/javascript; charset=utf-8")
         self.assertEqual(served._headers.get("Cache-Control"), "no-cache")
         self.assertEqual(served._headers.get("Service-Worker-Allowed"), "/")
-        self.assertIn('FTK_SHELL_CACHE = "ftk-shell-v7"', self.sw)
+        self.assertIn('FTK_SHELL_CACHE = "ftk-shell-v8"', self.sw)
         self.assertIn("skipWaiting()", self.sw)
         self.assertIn("clients.claim()", self.sw)
         self.assertIn("networkFirst", self.sw)
