@@ -11,19 +11,20 @@
  * activate: delete older ftk-shell-* caches, then clientsClaim() so the
  *   next navigation uses this worker. We do not auto-reload open tabs —
  *   that would yank a parent off a live cam.
- * HTML shells (start + virtual-field-trip; virtual-zoo is a 301 alias): network-first,
+ * HTML shells (start + virtual-field-trip + science-bee/play; virtual-zoo is a 301 alias): network-first,
  *   last-good cache fallback. Online reopen gets fresh HTML.
  * Versioned CSS/JS (?v=) and /pwa/ icons: cache-first.
  * JSON card / venue data: network-first.
  * YouTube, Ant Media, GA, and local teaser mp4s: never intercepted.
  */
 /* eslint-disable no-restricted-globals */
-const FTK_SHELL_CACHE = "ftk-shell-v7";
+const FTK_SHELL_CACHE = "ftk-shell-v8";
 const SHELL_PATHS = [
   "/start",
   "/field-pack/virtual-zoo",
   "/field-pack/virtual-field-trip",
   "/field-pack/print",
+  "/science-bee/play",
 ];
 const PRECACHE = [
   "/start/",

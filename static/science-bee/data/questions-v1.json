@@ -1,0 +1,3603 @@
+{
+ "version": 1,
+ "questions": [
+  {
+   "id": "life-little-01",
+   "topic": "life",
+   "band": "little",
+   "q": "Is a rock alive?",
+   "a": "No",
+   "wrong": [
+    "Yes"
+   ],
+   "hint": "Does a rock eat, grow, or breathe?",
+   "fix": "A rock is not alive. Living things grow, need food and water, and make more of their kind.",
+   "easy": true
+  },
+  {
+   "id": "life-little-02",
+   "topic": "life",
+   "band": "little",
+   "q": "Is a tree alive?",
+   "a": "Yes",
+   "wrong": [
+    "No"
+   ],
+   "hint": "Does a tree grow bigger every year?",
+   "fix": "A tree is alive. It grows, drinks water through its roots, and makes seeds.",
+   "easy": true
+  },
+  {
+   "id": "life-little-03",
+   "topic": "life",
+   "band": "little",
+   "q": "What do all living things need to stay alive?",
+   "a": "Water",
+   "wrong": [
+    "Toys",
+    "Shoes"
+   ],
+   "hint": "You drink it when you are thirsty.",
+   "fix": "Every living thing needs water. Toys and shoes are nice, but plants and animals need water.",
+   "easy": true
+  },
+  {
+   "id": "life-little-04",
+   "topic": "life",
+   "band": "little",
+   "q": "A baby frog that swims and has a tail is called a...",
+   "a": "Tadpole",
+   "wrong": [
+    "Puppy",
+    "Chick"
+   ],
+   "hint": "It starts with T, like tail.",
+   "fix": "A baby frog is a tadpole. It swims with a tail, then grows legs and becomes a frog."
+  },
+  {
+   "id": "life-little-05",
+   "topic": "life",
+   "band": "little",
+   "q": "What does a caterpillar turn into?",
+   "a": "A butterfly",
+   "wrong": [
+    "A bird",
+    "A fish"
+   ],
+   "hint": "It has colorful wings.",
+   "fix": "A caterpillar grows, makes a chrysalis, and comes out as a butterfly.",
+   "easy": true
+  },
+  {
+   "id": "life-little-06",
+   "topic": "life",
+   "band": "little",
+   "q": "What hatches out of a chicken egg?",
+   "a": "A chick",
+   "wrong": [
+    "A kitten",
+    "A calf"
+   ],
+   "hint": "It says peep peep.",
+   "fix": "A baby chicken, called a chick, hatches out of the egg.",
+   "easy": true
+  },
+  {
+   "id": "life-little-07",
+   "topic": "life",
+   "band": "little",
+   "q": "Which animal has feathers?",
+   "a": "A bird",
+   "wrong": [
+    "A dog",
+    "A fish"
+   ],
+   "hint": "It might sing in a tree.",
+   "fix": "Birds are the only animals with feathers.",
+   "easy": true
+  },
+  {
+   "id": "life-little-08",
+   "topic": "life",
+   "band": "little",
+   "q": "Where does a fish live?",
+   "a": "In water",
+   "wrong": [
+    "In a tree",
+    "In the sand dunes"
+   ],
+   "hint": "Splash!",
+   "fix": "Fish live in water and breathe with gills.",
+   "easy": true
+  },
+  {
+   "id": "life-little-09",
+   "topic": "life",
+   "band": "little",
+   "q": "Which one is a baby dog?",
+   "a": "A puppy",
+   "wrong": [
+    "A cub",
+    "A lamb"
+   ],
+   "hint": "It can wag a tiny tail.",
+   "fix": "A baby dog is a puppy. A lamb is a baby sheep, and a cub can be a baby bear or lion."
+  },
+  {
+   "id": "life-little-10",
+   "topic": "life",
+   "band": "little",
+   "q": "What do you call an animal that eats only plants?",
+   "a": "A plant eater",
+   "wrong": [
+    "A meat eater"
+   ],
+   "hint": "Think of a cow munching grass.",
+   "fix": "An animal that eats only plants is a plant eater, also called an herbivore. Cows and rabbits are plant eaters."
+  },
+  {
+   "id": "life-little-11",
+   "topic": "life",
+   "band": "little",
+   "q": "Which animal is a mammal with fur?",
+   "a": "A bear",
+   "wrong": [
+    "A snake",
+    "A frog"
+   ],
+   "hint": "It is fuzzy.",
+   "fix": "A bear has fur and feeds its babies milk, so it is a mammal. Snakes have scales and frogs have smooth skin."
+  },
+  {
+   "id": "life-little-12",
+   "topic": "life",
+   "band": "little",
+   "q": "Which one grows into a big oak tree?",
+   "a": "An acorn",
+   "wrong": [
+    "A pebble",
+    "A shell"
+   ],
+   "hint": "Squirrels like to bury it.",
+   "fix": "An acorn is the seed of an oak tree. Plant it and a tiny oak can grow."
+  },
+  {
+   "id": "life-little-13",
+   "topic": "life",
+   "band": "little",
+   "q": "Which home is a bird's?",
+   "a": "A nest",
+   "wrong": [
+    "A web",
+    "A hive"
+   ],
+   "hint": "Birds build it out of twigs.",
+   "fix": "Many birds build nests for their eggs. Spiders make webs, and bees live in hives.",
+   "easy": true
+  },
+  {
+   "id": "life-little-14",
+   "topic": "life",
+   "band": "little",
+   "q": "Which animal lays eggs?",
+   "a": "A duck",
+   "wrong": [
+    "A cow",
+    "A horse"
+   ],
+   "hint": "Quack quack.",
+   "fix": "Ducks lay eggs. Cows and horses have babies that are born alive."
+  },
+  {
+   "id": "life-little-15",
+   "topic": "life",
+   "band": "little",
+   "q": "What do baby mammals drink from their mother?",
+   "a": "Milk",
+   "wrong": [
+    "Juice",
+    "Soda"
+   ],
+   "hint": "It is white and comes from mom.",
+   "fix": "Baby mammals drink milk from their mothers. That is one thing all mammals have in common."
+  },
+  {
+   "id": "life-little-16",
+   "topic": "life",
+   "band": "little",
+   "q": "Is a toy robot alive?",
+   "a": "No",
+   "wrong": [
+    "Yes"
+   ],
+   "hint": "Does it grow up and have babies?",
+   "fix": "A toy robot is not alive. It cannot grow, eat, or make babies, even if it moves."
+  },
+  {
+   "id": "life-little-17",
+   "topic": "life",
+   "band": "little",
+   "q": "Which animal changes from a tadpole to a grown-up?",
+   "a": "A frog",
+   "wrong": [
+    "A cat",
+    "An owl"
+   ],
+   "hint": "Ribbit!",
+   "fix": "Frogs start as tadpoles in the water and grow into frogs."
+  },
+  {
+   "id": "life-little-18",
+   "topic": "life",
+   "band": "little",
+   "q": "Which of these lived long, long ago and is now gone?",
+   "a": "Dinosaurs",
+   "wrong": [
+    "Dogs",
+    "Cats"
+   ],
+   "hint": "T. rex was one.",
+   "fix": "Dinosaurs lived a very long time ago. People learn about them from fossils.",
+   "easy": true
+  },
+  {
+   "id": "life-big-01",
+   "topic": "life",
+   "band": "big",
+   "q": "A living thing that makes its own food from sunlight is called a...",
+   "a": "Producer",
+   "wrong": [
+    "Consumer",
+    "Decomposer"
+   ],
+   "hint": "It produces, or makes, food.",
+   "fix": "A producer makes its own food. Green plants are producers because they use sunlight to make food."
+  },
+  {
+   "id": "life-big-02",
+   "topic": "life",
+   "band": "big",
+   "q": "Mushrooms and worms that break down dead leaves are called...",
+   "a": "Decomposers",
+   "wrong": [
+    "Producers",
+    "Predators"
+   ],
+   "hint": "They de-compose, or break things down.",
+   "fix": "Decomposers break down dead plants and animals and return nutrients to the soil."
+  },
+  {
+   "id": "life-big-03",
+   "topic": "life",
+   "band": "big",
+   "q": "An animal that hunts other animals for food is called a...",
+   "a": "Predator",
+   "wrong": [
+    "Prey",
+    "Producer"
+   ],
+   "hint": "A hawk chasing a mouse is one.",
+   "fix": "A predator hunts other animals. The animal being hunted is called prey."
+  },
+  {
+   "id": "life-big-04",
+   "topic": "life",
+   "band": "big",
+   "q": "In a food chain, grass is eaten by a rabbit. What might eat the rabbit?",
+   "a": "A fox",
+   "wrong": [
+    "A carrot",
+    "The sun"
+   ],
+   "hint": "Think of an animal that eats meat.",
+   "fix": "A fox could eat the rabbit. Food chains go from plants to plant eaters to meat eaters."
+  },
+  {
+   "id": "life-big-05",
+   "topic": "life",
+   "band": "big",
+   "q": "What do you call the tiny building blocks that make up every living thing?",
+   "a": "Cells",
+   "wrong": [
+    "Atoms of gold",
+    "Pebbles"
+   ],
+   "hint": "You need a microscope to see most of them.",
+   "fix": "Cells are the tiny building blocks of living things. Your body is made of trillions of them."
+  },
+  {
+   "id": "life-big-06",
+   "topic": "life",
+   "band": "big",
+   "q": "What are the four stages in a butterfly's life cycle?",
+   "a": "Egg, caterpillar, chrysalis, butterfly",
+   "wrong": [
+    "Egg, tadpole, froglet, frog",
+    "Seed, sprout, flower, fruit"
+   ],
+   "hint": "It starts as an egg on a leaf.",
+   "fix": "A butterfly goes from egg to caterpillar to chrysalis to butterfly. That big change is called metamorphosis."
+  },
+  {
+   "id": "life-big-07",
+   "topic": "life",
+   "band": "big",
+   "q": "What is the big word for when an animal changes body shape as it grows, like a caterpillar becoming a butterfly?",
+   "a": "Metamorphosis",
+   "wrong": [
+    "Migration",
+    "Hibernation"
+   ],
+   "hint": "It starts with meta.",
+   "fix": "Metamorphosis means a big change in body form, like caterpillar to butterfly or tadpole to frog."
+  },
+  {
+   "id": "life-big-08",
+   "topic": "life",
+   "band": "big",
+   "q": "Animals with a backbone are called...",
+   "a": "Vertebrates",
+   "wrong": [
+    "Invertebrates",
+    "Insects"
+   ],
+   "hint": "Vertebra is a bone in your back.",
+   "fix": "Animals with backbones are vertebrates. Fish, frogs, snakes, birds and mammals all have backbones."
+  },
+  {
+   "id": "life-big-09",
+   "topic": "life",
+   "band": "big",
+   "q": "Which animal is an invertebrate, with no backbone?",
+   "a": "A jellyfish",
+   "wrong": [
+    "A shark",
+    "A parrot"
+   ],
+   "hint": "It is soft and wobbly.",
+   "fix": "A jellyfish has no backbone, so it is an invertebrate. Sharks and parrots have backbones."
+  },
+  {
+   "id": "life-big-10",
+   "topic": "life",
+   "band": "big",
+   "q": "Which group of animals has smooth, damp skin and usually starts life in water?",
+   "a": "Amphibians",
+   "wrong": [
+    "Reptiles",
+    "Birds"
+   ],
+   "hint": "Frogs and salamanders belong here.",
+   "fix": "Amphibians, like frogs and salamanders, have damp skin and usually start life in water."
+  },
+  {
+   "id": "life-big-11",
+   "topic": "life",
+   "band": "big",
+   "q": "Snakes, lizards and turtles have dry, scaly skin. What group are they in?",
+   "a": "Reptiles",
+   "wrong": [
+    "Amphibians",
+    "Mammals"
+   ],
+   "hint": "Crocodiles are in this group too.",
+   "fix": "They are reptiles. Reptiles have dry, scaly skin."
+  },
+  {
+   "id": "life-big-12",
+   "topic": "life",
+   "band": "big",
+   "q": "A dolphin breathes air and feeds its babies milk. What kind of animal is it?",
+   "a": "A mammal",
+   "wrong": [
+    "A fish",
+    "An amphibian"
+   ],
+   "hint": "Dogs and people are in this group too.",
+   "fix": "A dolphin is a mammal, not a fish. It comes up to breathe air through its blowhole.",
+   "easy": true
+  },
+  {
+   "id": "life-big-13",
+   "topic": "life",
+   "band": "big",
+   "q": "What is it called when an animal's color helps it blend in with its surroundings?",
+   "a": "Camouflage",
+   "wrong": [
+    "Echolocation",
+    "Pollination"
+   ],
+   "hint": "Soldiers wear clothes with this pattern.",
+   "fix": "That is camouflage. It helps animals hide from predators or sneak up on prey."
+  },
+  {
+   "id": "life-big-14",
+   "topic": "life",
+   "band": "big",
+   "q": "When a kind of animal is gone forever and none are left alive, it is...",
+   "a": "Extinct",
+   "wrong": [
+    "Endangered",
+    "Asleep"
+   ],
+   "hint": "Dinosaurs (other than birds) are this.",
+   "fix": "An extinct animal has no living members left. Endangered means there are only a few left."
+  },
+  {
+   "id": "life-big-15",
+   "topic": "life",
+   "band": "big",
+   "q": "Scientists say birds are living relatives of which animals?",
+   "a": "Dinosaurs",
+   "wrong": [
+    "Sharks",
+    "Insects"
+   ],
+   "hint": "Think of a T. rex and a chicken.",
+   "fix": "Birds come from a group of dinosaurs. That is why scientists call birds living dinosaurs."
+  },
+  {
+   "id": "life-big-16",
+   "topic": "life",
+   "band": "big",
+   "q": "What is the place where an animal naturally lives and finds food, water and shelter?",
+   "a": "Habitat",
+   "wrong": [
+    "Garage",
+    "Orbit"
+   ],
+   "hint": "A pond is one for a frog.",
+   "fix": "A habitat is an animal's natural home. A pond, a forest and a desert are all habitats."
+  },
+  {
+   "id": "life-big-17",
+   "topic": "life",
+   "band": "big",
+   "q": "What tool helps scientists see things too tiny for their eyes, like cells?",
+   "a": "A microscope",
+   "wrong": [
+    "A telescope",
+    "A thermometer"
+   ],
+   "hint": "Micro means very small.",
+   "fix": "A microscope makes tiny things look bigger. A telescope is for faraway things like stars.",
+   "easy": true
+  },
+  {
+   "id": "life-big-18",
+   "topic": "life",
+   "band": "big",
+   "q": "A frog egg hatches into a tadpole. What does the tadpole breathe with at first?",
+   "a": "Gills",
+   "wrong": [
+    "Lungs",
+    "Feathers"
+   ],
+   "hint": "Fish breathe with these too.",
+   "fix": "Young tadpoles breathe with gills, like fish. As they grow into frogs, most grow lungs."
+  },
+  {
+   "id": "life-big-19",
+   "topic": "life",
+   "band": "big",
+   "q": "Which scientist studies living things?",
+   "a": "A biologist",
+   "wrong": [
+    "A geologist",
+    "An astronomer"
+   ],
+   "hint": "Bio means life.",
+   "fix": "A biologist studies living things. Geologists study rocks, and astronomers study space."
+  },
+  {
+   "id": "life-big-20",
+   "topic": "life",
+   "band": "big",
+   "q": "An animal that eats both plants and meat is called...",
+   "a": "An omnivore",
+   "wrong": [
+    "An herbivore",
+    "A carnivore"
+   ],
+   "hint": "Omni means all.",
+   "fix": "An omnivore eats both plants and animals. Bears and people are omnivores."
+  },
+  {
+   "id": "earth-little-01",
+   "topic": "earth",
+   "band": "little",
+   "q": "What big, bright star do you see in the daytime sky?",
+   "a": "The Sun",
+   "wrong": [
+    "The Moon",
+    "A cloud"
+   ],
+   "hint": "It keeps you warm.",
+   "fix": "The Sun is a star, and it is the one closest to Earth. Never look straight at it.",
+   "easy": true
+  },
+  {
+   "id": "earth-little-02",
+   "topic": "earth",
+   "band": "little",
+   "q": "What do you often see in the sky at night that changes shape over the month?",
+   "a": "The Moon",
+   "wrong": [
+    "The Sun",
+    "A rainbow"
+   ],
+   "hint": "Sometimes it looks like a banana, sometimes a ball.",
+   "fix": "The Moon looks like it changes shape. Those shapes are called phases.",
+   "easy": true
+  },
+  {
+   "id": "earth-little-03",
+   "topic": "earth",
+   "band": "little",
+   "q": "What is the name of the planet people live on?",
+   "a": "Earth",
+   "wrong": [
+    "Mars",
+    "The Moon"
+   ],
+   "hint": "It is mostly blue with oceans.",
+   "fix": "People live on planet Earth.",
+   "easy": true
+  },
+  {
+   "id": "earth-little-04",
+   "topic": "earth",
+   "band": "little",
+   "q": "Which planet is called the Red Planet?",
+   "a": "Mars",
+   "wrong": [
+    "Earth",
+    "Jupiter"
+   ],
+   "hint": "It starts with M.",
+   "fix": "Mars looks red because its dusty ground has rusty iron in it."
+  },
+  {
+   "id": "earth-little-05",
+   "topic": "earth",
+   "band": "little",
+   "q": "Which planet has big, bright rings you can see in pictures?",
+   "a": "Saturn",
+   "wrong": [
+    "Mars",
+    "Earth"
+   ],
+   "hint": "It starts with S.",
+   "fix": "Saturn has the brightest, best-known rings, made of ice and rock."
+  },
+  {
+   "id": "earth-little-06",
+   "topic": "earth",
+   "band": "little",
+   "q": "Who goes into space in a rocket?",
+   "a": "Astronauts",
+   "wrong": [
+    "Firefighters",
+    "Chefs"
+   ],
+   "hint": "They wear big space suits.",
+   "fix": "Astronauts travel to space. They train for a long time first.",
+   "easy": true
+  },
+  {
+   "id": "earth-little-07",
+   "topic": "earth",
+   "band": "little",
+   "q": "What hot, melted rock comes out of a volcano?",
+   "a": "Lava",
+   "wrong": [
+    "Snow",
+    "Juice"
+   ],
+   "hint": "It glows orange.",
+   "fix": "Lava is melted rock that flows out of a volcano."
+  },
+  {
+   "id": "earth-little-08",
+   "topic": "earth",
+   "band": "little",
+   "q": "Is the ocean water salty or sweet?",
+   "a": "Salty",
+   "wrong": [
+    "Sweet"
+   ],
+   "hint": "Do not drink it!",
+   "fix": "Ocean water is salty. Most rivers and lakes have fresh water.",
+   "easy": true
+  },
+  {
+   "id": "earth-little-09",
+   "topic": "earth",
+   "band": "little",
+   "q": "What do you call a very big, tall hill with a pointy top?",
+   "a": "A mountain",
+   "wrong": [
+    "A puddle",
+    "A valley"
+   ],
+   "hint": "People climb it.",
+   "fix": "A mountain is land that rises very high.",
+   "easy": true
+  },
+  {
+   "id": "earth-little-10",
+   "topic": "earth",
+   "band": "little",
+   "q": "When it is daytime, which way does the sun rise?",
+   "a": "In the east",
+   "wrong": [
+    "In the west"
+   ],
+   "hint": "The opposite side from where it sets.",
+   "fix": "The sun rises in the east and sets in the west."
+  },
+  {
+   "id": "earth-little-11",
+   "topic": "earth",
+   "band": "little",
+   "q": "Which is bigger, the Sun or the Earth?",
+   "a": "The Sun",
+   "wrong": [
+    "The Earth"
+   ],
+   "hint": "It only looks small because it is far away.",
+   "fix": "The Sun is much, much bigger than Earth. It looks small because it is so far away."
+  },
+  {
+   "id": "earth-little-12",
+   "topic": "earth",
+   "band": "little",
+   "q": "What is a shape made by stars in the night sky called?",
+   "a": "A constellation",
+   "wrong": [
+    "A puddle",
+    "A comet"
+   ],
+   "hint": "The Big Dipper is part of one.",
+   "fix": "A constellation is a group of stars that people imagine as a picture."
+  },
+  {
+   "id": "earth-little-13",
+   "topic": "earth",
+   "band": "little",
+   "q": "What do you call a rock or bone print from an animal that lived long ago?",
+   "a": "A fossil",
+   "wrong": [
+    "A crystal",
+    "A coin"
+   ],
+   "hint": "Dinosaur bones in a museum are these.",
+   "fix": "A fossil is what is left of a living thing from long ago, saved in rock."
+  },
+  {
+   "id": "earth-little-14",
+   "topic": "earth",
+   "band": "little",
+   "q": "Where do you find sand, shells and waves?",
+   "a": "At a beach",
+   "wrong": [
+    "On a mountain top",
+    "In a cave"
+   ],
+   "hint": "You might build a sandcastle there.",
+   "fix": "A beach is where land meets water. Waves bring sand and shells.",
+   "easy": true
+  },
+  {
+   "id": "earth-little-15",
+   "topic": "earth",
+   "band": "little",
+   "q": "What is a hole in the ground where some animals like bats live called?",
+   "a": "A cave",
+   "wrong": [
+    "A cloud",
+    "A river"
+   ],
+   "hint": "It is dark inside.",
+   "fix": "A cave is a big hollow space underground or in a hillside."
+  },
+  {
+   "id": "earth-little-16",
+   "topic": "earth",
+   "band": "little",
+   "q": "Which is the hottest: the Sun, an ice cube or a snowball?",
+   "a": "The Sun",
+   "wrong": [
+    "An ice cube",
+    "A snowball"
+   ],
+   "hint": "It is a giant ball of hot gas.",
+   "fix": "The Sun is hottest. It is a huge ball of very hot glowing gas.",
+   "easy": true
+  },
+  {
+   "id": "earth-little-17",
+   "topic": "earth",
+   "band": "little",
+   "q": "Does the Moon make its own light?",
+   "a": "No, it reflects sunlight",
+   "wrong": [
+    "Yes, it glows by itself"
+   ],
+   "hint": "Think of a mirror.",
+   "fix": "The Moon does not make light. It shines because sunlight bounces off it."
+  },
+  {
+   "id": "earth-little-18",
+   "topic": "earth",
+   "band": "little",
+   "q": "What is the ground shaking hard called?",
+   "a": "An earthquake",
+   "wrong": [
+    "A rainbow",
+    "A snowfall"
+   ],
+   "hint": "Quake means shake.",
+   "fix": "An earthquake is when the ground shakes because rock deep underground moves."
+  },
+  {
+   "id": "earth-big-01",
+   "topic": "earth",
+   "band": "big",
+   "q": "Which planet is closest to the Sun?",
+   "a": "Mercury",
+   "wrong": [
+    "Venus",
+    "Mars"
+   ],
+   "hint": "It is also the smallest planet.",
+   "fix": "Mercury is the closest planet to the Sun, and the smallest."
+  },
+  {
+   "id": "earth-big-02",
+   "topic": "earth",
+   "band": "big",
+   "q": "Which planet that goes around the Sun is the biggest?",
+   "a": "Jupiter",
+   "wrong": [
+    "Saturn",
+    "Neptune"
+   ],
+   "hint": "Look for a huge red storm spot on it.",
+   "fix": "Jupiter is the biggest planet. Its Great Red Spot is a huge storm."
+  },
+  {
+   "id": "earth-big-03",
+   "topic": "earth",
+   "band": "big",
+   "q": "How many planets are in the solar system?",
+   "a": "Eight",
+   "wrong": [
+    "Seven",
+    "Ten"
+   ],
+   "hint": "Pluto is now called a dwarf planet.",
+   "fix": "There are eight planets. Pluto is called a dwarf planet."
+  },
+  {
+   "id": "earth-big-04",
+   "topic": "earth",
+   "band": "big",
+   "q": "How long does it take Earth to travel once around the Sun?",
+   "a": "About one year",
+   "wrong": [
+    "One day",
+    "One week"
+   ],
+   "hint": "Think of birthdays.",
+   "fix": "Earth takes about one year to go around the Sun once.",
+   "easy": true
+  },
+  {
+   "id": "earth-big-05",
+   "topic": "earth",
+   "band": "big",
+   "q": "Earth spins all the way around once in about how long?",
+   "a": "One day",
+   "wrong": [
+    "One year",
+    "One hour"
+   ],
+   "hint": "From one sunrise to the next.",
+   "fix": "Earth spins once about every 24 hours. That spin gives day and night."
+  },
+  {
+   "id": "earth-big-06",
+   "topic": "earth",
+   "band": "big",
+   "q": "What causes day and night on Earth?",
+   "a": "Earth spinning",
+   "wrong": [
+    "The Sun turning off",
+    "Clouds covering the Sun"
+   ],
+   "hint": "The planet turns like a top.",
+   "fix": "Earth spins. The side facing the Sun has day, and the side facing away has night."
+  },
+  {
+   "id": "earth-big-07",
+   "topic": "earth",
+   "band": "big",
+   "q": "What is the hot, melted rock called while it is still underground?",
+   "a": "Magma",
+   "wrong": [
+    "Lava",
+    "Sand"
+   ],
+   "hint": "Above ground it gets a different name.",
+   "fix": "Underground it is magma. When it flows out of a volcano, it is called lava."
+  },
+  {
+   "id": "earth-big-08",
+   "topic": "earth",
+   "band": "big",
+   "q": "What kind of rock forms when lava or magma cools and hardens?",
+   "a": "Igneous rock",
+   "wrong": [
+    "Sedimentary rock",
+    "Metamorphic rock"
+   ],
+   "hint": "Ignis means fire.",
+   "fix": "Igneous rock forms from cooled melted rock. Granite and basalt are igneous."
+  },
+  {
+   "id": "earth-big-09",
+   "topic": "earth",
+   "band": "big",
+   "q": "Rock made from layers of sand, mud and shells pressed together over time is...",
+   "a": "Sedimentary rock",
+   "wrong": [
+    "Igneous rock",
+    "Metamorphic rock"
+   ],
+   "hint": "Sediment is bits of sand and mud.",
+   "fix": "Sedimentary rock forms in layers. Sandstone and limestone are sedimentary, and fossils are often found in it."
+  },
+  {
+   "id": "earth-big-10",
+   "topic": "earth",
+   "band": "big",
+   "q": "What is it called when wind and water slowly wear away rock and soil?",
+   "a": "Erosion",
+   "wrong": [
+    "Eruption",
+    "Evaporation"
+   ],
+   "hint": "It can carve canyons.",
+   "fix": "That is erosion. Over a very long time, a river can carve a deep canyon."
+  },
+  {
+   "id": "earth-big-11",
+   "topic": "earth",
+   "band": "big",
+   "q": "Which is the largest ocean on Earth?",
+   "a": "The Pacific Ocean",
+   "wrong": [
+    "The Atlantic Ocean",
+    "The Arctic Ocean"
+   ],
+   "hint": "It lies between Asia and the Americas.",
+   "fix": "The Pacific is the largest and deepest ocean."
+  },
+  {
+   "id": "earth-big-12",
+   "topic": "earth",
+   "band": "big",
+   "q": "What do you call a huge mass of ice that creeps slowly downhill?",
+   "a": "A glacier",
+   "wrong": [
+    "A geyser",
+    "A delta"
+   ],
+   "hint": "It starts with G and moves very slowly.",
+   "fix": "A glacier is a huge mass of ice that slowly moves downhill."
+  },
+  {
+   "id": "earth-big-13",
+   "topic": "earth",
+   "band": "big",
+   "q": "What is the name of the galaxy the solar system is in?",
+   "a": "The Milky Way",
+   "wrong": [
+    "Andromeda",
+    "The Big Dipper"
+   ],
+   "hint": "It sounds like a candy bar.",
+   "fix": "The solar system is in the Milky Way galaxy."
+  },
+  {
+   "id": "earth-big-14",
+   "topic": "earth",
+   "band": "big",
+   "q": "When the Moon passes between the Sun and Earth and blocks the Sun, it is a...",
+   "a": "Solar eclipse",
+   "wrong": [
+    "Lunar eclipse",
+    "Meteor shower"
+   ],
+   "hint": "Sol means Sun.",
+   "fix": "That is a solar eclipse. In a lunar eclipse, Earth's shadow falls on the Moon."
+  },
+  {
+   "id": "earth-big-15",
+   "topic": "earth",
+   "band": "big",
+   "q": "What tool helps people see faraway stars and planets?",
+   "a": "A telescope",
+   "wrong": [
+    "A microscope",
+    "A stethoscope"
+   ],
+   "hint": "Tele means far.",
+   "fix": "A telescope makes faraway things look closer.",
+   "easy": true
+  },
+  {
+   "id": "earth-big-16",
+   "topic": "earth",
+   "band": "big",
+   "q": "Which star is close to straight above the North Pole and helps travelers find north?",
+   "a": "The North Star",
+   "wrong": [
+    "The Sun",
+    "The Dog Star"
+   ],
+   "hint": "Its other name is Polaris.",
+   "fix": "The North Star, Polaris, sits almost right above the North Pole, so it helps people find north."
+  },
+  {
+   "id": "earth-big-17",
+   "topic": "earth",
+   "band": "big",
+   "q": "What do you call a hot spring that shoots water and steam high into the air?",
+   "a": "A geyser",
+   "wrong": [
+    "A glacier",
+    "A volcano"
+   ],
+   "hint": "Old Faithful in Yellowstone is one.",
+   "fix": "A geyser is a spring that sprays hot water and steam. Old Faithful is a famous one."
+  },
+  {
+   "id": "earth-big-18",
+   "topic": "earth",
+   "band": "big",
+   "q": "What is the very center of Earth called?",
+   "a": "The core",
+   "wrong": [
+    "The crust",
+    "The mantle"
+   ],
+   "hint": "Like the center of an apple.",
+   "fix": "The center is the core. The outside layer is the crust, and the mantle is in between."
+  },
+  {
+   "id": "earth-big-19",
+   "topic": "earth",
+   "band": "big",
+   "q": "What is the thin, rocky outer layer of Earth that people walk on?",
+   "a": "The crust",
+   "wrong": [
+    "The core",
+    "The mantle"
+   ],
+   "hint": "Like the crust on bread.",
+   "fix": "The crust is Earth's outer layer. It is thin compared with the rest of the planet."
+  },
+  {
+   "id": "earth-big-20",
+   "topic": "earth",
+   "band": "big",
+   "q": "Why does the Moon seem to change shape during a month?",
+   "a": "Different amounts of its sunlit side face Earth",
+   "wrong": [
+    "It gets bitten by space rocks",
+    "Clouds cover parts of it"
+   ],
+   "hint": "Half of the Moon is always lit by the Sun.",
+   "fix": "As the Moon goes around Earth, people see different amounts of its sunny side. Those are the phases."
+  },
+  {
+   "id": "physical-little-01",
+   "topic": "physical",
+   "band": "little",
+   "q": "What happens to an ice cube on a warm, sunny day?",
+   "a": "It melts",
+   "wrong": [
+    "It grows",
+    "It turns to stone"
+   ],
+   "hint": "It turns into a puddle.",
+   "fix": "Warmth melts ice. The solid ice turns into liquid water.",
+   "easy": true
+  },
+  {
+   "id": "physical-little-02",
+   "topic": "physical",
+   "band": "little",
+   "q": "What sticks to a magnet?",
+   "a": "A steel paper clip",
+   "wrong": [
+    "A wooden block",
+    "A plastic spoon"
+   ],
+   "hint": "It is made of metal.",
+   "fix": "Magnets pull on things with iron in them, like a steel paper clip. Wood and plastic do not stick."
+  },
+  {
+   "id": "physical-little-03",
+   "topic": "physical",
+   "band": "little",
+   "q": "If you drop a ball, which way does it go?",
+   "a": "Down",
+   "wrong": [
+    "Up",
+    "Sideways forever"
+   ],
+   "hint": "Gravity pulls it.",
+   "fix": "Gravity pulls things down toward the ground.",
+   "easy": true
+  },
+  {
+   "id": "physical-little-04",
+   "topic": "physical",
+   "band": "little",
+   "q": "Will a rock sink or float in water?",
+   "a": "Sink",
+   "wrong": [
+    "Float"
+   ],
+   "hint": "Plop!",
+   "fix": "A rock sinks because it is heavy for its size.",
+   "easy": true
+  },
+  {
+   "id": "physical-little-05",
+   "topic": "physical",
+   "band": "little",
+   "q": "What do you get when water freezes?",
+   "a": "Ice",
+   "wrong": [
+    "Steam",
+    "Sand"
+   ],
+   "hint": "It is cold and slippery.",
+   "fix": "When water gets cold enough it freezes into ice.",
+   "easy": true
+  },
+  {
+   "id": "physical-little-06",
+   "topic": "physical",
+   "band": "little",
+   "q": "Is a push or a pull what you use to open a drawer toward you?",
+   "a": "A pull",
+   "wrong": [
+    "A push"
+   ],
+   "hint": "You bring it closer to you.",
+   "fix": "Bringing something toward you is a pull. Pushes move things away."
+  },
+  {
+   "id": "physical-little-07",
+   "topic": "physical",
+   "band": "little",
+   "q": "What do you see when light is blocked by your body on a sunny day?",
+   "a": "A shadow",
+   "wrong": [
+    "A rainbow",
+    "A puddle"
+   ],
+   "hint": "It follows you around.",
+   "fix": "Your body blocks the light and makes a shadow.",
+   "easy": true
+  },
+  {
+   "id": "physical-little-08",
+   "topic": "physical",
+   "band": "little",
+   "q": "Which is a liquid?",
+   "a": "Milk",
+   "wrong": [
+    "A spoon",
+    "A block"
+   ],
+   "hint": "You can pour it.",
+   "fix": "Milk is a liquid. Liquids can be poured and take the shape of their cup."
+  },
+  {
+   "id": "physical-little-09",
+   "topic": "physical",
+   "band": "little",
+   "q": "Which one makes a sound when you hit it?",
+   "a": "A drum",
+   "wrong": [
+    "A pillow",
+    "A cotton ball"
+   ],
+   "hint": "Boom boom!",
+   "fix": "A drum makes a loud sound when you hit it because it shakes, or vibrates.",
+   "easy": true
+  },
+  {
+   "id": "physical-little-10",
+   "topic": "physical",
+   "band": "little",
+   "q": "Which is easier to roll across the floor?",
+   "a": "A ball",
+   "wrong": [
+    "A box"
+   ],
+   "hint": "It is round.",
+   "fix": "A round ball rolls easily. A box slides or tips instead.",
+   "easy": true
+  },
+  {
+   "id": "physical-little-11",
+   "topic": "physical",
+   "band": "little",
+   "q": "What makes a flashlight shine?",
+   "a": "A battery",
+   "wrong": [
+    "A sock",
+    "Water"
+   ],
+   "hint": "It gives the light energy.",
+   "fix": "A battery gives electricity to the bulb so it lights up."
+  },
+  {
+   "id": "physical-little-12",
+   "topic": "physical",
+   "band": "little",
+   "q": "Which is the hottest?",
+   "a": "A stove burner that is on",
+   "wrong": [
+    "An ice pop",
+    "A snowman"
+   ],
+   "hint": "Never touch it!",
+   "fix": "A stove that is on is very hot. Ice pops and snowmen are cold."
+  },
+  {
+   "id": "physical-little-13",
+   "topic": "physical",
+   "band": "little",
+   "q": "What does a mirror do with light?",
+   "a": "Bounces it back",
+   "wrong": [
+    "Eats it",
+    "Makes it wet"
+   ],
+   "hint": "You can see yourself in it.",
+   "fix": "A mirror reflects, or bounces back, light. That is how you see yourself."
+  },
+  {
+   "id": "physical-little-14",
+   "topic": "physical",
+   "band": "little",
+   "q": "What comes out of a pot of very hot, boiling water?",
+   "a": "Steam",
+   "wrong": [
+    "Ice",
+    "Sand"
+   ],
+   "hint": "It looks like a little cloud.",
+   "fix": "Boiling water turns into steam, a gas. Stay back, steam is hot!"
+  },
+  {
+   "id": "physical-little-15",
+   "topic": "physical",
+   "band": "little",
+   "q": "Which is heavier: a bowling ball or a feather?",
+   "a": "A bowling ball",
+   "wrong": [
+    "A feather"
+   ],
+   "hint": "Which one would be hard to lift?",
+   "fix": "A bowling ball is much heavier than a feather.",
+   "easy": true
+  },
+  {
+   "id": "physical-little-16",
+   "topic": "physical",
+   "band": "little",
+   "q": "What do you call something solid, like a block, that keeps its own shape?",
+   "a": "A solid",
+   "wrong": [
+    "A liquid",
+    "A gas"
+   ],
+   "hint": "It does not spill.",
+   "fix": "A solid keeps its shape. Liquids spill and gases spread out."
+  },
+  {
+   "id": "physical-little-17",
+   "topic": "physical",
+   "band": "little",
+   "q": "What sound does a tight rubber band make when you pluck it?",
+   "a": "A twang",
+   "wrong": [
+    "Nothing at all"
+   ],
+   "hint": "It wiggles fast.",
+   "fix": "A plucked rubber band vibrates and makes a twang sound."
+  },
+  {
+   "id": "physical-little-18",
+   "topic": "physical",
+   "band": "little",
+   "q": "What helps a sled slide down a snowy hill?",
+   "a": "Gravity",
+   "wrong": [
+    "Glue",
+    "Sunlight"
+   ],
+   "hint": "It is the same pull that makes things fall.",
+   "fix": "Gravity pulls the sled down the hill."
+  },
+  {
+   "id": "physical-big-01",
+   "topic": "physical",
+   "band": "big",
+   "q": "What are the three common states of matter?",
+   "a": "Solid, liquid and gas",
+   "wrong": [
+    "Hot, warm and cold",
+    "Big, medium and small"
+   ],
+   "hint": "Ice, water and steam.",
+   "fix": "Matter is usually a solid, a liquid or a gas, like ice, water and steam."
+  },
+  {
+   "id": "physical-big-02",
+   "topic": "physical",
+   "band": "big",
+   "q": "What is it called when liquid water turns into a gas?",
+   "a": "Evaporation",
+   "wrong": [
+    "Condensation",
+    "Freezing"
+   ],
+   "hint": "A puddle disappears on a sunny day.",
+   "fix": "That is evaporation. Heat turns liquid water into water vapor."
+  },
+  {
+   "id": "physical-big-03",
+   "topic": "physical",
+   "band": "big",
+   "q": "Water drops form on the outside of a cold glass of lemonade. What is this called?",
+   "a": "Condensation",
+   "wrong": [
+    "Evaporation",
+    "Melting"
+   ],
+   "hint": "Water vapor in the air turns back into liquid.",
+   "fix": "That is condensation. Water vapor from the air cools on the glass and becomes liquid drops."
+  },
+  {
+   "id": "physical-big-04",
+   "topic": "physical",
+   "band": "big",
+   "q": "At sea level, water boils at 100 degrees on which temperature scale?",
+   "a": "Celsius",
+   "wrong": [
+    "Fahrenheit",
+    "Kelvin"
+   ],
+   "hint": "The scale is named after Anders Celsius.",
+   "fix": "Water boils at 100 degrees Celsius at sea level. That is 212 degrees Fahrenheit."
+  },
+  {
+   "id": "physical-big-05",
+   "topic": "physical",
+   "band": "big",
+   "q": "What force pulls objects toward Earth?",
+   "a": "Gravity",
+   "wrong": [
+    "Friction",
+    "Magnetism"
+   ],
+   "hint": "It is why apples fall from trees.",
+   "fix": "Gravity pulls objects toward Earth. It also keeps the Moon going around Earth.",
+   "easy": true
+  },
+  {
+   "id": "physical-big-06",
+   "topic": "physical",
+   "band": "big",
+   "q": "What force slows a ball rolling across grass?",
+   "a": "Friction",
+   "wrong": [
+    "Gravity pulling up",
+    "Magnetism"
+   ],
+   "hint": "Rubbing between two surfaces.",
+   "fix": "Friction happens when surfaces rub, and it slows things down. It is stronger on rough grass than on a smooth floor."
+  },
+  {
+   "id": "physical-big-07",
+   "topic": "physical",
+   "band": "big",
+   "q": "The ends of a bar magnet are called its...",
+   "a": "Poles",
+   "wrong": [
+    "Corners",
+    "Roots"
+   ],
+   "hint": "Like the North and South ones on Earth.",
+   "fix": "A magnet has a north pole and a south pole."
+  },
+  {
+   "id": "physical-big-08",
+   "topic": "physical",
+   "band": "big",
+   "q": "If you put the north poles of two magnets together, what happens?",
+   "a": "They push apart",
+   "wrong": [
+    "They stick together",
+    "Nothing at all"
+   ],
+   "hint": "Like poles do not like each other.",
+   "fix": "Like poles repel, or push apart. A north pole and a south pole attract."
+  },
+  {
+   "id": "physical-big-09",
+   "topic": "physical",
+   "band": "big",
+   "q": "What is a ramp called as a simple machine?",
+   "a": "An inclined plane",
+   "wrong": [
+    "A pulley",
+    "A lever"
+   ],
+   "hint": "Incline means slope.",
+   "fix": "A ramp is an inclined plane. It lets you move a load up with less force."
+  },
+  {
+   "id": "physical-big-10",
+   "topic": "physical",
+   "band": "big",
+   "q": "A seesaw is which kind of simple machine?",
+   "a": "A lever",
+   "wrong": [
+    "A pulley",
+    "A screw"
+   ],
+   "hint": "It has a balance point in the middle.",
+   "fix": "A seesaw is a lever. The balance point is called the fulcrum."
+  },
+  {
+   "id": "physical-big-11",
+   "topic": "physical",
+   "band": "big",
+   "q": "A rope over a wheel used to lift a flag up a pole is a...",
+   "a": "Pulley",
+   "wrong": [
+    "Wedge",
+    "Ramp"
+   ],
+   "hint": "Pull the rope down, the flag goes up.",
+   "fix": "That is a pulley. It can change the direction of a pull."
+  },
+  {
+   "id": "physical-big-12",
+   "topic": "physical",
+   "band": "big",
+   "q": "Sound is made when something does what very quickly?",
+   "a": "Vibrates",
+   "wrong": [
+    "Freezes",
+    "Melts"
+   ],
+   "hint": "Touch your throat while you hum.",
+   "fix": "Sound comes from vibrations, quick back-and-forth shakes."
+  },
+  {
+   "id": "physical-big-13",
+   "topic": "physical",
+   "band": "big",
+   "q": "Which travels faster: light or sound?",
+   "a": "Light",
+   "wrong": [
+    "Sound",
+    "They are the same speed"
+   ],
+   "hint": "Think about seeing lightning before hearing thunder.",
+   "fix": "Light is much faster than sound. That is why you see lightning before you hear thunder.",
+   "easy": true
+  },
+  {
+   "id": "physical-big-14",
+   "topic": "physical",
+   "band": "big",
+   "q": "What is the path that electricity flows around, like battery to bulb and back, called?",
+   "a": "A circuit",
+   "wrong": [
+    "A circle dance",
+    "An orbit"
+   ],
+   "hint": "It sounds like circle.",
+   "fix": "A circuit is a complete loop. If the loop is broken, the bulb goes out."
+  },
+  {
+   "id": "physical-big-15",
+   "topic": "physical",
+   "band": "big",
+   "q": "Which material is a good conductor that lets electricity flow through it?",
+   "a": "Copper",
+   "wrong": [
+    "Rubber",
+    "Wood"
+   ],
+   "hint": "Wires are often made of it.",
+   "fix": "Copper is a metal that conducts electricity well. Rubber and wood are insulators."
+  },
+  {
+   "id": "physical-big-16",
+   "topic": "physical",
+   "band": "big",
+   "q": "What is a material that blocks heat or electricity, like the rubber on a wire, called?",
+   "a": "An insulator",
+   "wrong": [
+    "A conductor",
+    "A magnet"
+   ],
+   "hint": "It keeps things in, like a warm blanket.",
+   "fix": "An insulator blocks the flow of heat or electricity."
+  },
+  {
+   "id": "physical-big-17",
+   "topic": "physical",
+   "band": "big",
+   "q": "A glass prism splits white light into what?",
+   "a": "A rainbow of colors",
+   "wrong": [
+    "Darkness",
+    "Bubbles"
+   ],
+   "hint": "It happens with raindrops too.",
+   "fix": "A prism bends light and spreads white light into all the colors of the rainbow."
+  },
+  {
+   "id": "physical-big-18",
+   "topic": "physical",
+   "band": "big",
+   "q": "When sugar disappears as you stir it into water, it...",
+   "a": "Dissolves",
+   "wrong": [
+    "Evaporates",
+    "Freezes"
+   ],
+   "hint": "It mixes in so well you cannot see it.",
+   "fix": "Sugar dissolves in water. The water still tastes sweet because the sugar is still there."
+  },
+  {
+   "id": "physical-big-19",
+   "topic": "physical",
+   "band": "big",
+   "q": "What kind of energy does a moving car, a rolling ball or a running dog have?",
+   "a": "Motion energy",
+   "wrong": [
+    "Sound energy only",
+    "No energy"
+   ],
+   "hint": "Its science name is kinetic energy.",
+   "fix": "Anything moving has motion energy, also called kinetic energy."
+  },
+  {
+   "id": "physical-big-20",
+   "topic": "physical",
+   "band": "big",
+   "q": "A balloon rubbed on your hair can stick to the wall. What is this?",
+   "a": "Static electricity",
+   "wrong": [
+    "Gravity",
+    "Magnetism"
+   ],
+   "hint": "It can also make your hair stand up.",
+   "fix": "Rubbing builds up static electricity, which makes the balloon cling."
+  },
+  {
+   "id": "body-little-01",
+   "topic": "body",
+   "band": "little",
+   "q": "What do you use to see?",
+   "a": "Your eyes",
+   "wrong": [
+    "Your ears",
+    "Your elbows"
+   ],
+   "hint": "Blink blink.",
+   "fix": "You see with your eyes.",
+   "easy": true
+  },
+  {
+   "id": "body-little-02",
+   "topic": "body",
+   "band": "little",
+   "q": "What do you use to hear?",
+   "a": "Your ears",
+   "wrong": [
+    "Your nose",
+    "Your knees"
+   ],
+   "hint": "They are on the sides of your head.",
+   "fix": "You hear with your ears.",
+   "easy": true
+  },
+  {
+   "id": "body-little-03",
+   "topic": "body",
+   "band": "little",
+   "q": "What do you use to smell a flower?",
+   "a": "Your nose",
+   "wrong": [
+    "Your toes",
+    "Your hair"
+   ],
+   "hint": "Sniff sniff!",
+   "fix": "You smell with your nose.",
+   "easy": true
+  },
+  {
+   "id": "body-little-04",
+   "topic": "body",
+   "band": "little",
+   "q": "What part of your body pumps blood?",
+   "a": "Your heart",
+   "wrong": [
+    "Your hair",
+    "Your teeth"
+   ],
+   "hint": "Feel it go thump thump in your chest.",
+   "fix": "Your heart pumps blood all around your body."
+  },
+  {
+   "id": "body-little-05",
+   "topic": "body",
+   "band": "little",
+   "q": "What do you use to breathe in air?",
+   "a": "Your lungs",
+   "wrong": [
+    "Your stomach",
+    "Your feet"
+   ],
+   "hint": "They fill up like balloons in your chest.",
+   "fix": "Your lungs take in air when you breathe."
+  },
+  {
+   "id": "body-little-06",
+   "topic": "body",
+   "band": "little",
+   "q": "What hard parts are inside your body and hold you up?",
+   "a": "Bones",
+   "wrong": [
+    "Hair",
+    "Tears"
+   ],
+   "hint": "A skeleton is made of them.",
+   "fix": "Bones hold you up and make your skeleton.",
+   "easy": true
+  },
+  {
+   "id": "body-little-07",
+   "topic": "body",
+   "band": "little",
+   "q": "What should you do before you eat to wash away germs?",
+   "a": "Wash your hands",
+   "wrong": [
+    "Clap your hands",
+    "Hide your hands"
+   ],
+   "hint": "Use soap and water.",
+   "fix": "Washing your hands with soap and water helps wash germs away.",
+   "easy": true
+  },
+  {
+   "id": "body-little-08",
+   "topic": "body",
+   "band": "little",
+   "q": "What do you use to taste food?",
+   "a": "Your tongue",
+   "wrong": [
+    "Your ears",
+    "Your elbow"
+   ],
+   "hint": "Stick it out!",
+   "fix": "Your tongue tastes sweet, salty, sour and more.",
+   "easy": true
+  },
+  {
+   "id": "body-little-09",
+   "topic": "body",
+   "band": "little",
+   "q": "What part of you does the thinking?",
+   "a": "Your brain",
+   "wrong": [
+    "Your belly button",
+    "Your toes"
+   ],
+   "hint": "It is inside your head.",
+   "fix": "Your brain does your thinking, remembering and dreaming."
+  },
+  {
+   "id": "body-little-10",
+   "topic": "body",
+   "band": "little",
+   "q": "Where does the food you swallow go?",
+   "a": "To your stomach",
+   "wrong": [
+    "To your ears",
+    "To your hair"
+   ],
+   "hint": "It is in your tummy.",
+   "fix": "Swallowed food goes down to your stomach to be broken down."
+  },
+  {
+   "id": "body-little-11",
+   "topic": "body",
+   "band": "little",
+   "q": "What covers the outside of your whole body?",
+   "a": "Skin",
+   "wrong": [
+    "Feathers",
+    "Scales"
+   ],
+   "hint": "You can feel touches with it.",
+   "fix": "Skin covers your body and lets you feel touch, warm and cold.",
+   "easy": true
+  },
+  {
+   "id": "body-little-12",
+   "topic": "body",
+   "band": "little",
+   "q": "What helps your body move, like when you lift your arm?",
+   "a": "Muscles",
+   "wrong": [
+    "Fingernails",
+    "Eyebrows"
+   ],
+   "hint": "Make a strong-arm pose!",
+   "fix": "Muscles pull on your bones to move your body."
+  },
+  {
+   "id": "body-little-13",
+   "topic": "body",
+   "band": "little",
+   "q": "What protects your brain like a helmet?",
+   "a": "Your skull",
+   "wrong": [
+    "Your elbow",
+    "Your shoe"
+   ],
+   "hint": "It is the bone in your head.",
+   "fix": "Your skull is a strong bone that protects your brain."
+  },
+  {
+   "id": "body-little-14",
+   "topic": "body",
+   "band": "little",
+   "q": "What do you use to chew food?",
+   "a": "Teeth",
+   "wrong": [
+    "Ears",
+    "Eyelashes"
+   ],
+   "hint": "Brush them twice a day.",
+   "fix": "You chew with your teeth. Brushing keeps them healthy.",
+   "easy": true
+  },
+  {
+   "id": "body-little-15",
+   "topic": "body",
+   "band": "little",
+   "q": "When you run fast, what happens to your heart?",
+   "a": "It beats faster",
+   "wrong": [
+    "It stops",
+    "It falls asleep"
+   ],
+   "hint": "Put your hand on your chest after jumping.",
+   "fix": "Your heart beats faster when you exercise to send more blood to your muscles."
+  },
+  {
+   "id": "body-little-16",
+   "topic": "body",
+   "band": "little",
+   "q": "Why do you cover your mouth when you sneeze?",
+   "a": "To keep germs from spreading",
+   "wrong": [
+    "To make it louder",
+    "To catch a bug"
+   ],
+   "hint": "Achoo! Use your elbow.",
+   "fix": "Covering a sneeze keeps germs from flying onto other people."
+  },
+  {
+   "id": "body-little-17",
+   "topic": "body",
+   "band": "little",
+   "q": "What does your body need every night to grow and rest?",
+   "a": "Sleep",
+   "wrong": [
+    "Candy",
+    "Television"
+   ],
+   "hint": "Close your eyes, good night!",
+   "fix": "Sleep helps your body rest, grow and get ready for a new day.",
+   "easy": true
+  },
+  {
+   "id": "body-little-18",
+   "topic": "body",
+   "band": "little",
+   "q": "What is the colored circle in your eye called?",
+   "a": "The iris",
+   "wrong": [
+    "The nose",
+    "The chin"
+   ],
+   "hint": "Same name as a flower.",
+   "fix": "The colored part of your eye is the iris. It can be brown, blue, green and more."
+  },
+  {
+   "id": "body-big-01",
+   "topic": "body",
+   "band": "big",
+   "q": "Which organ is the largest one in the human body?",
+   "a": "Skin",
+   "wrong": [
+    "Heart",
+    "Liver"
+   ],
+   "hint": "It is on the outside!",
+   "fix": "Skin is the body's largest organ."
+  },
+  {
+   "id": "body-big-02",
+   "topic": "body",
+   "band": "big",
+   "q": "Which is the hardest material in the human body?",
+   "a": "Tooth enamel",
+   "wrong": [
+    "Hair",
+    "Toenail"
+   ],
+   "hint": "It covers your teeth.",
+   "fix": "Tooth enamel, the outer layer of teeth, is the hardest material in the body."
+  },
+  {
+   "id": "body-big-03",
+   "topic": "body",
+   "band": "big",
+   "q": "Which bone, up in your thigh, is the longest one you have?",
+   "a": "The thigh bone (femur)",
+   "wrong": [
+    "The finger bone",
+    "The skull"
+   ],
+   "hint": "It is in your upper leg.",
+   "fix": "The femur, your thigh bone, is longer than any other bone you have."
+  },
+  {
+   "id": "body-big-04",
+   "topic": "body",
+   "band": "big",
+   "q": "What tubes carry blood around the body?",
+   "a": "Blood vessels",
+   "wrong": [
+    "Nerves",
+    "Tendons"
+   ],
+   "hint": "Veins and arteries are two kinds.",
+   "fix": "Blood vessels carry blood. Arteries carry it away from the heart and veins bring it back."
+  },
+  {
+   "id": "body-big-05",
+   "topic": "body",
+   "band": "big",
+   "q": "Which bones make a cage that protects your heart and lungs?",
+   "a": "Ribs",
+   "wrong": [
+    "Toes",
+    "Kneecaps"
+   ],
+   "hint": "Feel them along your sides.",
+   "fix": "Your ribs form the rib cage, which protects your heart and lungs."
+  },
+  {
+   "id": "body-big-06",
+   "topic": "body",
+   "band": "big",
+   "q": "What dark circle in the middle of your eye lets light in?",
+   "a": "The pupil",
+   "wrong": [
+    "The iris",
+    "The eyebrow"
+   ],
+   "hint": "It gets smaller in bright light.",
+   "fix": "The pupil lets light into the eye. It shrinks in bright light and widens in the dark."
+  },
+  {
+   "id": "body-big-07",
+   "topic": "body",
+   "band": "big",
+   "q": "Which gas does your body need from the air you breathe in?",
+   "a": "Oxygen",
+   "wrong": [
+    "Helium",
+    "Smoke"
+   ],
+   "hint": "Its symbol is O.",
+   "fix": "Your body needs oxygen. You breathe out carbon dioxide.",
+   "easy": true
+  },
+  {
+   "id": "body-big-08",
+   "topic": "body",
+   "band": "big",
+   "q": "Which gas do you breathe out?",
+   "a": "Carbon dioxide",
+   "wrong": [
+    "Oxygen only",
+    "Helium"
+   ],
+   "hint": "Plants use it to make food.",
+   "fix": "You breathe out carbon dioxide. Plants take it in to make their food."
+  },
+  {
+   "id": "body-big-09",
+   "topic": "body",
+   "band": "big",
+   "q": "What liquid in your mouth starts breaking down food as you chew?",
+   "a": "Saliva",
+   "wrong": [
+    "Blood",
+    "Tears"
+   ],
+   "hint": "Another name is spit.",
+   "fix": "Saliva, or spit, starts breaking down food even before you swallow."
+  },
+  {
+   "id": "body-big-10",
+   "topic": "body",
+   "band": "big",
+   "q": "Which blood cells help fight germs?",
+   "a": "White blood cells",
+   "wrong": [
+    "Red blood cells",
+    "Bone cells"
+   ],
+   "hint": "They are named for a color, but not red.",
+   "fix": "White blood cells fight germs. Red blood cells carry oxygen."
+  },
+  {
+   "id": "body-big-11",
+   "topic": "body",
+   "band": "big",
+   "q": "What do red blood cells carry around the body?",
+   "a": "Oxygen",
+   "wrong": [
+    "Food crumbs",
+    "Sound"
+   ],
+   "hint": "It comes from your lungs.",
+   "fix": "Red blood cells carry oxygen from your lungs to the rest of your body."
+  },
+  {
+   "id": "body-big-12",
+   "topic": "body",
+   "band": "big",
+   "q": "The heart is a special kind of what?",
+   "a": "Muscle",
+   "wrong": [
+    "Bone",
+    "Hair"
+   ],
+   "hint": "It squeezes all day and night.",
+   "fix": "The heart is a muscle that squeezes to pump blood.",
+   "easy": true
+  },
+  {
+   "id": "body-big-13",
+   "topic": "body",
+   "band": "big",
+   "q": "Which body system includes the brain, spinal cord and nerves?",
+   "a": "The nervous system",
+   "wrong": [
+    "The digestive system",
+    "The skeleton"
+   ],
+   "hint": "It carries messages.",
+   "fix": "The nervous system carries messages between your brain and your body."
+  },
+  {
+   "id": "body-big-14",
+   "topic": "body",
+   "band": "big",
+   "q": "Which body system breaks down food?",
+   "a": "The digestive system",
+   "wrong": [
+    "The nervous system",
+    "The skeleton"
+   ],
+   "hint": "Mouth, stomach and intestines are part of it.",
+   "fix": "The digestive system breaks food down so your body can use it."
+  },
+  {
+   "id": "body-big-15",
+   "topic": "body",
+   "band": "big",
+   "q": "What muscle under your lungs helps you breathe in?",
+   "a": "The diaphragm",
+   "wrong": [
+    "The bicep",
+    "The heart"
+   ],
+   "hint": "It starts with D and has a silent G.",
+   "fix": "The diaphragm is a dome-shaped muscle under your lungs that helps you breathe."
+  },
+  {
+   "id": "body-big-16",
+   "topic": "body",
+   "band": "big",
+   "q": "What connects muscles to bones?",
+   "a": "Tendons",
+   "wrong": [
+    "Fingernails",
+    "Blood"
+   ],
+   "hint": "There is a big one at the back of your ankle.",
+   "fix": "Tendons connect muscles to bones, like the Achilles tendon at your heel."
+  },
+  {
+   "id": "body-big-17",
+   "topic": "body",
+   "band": "big",
+   "q": "What do you call the places where two bones meet, like your knee and elbow?",
+   "a": "Joints",
+   "wrong": [
+    "Muscles",
+    "Pupils"
+   ],
+   "hint": "They let you bend.",
+   "fix": "Joints are where bones meet. They let you bend and turn."
+  },
+  {
+   "id": "body-big-18",
+   "topic": "body",
+   "band": "big",
+   "q": "Which sense uses the tiny bumps on your tongue called taste buds?",
+   "a": "Taste",
+   "wrong": [
+    "Hearing",
+    "Sight"
+   ],
+   "hint": "Yum!",
+   "fix": "Taste buds on your tongue let you taste."
+  },
+  {
+   "id": "body-big-19",
+   "topic": "body",
+   "band": "big",
+   "q": "Where in your body is the teeny bone called the stirrup?",
+   "a": "The ear",
+   "wrong": [
+    "The foot",
+    "The nose"
+   ],
+   "hint": "It helps you hear.",
+   "fix": "The stirrup, or stapes, is a tiny bone inside the ear."
+  },
+  {
+   "id": "body-big-20",
+   "topic": "body",
+   "band": "big",
+   "q": "What is the long tube that food passes through after the stomach, where most nutrients are taken in?",
+   "a": "The small intestine",
+   "wrong": [
+    "The windpipe",
+    "The spine"
+   ],
+   "hint": "It is small in width but very long.",
+   "fix": "The small intestine takes in most nutrients from food. It is long and folded up in your belly."
+  },
+  {
+   "id": "weather-little-01",
+   "topic": "weather",
+   "band": "little",
+   "q": "What falls from clouds on a rainy day?",
+   "a": "Rain",
+   "wrong": [
+    "Sand",
+    "Leaves"
+   ],
+   "hint": "Bring an umbrella!",
+   "fix": "Rain is water drops falling from clouds.",
+   "easy": true
+  },
+  {
+   "id": "weather-little-02",
+   "topic": "weather",
+   "band": "little",
+   "q": "What cold, white flakes fall in winter in some places?",
+   "a": "Snow",
+   "wrong": [
+    "Feathers",
+    "Popcorn"
+   ],
+   "hint": "You can build a snowman.",
+   "fix": "Snowflakes are made of ice and fall when it is very cold.",
+   "easy": true
+  },
+  {
+   "id": "weather-little-03",
+   "topic": "weather",
+   "band": "little",
+   "q": "What do you see in the sky after rain when the sun comes out?",
+   "a": "A rainbow",
+   "wrong": [
+    "A rocket",
+    "A moon"
+   ],
+   "hint": "It has many colors.",
+   "fix": "A rainbow shows up when sunlight shines through raindrops.",
+   "easy": true
+  },
+  {
+   "id": "weather-little-04",
+   "topic": "weather",
+   "band": "little",
+   "q": "What makes a kite fly?",
+   "a": "Wind",
+   "wrong": [
+    "Snow",
+    "Mud"
+   ],
+   "hint": "You cannot see it, but you can feel it.",
+   "fix": "Wind is moving air, and it lifts the kite.",
+   "easy": true
+  },
+  {
+   "id": "weather-little-05",
+   "topic": "weather",
+   "band": "little",
+   "q": "What loud boom comes after lightning?",
+   "a": "Thunder",
+   "wrong": [
+    "Music",
+    "A doorbell"
+   ],
+   "hint": "Rumble rumble.",
+   "fix": "Thunder is the sound lightning makes.",
+   "easy": true
+  },
+  {
+   "id": "weather-little-06",
+   "topic": "weather",
+   "band": "little",
+   "q": "What should you wear on a cold, snowy day?",
+   "a": "A warm coat",
+   "wrong": [
+    "A swimsuit",
+    "Sandals"
+   ],
+   "hint": "Zip it up!",
+   "fix": "A warm coat keeps your body heat in on a cold day.",
+   "easy": true
+  },
+  {
+   "id": "weather-little-07",
+   "topic": "weather",
+   "band": "little",
+   "q": "What tool tells you how hot or cold it is?",
+   "a": "A thermometer",
+   "wrong": [
+    "A ruler",
+    "A spoon"
+   ],
+   "hint": "Thermo means heat.",
+   "fix": "A thermometer measures temperature."
+  },
+  {
+   "id": "weather-little-08",
+   "topic": "weather",
+   "band": "little",
+   "q": "Which season is usually the hottest?",
+   "a": "Summer",
+   "wrong": [
+    "Winter"
+   ],
+   "hint": "Time for the pool!",
+   "fix": "Summer is usually the warmest season.",
+   "easy": true
+  },
+  {
+   "id": "weather-little-09",
+   "topic": "weather",
+   "band": "little",
+   "q": "In which season do many trees lose their leaves?",
+   "a": "Fall",
+   "wrong": [
+    "Summer",
+    "Spring"
+   ],
+   "hint": "Its other name is autumn.",
+   "fix": "In fall, or autumn, many trees drop their colorful leaves."
+  },
+  {
+   "id": "weather-little-10",
+   "topic": "weather",
+   "band": "little",
+   "q": "What are clouds made of?",
+   "a": "Tiny drops of water or ice",
+   "wrong": [
+    "Cotton",
+    "Smoke from chimneys"
+   ],
+   "hint": "They look fluffy but they are wet.",
+   "fix": "Clouds are made of tiny water drops or tiny bits of ice floating in the air."
+  },
+  {
+   "id": "weather-little-11",
+   "topic": "weather",
+   "band": "little",
+   "q": "Where is a safe place to be in a thunderstorm?",
+   "a": "Inside a building",
+   "wrong": [
+    "Under a tall tree",
+    "In a pool"
+   ],
+   "hint": "Go in when thunder roars.",
+   "fix": "Go inside during a thunderstorm. Trees and water are not safe from lightning."
+  },
+  {
+   "id": "weather-little-12",
+   "topic": "weather",
+   "band": "little",
+   "q": "What season comes after winter?",
+   "a": "Spring",
+   "wrong": [
+    "Summer",
+    "Fall"
+   ],
+   "hint": "Flowers start to bloom.",
+   "fix": "After winter comes spring, when many plants start to grow again."
+  },
+  {
+   "id": "weather-little-13",
+   "topic": "weather",
+   "band": "little",
+   "q": "What kind of weather is it when the sun shines and there are no clouds?",
+   "a": "Sunny",
+   "wrong": [
+    "Rainy",
+    "Snowy"
+   ],
+   "hint": "Wear a hat and sunscreen.",
+   "fix": "No clouds and lots of sun means sunny weather.",
+   "easy": true
+  },
+  {
+   "id": "weather-little-14",
+   "topic": "weather",
+   "band": "little",
+   "q": "What is a cloud that sits right on the ground called?",
+   "a": "Fog",
+   "wrong": [
+    "Hail",
+    "Smoke"
+   ],
+   "hint": "It makes it hard to see far away.",
+   "fix": "Fog is a cloud close to the ground."
+  },
+  {
+   "id": "weather-little-15",
+   "topic": "weather",
+   "band": "little",
+   "q": "Balls of ice that fall in some storms are called...",
+   "a": "Hail",
+   "wrong": [
+    "Hay",
+    "Snowmen"
+   ],
+   "hint": "They can bounce on the ground.",
+   "fix": "Hail is lumps of ice that fall from some thunderstorms."
+  },
+  {
+   "id": "weather-little-16",
+   "topic": "weather",
+   "band": "little",
+   "q": "What weather do you need to make puddles to jump in?",
+   "a": "Rain",
+   "wrong": [
+    "Wind",
+    "Sunshine"
+   ],
+   "hint": "Splash!",
+   "fix": "Rain makes puddles.",
+   "easy": true
+  },
+  {
+   "id": "weather-little-17",
+   "topic": "weather",
+   "band": "little",
+   "q": "Which one helps you stay dry in the rain?",
+   "a": "An umbrella",
+   "wrong": [
+    "A fan",
+    "A pillow"
+   ],
+   "hint": "You hold it over your head.",
+   "fix": "An umbrella keeps raindrops off you.",
+   "easy": true
+  },
+  {
+   "id": "weather-little-18",
+   "topic": "weather",
+   "band": "little",
+   "q": "What is a strong, spinning wind shaped like a funnel?",
+   "a": "A tornado",
+   "wrong": [
+    "A rainbow",
+    "A breeze"
+   ],
+   "hint": "It twists down from a storm cloud.",
+   "fix": "A tornado is a spinning column of air that reaches down from a storm."
+  },
+  {
+   "id": "weather-big-01",
+   "topic": "weather",
+   "band": "big",
+   "q": "What tool measures how fast the wind is blowing?",
+   "a": "An anemometer",
+   "wrong": [
+    "A barometer",
+    "A thermometer"
+   ],
+   "hint": "It has little cups that spin.",
+   "fix": "An anemometer measures wind speed. Its cups spin faster in stronger wind."
+  },
+  {
+   "id": "weather-big-02",
+   "topic": "weather",
+   "band": "big",
+   "q": "A weather vane tells you what about the wind?",
+   "a": "Its direction",
+   "wrong": [
+    "Its temperature",
+    "Its color"
+   ],
+   "hint": "It points like an arrow.",
+   "fix": "A weather vane shows which direction the wind is coming from."
+  },
+  {
+   "id": "weather-big-03",
+   "topic": "weather",
+   "band": "big",
+   "q": "What tool collects rain so you can measure how much fell?",
+   "a": "A rain gauge",
+   "wrong": [
+    "A telescope",
+    "A compass"
+   ],
+   "hint": "Gauge means measure.",
+   "fix": "A rain gauge catches rain so you can see how much fell.",
+   "easy": true
+  },
+  {
+   "id": "weather-big-04",
+   "topic": "weather",
+   "band": "big",
+   "q": "What do you call water falling from clouds as rain, snow, sleet or hail?",
+   "a": "Precipitation",
+   "wrong": [
+    "Evaporation",
+    "Condensation"
+   ],
+   "hint": "It starts with pre.",
+   "fix": "Any water falling from clouds is precipitation."
+  },
+  {
+   "id": "weather-big-05",
+   "topic": "weather",
+   "band": "big",
+   "q": "In the water cycle, what happens right after water vapor cools high in the sky?",
+   "a": "It condenses into clouds",
+   "wrong": [
+    "It turns into rock",
+    "It disappears forever"
+   ],
+   "hint": "Remember drops on a cold glass.",
+   "fix": "Cooling vapor condenses into tiny drops that make clouds."
+  },
+  {
+   "id": "weather-big-06",
+   "topic": "weather",
+   "band": "big",
+   "q": "What powers the water cycle by heating water so it evaporates?",
+   "a": "The Sun",
+   "wrong": [
+    "The Moon",
+    "Earthquakes"
+   ],
+   "hint": "It is the closest star.",
+   "fix": "The Sun's heat makes water evaporate and keeps the water cycle going."
+  },
+  {
+   "id": "weather-big-07",
+   "topic": "weather",
+   "band": "big",
+   "q": "A huge spinning storm that forms over warm ocean water is a...",
+   "a": "Hurricane",
+   "wrong": [
+    "Blizzard",
+    "Drought"
+   ],
+   "hint": "It has a calm eye in the middle.",
+   "fix": "A hurricane forms over warm ocean water and has a calm center called the eye."
+  },
+  {
+   "id": "weather-big-08",
+   "topic": "weather",
+   "band": "big",
+   "q": "A long time with much less rain than usual is called a...",
+   "a": "Drought",
+   "wrong": [
+    "Flood",
+    "Monsoon"
+   ],
+   "hint": "Plants dry up and the ground cracks.",
+   "fix": "A drought is a long dry spell with little rain."
+  },
+  {
+   "id": "weather-big-09",
+   "topic": "weather",
+   "band": "big",
+   "q": "A big snowstorm with strong winds and blowing snow is a...",
+   "a": "Blizzard",
+   "wrong": [
+    "Heat wave",
+    "Drizzle"
+   ],
+   "hint": "It makes it hard to see.",
+   "fix": "A blizzard is a snowstorm with strong winds."
+  },
+  {
+   "id": "weather-big-10",
+   "topic": "weather",
+   "band": "big",
+   "q": "What kind of scientist studies and forecasts the weather?",
+   "a": "A meteorologist",
+   "wrong": [
+    "A geologist",
+    "A zoologist"
+   ],
+   "hint": "It has nothing to do with meteors!",
+   "fix": "A meteorologist studies the weather and makes forecasts."
+  },
+  {
+   "id": "weather-big-11",
+   "topic": "weather",
+   "band": "big",
+   "q": "High, thin, wispy clouds made of ice crystals are called...",
+   "a": "Cirrus clouds",
+   "wrong": [
+    "Cumulus clouds",
+    "Fog"
+   ],
+   "hint": "They look like feathers or curls of hair.",
+   "fix": "Cirrus clouds are high, wispy and made of ice crystals."
+  },
+  {
+   "id": "weather-big-12",
+   "topic": "weather",
+   "band": "big",
+   "q": "Puffy, white clouds that look like cotton balls are called...",
+   "a": "Cumulus clouds",
+   "wrong": [
+    "Cirrus clouds",
+    "Stratus clouds"
+   ],
+   "hint": "They are the ones you find shapes in.",
+   "fix": "Cumulus clouds are puffy and white, often on nice days."
+  },
+  {
+   "id": "weather-big-13",
+   "topic": "weather",
+   "band": "big",
+   "q": "Tall, dark clouds that bring thunderstorms are called...",
+   "a": "Cumulonimbus clouds",
+   "wrong": [
+    "Cirrus clouds",
+    "Contrails"
+   ],
+   "hint": "Nimbus means rain cloud.",
+   "fix": "Cumulonimbus clouds are tall storm clouds that bring thunder, lightning and heavy rain."
+  },
+  {
+   "id": "weather-big-14",
+   "topic": "weather",
+   "band": "big",
+   "q": "What is the mix of gases around Earth that people breathe called?",
+   "a": "The atmosphere",
+   "wrong": [
+    "The ocean",
+    "The crust"
+   ],
+   "hint": "It is like a blanket of air around the planet.",
+   "fix": "The atmosphere is the layer of air around Earth."
+  },
+  {
+   "id": "weather-big-15",
+   "topic": "weather",
+   "band": "big",
+   "q": "Why do you see lightning before you hear thunder?",
+   "a": "Light travels faster than sound",
+   "wrong": [
+    "Thunder is shy",
+    "Lightning is closer"
+   ],
+   "hint": "Think about speed.",
+   "fix": "Light reaches you almost at once, but sound takes longer to travel.",
+   "easy": true
+  },
+  {
+   "id": "weather-big-16",
+   "topic": "weather",
+   "band": "big",
+   "q": "What causes the seasons on Earth?",
+   "a": "Earth's tilt as it goes around the Sun",
+   "wrong": [
+    "Earth getting much closer and farther from the Sun",
+    "The Moon blocking the Sun"
+   ],
+   "hint": "Earth leans a little to one side.",
+   "fix": "Earth is tilted. As it goes around the Sun, each half gets more direct sunlight for part of the year."
+  },
+  {
+   "id": "weather-big-17",
+   "topic": "weather",
+   "band": "big",
+   "q": "Raindrops that freeze into little ice pellets before they reach the ground are called...",
+   "a": "Sleet",
+   "wrong": [
+    "Hail",
+    "Dew"
+   ],
+   "hint": "It rhymes with sheet.",
+   "fix": "Sleet is small ice pellets that freeze on the way down."
+  },
+  {
+   "id": "weather-big-18",
+   "topic": "weather",
+   "band": "big",
+   "q": "Water drops that form on grass on a cool morning are called...",
+   "a": "Dew",
+   "wrong": [
+    "Sleet",
+    "Hail"
+   ],
+   "hint": "It sounds like do.",
+   "fix": "Dew forms when water vapor in the air condenses on cool grass."
+  },
+  {
+   "id": "weather-big-19",
+   "topic": "weather",
+   "band": "big",
+   "q": "What is the name for the weather a place usually has over many years?",
+   "a": "Climate",
+   "wrong": [
+    "Forecast",
+    "Breeze"
+   ],
+   "hint": "A desert has a dry one.",
+   "fix": "Climate is the usual weather of a place over a long time. Weather is what happens today."
+  },
+  {
+   "id": "weather-big-20",
+   "topic": "weather",
+   "band": "big",
+   "q": "What instrument measures air pressure to help forecast the weather?",
+   "a": "A barometer",
+   "wrong": [
+    "An anemometer",
+    "A microscope"
+   ],
+   "hint": "Baro means weight or pressure.",
+   "fix": "A barometer measures air pressure. Falling pressure can mean a storm is coming."
+  },
+  {
+   "id": "plants-little-01",
+   "topic": "plants",
+   "band": "little",
+   "q": "What part of a plant grows under the ground and drinks water?",
+   "a": "The roots",
+   "wrong": [
+    "The flower",
+    "The leaf"
+   ],
+   "hint": "They hold the plant in the soil.",
+   "fix": "Roots grow underground, hold the plant in place and soak up water."
+  },
+  {
+   "id": "plants-little-02",
+   "topic": "plants",
+   "band": "little",
+   "q": "What do plants need from the sky to grow?",
+   "a": "Sunlight",
+   "wrong": [
+    "Moonlight only",
+    "Fireworks"
+   ],
+   "hint": "It is bright and warm.",
+   "fix": "Plants need sunlight to make their food.",
+   "easy": true
+  },
+  {
+   "id": "plants-little-03",
+   "topic": "plants",
+   "band": "little",
+   "q": "What color are most leaves in summer?",
+   "a": "Green",
+   "wrong": [
+    "Purple",
+    "Black"
+   ],
+   "hint": "Like grass.",
+   "fix": "Most leaves are green in summer.",
+   "easy": true
+  },
+  {
+   "id": "plants-little-04",
+   "topic": "plants",
+   "band": "little",
+   "q": "What do bees visit to collect nectar?",
+   "a": "Flowers",
+   "wrong": [
+    "Rocks",
+    "Cars"
+   ],
+   "hint": "They are colorful and smell nice.",
+   "fix": "Bees visit flowers for nectar and carry pollen from flower to flower.",
+   "easy": true
+  },
+  {
+   "id": "plants-little-05",
+   "topic": "plants",
+   "band": "little",
+   "q": "What does a seed need to start growing?",
+   "a": "Water",
+   "wrong": [
+    "A hat",
+    "A song"
+   ],
+   "hint": "Plants get thirsty too.",
+   "fix": "A seed needs water and warmth to sprout.",
+   "easy": true
+  },
+  {
+   "id": "plants-little-06",
+   "topic": "plants",
+   "band": "little",
+   "q": "Which animal has a very long neck?",
+   "a": "A giraffe",
+   "wrong": [
+    "A pig",
+    "A duck"
+   ],
+   "hint": "It eats leaves from tall trees.",
+   "fix": "The giraffe has a very long neck and is the tallest land animal.",
+   "easy": true
+  },
+  {
+   "id": "plants-little-07",
+   "topic": "plants",
+   "band": "little",
+   "q": "Which animal has a trunk?",
+   "a": "An elephant",
+   "wrong": [
+    "A lion",
+    "A zebra"
+   ],
+   "hint": "It is big and gray.",
+   "fix": "An elephant uses its trunk to smell, drink and grab food.",
+   "easy": true
+  },
+  {
+   "id": "plants-little-08",
+   "topic": "plants",
+   "band": "little",
+   "q": "Which animal hops and carries its baby in a pouch?",
+   "a": "A kangaroo",
+   "wrong": [
+    "A horse",
+    "A turtle"
+   ],
+   "hint": "It lives in Australia.",
+   "fix": "Kangaroo moms carry their babies, called joeys, in a pouch."
+  },
+  {
+   "id": "plants-little-09",
+   "topic": "plants",
+   "band": "little",
+   "q": "Which animal has black and white stripes?",
+   "a": "A zebra",
+   "wrong": [
+    "A flamingo",
+    "A frog"
+   ],
+   "hint": "It looks like a striped horse.",
+   "fix": "A zebra has black and white stripes.",
+   "easy": true
+  },
+  {
+   "id": "plants-little-10",
+   "topic": "plants",
+   "band": "little",
+   "q": "How many legs does an insect have?",
+   "a": "Six",
+   "wrong": [
+    "Eight",
+    "Two"
+   ],
+   "hint": "Count the legs on an ant.",
+   "fix": "Insects have six legs. Spiders have eight, so spiders are not insects."
+  },
+  {
+   "id": "plants-little-11",
+   "topic": "plants",
+   "band": "little",
+   "q": "How many legs does a spider have?",
+   "a": "Eight",
+   "wrong": [
+    "Six",
+    "Four"
+   ],
+   "hint": "Same as an octopus has arms.",
+   "fix": "Spiders have eight legs."
+  },
+  {
+   "id": "plants-little-12",
+   "topic": "plants",
+   "band": "little",
+   "q": "Which animal is awake at night and says hoo-hoo?",
+   "a": "An owl",
+   "wrong": [
+    "A rooster",
+    "A cow"
+   ],
+   "hint": "It has big eyes.",
+   "fix": "Most owls are awake at night. Animals that are busy at night are called nocturnal."
+  },
+  {
+   "id": "plants-little-13",
+   "topic": "plants",
+   "band": "little",
+   "q": "What does a cactus have to protect itself?",
+   "a": "Spines",
+   "wrong": [
+    "Fur",
+    "Feathers"
+   ],
+   "hint": "Ouch, they are pointy!",
+   "fix": "A cactus has sharp spines. It also stores water in its thick stem."
+  },
+  {
+   "id": "plants-little-14",
+   "topic": "plants",
+   "band": "little",
+   "q": "What does a baby cat get called?",
+   "a": "A kitten",
+   "wrong": [
+    "A puppy",
+    "A cub"
+   ],
+   "hint": "Meow!",
+   "fix": "A baby cat is a kitten.",
+   "easy": true
+  },
+  {
+   "id": "plants-little-15",
+   "topic": "plants",
+   "band": "little",
+   "q": "Which animal has a shell it can hide in?",
+   "a": "A turtle",
+   "wrong": [
+    "A dog",
+    "A bird"
+   ],
+   "hint": "It moves slowly.",
+   "fix": "A turtle can pull its head into its hard shell.",
+   "easy": true
+  },
+  {
+   "id": "plants-little-16",
+   "topic": "plants",
+   "band": "little",
+   "q": "Which fruit grows on a tree: an apple or a carrot?",
+   "a": "An apple",
+   "wrong": [
+    "A carrot"
+   ],
+   "hint": "A carrot grows in the ground.",
+   "fix": "Apples grow on trees. Carrots are roots that grow underground."
+  },
+  {
+   "id": "plants-little-17",
+   "topic": "plants",
+   "band": "little",
+   "q": "Which bird cannot fly but is a great swimmer?",
+   "a": "A penguin",
+   "wrong": [
+    "An eagle",
+    "A robin"
+   ],
+   "hint": "It waddles on the ice.",
+   "fix": "Penguins cannot fly, but they swim very well with their flippers."
+  },
+  {
+   "id": "plants-little-18",
+   "topic": "plants",
+   "band": "little",
+   "q": "What do caterpillars mostly eat?",
+   "a": "Leaves",
+   "wrong": [
+    "Rocks",
+    "Meat"
+   ],
+   "hint": "Munch munch on a plant.",
+   "fix": "Most caterpillars munch on leaves."
+  },
+  {
+   "id": "plants-big-01",
+   "topic": "plants",
+   "band": "big",
+   "q": "What is the process plants use to make food from sunlight, water and air?",
+   "a": "Photosynthesis",
+   "wrong": [
+    "Pollination",
+    "Hibernation"
+   ],
+   "hint": "Photo means light.",
+   "fix": "Photosynthesis is how plants use sunlight, water and carbon dioxide to make food."
+  },
+  {
+   "id": "plants-big-02",
+   "topic": "plants",
+   "band": "big",
+   "q": "What green material in leaves captures sunlight?",
+   "a": "Chlorophyll",
+   "wrong": [
+    "Pollen",
+    "Nectar"
+   ],
+   "hint": "It makes leaves look green.",
+   "fix": "Chlorophyll is the green material that captures sunlight for photosynthesis."
+  },
+  {
+   "id": "plants-big-03",
+   "topic": "plants",
+   "band": "big",
+   "q": "What gas do plants give off that animals need to breathe?",
+   "a": "Oxygen",
+   "wrong": [
+    "Carbon dioxide",
+    "Helium"
+   ],
+   "hint": "You breathe it in.",
+   "fix": "Plants give off oxygen during photosynthesis."
+  },
+  {
+   "id": "plants-big-04",
+   "topic": "plants",
+   "band": "big",
+   "q": "What yellow dust do bees carry from flower to flower?",
+   "a": "Pollen",
+   "wrong": [
+    "Sand",
+    "Chalk"
+   ],
+   "hint": "It can make people sneeze.",
+   "fix": "Bees carry pollen between flowers. That helps flowers make seeds."
+  },
+  {
+   "id": "plants-big-05",
+   "topic": "plants",
+   "band": "big",
+   "q": "Moving pollen from one flower to another is called...",
+   "a": "Pollination",
+   "wrong": [
+    "Photosynthesis",
+    "Migration"
+   ],
+   "hint": "It starts like pollen.",
+   "fix": "That is pollination. Bees, butterflies, birds and wind can all pollinate flowers."
+  },
+  {
+   "id": "plants-big-06",
+   "topic": "plants",
+   "band": "big",
+   "q": "What is the long, deep winter sleep some animals take called?",
+   "a": "Hibernation",
+   "wrong": [
+    "Migration",
+    "Camouflage"
+   ],
+   "hint": "Some bears and ground squirrels do it.",
+   "fix": "Hibernation is a long, deep rest through the winter that saves energy."
+  },
+  {
+   "id": "plants-big-07",
+   "topic": "plants",
+   "band": "big",
+   "q": "When birds fly south for the winter and come back in spring, it is called...",
+   "a": "Migration",
+   "wrong": [
+    "Hibernation",
+    "Metamorphosis"
+   ],
+   "hint": "Many geese do this every year.",
+   "fix": "Migration is a long trip animals make each year, often to find food or warmer weather."
+  },
+  {
+   "id": "plants-big-08",
+   "topic": "plants",
+   "band": "big",
+   "q": "Trees that lose all their leaves in the fall are called...",
+   "a": "Deciduous",
+   "wrong": [
+    "Evergreen",
+    "Cactus"
+   ],
+   "hint": "It is the opposite of evergreen.",
+   "fix": "Deciduous trees drop their leaves in fall. Evergreens like pine trees keep their needles."
+  },
+  {
+   "id": "plants-big-09",
+   "topic": "plants",
+   "band": "big",
+   "q": "Bats find their way in the dark by making sounds and listening for echoes. What is this called?",
+   "a": "Echolocation",
+   "wrong": [
+    "Photosynthesis",
+    "Camouflage"
+   ],
+   "hint": "Echo plus location.",
+   "fix": "Echolocation means using echoes to find things. Bats and dolphins use it."
+  },
+  {
+   "id": "plants-big-10",
+   "topic": "plants",
+   "band": "big",
+   "q": "What is the fastest land animal?",
+   "a": "The cheetah",
+   "wrong": [
+    "The lion",
+    "The horse"
+   ],
+   "hint": "It is a spotted big cat.",
+   "fix": "The cheetah is the fastest land animal over short sprints.",
+   "easy": true
+  },
+  {
+   "id": "plants-big-11",
+   "topic": "plants",
+   "band": "big",
+   "q": "What is the largest animal ever known to live on Earth?",
+   "a": "The blue whale",
+   "wrong": [
+    "The African elephant",
+    "T. rex"
+   ],
+   "hint": "It lives in the ocean.",
+   "fix": "The blue whale is the largest animal known to have ever lived."
+  },
+  {
+   "id": "plants-big-12",
+   "topic": "plants",
+   "band": "big",
+   "q": "What is the largest fish in the world?",
+   "a": "The whale shark",
+   "wrong": [
+    "The blue whale",
+    "The great white shark"
+   ],
+   "hint": "Careful, a whale is not a fish.",
+   "fix": "The whale shark is the largest fish. A blue whale is bigger, but it is a mammal."
+  },
+  {
+   "id": "plants-big-13",
+   "topic": "plants",
+   "band": "big",
+   "q": "A camel's hump stores mostly what?",
+   "a": "Fat",
+   "wrong": [
+    "Water",
+    "Sand"
+   ],
+   "hint": "It is energy for long trips.",
+   "fix": "A camel's hump stores fat, not water. The fat is energy for long desert trips."
+  },
+  {
+   "id": "plants-big-14",
+   "topic": "plants",
+   "band": "big",
+   "q": "What are a kangaroo's babies called?",
+   "a": "Joeys",
+   "wrong": [
+    "Cubs",
+    "Kids"
+   ],
+   "hint": "Koalas have them too.",
+   "fix": "Baby kangaroos are joeys. Baby koalas are also called joeys."
+  },
+  {
+   "id": "plants-big-15",
+   "topic": "plants",
+   "band": "big",
+   "q": "Animals like kangaroos and koalas whose babies grow in a pouch are called...",
+   "a": "Marsupials",
+   "wrong": [
+    "Reptiles",
+    "Amphibians"
+   ],
+   "hint": "It starts with M.",
+   "fix": "Kangaroos and koalas are marsupials, mammals whose babies grow in a pouch."
+  },
+  {
+   "id": "plants-big-16",
+   "topic": "plants",
+   "band": "big",
+   "q": "How many arms does an octopus have?",
+   "a": "Eight",
+   "wrong": [
+    "Six",
+    "Ten"
+   ],
+   "hint": "Octo means eight.",
+   "fix": "An octopus has eight arms.",
+   "easy": true
+  },
+  {
+   "id": "plants-big-17",
+   "topic": "plants",
+   "band": "big",
+   "q": "A sea star is not a fish. What does it use to move along the sea floor?",
+   "a": "Tiny tube feet",
+   "wrong": [
+    "Fins",
+    "Wings"
+   ],
+   "hint": "They are under its arms.",
+   "fix": "Sea stars move on hundreds of tiny tube feet under their arms."
+  },
+  {
+   "id": "plants-big-18",
+   "topic": "plants",
+   "band": "big",
+   "q": "What do you call the part of a plant that grows into a new plant?",
+   "a": "A seed",
+   "wrong": [
+    "A thorn",
+    "A leaf vein"
+   ],
+   "hint": "An acorn is one.",
+   "fix": "A seed holds a baby plant and food to help it start growing."
+  },
+  {
+   "id": "plants-big-19",
+   "topic": "plants",
+   "band": "big",
+   "q": "Which part of a plant carries water up from the roots to the leaves?",
+   "a": "The stem",
+   "wrong": [
+    "The petal",
+    "The flower"
+   ],
+   "hint": "On a tree it is the trunk.",
+   "fix": "The stem carries water up and holds the plant up. A tree trunk is a woody stem."
+  },
+  {
+   "id": "plants-big-20",
+   "topic": "plants",
+   "band": "big",
+   "q": "Animals that are busy at night and sleep during the day are called...",
+   "a": "Nocturnal",
+   "wrong": [
+    "Diurnal",
+    "Deciduous"
+   ],
+   "hint": "Nocturne is a night song.",
+   "fix": "Nocturnal animals, like most owls and bats, are active at night."
+  },
+  {
+   "id": "plants-little-p19",
+   "topic": "plants",
+   "band": "little",
+   "q": "What will this bug flutter around looking for?",
+   "a": "Flowers",
+   "wrong": [
+    "Snowballs",
+    "Rocks"
+   ],
+   "hint": "It sips sweet nectar.",
+   "fix": "Butterflies visit flowers to sip nectar.",
+   "easy": true,
+   "pic": {
+    "emoji": "🦋"
+   }
+  },
+  {
+   "id": "life-little-p19",
+   "topic": "life",
+   "band": "little",
+   "q": "This animal hops and says ribbit. What was it when it was a baby?",
+   "a": "A tadpole",
+   "wrong": [
+    "A chick",
+    "A puppy"
+   ],
+   "hint": "It swam in a pond with a tail.",
+   "fix": "A frog starts as a tadpole.",
+   "pic": {
+    "emoji": "🐸"
+   }
+  },
+  {
+   "id": "plants-little-p20",
+   "topic": "plants",
+   "band": "little",
+   "q": "Where does this prickly plant grow best?",
+   "a": "In a dry desert",
+   "wrong": [
+    "Under the ocean",
+    "On an iceberg"
+   ],
+   "hint": "It can go a long time without rain.",
+   "fix": "Cactus plants grow well in dry deserts. They store water in their stems.",
+   "pic": {
+    "emoji": "🌵"
+   }
+  },
+  {
+   "id": "earth-little-p19",
+   "topic": "earth",
+   "band": "little",
+   "q": "What is this mountain that can erupt?",
+   "a": "A volcano",
+   "wrong": [
+    "A cloud",
+    "A lake"
+   ],
+   "hint": "Hot lava can pour out of the top.",
+   "fix": "That is a volcano. Melted rock can come out of it.",
+   "easy": true,
+   "pic": {
+    "emoji": "🌋"
+   }
+  },
+  {
+   "id": "weather-little-p19",
+   "topic": "weather",
+   "band": "little",
+   "q": "What two things help make this?",
+   "a": "Sunlight and raindrops",
+   "wrong": [
+    "Wind and sand",
+    "Snow and the Moon"
+   ],
+   "hint": "It can appear after a rain shower.",
+   "fix": "A rainbow appears when sunlight shines through raindrops.",
+   "pic": {
+    "emoji": "🌈"
+   }
+  },
+  {
+   "id": "plants-little-p21",
+   "topic": "plants",
+   "band": "little",
+   "q": "Can this bird fly?",
+   "a": "No",
+   "wrong": [
+    "Yes"
+   ],
+   "hint": "It uses its flippers to swim.",
+   "fix": "Penguins cannot fly. They are excellent swimmers.",
+   "pic": {
+    "emoji": "🐧"
+   }
+  },
+  {
+   "id": "plants-little-p22",
+   "topic": "plants",
+   "band": "little",
+   "q": "What does this animal reach with its long neck?",
+   "a": "Leaves high in trees",
+   "wrong": [
+    "Fish in the sea",
+    "Worms underground"
+   ],
+   "hint": "It is the tallest land animal.",
+   "fix": "A giraffe stretches its long neck to eat leaves high in the trees.",
+   "easy": true,
+   "pic": {
+    "emoji": "🦒"
+   }
+  },
+  {
+   "id": "earth-little-p20",
+   "topic": "earth",
+   "band": "little",
+   "q": "What is this shape of the Moon called?",
+   "a": "A crescent",
+   "wrong": [
+    "A full moon",
+    "A square"
+   ],
+   "hint": "It looks like a banana or a smile.",
+   "fix": "A thin curved Moon is called a crescent.",
+   "pic": {
+    "svg": "moon-crescent"
+   }
+  },
+  {
+   "id": "earth-little-p21",
+   "topic": "earth",
+   "band": "little",
+   "q": "When the whole Moon looks round and bright, what is it called?",
+   "a": "A full moon",
+   "wrong": [
+    "A new moon",
+    "A half moon"
+   ],
+   "hint": "It looks like a big round cookie.",
+   "fix": "A full round Moon is called a full moon.",
+   "easy": true,
+   "pic": {
+    "svg": "moon-full"
+   }
+  },
+  {
+   "id": "physical-little-p19",
+   "topic": "physical",
+   "band": "little",
+   "q": "Will this magnet pull the paper clip toward it?",
+   "a": "Yes",
+   "wrong": [
+    "No"
+   ],
+   "hint": "The paper clip is made of steel.",
+   "fix": "Yes! A magnet pulls on steel paper clips.",
+   "pic": {
+    "svg": "magnet-clip"
+   }
+  },
+  {
+   "id": "weather-little-p20",
+   "topic": "weather",
+   "band": "little",
+   "q": "The red line on this thermometer is very high. Is it hot or cold?",
+   "a": "Hot",
+   "wrong": [
+    "Cold"
+   ],
+   "hint": "High means warm.",
+   "fix": "A high red line means it is hot.",
+   "pic": {
+    "svg": "thermo-hot"
+   }
+  },
+  {
+   "id": "plants-little-p23",
+   "topic": "plants",
+   "band": "little",
+   "q": "Look at the plant. What is the part under the ground called?",
+   "a": "Roots",
+   "wrong": [
+    "Petals",
+    "Leaves"
+   ],
+   "hint": "It is marked number 1.",
+   "fix": "The part under the ground is the roots. They drink up water.",
+   "pic": {
+    "svg": "plant-parts"
+   }
+  },
+  {
+   "id": "weather-little-p21",
+   "topic": "weather",
+   "band": "little",
+   "q": "What loud sound comes after this flash?",
+   "a": "Thunder",
+   "wrong": [
+    "A song",
+    "A whistle"
+   ],
+   "hint": "Boom!",
+   "fix": "Thunder comes after lightning.",
+   "easy": true,
+   "pic": {
+    "emoji": "⛈️"
+   }
+  },
+  {
+   "id": "body-little-p19",
+   "topic": "body",
+   "band": "little",
+   "q": "Which sense does this body part help with?",
+   "a": "Seeing",
+   "wrong": [
+    "Hearing",
+    "Tasting"
+   ],
+   "hint": "Look around!",
+   "fix": "Eyes help you see.",
+   "easy": true,
+   "pic": {
+    "emoji": "👁️"
+   }
+  },
+  {
+   "id": "body-little-p20",
+   "topic": "body",
+   "band": "little",
+   "q": "Which sense does this body part help with?",
+   "a": "Hearing",
+   "wrong": [
+    "Smelling",
+    "Seeing"
+   ],
+   "hint": "Listen!",
+   "fix": "Ears help you hear.",
+   "easy": true,
+   "pic": {
+    "emoji": "👂"
+   }
+  },
+  {
+   "id": "physical-little-p20",
+   "topic": "physical",
+   "band": "little",
+   "q": "What happens to ice when it gets warm?",
+   "a": "It melts into water",
+   "wrong": [
+    "It turns into a rock",
+    "It gets colder"
+   ],
+   "hint": "Drip drip.",
+   "fix": "Warm ice melts into liquid water.",
+   "easy": true,
+   "pic": {
+    "emoji": "🧊"
+   }
+  },
+  {
+   "id": "plants-little-p24",
+   "topic": "plants",
+   "band": "little",
+   "q": "What is this big animal's long nose called?",
+   "a": "A trunk",
+   "wrong": [
+    "A tail",
+    "A beak"
+   ],
+   "hint": "It can spray water with it.",
+   "fix": "An elephant's long nose is called a trunk.",
+   "easy": true,
+   "pic": {
+    "photo": "african-elephant"
+   }
+  },
+  {
+   "id": "plants-little-p25",
+   "topic": "plants",
+   "band": "little",
+   "q": "How many arms does this animal have?",
+   "a": "Eight",
+   "wrong": [
+    "Two",
+    "Three"
+   ],
+   "hint": "Count to eight!",
+   "fix": "An octopus has eight arms.",
+   "pic": {
+    "emoji": "🐙"
+   }
+  },
+  {
+   "id": "life-big-p21",
+   "topic": "life",
+   "band": "big",
+   "q": "This animal lives in the ocean. Is it a fish or a mammal?",
+   "a": "A mammal",
+   "wrong": [
+    "A fish",
+    "An amphibian"
+   ],
+   "hint": "It breathes air through a blowhole.",
+   "fix": "A dolphin is a mammal. It breathes air and feeds its babies milk.",
+   "pic": {
+    "emoji": "🐬"
+   }
+  },
+  {
+   "id": "life-big-p22",
+   "topic": "life",
+   "band": "big",
+   "q": "Is this animal an insect?",
+   "a": "No, it is an arachnid",
+   "wrong": [
+    "Yes, it is an insect",
+    "No, it is a reptile"
+   ],
+   "hint": "Count its legs: there are eight.",
+   "fix": "Spiders have eight legs, so they are arachnids, not insects.",
+   "pic": {
+    "emoji": "🕷️"
+   }
+  },
+  {
+   "id": "earth-big-p21",
+   "topic": "earth",
+   "band": "big",
+   "q": "Name this planet, famous for its bright rings.",
+   "a": "Saturn",
+   "wrong": [
+    "Mars",
+    "Mercury"
+   ],
+   "hint": "Count out from the Sun: it is number six.",
+   "fix": "That is Saturn. Its rings are made of ice and rock.",
+   "pic": {
+    "emoji": "🪐"
+   }
+  },
+  {
+   "id": "physical-big-p21",
+   "topic": "physical",
+   "band": "big",
+   "q": "Look at the circuit. Will the bulb light up?",
+   "a": "Yes, the loop is complete",
+   "wrong": [
+    "No, the loop is broken",
+    "No, batteries do not make light"
+   ],
+   "hint": "Follow the wire all the way around.",
+   "fix": "The wire makes a complete loop from the battery to the bulb and back, so it lights.",
+   "pic": {
+    "svg": "circuit-closed"
+   }
+  },
+  {
+   "id": "physical-big-p22",
+   "topic": "physical",
+   "band": "big",
+   "q": "Look at this circuit with a gap in the wire. Will the bulb light up?",
+   "a": "No, the loop is broken",
+   "wrong": [
+    "Yes, the loop is complete",
+    "Yes, but only at night"
+   ],
+   "hint": "Electricity needs a full loop.",
+   "fix": "There is a gap, so electricity cannot flow and the bulb stays dark.",
+   "pic": {
+    "svg": "circuit-open"
+   }
+  },
+  {
+   "id": "physical-big-p23",
+   "topic": "physical",
+   "band": "big",
+   "q": "The sun is on the left. Which way does the shadow of the tree point?",
+   "a": "To the right, away from the sun",
+   "wrong": [
+    "To the left, toward the sun",
+    "Straight up"
+   ],
+   "hint": "Shadows fall on the side away from the light.",
+   "fix": "The tree blocks sunlight, so the shadow points away from the sun.",
+   "pic": {
+    "svg": "shadow"
+   }
+  },
+  {
+   "id": "plants-big-p21",
+   "topic": "plants",
+   "band": "big",
+   "q": "Look at the plant. Which part, number 3, makes seeds?",
+   "a": "The flower",
+   "wrong": [
+    "The root",
+    "The stem"
+   ],
+   "hint": "Bees visit it.",
+   "fix": "The flower makes seeds after it is pollinated.",
+   "pic": {
+    "svg": "plant-parts"
+   }
+  },
+  {
+   "id": "weather-big-p21",
+   "topic": "weather",
+   "band": "big",
+   "q": "What kind of storm is this spinning funnel?",
+   "a": "A tornado",
+   "wrong": [
+    "A hurricane",
+    "A blizzard"
+   ],
+   "hint": "It reaches down from a thunderstorm to the ground.",
+   "fix": "That is a tornado, a spinning column of air from a thunderstorm.",
+   "pic": {
+    "emoji": "🌪️"
+   }
+  },
+  {
+   "id": "weather-big-p22",
+   "topic": "weather",
+   "band": "big",
+   "q": "A snowflake is made of what?",
+   "a": "Ice crystals",
+   "wrong": [
+    "Cotton",
+    "Salt"
+   ],
+   "hint": "It is frozen water.",
+   "fix": "Snowflakes are made of ice crystals.",
+   "pic": {
+    "emoji": "❄️"
+   }
+  },
+  {
+   "id": "body-big-p21",
+   "topic": "body",
+   "band": "big",
+   "q": "What does this organ do?",
+   "a": "Pumps blood around the body",
+   "wrong": [
+    "Helps you hear",
+    "Digests food"
+   ],
+   "hint": "It goes thump thump.",
+   "fix": "The heart pumps blood all around your body.",
+   "pic": {
+    "emoji": "🫀"
+   }
+  },
+  {
+   "id": "body-big-p22",
+   "topic": "body",
+   "band": "big",
+   "q": "What do these two organs help you do?",
+   "a": "Breathe",
+   "wrong": [
+    "See",
+    "Walk"
+   ],
+   "hint": "They fill with air.",
+   "fix": "Your lungs help you breathe in oxygen and breathe out carbon dioxide.",
+   "pic": {
+    "emoji": "🫁"
+   }
+  },
+  {
+   "id": "plants-big-p22",
+   "topic": "plants",
+   "band": "big",
+   "q": "This giant ocean animal has spots and filters tiny food from the water. Is it a whale or a shark?",
+   "a": "A shark, so it is a fish",
+   "wrong": [
+    "A whale, so it is a mammal",
+    "A dolphin"
+   ],
+   "hint": "Its name has both words in it.",
+   "fix": "It is a whale shark, the largest fish in the world.",
+   "pic": {
+    "photo": "whale-shark"
+   }
+  },
+  {
+   "id": "plants-big-p23",
+   "topic": "plants",
+   "band": "big",
+   "q": "This flat animal flaps fins like wings. Is a manta ray a fish or a mammal?",
+   "a": "A fish",
+   "wrong": [
+    "A mammal",
+    "A bird"
+   ],
+   "hint": "It breathes with gills.",
+   "fix": "A manta ray is a fish. It breathes underwater with gills.",
+   "pic": {
+    "photo": "manta-ray"
+   }
+  },
+  {
+   "id": "plants-big-p24",
+   "topic": "plants",
+   "band": "big",
+   "q": "What does this insect carry from flower to flower?",
+   "a": "Pollen",
+   "wrong": [
+    "Sand",
+    "Rain"
+   ],
+   "hint": "It is yellow dust.",
+   "fix": "Bees carry pollen, which helps flowers make seeds.",
+   "pic": {
+    "emoji": "🐝"
+   }
+  },
+  {
+   "id": "plants-big-p25",
+   "topic": "plants",
+   "band": "big",
+   "q": "How does this animal find bugs in the dark?",
+   "a": "Echolocation",
+   "wrong": [
+    "Photosynthesis",
+    "A flashlight"
+   ],
+   "hint": "It listens for echoes.",
+   "fix": "Bats make sounds and listen for echoes to find food in the dark.",
+   "pic": {
+    "emoji": "🦇"
+   }
+  },
+  {
+   "id": "plants-big-p26",
+   "topic": "plants",
+   "band": "big",
+   "q": "Mushrooms are not plants. What group are they in?",
+   "a": "Fungi",
+   "wrong": [
+    "Mammals",
+    "Insects"
+   ],
+   "hint": "Yeast is in the same group.",
+   "fix": "Mushrooms are fungi, like yeast and mold.",
+   "pic": {
+    "emoji": "🍄"
+   }
+  },
+  {
+   "id": "earth-big-p22",
+   "topic": "earth",
+   "band": "big",
+   "q": "What covers most of the surface of this planet?",
+   "a": "Water",
+   "wrong": [
+    "Sand",
+    "Ice cream"
+   ],
+   "hint": "Look at all the blue.",
+   "fix": "Oceans cover most of Earth's surface.",
+   "easy": true,
+   "pic": {
+    "emoji": "🌍"
+   }
+  },
+  {
+   "id": "earth-big-p23",
+   "topic": "earth",
+   "band": "big",
+   "q": "What do scientists look through to see faraway planets?",
+   "a": "A telescope",
+   "wrong": [
+    "A microscope",
+    "A periscope"
+   ],
+   "hint": "Tele means far.",
+   "fix": "A telescope makes faraway things look closer.",
+   "easy": true,
+   "pic": {
+    "emoji": "🔭"
+   }
+  }
+ ]
+}

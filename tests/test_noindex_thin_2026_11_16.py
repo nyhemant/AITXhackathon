@@ -29,7 +29,8 @@ class NoindexThin(unittest.TestCase):
     def test_sitemaps_drop_only_the_two(self):
         for sm in ("static/sitemap.xml", "static/field-pack/sitemap.xml"):
             xml = (ROOT / sm).read_text(encoding="utf-8")
-            self.assertEqual(xml.count("<url>"), 286, sm)
+            # 286 after the noindex drop; 293 since 2026-11-18 (+7 Science Bee pages).
+            self.assertEqual(xml.count("<url>"), 293, sm)
             for slug in NOINDEX:
                 self.assertNotIn(f"/field-pack/{slug}/</loc>", xml)
             for slug in STAY_INDEXED:
