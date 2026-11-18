@@ -42,7 +42,8 @@ class LiveCamsTitleOverlap(unittest.TestCase):
         title = "Virtual Zoo for Kids: Animal Cards &amp; Quizzes | KidZooKit"
         self.assertIn(f'<meta property="og:title" content="{title}" />', page)
         self.assertIn(f'<meta name="twitter:title" content="{title}" />', page)
-        self.assertIn('<h1 id="start-heading">Virtual Zoo for Kids: Animal Cards &amp; Quizzes</h1>', page)
+        # 2026-11-18 landing pass: H1 is the visible hunts headline; title/og/twitter stay as above.
+        self.assertIn('<h1 id="start-heading">Printable scavenger hunts for your next zoo, aquarium or museum trip</h1>', page)
         self.assertIn("Arya", page)
 
 

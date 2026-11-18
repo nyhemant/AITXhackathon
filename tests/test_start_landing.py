@@ -1176,9 +1176,10 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("218 places", self.html)
         self.assertNotIn("10,000 families", self.html)
         self.assertNotIn("testimonial", self.html.lower())
-        # Visible H1 matches the document title; the expedition sentence stays on the page.
+        # 2026-11-18 landing pass: the H1 is the visible hunts headline (title unchanged);
+        # the expedition sentence stays on the page.
         self.assertIn(
-            '<h1 id="start-heading">Virtual Zoo for Kids: Animal Cards &amp; Quizzes</h1>',
+            '<h1 id="start-heading">Printable scavenger hunts for your next zoo, aquarium or museum trip</h1>',
             self.html,
         )
         self.assertNotIn('<h1 id="start-heading" class="sr-only">', self.html)

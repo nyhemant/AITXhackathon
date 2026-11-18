@@ -200,8 +200,11 @@ function fragment(dir) {
   const pins = groups.map((g) => {
     const xs = g.members.map((m) => venues[m.slug]); const lon = xs.reduce((a, v) => a + v.lon, 0) / xs.length, lat = xs.reduce((a, v) => a + v.lat, 0) / xs.length;
     const q = pu(lon, lat); const len = Math.hypot(g.dx, g.dy).toFixed(1), ang = (Math.atan2(g.dy, g.dx) * 180 / Math.PI).toFixed(1);
-    const n = g.members.length; const aria = n > 1 ? `${g.label.replace("\n", " ")}, ${n} places` : `${g.members[0].name}, ${g.members[0].city}`;
-    return `<button type="button" class="home-place-pin kzm-pin${g.tagOnly ? " kzm-tagonly" : ""}${g.noDot ? " kzm-nodot" : ""}" data-home-pin="${g.id}" data-members="${esc(JSON.stringify(g.members))}" aria-label="${esc(aria)}" style="${at(q)};--dx:${g.dx}px;--dy:${g.dy}px;--len:${len}px;--ang:${ang}deg${wide(g)}"><span class="kzm-lead" aria-hidden="true"></span><span class="kzm-tag" aria-hidden="true">${esc(g.label).replace("\n", "<br>")}${n > 1 ? `<b>${n}</b>` : ""}</span></button>`;
+    const n = g.members.length; const shown = g.label.replace("\n", " ");
+    // 2026-11-18: the accessible name contains the visible tag text (WCAG 2.5.3 label-in-name).
+    const full = `${g.members[0].name}, ${g.members[0].city}`;
+    const aria = n > 1 ? `${shown} ${n} places` : (full.toLowerCase().includes(shown.toLowerCase()) ? full : `${shown} (${g.members[0].name}), ${g.members[0].city}`);
+    return `<button type="button" class="home-place-pin kzm-pin${g.tagOnly ? " kzm-tagonly" : ""}${g.noDot ? " kzm-nodot" : ""}" data-home-pin="${g.id}" data-members="${esc(JSON.stringify(g.members))}" aria-label="${esc(aria)}" style="${at(q)};--dx:${g.dx}px;--dy:${g.dy}px;--len:${len}px;--ang:${ang}deg${wide(g)}"><span class="kzm-lead" aria-hidden="true"></span><span class="kzm-tag" aria-hidden="true">${esc(g.label).replace("\n", "<br>")}${n > 1 ? ` <b>${n}</b>` : ""}</span></button>`;
   }).join("\n          ");
   const places = `<div id="home-places-map" class="home-places-map kzm kzm-usa kzm-${dir}">
         <p class="kzm-hint" id="kzm-usa-hint" aria-hidden="true">Drag sideways to see more</p>
