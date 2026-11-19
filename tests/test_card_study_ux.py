@@ -492,7 +492,7 @@ class CardStudyUxTests(unittest.TestCase):
                     )[0]
                 self.assertNotIn("More photos at", hero)
                 self.assertIn("study-card.js?v=23", html)
-                self.assertIn("study-card.css?v=20", html)
+                self.assertIn("study-card.css?v=21", html)
                 self.assertIn(f"seo-venue.css?v={CARD_SEO_CSS_VER}", html)
 
         warthog = _main((FP / "cards" / "warthog" / "index.html").read_text(encoding="utf-8"))
