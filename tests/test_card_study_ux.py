@@ -424,7 +424,7 @@ class CardStudyUxTests(unittest.TestCase):
     def test_photos_and_watch_live_share_hero_row(self):
         self.assertEqual(CARD_SEO_CSS_VER, "38")
         self.assertEqual(STUDY_CARD_JS_VER, "23")
-        self.assertEqual(STUDY_CARD_CSS_VER, "20")
+        self.assertEqual(STUDY_CARD_CSS_VER, "21")
         css = SEO_CSS.read_text(encoding="utf-8")
         self.assertIn(".card-page .card-hero-links", css)
         self.assertIn("display: contents", css)
