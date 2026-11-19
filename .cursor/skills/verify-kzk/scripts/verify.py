@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import time
@@ -308,8 +309,11 @@ def j4_quiz(run: Run, ctx, vp):
     pg.close()
 
 
+SIGNUP_ENV = "KZK_LIVE_SIGNUP_APPROVED"
+
+
 def j5_newsletter(run: Run, ctx, vp, real_signup: bool, stamp: str):
-    """Weekly email box on /printables/: errors, privacy line, sample dialog, (opt-in) one real test signup."""
+    """Weekly email box on /printables/: errors, privacy line, sample dialog, mocked signup (real signup paused)."""
     p = Page(run, ctx, vp)
     p.go("/printables/")
     pg = p.pg
@@ -345,7 +349,34 @@ def j5_newsletter(run: Run, ctx, vp, real_signup: bool, stamp: str):
     dlg.wait_for(state="hidden", timeout=5000)
     focused = pg.locator("a.kz-nl-sample:focus").count()
     run.check("j5", vp, "Escape closes the sample, focus back on the link", dlg.is_hidden() and focused == 1, f"focused={focused}")
-    if real_signup:
+    if not real_signup:
+        # Default: the signup step is MOCKED in the browser. /api/newsletter is answered by page.route, so nothing
+        # reaches the server or Kit and no email can go out (owner rule 2026-11-18: no live signups).
+        hits = []
+        def fake(body):
+            def handler(route):
+                hits.append(route.request.url)
+                route.fulfill(status=200, content_type="application/json", body=json.dumps(body))
+            return handler
+        guard_url = "https://app.kit.com/forms/guards/mock-0000-test"
+        pg.route("**/api/newsletter*", fake({"ok": False, "error": "verify", "verify_url": guard_url}))
+        email.fill("mock-only@example.invalid")
+        p.act(submit)
+        msg.filter(has_text="One more step").wait_for(timeout=10000)
+        link = msg.locator("a.kz-nl-verify")
+        run.check("j5", vp, "mocked robot-check reply shows Kit's check link (no request left the browser)",
+                  link.count() == 1 and link.get_attribute("href") == guard_url and link.get_attribute("target") == "_blank"
+                  and "noopener" in (link.get_attribute("rel") or "") and email.is_enabled() and submit.is_enabled(), msg.inner_text())
+        pg.unroute("**/api/newsletter*")
+        pg.route("**/api/newsletter*", fake({"ok": True}))
+        p.act(submit)
+        msg.filter(has_text="You're in").wait_for(timeout=10000)
+        run.check("j5", vp, "mocked success says check inbox and locks the box",
+                  "Check your inbox to confirm" in msg.inner_text() and email.is_disabled() and submit.is_disabled(), msg.inner_text())
+        pg.unroute("**/api/newsletter*")
+        run.check("j5", vp, "mocked signup: both posts answered in the browser", len(hits) == 2, hits)
+        p.shot("j5-mock-signup")
+    else:
         addr = f"nyhemant+kzkverify-{stamp}@gmail.com"
         email.fill(addr)
         p.act(submit)
@@ -400,6 +431,7 @@ def j7_trust(run: Run, ctx, vp):
     t = visible_text(pg)
     run.check("j7", vp, "/privacy/ names the contact address", resp.status == 200 and "ask@kidzookit.com" in t)
     run.check("j7", vp, "/privacy/ covers the weekly email", "email" in t.lower() and ("unsubscribe" in t.lower() or "Kit" in t))
+    run.check("j7", vp, "/privacy/ names Kit's robot check and today's sender", "reCAPTCHA" in t and "ask@1less.app" in t)
     resp = p.go("/no-such-page-kzv/", wait="load")
     run.check("j7", vp, "unknown page answers 404", resp.status == 404, resp.status)
     back = pg.locator("a[href]").filter(has_text=re.compile(r"start|home|cards|places|KidZooKit", re.I))
@@ -440,8 +472,13 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--only", default="")
     ap.add_argument("--viewports", default="phone,desktop")
-    ap.add_argument("--real-signup", action="store_true", help="ONE real Kit signup to nyhemant+kzkverify-<stamp>@gmail.com (phone only)")
+    ap.add_argument("--real-signup", action="store_true",
+                    help="PAUSED: ONE real Kit signup to nyhemant+kzkverify-<stamp>@gmail.com (phone only); also needs "
+                         f"{SIGNUP_ENV}=yes. Default mocks the signup in the browser.")
     a = ap.parse_args()
+    if a.real_signup and os.environ.get(SIGNUP_ENV) != "yes":
+        sys.exit(f"STOP: live newsletter signups are paused (owner rule 2026-11-18). The default run mocks the signup. "
+                 f"Only with a new owner OK: {SIGNUP_ENV}=yes ... --real-signup")
     host = urlsplit(a.base).hostname
     if host not in (DOMAIN, "127.0.0.1", "localhost"):
         sys.exit(f"STOP: base host {host!r} is not {DOMAIN}")
