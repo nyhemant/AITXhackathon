@@ -1,0 +1,51 @@
+# KZK (kidzookit.com) uptime ping.
+# Every ~15 min GitHub checks 3 public URLs once each (plus at most one retry per URL after 20 s).
+# A non-200 or a 15 s timeout fails the run, and GitHub's failed-run notice goes to the account that last
+# changed this schedule. Standard GitHub-hosted runners are free in public repositories; this job has no
+# checkout, no cache and no artifacts, and stops after 3 minutes at most.
+# Requests carry ?notrack=1, the analytics opt-out cookie and a kz-verify user agent, so they are not counted.
+# Note: GitHub pauses scheduled workflows in a public repo after 60 days with no repo activity.
+name: KZK uptime
+
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: kzk-uptime
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check kidzookit.com
+        shell: bash
+        run: |
+          set -u
+          UA="Mozilla/5.0 (compatible; KidZooKitUptime/1.0; kz-verify; +https://github.com/nyhemant/AITXhackathon)"
+          fail=0
+          check() {
+            local label="$1" url="$2" follow="$3" code attempt
+            for attempt in 1 2; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' $follow --max-redirs 3 \
+                --connect-timeout 10 --max-time 15 \
+                -A "$UA" -b "one_less_analytics=off" "$url" || echo "000")
+              [ "$code" = "200" ] && break
+              [ "$attempt" = 1 ] && sleep 20
+            done
+            if [ "$code" = "200" ]; then
+              echo "ok   $label $code"
+            else
+              echo "::error title=KZK down::$label answered $code (url $url)"
+              fail=1
+            fi
+          }
+          check "home (/ -> /start/)" "https://kidzookit.com/?notrack=1" "-L"
+          check "/start/" "https://kidzookit.com/start/?notrack=1" ""
+          check "QR carpool sheet" "https://kidzookit.com/start/?utm_source=printable&utm_medium=qr&utm_campaign=carpool&notrack=1" ""
+          exit $fail
