@@ -36,8 +36,11 @@ and on imini the launchd job has a PID.
 PY=/workspace/prod-ready/.venv/bin/python     # any Python with `pip install playwright`
 $PY .cursor/skills/verify-kzk/scripts/verify.py --out /tmp/kzk-verify/run1                 # all journeys, phone + desktop
 $PY .cursor/skills/verify-kzk/scripts/verify.py --only j2,j4 --out /tmp/kzk-verify/run2     # some journeys
-$PY .cursor/skills/verify-kzk/scripts/verify.py --only j5 --viewports phone --real-signup --out /tmp/kzk-verify/signup
 ```
+**Live newsletter signups are PAUSED (owner rule 2026-11-18).** j5 mocks the signup by default: `page.route` answers
+`/api/newsletter` inside the browser (a robot-check reply, then a success reply), so nothing reaches the server or Kit
+and no email can go out. `--real-signup` refuses to run unless `KZK_LIVE_SIGNUP_APPROVED=yes` is also set, and that
+needs a new OK from the owner. Do not set it on your own.
 Uses Chrome at `/usr/bin/google-chrome` when present. About 1 minute for a full run.
 Rules the script keeps:
 - Locators only for waits. No `wait_for_function` string predicates: the CSP has no `'unsafe-eval'`.
@@ -46,8 +49,8 @@ Rules the script keeps:
   so Print is proven without a dialog.
 - Tap the visible pin label (`[data-home-pin=…] .kzm-tag`), not the pin button: some pins are "tag only" and their
   44px box centre sits under a neighbour (Perot's centre is under Fort Worth Zoo's label).
-- `--real-signup` sends ONE real signup to `nyhemant+kzkverify-<MMDDHHMM>@gmail.com` (phone only). Never any
-  other address. It never triggers a newsletter or broadcast send.
+- Paused: `KZK_LIVE_SIGNUP_APPROVED=yes ... --real-signup` would send ONE real signup to
+  `nyhemant+kzkverify-<MMDDHHMM>@gmail.com` (phone only). Never any other address, never a broadcast.
 
 Journeys (details in `features/`): j1 front door, j2 pin → printed hunt, j3 animal cards, j4 quiz,
 j5 weekly email box, j6 PDFs + printed QR codes + `/` 301, j7 trust/legal/error pages + no-JS newsletter post.
@@ -61,7 +64,7 @@ Key handles: `h1`, `.start-wordmark`, `a.hxd-sheet[data-kz-cta=home-demo]`, `[da
 `<out>/results.json` (one row per check: journey, viewport, check, PASS/WARN/FAIL, detail) and `<out>/j*-*.png`.
 Exit code 1 means at least one FAIL. WARN = Cloudflare beacon noise or an off-site request.
 Proof standards: drive the real path (tap, type, Print), compare what a parent sees with the page's own data, and
-check side effects. For `--real-signup` the screen is not proof. Read `<out>/signup.txt`, then search the
+check side effects. For a real signup (paused) the screen is not proof. Read `<out>/signup.txt`, then search the
 nyhemant@gmail.com inbox for `to:nyhemant+kzkverify-<stamp>@gmail.com` (include spam):
 - `success`: exactly ONE confirmation email must arrive within a few minutes. None = the site lied (see K2 below).
 - `verify <url>`: Kit quarantined the signup; NO email is expected until a person passes Kit's robot check.

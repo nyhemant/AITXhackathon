@@ -12,12 +12,13 @@
 /printables/ → "For grown-ups" box at the bottom.
 
 ## Driving it with verify.py
-`--only j5` (UI, no signup) and `--only j5 --viewports phone --real-signup` (ONE signup to
-`nyhemant+kzkverify-<stamp>@gmail.com`). Then check the inbox as SKILL.md says. j7 posts a bad address with no JS and
+`--only j5`: errors, honeypot, sample dialog, then a MOCKED signup (page.route answers /api/newsletter in the browser:
+robot-check reply → "One more step" with Kit's link; success reply → "You're in", box locks; both posts must be caught).
+Real signups are paused since 2026-11-18; `--real-signup` needs `KZK_LIVE_SIGNUP_APPROVED=yes` and a new owner OK. j7 posts a bad address with no JS and
 expects 303 to `/newsletter/oops/?reason=email`, and checks the no-JS pages name one cause each.
 
 ## Gotchas
 - Kit quarantines signups forwarded from imini's IP (2026-11-18). Expect the robot-check message on live until the owner switches to Kit's API or the IP clears.
 - The Kit confirmation email comes from "1Less <ask@1less.app>" with subject "Important: confirm your subscription" (Kit account setting).
-- Never click a confirmation link, never trigger a broadcast, never sign up any address but nyhemant+…@gmail.com.
+- Live signups are paused. When allowed again: never click a confirmation link, never trigger a broadcast, never sign up any address but nyhemant+…@gmail.com.
 - The server limits signups to 5 per visitor IP per hour (in memory); repeated runs can hit "Too many sign-up tries".
