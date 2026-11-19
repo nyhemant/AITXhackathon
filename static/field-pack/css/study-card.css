@@ -635,6 +635,72 @@
   0% { transform: scale(0.4) rotate(-90deg); }
   100% { transform: scale(1) rotate(0deg); }
 }
+.card-page .card-study-pack .study-prior-star {
+  flex: 1 1 100%;
+  width: 100%;
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 750;
+  line-height: 1.35;
+  color: #7a4a00;
+}
+.card-page .card-study-pack .study-stars {
+  margin: 0.85rem 0 0;
+  text-align: center;
+}
+.card-page .card-study-pack .study-stars-count {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #26404a;
+}
+.card-page .card-study-pack .study-stars-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  max-width: 100%;
+}
+.card-page .card-study-pack .study-stars-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 40px;
+  max-width: 100%;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(15, 92, 92, 0.22);
+  background: #fff;
+  color: #0a4545;
+  font-weight: 800;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.card-page .card-study-pack .study-stars-all,
+.card-page .card-study-pack .study-stars-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 40px;
+  padding: 0.35rem 0.6rem;
+  font: inherit;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.card-page .card-study-pack .study-stars-clear {
+  margin: 0;
+  background: transparent;
+  border: 0;
+  color: #0f5c5c;
+  text-decoration: underline;
+  cursor: pointer;
+}
 @media (prefers-reduced-motion: reduce) {
   .card-page .card-study-pack .study-finish,
   .card-page .card-study-pack .study-finish-badge span {
