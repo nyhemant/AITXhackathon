@@ -13,13 +13,14 @@ class PrivacyKitCheck(unittest.TestCase):
 
     def test_names_recaptcha_and_sender(self):
         self.assertIn("Kit may show a quick robot check (Google reCAPTCHA)", self.text)
-        self.assertIn("The confirmation email currently comes from “1Less” at ask@1less.app", self.text)
+        self.assertIn("The confirmation email comes from “KidZooKit” at ask@kidzookit.com", self.text)
 
-    def test_sender_marked_temporary_and_not_a_link(self):
-        self.assertIn("kz-temp:kit-sender TEMPORARY", self.html)
-        self.assertIn('data-kz-temp="kit-sender"', self.html)
-        self.assertNotIn("mailto:ask@1less.app", self.html)
-        self.assertIn("<!--email_off-->ask@1less.app<!--/email_off-->", self.html)
+    def test_sender_permanent_shielded_and_not_a_link(self):
+        # 2026-11-18 10:03 PM CT: Kit sender set to KidZooKit <ask@kidzookit.com>; the temporary 1Less line is gone.
+        self.assertNotIn("1less.app", self.html)
+        self.assertNotIn("kz-temp:kit-sender", self.html)
+        self.assertIn("<!--email_off-->ask@kidzookit.com<!--/email_off-->, so look for that name", self.html)
+        self.assertNotIn('mailto:ask@kidzookit.com">ask@kidzookit.com</a>, so look', self.html)
 
     def test_existing_lines_and_freeze_kept(self):
         self.assertIn("Kit emails you a confirmation first. That is double opt-in", self.text)

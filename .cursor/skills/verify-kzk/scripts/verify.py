@@ -431,7 +431,8 @@ def j7_trust(run: Run, ctx, vp):
     t = visible_text(pg)
     run.check("j7", vp, "/privacy/ names the contact address", resp.status == 200 and "ask@kidzookit.com" in t)
     run.check("j7", vp, "/privacy/ covers the weekly email", "email" in t.lower() and ("unsubscribe" in t.lower() or "Kit" in t))
-    run.check("j7", vp, "/privacy/ names Kit's robot check and today's sender", "reCAPTCHA" in t and "ask@1less.app" in t)
+    run.check("j7", vp, "/privacy/ names Kit's robot check and the KidZooKit sender",
+              "reCAPTCHA" in t and "“KidZooKit” at ask@kidzookit.com" in t and "1less.app" not in t.lower())
     resp = p.go("/no-such-page-kzv/", wait="load")
     run.check("j7", vp, "unknown page answers 404", resp.status == 404, resp.status)
     back = pg.locator("a[href]").filter(has_text=re.compile(r"start|home|cards|places|KidZooKit", re.I))

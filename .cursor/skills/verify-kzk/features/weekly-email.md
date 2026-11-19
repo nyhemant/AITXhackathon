@@ -19,6 +19,6 @@ expects 303 to `/newsletter/oops/?reason=email`, and checks the no-JS pages name
 
 ## Gotchas
 - Kit quarantines signups forwarded from imini's IP (2026-11-18). Expect the robot-check message on live until the owner switches to Kit's API or the IP clears.
-- The Kit confirmation email comes from "1Less <ask@1less.app>" with subject "Important: confirm your subscription" (Kit account setting).
+- The Kit confirmation email comes from "KidZooKit <ask@kidzookit.com>" with subject "Confirm your KidZooKit weekly animal card" (Kit account setting since 2026-11-18 10:03 PM CT). /privacy/ names this sender; j7 checks it.
 - Live signups are paused. When allowed again: never click a confirmation link, never trigger a broadcast, never sign up any address but nyhemant+…@gmail.com.
 - The server limits signups to 5 per visitor IP per hour (in memory); repeated runs can hit "Too many sign-up tries".
