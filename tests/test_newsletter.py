@@ -170,7 +170,8 @@ class NewsletterProxyTests(unittest.TestCase):
         cases = (
             (200, b'{"status":"success"}', None, True, False),
             (200, b'{"status":"success","message":"You are already subscribed"}', None, True, True),
-            (200, b'{"status":"quarantined","url":"https://app.kit.com/guard"}', None, True, False),
+            # Quarantined is a robot check, not a signup (2026-11-18): no email goes out until it is passed.
+            (200, b'{"status":"quarantined","url":"https://app.kit.com/guard"}', None, False, False),
             (200, b'{"status":"failed","errors":{"email_address":["parent@example.com is invalid"]}}', None, False, False),
             (200, b"Success! Now check your email to confirm your subscription.", None, False, False),
             (422, b'{"status":"failed"}', None, False, False),
@@ -266,7 +267,7 @@ class NewsletterProxyTests(unittest.TestCase):
         down = response_for(
             NewsletterResult(ok=False, status=502, error="unavailable"), wants_json=False
         )
-        self.assertEqual(down["location"], "/newsletter/oops/")
+        self.assertEqual(down["location"], "/newsletter/try-again/")
 
     def test_parses_urlencoded_and_multipart(self):
         raw = b"email_address=parent%40example.com&website=&placement=cards_hub_aotd"
@@ -483,7 +484,7 @@ class NewsletterMarkupTests(unittest.TestCase):
         hub_page = (printables / "index.html").read_text(encoding="utf-8")
         self.assertIn('data-placement="printables_hub"', hub_page)
         self.assertIn('value="printables_hub"', hub_page)
-        self.assertIn('src="/field-pack/js/newsletter-v1.js?v=3"', hub_page)
+        self.assertIn('src="/field-pack/js/newsletter-v1.js?v=4"', hub_page)
         self.assertIn('href="/field-pack/css/newsletter-v1.css?v=4"', hub_page)
         self.assertIn("For grown-ups", hub_page)
         self.assertIn(notice, hub_page)
@@ -500,7 +501,7 @@ class NewsletterMarkupTests(unittest.TestCase):
             page = (printables / slug / "index.html").read_text(encoding="utf-8")
             self.assertIn('data-placement="printable_sheet"', page, slug)
             self.assertIn('value="printable_sheet"', page, slug)
-            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=3"', page, slug)
+            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=4"', page, slug)
             self.assertIn("For grown-ups", page, slug)
             self.assertIn(notice, page, slug)
             self.assertNotIn("email service (Kit)", page, slug)
@@ -557,7 +558,7 @@ class NewsletterMarkupTests(unittest.TestCase):
             self.assertGreater(sample_at, privacy_at, path.name)
             self.assertIn(link, html, path.name)
             self.assertLess(html.find(">Privacy</a>"), sample_at, path.name)
-            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=3"', html, path.name)
+            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=4"', html, path.name)
             self.assertIn('href="/field-pack/css/newsletter-v1.css?v=4"', html, path.name)
 
         sample_path = ROOT / "static" / "newsletter" / "sample" / "index.html"
@@ -607,7 +608,7 @@ class NewsletterMarkupTests(unittest.TestCase):
         gen = (ROOT / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
         self.assertIn('href="/newsletter/sample/"', gen)
         self.assertIn("See a sample email", gen)
-        self.assertIn("newsletter-v1.js?v=3", gen)
+        self.assertIn("newsletter-v1.js?v=4", gen)
         self.assertIn("newsletter-v1.css?v=4", gen)
 
     def test_privacy_names_kit_and_keeps_the_project_name(self):
@@ -643,7 +644,10 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertIn('content="noindex"', thanks)
         self.assertIn("Check your inbox to confirm", thanks)
         self.assertIn('content="noindex"', oops)
-        self.assertIn("try again in a minute", oops.lower())
+        self.assertIn("doesn't look quite right", oops)
+        again = (ROOT / "static" / "newsletter" / "try-again" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('content="noindex"', again)
+        self.assertIn("try again in a minute", again.lower())
 
 
 if __name__ == "__main__":
