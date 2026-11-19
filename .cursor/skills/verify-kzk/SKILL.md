@@ -73,7 +73,8 @@ Never click a confirmation link: that adds a test address to the real KidZooKit 
 
 Known (2026-11-18): Kit quarantines every signup forwarded from imini's IP (`{"status":"quarantined","url":
 "https://app.kit.com/forms/guards/<id>"}`); the box now shows "One more step … Do the check". Kit's confirmation
-email for the KZK form comes from "1Less <ask@1less.app>" (a Kit account setting, owner decision).
+email for the KZK form comes from "KidZooKit <ask@kidzookit.com>", subject "Confirm your KidZooKit weekly animal
+card" (Kit account setting, changed 2026-11-18 10:03 PM CT; before that it came from "1Less <ask@1less.app>").
 
 ## Cleanup
 
