@@ -513,6 +513,152 @@ if (typeof window !== "undefined") {
     return items.slice(0, 3).join("");
   }
 
+  /* kzk-stars-start */
+  /* Device-only animal stars. localStorage key kzk_stars_v1 is
+   * {cardId: [levels finished]}. A level is stored once when the quiz
+   * level is finished, whatever the first-try score was. No network.
+   */
+  const FP_STARS_KEY = "kzk_stars_v1";
+  let starsStorageOff = false;
+
+  function readStars() {
+    if (starsStorageOff) return null;
+    try {
+      const raw = localStorage.getItem(FP_STARS_KEY);
+      if (raw == null || raw === "") return {};
+      let parsed;
+      try {
+        parsed = JSON.parse(raw);
+      } catch (_) {
+        return {};
+      }
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+      const out = {};
+      Object.keys(parsed).forEach((id) => {
+        const key = String(id || "").trim();
+        if (!/^[a-z0-9-]+$/.test(key)) return;
+        const levels = parsed[id];
+        if (!Array.isArray(levels)) return;
+        const clean = [];
+        levels.forEach((lvl) => {
+          const name = normalizeLevel(lvl);
+          if (name && clean.indexOf(name) < 0) clean.push(name);
+        });
+        if (clean.length) out[key] = clean;
+      });
+      return out;
+    } catch (_) {
+      starsStorageOff = true;
+      return null;
+    }
+  }
+
+  function recordAnimalStar(cardId, level) {
+    const id = String(cardId || "").trim();
+    const lvl = normalizeLevel(level);
+    if (!id || !lvl) return false;
+    const cur = readStars();
+    if (cur === null) return false;
+    const prev = Array.isArray(cur[id]) ? cur[id].slice() : [];
+    if (prev.indexOf(lvl) < 0) prev.push(lvl);
+    const next = {};
+    Object.keys(cur).forEach((key) => {
+      if (key !== id) next[key] = cur[key];
+    });
+    next[id] = prev;
+    try {
+      localStorage.setItem(FP_STARS_KEY, JSON.stringify(next));
+      return true;
+    } catch (_) {
+      starsStorageOff = true;
+      return false;
+    }
+  }
+
+  function knownStarTitle(id) {
+    const catalog = window.FP_STUDY_TRY_NEXT;
+    const titles = (catalog && catalog.titles) || {};
+    return titles[id] ? String(titles[id]) : "";
+  }
+
+  function starsShelfHtml(cardId) {
+    const map = readStars();
+    if (map === null) return "";
+    const ids = Object.keys(map);
+    const n = ids.length;
+    const noun = n === 1 ? "animal" : "animals";
+    const recent = ids.filter((id) => id !== cardId).slice(-3).reverse();
+    const chips = [];
+    recent.forEach((id) => {
+      const title = knownStarTitle(id);
+      if (!title) return;
+      chips.push(
+        `<li><a class="study-stars-chip" href="/field-pack/cards/${esc(id)}/">${esc(title)}</a></li>`
+      );
+    });
+    const chipHtml = chips.length ? `<ul class="study-stars-chips">${chips.join("")}</ul>` : "";
+    return (
+      `<div class="study-stars">` +
+      `<p class="study-stars-count">Animal stars saved on this browser: ${n} ${noun}</p>` +
+      chipHtml +
+      `<p class="study-stars-more"><a class="study-stars-all" href="/field-pack/cards/">See all animal cards</a></p>` +
+      `<p class="study-stars-clear-row"><button type="button" class="study-stars-clear">Clear stars</button></p>` +
+      `</div>`
+    );
+  }
+
+  function clearAnimalStars(root) {
+    let yes = false;
+    try {
+      yes = window.confirm("Clear animal stars saved on this browser?");
+    } catch (_) {
+      return;
+    }
+    if (!yes) return;
+    try {
+      localStorage.removeItem(FP_STARS_KEY);
+    } catch (_) {
+      return;
+    }
+    const shelf = root && root.querySelector(".study-stars");
+    if (shelf) shelf.hidden = true;
+    const prior = root && root.querySelector(".study-prior-star");
+    if (prior) prior.remove();
+  }
+
+  function paintPriorStar(root) {
+    if (!root || root.querySelector(".study-prior-star")) return;
+    const id = root.getAttribute("data-study-id") || "";
+    const map = readStars();
+    if (!map || !id || !map[id] || !map[id].length) return;
+    const anchor = root.querySelector(".study-level-note") || root.querySelector(".study-level-picker");
+    if (!anchor) return;
+    const line = document.createElement("p");
+    line.className = "study-prior-star no-print";
+    line.textContent = "\u2605 You earned a star on this animal before";
+    anchor.insertAdjacentElement("afterend", line);
+  }
+
+  function ensureStarsCss() {
+    try {
+      if (document.getElementById("kzk-stars-css")) return;
+      const style = document.createElement("style");
+      style.id = "kzk-stars-css";
+      style.textContent =
+        ".card-page .card-study-pack .study-prior-star{flex:1 1 100%;width:100%;margin:0.35rem 0 0;font-size:0.95rem;font-weight:750;line-height:1.35;color:#7a4a00}" +
+        ".card-page .card-study-pack .study-stars{margin:0.85rem 0 0;text-align:center}" +
+        ".card-page .card-study-pack .study-stars-count{margin:0;font-size:0.95rem;color:#26404a}" +
+        ".card-page .card-study-pack .study-stars-chips{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:0.4rem;margin:0.5rem 0 0;padding:0;max-width:100%}" +
+        ".card-page .card-study-pack .study-stars-chip{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:40px;max-width:100%;padding:0.35rem 0.8rem;border-radius:999px;border:1.5px solid rgba(15,92,92,0.22);background:#fff;color:#0a4545;font-weight:800;font-size:0.9rem;line-height:1.2;text-decoration:none;overflow-wrap:anywhere}" +
+        ".card-page .card-study-pack .study-stars-all,.card-page .card-study-pack .study-stars-clear{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:40px;padding:0.35rem 0.6rem;font:inherit;font-weight:800;font-size:0.95rem}" +
+        ".card-page .card-study-pack .study-stars-clear{margin:0;background:transparent;border:0;color:#0f5c5c;text-decoration:underline;cursor:pointer}";
+      (document.head || document.documentElement).appendChild(style);
+    } catch (_) {
+      /* ignore */
+    }
+  }
+  /* kzk-stars-end */
+
   function paintFinish(root) {
     const foot = root.querySelector(".study-foot");
     if (!foot) return;
@@ -531,7 +677,9 @@ if (typeof window !== "undefined") {
       `<h3 class="study-finish-title">${esc(levelDisplayName(level))} complete!</h3>` +
       `<p class="study-finish-score">${esc(finishScoreText(total, first))}</p>` +
       (next ? `<p class="study-finish-kicker">What next?</p><ul class="study-finish-next">${next}</ul>` : "") +
+      starsShelfHtml(id) +
       `</div>`;
+    ensureStarsCss();
     foot.insertAdjacentHTML("afterbegin", html);
     const panel = foot.querySelector(".study-finish");
     if (panel) {
@@ -555,11 +703,12 @@ if (typeof window !== "undefined") {
     }
     paintProgress(root);
     if (total && doneCount(root) === total && !root.querySelector(".study-foot .study-finish")) {
-      paintFinish(root);
       if (!quizSeen.done[level]) {
         quizSeen.done[level] = true;
+        recordAnimalStar(id, level);
         quizTrack("quiz_complete", { card: id, tier, first_try_correct: firstTryCount(root), total });
       }
+      paintFinish(root);
     }
   }
 
@@ -886,6 +1035,12 @@ if (typeof window !== "undefined") {
 
   function bind(root) {
     root.addEventListener("click", (ev) => {
+      const clearBtn = ev.target.closest(".study-stars-clear");
+      if (clearBtn && root.contains(clearBtn)) {
+        ev.preventDefault();
+        clearAnimalStars(root);
+        return;
+      }
       const nextLink = ev.target.closest("[data-quiz-next]");
       if (nextLink && root.contains(nextLink)) {
         quizTrack("quiz_next_click", {
@@ -982,6 +1137,8 @@ if (typeof window !== "undefined") {
       }
     }
     paintTryNext(id);
+    ensureStarsCss();
+    paintPriorStar(root);
   }
 
   if (document.readyState === "loading") {

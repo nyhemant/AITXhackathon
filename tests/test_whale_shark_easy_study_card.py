@@ -282,7 +282,7 @@ class WhaleSharkEasyStudyCardTests(unittest.TestCase):
         self.assertIn("study-next-tier", main)
         self.assertNotIn("study-level-picker-bottom", main)
         self.assertNotIn("card-print-note", main)
-        self.assertIn("study-card.js?v=22", html)
+        self.assertIn("study-card.js?v=23", html)
         self.assertIn("study-card.css?v=20", html)
         self.assertIn("study-cards-data.js?v=11", html)
         self.assertIn('id="study-card-data"', html)
