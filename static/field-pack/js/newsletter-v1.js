@@ -1,6 +1,8 @@
 /**
- * Weekly email box for grown-ups, on the printables pages only.
- * Static forms: placement=printables_hub or placement=printable_sheet.
+ * Weekly email box for grown-ups: the printables pages, and place pages after a hunt prints.
+ * Static forms: placement=printables_hub, printable_sheet, or place_print.
+ * place_print forms ship hidden with data-reveal="print" and appear once the hunt goes to print
+ * (beforeprint or afterprint). They carry no-print, so they never land on the paper.
  * "See a sample email" opens /newsletter/sample/ in a dialog. With JS off, that href is the page.
  * Events go through FPTrack / OneLessAnalytics.track so the opt-out is kept.
  * Never send the email address, or any hash of it, to analytics.
@@ -34,7 +36,7 @@
   }
 
   function cleanPlacement(value) {
-    if (value === "printables_hub" || value === "printable_sheet") return value;
+    if (value === "printables_hub" || value === "printable_sheet" || value === "place_print") return value;
     return "other";
   }
 
@@ -346,10 +348,33 @@
       for (var h = 0; h < forms.length; h++) forms[h].hidden = true;
       return;
     }
+    var later = [];
     for (var i = 0; i < forms.length; i++) {
+      if (forms[i].getAttribute("data-reveal") === "print") {
+        later.push(forms[i]);
+        continue;
+      }
       bind(forms[i]);
       watchView(forms[i]);
     }
+    if (later.length) waitForPrint(later);
+  }
+
+  // Place pages: show the box once, after the parent has printed the hunt.
+  function waitForPrint(forms) {
+    var shown = false;
+    function reveal() {
+      if (shown) return;
+      if (storageGet(SUB_KEY) === "1" || storageGet(DISMISS_KEY) === "1") return;
+      shown = true;
+      for (var i = 0; i < forms.length; i++) {
+        forms[i].hidden = false;
+        bind(forms[i]);
+        watchView(forms[i]);
+      }
+    }
+    window.addEventListener("beforeprint", reveal);
+    window.addEventListener("afterprint", reveal);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

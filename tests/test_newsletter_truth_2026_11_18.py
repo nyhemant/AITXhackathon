@@ -74,7 +74,7 @@ class PagesAndScriptSayOneTrueThing(unittest.TestCase):
         self.assertGreaterEqual(len(pages), 4)
         for page in pages:
             with self.subTest(page=str(page.relative_to(ROOT))):
-                self.assertIn("newsletter-v1.js?v=6", page.read_text(encoding="utf-8"))
+                self.assertIn("newsletter-v1.js?v=7", page.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

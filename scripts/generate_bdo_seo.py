@@ -3804,6 +3804,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <link rel="stylesheet" href="/field-pack/css/landing.css?v={LANDING_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/seo-venue.css?v={SEO_CSS_VER}" />
   <link rel="stylesheet" href="/field-pack/css/mission.css?v={MISSION_CSS_VER}" />
+  <link rel="stylesheet" href="{NEWSLETTER_CSS_HREF}" />
   {scav_css}
   <script type="application/ld+json">
 {json_ld.split(chr(10))[0]}
@@ -3874,10 +3875,12 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
 
   {drawer}
   {sticky}
+{place_print_newsletter_html()}
 
   <script type="application/json" id="venue-data">{venue_json}</script>
   <script type="application/json" id="bonus-hunts-data">{bonus_json}</script>
   <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
+  <script src="{NEWSLETTER_JS_HREF}"></script>
   <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=14"></script>
@@ -6907,27 +6910,38 @@ def patch_places_data_hrefs(venues: list[dict]) -> None:
     print("  patched places-data.js hrefs → /field-pack/<id>/")
 
 
-NEWSLETTER_JS_HREF = "/field-pack/js/newsletter-v1.js?v=6"
-NEWSLETTER_CSS_HREF = "/field-pack/css/newsletter-v1.css?v=4"
+NEWSLETTER_JS_HREF = "/field-pack/js/newsletter-v1.js?v=7"
+NEWSLETTER_CSS_HREF = "/field-pack/css/newsletter-v1.css?v=5"
 NEWSLETTER_NOTICE = (
     "Your email is used only to send this weekly email. "
     "Unsubscribe any time."
 )
 PRINTABLE_NEWSLETTER_SLUGS = ("scavenger-hunt", "animal-bingo", "zoo-day-journal")
+# Round 2 (2026-11-20): the weekly email on the print path of every place page.
+PLACE_PRINT_HEADING = "Hunt printed. Want a new animal each week?"
 
 
 def newsletter_parent_form(placement: str) -> str:
-    """Grown-up signup. printables_hub on /printables/, printable_sheet on a sheet page."""
+    """Grown-up signup. printables_hub on /printables/, printable_sheet on a sheet page,
+    place_print on a place page (hidden until the hunt goes to print; newsletter-v1.js shows it)."""
+    heading = "For grown-ups"
+    extra_class = "kz-nl--parent"
+    extra_attr = ""
     if placement == "printables_hub":
         suffix = "printables"
     elif placement == "printable_sheet":
         suffix = "sheet"
+    elif placement == "place_print":
+        suffix = "print"
+        heading = PLACE_PRINT_HEADING
+        extra_class = "kz-nl--print"
+        extra_attr = ' hidden data-reveal="print"'
     else:
         raise ValueError(placement)
     return (
-        f'<form class="kz-nl kz-nl--parent no-print" action="/api/newsletter" method="post" '
-        f'data-placement="{placement}" novalidate aria-labelledby="kz-nl-h-{suffix}">\n'
-        f'  <h2 class="kz-nl-h" id="kz-nl-h-{suffix}">For grown-ups</h2>\n'
+        f'<form class="kz-nl {extra_class} no-print" action="/api/newsletter" method="post" '
+        f'data-placement="{placement}"{extra_attr} novalidate aria-labelledby="kz-nl-h-{suffix}">\n'
+        f'  <h2 class="kz-nl-h" id="kz-nl-h-{suffix}">{heading}</h2>\n'
         f'  <p class="kz-nl-sub">One animal card, a short quiz, and a printable, once a week.</p>\n'
         f'  <div class="kz-nl-fields">\n'
         f'    <div class="kz-nl-field">\n'
@@ -7031,6 +7045,47 @@ def write_printable_newsletter() -> None:
         path.write_text(html, encoding="utf-8")
 
 
+def place_print_newsletter_html() -> str:
+    """The place_print box, indented for a venue page (goes right after the sticky print bar)."""
+    return "\n".join(("  " + line) if line else line for line in newsletter_parent_form("place_print").split("\n"))
+
+
+_MISSION_UI_TAG_RE = re.compile(r'<script src="/field-pack/js/mission/mission-ui\.js\?v=[0-9a-z-]+"></script>')
+
+
+def add_place_print_newsletter(html: str) -> str:
+    """Targeted patch for a committed venue page: CSS link, script, and the hidden box. Idempotent."""
+    if 'data-placement="place_print"' in html:
+        return html
+    if not _MISSION_UI_TAG_RE.search(html):
+        return html
+    css = f'  <link rel="stylesheet" href="{NEWSLETTER_CSS_HREF}" />\n'
+    m = re.search(r'  <link rel="stylesheet" href="/field-pack/css/mission\.css\?v=\d+" />\n', html)
+    if not m or "newsletter-v1.css" in html:
+        raise SystemExit("venue page head not as expected")
+    html = html[: m.end()] + css + html[m.end():]
+    start = html.find('<div class="seo-hunt-sticky no-print" id="seo-hunt-sticky"')
+    end = html.find("\n  </div>", start)
+    if start == -1 or end == -1:
+        raise SystemExit("sticky print bar missing")
+    end += len("\n  </div>")
+    html = html[:end] + "\n" + place_print_newsletter_html() + html[end:]
+    return _ensure_newsletter_asset(html, "js", NEWSLETTER_JS_HREF)
+
+
+def write_place_print_newsletter() -> int:
+    """``--place-print-newsletter``: patch every committed venue page without regenerating it."""
+    n = 0
+    for path in sorted((STATIC / "field-pack").glob("*/index.html")):
+        html = path.read_text(encoding="utf-8")
+        new = add_place_print_newsletter(html)
+        if new != html:
+            path.write_text(new, encoding="utf-8")
+            n += 1
+    print(f"  place_print newsletter box added to {n} venue pages")
+    return 0
+
+
 def _csv_flag(args: list[str], flag: str) -> set[str]:
     out: set[str] = set()
     i = 0
@@ -7046,6 +7101,8 @@ def _csv_flag(args: list[str], flag: str) -> set[str]:
 
 
 def main() -> int:
+    if "--place-print-newsletter" in sys.argv[1:]:
+        return write_place_print_newsletter()
     if "--place-photos" in sys.argv[1:]:
         return apply_listed_place_photos()
     only_venues = _csv_flag(sys.argv[1:], "--only")
