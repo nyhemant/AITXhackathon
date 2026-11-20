@@ -393,7 +393,7 @@ def j5_newsletter(run: Run, ctx, vp, real_signup: bool, stamp: str):
         text = msg.inner_text()
         run.check("j5", vp, f"real signup {addr} says check inbox", "Check your inbox" in text, text)
         run.check("j5", vp, "after signup the form locks", email.is_disabled() and submit.is_disabled())
-            (run.out / "signup.txt").write_text(f"{addr}\nsuccess\nEXPECT: exactly 1 confirmation email; check Gmail\n")
+        (run.out / "signup.txt").write_text(f"{addr}\nsuccess\nEXPECT: exactly 1 confirmation email; check Gmail\n")
         p.shot("j5-signup")
     p.hygiene("j5", "newsletter")
     pg.close()
