@@ -81,7 +81,10 @@ keep it outside the repo.
 ## Maintenance
 
 When a check fails, decide site bug vs harness bug first. Fix wrong selectors in the harness; never loosen a check
-to make a site bug pass. Approved copy (H1, wordmark) is pinned in `scripts/verify.py`; the title/meta/H1 freeze
-runs through 2026-11-24, so change the pin only with Heymant's yes. Keep `features/` in step with the app
-(`/maintain-verification-skill`). The SEO release checks (sitemap, titles, 24 scav pages, freeze digests) live in
-`/workspace/kidzookit-loop/weekly-2026-11-16/live_check_v6.py`, not here.
+to make a site bug pass. Approved copy (H1, wordmark) is pinned in `scripts/verify.py`; the freeze on the 10 hunt pages
+ended 2026-11-20, but change a pin only with Heymant's yes. Keep `features/` in step with the app
+(`/maintain-verification-skill`). The SEO release checks (sitemap 293, QR, PDFs, titles, and the 24 scav pages compared
+byte for byte with origin/main) live in `/workspace/kidzookit-loop/weekly-2026-11-16/live_check_v9.py`, not here.
+Run it as `live_check_v9.py TAG` after each deploy (about 100 requests a minute; never alongside a crawl). The old
+frozen digests (`frozen_v2`..`v4.json`) and `live_check_v2`..`v8.py` are retired to `weekly-2026-11-16/archive/`;
+v9 still reads `frozen_v5.json` for its list of changed pages and `expect_v3.json` for per-change expectations.
