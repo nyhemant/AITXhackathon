@@ -56,7 +56,7 @@ class PlacePrintBox(unittest.TestCase):
         src = (ROOT / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
         tpl = src.split("def render_mission_venue_page(", 1)[1].split("\ndef ", 1)[0]
         self.assertIn("{place_print_newsletter_html()}", tpl)
-        self.assertIn('<script src="{NEWSLETTER_JS_HREF}"></script>', tpl)
+        self.assertIn('<script defer src="{NEWSLETTER_JS_HREF}"></script>', tpl)
         self.assertIn('<link rel="stylesheet" href="{NEWSLETTER_CSS_HREF}" />', tpl)
         # Patch is idempotent.
         slug, html = next(_mission_pages())

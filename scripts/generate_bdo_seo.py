@@ -3881,7 +3881,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script type="application/json" id="venue-data">{venue_json}</script>
   <script type="application/json" id="bonus-hunts-data">{bonus_json}</script>
   <script src="/shell/shell.js?v={SHELL_JS_VER}"></script>
-  <script src="{NEWSLETTER_JS_HREF}"></script>
+  <script defer src="{NEWSLETTER_JS_HREF}"></script>
   <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=14"></script>
@@ -6985,7 +6985,7 @@ def _ensure_newsletter_asset(html: str, kind: str, href: str) -> str:
     if kind == "css":
         tag = f'  <link rel="stylesheet" href="{href}" />\n'
         return html.replace("</head>", tag + "</head>", 1)
-    tag = f'  <script src="{href}"></script>\n'
+    tag = f'  <script defer src="{href}"></script>\n'
     needle = '<script src="/shell/shell.js'
     start = html.find(needle)
     if start == -1:
