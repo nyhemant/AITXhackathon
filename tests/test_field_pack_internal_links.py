@@ -61,6 +61,7 @@ from busyparent_agent.web import (
     _safe_privacy_path,
     _safe_printables_path,
     _safe_field_pack_path,
+    _safe_newsletter_path,
     _safe_pwa_path,
     _safe_pwa_root_file,
     _safe_shell_path,
@@ -256,6 +257,9 @@ def _served_status(path: str) -> int:
     if path == "/printables":
         return 301
     if _safe_printables_path(path) is not None:
+        return 200
+    # 2026-11-20: place pages link the sample weekly email (/newsletter/sample/).
+    if _safe_newsletter_path(path) is not None:
         return 200
     if path == FIELD_PACK_PREFIX:
         return 301
