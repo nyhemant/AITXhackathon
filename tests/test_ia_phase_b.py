@@ -134,13 +134,14 @@ class IaPhaseBTests(unittest.TestCase):
         self.assertIn('class="start-menu-grownup" href="/about/">About</a>', start)
         self.assertNotIn("Print from Watch", start)
         self.assertNotIn('href="/field-pack/print/"', start)
+        self.assertNotIn('href="/field-pack/virtual-field-trip/?print=1"', start)
         self.assertNotIn("Cut · hide · seek", start)
         about = ABOUT.read_text(encoding="utf-8")
         before_exp = about.split('id="experimental"', 1)[0]
         self.assertNotIn("Side door:", before_exp)
         self.assertNotIn("doors", before_exp.lower())
         self.assertNotIn("grown-ups", before_exp)
-        self.assertIn('href="/field-pack/print/"', before_exp)
+        self.assertIn('href="/field-pack/virtual-field-trip/?print=1"', before_exp)
         self.assertIn("print from Watch", before_exp)
         self.assertIn("Optional:", before_exp)
 

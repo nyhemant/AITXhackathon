@@ -157,7 +157,7 @@ class BrandHomeTests(unittest.TestCase):
                 ("/field-pack/", "Places"),
                 ("/field-pack/cards/", "Cards"),
                 ("/start/", "Start"),
-                ("/field-pack/print/", "print from Watch"),
+                ("/field-pack/virtual-field-trip/?print=1", "print from Watch"),
             ],
         )
         self.assertNotIn("grown-ups", ways)

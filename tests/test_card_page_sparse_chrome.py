@@ -88,7 +88,7 @@ class CardPageSparseChromeTests(unittest.TestCase):
         self.assertEqual(CARDS_PLAY_H1, "Animal cards")
         self.assertEqual(CARDS_PLAY_CTA, "Print from Watch")
         self.assertEqual(CARDS_PLAY_BROWSE, "Browse all cards")
-        self.assertEqual(CARDS_PLAY_PRINT_HREF, "/field-pack/print/")
+        self.assertEqual(CARDS_PLAY_PRINT_HREF, "/field-pack/virtual-field-trip/?print=1")
         self.assertEqual(CARD_TALK_H2, "Talk")
         self.assertEqual(CTA_CARDS_HUB, "Cards")
         self.assertEqual(CTA_CARD_PLACE, "Place")

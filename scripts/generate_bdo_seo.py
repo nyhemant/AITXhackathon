@@ -40,6 +40,7 @@ from field_trip_blocks_v1 import with_field_trip_block  # noqa: E402
 from busyparent_agent.url_aliases import (  # noqa: E402
     CARD_SLUG_ALIASES,
     PRINT_PATH,
+    PRINT_TARGET,
     redirect_location,
 )
 from field_pack_card_kind import (  # noqa: E402
@@ -182,7 +183,7 @@ HUNT_STYLE_CHALLENGE_LABEL = "Challenge"
 CARDS_PLAY_H1 = "Animal cards"
 CARDS_PLAY_CTA = "Print from Watch"
 CARDS_PLAY_BROWSE = "Browse all cards"
-CARDS_PLAY_PRINT_HREF = PRINT_PATH
+CARDS_PLAY_PRINT_HREF = PRINT_TARGET  # final URL, not the 301 alias
 CARDS_HUB_TITLE = "Animal cards · KidZooKit"
 CARDS_HUB_DESC = "Animal cards with talk prompts, photos, and Q&A."
 CARDS_LANDING_CSS_VER = "105"
