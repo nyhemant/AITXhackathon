@@ -2,8 +2,8 @@
 """Set every sitemap <lastmod> to the real git last-change date of that URL's HTML file.
 
 Keeps the URL list and order of static/sitemap.xml exactly as committed and rewrites
-only the <lastmod> values, then writes the identical copy to
-static/field-pack/sitemap.xml. Run after committing page changes (uncommitted edits
+only the <lastmod> values (the old static/field-pack/sitemap.xml copy was removed
+2026-11-20). Run after committing page changes (uncommitted edits
 are not seen by git). Added 2026-10-21.
 
 Note: scripts/generate_bdo_seo.py (full run or --sitemap-only) keeps the public
@@ -48,10 +48,9 @@ def main() -> None:
     out = re.sub(r"(<loc>)([^<]+)(</loc>\s*<lastmod>)([^<]+)(</lastmod>)", repl, src)
     if missing:
         raise SystemExit(f"no file for: {missing}")
-    for p in (STATIC / "sitemap.xml", STATIC / "field-pack" / "sitemap.xml"):
-        p.write_text(out, encoding="utf-8")
+    (STATIC / "sitemap.xml").write_text(out, encoding="utf-8")
     n = len(re.findall(r"<loc>", out))
-    print(f"{n} URLs, lastmods from git; both sitemap copies written", file=sys.stderr)
+    print(f"{n} URLs, lastmods from git; static/sitemap.xml written", file=sys.stderr)
 
 
 if __name__ == "__main__":

@@ -27,7 +27,7 @@ class NoindexThin(unittest.TestCase):
             self.assertIn('<meta name="robots" content="index,follow" />', page)
 
     def test_sitemaps_drop_only_the_two(self):
-        for sm in ("static/sitemap.xml", "static/field-pack/sitemap.xml"):
+        for sm in ("static/sitemap.xml",):
             xml = (ROOT / sm).read_text(encoding="utf-8")
             # 286 after the noindex drop; 293 since 2026-11-18 (+7 Science Bee pages).
             self.assertEqual(xml.count("<url>"), 293, sm)

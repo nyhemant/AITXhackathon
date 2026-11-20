@@ -598,7 +598,6 @@ class NewsletterMarkupTests(unittest.TestCase):
         self.assertNotRegex(text, r"\b[Ww]e\b")
         for sitemap in (
             ROOT / "static" / "sitemap.xml",
-            ROOT / "static" / "field-pack" / "sitemap.xml",
         ):
             locs = sitemap.read_text(encoding="utf-8")
             self.assertNotIn("/newsletter/sample/", locs)

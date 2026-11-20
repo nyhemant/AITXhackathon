@@ -50,7 +50,7 @@ class SitemapTests(unittest.TestCase):
         self.assertIn(f"{SITE}/about/".encode("utf-8"), body)
 
     def test_sitemap_paths_are_the_robots_and_alias_urls(self):
-        self.assertEqual(_SITEMAP_URLS, ("/sitemap.xml", "/field-pack/sitemap.xml"))
+        self.assertEqual(_SITEMAP_URLS, ("/sitemap.xml",))
 
     def test_xml_content_type(self):
         self.assertEqual(
@@ -60,7 +60,7 @@ class SitemapTests(unittest.TestCase):
 
     def test_static_files_exist(self):
         self.assertTrue((REPO / "static" / "sitemap.xml").is_file())
-        self.assertTrue((REPO / "static" / "field-pack" / "sitemap.xml").is_file())
+        self.assertFalse((REPO / "static" / "field-pack" / "sitemap.xml").exists())
 
     def test_both_sitemaps_include_live_card_urls(self):
         expected_locs = (
@@ -74,7 +74,6 @@ class SitemapTests(unittest.TestCase):
         )
         sitemap_paths = (
             REPO / "static" / "sitemap.xml",
-            REPO / "static" / "field-pack" / "sitemap.xml",
         )
 
         for sitemap_path in sitemap_paths:
@@ -167,7 +166,6 @@ class SitemapTests(unittest.TestCase):
 
         sitemap_paths = (
             REPO / "static" / "sitemap.xml",
-            REPO / "static" / "field-pack" / "sitemap.xml",
         )
         for sitemap_path in sitemap_paths:
             text = sitemap_path.read_text(encoding="utf-8")
@@ -220,8 +218,6 @@ class SitemapTests(unittest.TestCase):
 
     def test_committed_sitemap_lastmods_are_not_stuck(self):
         root = (REPO / "static" / "sitemap.xml").read_text(encoding="utf-8")
-        copy = (REPO / "static" / "field-pack" / "sitemap.xml").read_text(encoding="utf-8")
-        self.assertEqual(root, copy)
         lastmods = _LASTMOD_RE.findall(root)
         locs = _LOC_RE.findall(root)
         self.assertGreaterEqual(len(locs), 200)
@@ -258,9 +254,7 @@ class SitemapTests(unittest.TestCase):
             return stamps.get(url, "2026-01-01")
 
         root = REPO / "static" / "sitemap.xml"
-        copy = REPO / "static" / "field-pack" / "sitemap.xml"
         before_root = root.read_text(encoding="utf-8")
-        before_copy = copy.read_text(encoding="utf-8")
         try:
             write_sitemap(
                 [{"id": "dallas-zoo"}],
@@ -274,7 +268,7 @@ class SitemapTests(unittest.TestCase):
             self.assertNotEqual(text.count("<lastmod>2026-09-12</lastmod>"), text.count("<lastmod>"))
         finally:
             root.write_text(before_root, encoding="utf-8")
-            copy.write_text(before_copy, encoding="utf-8")
+            self.assertFalse((REPO / "static" / "field-pack" / "sitemap.xml").exists())
 
 
 class _Buf:

@@ -164,7 +164,7 @@ body.start-body > header.start-top {
 .home-places-canvas .labels { display: none; }
 
 /* Pins are drawn on the 44px buttons so they stay crisp and carry their own count badge. */
-/* opacity, not display:none: home-map-v1.js measures these dots to place the buttons. */
+/* opacity, not display:none: the hidden dots keep their layout box. */
 .home-places-canvas .home-svg-pin,
 .home-places-canvas svg > g[pointer-events="none"] { opacity: 0; }
 .home-place-pin::before {

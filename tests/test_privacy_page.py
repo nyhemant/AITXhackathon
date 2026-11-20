@@ -19,7 +19,7 @@ class PrivacyPageTests(unittest.TestCase):
         self.assertIsNone(_safe_privacy_path("/privacy/../web.py"))
 
     def test_in_both_sitemaps(self):
-        for p in ("static/sitemap.xml", "static/field-pack/sitemap.xml"):
+        for p in ("static/sitemap.xml",):
             self.assertIn("<loc>https://kidzookit.com/privacy/</loc>", (ROOT / p).read_text())
 
     def test_page_copy_rules(self):

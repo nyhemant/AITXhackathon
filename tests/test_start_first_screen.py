@@ -22,10 +22,10 @@ class StartFirstScreenTests(unittest.TestCase):
         self.assertIn('src="/start/map-v2/a-world-v1.svg"', hero)
 
     def test_hero_cards_yield_to_the_map(self):
-        # Map v2 drops the playing-card stack from the Animals view; the files stay for old links.
-        self.assertEqual(re.findall(r'<img\s+src="/start/playing-card-[a-z]+\.png"[^>]*>', self.html), [])
+        # Map v2 dropped the playing-card stack; the unused images were removed on 2026-11-20.
+        self.assertNotIn("playing-card-", self.html)
         for name in ("koala", "tiger", "zebra"):
-            self.assertTrue((START / f"playing-card-{name}.png").is_file(), name)
+            self.assertFalse((START / f"playing-card-{name}.png").exists(), name)
 
     def test_sample_cards_and_hunt_preview_have_alt(self):
         expected = {

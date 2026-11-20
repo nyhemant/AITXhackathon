@@ -26,7 +26,6 @@ PHOTO_RULES = {
     "card-page-photo": ((640, 960), "(max-width: 700px) 92vw, 480px"),
 }
 SRC_RULES = [  # (src path regex, widths, sizes)
-    (r"^/start/playing-card-(koala|tiger|zebra)\.png$", (240, 360), "120px"),
     (r"^/start/hero-world-map\.jpg$", (1280, 1792), "max(100vw, calc(100svh * 1792 / 1008))"),
     (r"^/start/going-(giraffe|georgia-aquarium|san-diego-zoo)\.jpg$", (480, 640, 1024), None),
     (r"^/start/home-print-table\.jpg$", (480, 640, 1024), None),
