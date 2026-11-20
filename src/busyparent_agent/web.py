@@ -1493,10 +1493,6 @@ def _index_dir_slash_redirect(raw_path: str) -> str | None:
     path = urlsplit(raw_path).path or "/"
     if path.endswith("/") or path == "/":
         return None
-    last = path.rsplit("/", 1)[-1]
-    if not last or "." in last:
-        return None
-    slashed = path + "/"
     resolvers = (
         _safe_field_pack_path,
         _safe_start_path,
@@ -1508,6 +1504,19 @@ def _index_dir_slash_redirect(raw_path: str) -> str | None:
         _safe_pwa_path,
         _safe_shell_path,
     )
+    if path.endswith("/index.html"):
+        # /field-pack/zoos/index.html was a second 200 for /field-pack/zoos/. Send it to the
+        # directory URL (root /index.html already has its own 301 to /start/).
+        directory = path[: -len("index.html")]
+        for resolve in resolvers:
+            found = resolve(directory)
+            if found is not None and found.name == "index.html":
+                return _keep_query(directory, raw_path)
+        return None
+    last = path.rsplit("/", 1)[-1]
+    if not last or "." in last:
+        return None
+    slashed = path + "/"
     for resolve in resolvers:
         found = resolve(path) or resolve(slashed)
         if found is not None and found.name == "index.html":
