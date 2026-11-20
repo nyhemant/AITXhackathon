@@ -80,7 +80,7 @@ class CardsExplorerTests(unittest.TestCase):
         self.assertIn(">Print</span>", door)
         self.assertIn(">Cut</span>", door)
         self.assertIn(">Hide</span>", door)
-        self.assertIn('href="/field-pack/print/"', door)
+        self.assertIn('href="/field-pack/virtual-field-trip/?print=1"', door)
         self.assertIn("Print from Watch", door)
         self.assertIn('href="/field-pack/cards/#try-a-card"', door)
         self.assertIn("Browse all cards", door)
