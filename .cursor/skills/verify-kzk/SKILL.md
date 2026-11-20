@@ -50,25 +50,23 @@ Rules the script keeps:
 - Tap the visible pin label (`[data-home-pin=…] .kzm-tag`), not the pin button: some pins are "tag only" and their
   44px box centre sits under a neighbour (Perot's centre is under Fort Worth Zoo's label).
 - Paused: `KZK_LIVE_SIGNUP_APPROVED=yes ... --real-signup` would send ONE real signup to
-  `nyhemant+kzkverify-<MMDDHHMM>@gmail.com` (phone only). Never any other address, never a broadcast.
+  `hemant+kzkverify-<MMDDHHMM>@mail.grokbot.com` (phone only). Never nyhemant@gmail.com or a nyhemant+ alias, never a broadcast.
 
 Journeys (details in `features/`): j1 front door, j2 pin → printed hunt, j3 animal cards, j4 quiz,
 j5 weekly email box, j6 PDFs + printed QR codes + `/` 301, j7 trust/legal/error pages + no-JS newsletter post.
 Key handles: `h1`, `.start-wordmark`, `a.hxd-sheet[data-kz-cta=home-demo]`, `[data-home-pin]`, `#home-pin-card`,
 `#home-pin-close`, `#printable-hunt`, `button.kz-scav-print`, `#mission-overlay`, `#mission-sheet`,
 `#mission-print-btn`, `.study-choice[data-choice=…]`, `.study-level-btn`, `[data-study-reveal]`, `form.kz-nl`,
-`.kz-nl-msg`, `a.kz-nl-verify`, `a.kz-nl-sample`, `dialog.kz-nl-dialog`.
+`.kz-nl-msg`, `a.kz-nl-sample`, `dialog.kz-nl-dialog`.
 
 ## Evidence
 
 `<out>/results.json` (one row per check: journey, viewport, check, PASS/WARN/FAIL, detail) and `<out>/j*-*.png`.
 Exit code 1 means at least one FAIL. WARN = Cloudflare beacon noise or an off-site request.
 Proof standards: drive the real path (tap, type, Print), compare what a parent sees with the page's own data, and
-check side effects. For a real signup (paused) the screen is not proof. Read `<out>/signup.txt`, then search the
-nyhemant@gmail.com inbox for `to:nyhemant+kzkverify-<stamp>@gmail.com` (include spam):
-- `success`: exactly ONE confirmation email must arrive within a few minutes. None = the site lied (see K2 below).
-- `verify <url>`: Kit quarantined the signup; NO email is expected until a person passes Kit's robot check.
-  Do not solve the check yourself.
+check side effects. For a real signup (paused) the screen is not proof: search the bot inbox
+hemant@mail.grokbot.com for the `+kzkverify-<stamp>` address (include spam). Exactly ONE confirmation email must arrive
+within a few minutes. None = the site lied (see K2 below). The robot-check path was removed on 2026-11-20.
 Never click a confirmation link: that adds a test address to the real KidZooKit Weekly list.
 
 Known (2026-11-19): sign-ups go through Kit's v4 API on the server, so parents should not see a robot-check page.

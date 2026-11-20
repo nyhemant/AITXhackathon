@@ -13,7 +13,6 @@ from unittest.mock import patch
 from urllib.parse import parse_qs
 
 from busyparent_agent.newsletter import (
-    KIT_FORM_SUBSCRIBE_URL,
     KIT_TIMEOUT_SECONDS,
     NEWSLETTER_LIMIT,
     NEWSLETTER_WINDOW_SECONDS,
@@ -22,7 +21,6 @@ from busyparent_agent.newsletter import (
     handle_newsletter,
     parse_form_body,
     placement_label,
-    post_kit_subscription,
     reset_newsletter_limits,
     response_for,
     valid_email,
@@ -106,86 +104,14 @@ class NewsletterProxyTests(unittest.TestCase):
         self.assertTrue(other.ok)
         self.assertEqual(len(calls), 6)
 
-    def test_forwards_only_email_address_to_kit(self):
-        captured = {}
+    def test_public_form_code_is_gone(self):
+        from busyparent_agent import newsletter
 
-        class Resp:
-            status = 200
+        for name in ("post_kit_subscription", "interpret_kit_response", "kit_guard_url", "KIT_FORM_SUBSCRIBE_URL"):
+            self.assertFalse(hasattr(newsletter, name), name)
+        self.assertNotIn("verify_url", KitPostResult.__dataclass_fields__)
 
-            def read(self, n):
-                return b'{"status":"success"}'
-
-            def __enter__(self):
-                return self
-
-            def __exit__(self, *args):
-                return False
-
-        def fake_urlopen(req, timeout=0):
-            captured["url"] = req.full_url
-            captured["data"] = req.data
-            captured["timeout"] = timeout
-            captured["headers"] = dict(req.header_items())
-            return Resp()
-
-        with patch("busyparent_agent.newsletter._open_kit", fake_urlopen):
-            posted = post_kit_subscription(EMAIL)
-
-        self.assertTrue(posted.ok)
-        self.assertFalse(posted.already)
-        self.assertEqual(captured["url"], KIT_FORM_SUBSCRIBE_URL)
-        self.assertEqual(captured["url"], "https://app.kit.com/forms/10124095/subscriptions")
-        self.assertEqual(captured["timeout"], KIT_TIMEOUT_SECONDS)
-        body = parse_qs(captured["data"].decode("ascii"))
-        self.assertEqual(body, {"email_address": [EMAIL]})
-        self.assertNotIn("website", body)
-        self.assertNotIn("placement", body)
-        joined = " ".join(f"{k}:{v}" for k, v in captured["headers"].items())
-        self.assertNotIn(EMAIL, joined)
-
-    def _open_returning(self, status: int, body: bytes, location: str | None = None):
-        headers = Message()
-        if location:
-            headers["Location"] = location
-        if 200 <= status < 300:
-            class Resp:
-                def __init__(self):
-                    self.status = status
-                    self.headers = headers
-
-                def read(self, n):
-                    return body
-
-                def __enter__(self):
-                    return self
-
-                def __exit__(self, *args):
-                    return False
-
-            return Resp()
-        return urllib.error.HTTPError(KIT_FORM_SUBSCRIBE_URL, status, "status", headers, io.BytesIO(body))
-
-    def test_kit_success_and_failure_bodies(self):
-        """ck.5.js: ok only for JSON status success (or a non-form redirect)."""
-        cases = (
-            (200, b'{"status":"success"}', None, True, False),
-            (200, b'{"status":"success","message":"You are already subscribed"}', None, True, True),
-            # Quarantined is a robot check, not a signup (2026-11-18): no email goes out until it is passed.
-            (200, b'{"status":"quarantined","url":"https://app.kit.com/guard"}', None, False, False),
-            (200, b'{"status":"failed","errors":{"email_address":["parent@example.com is invalid"]}}', None, False, False),
-            (200, b"Success! Now check your email to confirm your subscription.", None, False, False),
-            (422, b'{"status":"failed"}', None, False, False),
-            (302, b"", "https://app.kit.com/forms/10124095/subscriptions", False, False),
-            (302, b"", "https://hemant-bhangale.kit.com/thanks", True, False),
-        )
-        for status, body, location, expect_ok, expect_already in cases:
-            with self.subTest(status=status, body=body[:40], location=location):
-                opener = self._open_returning(status, body, location)
-                with patch("busyparent_agent.newsletter._open_kit", return_value=opener):
-                    posted = post_kit_subscription(EMAIL)
-                self.assertEqual(posted.ok, expect_ok)
-                self.assertEqual(posted.already, expect_already)
-
+    def test_failed_signup_logs_one_outcome_and_no_email(self):
         records: list[str] = []
 
         class Grab(logging.Handler):
@@ -262,7 +188,7 @@ class NewsletterProxyTests(unittest.TestCase):
         oops = response_for(
             NewsletterResult(ok=False, status=400, error="invalid_email"), wants_json=False
         )
-        self.assertEqual(oops["location"], "/newsletter/oops/?reason=email")
+        self.assertEqual(oops["location"], "/newsletter/try-again/?reason=email")
         down = response_for(
             NewsletterResult(ok=False, status=502, error="unavailable"), wants_json=False
         )
@@ -416,7 +342,7 @@ class NewsletterProxyTests(unittest.TestCase):
             poster=lambda _address: (_ for _ in ()).throw(AssertionError("invalid email must not forward")),
         )
         oops = response_for(bad, wants_json=False)
-        self.assertEqual(oops["location"], "/newsletter/oops/?reason=email")
+        self.assertEqual(oops["location"], "/newsletter/try-again/?reason=email")
         self.assertNotIn("@", oops["location"])
         self.assertNotIn("email_address", oops["location"])
 
@@ -483,7 +409,7 @@ class NewsletterMarkupTests(unittest.TestCase):
         hub_page = (printables / "index.html").read_text(encoding="utf-8")
         self.assertIn('data-placement="printables_hub"', hub_page)
         self.assertIn('value="printables_hub"', hub_page)
-        self.assertIn('src="/field-pack/js/newsletter-v1.js?v=5"', hub_page)
+        self.assertIn('src="/field-pack/js/newsletter-v1.js?v=6"', hub_page)
         self.assertIn('href="/field-pack/css/newsletter-v1.css?v=4"', hub_page)
         self.assertIn("For grown-ups", hub_page)
         self.assertIn(notice, hub_page)
@@ -500,7 +426,7 @@ class NewsletterMarkupTests(unittest.TestCase):
             page = (printables / slug / "index.html").read_text(encoding="utf-8")
             self.assertIn('data-placement="printable_sheet"', page, slug)
             self.assertIn('value="printable_sheet"', page, slug)
-            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=5"', page, slug)
+            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=6"', page, slug)
             self.assertIn("For grown-ups", page, slug)
             self.assertIn(notice, page, slug)
             self.assertNotIn("email service (Kit)", page, slug)
@@ -557,7 +483,7 @@ class NewsletterMarkupTests(unittest.TestCase):
             self.assertGreater(sample_at, privacy_at, path.name)
             self.assertIn(link, html, path.name)
             self.assertLess(html.find(">Privacy</a>"), sample_at, path.name)
-            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=5"', html, path.name)
+            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=6"', html, path.name)
             self.assertIn('href="/field-pack/css/newsletter-v1.css?v=4"', html, path.name)
 
         sample_path = ROOT / "static" / "newsletter" / "sample" / "index.html"
@@ -606,7 +532,7 @@ class NewsletterMarkupTests(unittest.TestCase):
         gen = (ROOT / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
         self.assertIn('href="/newsletter/sample/"', gen)
         self.assertIn("See a sample email", gen)
-        self.assertIn("newsletter-v1.js?v=5", gen)
+        self.assertIn("newsletter-v1.js?v=6", gen)
         self.assertIn("newsletter-v1.css?v=4", gen)
 
     def test_privacy_names_kit_and_keeps_the_project_name(self):
@@ -638,15 +564,14 @@ class NewsletterMarkupTests(unittest.TestCase):
         about = (ROOT / "static" / "about" / "index.html").read_text(encoding="utf-8")
         self.assertIn("Arya’s Wildlife Project", about)
         thanks = (ROOT / "static" / "newsletter" / "thanks" / "index.html").read_text(encoding="utf-8")
-        oops = (ROOT / "static" / "newsletter" / "oops" / "index.html").read_text(encoding="utf-8")
         self.assertIn('content="noindex"', thanks)
         self.assertIn("Check your inbox for “Confirm your KidZooKit weekly animal card” from KidZooKit", thanks)
         self.assertIn("<h1>You're in!</h1>", thanks)
-        self.assertIn('content="noindex"', oops)
-        self.assertIn("doesn't look quite right", oops)
+        self.assertFalse((ROOT / "static" / "newsletter" / "oops").exists())
         again = (ROOT / "static" / "newsletter" / "try-again" / "index.html").read_text(encoding="utf-8")
         self.assertIn('content="noindex"', again)
         self.assertIn("try again in a minute", again.lower())
+        self.assertIn("email address looks right", again)
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ Analytics opt-out on every request: cookie one_less_analytics=off, ?notrack=1, U
 
   python verify.py --out DIR                       # all journeys, phone + desktop
   python verify.py --only j2,j4 --out DIR          # some journeys
-  python verify.py --only j5 --real-signup --out DIR   # ONE real test signup to nyhemant+kzkverify-<stamp>@gmail.com
+  python verify.py --only j5 --real-signup --out DIR   # ONE real test signup to hemant+kzkverify-<stamp>@mail.grokbot.com
 Exit 1 when any check FAILs. Evidence: DIR/results.json + DIR/*.png.
 """
 from __future__ import annotations
@@ -365,15 +365,14 @@ def j5_newsletter(run: Run, ctx, vp, real_signup: bool, stamp: str):
                 hits.append(route.request.url)
                 route.fulfill(status=200, content_type="application/json", body=json.dumps(body))
             return handler
-        guard_url = "https://app.kit.com/forms/guards/mock-0000-test"
-        pg.route("**/api/newsletter*", fake({"ok": False, "error": "verify", "verify_url": guard_url}))
+        # A server error reply (the robot-check branch was removed 2026-11-20) says try again and keeps the box usable.
+        pg.route("**/api/newsletter*", fake({"ok": False, "error": "unavailable"}))
         email.fill("mock-only@example.invalid")
         p.act(submit)
-        msg.filter(has_text="One more step").wait_for(timeout=10000)
-        link = msg.locator("a.kz-nl-verify")
-        run.check("j5", vp, "mocked robot-check reply shows Kit's check link (no request left the browser)",
-                  link.count() == 1 and link.get_attribute("href") == guard_url and link.get_attribute("target") == "_blank"
-                  and "noopener" in (link.get_attribute("rel") or "") and email.is_enabled() and submit.is_enabled(), msg.inner_text())
+        msg.filter(has_text="try again").wait_for(timeout=10000)
+        run.check("j5", vp, "mocked error reply says try again, no robot-check link, box stays usable (no request left the browser)",
+                  msg.locator("a.kz-nl-verify").count() == 0 and "You're in" not in msg.inner_text()
+                  and email.is_enabled() and submit.is_enabled(), msg.inner_text())
         pg.unroute("**/api/newsletter*")
         pg.route("**/api/newsletter*", fake({"ok": True}))
         p.act(submit)
@@ -387,22 +386,13 @@ def j5_newsletter(run: Run, ctx, vp, real_signup: bool, stamp: str):
         run.check("j5", vp, "mocked signup: both posts answered in the browser", len(hits) == 2, hits)
         p.shot("j5-mock-signup")
     else:
-        addr = f"nyhemant+kzkverify-{stamp}@gmail.com"
+        addr = f"hemant+kzkverify-{stamp}@mail.grokbot.com"  # owner rule 2026-11-19: never nyhemant@gmail.com
         email.fill(addr)
         p.act(submit)
-        msg.filter(has_text=re.compile(r"You're|already|wrong|One more step")).wait_for(timeout=20000)
+        msg.filter(has_text=re.compile(r"You're|already|wrong|try again")).wait_for(timeout=20000)
         text = msg.inner_text()
-        guard = msg.locator("a.kz-nl-verify")
-        if "One more step" in text:
-            # Kit quarantined the signup (seen on live 2026-11-18): the box must say so and link Kit's check.
-            href = guard.get_attribute("href") if guard.count() else ""
-            ok = bool(re.fullmatch(r"https://app\.kit\.com/forms/guards/[A-Za-z0-9-]{8,80}", href or ""))
-            run.check("j5", vp, f"real signup {addr}: Kit asked for a robot check, box shows the check link", ok, f"{text} href={href}")
-            run.check("j5", vp, "robot-check reply does not lock the box", email.is_enabled() and submit.is_enabled())
-            (run.out / "signup.txt").write_text(f"{addr}\nverify {href}\nEXPECT: no email until the check is passed\n")
-        else:
-            run.check("j5", vp, f"real signup {addr} says check inbox", "Check your inbox to confirm" in text, text)
-            run.check("j5", vp, "after signup the form locks", email.is_disabled() and submit.is_disabled())
+        run.check("j5", vp, f"real signup {addr} says check inbox", "Check your inbox" in text, text)
+        run.check("j5", vp, "after signup the form locks", email.is_disabled() and submit.is_disabled())
             (run.out / "signup.txt").write_text(f"{addr}\nsuccess\nEXPECT: exactly 1 confirmation email; check Gmail\n")
         p.shot("j5-signup")
     p.hygiene("j5", "newsletter")
@@ -455,22 +445,25 @@ def j7_trust(run: Run, ctx, vp):
     run.check("j7", vp, "404 page offers a way back", back.count() > 0, back.count())
     p.shot("j7-404")
     p.errors[:] = [e for e in p.errors if "status of 404" not in e]  # the deliberate 404
-    for path in ("/newsletter/thanks/", "/newsletter/oops/?reason=email", "/newsletter/try-again/", "/newsletter/one-more-step/"):
+    for path in ("/newsletter/thanks/", "/newsletter/try-again/"):
         resp = p.go(path, wait="load")
         tt = visible_text(pg)
         run.check("j7", vp, f"{path} answers 200 with a way back", resp.status == 200 and pg.get_by_role("link").count() > 0, tt[:80])
-    # No-JS error pages name one cause each (K1, 2026-11-18).
-    oops_email = p.go("/newsletter/oops/?reason=email", wait="load") and visible_text(pg)
-    run.check("j7", vp, "bad-address page does not claim a server error", "look quite right" in oops_email and "went wrong" not in oops_email, oops_email[:120])
+    # 2026-11-20: one no-JS error page; the old robot-check and bad-address pages forward.
+    for old, dest in (("/newsletter/one-more-step/", "/printables/"), ("/newsletter/oops/?reason=email", "/newsletter/try-again/?reason=email")):
+        r = ctx.request.get(run.url(old), max_redirects=0)
+        loc = r.headers.get("location", "")
+        run.check("j7", vp, f"{old.split('?')[0]} is a 301 to {dest.split('?')[0]}", r.status == 301 and loc.startswith(dest.split("?")[0])
+                  and ("reason=email" in loc) == ("reason=email" in dest), (r.status, loc))
     again = p.go("/newsletter/try-again/", wait="load") and visible_text(pg)
-    run.check("j7", vp, "server-error page does not blame the address", "went wrong" in again and "look quite right" not in again, again[:120])
+    run.check("j7", vp, "try-again page names both causes plainly", "didn't go through" in again and "email address" in again, again[:120])
     r = ctx.request.get(run.url("/start/"))
     h = r.headers
     run.check("j7", vp, "security headers on /start/", all(k in h for k in ("content-security-policy", "x-content-type-options", "referrer-policy"))
               and "frame-ancestors 'none'" in h.get("content-security-policy", ""), [k for k in ("content-security-policy", "x-content-type-options", "referrer-policy") if k not in h])
-    # No-JS fallback: a bad address posts to /api/newsletter and comes back to the oops page (no Kit call).
+    # No-JS fallback: a bad address posts to /api/newsletter and comes back to the try-again page (no Kit call).
     r = ctx.request.post(run.base + "/api/newsletter", form={"email_address": "nope", "placement": "printables_hub"}, max_redirects=0)
-    run.check("j7", vp, "no-JS bad address -> 303 oops?reason=email", r.status == 303 and r.headers.get("location") == "/newsletter/oops/?reason=email",
+    run.check("j7", vp, "no-JS bad address -> 303 try-again?reason=email", r.status == 303 and r.headers.get("location") == "/newsletter/try-again/?reason=email",
               (r.status, r.headers.get("location")))
     p.hygiene("j7", "trust")
     pg.close()
@@ -490,7 +483,7 @@ def main():
     ap.add_argument("--only", default="")
     ap.add_argument("--viewports", default="phone,desktop")
     ap.add_argument("--real-signup", action="store_true",
-                    help="PAUSED: ONE real Kit signup to nyhemant+kzkverify-<stamp>@gmail.com (phone only); also needs "
+                    help="PAUSED: ONE real Kit signup to hemant+kzkverify-<stamp>@mail.grokbot.com (phone only); also needs "
                          f"{SIGNUP_ENV}=yes. Default mocks the signup in the browser.")
     a = ap.parse_args()
     if a.real_signup and os.environ.get(SIGNUP_ENV) != "yes":

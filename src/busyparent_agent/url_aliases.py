@@ -54,6 +54,13 @@ PATH_REDIRECTS: dict[str, str] = {
     f"{FIELD_PACK_PREFIX}/app.html": PLACES_PATH,
     f"{FIELD_PACK_PREFIX}/print": PRINT_TARGET,
     f"{FIELD_PACK_PREFIX}/print/": PRINT_TARGET,
+    # 2026-11-20: the robot-check page is gone (sign-ups use Kit's API since #477); an old
+    # link lands on the printables hub, where the weekly email box is.
+    "/newsletter/one-more-step": "/printables/",
+    "/newsletter/one-more-step/": "/printables/",
+    # One error page now: /newsletter/oops/ (bad address) folds into /newsletter/try-again/.
+    "/newsletter/oops": "/newsletter/try-again/",
+    "/newsletter/oops/": "/newsletter/try-again/",
 }
 
 
