@@ -430,7 +430,8 @@ def j6_print_and_qr(run: Run, ctx, vp):
     run.check("j6", vp, "/ is a 301 to /start/", old.status == 301 and urlsplit(old.headers.get("location", "")).path == "/start/", (old.status, old.headers.get("location")))
     dup = ctx.request.get(run.url("/field-pack/zoos/index.html?utm_source=kzv"), max_redirects=0)
     run.check("j6", vp, "a directory's /index.html is a 301 to the directory (query kept)",
-              dup.status == 301 and dup.headers.get("location", "").endswith("/field-pack/zoos/?utm_source=kzv"),
+              dup.status == 301 and "/field-pack/zoos/?utm_source=kzv" in dup.headers.get("location", "")
+              and "index.html" not in dup.headers.get("location", ""),
               (dup.status, dup.headers.get("location")))
     pg.close()
 
