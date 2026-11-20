@@ -39,8 +39,12 @@ class KitApiSubscribeTests(unittest.TestCase):
         self._env = {k: os.environ.get(k) for k in ("KZK_KIT_API_KEY", "KZK_KIT_FORM_ID", "KZK_KIT_CONFIG")}
         for key in self._env:
             os.environ.pop(key, None)
+        # Never read the real ~/.kidzookit-data/kit.json (it exists on the production box).
+        self._empty = tempfile.TemporaryDirectory()
+        os.environ["KZK_KIT_CONFIG"] = str(Path(self._empty.name) / "no-kit.json")
 
     def tearDown(self):
+        self._empty.cleanup()
         for key, value in self._env.items():
             if value is None:
                 os.environ.pop(key, None)
