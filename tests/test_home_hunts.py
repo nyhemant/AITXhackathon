@@ -210,17 +210,18 @@ class HomeHuntsTests(unittest.TestCase):
         self.assertIn('data-kz-cta="home-map"', self.html)
         self.assertIn('id="home-pin-list"', self.html)
         self.assertIn("scroll-snap-type: x mandatory", self.css)
+        # 2026-11-20: the phone-only AMNH print link is gone; "Pick your zoo or aquarium" is the first job.
+        self.assertNotIn("hx-mapprint", self.html)
+        self.assertIn('<p class="hx-maphint">Tap a pin to print</p>', self.html)
         self.assertIn(
-            '<a class="hx-mapprint" data-kz-cta="home-map" href="/field-pack/amnh/#printable-hunt">Print a scavenger hunt</a>',
+            '<a class="hx-pick" data-kz-cta="home-pick" href="/field-pack/?find=1">Pick your zoo or aquarium</a>',
             self.html,
         )
-        self.assertIn('<p class="hx-maphint">Tap a pin to print</p>', self.html)
         hero = (START / "hero-common-v1.css").read_text(encoding="utf-8")
-        self.assertIn(".hx-mapprint { display: none; }", hero)
+        self.assertNotIn(".hx-maphint { display: none; }", hero)
         self.assertIn("@media (max-width: 640px)", hero)
-        self.assertIn(".hx-maphint { display: none; }", hero)
-        self.assertIn("min-height: 44px", hero)
-        self.assertIn("/start/hero-common-v1.css?v=2", self.html)
+        self.assertIn("min-height: 48px", hero)
+        self.assertIn("/start/hero-common-v1.css?v=3", self.html)
 
     def test_places_map_is_full_width_without_start_here_box(self):
         """The Start here side panel is gone; sample venue cards stay under the map."""
