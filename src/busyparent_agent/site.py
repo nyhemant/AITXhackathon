@@ -32,14 +32,23 @@ def cookie_parent_domain(host_header: str | None) -> str | None:
 def host_redirect_location(host_header: str | None, request_target: str) -> str | None:
     """Absolute 301 Location when Host is a legacy or www alias.
 
-    Preserves path and query. Skips health probes. ``request_target`` is
+    Preserves path and query. Skips health probes. On www.kidzookit.com the home
+    (``/``, ``/index.html``, slashless ``/start``) goes straight to ``/start/``. ``request_target`` is
     ``handler.path`` (path + optional query).
     """
     path = urlsplit(request_target).path or "/"
     if path in HEALTH_PATHS:
         return None
     host = public_host(host_header)
-    if host in LEGACY_REDIRECT_HOSTS or host in WWW_REDIRECT_HOSTS:
+    if host in LEGACY_REDIRECT_HOSTS:
+        target = request_target if request_target.startswith("/") else f"/{request_target}"
+        return f"{PUBLIC_SITE}{target}"
+    if host in WWW_REDIRECT_HOSTS:
+        # 2026-11-20: the www home goes to /start/ in one hop (it used to hop to apex /, then /start/).
+        # Same rule as https_upgrade_location. 1less.app hosts above keep their exact old behavior.
+        if path in HOME_PATHS or path == "/start":
+            query = urlsplit(request_target).query
+            return f"{PUBLIC_SITE}/start/" + (f"?{query}" if query else "")
         target = request_target if request_target.startswith("/") else f"/{request_target}"
         return f"{PUBLIC_SITE}{target}"
     return None
