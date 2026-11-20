@@ -1000,6 +1000,50 @@ def pictures_link_label(url: str, explicit: str = "") -> str:
     return f"More photos at {source}"
 
 
+def map_webp(img: str, width: int) -> str:
+    """Smaller webp twin of a committed /field-pack/media/maps/<slug>.jpg (2026-11-20), else the jpg itself.
+
+    ``<slug>-640-v1.webp`` is the page thumbnail, ``<slug>-1400-v1.webp`` the enlarged view. The jpg stays for
+    print (print-maps.js, venue-data print_map) and as the og/fallback file.
+    """
+    prefix = "/field-pack/media/maps/"
+    if not img.startswith(prefix) or not img.endswith(".jpg") or width not in (640, 1400):
+        return img
+    twin = f"{img[:-4]}-{width}-v1.webp"
+    return twin if (FIELD / twin[len("/field-pack/"):]).is_file() else img
+
+
+_MAP_THUMB_RE = re.compile(r'(<img class="seo-map-thumb" src=")(/field-pack/media/maps/[a-z0-9-]+\.jpg)(")')
+_MAP_PREVIEW_RE = re.compile(r'(<img src=")(/field-pack/media/maps/[a-z0-9-]+\.jpg)(" alt="Enlarged visitor map")( width="\d+" height="\d+")?')
+
+
+def add_map_webp(html: str) -> str:
+    """Point a committed venue page's map thumbnail and enlarged view at the webp twins. Idempotent."""
+    html = _MAP_THUMB_RE.sub(lambda m: m.group(1) + map_webp(m.group(2), 640) + m.group(3), html)
+
+    def preview(m):
+        src = map_webp(m.group(2), 1400)
+        attrs = m.group(4) or ""
+        if attrs and src != m.group(2):
+            attrs = _local_img_size_attrs(src) or attrs
+        return m.group(1) + src + m.group(3) + attrs
+
+    return _MAP_PREVIEW_RE.sub(preview, html)
+
+
+def write_map_webp() -> int:
+    """``--map-webp``: patch every committed venue page without regenerating it."""
+    n = 0
+    for path in sorted((STATIC / "field-pack").glob("*/index.html")):
+        html = path.read_text(encoding="utf-8")
+        new = add_map_webp(html)
+        if new != html:
+            path.write_text(new, encoding="utf-8")
+            n += 1
+    print(f"  map webp twins linked on {n} venue pages")
+    return 0
+
+
 def _local_img_size_attrs(src: str) -> str:
     """' width="W" height="H"' for a local /field-pack/ image (2026-10-29 CLS hint); '' if unknown."""
     try:
@@ -3026,7 +3070,7 @@ def map_card_html(mission_venue: dict) -> str:
     <div class="seo-map-card seo-map-card-image seo-map-has-preview no-print" data-map-preview>
       <button type="button" class="seo-map-enlarge-hit" aria-expanded="false" aria-controls="seo-map-preview-panel" aria-label="Enlarge visitor map">
         <span class="seo-map-thumb-wrap">
-          <img class="seo-map-thumb" src="{esc(img)}" alt="Visitor map preview" width="640" height="400" loading="lazy" decoding="async"{refpol} />
+          <img class="seo-map-thumb" src="{esc(map_webp(img, 640))}" alt="Visitor map preview" width="640" height="400" loading="lazy" decoding="async"{refpol} />
           <span class="seo-map-hover-hint" aria-hidden="true">Tap to enlarge</span>
         </span>
       </button>
@@ -3038,7 +3082,7 @@ def map_card_html(mission_venue: dict) -> str:
       </div>
       <div class="seo-map-preview" id="seo-map-preview-panel" role="dialog" aria-label="Enlarged visitor map" hidden>
         <button type="button" class="seo-map-preview-close" aria-label="Close enlarged map">×</button>
-        <img src="{esc(img)}" alt="Enlarged visitor map"{_local_img_size_attrs(img)} loading="lazy" decoding="async"{refpol} />
+        <img src="{esc(map_webp(img, 1400))}" alt="Enlarged visitor map"{_local_img_size_attrs(map_webp(img, 1400))} loading="lazy" decoding="async"{refpol} />
         <span class="seo-map-preview-cap">
           {esc(attr)}
           · <a class="seo-map-preview-ext" href="{esc(href)}" target="_blank" rel="noopener noreferrer">{esc(ext_label)}</a>
@@ -7114,6 +7158,8 @@ def _csv_flag(args: list[str], flag: str) -> set[str]:
 def main() -> int:
     if "--place-print-newsletter" in sys.argv[1:]:
         return write_place_print_newsletter()
+    if "--map-webp" in sys.argv[1:]:
+        return write_map_webp()
     if "--place-photos" in sys.argv[1:]:
         return apply_listed_place_photos()
     only_venues = _csv_flag(sys.argv[1:], "--only")

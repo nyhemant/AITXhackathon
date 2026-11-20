@@ -1240,7 +1240,11 @@ def _safe_pwa_root_file(url_path: str) -> Path | None:
     return candidate if candidate.is_file() else None
 
 
-VERSIONED_ASSET_CACHE = "public, max-age=86400"
+# 2026-11-20: a ?v=N URL changes whenever its file changes, so it may be kept for 30 days (was 1 day).
+VERSIONED_ASSET_CACHE = "public, max-age=2592000"
+# An image whose file name carries -vN (dallas-zoo-640-v1.webp) or whose URL has ?v= gets the same 30 days.
+_VERSIONED_NAME_RE = re.compile(r"-v\d+\.(?:webp|png|jpe?g|gif|svg|avif)$", re.I)
+_IMAGE_SUFFIXES = {".webp", ".png", ".jpg", ".jpeg", ".gif", ".svg", ".avif"}
 _VERSIONED_SUFFIXES = {".css", ".js"}
 
 
@@ -1273,6 +1277,11 @@ def _static_cache_control(request_path: str, file_path: Path) -> str:
         return "no-cache"
     if _is_versioned_asset(request_path, file_path):
         return VERSIONED_ASSET_CACHE
+    if file_path.suffix.lower() in _IMAGE_SUFFIXES:
+        if _VERSIONED_NAME_RE.search(file_path.name):
+            return VERSIONED_ASSET_CACHE
+        if any(p.partition("=")[0] == "v" and p.partition("=")[2] for p in urlsplit(request_path).query.split("&")):
+            return VERSIONED_ASSET_CACHE
     if file_path.suffix.lower() in {".css", ".js", ".html", ".htm"}:
         return "no-cache"
     return "public, max-age=86400"
