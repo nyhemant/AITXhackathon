@@ -371,8 +371,11 @@ def j5_newsletter(run: Run, ctx, vp, real_signup: bool, stamp: str):
         pg.route("**/api/newsletter*", fake({"ok": True}))
         p.act(submit)
         msg.filter(has_text="You're in").wait_for(timeout=10000)
-        run.check("j5", vp, "mocked success says check inbox and locks the box",
-                  "Check your inbox to confirm" in msg.inner_text() and email.is_disabled() and submit.is_disabled(), msg.inner_text())
+        run.check("j5", vp, "mocked success names the confirmation email and locks the box",
+                  "Confirm your KidZooKit weekly animal card" in msg.inner_text()
+                  and "from KidZooKit" in msg.inner_text()
+                  and "You're in" in msg.inner_text()
+                  and email.is_disabled() and submit.is_disabled(), msg.inner_text())
         pg.unroute("**/api/newsletter*")
         run.check("j5", vp, "mocked signup: both posts answered in the browser", len(hits) == 2, hits)
         p.shot("j5-mock-signup")
@@ -431,8 +434,9 @@ def j7_trust(run: Run, ctx, vp):
     t = visible_text(pg)
     run.check("j7", vp, "/privacy/ names the contact address", resp.status == 200 and "ask@kidzookit.com" in t)
     run.check("j7", vp, "/privacy/ covers the weekly email", "email" in t.lower() and ("unsubscribe" in t.lower() or "Kit" in t))
-    run.check("j7", vp, "/privacy/ names Kit's robot check and the KidZooKit sender",
-              "reCAPTCHA" in t and "“KidZooKit” at ask@kidzookit.com" in t and "1less.app" not in t.lower())
+    run.check("j7", vp, "/privacy/ names the KidZooKit sender and no longer mentions a robot check",
+              "“KidZooKit” at ask@kidzookit.com" in t and "reCAPTCHA" not in t and "robot check" not in t
+              and "1less.app" not in t.lower())
     resp = p.go("/no-such-page-kzv/", wait="load")
     run.check("j7", vp, "unknown page answers 404", resp.status == 404, resp.status)
     back = pg.locator("a[href]").filter(has_text=re.compile(r"start|home|cards|places|KidZooKit", re.I))
