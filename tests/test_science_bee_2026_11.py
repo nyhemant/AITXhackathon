@@ -291,7 +291,7 @@ class RoutingAndSitemapTests(unittest.TestCase):
         self.assertEqual(r._code, 200)
         self.assertEqual(r._headers.get("Content-Type"), "application/pdf")
         r = _req("/science-bee/sb-game-v1.js?v=1")
-        self.assertEqual(r._headers.get("Cache-Control"), "public, max-age=86400")
+        self.assertEqual(r._headers.get("Cache-Control"), "public, max-age=2592000")  # versioned: 30 days (2026-11-20)
         self.assertEqual(_req("/science-bee/../web.py")._code, 404)
         self.assertEqual(_req("/science-bee/nope/")._code, 404)
         h = _req("/science-bee/", "HEAD")
