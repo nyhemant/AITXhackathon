@@ -403,6 +403,13 @@ VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "23"
 FP_ANALYTICS_JS_VER = "2"
 MISSION_UI_JS_VER = "21"
+# K4 (2026-11-20): one print dialog per quick double tap. The 10 scavenger-hunt pages that stay
+# byte-identical to their freeze digests do not get the tag (their HTML must not change).
+PRINT_GUARD_TAG = '<script src="/field-pack/js/print-guard-v1.js?v=1"></script>\n  '
+PRINT_GUARD_SKIP = frozenset({
+    "bronx-zoo", "austin-zoo", "national-zoo", "lincoln-park-zoo", "shedd-aquarium",
+    "seattle-aquarium", "st-louis-zoo", "fort-worth-zoo", "san-antonio-zoo", "dallas-zoo",
+})
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
 FEATURED_CARD_IDS = (
@@ -3769,6 +3776,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
     scav_block = scav_top_block(vid) if vid in BLOCK_SLUGS else ""
     scav_css = scav_top_css_tag(vid) if vid in BLOCK_SLUGS else ""
     scav_js = scav_top_script_tag(vid) if vid in BLOCK_SLUGS else ""
+    print_guard = "" if vid in PRINT_GUARD_SKIP else PRINT_GUARD_TAG
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -3876,7 +3884,7 @@ def render_mission_venue_page(v: dict, mission_venue: dict) -> str:
   <script src="/field-pack/js/fp-analytics.js?v={FP_ANALYTICS_JS_VER}"></script>
   <script src="/field-pack/js/print-maps.js?v=5"></script>
   <script src="/field-pack/js/mission/mission-engine.js?v=14"></script>
-  <script src="/field-pack/js/mission/mission-ui.js?v={MISSION_UI_TEST_VER if vid in BLOCK_SLUGS else MISSION_UI_JS_VER}"></script>
+  {print_guard}<script src="/field-pack/js/mission/mission-ui.js?v={MISSION_UI_TEST_VER if vid in BLOCK_SLUGS else MISSION_UI_JS_VER}"></script>
   {scav_js}
 </body>
 </html>
