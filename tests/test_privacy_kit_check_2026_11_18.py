@@ -1,4 +1,4 @@
-"""2026-11-18: /privacy/ tells parents about Kit's robot check and today's confirmation sender."""
+"""2026-11-18/19: /privacy/ names the KidZooKit confirmation sender; the old reCAPTCHA line is gone."""
 import re
 import unittest
 from pathlib import Path
@@ -11,9 +11,12 @@ class PrivacyKitCheck(unittest.TestCase):
         self.html = PAGE.read_text(encoding="utf-8")
         self.text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>|<!--.*?-->", " ", self.html, flags=re.S))
 
-    def test_names_recaptcha_and_sender(self):
-        self.assertIn("Kit may show a quick robot check (Google reCAPTCHA)", self.text)
+    def test_names_sender_and_drops_the_old_recaptcha_line(self):
+        # 2026-11-19: sign-ups go through Kit's API, so the #471 reCAPTCHA line is no longer true.
+        self.assertNotIn("reCAPTCHA", self.html)
+        self.assertNotIn("robot check", self.text)
         self.assertIn("The confirmation email comes from “KidZooKit” at ask@kidzookit.com", self.text)
+        self.assertIn("Kit emails you a confirmation first. That is double opt-in", self.text)
 
     def test_sender_permanent_shielded_and_not_a_link(self):
         # 2026-11-18 10:03 PM CT: Kit sender set to KidZooKit <ask@kidzookit.com>; the temporary 1Less line is gone.

@@ -4,8 +4,9 @@
  * "See a sample email" opens /newsletter/sample/ in a dialog. With JS off, that href is the page.
  * Events go through FPTrack / OneLessAnalytics.track so the opt-out is kept.
  * Never send the email address, or any hash of it, to analytics.
- * Kit can quarantine a signup ({error:"verify", verify_url}): nothing is sent until a person passes
- * Kit's robot check, so that reply shows a link to the check, never "You're in".
+ * Sign-ups go through the site's server (Kit's API), so parents should not see a robot-check page.
+ * The success line names the confirmation email's subject and the KidZooKit sender, not the email service.
+ * A leftover {error:"verify", verify_url} reply still shows a check link and never "You're in".
  */
 (function () {
   "use strict";
@@ -334,7 +335,7 @@
               "ok",
               already
                 ? "You're already on the list. Thanks!"
-                : "You're in! Check your inbox to confirm. (Confirmed before? Nothing more to do.) The next animal arrives soon."
+                : "You're in! Check your inbox for \u201CConfirm your KidZooKit weekly animal card\u201D from KidZooKit. (Confirmed before? Nothing more to do.) The next animal arrives soon."
             );
             storageSet(SUB_KEY);
             if (!already) track("sign_up", placement);

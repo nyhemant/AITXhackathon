@@ -71,10 +71,9 @@ nyhemant@gmail.com inbox for `to:nyhemant+kzkverify-<stamp>@gmail.com` (include 
   Do not solve the check yourself.
 Never click a confirmation link: that adds a test address to the real KidZooKit Weekly list.
 
-Known (2026-11-18): Kit quarantines every signup forwarded from imini's IP (`{"status":"quarantined","url":
-"https://app.kit.com/forms/guards/<id>"}`); the box now shows "One more step … Do the check". Kit's confirmation
-email for the KZK form comes from "KidZooKit <ask@kidzookit.com>", subject "Confirm your KidZooKit weekly animal
-card" (Kit account setting, changed 2026-11-18 10:03 PM CT; before that it came from "1Less <ask@1less.app>").
+Known (2026-11-19): sign-ups go through Kit's v4 API on the server, so parents should not see a robot-check page.
+The box says to look for "Confirm your KidZooKit weekly animal card" from KidZooKit. Live newsletter signups stay
+paused unless the owner sets KZK_LIVE_SIGNUP_APPROVED=yes (and then only to an approved test address).
 
 ## Cleanup
 
