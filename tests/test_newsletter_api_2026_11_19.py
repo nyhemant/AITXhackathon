@@ -88,11 +88,11 @@ class KitApiSubscribeTests(unittest.TestCase):
             self.assertFalse(api_subscribe("parent@example.com", KIT_FORM_ID, "kit-test-key").ok)
 
     def test_missing_key_does_not_call_kit_or_the_public_form(self):
-        with patch.object(newsletter, "_post_kit_api") as api, patch.object(newsletter, "post_kit_subscription") as public:
+        with patch.object(newsletter, "_post_kit_api") as api:
             result = deliver_signup("parent@example.com")
         self.assertFalse(result.ok)
         api.assert_not_called()
-        public.assert_not_called()
+        self.assertFalse(hasattr(newsletter, "post_kit_subscription"))  # public form path removed 2026-11-20
 
     def test_handler_uses_the_api_path_and_keeps_honest_errors(self):
         with patch.object(newsletter, "deliver_signup", return_value=KitPostResult(ok=True)) as deliver:

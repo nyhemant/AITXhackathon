@@ -13,18 +13,6 @@ unless ``KZK_KIT_CONFIG`` names another path. The form id may be overridden
 by ``KZK_KIT_FORM_ID`` or ``form_id`` in the same file; otherwise it is
 10124095. Nothing here logs an address or the key.
 
-Source for the URL (checked 2026-10-31): the live embed script
-https://hemant-bhangale.kit.com/ca4bfbdb8a/index.js
-contains
-  <form action="https://app.kit.com/forms/10124095/subscriptions" method="post">
-  <input name="email_address" type="email">
-The hosted page https://hemant-bhangale.kit.com/ca4bfbdb8a loads that script,
-which loads https://f.convertkit.com/ckjs/ck.5.js (X-CKJS-Version 6).
-That script POSTs the form with Accept: application/json and treats the
-reply as success only when response.ok and JSON status is "success"
-(or "quarantined", which it also sends down the success path). Any other
-status, including "failed", is an error. A non-JSON redirect is judged
-by its Location: back to this form's subscribe URL is not success.
 This module never logs an email address and does not write anything to disk.
 The signup limit is an in-memory map from visitor IP to recent attempt times
 (see newsletter_rate_limited). The map is cleared when the process restarts.
@@ -49,8 +37,6 @@ import urllib.request
 logger = logging.getLogger("busyparent_agent.newsletter")
 
 KIT_FORM_ID = "10124095"
-# Public, unauthenticated form subscribe. See module docstring for the source.
-KIT_FORM_SUBSCRIBE_URL = "https://app.kit.com/forms/10124095/subscriptions"
 KIT_TIMEOUT_SECONDS = 8
 KIT_USER_AGENT = "KidZooKitNewsletter/1"
 
@@ -72,9 +58,6 @@ _EMAIL_RE = re.compile(
     r"(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$"
 )
 
-# Kit's "one more step" page (reCAPTCHA) for a quarantined signup. Only this exact shape is passed on.
-KIT_GUARD_RE = re.compile(r"https://app\.kit\.com/forms/guards/[A-Za-z0-9-]{8,80}")
-
 _lock = threading.Lock()
 _hits: dict[str, deque[float]] = {}
 
@@ -83,8 +66,6 @@ _hits: dict[str, deque[float]] = {}
 class KitPostResult:
     ok: bool
     already: bool = False
-    # Set when Kit quarantined the signup: no email goes out until a person passes this check.
-    verify_url: str = ""
 
 
 @dataclass(frozen=True)
@@ -93,7 +74,6 @@ class NewsletterResult:
     status: int
     error: str = ""
     already: bool = False
-    verify_url: str = ""
 
 
 Poster = Callable[[str], KitPostResult]
@@ -209,8 +189,6 @@ def _parse_multipart(raw: bytes, content_type: str) -> dict[str, str]:
     return out
 
 
-_SUCCESS_STATUSES = frozenset({"success"})
-_REDIRECT_STATUSES = frozenset({301, 302, 303, 307, 308})
 
 
 
@@ -281,130 +259,6 @@ class _StopRedirect(urllib.request.HTTPRedirectHandler):
 def _open_kit(request: urllib.request.Request, timeout: float):
     opener = urllib.request.build_opener(_StopRedirect)
     return opener.open(request, timeout=timeout)
-
-
-def _json_object(raw: bytes) -> dict | None:
-    text = raw.decode("utf-8", "replace").strip()
-    if not text or text[0] not in "{[":
-        return None
-    try:
-        data = json.loads(text)
-    except json.JSONDecodeError:
-        return None
-    return data if isinstance(data, dict) else None
-
-
-def _header_value(headers, name: str) -> str | None:
-    if headers is None:
-        return None
-    getter = getattr(headers, "get", None)
-    if getter is None:
-        return None
-    value = getter(name)
-    if not value:
-        value = getter(name.lower())
-    if not value:
-        return None
-    return str(value).strip() or None
-
-
-def kit_guard_url(value: object) -> str:
-    """Kit's guard page URL when ``value`` is exactly one, else ``""``."""
-    if not isinstance(value, str):
-        return ""
-    candidate = value.strip()
-    return candidate if KIT_GUARD_RE.fullmatch(candidate) else ""
-
-
-def _redirect_means_success(location: str | None) -> bool:
-    """True when Kit sent the visitor somewhere other than this subscribe URL."""
-    if not location:
-        return False
-    lowered = location.strip().lower()
-    if not lowered or lowered.startswith(("javascript:", "data:")):
-        return False
-    if "status=failed" in lowered or "status=error" in lowered:
-        return False
-    bare = lowered.split("#", 1)[0].split("?", 1)[0].rstrip("/")
-    subscribe = KIT_FORM_SUBSCRIBE_URL.lower().rstrip("/")
-    if bare == subscribe or bare.endswith(f"/forms/{KIT_FORM_ID}/subscriptions"):
-        return False
-    if "/forms/guards/" in bare:
-        # A guard (robot check) page is not a signup: nothing is sent until it is passed.
-        return False
-    return True
-
-
-def interpret_kit_response(status: int, body: bytes, location: str | None = None) -> KitPostResult:
-    """Read Kit's reply: JSON status, otherwise the redirect target.
-
-    "quarantined" is NOT a signup. Kit then answers with a guard URL ("One more step:
-    please complete this security check", reCAPTCHA) and sends no confirmation email
-    until a person passes it. ck.5.js sends the visitor to that page; this proxy passes
-    the URL back to the browser (KitPostResult.verify_url). Seen live 2026-11-18: every
-    signup forwarded from the server was quarantined, so the old "treat as success"
-    told parents to check an inbox that never got an email.
-
-    ck.5.js (fetched 2026-10-31 from https://f.convertkit.com/ckjs/ck.5.js):
-      if (!response.ok) error
-      switch ((await response.json()).status) {
-        case "success": success
-        case "quarantined": success (after the guard)
-        default: error  // includes "failed"
-      }
-    A 3xx with no JSON status is success only when Location is not this form.
-    """
-    payload = _json_object(body)
-    if payload is not None and "status" in payload:
-        state = str(payload.get("status") or "").strip().lower()
-        if 200 <= status < 300 and state == "quarantined":
-            return KitPostResult(ok=False, verify_url=kit_guard_url(payload.get("url")))
-        if 200 <= status < 300 and state in _SUCCESS_STATUSES:
-            text = body.decode("utf-8", "replace").lower()
-            already = state == "success" and (
-                "already subscribed" in text
-                or "already a subscriber" in text
-                or "already on the list" in text
-            )
-            return KitPostResult(ok=True, already=already)
-        return KitPostResult(ok=False)
-    if status in _REDIRECT_STATUSES and kit_guard_url(location):
-        return KitPostResult(ok=False, verify_url=kit_guard_url(location))
-    if status in _REDIRECT_STATUSES and _redirect_means_success(location):
-        return KitPostResult(ok=True)
-    return KitPostResult(ok=False)
-
-
-def post_kit_subscription(email: str, *, timeout: float = KIT_TIMEOUT_SECONDS) -> KitPostResult:
-    """POST email_address to Kit's public form. The address is not logged."""
-    payload = urllib.parse.urlencode({"email_address": email}).encode("ascii")
-    request = urllib.request.Request(
-        KIT_FORM_SUBSCRIBE_URL,
-        data=payload,
-        method="POST",
-        headers={
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Accept": "application/json",
-            "X-CKJS-Version": "6",
-            "User-Agent": KIT_USER_AGENT,
-        },
-    )
-    try:
-        with _open_kit(request, timeout) as response:
-            status = int(getattr(response, "status", None) or getattr(response, "code", 200) or 200)
-            raw = response.read(16384)
-            location = _header_value(getattr(response, "headers", None), "Location")
-    except urllib.error.HTTPError as exc:
-        status = int(exc.code)
-        try:
-            raw = exc.read(16384)
-        except Exception:
-            raw = b""
-        location = _header_value(getattr(exc, "headers", None), "Location")
-    except (urllib.error.URLError, TimeoutError, OSError):
-        return KitPostResult(ok=False)
-    return interpret_kit_response(status, raw, location)
-
 
 
 def _post_kit_api(url: str, body: dict, api_key: str, timeout: float) -> int:
@@ -505,9 +359,6 @@ def handle_newsletter(
     except Exception:
         _log("unavailable", placement)
         return NewsletterResult(ok=False, status=502, error="unavailable")
-    if not posted.ok and posted.verify_url:
-        _log("verify", placement)
-        return NewsletterResult(ok=False, status=200, error="verify", verify_url=posted.verify_url)
     if posted.ok and posted.already:
         _log("already", placement)
         return NewsletterResult(ok=True, status=200, already=True)
@@ -520,15 +371,7 @@ def handle_newsletter(
 
 def response_for(result: NewsletterResult, *, wants_json: bool) -> dict:
     """HTTP shape for the fetch path (JSON) or a no-JS form post (303)."""
-    if result.error == "verify" and not kit_guard_url(result.verify_url):
-        result = NewsletterResult(ok=False, status=502, error="unavailable")
     if wants_json:
-        if result.error == "verify":
-            return {
-                "kind": "json",
-                "status": 200,
-                "body": {"ok": False, "error": "verify", "verify_url": result.verify_url},
-            }
         if result.ok:
             body: dict = {"ok": True}
             if result.already:
@@ -542,8 +385,5 @@ def response_for(result: NewsletterResult, *, wants_json: bool) -> dict:
     if result.ok:
         return {"kind": "redirect", "status": 303, "location": "/newsletter/thanks/"}
     if result.error == "invalid_email":
-        return {"kind": "redirect", "status": 303, "location": "/newsletter/oops/?reason=email"}
-    if result.error == "verify":
-        # Kit's check needs JavaScript, and form-action 'self' blocks a redirect to Kit.
-        return {"kind": "redirect", "status": 303, "location": "/newsletter/one-more-step/"}
+        return {"kind": "redirect", "status": 303, "location": "/newsletter/try-again/?reason=email"}
     return {"kind": "redirect", "status": 303, "location": "/newsletter/try-again/"}

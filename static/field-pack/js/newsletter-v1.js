@@ -6,7 +6,6 @@
  * Never send the email address, or any hash of it, to analytics.
  * Sign-ups go through the site's server (Kit's API), so parents should not see a robot-check page.
  * The success line names the confirmation email's subject and the KidZooKit sender, not the email service.
- * A leftover {error:"verify", verify_url} reply still shows a check link and never "You're in".
  */
 (function () {
   "use strict";
@@ -14,7 +13,6 @@
   // v2 (2026-11-18): the v1 flag was also set for quarantined signups that never got an email,
   // which hid the box from those parents for good. A new key shows them the box again.
   var SUB_KEY = "kz_nl_subscribed_v2";
-  var GUARD_RE = /^https:\/\/app\.kit\.com\/forms\/guards\/[A-Za-z0-9-]{8,80}$/;
   var TRY_AGAIN = "Something went wrong. Please try again in a minute.";
   var DISMISS_KEY = "kz_nl_dismissed";
   var seen = {};
@@ -93,31 +91,6 @@
     } else {
       input.removeAttribute("aria-invalid");
     }
-  }
-
-  function showVerify(form, url, placement) {
-    var msg = form.querySelector(".kz-nl-msg");
-    if (!msg) return;
-    while (msg.firstChild) msg.removeChild(msg.firstChild);
-    msg.setAttribute("data-state", "verify");
-    msg.appendChild(
-      document.createTextNode(
-        "One more step: Kit, the email service, asks for a quick robot check before it sends the confirmation email. "
-      )
-    );
-    var link = document.createElement("a");
-    link.href = url;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.className = "kz-nl-verify";
-    link.textContent = "Do the check (opens a new tab)";
-    link.addEventListener("click", function () {
-      track("newsletter_verify_click", placement);
-    });
-    msg.appendChild(link);
-    msg.appendChild(document.createTextNode(". Then look for the confirmation email."));
-    var input = form.querySelector('input[type="email"]');
-    if (input) input.removeAttribute("aria-invalid");
   }
 
   var sampleDialog = null;
@@ -346,13 +319,6 @@
             return;
           }
           var code = json && json.error;
-          if (code === "verify" && typeof json.verify_url === "string" && GUARD_RE.test(json.verify_url)) {
-            // Not a signup yet: no sign_up event and no "subscribed" flag.
-            showVerify(form, json.verify_url, placement);
-            track("newsletter_verify_shown", placement);
-            if (button) button.disabled = false;
-            return;
-          }
           showStatus(
             form,
             "error",

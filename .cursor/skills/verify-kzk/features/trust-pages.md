@@ -11,7 +11,7 @@ Footer links About, FAQ, Privacy, Contact on every page.
 
 ## Driving it with verify.py
 `--only j7`. Visits the pages above, the newsletter result pages, posts a bad address to `/api/newsletter` with no JS
-(303 to `/newsletter/oops/?reason=email`, no Kit call), and checks headers.
+(303 to `/newsletter/try-again/?reason=email`, no Kit call), checks the old `/newsletter/one-more-step/` and `/newsletter/oops/` 301s, and checks headers.
 
 ## Gotchas
 - Privacy wording is a legal/privacy surface: report gaps as owner decisions, do not edit it in a verify pass.
