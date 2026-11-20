@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from scav_test_2026_11 import (  # noqa: E402
+    FREEZE_ENDED_SLUGS,
     UNFROZEN_CHANGED_SLUGS,
     COMPARISON_SLUGS,
     TEST_SLUGS,
@@ -147,12 +148,12 @@ class ScavTestPages(unittest.TestCase):
                 self.assertIsNone(WE_RE.search(plain), plain[:240])
                 self._assert_no_banned_name(plain, venue)
                 self._assert_pdfs(section, venue)
-                if slug not in UNFROZEN_CHANGED_SLUGS:  # freeze lifted 2026-11-15 (Heymant); changed pages are listed in UNFROZEN_CHANGED_SLUGS
+                if slug not in UNFROZEN_CHANGED_SLUGS | FREEZE_ENDED_SLUGS:  # freeze lifted 2026-11-15 (Heymant); changed pages are listed in UNFROZEN_CHANGED_SLUGS
                     self._assert_frozen(page, origin)
                     self._assert_scoped_edit(origin, page)
 
     def test_comparison_pages_are_byte_identical(self):
-        for slug in sorted(COMPARISON_SLUGS - UNFROZEN_CHANGED_SLUGS):  # freeze lifted 2026-11-15 (Heymant); changed pages are listed in UNFROZEN_CHANGED_SLUGS
+        for slug in sorted(COMPARISON_SLUGS - UNFROZEN_CHANGED_SLUGS - FREEZE_ENDED_SLUGS):  # freeze ended 2026-11-20; freeze lifted 2026-11-15 (Heymant); changed pages are listed in UNFROZEN_CHANGED_SLUGS
             rel = f"static/field-pack/{slug}/index.html"
             with self.subTest(slug=slug):
                 got = (ROOT / rel).read_bytes()
