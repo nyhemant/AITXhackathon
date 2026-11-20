@@ -390,35 +390,101 @@ html.kz-nl-modal-open body {
   }
 }
 
-/* place_print: a small card that appears on a place page after its hunt prints. */
+/* place_print: a short strip that appears on a place page when its hunt goes to print.
+   Phone: one heading line pair, one email row, one small privacy line. Controls above stay tappable. */
 .kz-nl--print {
   position: fixed;
-  left: 12px;
-  right: 12px;
-  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  left: 10px;
+  right: 10px;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
   z-index: 90;
   width: auto;
   max-width: 520px;
-  max-height: calc(100vh - 24px);
+  max-height: 40vh;
   margin: 0 auto;
-  padding: 14px 16px 12px;
+  padding: 10px 12px 10px;
   overflow-y: auto;
   border: 2px solid #0f5c5c;
   border-radius: 14px;
   background: #fffdf7;
-  box-shadow: 0 10px 30px rgba(21, 34, 56, 0.25);
+  box-shadow: 0 6px 20px rgba(21, 34, 56, 0.25);
 }
 body.has-hunt-sticky .kz-nl--print {
   bottom: calc(84px + env(safe-area-inset-bottom, 0px));
-  max-height: calc(100vh - 96px);
+}
+.kz-nl--print .kz-nl-h {
+  margin: 0;
+  padding-right: 46px;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+.kz-nl--print .kz-nl-sub {
+  display: none;
+}
+.kz-nl--print .kz-nl-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 8px;
+  margin-top: 8px;
+  align-items: start;
+}
+.kz-nl--print .kz-nl-field,
+.kz-nl--print .kz-nl-actions {
+  display: contents;
+}
+.kz-nl--print .kz-nl-field label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.kz-nl--print input[type="email"] {
+  grid-column: 1;
+  grid-row: 1;
+}
+.kz-nl--print .kz-nl-submit {
+  grid-column: 2;
+  grid-row: 1;
+  white-space: nowrap;
 }
 .kz-nl--print .kz-nl-privacy {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+.kz-nl--print .kz-nl-privacy a.kz-nl-sample {
+  font-size: 0.78rem;
+}
+.kz-nl--print .kz-nl-dismiss {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-color: transparent;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+}
+.kz-nl--print .kz-nl-msg {
+  min-height: 0;
   margin: 6px 0 0;
   font-size: 0.85rem;
 }
+.kz-nl--print .kz-nl-msg:empty {
+  display: none;
+}
 @media (min-width: 560px) {
-  .kz-nl--print .kz-nl-actions {
-    flex-direction: row;
+  .kz-nl--print .kz-nl-sub {
+    display: block;
+    margin: 2px 0 0;
+    font-size: 0.9rem;
   }
 }
 @media print {

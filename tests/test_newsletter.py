@@ -409,8 +409,8 @@ class NewsletterMarkupTests(unittest.TestCase):
         hub_page = (printables / "index.html").read_text(encoding="utf-8")
         self.assertIn('data-placement="printables_hub"', hub_page)
         self.assertIn('value="printables_hub"', hub_page)
-        self.assertIn('src="/field-pack/js/newsletter-v1.js?v=7"', hub_page)
-        self.assertIn('href="/field-pack/css/newsletter-v1.css?v=5"', hub_page)
+        self.assertIn('src="/field-pack/js/newsletter-v1.js?v=8"', hub_page)
+        self.assertIn('href="/field-pack/css/newsletter-v1.css?v=6"', hub_page)
         self.assertIn("For grown-ups", hub_page)
         self.assertIn(notice, hub_page)
         self.assertNotIn("email service (Kit)", hub_page)
@@ -426,7 +426,7 @@ class NewsletterMarkupTests(unittest.TestCase):
             page = (printables / slug / "index.html").read_text(encoding="utf-8")
             self.assertIn('data-placement="printable_sheet"', page, slug)
             self.assertIn('value="printable_sheet"', page, slug)
-            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=7"', page, slug)
+            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=8"', page, slug)
             self.assertIn("For grown-ups", page, slug)
             self.assertIn(notice, page, slug)
             self.assertNotIn("email service (Kit)", page, slug)
@@ -483,8 +483,8 @@ class NewsletterMarkupTests(unittest.TestCase):
             self.assertGreater(sample_at, privacy_at, path.name)
             self.assertIn(link, html, path.name)
             self.assertLess(html.find(">Privacy</a>"), sample_at, path.name)
-            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=7"', html, path.name)
-            self.assertIn('href="/field-pack/css/newsletter-v1.css?v=5"', html, path.name)
+            self.assertIn('src="/field-pack/js/newsletter-v1.js?v=8"', html, path.name)
+            self.assertIn('href="/field-pack/css/newsletter-v1.css?v=6"', html, path.name)
 
         sample_path = ROOT / "static" / "newsletter" / "sample" / "index.html"
         self.assertTrue(sample_path.is_file())
@@ -532,8 +532,8 @@ class NewsletterMarkupTests(unittest.TestCase):
         gen = (ROOT / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
         self.assertIn('href="/newsletter/sample/"', gen)
         self.assertIn("See a sample email", gen)
-        self.assertIn("newsletter-v1.js?v=7", gen)
-        self.assertIn("newsletter-v1.css?v=5", gen)
+        self.assertIn("newsletter-v1.js?v=8", gen)
+        self.assertIn("newsletter-v1.css?v=6", gen)
 
     def test_privacy_names_kit_and_keeps_the_project_name(self):
         html = PRIVACY.read_text(encoding="utf-8")
