@@ -144,14 +144,16 @@ def j1_landing(run: Run, ctx, vp):
     wm = pg.locator(".start-wordmark")
     run.check("j1", vp, "wordmark 'Arya’s Wildlife Project' visible", wm.count() > 0 and wm.first.is_visible() and WORDMARK in wm.first.inner_text(), wm.all_inner_texts()[:1])
     fold = VIEWPORTS[vp]["viewport"]["height"]
-    if vp == "phone":  # phones get a button; desktop shows the map with a "Tap a pin to print" hint
-        cta = pg.get_by_role("link", name="Print a scavenger hunt")
-        bb = cta.first.bounding_box() if cta.count() else None
-        run.check("j1", vp, "'Print a scavenger hunt' above the fold", bool(bb) and bb["y"] + bb["height"] <= fold, bb)
-    else:
-        hint = pg.get_by_text("Tap a pin to print")
-        bb = hint.first.bounding_box() if hint.count() else None
-        run.check("j1", vp, "'Tap a pin to print' + map above the fold", bool(bb) and bb["y"] + bb["height"] <= fold, bb)
+    # 2026-11-20: one first job on every screen size, "Pick your zoo or aquarium" -> the place search.
+    cta = pg.locator('a.hx-pick[data-kz-cta="home-pick"]')
+    bb = cta.first.bounding_box() if cta.count() else None
+    run.check("j1", vp, "'Pick your zoo or aquarium' above the fold, goes to the place search",
+              cta.count() == 1 and bool(bb) and bb["y"] + bb["height"] <= fold
+              and cta.first.inner_text().strip().startswith("Pick your zoo or aquarium")
+              and cta.first.get_attribute("href") == "/field-pack/?find=1", bb)
+    hint = pg.get_by_text("Tap a pin to print")
+    bb = hint.first.bounding_box() if hint.count() else None
+    run.check("j1", vp, "'Tap a pin to print' + map above the fold", bool(bb) and bb["y"] + bb["height"] <= fold, bb)
     demo = pg.locator('a.hxd-sheet[data-kz-cta="home-demo"]')
     href = demo.first.get_attribute("href") if demo.count() else None
     run.check("j1", vp, "demo sheet links to a printable hunt", bool(href) and href.endswith("#printable-hunt"), href)

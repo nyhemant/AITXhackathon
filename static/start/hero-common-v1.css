@@ -69,6 +69,40 @@ body.start-body > header.start-top {
   line-height: 1.4;
 }
 
+/* First job (2026-11-20): one obvious action under the headline. */
+.hx-go {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  margin: 0.8rem 0 0;
+}
+.hx-pick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  background: var(--hx-orange);
+  color: #fff;
+  font-family: var(--hx-sans);
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.15;
+  text-decoration: none;
+  box-shadow: 0 2px 0 var(--hx-orange-dark);
+  -webkit-tap-highlight-color: transparent;
+}
+.hx-pick::after { content: " \2192"; margin-left: 0.35em; }
+.hx-pick:hover { background: var(--hx-orange-dark); }
+.hx-pick:focus-visible { outline: 3px solid var(--hx-teal); outline-offset: 3px; }
+.hx-or {
+  color: var(--hx-muted);
+  font-family: var(--hx-sans);
+  font-size: 0.88rem;
+}
+
 /* Map card */
 .hx-mapcard {
   position: relative;
@@ -94,35 +128,10 @@ body.start-body > header.start-top {
   font-weight: 650;
   line-height: 1.2;
 }
-/* Phone only: a Print action sits in the existing map bar so a hunt is on the
-   first screen without shrinking the map. Desktop and iPad keep the hint. */
-.hx-mapprint { display: none; }
+/* 2026-11-20: the map bar keeps only the hint. The first job ("Pick your zoo or aquarium")
+   sits under the headline; the old phone-only "Print a scavenger hunt" link (always AMNH) is gone. */
 @media (max-width: 640px) {
-  .hx-maphint { display: none; }
-  .hx-mapprint {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    margin: 0;
-    padding: 0.15rem 0.55rem;
-    max-width: calc(100% - 11.2rem);
-    box-sizing: border-box;
-    border: 1.5px solid var(--hx-teal);
-    border-radius: 999px;
-    background: var(--hx-paper);
-    color: var(--hx-teal);
-    font-family: var(--hx-sans);
-    font-size: 0.8rem;
-    font-weight: 700;
-    line-height: 1.15;
-    text-align: left;
-    text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .hx-mapprint:focus-visible {
-    outline: 2px solid var(--hx-teal);
-    outline-offset: 2px;
-  }
+  .hx-maphint { font-size: 0.8rem; }
 }
 .hx-mapcard .home-map-toggle {
   order: 2;
