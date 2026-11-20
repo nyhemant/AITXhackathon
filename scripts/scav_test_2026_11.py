@@ -77,6 +77,17 @@ UNFROZEN_CHANGED_SLUGS = frozenset({
     "air-and-space",  # HowTo tool said "cams" with films only
 })
 
+# 2026-11-20 round 2: Heymant ended the freeze ("The freeze is gone"). The last 10 pages that were still
+# byte-identical to the 2026-11-16 freeze now change too (K4 print guard tag, then one-tap print). Byte-identity
+# guards skip them from here. This set is separate from UNFROZEN_CHANGED_SLUGS on purpose: the generator still uses
+# that set for the contact address and legacy JSON-LD, and those lines on these 10 pages do not change.
+FREEZE_ENDED_ON = "2026-11-20"
+FREEZE_ENDED_SLUGS = frozenset({
+    "bronx-zoo", "austin-zoo", "national-zoo", "lincoln-park-zoo", "shedd-aquarium",
+    "seattle-aquarium", "st-louis-zoo", "fort-worth-zoo", "san-antonio-zoo", "dallas-zoo",
+})
+assert FREEZE_ENDED_SLUGS == (TEST_SLUGS | COMPARISON_SLUGS) - UNFROZEN_CHANGED_SLUGS
+
 # Homepage-map venues outside the test set that get the same printable block
 # (2026-11-12). Not test pages and not comparison pages, so the pairs stay as set.
 PIN_SLUGS = frozenset({

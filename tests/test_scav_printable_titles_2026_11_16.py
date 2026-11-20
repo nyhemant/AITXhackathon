@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from scav_test_2026_11 import COMPARISON_SLUGS, TEST_SLUGS, UNFROZEN_CHANGED_SLUGS  # noqa: E402
+from scav_test_2026_11 import COMPARISON_SLUGS, FREEZE_ENDED_SLUGS, TEST_SLUGS, UNFROZEN_CHANGED_SLUGS  # noqa: E402
 
 FIELD = ROOT / "static" / "field-pack"
 
@@ -96,7 +96,7 @@ class ScavPrintableTitles(unittest.TestCase):
 
     def test_comparison_pages_untouched(self):
         for slug, digest in sorted(COMPARISON_SHA256.items()):
-            if slug in UNFROZEN_CHANGED_SLUGS:  # freeze lifted 2026-11-15 (Heymant); changed pages are listed in UNFROZEN_CHANGED_SLUGS
+            if slug in UNFROZEN_CHANGED_SLUGS or slug in FREEZE_ENDED_SLUGS:  # freeze ended 2026-11-20; freeze lifted 2026-11-15 (Heymant); changed pages are listed in UNFROZEN_CHANGED_SLUGS
                 continue
             with self.subTest(slug=slug):
                 raw = (FIELD / slug / "index.html").read_bytes()

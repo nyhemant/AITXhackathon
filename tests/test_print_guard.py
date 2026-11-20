@@ -13,8 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 FP = ROOT / "static" / "field-pack"
 GUARD = FP / "js" / "print-guard-v1.js"
 TAG = '<script src="/field-pack/js/print-guard-v1.js?v=1"></script>'
-# Pages that stay byte-identical to their freeze digests: their HTML does not carry the tag.
-SKIPPED = {
+# Round 2 (2026-11-20): the freeze ended, so no mission page skips the tag any more.
+SKIPPED: set[str] = set()
+FORMERLY_SKIPPED = {
     "bronx-zoo", "austin-zoo", "national-zoo", "lincoln-park-zoo", "shedd-aquarium",
     "seattle-aquarium", "st-louis-zoo", "fort-worth-zoo", "san-antonio-zoo", "dallas-zoo",
 }
@@ -36,12 +37,20 @@ class PrintGuardPages(unittest.TestCase):
             seen += 1
             self.assertEqual(html.count(TAG), 1, slug)
             self.assertLess(html.index(TAG), ui.start(), slug)
-        self.assertGreaterEqual(seen, 200)
+        self.assertGreaterEqual(seen, 221)
 
-    def test_skipped_pages_still_exist_and_load_mission_ui(self):
-        for slug in SKIPPED:
-            html = (FP / slug / "index.html").read_text(encoding="utf-8")
-            self.assertRegex(html, UI_TAG)
+    def test_formerly_skipped_pages_now_load_the_guard(self):
+        for slug in sorted(FORMERLY_SKIPPED):
+            with self.subTest(slug=slug):
+                html = (FP / slug / "index.html").read_text(encoding="utf-8")
+                ui = UI_TAG.search(html)
+                self.assertIsNotNone(ui, slug)
+                self.assertEqual(html.count(TAG), 1, slug)
+                self.assertLess(html.index(TAG), ui.start(), slug)
+
+    def test_generator_skip_list_is_empty(self):
+        src = (ROOT / "scripts" / "generate_bdo_seo.py").read_text(encoding="utf-8")
+        self.assertIn("PRINT_GUARD_SKIP: frozenset[str] = frozenset()", src)
 
     def test_guard_script_is_small_and_has_no_tracking(self):
         src = GUARD.read_text(encoding="utf-8")

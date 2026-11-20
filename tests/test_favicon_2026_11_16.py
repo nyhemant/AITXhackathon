@@ -16,7 +16,7 @@ STATIC = ROOT / "static"
 sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "src"))
 
-from scav_test_2026_11 import COMPARISON_SLUGS, TEST_SLUGS, UNFROZEN_CHANGED_SLUGS  # noqa: E402
+from scav_test_2026_11 import COMPARISON_SLUGS, FREEZE_ENDED_SLUGS, TEST_SLUGS, UNFROZEN_CHANGED_SLUGS  # noqa: E402
 
 ICON = '<link rel="icon" href="/favicon.ico?v=1" sizes="48x48" />'
 PNG = '<link rel="icon" type="image/png" href="/pwa/favicon-96-v1.png" sizes="96x96" />'
@@ -85,7 +85,7 @@ class Favicon(unittest.TestCase):
     def test_the_24_frozen_pages_are_byte_identical(self):
         self.assertEqual(set(FROZEN_SHA256), TEST_SLUGS | COMPARISON_SLUGS)
         for slug, digest in sorted(FROZEN_SHA256.items()):
-            if slug in UNFROZEN_CHANGED_SLUGS:  # freeze lifted 2026-11-15 (Heymant); changed pages are listed in UNFROZEN_CHANGED_SLUGS
+            if slug in UNFROZEN_CHANGED_SLUGS or slug in FREEZE_ENDED_SLUGS:  # freeze ended 2026-11-20; freeze lifted 2026-11-15 (Heymant); changed pages are listed in UNFROZEN_CHANGED_SLUGS
                 continue
             with self.subTest(slug=slug):
                 raw = (STATIC / "field-pack" / slug / "index.html").read_bytes()

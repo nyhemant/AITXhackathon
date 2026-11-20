@@ -403,13 +403,10 @@ VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "23"
 FP_ANALYTICS_JS_VER = "2"
 MISSION_UI_JS_VER = "21"
-# K4 (2026-11-20): one print dialog per quick double tap. The 10 scavenger-hunt pages that stay
-# byte-identical to their freeze digests do not get the tag (their HTML must not change).
+# K4 (2026-11-20): one print dialog per quick double tap. Round 2 (2026-11-20, Heymant: "The freeze is
+# gone"): the 10 formerly frozen scavenger-hunt pages get the tag too, so the skip list is empty.
 PRINT_GUARD_TAG = '<script src="/field-pack/js/print-guard-v1.js?v=1"></script>\n  '
-PRINT_GUARD_SKIP = frozenset({
-    "bronx-zoo", "austin-zoo", "national-zoo", "lincoln-park-zoo", "shedd-aquarium",
-    "seattle-aquarium", "st-louis-zoo", "fort-worth-zoo", "san-antonio-zoo", "dallas-zoo",
-})
+PRINT_GUARD_SKIP: frozenset[str] = frozenset()
 
 # Landing catalog seeds (T5) — review in POLISH-TASKS completion notes
 FEATURED_CARD_IDS = (
