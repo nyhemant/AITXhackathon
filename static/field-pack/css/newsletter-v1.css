@@ -389,3 +389,40 @@ html.kz-nl-modal-open body {
     display: none !important;
   }
 }
+
+/* place_print: a small card that appears on a place page after its hunt prints. */
+.kz-nl--print {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 90;
+  width: auto;
+  max-width: 520px;
+  max-height: calc(100vh - 24px);
+  margin: 0 auto;
+  padding: 14px 16px 12px;
+  overflow-y: auto;
+  border: 2px solid #0f5c5c;
+  border-radius: 14px;
+  background: #fffdf7;
+  box-shadow: 0 10px 30px rgba(21, 34, 56, 0.25);
+}
+body.has-hunt-sticky .kz-nl--print {
+  bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  max-height: calc(100vh - 96px);
+}
+.kz-nl--print .kz-nl-privacy {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+}
+@media (min-width: 560px) {
+  .kz-nl--print .kz-nl-actions {
+    flex-direction: row;
+  }
+}
+@media print {
+  .kz-nl--print {
+    display: none !important;
+  }
+}

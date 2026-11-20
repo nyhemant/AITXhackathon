@@ -49,7 +49,8 @@ NEWSLETTER_LIMIT = 5
 NEWSLETTER_WINDOW_SECONDS = 3600.0
 _MAX_IPS = 8000
 
-_PLACEMENTS = frozenset({"printables_hub", "printable_sheet"})
+# place_print (2026-11-20): the card that appears on a place page once its hunt has gone to print.
+_PLACEMENTS = frozenset({"printables_hub", "printable_sheet", "place_print"})
 _HONEYPOT = "website"
 
 _EMAIL_RE = re.compile(
