@@ -235,6 +235,13 @@ def j2_pin_to_print(run: Run, ctx, vp):
     pg.locator("html[data-kzv-printed]").wait_for(state="attached", timeout=15000)
     run.check("j2", vp, "Print button opens the print dialog once", pg.locator("html").get_attribute("data-kzv-printed") == "1",
               pg.locator("html").get_attribute("data-kzv-printed"))
+    # K4: two quick taps on Print give one dialog (the page guard ignores a second call within 2 s).
+    pg.wait_for_timeout(2300)
+    before = int(pg.locator("html").get_attribute("data-kzv-printed") or 0)
+    pg.evaluate("() => { const b = document.querySelector('#mission-print-btn'); b.click(); b.click(); }")
+    pg.wait_for_timeout(1500)
+    after = int(pg.locator("html").get_attribute("data-kzv-printed") or 0)
+    run.check("j2", vp, "double tap on Print opens one dialog (K4)", after - before == 1, f"{before}->{after}")
     pg.keyboard.press("Escape")
     overlay.wait_for(state="hidden", timeout=5000)
     run.check("j2", vp, "Escape closes the drawer", overlay.is_hidden())
