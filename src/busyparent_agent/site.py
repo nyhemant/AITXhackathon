@@ -13,6 +13,8 @@ WWW_REDIRECT_HOSTS = frozenset({"www.kidzookit.com"})
 HEALTH_PATHS = frozenset({"/health", "/healthz", "/ready", "/readyz", "/livez", "/ping"})
 # Same document as /start/. A temporary redirect left Google indexing /.
 HOME_PATHS = frozenset({"/", "/index.html"})
+# Removed copy of the sitemap. web.py 301s it to /sitemap.xml; www and http go there in one hop.
+OLD_SITEMAP_PATH = "/field-pack/sitemap.xml"
 
 
 def public_host(host_header: str | None) -> str:
@@ -49,6 +51,8 @@ def host_redirect_location(host_header: str | None, request_target: str) -> str 
         if path in HOME_PATHS or path == "/start":
             query = urlsplit(request_target).query
             return f"{PUBLIC_SITE}/start/" + (f"?{query}" if query else "")
+        if path == OLD_SITEMAP_PATH:
+            return f"{PUBLIC_SITE}/sitemap.xml"
         target = request_target if request_target.startswith("/") else f"/{request_target}"
         return f"{PUBLIC_SITE}{target}"
     return None
@@ -91,6 +95,8 @@ def https_upgrade_location(host_header: str | None, request_target: str, headers
         return None
     if path in HOME_PATHS or path == "/start":
         return f"{PUBLIC_SITE}/start/"
+    if path == OLD_SITEMAP_PATH:
+        return f"{PUBLIC_SITE}/sitemap.xml"
     target = request_target if request_target.startswith("/") else f"/{request_target}"
     return f"{PUBLIC_SITE}{target}"
 
