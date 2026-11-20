@@ -87,6 +87,26 @@
   width: 100%;
 }
 
+/* Round 2 (2026-11-20): what one tap prints, and the way into the options drawer. */
+.kz-scav-default {
+  margin: 0.15rem 0 0.35rem;
+  font-size: 0.9rem;
+  color: #2a3d55;
+}
+.kz-scav-change {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0.35rem 0.2rem;
+  min-height: 44px;
+  color: #0f5c5c;
+  font: inherit;
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
 .kz-scav-spec {
   margin: 0 0 0.7rem;
   font-size: 0.82rem;

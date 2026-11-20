@@ -568,6 +568,8 @@
     return ({ classic: "Classic", bonus: "Bonus", alpha: "Challenge" })[hunt] || "Classic";
   }
   function syncCustomizeSummary() {
+    const now = document.getElementById("kz-scav-default-now");
+    if (now) now.textContent = ageChipLabel(state.age) + ", " + timeChipLabel(state.time);
     const el = document.getElementById("seo-customize-summary");
     if (!el) return;
     el.textContent =
@@ -606,10 +608,10 @@
   function syncStickyHuntBar(mission) {
     const bar = document.getElementById("seo-hunt-sticky");
     if (!bar) return;
-    // Test pages set this attribute. Same label as #printable-hunt, same drawer.
+    // Test pages set this attribute. Same label as #printable-hunt; both print in one tap.
     if (bar.getAttribute("data-kz-scav-print") === "1") {
       const btn = document.getElementById("seo-sticky-print");
-      if (btn) btn.textContent = "Build and print the hunt";
+      if (btn) btn.textContent = "Print the hunt";
       const singleLabel = document.getElementById("seo-hunt-sticky-label");
       if (singleLabel) singleLabel.hidden = true;
       const spec = bar.querySelector(".seo-sticky-print-spec");
@@ -811,6 +813,27 @@
     return huntReady.then(() => openDrawer());
   }
 
+  // Round 2 (2026-11-20): one tap prints the hunt with the current settings (defaults: ages 5–8,
+  // half day, Classic). The drawer stays the options path ("Customize", "Change", "Going soon",
+  // "Add to hunt"). If the hunt cannot be built, fall back to the drawer.
+  function isOneTapPrint(el) {
+    return !!el && (el.id === "seo-sticky-print" || (el.classList && el.classList.contains("kz-scav-print")));
+  }
+  function printNowWhenReady(el) {
+    return huntReady.then(() => {
+      if (!lastMission) recompute(false);
+      if (!lastMission) {
+        openDrawer();
+        return;
+      }
+      track("mission_one_tap_print", {
+        venue: venue && venue.slug,
+        cta: (el && el.getAttribute("data-kz-cta")) || (el && el.id) || "",
+      });
+      printMission(lastMission);
+    });
+  }
+
   function boot() {
     const dataEl = document.getElementById("venue-data");
     const bEl = document.getElementById("bonus-hunts-data");
@@ -878,7 +901,8 @@
           id === "seo-open-mission"
         ) {
           e.preventDefault();
-          openDrawerWhenReady();
+          if (isOneTapPrint(el)) printNowWhenReady(el);
+          else openDrawerWhenReady();
           return;
         }
         if (how === "play") {

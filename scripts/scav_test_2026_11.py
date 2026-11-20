@@ -102,13 +102,20 @@ PIN_SLUGS = frozenset({
 BLOCK_SLUGS = TEST_SLUGS | PIN_SLUGS
 
 _ZOO_KINDS = frozenset({"zoo", "aquarium", "safari_zoo"})
-_CSS_HREF = "/field-pack/css/scav-top-v1.css?v=2"
+_CSS_HREF = "/field-pack/css/scav-top-v1.css?v=3"
 _JS_SRC = "/shell/qr-welcome.js?v=5"
 # Test pages get their own cache key for mission-ui.js so the sticky bar code
 # (data-kz-scav-print) is not served from a cached older copy. Comparison pages
 # keep the generator's MISSION_UI_JS_VER.
-MISSION_UI_TEST_VER = "21-scav3"
-PRINT_ACTION = "Build and print the hunt"
+MISSION_UI_TEST_VER = "22-scav4"
+# Round 2 (2026-11-20): the top button and the sticky bar print in one tap (mission-ui.js v22).
+# The drawer is still there for options: the "Change" button under the print button opens it.
+PRINT_ACTION = "Print the hunt"
+DEFAULT_LINE = (
+    '<p class="kz-scav-default">Ready for <span id="kz-scav-default-now">ages 5–8, half day</span>. '
+    '<button type="button" class="kz-scav-change" data-how="open-customize" aria-haspopup="dialog" '
+    'aria-controls="mission-drawer">Change</button></p>'
+)
 E = lambda s: html.escape(str(s), quote=True)  # noqa: E731
 _SECTION_RE = re.compile(
     r'[ \t]*<section class="kz-scav-top no-print" id="printable-hunt".*?</section>',
@@ -274,6 +281,7 @@ def scav_top_block(slug: str) -> str:
         f'data-kz-cta="scav-top">{PRINT_ACTION}</button>'
         f"{secondary_html(venue)}"
         "</p>"
+        f"{DEFAULT_LINE}"
         f"{spec_html(venue)}"
         f"{_list_html([item_line(item) for item in items])}"
         f"{bonus_html}"

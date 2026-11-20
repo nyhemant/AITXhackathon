@@ -128,13 +128,20 @@ class ScavTestPages(unittest.TestCase):
                 self.assertNotIn('id="mission-open-btn"', section)
                 self.assertIn(
                     '<button type="button" class="kz-scav-print" data-how="print-hunt" '
-                    'data-kz-cta="scav-top">Build and print the hunt</button>',
+                    'data-kz-cta="scav-top">Print the hunt</button>',
                     section,
                 )
                 self.assertIn("black &amp; white is fine", section)
-                self.assertIn('href="/field-pack/css/scav-top-v1.css?v=2"', page)
+                # Round 2 (2026-11-20): one tap prints; "Change" opens the options drawer.
+                self.assertIn(
+                    '<p class="kz-scav-default">Ready for <span id="kz-scav-default-now">ages 5–8, half day</span>. '
+                    '<button type="button" class="kz-scav-change" data-how="open-customize" aria-haspopup="dialog" '
+                    'aria-controls="mission-drawer">Change</button></p>',
+                    section,
+                )
+                self.assertIn('href="/field-pack/css/scav-top-v1.css?v=3"', page)
                 self.assertIn('<script src="/shell/qr-welcome.js?v=5" defer></script>', page)
-                self.assertIn('<script src="/field-pack/js/mission/mission-ui.js?v=21-scav3"></script>', page)
+                self.assertIn('<script src="/field-pack/js/mission/mission-ui.js?v=22-scav4"></script>', page)
                 items = hunt_items(venue)
                 bonus = bonus_lines(venue)
                 want_items, want_bonus = EXPECTED[slug]
@@ -228,7 +235,7 @@ class ScavTestPages(unittest.TestCase):
                 self.assertIsNotNone(sticky, slug)
                 block = sticky.group(0)
                 text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", block)).strip()
-                self.assertEqual(text, "Build and print the hunt")
+                self.assertEqual(text, "Print the hunt")
                 self.assertIn('data-kz-scav-print="1"', block)
                 self.assertIn('data-how="print-hunt"', block)
                 self.assertIn('data-kz-cta="scav-top"', block)
@@ -239,8 +246,8 @@ class ScavTestPages(unittest.TestCase):
                     for label in re.findall(r'data-how="print-hunt"[^>]*>([^<]+)</', page)
                     if re.search(r"print", label, re.I)
                 ]
-                self.assertEqual(set(print_ctas), {"Build and print the hunt"})
-                self.assertEqual(print_ctas.count("Build and print the hunt"), 2)
+                self.assertEqual(set(print_ctas), {"Print the hunt"})
+                self.assertEqual(print_ctas.count("Print the hunt"), 2)
                 self.assertIn('id="mission-print-btn">Print</button>', page)
                 self.assertIn(sticky_single_print_html().lstrip("\n"), page)
 
@@ -249,9 +256,13 @@ class ScavTestPages(unittest.TestCase):
         self.assertIn('bar.getAttribute("data-kz-scav-print") === "1"', ui)
         self.assertIn("page_path: pagePathOnly()", ui)
         self.assertIn("venue: mission.slug", ui)
-        self.assertIn('btn.textContent = "Build and print the hunt"', ui)
+        self.assertIn('btn.textContent = "Print the hunt"', ui)
         self.assertIn("IntersectionObserver", ui)
         self.assertIn(".kz-scav-top .kz-scav-print", ui)
+        # Round 2 (2026-11-20): the top button and the sticky bar print in one tap.
+        self.assertIn('el.id === "seo-sticky-print"', ui)
+        self.assertIn('el.classList.contains("kz-scav-print")', ui)
+        self.assertIn("if (isOneTapPrint(el)) printNowWhenReady(el);", ui)
         qr = (ROOT / "static" / "shell" / "qr-welcome.js").read_text(encoding="utf-8")
         self.assertIn("page_path: pagePath", qr)
         self.assertIn("location.pathname", qr)

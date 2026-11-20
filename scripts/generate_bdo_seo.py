@@ -402,7 +402,7 @@ STUDY_CARDS_DATA_JS_VER = "11"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"
 MISSION_CSS_VER = "23"
 FP_ANALYTICS_JS_VER = "2"
-MISSION_UI_JS_VER = "21"
+MISSION_UI_JS_VER = "22"
 # K4 (2026-11-20): one print dialog per quick double tap. Round 2 (2026-11-20, Heymant: "The freeze is
 # gone"): the 10 formerly frozen scavenger-hunt pages get the tag too, so the skip list is empty.
 PRINT_GUARD_TAG = '<script src="/field-pack/js/print-guard-v1.js?v=1"></script>\n  '

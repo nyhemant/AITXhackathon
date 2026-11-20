@@ -224,17 +224,27 @@ def j2_pin_to_print(run: Run, ctx, vp):
     run.check("j2", vp, "hunt lists its stops (>=8)", stops.count() >= 8, stops.count())
     p.shot("j2-hunt")
     btn = sec.locator("button.kz-scav-print")
+    # Round 2 (2026-11-20): one tap prints the default hunt; the drawer is the options path.
+    run.check("j2", vp, "top button says 'Print the hunt'", btn.inner_text().strip() == "Print the hunt", btn.inner_text())
     p.act(btn)
-    overlay = pg.locator("#mission-overlay")
-    overlay.wait_for(state="visible", timeout=10000)
-    sheet = pg.locator("#mission-sheet")
-    sheet_txt = sheet.inner_text()
-    run.check("j2", vp, "print drawer shows the sheet for this place", "Perot Museum" in sheet_txt, sheet_txt[:90])
-    p.shot("j2-drawer")
-    p.act(pg.locator("#mission-print-btn"))
     pg.locator("html[data-kzv-printed]").wait_for(state="attached", timeout=15000)
-    run.check("j2", vp, "Print button opens the print dialog once", pg.locator("html").get_attribute("data-kzv-printed") == "1",
+    overlay = pg.locator("#mission-overlay")
+    run.check("j2", vp, "one tap prints once, drawer stays closed",
+              pg.locator("html").get_attribute("data-kzv-printed") == "1" and overlay.is_hidden(),
               pg.locator("html").get_attribute("data-kzv-printed"))
+    sheet = pg.locator("#mission-sheet")
+    sheet_txt = sheet.text_content() or ""
+    run.check("j2", vp, "the printed sheet is for this place", "Perot Museum" in sheet_txt, sheet_txt[:90])
+    pg.wait_for_timeout(2300)
+    p.act(sec.locator("button.kz-scav-change"))
+    overlay.wait_for(state="visible", timeout=10000)
+    run.check("j2", vp, "'Change' opens the options drawer", overlay.is_visible())
+    p.shot("j2-drawer")
+    before = int(pg.locator("html").get_attribute("data-kzv-printed") or 0)
+    p.act(pg.locator("#mission-print-btn"))
+    pg.wait_for_timeout(1200)
+    after = int(pg.locator("html").get_attribute("data-kzv-printed") or 0)
+    run.check("j2", vp, "drawer Print button opens the print dialog once", after - before == 1, f"{before}->{after}")
     # K4: two quick taps on Print give one dialog (the page guard ignores a second call within 2 s).
     pg.wait_for_timeout(2300)
     before = int(pg.locator("html").get_attribute("data-kzv-printed") or 0)
