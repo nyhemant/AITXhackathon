@@ -92,7 +92,7 @@ class PrintablePagesTests(unittest.TestCase):
 
     def test_sitemap_lists_pilot_pages(self):
         root = PRINTABLES_ROOT.parent
-        for name in ("sitemap.xml", "field-pack/sitemap.xml"):
+        for name in ("sitemap.xml",):
             sm = (root / name).read_text(encoding="utf-8")
             for slug in PILOT:
                 self.assertIn(f"<loc>{SITE}/printables/{slug}/</loc>", sm, name)

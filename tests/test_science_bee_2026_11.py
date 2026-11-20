@@ -298,7 +298,7 @@ class RoutingAndSitemapTests(unittest.TestCase):
         self.assertEqual(h._code, 200)
 
     def test_sitemap_lists_hub_and_topics_not_play(self):
-        for sm in (REPO / "static" / "sitemap.xml", REPO / "static" / "field-pack" / "sitemap.xml"):
+        for sm in (REPO / "static" / "sitemap.xml",):
             body = sm.read_text(encoding="utf-8")
             for u in INDEXED:
                 self.assertEqual(body.count(f"<loc>https://kidzookit.com{u}</loc>"), 1, (sm, u))

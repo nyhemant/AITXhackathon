@@ -7,7 +7,7 @@
   3. <image:image> entries in static/sitemap.xml for the 58 card hero photos and the
      place-specific park hero photos (np-hero-<slug>), never the generic stock
      (np-visitor-center / np-scenic-overlook / np-trailhead-sign). URL list and order are
-     unchanged; /field-pack/sitemap.xml is written byte-identical.
+     unchanged. (The /field-pack/sitemap.xml copy was removed 2026-11-20.)
 Re-run after ANY generate_bdo_seo.py run (it rewrites the sitemap and pages), then
 scripts/sitemap_lastmod_from_git.py:   python3 scripts/image_seo.py
 tests/test_image_seo.py fails if the image entries or alts disappear."""
@@ -17,7 +17,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 FP = REPO / "static" / "field-pack"
-SITEMAPS = [REPO / "static" / "sitemap.xml", FP / "sitemap.xml"]
+SITEMAPS = [REPO / "static" / "sitemap.xml"]
 BASE = "https://kidzookit.com"
 GENERIC = ("np-visitor-center", "np-scenic-overlook", "np-trailhead-sign")
 

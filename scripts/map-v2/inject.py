@@ -3,7 +3,7 @@ SRC='/workspace/kz-map-mock/static/start/index.html'
 OUT='/workspace/kz-map-tools/out/'
 for d in 'ab':
     S='/workspace/kz-map-mock/static/start/'
-    open(S+f'home-map-v2-{d}.css','w').write(open(S+'home-map-v2.css').read()+'\n'+open(S+f'map-v2-{d}-v1.css').read())
+    # home-map-v2-a.css is edited directly now; its old source parts were removed 2026-11-20.
     h=open(SRC).read()
     places=open(OUT+f'fragment-{d}-places.html').read()
 

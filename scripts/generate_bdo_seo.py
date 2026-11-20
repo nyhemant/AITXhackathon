@@ -14,7 +14,7 @@ Outputs:
 Sitemap <lastmod> is the newest git commit date (fallback: file mtime) of each
 URL's source file — venue JSON for place pages, the HTML/JS/CSS that backs
 hubs and cards. Redirect-only aliases are omitted. Public /printables/ pages
-are included. `--sitemap-only` rewrites the two sitemap.xml copies without
+are included. `--sitemap-only` rewrites static/sitemap.xml without
 regenerating pages. A rewrite drops <image:image> tags; re-run
 scripts/image_seo.py and scripts/sitemap_lastmod_from_git.py afterwards.
 """
@@ -4514,8 +4514,7 @@ def write_sitemap(
     body.append("")
     xml = "\n".join(body)
     (STATIC / "sitemap.xml").write_text(xml, encoding="utf-8")
-    # also under field-pack for convenience
-    (FIELD / "sitemap.xml").write_text(xml, encoding="utf-8")
+    # The /field-pack/sitemap.xml copy was removed 2026-11-20 (that URL now 301s to /sitemap.xml).
 
 
 def write_robots() -> None:
@@ -7064,7 +7063,6 @@ def main() -> int:
     if sitemap_only:
         write_sitemap(venues, extra_urls=collect_sitemap_extra_urls())
         print("  sitemap → static/sitemap.xml (sitemap-only; pages unchanged)")
-        print("  sitemap → static/field-pack/sitemap.xml")
         return 0
 
     css_path = FIELD / "css" / "seo-venue.css"

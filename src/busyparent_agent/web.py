@@ -1642,7 +1642,9 @@ def _root_static_content_type(path: Path) -> str:
     return "application/xml; charset=utf-8"
 
 
-_SITEMAP_URLS = ("/sitemap.xml", "/field-pack/sitemap.xml")
+_SITEMAP_URLS = ("/sitemap.xml",)
+# The old /field-pack/sitemap.xml copy was removed 2026-11-20; crawlers that still ask for it get a 301.
+OLD_SITEMAP_PATH = "/field-pack/sitemap.xml"
 _MINIMAL_SITEMAP = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -1656,7 +1658,7 @@ _MINIMAL_SITEMAP = f"""<?xml version="1.0" encoding="UTF-8"?>
 
 def _sitemap_bytes() -> bytes:
     """Static sitemap only — never generate URLs at request time."""
-    for candidate in (STATIC_ROOT / "sitemap.xml", FIELD_PACK_ROOT / "sitemap.xml"):
+    for candidate in (STATIC_ROOT / "sitemap.xml",):
         try:
             if candidate.is_file():
                 return candidate.read_bytes()
@@ -1821,7 +1823,10 @@ class WebHandler(BaseHTTPRequestHandler):
         if path == "/analytics/status":
             self._handle_analytics_status()
             return
-        # SEO: robots + sitemap (root and /field-pack/). Never 500 — static file or tiny fallback.
+        # SEO: robots + sitemap. Never 500 — static file or tiny fallback.
+        if path == OLD_SITEMAP_PATH:
+            _send_redirect(self, "/sitemap.xml", code=301)
+            return
         if path in _SITEMAP_URLS:
             body = _sitemap_bytes()
             self.send_response(200)
@@ -2048,6 +2053,9 @@ class WebHandler(BaseHTTPRequestHandler):
             return
         if path in ZOO_ALIAS_PATHS:
             _send_redirect(self, _keep_query(START_PREFIX + "/", self.path), code=301)
+            return
+        if path == OLD_SITEMAP_PATH:
+            _send_redirect(self, "/sitemap.xml", code=301)
             return
         if path in _SITEMAP_URLS:
             body = _sitemap_bytes()

@@ -15,7 +15,7 @@ GENERIC = ("np-visitor-center", "np-scenic-overlook", "np-trailhead-sign")
 class ImageSeoTest(unittest.TestCase):
     def test_sitemap_has_image_entries_and_is_valid(self):
         raw = SM.read_text(encoding="utf-8")
-        self.assertEqual(raw, (FP / "sitemap.xml").read_text(encoding="utf-8"))
+        self.assertFalse((FP / "sitemap.xml").exists())  # copy removed 2026-11-20
         root = ET.fromstring(raw.encode("utf-8"))
         urls = root.findall("s:url", NS)
         # 286 since gate B2 (2026-11-16): 7 noindex place pages are out of the sitemap
