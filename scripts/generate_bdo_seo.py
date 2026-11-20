@@ -6910,15 +6910,15 @@ def patch_places_data_hrefs(venues: list[dict]) -> None:
     print("  patched places-data.js hrefs → /field-pack/<id>/")
 
 
-NEWSLETTER_JS_HREF = "/field-pack/js/newsletter-v1.js?v=7"
-NEWSLETTER_CSS_HREF = "/field-pack/css/newsletter-v1.css?v=5"
+NEWSLETTER_JS_HREF = "/field-pack/js/newsletter-v1.js?v=8"
+NEWSLETTER_CSS_HREF = "/field-pack/css/newsletter-v1.css?v=6"
 NEWSLETTER_NOTICE = (
     "Your email is used only to send this weekly email. "
     "Unsubscribe any time."
 )
 PRINTABLE_NEWSLETTER_SLUGS = ("scavenger-hunt", "animal-bingo", "zoo-day-journal")
 # Round 2 (2026-11-20): the weekly email on the print path of every place page.
-PLACE_PRINT_HEADING = "Hunt printed. Want a new animal each week?"
+PLACE_PRINT_HEADING = "Printing your hunt? Get a new animal each week."
 
 
 def newsletter_parent_form(placement: str) -> str:
@@ -6927,6 +6927,9 @@ def newsletter_parent_form(placement: str) -> str:
     heading = "For grown-ups"
     extra_class = "kz-nl--parent"
     extra_attr = ""
+    submit_label = "Send me the weekly email"
+    dismiss_label = "No thanks"
+    dismiss_attr = ""
     if placement == "printables_hub":
         suffix = "printables"
     elif placement == "printable_sheet":
@@ -6936,6 +6939,9 @@ def newsletter_parent_form(placement: str) -> str:
         heading = PLACE_PRINT_HEADING
         extra_class = "kz-nl--print"
         extra_attr = ' hidden data-reveal="print"'
+        submit_label = "Email me"
+        dismiss_label = "&times;"
+        dismiss_attr = ' aria-label="No thanks"'
     else:
         raise ValueError(placement)
     return (
@@ -6952,8 +6958,8 @@ def newsletter_parent_form(placement: str) -> str:
         f'<a class="kz-nl-sample" href="/newsletter/sample/">See a sample email</a></p>\n'
         f"    </div>\n"
         f'    <div class="kz-nl-actions">\n'
-        f'      <button class="kz-nl-submit" type="submit">Send me the weekly email</button>\n'
-        f'      <button class="kz-nl-dismiss" type="button">No thanks</button>\n'
+        f'      <button class="kz-nl-submit" type="submit">{submit_label}</button>\n'
+        f'      <button class="kz-nl-dismiss" type="button"{dismiss_attr}>{dismiss_label}</button>\n'
         f"    </div>\n"
         f"  </div>\n"
         f'  <div class="kz-nl-hp" aria-hidden="true"><label for="kz-nl-website-{suffix}">Website</label>\n'
@@ -7050,13 +7056,17 @@ def place_print_newsletter_html() -> str:
     return "\n".join(("  " + line) if line else line for line in newsletter_parent_form("place_print").split("\n"))
 
 
+_PLACE_PRINT_FORM_RE = re.compile(r'<form class="kz-nl kz-nl--print no-print".*?</form>', re.S)
 _MISSION_UI_TAG_RE = re.compile(r'<script src="/field-pack/js/mission/mission-ui\.js\?v=[0-9a-z-]+"></script>')
 
 
 def add_place_print_newsletter(html: str) -> str:
     """Targeted patch for a committed venue page: CSS link, script, and the hidden box. Idempotent."""
     if 'data-placement="place_print"' in html:
-        return html
+        # Already patched: converge the box and asset versions on the current template.
+        html = _PLACE_PRINT_FORM_RE.sub(lambda _m: place_print_newsletter_html().strip("\n").lstrip(" "), html, count=1)
+        html = _ensure_newsletter_asset(html, "css", NEWSLETTER_CSS_HREF)
+        return _ensure_newsletter_asset(html, "js", NEWSLETTER_JS_HREF)
     if not _MISSION_UI_TAG_RE.search(html):
         return html
     css = f'  <link rel="stylesheet" href="{NEWSLETTER_CSS_HREF}" />\n'

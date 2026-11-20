@@ -318,6 +318,12 @@
             var input = form.querySelector('input[type="email"]');
             if (input) input.disabled = true;
             if (dismiss) dismiss.remove();
+            if (form.getAttribute("data-reveal") === "print") {
+              // The strip sits over the page; once the thanks has been read, put it away.
+              setTimeout(function () {
+                form.hidden = true;
+              }, 9000);
+            }
             return;
           }
           var code = json && json.error;
