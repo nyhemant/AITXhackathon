@@ -14,12 +14,15 @@ class StartFirstScreenTests(unittest.TestCase):
         cls.html = (START / "index.html").read_text(encoding="utf-8")
         cls.js = (START / "start.js").read_text(encoding="utf-8")
 
-    def test_hidden_animals_plate_waits_and_nothing_jumps_the_queue(self):
-        # Map v2: Places leads, so the hidden Animals world plate is lazy and no image is high priority.
+    def test_animals_plate_is_ready_on_first_click_and_nothing_jumps_the_queue(self):
+        # 2026-11-20: the hidden Animals plate used loading=lazy, so a first click (especially
+        # on a slow network) showed only the ocean texture — land looked water-filled — until
+        # a-world-v1.svg arrived. It is now preloaded and eager. Still no fetchpriority=high.
         self.assertEqual(self.html.count('fetchpriority="high"'), 0)
         hero = re.search(r'<img\s+class="kzm-base start-hero-still"[^>]*>', self.html).group(0)
-        self.assertIn('loading="lazy"', hero)
+        self.assertNotIn('loading="lazy"', hero)
         self.assertIn('src="/start/map-v2/a-world-v1.svg"', hero)
+        self.assertIn('<link rel="preload" href="/start/map-v2/a-world-v1.svg" as="image" />', self.html)
 
     def test_hero_cards_yield_to_the_map(self):
         # Map v2 dropped the playing-card stack; the unused images were removed on 2026-11-20.
