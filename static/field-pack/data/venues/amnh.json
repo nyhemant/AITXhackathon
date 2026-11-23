@@ -21,9 +21,9 @@
   "items": [
     {
       "id": "sci_dinosaur",
-      "label": "Dinosaur hall",
+      "label": "Tyrannosaurus rex",
       "emoji": "🦖",
-      "one_liner": "T. rex and friends — the reason many kids beg to come.",
+      "one_liner": "The T. rex in the Hall of Saurischian Dinosaurs.",
       "tags": [
         "wow",
         "read"
@@ -34,22 +34,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Fossil halls",
+      "zone": "Hall of Saurischian Dinosaurs",
       "qa_card": {
         "question": "Were all dinosaurs huge?",
         "answer": "No — some were small, but the big ones steal the show!"
       },
       "catalog_id": "sci-dinosaur",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Dinosaur hall"
+      "presence_checked": "2026-11-23",
+      "presence_source": "official_exhibitions_page",
+      "display_label": "Tyrannosaurus rex",
+      "presence_url": "https://www.amnh.org/exhibitions/permanent"
     },
     {
       "id": "sci_mammal_hall",
-      "label": "Animal / mammal hall",
-      "emoji": "🦌",
-      "one_liner": "Lifelike dioramas of animals in habitats.",
+      "label": "Akeley Hall of African Mammals",
+      "emoji": "🐘",
+      "one_liner": "A freestanding group of eight African elephants, plus 28 habitat dioramas.",
       "tags": [
         "wow",
         "read"
@@ -60,22 +61,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Mammal halls",
+      "zone": "Akeley Hall of African Mammals",
       "qa_card": {
-        "question": "What did you notice about the Animal / mammal hall?",
-        "answer": "Tell a grown-up one thing you saw!"
+        "question": "How many elephants stand together in Akeley Hall?",
+        "answer": "Eight — a freestanding group in the hall."
       },
       "catalog_id": "sci-mammal-hall",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Animal / mammal hall"
+      "presence_checked": "2026-11-23",
+      "presence_source": "official_exhibitions_page",
+      "display_label": "Akeley Hall of African Mammals",
+      "presence_url": "https://www.amnh.org/exhibitions/permanent"
     },
     {
       "id": "sci_planet",
-      "label": "Planet / space hall",
+      "label": "Rose Center for Earth and Space",
       "emoji": "🪐",
-      "one_liner": "Space show if you added tickets — stars and planets.",
+      "one_liner": "The Hayden Sphere and exhibitions on the 13-billion-year history of the universe.",
       "tags": [
         "wow"
       ],
@@ -85,22 +87,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Hayden Planetarium",
+      "zone": "Rose Center for Earth and Space",
       "qa_card": {
-        "question": "What did you notice about the Planet / space hall?",
-        "answer": "Tell a grown-up one thing you saw!"
+        "question": "What is the giant sphere at the Rose Center called?",
+        "answer": "The Hayden Sphere."
       },
       "catalog_id": "sci-planet",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Planet / space hall"
+      "presence_checked": "2026-11-23",
+      "presence_source": "official_exhibitions_page",
+      "display_label": "Rose Center for Earth and Space",
+      "presence_url": "https://www.amnh.org/exhibitions/permanent"
     },
     {
       "id": "sci_hands_on",
-      "label": "Discovery Room / Gilder Center",
-      "emoji": "🔬",
-      "one_liner": "Hands-on spots when open to the public floor.",
+      "label": "Gilder Center Insectarium",
+      "emoji": "🦋",
+      "one_liner": "The Susan and Peter J. Solomon Family Insectarium in the Gilder Center.",
       "tags": [
         "hands"
       ],
@@ -110,22 +113,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Discovery / education spaces",
+      "zone": "Richard Gilder Center",
       "qa_card": {
-        "question": "What did you notice about the Hands-on lab?",
-        "answer": "Tell a grown-up one thing you saw!"
+        "question": "Where is the Insectarium?",
+        "answer": "In the Richard Gilder Center — the Susan and Peter J. Solomon Family Insectarium."
       },
       "catalog_id": "sci-hands-on",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "display_label": "Discovery Room / Gilder Center",
-      "presence_note": "Hands-on Discovery Room; Gilder Center immersive spaces."
+      "presence_checked": "2026-11-23",
+      "display_label": "Gilder Center Insectarium",
+      "presence_source": "official_exhibitions_page",
+      "presence_url": "https://www.amnh.org/exhibitions/permanent"
     },
     {
       "id": "sci_rainforest",
-      "label": "Biodiversity / forest halls",
-      "emoji": "🌿",
-      "one_liner": "Lush life exhibits when on the route.",
+      "label": "Titanosaur",
+      "emoji": "🦕",
+      "one_liner": "A 122-foot-long Titanosaur in the Wallach Orientation Center.",
       "tags": [
         "wow"
       ],
@@ -135,22 +139,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Special / biodiversity",
+      "zone": "Miriam and Ira D. Wallach Orientation Center",
       "qa_card": {
-        "question": "What did you notice about the Rainforest dome?",
-        "answer": "Tell a grown-up one thing you saw!"
+        "question": "How long is the Titanosaur?",
+        "answer": "122 feet — it is in the Wallach Orientation Center."
       },
       "catalog_id": "sci-rainforest",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Biodiversity / forest halls",
-      "presence_note": "No freestanding 'rainforest dome' like Cal Academy; Hall of Biodiversity has rainforest diorama. Soft-label."
+      "presence": "verified",
+      "presence_checked": "2026-11-23",
+      "display_label": "Titanosaur",
+      "presence_source": "official_exhibitions_page",
+      "presence_url": "https://www.amnh.org/exhibitions/permanent"
     },
     {
       "id": "sci_aquarium_zone",
-      "label": "Hall of Ocean Life",
-      "emoji": "🐠",
-      "one_liner": "Aquatic life corners in biodiversity areas.",
+      "label": "Blue whale",
+      "emoji": "🐋",
+      "one_liner": "A 94-foot-long, 21,000-pound model of a blue whale.",
       "tags": [
         "water"
       ],
@@ -160,22 +165,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Life exhibits",
+      "zone": "Irma and Paul Milstein Family Hall of Ocean Life",
       "qa_card": {
-        "question": "What did you notice about the Aquarium zone?",
-        "answer": "Tell a grown-up one thing you saw!"
+        "question": "How long is the blue whale model?",
+        "answer": "94 feet long, and it weighs 21,000 pounds."
       },
       "catalog_id": "sci-aquarium-zone",
-      "presence": "medium",
-      "presence_checked": "2026-08-08",
-      "display_label": "Hall of Ocean Life",
-      "presence_note": "Ocean life hall with blue whale — not a living aquarium zone."
+      "presence": "verified",
+      "presence_checked": "2026-11-23",
+      "display_label": "Blue whale",
+      "presence_source": "official_exhibitions_page",
+      "presence_url": "https://www.amnh.org/exhibitions/permanent/ocean-life"
     },
     {
       "id": "cm_free_explore",
-      "label": "Free explore",
-      "emoji": "🧭",
-      "one_liner": "Pick a favorite hall and wander five minutes freestyle.",
+      "label": "Triceratops",
+      "emoji": "🦕",
+      "one_liner": "Triceratops in the Hall of Ornithischian Dinosaurs, with Stegosaurus nearby.",
       "tags": [
         "play"
       ],
@@ -185,16 +191,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Open halls",
+      "zone": "Hall of Ornithischian Dinosaurs",
       "qa_card": {
-        "question": "What did you notice about the Free explore?",
-        "answer": "Tell a grown-up one thing you saw!"
+        "question": "Which dinosaur hall has Triceratops?",
+        "answer": "The Hall of Ornithischian Dinosaurs — Stegosaurus is in that hall too."
       },
       "catalog_id": "cm-free-explore",
-      "presence": "high",
-      "presence_checked": "2026-08-08",
-      "display_label": "Free explore",
-      "presence_note": "Appropriate free-explore stop."
+      "presence": "verified",
+      "presence_checked": "2026-11-23",
+      "display_label": "Triceratops",
+      "presence_source": "official_exhibitions_page",
+      "presence_url": "https://www.amnh.org/exhibitions/permanent"
     }
   ],
   "content_mode": "curated",
@@ -211,7 +218,7 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "web-map 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "web-map 2026-08-07 · presence-audit 2026-08-08 [major] · exhibits sourced 2026-11-23 from amnh.org/exhibitions/permanent",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -233,7 +240,7 @@
     "https://www.amnh.org/"
   ],
   "bonus_hunt": {
-    "tagline": "AMNH bonus · fossils + mammals + planetarium cue",
+    "tagline": "AMNH bonus · dinosaur halls + blue whale + Akeley Hall + Rose Center",
     "find_ids": [
       "sci_dinosaur",
       "sci_mammal_hall",
@@ -244,7 +251,7 @@
     "challenges": [
       {
         "id": "am_dino",
-        "text": "Dinosaur halls: teeth-forward or horns-forward favorite?",
+        "text": "T. rex or Triceratops — teeth-forward or horns-forward favorite?",
         "age_fit": [
           "2-3",
           "4-5",
@@ -254,7 +261,7 @@
       },
       {
         "id": "am_mammal",
-        "text": "Mammal dioramas: find a habitat that looks cold",
+        "text": "In Akeley Hall, find the freestanding group of eight elephants",
         "age_fit": [
           "4-5",
           "6-8",
@@ -263,7 +270,7 @@
       },
       {
         "id": "am_scale",
-        "text": "Stand under something huge — whisper “taller than my house?”",
+        "text": "Stand under the 94-foot blue whale model in the Hall of Ocean Life",
         "age_fit": [
           "2-3",
           "4-5",
@@ -273,7 +280,7 @@
       },
       {
         "id": "am_planet",
-        "text": "Planetarium: note a show name/time even if you don’t go in",
+        "text": "At the Rose Center, walk around the Hayden Sphere",
         "age_fit": [
           "4-5",
           "6-8",
@@ -282,7 +289,7 @@
       },
       {
         "id": "am_detail",
-        "text": "Diorama detective: one animal partially hidden behind plants",
+        "text": "Discovery Room: ages 4–12, open daily except Tuesdays",
         "age_fit": [
           "4-5",
           "6-8",
@@ -293,9 +300,10 @@
     "easter_egg": "★ Easter egg: Central Park side — which exit would you take for the park? (map guess)",
     "easter_egg_little": "★ Easter egg: T-rex arms pose for 3 seconds",
     "sources": [
-      "https://www.amnh.org/"
+      "https://www.amnh.org/exhibitions/permanent",
+      "https://www.amnh.org/exhibitions/permanent/ocean-life"
     ],
-    "researched": "2026-08-08",
+    "researched": "2026-11-23",
     "status": "researched"
   }
 }

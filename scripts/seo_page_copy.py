@@ -218,11 +218,11 @@ PAGE_COPY["/field-pack/aquarium-of-the-pacific/"] = {
 PAGE_COPY["/field-pack/amnh/"] = {
     "h1": "AMNH Scavenger Hunt: American Museum of Natural History",
     "intro": (
-        "Looking for a museum of natural history scavenger hunt? The American Museum of Natural "
-        "History (AMNH) in New York has two dinosaur halls with Tyrannosaurus rex, a 94-foot blue "
-        "whale model in the Hall of Ocean Life, and the Rose Center for Earth and Space. Print the "
-        "hunt below and tick off the dinosaurs, the mammal dioramas, the Hall of Ocean Life and "
-        "the planetarium."
+        "Looking for an AMNH scavenger hunt? The American Museum of Natural History in New York "
+        "has Tyrannosaurus rex in the Hall of Saurischian Dinosaurs, a 94-foot, 21,000-pound blue "
+        "whale model in the Milstein Hall of Ocean Life, and the Rose Center for Earth and Space. "
+        "Print the hunt below and tick off the T. rex, the blue whale, the Akeley Hall elephants "
+        "and the Rose Center."
     ),
 }
 PAGE_COPY["/field-pack/california-science-center/"] = {
