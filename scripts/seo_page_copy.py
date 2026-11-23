@@ -234,3 +234,22 @@ PAGE_COPY["/field-pack/california-science-center/"] = {
         "Endeavour, the rockets, the hands-on labs and the ecosystems galleries."
     ),
 }
+
+PAGE_COPY["/field-pack/st-louis-zoo/"] = {
+    "h1": "St. Louis Zoo Scavenger Hunt",
+    "intro": (
+        "Looking for a St. Louis Zoo scavenger hunt? The Saint Louis Zoo in Forest Park has "
+        "western lowland gorillas, chimpanzees and Sumatran orangutans in Jungle of the Apes, "
+        "and reticulated giraffes. Print the hunt below and tick off the apes, a giraffe and "
+        "the other stops."
+    ),
+}
+PAGE_COPY["/field-pack/lincoln-park-zoo/"] = {
+    "h1": "Lincoln Park Zoo Scavenger Hunt",
+    "intro": (
+        "Looking for a Lincoln Park Zoo scavenger hunt? Lincoln Park Zoo in Chicago has "
+        "western lowland gorillas and chimpanzees at the Regenstein Center for African Apes, "
+        "African penguins at Pritzker Penguin Cove, and African lions at the Pepper Family "
+        "Wildlife Center. Print the hunt below and tick off the apes, the penguins and the lions."
+    ),
+}

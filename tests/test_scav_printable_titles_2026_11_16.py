@@ -26,7 +26,7 @@ TEST_TITLES = {
     "air-and-space": "Air and Space & Udvar-Hazy Printable Scavenger Hunt for Kids",
     "national-aquarium-baltimore": "Washington DC Aquarium Printable Scavenger Hunt · KidZooKit",  # query page 2026-11-23
     "shedd-aquarium": "Shedd Aquarium Printable Scavenger Hunt for Kids · KidZooKit",
-    "lincoln-park-zoo": "Lincoln Park Zoo Printable Scavenger Hunt for Kids",
+    "lincoln-park-zoo": "Lincoln Park Zoo Printable Scavenger Hunt · KidZooKit",
     "toronto-zoo": "Toronto Zoo Printable Scavenger Hunt for Kids · KidZooKit",
     "austin-zoo": "Austin Zoo Printable Scavenger Hunt for Kids · KidZooKit",
     "national-zoo": "Smithsonian National Zoo Printable Scavenger Hunt for Kids",

@@ -2099,6 +2099,9 @@ SEO_TITLE_LABELS = {
     "aquarium-of-the-pacific": "LA-Area Aquarium Scavenger Hunt: Aquarium of the Pacific",
     "amnh": "AMNH Printable Scavenger Hunt: Museum of Natural History",
     "california-science-center": "LA Science Museum Scavenger Hunt: California Science Center",
+    # 2026-11-23 weekly: title/H1 match "<zoo> scavenger hunt".
+    "st-louis-zoo": "St. Louis Zoo Scavenger Hunt",
+    "lincoln-park-zoo": "Lincoln Park Zoo Scavenger Hunt",
 }
 
 SEO_META_DESCRIPTIONS = {
@@ -2126,6 +2129,12 @@ SEO_META_DESCRIPTIONS = {
     "cal-academy": (
         "Science museum scavenger hunt in San Francisco: print a California Academy of "
         "Sciences hunt with the Osher Rainforest and penguins — KidZooKit."
+    ),
+    "st-louis-zoo": (
+        "St. Louis Zoo scavenger hunt in Forest Park: print a hunt, then look for gorillas in Jungle of the Apes and reticulated giraffes — KidZooKit."
+    ),
+    "lincoln-park-zoo": (
+        "Lincoln Park Zoo scavenger hunt in Chicago: print a hunt for gorillas, African penguins and lions at the Pepper Family Wildlife Center — KidZooKit."
     ),
     "field-museum": (
         "Field Museum scavenger hunt for kids in Chicago: SUE the T. rex, "
