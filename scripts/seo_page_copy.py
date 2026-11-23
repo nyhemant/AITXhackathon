@@ -199,7 +199,7 @@ PAGE_COPY["/field-pack/museum-of-science-industry-chi/"] = {
     ),
 }
 PAGE_COPY["/field-pack/national-aquarium-baltimore/"] = {
-    "h1": "Aquarium Scavenger Hunt Near Washington DC: National Aquarium, Baltimore",
+    "h1": "Washington DC Aquarium Scavenger Hunt: National Aquarium, Baltimore",
     "intro": (
         "Looking for an aquarium scavenger hunt near Washington DC? The National Aquarium is not "
         "in DC: it is in Baltimore, on the Inner Harbor, 38 miles from DC (about an hour by car). "
