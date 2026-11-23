@@ -2095,7 +2095,7 @@ SEO_TITLE_LABELS = {
     "cal-academy": "San Francisco Science Museum Scavenger Hunt: Cal Academy",
     # 2026-11-16 unfreeze (A): one page per big query; facts in weekly-2026-11-16/evidence-v1.md.
     "museum-of-science-industry-chi": "Chicago Science Museum Scavenger Hunt: Griffin MSI",
-    "national-aquarium-baltimore": "DC-Area Aquarium Printable Scavenger Hunt: National Aquarium",
+    "national-aquarium-baltimore": "Washington DC Aquarium Printable Scavenger Hunt",
     "aquarium-of-the-pacific": "LA-Area Aquarium Scavenger Hunt: Aquarium of the Pacific",
     "amnh": "AMNH Printable Scavenger Hunt: Museum of Natural History",
     "california-science-center": "LA Science Museum Scavenger Hunt: California Science Center",
