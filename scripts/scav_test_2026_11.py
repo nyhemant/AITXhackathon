@@ -98,6 +98,8 @@ PIN_SLUGS = frozenset({
     "museum-of-science-industry-chi",
     "aquarium-of-the-pacific",
     "california-science-center",
+    # 2026-11-23 weekly: printable sheet up top on the St. Louis Zoo query page.
+    "st-louis-zoo",
 })
 BLOCK_SLUGS = TEST_SLUGS | PIN_SLUGS
 
