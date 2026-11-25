@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Animal Word Search for Kids | KidZooKit</title>
+  <meta name="description" content="A 1–3 minute animal word search for ages 5–7. Slide across a name from the animal cards. Easy 6×6 or a bit harder 8×8. No sign-in." />
+  <link rel="canonical" href="https://kidzookit.com/games/word-search/" />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" href="/favicon.ico?v=1" sizes="48x48" />
+  <link rel="icon" type="image/png" href="/pwa/favicon-96-v1.png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/pwa/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="KidZooKit" />
+  <meta property="og:title" content="Animal Word Search for Kids | KidZooKit" />
+  <meta property="og:description" content="Slide across a name from the animal cards. Easy 6×6 or a bit harder 8×8. No sign-in." />
+  <meta property="og:url" content="https://kidzookit.com/games/word-search/" />
+  <meta property="og:image" content="https://kidzookit.com/field-pack/photos/zebra-640-v1.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Animal Word Search for Kids | KidZooKit" />
+  <meta name="twitter:description" content="Slide across a name from the animal cards. Easy 6×6 or a bit harder 8×8. No sign-in." />
+  <link rel="stylesheet" href="/games/css/games-v1.css?v=1" />
+  <link rel="stylesheet" href="/games/css/wordsearch-v1.css?v=1" />
+  <link rel="preload" href="/games/data/memory-v1.json" as="fetch" crossorigin />
+</head>
+<body>
+  <div class="wrap" id="kz-wordsearch">
+    <div class="bar">
+      <a href="/start/">KidZooKit</a>
+      <nav aria-label="Site">
+        <a href="/games/">Games</a>
+        <a href="/printables/">Printables</a>
+        <a href="/start/">Start</a>
+      </nav>
+    </div>
+    <h1>Animal word search</h1>
+    <p class="kz-place" id="kz-place-label" hidden></p>
+    <p class="lead">Find the animal names in the grid. A grown-up can read the list aloud.</p>
+
+    <section id="kz-setup">
+      <div class="kz-actions">
+        <button type="button" class="kz-btn kz-btn-sun" id="kz-easy">Easy · 6×6</button>
+        <button type="button" class="kz-btn" id="kz-hard">A bit harder · 8×8</button>
+      </div>
+      <p class="kz-note">About 1–3 minutes. Ages 5–7. The words come from animal card names already on KidZooKit.</p>
+    </section>
+
+    <section id="kz-play" hidden>
+      <div class="kz-status" id="kz-status">0 of 5 words</div>
+      <p class="kz-ws-help">Slide a finger across a word, or tap the first letter and the last letter.</p>
+      <div class="kz-live" id="kz-live" aria-live="polite">Find a word from the list.</div>
+      <div class="kz-ws-grid" id="kz-grid" role="grid" aria-label="Word search" data-size="6"></div>
+      <ul class="kz-ws-list" id="kz-list" aria-label="Words to find"></ul>
+    </section>
+
+    <section id="kz-finish" class="kz-finish" hidden>
+      <div class="kz-confetti" aria-hidden="true">🎉 🦓 🎉</div>
+      <h2 id="kz-finish-title" tabindex="-1">All found. High five!</h2>
+      <p>Those names came from the animal cards. Ready for another search, or a hunt to print?</p>
+      <div class="kz-actions">
+        <button type="button" class="kz-btn kz-btn-sun" id="kz-again">Play again</button>
+        <a class="kz-btn" id="kz-hunt-link" href="/printables/scavenger-hunt/">Print a scavenger hunt</a>
+        <a class="kz-btn kz-btn-ghost" href="/games/">Back to games</a>
+      </div>
+    </section>
+  </div>
+  <script src="/shell/shell.js?v=8" defer></script>
+  <script src="/games/js/wordsearch-v1.js?v=1" defer></script>
+</body>
+</html>

@@ -31,7 +31,8 @@ class NoindexThin(unittest.TestCase):
             xml = (ROOT / sm).read_text(encoding="utf-8")
             # 286 after the noindex drop; 293 since 2026-11-18 (+7 Science Bee pages).
             # 295 since 2026-11-25 (+ /games/ and /games/memory/).
-            self.assertEqual(xml.count("<url>"), 295, sm)
+            # 296 since 2026-11-25 (+ /games/word-search/).
+            self.assertEqual(xml.count("<url>"), 296, sm)
             for slug in NOINDEX:
                 self.assertNotIn(f"/field-pack/{slug}/</loc>", xml)
             for slug in STAY_INDEXED:
