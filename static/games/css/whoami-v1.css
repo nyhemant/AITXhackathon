@@ -1,0 +1,25 @@
+.kz-who-clues{margin:.7rem 0 1rem;padding:0;list-style:none}
+.kz-who-clues li{
+  background:rgba(255,255,255,.88);border:1.5px solid var(--border);border-radius:14px;
+  padding:.8rem 1rem;margin:0 0 .55rem;font-weight:700;color:var(--teal-deep);font-size:1.05rem;
+}
+.kz-who-clues li::before{content:"Clue ";font-size:.75rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:.15rem}
+.kz-who-clues li:nth-child(1)::before{content:"Clue 1"}
+.kz-who-clues li:nth-child(2)::before{content:"Clue 2"}
+.kz-who-clues li:nth-child(3)::before{content:"Clue 3"}
+.kz-who-choices{display:flex;flex-direction:column;gap:.7rem;margin:0 0 1rem}
+.kz-who-choice{
+  appearance:none;border:2px solid var(--border);border-radius:18px;background:var(--card);
+  min-height:var(--tap);padding:.55rem .7rem;display:flex;align-items:center;gap:.85rem;
+  width:100%;text-align:left;font:inherit;font-weight:800;color:var(--teal-deep);cursor:pointer;
+  box-shadow:0 2px 6px rgba(21,34,56,.06);
+}
+.kz-who-choice img{width:5.5rem;height:5.5rem;object-fit:cover;border-radius:12px;flex:0 0 5.5rem;background:#e8efe8}
+.kz-who-choice span{font-size:1.15rem;line-height:1.2}
+.kz-who-choice[disabled]{cursor:default}
+.kz-who-choice.is-right{border-color:var(--ok);background:#c8edd4}
+.kz-who-choice.is-wrong{border-color:#b33;background:#fdeaea}
+.kz-who-next{width:100%}
+@media (prefers-reduced-motion:reduce){
+  .kz-who-choice{transition:none}
+}
