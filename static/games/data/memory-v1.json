@@ -1,0 +1,1626 @@
+{
+  "source": "card-page-blurb, card-kinds.tsv titles, and venue items already on kidzookit.com; no new animal facts",
+  "animals": [
+    {
+      "id": "african-elephant",
+      "name": "African elephant",
+      "photo": "/field-pack/photos/african-elephant-320-v1.webp",
+      "fact": "Biggest land animal — trunk to grab, spray, and say hello.",
+      "card": "/field-pack/cards/african-elephant/"
+    },
+    {
+      "id": "african-lion",
+      "name": "African lion",
+      "photo": "/field-pack/photos/african-lion-320-v1.webp",
+      "fact": "Look close — mane, whiskers, a tuft on the tail. Lions often rest in a pride.",
+      "card": "/field-pack/cards/african-lion/"
+    },
+    {
+      "id": "african-penguin",
+      "name": "African penguin",
+      "photo": "/field-pack/photos/african-penguin-320-v1.webp",
+      "fact": "Waddle on land, zoom in water.",
+      "card": "/field-pack/cards/african-penguin/"
+    },
+    {
+      "id": "american-alligator",
+      "name": "American alligator",
+      "photo": "/field-pack/photos/american-alligator-320-v1.webp",
+      "fact": "Armored wetland predator — stay on boardwalks and far from the water edge.",
+      "card": "/field-pack/cards/american-alligator/"
+    },
+    {
+      "id": "american-bison",
+      "name": "American bison",
+      "photo": "/field-pack/photos/american-bison-320-v1.webp",
+      "fact": "Huge grassland icon — never approach; watch from a car or far pullout.",
+      "card": "/field-pack/cards/american-bison/"
+    },
+    {
+      "id": "asian-small-clawed-otter",
+      "name": "Asian small-clawed otter",
+      "photo": "/field-pack/photos/asian-small-clawed-otter-320-v1.webp",
+      "fact": "Playful swimmer — smallest otter.",
+      "card": "/field-pack/cards/asian-small-clawed-otter/"
+    },
+    {
+      "id": "caribbean-flamingo",
+      "name": "Caribbean flamingo",
+      "photo": "/field-pack/photos/caribbean-flamingo-320-v1.webp",
+      "fact": "Bright pink wader — long legs for shallow water.",
+      "card": "/field-pack/cards/caribbean-flamingo/"
+    },
+    {
+      "id": "cheetah",
+      "name": "Cheetah",
+      "photo": "/field-pack/photos/cheetah-320-v1.webp",
+      "fact": "Fastest land animal — built to sprint.",
+      "card": "/field-pack/cards/cheetah/"
+    },
+    {
+      "id": "chimpanzee",
+      "name": "Chimpanzee",
+      "photo": "/field-pack/photos/chimpanzee-320-v1.webp",
+      "fact": "Smart forest ape — climbs and tools.",
+      "card": "/field-pack/cards/chimpanzee/"
+    },
+    {
+      "id": "clownfish",
+      "name": "Clownfish",
+      "photo": "/field-pack/photos/clownfish-320-v1.webp",
+      "fact": "Bright reef fish — friends with anemones.",
+      "card": "/field-pack/cards/clownfish/"
+    },
+    {
+      "id": "crab",
+      "name": "Crab",
+      "photo": "/field-pack/photos/crab-320-v1.webp",
+      "fact": "Sideways walker with a hard shell and pinchers.",
+      "card": "/field-pack/cards/crab/"
+    },
+    {
+      "id": "cuttlefish",
+      "name": "Cuttlefish",
+      "photo": "/field-pack/photos/cuttlefish-320-v1.webp",
+      "fact": "Color-changing cousin of the octopus — a living disguise.",
+      "card": "/field-pack/cards/cuttlefish/"
+    },
+    {
+      "id": "eel",
+      "name": "Eel",
+      "photo": "/field-pack/photos/eel-320-v1.webp",
+      "fact": "Long snaky fish — loves rocky hidey-holes.",
+      "card": "/field-pack/cards/eel/"
+    },
+    {
+      "id": "elk",
+      "name": "Elk",
+      "photo": "/field-pack/photos/elk-320-v1.webp",
+      "fact": "Big deer of meadows and mountains — quiet watch from a safe distance.",
+      "card": "/field-pack/cards/elk/"
+    },
+    {
+      "id": "freshwater-fish",
+      "name": "River / lake fish",
+      "photo": "/field-pack/photos/freshwater-fish-320-v1.webp",
+      "fact": "Fish that live in fresh water — rivers, lakes, ponds.",
+      "card": "/field-pack/cards/freshwater-fish/"
+    },
+    {
+      "id": "galapagos-tortoise",
+      "name": "Galápagos tortoise",
+      "photo": "/field-pack/photos/galapagos-tortoise-320-v1.webp",
+      "fact": "Giant tortoise — slow and steady.",
+      "card": "/field-pack/cards/galapagos-tortoise/"
+    },
+    {
+      "id": "giant-panda",
+      "name": "Giant panda",
+      "photo": "/field-pack/photos/giant-panda-320-v1.webp",
+      "fact": "Black-and-white bamboo lover — calm and famous.",
+      "card": "/field-pack/cards/giant-panda/"
+    },
+    {
+      "id": "jellyfish",
+      "name": "Jellyfish",
+      "photo": "/field-pack/photos/jellyfish-320-v1.webp",
+      "fact": "Soft drifter — no bones, glows and pulses in the water.",
+      "card": "/field-pack/cards/jellyfish/"
+    },
+    {
+      "id": "koala",
+      "name": "Koala",
+      "photo": "/field-pack/photos/koala-320-v1.webp",
+      "fact": "Sleepy tree-sitter — look up in the eucalyptus.",
+      "card": "/field-pack/cards/koala/"
+    },
+    {
+      "id": "manta-ray",
+      "name": "Manta ray",
+      "photo": "/field-pack/photos/manta-ray-320-v1.webp",
+      "fact": "Giant winged swimmer — bigger and gentler than a stingray.",
+      "card": "/field-pack/cards/manta-ray/"
+    },
+    {
+      "id": "nile-hippo",
+      "name": "Nile hippo",
+      "photo": "/field-pack/photos/nile-hippo-320-v1.webp",
+      "fact": "Huge river giant that loves the water.",
+      "card": "/field-pack/cards/nile-hippo/"
+    },
+    {
+      "id": "octopus",
+      "name": "Octopus",
+      "photo": "/field-pack/photos/octopus-320-v1.webp",
+      "fact": "Eight arms and a big brain — master of hide-and-seek.",
+      "card": "/field-pack/cards/octopus/"
+    },
+    {
+      "id": "orangutan",
+      "name": "Orangutan",
+      "photo": "/field-pack/photos/orangutan-320-v1.webp",
+      "fact": "Tree ape with long arms — watches from the canopy.",
+      "card": "/field-pack/cards/orangutan/"
+    },
+    {
+      "id": "ostrich",
+      "name": "Ostrich",
+      "photo": "/field-pack/photos/ostrich-320-v1.webp",
+      "fact": "Biggest bird — can’t fly, runs fast.",
+      "card": "/field-pack/cards/ostrich/"
+    },
+    {
+      "id": "polar-bear",
+      "name": "Polar bear",
+      "photo": "/field-pack/photos/polar-bear-320-v1.webp",
+      "fact": "Arctic swimmer in a white coat — built for ice.",
+      "card": "/field-pack/cards/polar-bear/"
+    },
+    {
+      "id": "puffin",
+      "name": "Puffin",
+      "photo": "/field-pack/photos/puffin-320-v1.webp",
+      "fact": "Seabird that flies, swims, and carries a beak full of fish.",
+      "card": "/field-pack/cards/puffin/"
+    },
+    {
+      "id": "red-panda",
+      "name": "Red panda",
+      "photo": "/field-pack/photos/red-panda-320-v1.webp",
+      "fact": "Rusty tree-climber with a ringed tail — not a giant panda!",
+      "card": "/field-pack/cards/red-panda/"
+    },
+    {
+      "id": "reticulated-giraffe",
+      "name": "Reticulated giraffe",
+      "photo": "/field-pack/photos/reticulated-giraffe-320-v1.webp",
+      "fact": "Tallest animal on long legs — look up!",
+      "card": "/field-pack/cards/reticulated-giraffe/"
+    },
+    {
+      "id": "ring-tailed-lemur",
+      "name": "Ring-tailed lemur",
+      "photo": "/field-pack/photos/ring-tailed-lemur-320-v1.webp",
+      "fact": "Stripy tail from Madagascar.",
+      "card": "/field-pack/cards/ring-tailed-lemur/"
+    },
+    {
+      "id": "sea-otter",
+      "name": "Sea otter",
+      "photo": "/field-pack/photos/sea-otter-320-v1.webp",
+      "fact": "Furriest swimmer — floats on its back and uses rocks as tools.",
+      "card": "/field-pack/cards/sea-otter/"
+    },
+    {
+      "id": "sea-turtle",
+      "name": "Sea turtle",
+      "photo": "/field-pack/photos/sea-turtle-320-v1.webp",
+      "fact": "Shelled ocean traveler — flippers for swimming.",
+      "card": "/field-pack/cards/sea-turtle/"
+    },
+    {
+      "id": "seahorse",
+      "name": "Seahorse",
+      "photo": "/field-pack/photos/seahorse-320-v1.webp",
+      "fact": "Tiny upright swimmer that holds on with its tail.",
+      "card": "/field-pack/cards/seahorse/"
+    },
+    {
+      "id": "shark",
+      "name": "Shark",
+      "photo": "/field-pack/photos/shark-320-v1.webp",
+      "fact": "Ocean hunter with a strong swishy body.",
+      "card": "/field-pack/cards/shark/"
+    },
+    {
+      "id": "starfish",
+      "name": "Sea star",
+      "photo": "/field-pack/photos/starfish-320-v1.webp",
+      "fact": "Star-shaped ocean friend — often in touch tanks.",
+      "card": "/field-pack/cards/starfish/"
+    },
+    {
+      "id": "stingray",
+      "name": "Stingray",
+      "photo": "/field-pack/photos/stingray-320-v1.webp",
+      "fact": "Flat swimmer — often in touch pools (gentle hands!).",
+      "card": "/field-pack/cards/stingray/"
+    },
+    {
+      "id": "sumatran-tiger",
+      "name": "Sumatran tiger",
+      "photo": "/field-pack/photos/sumatran-tiger-320-v1.webp",
+      "fact": "Stripy forest big cat — strong and stealthy.",
+      "card": "/field-pack/cards/sumatran-tiger/"
+    },
+    {
+      "id": "two-toed-sloth",
+      "name": "Two-toed sloth",
+      "photo": "/field-pack/photos/two-toed-sloth-320-v1.webp",
+      "fact": "Slow forest climber — hangs upside down.",
+      "card": "/field-pack/cards/two-toed-sloth/"
+    },
+    {
+      "id": "warthog",
+      "name": "Warthog",
+      "photo": "/field-pack/photos/warthog-320-v1.webp",
+      "fact": "Savanna pig with tusks.",
+      "card": "/field-pack/cards/warthog/"
+    },
+    {
+      "id": "western-lowland-gorilla",
+      "name": "Western lowland gorilla",
+      "photo": "/field-pack/photos/western-lowland-gorilla-320-v1.webp",
+      "fact": "Strong gentle ape in family groups.",
+      "card": "/field-pack/cards/western-lowland-gorilla/"
+    },
+    {
+      "id": "whale-shark",
+      "name": "Whale shark",
+      "photo": "/field-pack/photos/whale-shark-320-v1.webp",
+      "fact": "Biggest fish in the sea — a gentle giant with a wide, filtering mouth.",
+      "card": "/field-pack/cards/whale-shark/"
+    },
+    {
+      "id": "zebra",
+      "name": "Zebra",
+      "photo": "/field-pack/photos/zebra-320-v1.webp",
+      "fact": "Striped grassland runner — every pattern is unique.",
+      "card": "/field-pack/cards/zebra/"
+    }
+  ],
+  "places": {
+    "adelaide-zoo": {
+      "name": "Adelaide Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "giant-panda",
+        "koala",
+        "orangutan",
+        "sumatran-tiger",
+        "red-panda",
+        "reticulated-giraffe",
+        "asian-small-clawed-otter",
+        "ring-tailed-lemur"
+      ]
+    },
+    "albuquerque-biopark": {
+      "name": "ABQ BioPark Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "chimpanzee",
+        "reticulated-giraffe",
+        "cheetah",
+        "orangutan",
+        "nile-hippo",
+        "zebra",
+        "warthog",
+        "caribbean-flamingo"
+      ]
+    },
+    "antwerp-zoo": {
+      "name": "Antwerp Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "chimpanzee",
+        "african-penguin",
+        "african-lion",
+        "koala",
+        "caribbean-flamingo",
+        "reticulated-giraffe"
+      ]
+    },
+    "aquarium-of-the-pacific": {
+      "name": "Aquarium of the Pacific",
+      "hunt": "/field-pack/aquarium-of-the-pacific/#printable-hunt",
+      "ids": [
+        "sea-otter",
+        "puffin",
+        "shark",
+        "stingray",
+        "jellyfish",
+        "sea-turtle",
+        "octopus",
+        "clownfish",
+        "eel"
+      ]
+    },
+    "artis-zoo": {
+      "name": "Artis Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-penguin",
+        "reticulated-giraffe",
+        "western-lowland-gorilla",
+        "chimpanzee",
+        "african-lion",
+        "red-panda",
+        "ring-tailed-lemur",
+        "asian-small-clawed-otter",
+        "two-toed-sloth",
+        "ostrich"
+      ]
+    },
+    "athens-attica-zoo": {
+      "name": "Attica Zoological Park",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "sumatran-tiger",
+        "african-lion",
+        "african-penguin",
+        "zebra",
+        "chimpanzee",
+        "cheetah",
+        "reticulated-giraffe"
+      ]
+    },
+    "auckland-zoo": {
+      "name": "Auckland Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "sumatran-tiger",
+        "galapagos-tortoise",
+        "orangutan",
+        "cheetah",
+        "african-lion",
+        "reticulated-giraffe",
+        "zebra",
+        "red-panda",
+        "asian-small-clawed-otter",
+        "ostrich"
+      ]
+    },
+    "audubon-zoo": {
+      "name": "Audubon Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-lion",
+        "caribbean-flamingo",
+        "western-lowland-gorilla",
+        "reticulated-giraffe",
+        "zebra",
+        "orangutan",
+        "two-toed-sloth"
+      ]
+    },
+    "bangalore-bannerghatta": {
+      "name": "Bannerghatta Biological Park",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "cheetah",
+        "zebra",
+        "ostrich",
+        "african-lion",
+        "reticulated-giraffe",
+        "nile-hippo"
+      ]
+    },
+    "barcelona-zoo": {
+      "name": "Barcelona Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "nile-hippo",
+        "caribbean-flamingo",
+        "western-lowland-gorilla",
+        "chimpanzee",
+        "orangutan",
+        "sumatran-tiger",
+        "warthog",
+        "zebra",
+        "red-panda"
+      ]
+    },
+    "berlin-zoo": {
+      "name": "Berlin Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "giant-panda",
+        "western-lowland-gorilla",
+        "orangutan",
+        "chimpanzee",
+        "african-lion",
+        "nile-hippo",
+        "reticulated-giraffe",
+        "zebra",
+        "two-toed-sloth",
+        "asian-small-clawed-otter"
+      ]
+    },
+    "bronx-zoo": {
+      "name": "Bronx Zoo",
+      "hunt": "/field-pack/bronx-zoo/#printable-hunt",
+      "ids": [
+        "western-lowland-gorilla",
+        "red-panda",
+        "caribbean-flamingo",
+        "reticulated-giraffe",
+        "zebra",
+        "two-toed-sloth",
+        "asian-small-clawed-otter"
+      ]
+    },
+    "budapest-zoo": {
+      "name": "Budapest Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-penguin",
+        "orangutan",
+        "nile-hippo",
+        "zebra",
+        "red-panda",
+        "ring-tailed-lemur",
+        "reticulated-giraffe",
+        "western-lowland-gorilla"
+      ]
+    },
+    "cal-academy": {
+      "name": "California Academy of Sciences",
+      "hunt": "/field-pack/cal-academy/#printable-hunt",
+      "ids": [
+        "shark",
+        "african-penguin",
+        "jellyfish",
+        "octopus",
+        "stingray",
+        "seahorse",
+        "clownfish"
+      ]
+    },
+    "calgary-zoo": {
+      "name": "Calgary Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "nile-hippo",
+        "red-panda",
+        "african-lion",
+        "reticulated-giraffe",
+        "zebra",
+        "ring-tailed-lemur",
+        "ostrich",
+        "polar-bear"
+      ]
+    },
+    "chapultepec-zoo": {
+      "name": "Chapultepec Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "giant-panda",
+        "african-lion",
+        "orangutan",
+        "red-panda",
+        "chimpanzee",
+        "reticulated-giraffe",
+        "nile-hippo",
+        "western-lowland-gorilla"
+      ]
+    },
+    "childrens-aquarium-dallas": {
+      "name": "Children's Aquarium Dallas",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "shark",
+        "stingray",
+        "octopus",
+        "sea-turtle",
+        "freshwater-fish",
+        "starfish",
+        "eel"
+      ]
+    },
+    "cincinnati-zoo": {
+      "name": "Cincinnati Zoo & Botanical Garden",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "nile-hippo",
+        "western-lowland-gorilla",
+        "cheetah",
+        "african-penguin",
+        "african-lion",
+        "galapagos-tortoise",
+        "red-panda",
+        "orangutan",
+        "ring-tailed-lemur",
+        "two-toed-sloth"
+      ]
+    },
+    "cleveland-metroparks-zoo": {
+      "name": "Cleveland Metroparks Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "western-lowland-gorilla",
+        "cheetah",
+        "african-lion",
+        "zebra",
+        "reticulated-giraffe",
+        "koala"
+      ]
+    },
+    "columbus-zoo": {
+      "name": "Columbus Zoo and Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "african-lion",
+        "cheetah",
+        "orangutan",
+        "red-panda",
+        "zebra",
+        "ostrich",
+        "warthog",
+        "reticulated-giraffe",
+        "asian-small-clawed-otter"
+      ]
+    },
+    "copenhagen-zoo": {
+      "name": "Copenhagen Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "giant-panda",
+        "reticulated-giraffe",
+        "nile-hippo",
+        "african-lion",
+        "chimpanzee",
+        "caribbean-flamingo",
+        "red-panda",
+        "ring-tailed-lemur",
+        "zebra",
+        "asian-small-clawed-otter"
+      ]
+    },
+    "dallas-world-aquarium": {
+      "name": "Dallas World Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "two-toed-sloth",
+        "african-penguin",
+        "caribbean-flamingo",
+        "shark",
+        "stingray",
+        "jellyfish",
+        "octopus",
+        "seahorse",
+        "clownfish",
+        "cuttlefish"
+      ]
+    },
+    "dallas-zoo": {
+      "name": "Dallas Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "reticulated-giraffe",
+        "african-elephant",
+        "african-lion",
+        "zebra",
+        "nile-hippo",
+        "african-penguin",
+        "caribbean-flamingo",
+        "galapagos-tortoise",
+        "sumatran-tiger",
+        "western-lowland-gorilla"
+      ]
+    },
+    "detroit-zoo": {
+      "name": "Detroit Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "chimpanzee",
+        "african-lion",
+        "reticulated-giraffe",
+        "zebra",
+        "warthog",
+        "red-panda"
+      ]
+    },
+    "dublin-zoo": {
+      "name": "Dublin Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "orangutan",
+        "western-lowland-gorilla",
+        "nile-hippo",
+        "chimpanzee",
+        "reticulated-giraffe",
+        "zebra",
+        "ostrich",
+        "red-panda",
+        "two-toed-sloth",
+        "cheetah"
+      ]
+    },
+    "edinburgh-zoo": {
+      "name": "Edinburgh Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "koala",
+        "chimpanzee",
+        "sumatran-tiger",
+        "reticulated-giraffe",
+        "cheetah",
+        "red-panda",
+        "asian-small-clawed-otter",
+        "ring-tailed-lemur",
+        "zebra",
+        "two-toed-sloth"
+      ]
+    },
+    "florida-aquarium": {
+      "name": "The Florida Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-penguin",
+        "two-toed-sloth",
+        "jellyfish",
+        "shark",
+        "stingray",
+        "sea-turtle",
+        "octopus",
+        "clownfish",
+        "seahorse",
+        "eel"
+      ]
+    },
+    "fort-worth-zoo": {
+      "name": "Fort Worth Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-lion",
+        "sumatran-tiger",
+        "nile-hippo",
+        "cheetah",
+        "reticulated-giraffe",
+        "western-lowland-gorilla",
+        "orangutan",
+        "ostrich",
+        "caribbean-flamingo",
+        "two-toed-sloth"
+      ]
+    },
+    "georgia-aquarium": {
+      "name": "Georgia Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "whale-shark",
+        "manta-ray",
+        "african-penguin",
+        "sea-otter",
+        "asian-small-clawed-otter",
+        "shark",
+        "puffin",
+        "octopus",
+        "jellyfish",
+        "sea-turtle"
+      ]
+    },
+    "hogle-zoo": {
+      "name": "Utah's Hogle Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "orangutan",
+        "african-lion",
+        "reticulated-giraffe",
+        "zebra",
+        "ostrich",
+        "warthog",
+        "red-panda"
+      ]
+    },
+    "honolulu-zoo": {
+      "name": "Honolulu Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-penguin",
+        "sumatran-tiger",
+        "reticulated-giraffe",
+        "cheetah",
+        "african-lion",
+        "nile-hippo",
+        "ring-tailed-lemur",
+        "orangutan",
+        "two-toed-sloth",
+        "galapagos-tortoise"
+      ]
+    },
+    "houston-zoo": {
+      "name": "Houston Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "chimpanzee",
+        "african-lion",
+        "orangutan",
+        "galapagos-tortoise",
+        "cheetah",
+        "zebra",
+        "ostrich",
+        "ring-tailed-lemur",
+        "warthog"
+      ]
+    },
+    "istanbul-aquarium": {
+      "name": "Istanbul Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "shark",
+        "stingray",
+        "clownfish",
+        "eel",
+        "sea-turtle",
+        "seahorse",
+        "freshwater-fish"
+      ]
+    },
+    "jakarta-ragunan": {
+      "name": "Ragunan Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "orangutan",
+        "sumatran-tiger",
+        "cheetah",
+        "chimpanzee",
+        "ostrich",
+        "zebra",
+        "reticulated-giraffe"
+      ]
+    },
+    "johannesburg-zoo": {
+      "name": "Johannesburg Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-lion",
+        "african-elephant",
+        "nile-hippo",
+        "reticulated-giraffe",
+        "zebra",
+        "cheetah",
+        "chimpanzee",
+        "red-panda",
+        "caribbean-flamingo",
+        "ring-tailed-lemur"
+      ]
+    },
+    "kansas-city-zoo": {
+      "name": "Kansas City Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "chimpanzee",
+        "western-lowland-gorilla",
+        "sumatran-tiger",
+        "orangutan",
+        "cheetah",
+        "red-panda",
+        "reticulated-giraffe",
+        "african-lion",
+        "nile-hippo",
+        "zebra"
+      ]
+    },
+    "kuala-lumpur-zoo": {
+      "name": "Zoo Negara",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "giant-panda",
+        "orangutan",
+        "african-lion",
+        "nile-hippo",
+        "chimpanzee",
+        "reticulated-giraffe",
+        "zebra",
+        "ostrich"
+      ]
+    },
+    "la-zoo": {
+      "name": "Los Angeles Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "chimpanzee",
+        "western-lowland-gorilla",
+        "orangutan",
+        "sumatran-tiger",
+        "zebra",
+        "two-toed-sloth",
+        "ring-tailed-lemur",
+        "caribbean-flamingo"
+      ]
+    },
+    "lima-leyendas": {
+      "name": "Parque de las Leyendas",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "two-toed-sloth",
+        "african-lion",
+        "reticulated-giraffe",
+        "nile-hippo",
+        "galapagos-tortoise",
+        "zebra",
+        "ostrich"
+      ]
+    },
+    "lincoln-park-zoo": {
+      "name": "Lincoln Park Zoo",
+      "hunt": "/field-pack/lincoln-park-zoo/#printable-hunt",
+      "ids": [
+        "western-lowland-gorilla",
+        "african-penguin",
+        "asian-small-clawed-otter",
+        "chimpanzee",
+        "african-lion",
+        "reticulated-giraffe",
+        "zebra",
+        "caribbean-flamingo",
+        "two-toed-sloth",
+        "red-panda"
+      ]
+    },
+    "lisbon-zoo": {
+      "name": "Lisbon Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "sumatran-tiger",
+        "koala",
+        "african-lion",
+        "western-lowland-gorilla",
+        "chimpanzee",
+        "orangutan",
+        "african-penguin",
+        "red-panda",
+        "cheetah"
+      ]
+    },
+    "london-zoo": {
+      "name": "London Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "sumatran-tiger",
+        "two-toed-sloth",
+        "reticulated-giraffe",
+        "zebra",
+        "warthog",
+        "galapagos-tortoise",
+        "ring-tailed-lemur",
+        "asian-small-clawed-otter"
+      ]
+    },
+    "madrid-zoo": {
+      "name": "Madrid Zoo Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "giant-panda",
+        "western-lowland-gorilla",
+        "african-penguin",
+        "koala",
+        "orangutan",
+        "red-panda",
+        "ring-tailed-lemur",
+        "caribbean-flamingo",
+        "chimpanzee",
+        "zebra"
+      ]
+    },
+    "melbourne-zoo": {
+      "name": "Melbourne Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "koala",
+        "western-lowland-gorilla",
+        "orangutan",
+        "sumatran-tiger",
+        "african-lion",
+        "reticulated-giraffe",
+        "red-panda",
+        "ring-tailed-lemur",
+        "asian-small-clawed-otter",
+        "shark"
+      ]
+    },
+    "memphis-zoo": {
+      "name": "Memphis Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "reticulated-giraffe",
+        "sumatran-tiger",
+        "western-lowland-gorilla",
+        "african-lion",
+        "african-penguin",
+        "cheetah",
+        "nile-hippo",
+        "two-toed-sloth",
+        "galapagos-tortoise"
+      ]
+    },
+    "miami-zoo": {
+      "name": "Zoo Miami",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "sumatran-tiger",
+        "orangutan",
+        "western-lowland-gorilla",
+        "chimpanzee",
+        "koala",
+        "warthog",
+        "galapagos-tortoise",
+        "caribbean-flamingo",
+        "reticulated-giraffe"
+      ]
+    },
+    "milwaukee-zoo": {
+      "name": "Milwaukee County Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "reticulated-giraffe",
+        "western-lowland-gorilla",
+        "african-lion",
+        "cheetah",
+        "orangutan",
+        "nile-hippo",
+        "zebra",
+        "ostrich",
+        "red-panda"
+      ]
+    },
+    "monterey-bay-aquarium": {
+      "name": "Monterey Bay Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "jellyfish",
+        "sea-otter",
+        "shark",
+        "sea-turtle",
+        "octopus",
+        "puffin",
+        "stingray",
+        "starfish",
+        "eel"
+      ]
+    },
+    "moscow-zoo": {
+      "name": "Moscow Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "giant-panda",
+        "western-lowland-gorilla",
+        "orangutan",
+        "african-penguin",
+        "reticulated-giraffe",
+        "zebra"
+      ]
+    },
+    "munich-zoo": {
+      "name": "Hellabrunn Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "orangutan",
+        "reticulated-giraffe",
+        "african-lion",
+        "chimpanzee",
+        "two-toed-sloth",
+        "red-panda",
+        "ring-tailed-lemur",
+        "asian-small-clawed-otter",
+        "zebra"
+      ]
+    },
+    "nashville-zoo": {
+      "name": "Nashville Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "sumatran-tiger",
+        "two-toed-sloth",
+        "caribbean-flamingo",
+        "reticulated-giraffe",
+        "ring-tailed-lemur",
+        "galapagos-tortoise",
+        "zebra",
+        "ostrich",
+        "red-panda"
+      ]
+    },
+    "national-aquarium-baltimore": {
+      "name": "National Aquarium",
+      "hunt": "/field-pack/national-aquarium-baltimore/#printable-hunt",
+      "ids": [
+        "puffin",
+        "two-toed-sloth",
+        "jellyfish",
+        "shark",
+        "stingray",
+        "octopus",
+        "sea-turtle",
+        "clownfish",
+        "starfish",
+        "eel"
+      ]
+    },
+    "national-zoo": {
+      "name": "Smithsonian National Zoo",
+      "hunt": "/field-pack/national-zoo/#printable-hunt",
+      "ids": [
+        "giant-panda",
+        "asian-small-clawed-otter",
+        "red-panda",
+        "african-lion",
+        "sumatran-tiger",
+        "western-lowland-gorilla",
+        "orangutan",
+        "ring-tailed-lemur",
+        "two-toed-sloth",
+        "caribbean-flamingo"
+      ]
+    },
+    "new-england-aquarium": {
+      "name": "New England Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-penguin",
+        "sea-turtle",
+        "shark",
+        "stingray",
+        "jellyfish",
+        "octopus",
+        "seahorse",
+        "clownfish",
+        "freshwater-fish"
+      ]
+    },
+    "north-carolina-zoo": {
+      "name": "North Carolina Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "western-lowland-gorilla",
+        "african-lion",
+        "chimpanzee",
+        "reticulated-giraffe",
+        "zebra",
+        "ostrich"
+      ]
+    },
+    "omaha-henry-doorly": {
+      "name": "Omaha's Henry Doorly Zoo & Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "western-lowland-gorilla",
+        "orangutan",
+        "cheetah",
+        "african-lion",
+        "reticulated-giraffe",
+        "zebra",
+        "ostrich",
+        "ring-tailed-lemur",
+        "two-toed-sloth"
+      ]
+    },
+    "oregon-zoo": {
+      "name": "Oregon Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "red-panda",
+        "chimpanzee",
+        "african-lion",
+        "orangutan",
+        "ring-tailed-lemur",
+        "reticulated-giraffe"
+      ]
+    },
+    "osaka-aquarium": {
+      "name": "Osaka Aquarium Kaiyukan",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "whale-shark",
+        "jellyfish",
+        "manta-ray",
+        "shark",
+        "crab",
+        "octopus",
+        "sea-turtle",
+        "asian-small-clawed-otter",
+        "freshwater-fish"
+      ]
+    },
+    "oslo-zoo": {
+      "name": "Kristiansand Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "chimpanzee",
+        "african-lion",
+        "cheetah",
+        "orangutan",
+        "red-panda",
+        "zebra",
+        "ostrich",
+        "ring-tailed-lemur",
+        "reticulated-giraffe"
+      ]
+    },
+    "paris-zoo": {
+      "name": "Parc Zoologique de Paris",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "two-toed-sloth",
+        "ring-tailed-lemur",
+        "reticulated-giraffe",
+        "african-lion",
+        "zebra",
+        "ostrich",
+        "freshwater-fish"
+      ]
+    },
+    "perth-zoo": {
+      "name": "Perth Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "koala",
+        "orangutan",
+        "galapagos-tortoise",
+        "african-lion",
+        "reticulated-giraffe",
+        "zebra",
+        "asian-small-clawed-otter",
+        "sumatran-tiger"
+      ]
+    },
+    "philadelphia-zoo": {
+      "name": "Philadelphia Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-lion",
+        "western-lowland-gorilla",
+        "reticulated-giraffe",
+        "nile-hippo",
+        "orangutan",
+        "caribbean-flamingo",
+        "ring-tailed-lemur",
+        "galapagos-tortoise",
+        "cheetah",
+        "red-panda"
+      ]
+    },
+    "phoenix-zoo": {
+      "name": "Phoenix Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "sumatran-tiger",
+        "orangutan",
+        "african-penguin",
+        "cheetah",
+        "african-lion",
+        "two-toed-sloth",
+        "zebra",
+        "reticulated-giraffe"
+      ]
+    },
+    "pittsburgh-zoo": {
+      "name": "Pittsburgh Zoo & Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "african-lion",
+        "red-panda",
+        "cheetah",
+        "western-lowland-gorilla",
+        "reticulated-giraffe",
+        "zebra",
+        "ostrich",
+        "caribbean-flamingo"
+      ]
+    },
+    "prague-zoo": {
+      "name": "Prague Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "reticulated-giraffe",
+        "ring-tailed-lemur",
+        "zebra",
+        "nile-hippo",
+        "red-panda",
+        "orangutan",
+        "sumatran-tiger",
+        "cheetah",
+        "ostrich"
+      ]
+    },
+    "rome-bioparco": {
+      "name": "Bioparco di Roma",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "reticulated-giraffe",
+        "sumatran-tiger",
+        "african-penguin",
+        "asian-small-clawed-otter",
+        "chimpanzee",
+        "zebra",
+        "ostrich",
+        "ring-tailed-lemur",
+        "nile-hippo"
+      ]
+    },
+    "san-antonio-zoo": {
+      "name": "San Antonio Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "caribbean-flamingo",
+        "african-lion",
+        "zebra",
+        "reticulated-giraffe",
+        "nile-hippo",
+        "asian-small-clawed-otter"
+      ]
+    },
+    "san-diego-safari-park": {
+      "name": "San Diego Zoo Safari Park",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "reticulated-giraffe",
+        "sumatran-tiger",
+        "cheetah",
+        "western-lowland-gorilla",
+        "african-lion",
+        "zebra",
+        "caribbean-flamingo"
+      ]
+    },
+    "san-diego-zoo": {
+      "name": "San Diego Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "giant-panda",
+        "koala",
+        "african-elephant",
+        "african-penguin",
+        "polar-bear",
+        "nile-hippo",
+        "orangutan",
+        "western-lowland-gorilla",
+        "african-lion",
+        "red-panda"
+      ]
+    },
+    "santiago-zoo": {
+      "name": "Parque Metropolitano Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "african-lion",
+        "chimpanzee",
+        "red-panda",
+        "ring-tailed-lemur",
+        "reticulated-giraffe",
+        "nile-hippo"
+      ]
+    },
+    "seattle-aquarium": {
+      "name": "Seattle Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "sea-otter",
+        "puffin",
+        "octopus",
+        "jellyfish",
+        "cuttlefish",
+        "shark",
+        "stingray",
+        "seahorse",
+        "clownfish",
+        "starfish"
+      ]
+    },
+    "seoul-zoo": {
+      "name": "Seoul Grand Park Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "red-panda",
+        "chimpanzee",
+        "african-lion",
+        "orangutan",
+        "zebra",
+        "ostrich",
+        "reticulated-giraffe",
+        "nile-hippo",
+        "western-lowland-gorilla"
+      ]
+    },
+    "shanghai-ocean-aquarium": {
+      "name": "Shanghai Ocean Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "shark",
+        "sea-turtle",
+        "jellyfish",
+        "stingray",
+        "seahorse",
+        "freshwater-fish",
+        "manta-ray"
+      ]
+    },
+    "shedd-aquarium": {
+      "name": "Shedd Aquarium",
+      "hunt": "/field-pack/shedd-aquarium/#printable-hunt",
+      "ids": [
+        "sea-otter",
+        "shark",
+        "jellyfish",
+        "stingray",
+        "octopus",
+        "seahorse",
+        "starfish",
+        "cuttlefish",
+        "freshwater-fish",
+        "sea-turtle"
+      ]
+    },
+    "singapore-zoo": {
+      "name": "Singapore Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "orangutan",
+        "two-toed-sloth",
+        "cheetah",
+        "african-lion",
+        "reticulated-giraffe",
+        "zebra",
+        "asian-small-clawed-otter",
+        "ring-tailed-lemur",
+        "african-penguin"
+      ]
+    },
+    "st-louis-zoo": {
+      "name": "Saint Louis Zoo",
+      "hunt": "/field-pack/st-louis-zoo/#printable-hunt",
+      "ids": [
+        "western-lowland-gorilla",
+        "chimpanzee",
+        "reticulated-giraffe",
+        "orangutan",
+        "nile-hippo",
+        "cheetah",
+        "zebra",
+        "ring-tailed-lemur",
+        "two-toed-sloth",
+        "red-panda"
+      ]
+    },
+    "taipei-zoo": {
+      "name": "Taipei Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "giant-panda",
+        "koala",
+        "red-panda",
+        "reticulated-giraffe",
+        "african-lion",
+        "western-lowland-gorilla",
+        "chimpanzee",
+        "african-penguin",
+        "asian-small-clawed-otter",
+        "zebra"
+      ]
+    },
+    "tampa-zoo": {
+      "name": "ZooTampa at Lowry Park",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "african-penguin",
+        "koala",
+        "orangutan",
+        "caribbean-flamingo",
+        "galapagos-tortoise",
+        "ring-tailed-lemur",
+        "reticulated-giraffe"
+      ]
+    },
+    "taronga-zoo": {
+      "name": "Taronga Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "koala",
+        "sumatran-tiger",
+        "chimpanzee",
+        "western-lowland-gorilla",
+        "african-lion",
+        "reticulated-giraffe",
+        "zebra",
+        "red-panda",
+        "ring-tailed-lemur"
+      ]
+    },
+    "toronto-zoo": {
+      "name": "Toronto Zoo",
+      "hunt": "/field-pack/toronto-zoo/#printable-hunt",
+      "ids": [
+        "western-lowland-gorilla",
+        "african-penguin",
+        "caribbean-flamingo",
+        "reticulated-giraffe",
+        "nile-hippo",
+        "african-lion",
+        "cheetah",
+        "orangutan",
+        "two-toed-sloth",
+        "red-panda"
+      ]
+    },
+    "two-oceans-aquarium": {
+      "name": "Two Oceans Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-penguin",
+        "shark",
+        "sea-turtle",
+        "jellyfish",
+        "stingray",
+        "octopus",
+        "clownfish",
+        "seahorse",
+        "eel"
+      ]
+    },
+    "ueno-zoo": {
+      "name": "Ueno Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "red-panda",
+        "sumatran-tiger",
+        "western-lowland-gorilla",
+        "african-penguin",
+        "ring-tailed-lemur",
+        "reticulated-giraffe",
+        "nile-hippo",
+        "caribbean-flamingo"
+      ]
+    },
+    "vancouver-aquarium": {
+      "name": "Vancouver Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "sea-otter",
+        "jellyfish",
+        "two-toed-sloth",
+        "octopus",
+        "shark",
+        "clownfish",
+        "stingray",
+        "seahorse",
+        "starfish",
+        "freshwater-fish"
+      ]
+    },
+    "vienna-zoo": {
+      "name": "Schönbrunn Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "giant-panda",
+        "koala",
+        "orangutan",
+        "african-elephant",
+        "cheetah",
+        "nile-hippo",
+        "african-lion",
+        "reticulated-giraffe",
+        "red-panda",
+        "asian-small-clawed-otter"
+      ]
+    },
+    "virginia-aquarium": {
+      "name": "Virginia Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "shark",
+        "sea-turtle",
+        "jellyfish",
+        "stingray",
+        "eel",
+        "freshwater-fish"
+      ]
+    },
+    "waikiki-aquarium": {
+      "name": "Waikiki Aquarium",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "seahorse",
+        "jellyfish",
+        "shark",
+        "octopus",
+        "cuttlefish",
+        "starfish",
+        "crab",
+        "eel",
+        "stingray"
+      ]
+    },
+    "warsaw-zoo": {
+      "name": "Warsaw Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "african-elephant",
+        "western-lowland-gorilla",
+        "african-penguin",
+        "african-lion",
+        "nile-hippo",
+        "chimpanzee",
+        "red-panda",
+        "reticulated-giraffe",
+        "zebra",
+        "sumatran-tiger"
+      ]
+    },
+    "wellington-zoo": {
+      "name": "Wellington Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "chimpanzee",
+        "sumatran-tiger",
+        "red-panda",
+        "african-lion",
+        "reticulated-giraffe",
+        "asian-small-clawed-otter",
+        "ring-tailed-lemur",
+        "ostrich"
+      ]
+    },
+    "woodland-park-zoo": {
+      "name": "Woodland Park Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "western-lowland-gorilla",
+        "asian-small-clawed-otter",
+        "ring-tailed-lemur",
+        "african-lion",
+        "orangutan",
+        "red-panda",
+        "reticulated-giraffe",
+        "zebra",
+        "ostrich"
+      ]
+    },
+    "zurich-zoo": {
+      "name": "Zurich Zoo",
+      "hunt": "/printables/scavenger-hunt/",
+      "ids": [
+        "koala",
+        "orangutan",
+        "western-lowland-gorilla",
+        "reticulated-giraffe",
+        "zebra",
+        "red-panda",
+        "ostrich"
+      ]
+    }
+  }
+}

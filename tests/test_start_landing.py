@@ -521,6 +521,7 @@ class StartLandingTests(unittest.TestCase):
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
                 ("/field-pack/", "Places"),
                 ("/printables/", "Printables"),
+                ("/games/", "Games"),
                 ("/about/", "About"),
             ],
         )
@@ -641,9 +642,11 @@ class StartLandingTests(unittest.TestCase):
         self.assertIsNotNone(continue_link)
         self.assertIn('href="/field-pack/virtual-field-trip/"', continue_link.group(0))
         pills = re.findall(r'<a class="start-pill"[^>]*>[\s\S]*?</a>', chapter)
-        self.assertEqual(len(pills), 1, pills)
+        self.assertEqual(len(pills), 2, pills)
         self.assertIn('href="/field-pack/virtual-field-trip/"', pills[0])
         self.assertIn("Watch Live", pills[0])
+        self.assertIn('href="/games/"', pills[1])
+        self.assertIn("Games", pills[1])
         self.assertNotIn("youtube.com", chapter)
         self.assertNotIn("target=\"_blank\"", chapter)
         self.assertNotIn("#mission", chapter)
@@ -1199,7 +1202,7 @@ class StartLandingTests(unittest.TestCase):
         foot = self.html.find("start-foot")
         self.assertTrue(0 < hero < rest < home < rest2 < going < rest3 < teach < foot)
         self.assertEqual(self.html.count('class="start-chapter"'), 3)
-        self.assertEqual(len(self.pills), 3)
+        self.assertEqual(len(self.pills), 4)
         self.assertNotIn('id="start-outcome"', self.html)
         self.assertNotIn('id="start-doors"', self.html)
         self.assertNotIn('id="start-proof"', self.html)
@@ -1243,6 +1246,7 @@ class StartLandingTests(unittest.TestCase):
         expected = {
             "start-home": [
                 ("/field-pack/virtual-field-trip/", "Watch Live"),
+                ("/games/", "Games"),
             ],
             "start-going": [
                 ("/field-pack/", "Explore Places Near You"),
@@ -1265,7 +1269,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertNotIn("/field-pack/dallas-zoo/", home)
         self.assertNotIn("youtube.com", home)
         self.assertNotIn("target=\"_blank\"", home)
-        self.assertEqual(self.html.count('class="start-pill"'), 3)
+        self.assertEqual(self.html.count('class="start-pill"'), 4)
         going = chapters["start-going"].group(0)
         secondary = re.search(
             r'<a class="start-going-secondary" href="([^"]+)">([^<]+)</a>',
@@ -1386,7 +1390,7 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-pill", self.js)
         self.assertIn(".start-route", self.js)
         self.assertNotIn(".start-door", self.js)
-        self.assertEqual(len(self.pills), 3)
+        self.assertEqual(len(self.pills), 4)
         for pill in self.pills:
             self.assertTrue(pill.startswith("<a"))
 

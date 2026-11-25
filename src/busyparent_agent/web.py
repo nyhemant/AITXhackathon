@@ -77,6 +77,8 @@ NEWSLETTER_ROOT = REPO_ROOT / "static" / "newsletter"
 NEWSLETTER_PREFIX = "/newsletter"
 PRINTABLES_ROOT = REPO_ROOT / "static" / "printables"
 PRINTABLES_PREFIX = "/printables"
+GAMES_ROOT = REPO_ROOT / "static" / "games"
+GAMES_PREFIX = "/games"
 # Science Bee practice: hub, topic question pages and the phone game.
 SCIENCE_BEE_ROOT = REPO_ROOT / "static" / "science-bee"
 SCIENCE_BEE_PREFIX = "/science-bee"
@@ -1202,6 +1204,11 @@ def _safe_printables_path(url_path: str) -> Path | None:
     return _safe_mounted_static(url_path, PRINTABLES_PREFIX, PRINTABLES_ROOT)
 
 
+def _safe_games_path(url_path: str) -> Path | None:
+    """Resolve /games/... to a file under GAMES_ROOT, or None."""
+    return _safe_mounted_static(url_path, GAMES_PREFIX, GAMES_ROOT)
+
+
 def _safe_science_bee_path(url_path: str) -> Path | None:
     """Resolve /science-bee/... to a file under SCIENCE_BEE_ROOT, or None."""
     return _safe_mounted_static(url_path, SCIENCE_BEE_PREFIX, SCIENCE_BEE_ROOT)
@@ -1506,6 +1513,7 @@ def _index_dir_slash_redirect(raw_path: str) -> str | None:
         _safe_field_pack_path,
         _safe_start_path,
         _safe_printables_path,
+        _safe_games_path,
         _safe_science_bee_path,
         _safe_privacy_path,
         _safe_newsletter_path,
@@ -1906,6 +1914,12 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        if path == GAMES_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", _slash_location(self.path, GAMES_PREFIX))
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         # Trailing slash so relative CSS/JS/photo URLs resolve under /field-pack/
         if path == FIELD_PACK_PREFIX:
             self.send_response(301)
@@ -1988,6 +2002,16 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", _static_content_type(printables_file))
             self.send_header("Content-Length", str(len(body)))
             self.send_header("Cache-Control", _static_cache_control(self.path, printables_file))
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        games_file = _safe_games_path(path)
+        if games_file is not None:
+            body = games_file.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", _static_content_type(games_file))
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", _static_cache_control(self.path, games_file))
             self.end_headers()
             self.wfile.write(body)
             return
@@ -2126,6 +2150,12 @@ class WebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        if path == GAMES_PREFIX:
+            self.send_response(301)
+            self.send_header("Location", _slash_location(self.path, GAMES_PREFIX))
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         if path == FIELD_PACK_PREFIX:
             self.send_response(301)
             self.send_header("Location", _slash_location(self.path, FIELD_PACK_PREFIX))
@@ -2154,6 +2184,7 @@ class WebHandler(BaseHTTPRequestHandler):
         privacy_file = _safe_privacy_path(path)
         newsletter_file = _safe_newsletter_path(path)
         printables_file = _safe_printables_path(path)
+        games_file = _safe_games_path(path)
         science_bee_file = _safe_science_bee_path(path)
         field_pack_file = _safe_field_pack_path(path)
         pdf_cache_file = None
@@ -2183,6 +2214,9 @@ class WebHandler(BaseHTTPRequestHandler):
             length = printables_file.stat().st_size
             if urlsplit(self.path).path.startswith("/printables/pdf/"):
                 pdf_cache_file = printables_file
+        elif games_file is not None:
+            content_type = _static_content_type(games_file)
+            length = games_file.stat().st_size
         elif science_bee_file is not None:
             content_type = _static_content_type(science_bee_file)
             length = science_bee_file.stat().st_size

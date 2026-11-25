@@ -42,6 +42,18 @@ PRIMARY_MENU = (
     ("/about/", "About"),
 )
 
+# Start also points at the new Games hub. Other shells keep PRIMARY_MENU
+# until a later pass, so this stays a light, non-intrusive link.
+START_MENU = (
+    ("/start/", "Start"),
+    ("/field-pack/cards/", "Cards"),
+    ("/field-pack/virtual-field-trip/", "Watch Live"),
+    ("/field-pack/", "Places"),
+    ("/printables/", "Printables"),
+    ("/games/", "Games"),
+    ("/about/", "About"),
+)
+
 
 HUB_MENU = (
     ("/field-pack/zoos/", "Zoos"),
@@ -130,7 +142,7 @@ class IaPhaseBTests(unittest.TestCase):
         )
         self.assertNotIn("/field-pack/print/", "".join(href for href, _ in routes))
         menu = _menu_items(start, "start-menu")
-        self.assertEqual(menu, list(PRIMARY_MENU))
+        self.assertEqual(menu, list(START_MENU))
         self.assertIn('class="start-menu-grownup" href="/about/">About</a>', start)
         self.assertNotIn("Print from Watch", start)
         self.assertNotIn('href="/field-pack/print/"', start)
@@ -168,9 +180,10 @@ class IaPhaseBTests(unittest.TestCase):
             # (scripts/shell_menu_hubs.py); the top-level doors are unchanged.
             if 'id="shell-menu"' in html:
                 self.assertEqual([i for i in items if i in HUB_MENU], list(HUB_MENU), path.name)
+            expected = list(START_MENU) if path == START else list(PRIMARY_MENU)
             self.assertEqual(
                 [(href, label) for href, label in items if (href, label) not in HUB_MENU],
-                list(PRIMARY_MENU),
+                expected,
                 path.name,
             )
             if path == START:
