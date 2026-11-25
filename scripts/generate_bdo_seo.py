@@ -2602,7 +2602,7 @@ def venue_listed_animal_photo(mission_venue: dict | None, vid: str = "") -> dict
 
 
 def place_photo_figure(photo: dict) -> str:
-    """Modest photo under the H1. Eager, sized, existing WebP variants when present."""
+    """Modest photo under the H1. Eager, fetchpriority=high (mobile LCP), sized, existing WebP variants when present."""
     srcset = ""
     if photo.get("srcset"):
         srcset = (

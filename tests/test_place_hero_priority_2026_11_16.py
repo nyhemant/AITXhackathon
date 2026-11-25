@@ -1,4 +1,9 @@
-"""Place hero photo (mobile LCP) has fetchpriority=high on non-test pages (2026-11-16)."""
+"""Place hero photo (mobile LCP) has fetchpriority=high on every place page that has one.
+
+Held off the 2026-11-16 test/comparison pages until after the Nov 26 hero
+judging. This test now expects the hint on those pages too; merge only after
+that judging.
+"""
 from __future__ import annotations
 
 import re
@@ -8,8 +13,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-
-from scav_test_2026_11 import COMPARISON_SLUGS, TEST_SLUGS  # noqa: E402
 
 FIG = re.compile(r'<figure class="seo-place-photo">.*?</figure>', re.S)
 
@@ -23,14 +26,16 @@ class HeroPriority(unittest.TestCase):
                 continue
             with self.subTest(page=p.parent.name):
                 self.assertEqual(len(figs), 1)
-                if p.parent.name in TEST_SLUGS | COMPARISON_SLUGS:
-                    self.assertNotIn("fetchpriority", figs[0])
-                else:
-                    self.assertIn('loading="eager" fetchpriority="high"', figs[0])
-                    n += 1
-        self.assertGreaterEqual(n, 110)
+                self.assertIn('loading="eager" fetchpriority="high"', figs[0])
+                n += 1
+        self.assertGreaterEqual(n, 130)
         page = (ROOT / "static/field-pack/hogle-zoo/index.html").read_text(encoding="utf-8")
         self.assertEqual(page.count('fetchpriority="high"'), 1)
+        dallas = (ROOT / "static/field-pack/dallas-zoo/index.html").read_text(encoding="utf-8")
+        figs = FIG.findall(dallas)
+        self.assertEqual(len(figs), 1)
+        self.assertIn("reticulated-giraffe", figs[0])
+        self.assertIn('loading="eager" fetchpriority="high"', figs[0])
 
     def test_generator(self):
         import generate_bdo_seo as gen
