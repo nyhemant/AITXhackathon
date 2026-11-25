@@ -153,6 +153,8 @@ class SitemapTests(unittest.TestCase):
         self.assertIn("/start/", extras)
         self.assertIn("/about/", extras)
         self.assertIn("/field-pack/cards/", extras)
+        self.assertIn("/games/", extras)
+        self.assertIn("/games/memory/", extras)
         self.assertNotIn("/field-pack/print/", extras)
         self.assertNotIn("/field-pack/virtual-zoo/", extras)
         self.assertNotIn("/field-pack/parks/", extras)
@@ -172,6 +174,8 @@ class SitemapTests(unittest.TestCase):
             self.assertIn(f"<loc>{SITE}/field-pack/virtual-field-trip/</loc>", text)
             self.assertIn(f"<loc>{SITE}/field-pack/national-parks/</loc>", text)
             self.assertIn(f"<loc>{SITE}/start/</loc>", text)
+            self.assertIn(f"<loc>{SITE}/games/</loc>", text)
+            self.assertIn(f"<loc>{SITE}/games/memory/</loc>", text)
             for loc in _REDIRECT_LOCS:
                 self.assertNotIn(f"<loc>{loc}</loc>", text)
 

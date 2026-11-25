@@ -21,7 +21,8 @@ class ImageSeoTest(unittest.TestCase):
         # 286 since gate B2 (2026-11-16): 7 noindex place pages are out of the sitemap
         # (ecoparque-ba, stockholm-skansen, cairo-zoo, nairobi-safari-walk, bogota-zoo, beijing-zoo, lotte-aquarium-seoul).
         # 293 since 2026-11-18: + /science-bee/ and its 6 topic question pages.
-        self.assertEqual(len(urls), 293)
+        # 295 since 2026-11-25: + /games/ and /games/memory/.
+        self.assertEqual(len(urls), 295)
         imgs = {u.find("s:loc", NS).text: [i.find("i:loc", NS).text for i in u.findall("i:image", NS)] for u in urls}
         cards = [k for k in imgs if re.search(r"/field-pack/cards/[^/]+/$", k)]
         self.assertGreaterEqual(len(cards), 58)

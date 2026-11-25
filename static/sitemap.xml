@@ -577,6 +577,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://kidzookit.com/games/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kidzookit.com/games/memory/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://kidzookit.com/printables/scavenger-hunt/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>

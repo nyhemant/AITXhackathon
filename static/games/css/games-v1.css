@@ -1,0 +1,72 @@
+:root{
+  --ink:#152238;--muted:#3d4f6f;--teal:#0f5c5c;--teal-deep:#0a4545;--sun:#ffcf5a;--sky:#eaf4ff;--park:#d5ebcf;
+  --card:#fffaf1;--back:#0f5c5c;--ok:#1b7a3d;--border:rgba(15,92,92,.16);
+  --tap:3rem;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color:var(--ink);line-height:1.45;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:linear-gradient(180deg,var(--sky),var(--park));}
+.wrap{max-width:36rem;margin:0 auto;padding:0.85rem 0.85rem 3rem}
+.bar{display:flex;align-items:center;gap:.75rem;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.92);border:1.5px solid var(--border);margin-bottom:1rem}
+.bar a{color:var(--teal-deep);font-weight:800;text-decoration:none}
+.bar nav{margin-left:auto;display:flex;flex-wrap:wrap;gap:.75rem 1rem;font-size:.95rem;justify-content:flex-end}
+.bar nav a{font-weight:600;min-height:var(--tap);display:inline-flex;align-items:center}
+h1{margin:.35rem 0 .4rem;font-size:clamp(1.7rem,6vw,2.4rem);color:var(--teal-deep);letter-spacing:-.03em;line-height:1.15}
+.lead{color:var(--muted);font-weight:600;max-width:34rem}
+.kz-card{
+  display:block;background:var(--card);border:1.5px solid var(--border);border-radius:18px;
+  padding:1rem 1rem 1.1rem;text-decoration:none;color:inherit;
+  box-shadow:0 2px 8px rgba(21,34,56,.06);
+}
+a.kz-card:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.kz-card h2{margin:0 0 .35rem;font-size:1.25rem;color:var(--teal-deep)}
+.kz-card p{margin:0;color:var(--muted)}
+.kz-coming{margin:1.4rem 0 0;padding:0;list-style:none}
+.kz-coming li{background:rgba(255,255,255,.6);border:1.5px dashed var(--border);border-radius:14px;padding:.85rem 1rem;margin:0 0 .6rem}
+.kz-coming strong{display:block;color:var(--teal-deep)}
+.kz-coming span{color:var(--muted);font-size:.95rem}
+.kz-soon{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--teal);margin-bottom:.2rem}
+.kz-btn{
+  appearance:none;border:0;border-radius:999px;min-height:var(--tap);min-width:var(--tap);
+  padding:.7rem 1.2rem;font:inherit;font-weight:800;cursor:pointer;
+  background:var(--teal);color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
+  text-decoration:none;
+}
+.kz-btn-sun{background:var(--sun);color:var(--teal-deep)}
+.kz-btn-ghost{background:#fff;color:var(--teal-deep);border:2px solid var(--teal)}
+.kz-actions{display:flex;flex-direction:column;gap:.7rem;margin:1.1rem 0}
+.kz-actions .kz-btn{width:100%}
+.kz-note{font-size:.95rem;color:var(--muted);margin:.4rem 0 0}
+.kz-live{min-height:3.2rem;margin:.8rem 0;padding:.7rem .85rem;border-radius:14px;background:rgba(255,255,255,.8);border:1.5px solid var(--border);font-weight:650}
+.kz-live strong{color:var(--teal-deep)}
+.kz-board{display:grid;gap:.55rem;margin:0.6rem 0 1rem}
+.kz-board[data-pairs="6"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kz-board[data-pairs="8"]{grid-template-columns:repeat(4,minmax(0,1fr))}
+.kz-mem{
+  position:relative;min-height:5.6rem;min-width:var(--tap);padding:0;border:0;background:transparent;cursor:pointer;
+  border-radius:14px;
+}
+.kz-mem-inner{
+  position:absolute;inset:0;border-radius:14px;transform-style:preserve-3d;
+  transition:transform .35s ease;
+  box-shadow:0 2px 6px rgba(21,34,56,.1);
+}
+.kz-mem.is-flipped .kz-mem-inner,.kz-mem.is-matched .kz-mem-inner{transform:rotateY(180deg)}
+.kz-face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.kz-face-back{
+  background:var(--back);color:var(--sun);display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;font-weight:800;border:2px solid #0a4545;
+}
+.kz-face-front{transform:rotateY(180deg);background:#fff;border:2px solid var(--teal)}
+.kz-face-front img{width:100%;height:100%;object-fit:cover;display:block}
+.kz-mem.is-matched .kz-face-front{border-color:var(--ok)}
+.kz-finish{text-align:center;background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:1.3rem 1rem 1.4rem;margin-top:.5rem}
+.kz-finish h2{margin:.2rem 0 .4rem;font-size:1.7rem;color:var(--teal-deep)}
+.kz-confetti{height:2.5rem;font-size:1.6rem}
+.kz-place{font-weight:800;color:var(--teal-deep);margin:0 0 .2rem}
+.kz-status{display:flex;justify-content:space-between;gap:1rem;font-weight:700;color:var(--muted);margin:.2rem 0}
+[hidden]{display:none !important}
+@media (prefers-reduced-motion:reduce){
+  .kz-mem-inner{transition:none}
+}

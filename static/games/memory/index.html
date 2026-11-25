@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Animal Memory Match for Kids | KidZooKit</title>
+  <meta name="description" content="A 1–3 minute animal memory match for ages 5–7. Flip cards, find the pairs, and hear a short fact from the animal card. No sign-in." />
+  <link rel="canonical" href="https://kidzookit.com/games/memory/" />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" href="/favicon.ico?v=1" sizes="48x48" />
+  <link rel="icon" type="image/png" href="/pwa/favicon-96-v1.png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/pwa/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="KidZooKit" />
+  <meta property="og:title" content="Animal Memory Match for Kids | KidZooKit" />
+  <meta property="og:description" content="Flip cards, find the pairs, and hear a short fact from the animal card. Easy or a bit harder. No sign-in." />
+  <meta property="og:url" content="https://kidzookit.com/games/memory/" />
+  <meta property="og:image" content="https://kidzookit.com/field-pack/photos/reticulated-giraffe-640-v1.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Animal Memory Match for Kids | KidZooKit" />
+  <meta name="twitter:description" content="Flip cards, find the pairs, and hear a short fact from the animal card. Easy or a bit harder. No sign-in." />
+  <link rel="stylesheet" href="/games/css/games-v1.css?v=1" />
+  <link rel="preload" href="/games/data/memory-v1.json" as="fetch" crossorigin />
+</head>
+<body>
+  <div class="wrap" id="kz-memory">
+    <div class="bar">
+      <a href="/start/">KidZooKit</a>
+      <nav aria-label="Site">
+        <a href="/games/">Games</a>
+        <a href="/printables/">Printables</a>
+        <a href="/start/">Start</a>
+      </nav>
+    </div>
+    <h1>Animal memory match</h1>
+    <p class="kz-place" id="kz-place-label" hidden></p>
+    <p class="lead">Tap two cards. Find the matching animals. A grown-up can read the fact that pops up.</p>
+
+    <section id="kz-setup">
+      <div class="kz-actions">
+        <button type="button" class="kz-btn kz-btn-sun" id="kz-easy">Easy · 6 pairs</button>
+        <button type="button" class="kz-btn" id="kz-hard">A bit harder · 8 pairs</button>
+      </div>
+      <p class="kz-note">About 1–3 minutes. Ages 5–7. Photos and facts come from the animal cards already on KidZooKit.</p>
+    </section>
+
+    <section id="kz-play" hidden>
+      <div class="kz-status" id="kz-status">0 of 6 pairs</div>
+      <div class="kz-live" id="kz-live" aria-live="polite">Tap two cards. Find the matching animals.</div>
+      <div class="kz-board" id="kz-board" data-pairs="6" role="group" aria-label="Memory cards"></div>
+    </section>
+
+    <section id="kz-finish" class="kz-finish" hidden>
+      <div class="kz-confetti" aria-hidden="true">🎉 🦒 🎉</div>
+      <h2 id="kz-finish-title" tabindex="-1">All matched. High five!</h2>
+      <p>Those facts came from the animal cards. Ready for the next one, or a hunt to print?</p>
+      <div class="kz-actions">
+        <button type="button" class="kz-btn kz-btn-sun" id="kz-again">Play again</button>
+        <a class="kz-btn" id="kz-hunt-link" href="/printables/scavenger-hunt/">Print a scavenger hunt</a>
+        <a class="kz-btn kz-btn-ghost" href="/games/">Back to games</a>
+      </div>
+    </section>
+  </div>
+  <script src="/shell/shell.js?v=8" defer></script>
+  <script src="/games/js/memory-v1.js?v=1" defer></script>
+</body>
+</html>

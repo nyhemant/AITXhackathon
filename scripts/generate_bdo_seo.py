@@ -4498,6 +4498,21 @@ def published_printable_paths() -> list[str]:
     return paths
 
 
+
+def published_games_paths() -> list[str]:
+    """Public /games/ pages: the hub plus each game page on disk."""
+    root = STATIC / "games"
+    if not root.is_dir():
+        return []
+    paths: list[str] = []
+    if (root / "index.html").is_file():
+        paths.append("/games/")
+    for page in sorted(root.glob("*/index.html")):
+        if page.is_file():
+            paths.append(f"/games/{page.parent.name}/")
+    return paths
+
+
 def published_science_bee_paths() -> list[str]:
     """Science Bee hub plus each topic question page on disk (not /play/: noindex)."""
     root = STATIC / "science-bee"
@@ -4516,6 +4531,7 @@ def collect_sitemap_extra_urls() -> list[str]:
     extras.extend(f"/field-pack/cards/{cid}/" for cid in sorted(published_card_ids()))
     extras.extend(["/field-pack/virtual-field-trip/", "/start/", "/about/", "/privacy/"])
     extras.extend(published_printable_paths())
+    extras.extend(published_games_paths())
     extras.extend(published_science_bee_paths())
     return [u for u in extras if not is_redirect_only_url(u)]
 
