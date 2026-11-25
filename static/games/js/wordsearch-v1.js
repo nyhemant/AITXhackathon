@@ -309,7 +309,9 @@
       markFound(match, path);
       return;
     }
-    if (!moved && path.length === 1) {
+    // A tiny pointer wobble still counts as a tap, so first+last letter works on a phone.
+    const single = path.length === 1 || (path.length > 0 && path.every((p) => p.r === path[0].r && p.c === path[0].c));
+    if (single) {
       const cell = path[0];
       if (!tapStart) {
         tapStart = cell;
