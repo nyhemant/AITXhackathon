@@ -12,7 +12,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Charlotte science — hands-on floors built for wiggly kids.",
+  "tagline": "Starter list: Think It Up, an IMAX Dome planetarium show, then World Alive's rainforest and aquarium.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Check discoveryplace.org for which campus/tickets.",
@@ -25,7 +25,7 @@
       "id": "sci_hands_on",
       "label": "Hands-on exhibits",
       "emoji": "🔬",
-      "one_liner": "Touch and try.",
+      "one_liner": "Think It Up has no instructions: make music on light sensors, try the Flutter Tubes.",
       "tags": [
         "hands",
         "play",
@@ -37,22 +37,23 @@
         "6-8",
         "9+"
       ],
-      "zone": "Labs",
+      "zone": "Think It Up, Level 3",
       "qa_card": {
         "question": "What did you notice about the Hands-on lab?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-hands-on",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Hands-on exhibits"
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
+      "display_label": "Hands-on exhibits",
+      "presence_url": "https://discoveryplace.org/visit/exhibitions/think-it-up"
     },
     {
       "id": "sci_planet",
       "label": "Planetarium / IMAX Dome",
       "emoji": "🪐",
-      "one_liner": "Space moments if offered.",
+      "one_liner": "Digistar 7 planetarium shows in the IMAX Dome — separate ticket.",
       "tags": [
         "wow"
       ],
@@ -62,16 +63,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Space / sky",
+      "zone": "IMAX Dome Theatre, Level 1",
       "qa_card": {
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-planet",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "Planetarium / IMAX Dome"
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
+      "display_label": "Planetarium / IMAX Dome",
+      "presence_url": "https://discoveryplace.org/imax/digistar-planetarium"
     },
     {
       "id": "cm_free_explore",
@@ -101,7 +103,7 @@
       "id": "sci_aquarium_zone",
       "label": "World Alive aquariums",
       "emoji": "🐠",
-      "one_liner": "Small live tanks when present.",
+      "one_liner": "An indoor rainforest with a canopy rope bridge, plus coral reef tanks.",
       "tags": [
         "water"
       ],
@@ -111,16 +113,17 @@
         "6-8",
         "9+"
       ],
-      "zone": "Life / water",
+      "zone": "World Alive, Level 1",
       "qa_card": {
         "question": "What did you notice about the Aquarium zone?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-aquarium-zone",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
-      "display_label": "World Alive aquariums"
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
+      "display_label": "World Alive aquariums",
+      "presence_url": "https://discoveryplace.org/visit/exhibitions/world-alive"
     }
   ],
   "content_mode": "hybrid",
@@ -142,7 +145,7 @@
     "sci_planet",
     "sci_aquarium_zone"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major]",
+  "research_notes": "R2 hybrid 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-26] Gemini SEO consult (ChiefGrok plan item 5, Honolulu pattern): Starter-list tagline; hands-on, planetarium and World Alive sourced to their discoveryplace.org pages (rendered in headless Chrome, checked 2026-11-26).",
   "list_confidence": "partial",
   "do_not_list": [
     {
@@ -178,7 +181,11 @@
   ],
   "presence_sources": [
     "https://discoveryplace.org/",
-    "https://discoveryplace.org/visit"
+    "https://discoveryplace.org/visit",
+    "https://discoveryplace.org/visit/exhibitions/think-it-up",
+    "https://discoveryplace.org/imax/digistar-planetarium",
+    "https://discoveryplace.org/visit/exhibitions/world-alive",
+    "https://discoveryplace.org/visit/exhibitions"
   ],
   "bonus_hunt": {
     "tagline": "Discovery Place Science bonus · Life / water + Labs",

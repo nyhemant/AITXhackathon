@@ -12,7 +12,7 @@
   "last_verified": "2026-08-07",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "London NHM — free Hintze Hall wow and dinos.",
+  "tagline": "Starter list: Hope the blue whale in Hintze Hall, then the Stegosaurus and the earthquake simulator.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Free entry; special exhibits ticketed.",
@@ -25,7 +25,7 @@
       "id": "sci_dinosaur",
       "label": "Dinosaurs",
       "emoji": "🦖",
-      "one_liner": "Dinos are the magnet.",
+      "one_liner": "Meet the roaring T. rex and see the skull of a Triceratops.",
       "tags": [
         "wow",
         "read"
@@ -36,23 +36,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Dinosaurs",
+      "zone": "Dinosaurs Gallery",
       "qa_card": {
         "question": "What did you notice about the Dinosaur hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-dinosaur",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Dinosaurs",
-      "presence_note": "Dinosaur galleries / T. rex icons."
+      "presence_note": "Dinosaur galleries / T. rex icons.",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map/dinosaurs.html"
     },
     {
       "id": "sci_mammal_hall",
       "label": "Mammals / whale hall",
       "emoji": "🦌",
-      "one_liner": "Mammals and giant life.",
+      "one_liner": "Look up at the blue whale model, then find a mammoth and a giant elk.",
       "tags": [
         "wow"
       ],
@@ -62,23 +63,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Mammals",
+      "zone": "Mammals Hall",
       "qa_card": {
         "question": "What did you notice about the Animal / mammal hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-mammal-hall",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Mammals / whale hall",
-      "presence_note": "Mammals / historic whale association; Hintze Hall blue whale."
+      "presence_note": "Mammals / historic whale association; Hintze Hall blue whale.",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map/mammals-and-blue-whale.html"
     },
     {
       "id": "sci_planet",
       "label": "Earth Hall sculpture",
       "emoji": "🪐",
-      "one_liner": "Earth galleries.",
+      "one_liner": "Gems, minerals and a piece of moon rock under a celestial map.",
       "tags": [
         "wow"
       ],
@@ -88,24 +90,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Earth",
+      "zone": "Earth Hall",
       "qa_card": {
         "question": "What did you notice about the Planet / space hall?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sci-planet",
       "presence": "verified",
-      "presence_checked": "2026-11-16",
+      "presence_checked": "2026-11-26",
       "display_label": "Earth Hall sculpture",
       "presence_note": "Earth galleries (volcanoes, earthquakes) — not space planetarium. Soft Earth.",
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html"
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map/earth-hall-and-stegosaurus.html"
     },
     {
       "id": "sci_hands_on",
       "label": "Hands-on",
       "emoji": "🔬",
-      "one_liner": "Hands-on when open.",
+      "one_liner": "Pick one thing to touch or try — ask staff what is hands-on today.",
       "tags": [
         "hands"
       ],
@@ -155,7 +157,7 @@
       "id": "nhm_hope_whale",
       "label": "Hope the blue whale",
       "emoji": "🐋",
-      "one_liner": "Walk under the blue whale skeleton — look up!",
+      "one_liner": "Walk beneath Hope, a 25-metre blue whale skeleton — look up!",
       "tags": [
         "wow",
         "big"
@@ -172,9 +174,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map/hintze-hall.html",
       "display_label": "Hope the blue whale",
       "core": false
     },
@@ -182,7 +184,7 @@
       "id": "nhm_stegosaurus",
       "label": "Stegosaurus",
       "emoji": "🦕",
-      "one_liner": "Find the plates along its back.",
+      "one_liner": "One of the most complete Stegosaurus skeletons in Europe — find the plates.",
       "tags": [
         "wow"
       ],
@@ -198,9 +200,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map/earth-hall-and-stegosaurus.html",
       "display_label": "Stegosaurus",
       "core": false
     },
@@ -225,9 +227,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map/birds.html",
       "display_label": "Dodo",
       "core": false
     },
@@ -235,7 +237,7 @@
       "id": "nhm_quake",
       "label": "Earthquake simulator",
       "emoji": "🌋",
-      "one_liner": "Feel the room shake — hold on!",
+      "one_liner": "The earthquake simulator recreates the 1995 Kobe earthquake — hold on!",
       "tags": [
         "hands",
         "wow"
@@ -252,9 +254,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map/volcanoes-and-earthquakes.html",
       "display_label": "Earthquake simulator",
       "core": false
     },
@@ -262,7 +264,7 @@
       "id": "nhm_fern",
       "label": "Fern the Diplodocus",
       "emoji": "🌿",
-      "one_liner": "Bronze Diplodocus in the gardens — how long is its tail?",
+      "one_liner": "Fern, a full-size bronze Diplodocus in the gardens — how long is its tail?",
       "tags": [
         "outdoor",
         "wow"
@@ -279,9 +281,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.nhm.ac.uk/visit/galleries-and-museum-map/our-gardens.html",
       "display_label": "Fern the Diplodocus",
       "core": false
     }
@@ -305,7 +307,7 @@
     "nhm_stegosaurus",
     "nhm_quake"
   ],
-  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/ [2026-11-16] SEO gate B2: hunt now shows the sourced map finds",
+  "research_notes": "R2b 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [major] [2026-11-16] SEO gate B2: added official-source finds; evidence in kidzookit-loop/gate-2026-11-16/evidence/ [2026-11-16] SEO gate B2: hunt now shows the sourced map finds [2026-11-26] Gemini SEO consult (ChiefGrok plan item 5, Honolulu pattern): Starter-list tagline (drops the word 'free'); every gallery sourced to its nhm.ac.uk galleries-and-museum-map page (checked 2026-11-26). The Investigate centre page now 404s, so the hands-on card is an open prompt with no presence claim.",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -332,7 +334,15 @@
     "https://www.nhm.ac.uk/",
     "https://www.nhm.ac.uk/visit.html",
     "https://www.nhm.ac.uk/visit/exhibitions.html",
-    "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html"
+    "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+    "https://www.nhm.ac.uk/visit/galleries-and-museum-map/hintze-hall.html",
+    "https://www.nhm.ac.uk/visit/galleries-and-museum-map/dinosaurs.html",
+    "https://www.nhm.ac.uk/visit/galleries-and-museum-map/mammals-and-blue-whale.html",
+    "https://www.nhm.ac.uk/visit/galleries-and-museum-map/earth-hall-and-stegosaurus.html",
+    "https://www.nhm.ac.uk/visit/galleries-and-museum-map/birds.html",
+    "https://www.nhm.ac.uk/visit/galleries-and-museum-map/volcanoes-and-earthquakes.html",
+    "https://www.nhm.ac.uk/visit/galleries-and-museum-map/our-gardens.html",
+    "https://www.nhm.ac.uk/visit/activities-for-families-and-kids.html"
   ],
   "bonus_hunt": {
     "tagline": "NHM London bonus · dinosaurs + Hintze Hall energy",

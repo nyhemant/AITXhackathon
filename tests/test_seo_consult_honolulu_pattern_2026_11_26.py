@@ -22,9 +22,15 @@ VENUES = {
     "fort-worth-zoo": "www.fortworthzoo.org",
     "cincinnati-zoo": "cincinnatizoo.org",
     "oregon-zoo": "www.oregonzoo.org",
+    "nhm-london": "www.nhm.ac.uk",
+    "auckland-zoo": "www.aucklandzoo.co.nz",
+    "manila-zoo": "www.manilazoo.ph",
+    "discovery-place": "discoveryplace.org",
 }
 # finds that are not a place on the venue site (kid's-choice cards) skip the source check
 UNSOURCED_OK = {"free_explore", "cm_free_explore"}
+# NHM's Investigate centre page 404s (2026-11-26), so its hands-on card is an open prompt, not a presence claim.
+UNSOURCED_BY_VENUE = {"nhm-london": {"sci_hands_on"}}
 BANNED = re.compile(r"\b(?:free|we|our|us)\b|no-cost", re.I)
 
 
@@ -51,7 +57,7 @@ class SeoConsultHonoluluPattern(unittest.TestCase):
     def test_every_find_is_sourced_to_the_official_site(self):
         for slug, domain in VENUES.items():
             for item in _venue(slug)["items"]:
-                if item["id"] in UNSOURCED_OK:
+                if item["id"] in UNSOURCED_OK or item["id"] in UNSOURCED_BY_VENUE.get(slug, ()):
                     continue
                 with self.subTest(slug=slug, item=item["id"]):
                     self.assertTrue(item.get("presence_url", "").startswith(f"https://{domain}/"), item.get("presence_url"))
@@ -79,6 +85,8 @@ class SeoConsultHonoluluPattern(unittest.TestCase):
         self.assertIn("Magellanic penguins, not African", _venue("aquarium-of-the-pacific")["tagline"])
         self.assertIn("Asian elephants, not African", _venue("cincinnati-zoo")["tagline"])
         self.assertIn("Asian elephants, not African", _venue("oregon-zoo")["tagline"])
+        self.assertIn("elephants have left", _venue("auckland-zoo")["tagline"])
+        self.assertIn("tigers are Bengal and Siberian", _venue("manila-zoo")["tagline"])
 
     def test_fiona_is_not_named_in_the_cincinnati_hunt(self):
         # Fiona the hippo died on Nov 19, 2026 (cincinnatizoo.org/fiona-the-world-famous-hippo/).
