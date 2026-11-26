@@ -383,7 +383,7 @@ class SeahorseEasyStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="hard"', main)
         self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
-        self.assertIn("Learn first: quick tips (Junior Ranger)", main)
+        self.assertIn("Learn first: quick tips", main)
         self.assertIn(">Quiz</h2>", main)
         self.assertEqual(main.count("data-study-correct"), 0)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:

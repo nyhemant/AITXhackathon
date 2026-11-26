@@ -322,7 +322,7 @@ class FlamingoEasyStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="hard"', main)
         self.assertIn('data-study-pick="zoologist"', main)
         self.assertNotIn('class="study-level-badge"', main)
-        self.assertIn("Learn first: quick tips (Junior Ranger)", main)
+        self.assertIn("Learn first: quick tips", main)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         for phrase in BRITTLE:

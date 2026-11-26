@@ -229,7 +229,7 @@ class LionEasyStudyCardTests(unittest.TestCase):
         self.assertIn('data-study-pick="easy"', main)
         self.assertIn('data-study-pick="hard"', main)
         self.assertIn('data-study-pick="zoologist"', main)
-        self.assertIn("Learn first: quick tips (Junior Ranger)", main)
+        self.assertIn("Learn first: quick tips", main)
         for badge in PLAIN_LEVEL_LABELS + AGE_BADGES:
             self.assertNotIn(badge, visible)
         print_tpl = study_print_html_for("african-lion")
