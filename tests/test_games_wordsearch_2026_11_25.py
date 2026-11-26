@@ -126,11 +126,10 @@ class WordSearchPages(unittest.TestCase):
         easy = [w for w in easy if w]
         self.assertGreaterEqual(len(set(easy)), 4)
 
-    def test_hub_links_word_search_not_as_coming_next(self):
+    def test_hub_links_word_search_and_has_no_coming_next(self):
         html = (GAMES / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/games/word-search/"', html)
-        coming = html.split("Coming next", 1)[-1]
-        self.assertNotIn("/games/word-search/", coming)
+        self.assertNotIn("Coming next", html)
 
     def test_handler_serves_page_and_slashless_301(self):
         page = FakeHandler("/games/word-search/")
