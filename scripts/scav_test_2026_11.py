@@ -109,7 +109,7 @@ _JS_SRC = "/shell/qr-welcome.js?v=5"
 # Test pages get their own cache key for mission-ui.js so the sticky bar code
 # (data-kz-scav-print) is not served from a cached older copy. Comparison pages
 # keep the generator's MISSION_UI_JS_VER.
-MISSION_UI_TEST_VER = "22-scav4"
+MISSION_UI_TEST_VER = "23-scav4"
 # Round 2 (2026-11-20): the top button and the sticky bar print in one tap (mission-ui.js v22).
 # The drawer is still there for options: the "Change" button under the print button opens it.
 PRINT_ACTION = "Print the hunt"
