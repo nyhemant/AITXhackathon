@@ -2096,7 +2096,7 @@ SEO_TITLE_LABELS = {
     # 2026-11-16 unfreeze (A): one page per big query; facts in weekly-2026-11-16/evidence-v1.md.
     "museum-of-science-industry-chi": "Chicago Science Museum Scavenger Hunt: Griffin MSI",
     "national-aquarium-baltimore": "Washington DC Aquarium Printable Scavenger Hunt",
-    "aquarium-of-the-pacific": "LA-Area Aquarium Scavenger Hunt: Aquarium of the Pacific",
+    "aquarium-of-the-pacific": "Los Angeles Aquarium Scavenger Hunt: Aquarium of the Pacific",
     "amnh": "AMNH Printable Scavenger Hunt: Museum of Natural History",
     "california-science-center": "LA Science Museum Scavenger Hunt: California Science Center",
     # 2026-11-23 weekly: title/H1 match "<zoo> scavenger hunt".
@@ -2115,7 +2115,7 @@ SEO_META_DESCRIPTIONS = {
         "38 miles from DC. Print a hunt with puffins and sharks — KidZooKit."
     ),
     "aquarium-of-the-pacific": (
-        "Aquarium scavenger hunt in the Los Angeles area: print an Aquarium of the Pacific "
+        "Aquarium scavenger hunt in Los Angeles: print an Aquarium of the Pacific "
         "(Long Beach) hunt with sea otters and Shark Lagoon — KidZooKit."
     ),
     "amnh": (
