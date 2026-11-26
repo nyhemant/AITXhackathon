@@ -141,7 +141,7 @@ class ScavTestPages(unittest.TestCase):
                 )
                 self.assertIn('href="/field-pack/css/scav-top-v1.css?v=3"', page)
                 self.assertIn('<script src="/shell/qr-welcome.js?v=5" defer></script>', page)
-                self.assertIn('<script src="/field-pack/js/mission/mission-ui.js?v=22-scav4"></script>', page)
+                self.assertIn('<script src="/field-pack/js/mission/mission-ui.js?v=23-scav4"></script>', page)
                 items = hunt_items(venue)
                 bonus = bonus_lines(venue)
                 want_items, want_bonus = EXPECTED[slug]

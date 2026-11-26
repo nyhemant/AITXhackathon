@@ -636,7 +636,8 @@
     document.body.classList.add("has-hunt-sticky");
   }
 
-  function recompute(fromShuffle) {
+  // trigger: why this render happened ("load" | "drawer" | "change" | "shuffle"); fixed strings only.
+  function recompute(trigger) {
     if (!venue || !challenges || !window.FPMission) return;
     readTextControls();
     syncChipChrome();
@@ -659,7 +660,8 @@
         hunt_style: state.hunt || "classic",
         interest: state.interest || "any",
         personalized: state.name.trim() ? "1" : "0",
-        shuffle: fromShuffle ? "1" : "0",
+        shuffle: trigger === "shuffle" ? "1" : "0",
+        trigger: trigger || "change",
       });
     }, 500);
   }
@@ -676,7 +678,7 @@
     lastFocus = document.activeElement;
     ov.hidden = false;
     document.body.classList.add("mission-drawer-open");
-    recompute(false);
+    recompute("drawer");
     parentEngaged = true;
     track("mission_drawer_open", { venue: venue && venue.slug });
     const nameEl = $("#mission-name");
@@ -705,8 +707,8 @@
     ["mission-name", "mission-interest"].forEach((id) => {
       const el = document.getElementById(id);
       if (!el) return;
-      el.addEventListener("input", () => recompute(false));
-      el.addEventListener("change", () => recompute(false));
+      el.addEventListener("input", () => recompute("change"));
+      el.addEventListener("change", () => recompute("change"));
     });
     // Shared chip pattern: page bar + drawer segments.
     // Set state first, then recompute — never re-read stale .is-active from the other row.
@@ -718,7 +720,7 @@
         parentEngaged = true;
         state.time = normalizeTimeKey(btn.getAttribute("data-time") || "half");
         syncChipChrome();
-        recompute(false);
+        recompute("change");
       });
     });
     document.querySelectorAll(".seo-age-chip[data-age], #mission-who-seg [data-age]").forEach((btn) => {
@@ -728,7 +730,7 @@
         parentEngaged = true;
         state.age = normalizeAgeKey(btn.getAttribute("data-age") || "4-5");
         syncChipChrome();
-        recompute(false);
+        recompute("change");
       });
     });
     document.querySelectorAll(".seo-hunt-chip[data-hunt], #mission-hunt-seg [data-hunt]").forEach((btn) => {
@@ -738,7 +740,7 @@
         parentEngaged = true;
         state.hunt = normalizeHuntKey(btn.getAttribute("data-hunt") || "classic");
         syncChipChrome();
-        recompute(false);
+        recompute("change");
       });
     });
     $("#mission-print-btn")?.addEventListener("click", () => {
@@ -747,7 +749,7 @@
     });
     $("#mission-shuffle-btn")?.addEventListener("click", () => {
       state.seed = (state.seed || 1) + 1;
-      recompute(true);
+      recompute("shuffle");
     });
     $("#mission-close")?.addEventListener("click", closeDrawer);
     $("#mission-overlay")?.addEventListener("click", (e) => {
@@ -821,7 +823,7 @@
   }
   function printNowWhenReady(el) {
     return huntReady.then(() => {
-      if (!lastMission) recompute(false);
+      if (!lastMission) recompute("load");
       if (!lastMission) {
         openDrawer();
         return;
@@ -852,7 +854,7 @@
     state.hunt = "classic";
     wireChangePlace();
     wireControls();
-    huntReady = loadHuntLibraries().then(() => recompute(false));
+    huntReady = loadHuntLibraries().then(() => recompute("load"));
 
     const openBtn = $("#mission-open-btn");
     openBtn?.addEventListener("click", (e) => {
