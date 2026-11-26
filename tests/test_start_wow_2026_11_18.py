@@ -40,7 +40,7 @@ class StartWowTests(unittest.TestCase):
         self.assertEqual(self.page.count("<h1"), 1)
         self.assertIn('<h1 id="start-heading">Printable scavenger hunts for your next zoo, aquarium or museum trip</h1>', self.page)
         self.assertNotIn('id="home-hunts-tagline"', self.page)
-        self.assertIn("<title>Virtual Zoo for Kids: Animal Cards &amp; Quizzes | KidZooKit</title>", self.page)
+        self.assertIn("<title>Zoo, Aquarium &amp; Museum Scavenger Hunts for Kids | KidZooKit</title>", self.page)
         self.assertIn('<section id="home-hunts" class="home-hunts" aria-labelledby="start-heading">', self.page)
 
     # --- demo shows only what the product really returns ----------------------------------

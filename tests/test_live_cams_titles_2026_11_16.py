@@ -22,7 +22,7 @@ def _title(path: Path) -> str:
 class LiveCamsTitleOverlap(unittest.TestCase):
     def test_titles_are_distinct_and_only_vft_says_live_cams(self):
         start, vft = _title(START), _title(VFT)
-        self.assertEqual(start, "Virtual Zoo for Kids: Animal Cards & Quizzes | KidZooKit")
+        self.assertEqual(start, "Zoo, Aquarium & Museum Scavenger Hunts for Kids | KidZooKit")
         self.assertEqual(vft, "Virtual Field Trip for Kids: Live Cams & Films | KidZooKit")
         self.assertNotEqual(start, vft)
         self.assertNotIn("live cams", start.lower())
@@ -32,14 +32,20 @@ class LiveCamsTitleOverlap(unittest.TestCase):
             self.assertIsNone(FREE_RE.search(t))
             self.assertIsNone(WE_RE.search(t))
 
-    def test_start_title_stays_out_of_the_scavenger_test(self):
+    def test_start_title_matches_the_hunts_h1(self):
+        # 2026-11-26 Gemini SEO consult: the scavenger test freeze ended Nov 20, so the
+        # title now matches the visible H1 ("Printable scavenger hunts for your next zoo,
+        # aquarium or museum trip"); "Printable" leads the meta description, since the
+        # hub title must also keep "for Kids" within 60 characters.
         start = _title(START).lower()
-        self.assertNotIn("scavenger", start)
-        self.assertNotIn("printable", start)
+        self.assertIn("scavenger hunts", start)
+        for word in ("zoo", "aquarium", "museum"):
+            self.assertIn(word, start)
+        self.assertNotIn("virtual zoo", start)
 
     def test_start_heads_match(self):
         page = START.read_text(encoding="utf-8")
-        title = "Virtual Zoo for Kids: Animal Cards &amp; Quizzes | KidZooKit"
+        title = "Zoo, Aquarium &amp; Museum Scavenger Hunts for Kids | KidZooKit"
         self.assertIn(f'<meta property="og:title" content="{title}" />', page)
         self.assertIn(f'<meta name="twitter:title" content="{title}" />', page)
         # 2026-11-18 landing pass: H1 is the visible hunts headline; title/og/twitter stay as above.
