@@ -14,7 +14,7 @@
   "verified_by": "research",
   "list_confidence": "audited",
   "status": "verified",
-  "tagline": "Chicago MSI — U-505 submarine, Science Storms, and kid hands-on overload (in a good way).",
+  "tagline": "Starter list: the U-505 Submarine, then Science Storms and the Idea Factory.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Timed entry common; parking garage on site.",
@@ -53,7 +53,7 @@
       "id": "u505",
       "label": "U-505 Submarine",
       "emoji": "🚢",
-      "one_liner": "A captured WWII U-boat — walk around a real submarine.",
+      "one_liner": "A World War II U-boat, on show at the Museum since 1954.",
       "tags": [
         "wow",
         "big",
@@ -64,21 +64,22 @@
         "6-8",
         "9+"
       ],
-      "zone": "U-505",
+      "zone": "U-505 Submarine",
       "qa_card": {
         "question": "What surprised you about the submarine’s size?",
         "answer": "Long, narrow, metal — one detail!"
       },
       "presence": "verified",
-      "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08",
-      "presence_note": "Signature MSI exhibit (Griffin MSI)."
+      "presence_source": "official_site_page",
+      "presence_checked": "2026-11-26",
+      "presence_note": "Signature MSI exhibit (Griffin MSI).",
+      "presence_url": "https://www.griffinmsi.org/exhibits/u-505-submarine"
     },
     {
       "id": "science_storms",
       "label": "Science Storms",
       "emoji": "⚡",
-      "one_liner": "Tsunami tank, avalanche, and storm science you can feel.",
+      "one_liner": "Control a 40-foot tornado, then watch lightning and make a tsunami.",
       "tags": [
         "hands",
         "wow",
@@ -96,14 +97,15 @@
         "answer": "Wave, wind, or avalanche — pick one!"
       },
       "presence": "verified",
-      "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_source": "official_site_page",
+      "presence_checked": "2026-11-26",
+      "presence_url": "https://www.griffinmsi.org/exhibits/science-storms"
     },
     {
       "id": "henry_crown_space",
       "label": "Henry Crown Space Center",
       "emoji": "🚀",
-      "one_liner": "Rockets, spaceflight stories, and big sky dreams.",
+      "one_liner": "The Apollo 8 Command Module and a SpaceX Dragon spacecraft.",
       "tags": [
         "wow",
         "read"
@@ -113,20 +115,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Space",
+      "zone": "Henry Crown Space Center",
       "qa_card": {
         "question": "What would you pack for a trip to space?",
         "answer": "Food, tools, or a toy — one idea!"
       },
       "presence": "verified",
-      "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_source": "official_site_page",
+      "presence_checked": "2026-11-26",
+      "presence_url": "https://www.griffinmsi.org/exhibits/henry-crown-space-center"
     },
     {
       "id": "idea_factory",
       "label": "Idea Factory",
       "emoji": "🧱",
-      "one_liner": "Little-kid build-and-play lab — hands busy.",
+      "one_liner": "A play lab for scientists aged 10 and under — cranes, air tubes, magnets.",
       "tags": [
         "hands",
         "play",
@@ -143,14 +146,15 @@
         "answer": "Blocks, water, gears — one thing!"
       },
       "presence": "verified",
-      "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_source": "official_site_page",
+      "presence_checked": "2026-11-26",
+      "presence_url": "https://www.griffinmsi.org/exhibits/idea-factory"
     },
     {
       "id": "great_train_story",
       "label": "The Great Train Story",
       "emoji": "🚂",
-      "one_liner": "A giant model train layout across America.",
+      "one_liner": "A model railroad from Chicago to Seattle on 1,400 feet of track.",
       "tags": [
         "wow",
         "rest"
@@ -161,20 +165,21 @@
         "6-8",
         "9+"
       ],
-      "zone": "Trains",
+      "zone": "The Great Train Story",
       "qa_card": {
         "question": "Which train or town did you spot first?",
         "answer": "Color, mountain, or city — one find!"
       },
       "presence": "verified",
-      "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_source": "official_site_page",
+      "presence_checked": "2026-11-26",
+      "presence_url": "https://www.griffinmsi.org/exhibits/great-train-story"
     },
     {
       "id": "fairy_castle",
       "label": "Colleen Moore's Fairy Castle",
       "emoji": "🏰",
-      "one_liner": "A tiny fairy palace with jewel-box rooms.",
+      "one_liner": "A miniature castle with stained glass and inch-square books.",
       "tags": [
         "wow",
         "rest"
@@ -191,14 +196,15 @@
         "answer": "Furniture, stairs, or sparkle!"
       },
       "presence": "verified",
-      "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_source": "official_site_page",
+      "presence_checked": "2026-11-26",
+      "presence_url": "https://www.griffinmsi.org/exhibits/colleen-moores-fairy-castle"
     },
     {
       "id": "take_flight",
       "label": "Take Flight",
       "emoji": "✈️",
-      "one_liner": "Stand under a real Boeing 727 — look up!",
+      "one_liner": "A United Airlines Boeing 727 — see a section as it looked in 1964.",
       "tags": [
         "wow",
         "tall"
@@ -209,14 +215,15 @@
         "6-8",
         "9+"
       ],
-      "zone": "Aviation",
+      "zone": "Take Flight",
       "qa_card": {
         "question": "How big did the plane feel from underneath?",
         "answer": "Wings, wheels, or engines — one word!"
       },
       "presence": "verified",
-      "presence_source": "official_animals_page",
-      "presence_checked": "2026-08-08"
+      "presence_source": "official_site_page",
+      "presence_checked": "2026-11-26",
+      "presence_url": "https://www.griffinmsi.org/exhibits/take-flight"
     },
     {
       "id": "free_explore",
@@ -261,10 +268,17 @@
     "science_storms",
     "idea_factory"
   ],
-  "research_notes": "Rewrote 2026-08-08 from Griffin MSI icons (U-505, Science Storms, Henry Crown Space, Idea Factory, trains, fairy castle, Take Flight). Removed generic CM/sci taxonomy leakage.",
+  "research_notes": "Rewrote 2026-08-08 from Griffin MSI icons (U-505, Science Storms, Henry Crown Space, Idea Factory, trains, fairy castle, Take Flight). Removed generic CM/sci taxonomy leakage. [2026-11-26] Gemini SEO consult (ChiefGrok plan item 2, Honolulu pattern): Starter-list tagline; every hall sourced to its griffinmsi.org exhibit page (checked 2026-11-26).",
   "presence_sources": [
     "https://www.griffinmsi.org/",
-    "https://www.msichicago.org/explore/whats-here/exhibits/u-505-submarine/"
+    "https://www.msichicago.org/explore/whats-here/exhibits/u-505-submarine/",
+    "https://www.griffinmsi.org/exhibits/u-505-submarine",
+    "https://www.griffinmsi.org/exhibits/science-storms",
+    "https://www.griffinmsi.org/exhibits/henry-crown-space-center",
+    "https://www.griffinmsi.org/exhibits/idea-factory",
+    "https://www.griffinmsi.org/exhibits/great-train-story",
+    "https://www.griffinmsi.org/exhibits/colleen-moores-fairy-castle",
+    "https://www.griffinmsi.org/exhibits/take-flight"
   ],
   "bonus_hunt": {
     "tagline": "Griffin MSI bonus · U-505 + Storms + Fairy Castle",

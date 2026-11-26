@@ -12,7 +12,7 @@
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Southern sea otters and tufted puffins first, then Shark Lagoon — Magellanic penguins.",
+  "tagline": "Starter list: southern sea otters and tufted puffins, then Shark Lagoon — Magellanic penguins, not African.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Waterfront; easy with a stroller.",
@@ -23,7 +23,7 @@
       "id": "sea_otter",
       "label": "Sea otter",
       "emoji": "🦦",
-      "one_liner": "Southern sea otter — floats, snacks, and steals the show.",
+      "one_liner": "Southern sea otter — watch it roll in the water to keep its thick coat dry.",
       "tags": [
         "water",
         "play",
@@ -42,16 +42,17 @@
       },
       "catalog_id": "sea-otter",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Sea otter",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.aquariumofpacific.org/exhibits/otters"
     },
     {
       "id": "puffin",
       "label": "Puffin",
       "emoji": "🐦",
-      "one_liner": "Tufted puffin — a beak full of fish.",
+      "one_liner": "Tufted puffin — a diving seabird that nests in rocky cliffs.",
       "tags": [
         "birds",
         "water"
@@ -62,24 +63,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Diving Birds",
+      "zone": "Diving Birds, Northern Pacific Gallery",
       "qa_card": {
         "question": "What did you notice about the Puffin?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "puffin",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Puffin",
       "core": true,
-      "presence_note": "Official Northern Pacific / Diving Birds: tufted puffin."
+      "presence_note": "Official Northern Pacific / Diving Birds: tufted puffin.",
+      "presence_url": "https://www.aquariumofpacific.org/exhibits/northern_pacific_gallery"
     },
     {
       "id": "shark",
       "label": "Shark",
       "emoji": "🦈",
-      "one_liner": "Shark Lagoon — zebra, reef, and bamboo sharks.",
+      "one_liner": "Shark Lagoon — come nose-to-nose with zebra and grey reef sharks.",
       "tags": [
         "water"
       ],
@@ -96,16 +98,17 @@
       },
       "catalog_id": "shark",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Shark",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.aquariumofpacific.org/exhibits/shark_lagoon"
     },
     {
       "id": "stingray",
       "label": "Stingray",
       "emoji": "🐟",
-      "one_liner": "Rays share Shark Lagoon and the Tropical Reef.",
+      "one_liner": "Touch pool rays — cownose and fiddler rays swim with bamboo sharks.",
       "tags": [
         "water",
         "flat",
@@ -117,23 +120,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Shark Lagoon",
+      "zone": "Shark Lagoon touch pool",
       "qa_card": {
         "question": "What did you notice about the Stingray?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "stingray",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Stingray",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.aquariumofpacific.org/exhibits/shark_lagoon/touchpool"
     },
     {
       "id": "jellyfish",
       "label": "Jellyfish",
       "emoji": "🎐",
-      "one_liner": "Jelly Dreamscapes — slow down and watch them pulse.",
+      "one_liner": "Jelly Dreamscapes — hundreds of sea jellies from around the world.",
       "tags": [
         "water",
         "glow",
@@ -152,16 +156,17 @@
       },
       "catalog_id": "jellyfish",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Jellyfish",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.aquariumofpacific.org/exhibits/jellydreamscapes"
     },
     {
       "id": "sea_turtle",
       "label": "Sea turtle",
       "emoji": "🐢",
-      "one_liner": "Olive Ridley sea turtle in the Tropical Reef.",
+      "one_liner": "Olive Ridley sea turtles in the Tropical Reef, the Aquarium's largest exhibit.",
       "tags": [
         "water",
         "shell"
@@ -172,23 +177,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tropical Pacific",
+      "zone": "Tropical Pacific Gallery",
       "qa_card": {
         "question": "What did you notice about the Sea turtle?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "sea-turtle",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Sea turtle",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.aquariumofpacific.org/exhibits/tropical_pacific_gallery"
     },
     {
       "id": "octopus",
       "label": "Octopus",
       "emoji": "🐙",
-      "one_liner": "Giant Pacific octopus — check the corners.",
+      "one_liner": "Giant Pacific octopus — the largest octopus species in the world.",
       "tags": [
         "water",
         "hide",
@@ -200,23 +206,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Northern Pacific",
+      "zone": "Northern Pacific Gallery",
       "qa_card": {
         "question": "What did you notice about the Octopus?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "octopus",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Octopus",
-      "core": false
+      "core": false,
+      "presence_url": "https://www.aquariumofpacific.org/exhibits/northern_pacific_gallery"
     },
     {
       "id": "clownfish",
       "label": "Clownfish",
       "emoji": "🐠",
-      "one_liner": "Clownfish darting through the Tropical Reef.",
+      "one_liner": "Clownfish in a gallery of reef life from the waters off Palau.",
       "tags": [
         "water",
         "color"
@@ -227,17 +234,18 @@
         "6-8",
         "9+"
       ],
-      "zone": "Tropical Pacific",
+      "zone": "Tropical Pacific Gallery",
       "qa_card": {
         "question": "What did you notice about the Clownfish?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "clownfish",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Clownfish",
-      "core": false
+      "core": false,
+      "presence_url": "https://www.aquariumofpacific.org/exhibits/tropical_pacific_gallery"
     },
     {
       "id": "eel",
@@ -254,23 +262,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Southern California / Tropical",
+      "zone": "Southern California Gallery",
       "qa_card": {
         "question": "What did you notice about the Eel?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "eel",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Eel",
-      "core": false
+      "core": false,
+      "presence_url": "https://www.aquariumofpacific.org/exhibits/rethemed_southern_california_gallery"
     },
     {
       "id": "kelp_forest",
       "label": "Kelp forest",
       "emoji": "🌿",
-      "one_liner": "Casino Point kelp forest — an underwater forest.",
+      "one_liner": "Casino Point kelp forest, from the waters off Catalina.",
       "tags": [
         "water",
         "hide"
@@ -288,10 +297,11 @@
       },
       "catalog_id": "kelp-forest",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Kelp forest",
-      "core": false
+      "core": false,
+      "presence_url": "https://www.aquariumofpacific.org/exhibits/rethemed_southern_california_gallery"
     }
   ],
   "content_mode": "curated",
@@ -441,9 +451,14 @@
     "https://www.aquariumofpacific.org/exhibits/otters",
     "https://www.aquariumofpacific.org/exhibits/penguin_habitat",
     "https://www.aquariumofpacific.org/exhibits/shark_lagoon",
-    "https://www.aquariumofpacific.org/exhibits/jellydreamscapes"
+    "https://www.aquariumofpacific.org/exhibits/jellydreamscapes",
+    "https://www.aquariumofpacific.org/exhibits/northern_pacific_gallery",
+    "https://www.aquariumofpacific.org/exhibits/shark_lagoon/touchpool",
+    "https://www.aquariumofpacific.org/exhibits/tropical_pacific_gallery",
+    "https://www.aquariumofpacific.org/exhibits/rethemed_southern_california_gallery",
+    "https://www.aquariumofpacific.org/onlinelearningcenter/species/southern_sea_otter"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 4 public list pass (aquariumofpacific.org exhibits). Magellanic penguin ≠ African.",
+  "research_notes": "[2026-08-23] Official-source Wave 4 public list pass (aquariumofpacific.org exhibits). Magellanic penguin ≠ African. [2026-11-26] Gemini SEO consult (ChiefGrok plan item 2, Honolulu pattern): Starter-list tagline; every find sourced to an aquariumofpacific.org exhibit page (checked 2026-11-26).",
   "bonus_hunt": {
     "tagline": "Pacific bonus · sea otter + puffin + Shark Lagoon",
     "find_ids": [
