@@ -396,8 +396,8 @@ QR_WELCOME_TYPE_LANDINGS = ("zoos",)
 def qr_welcome_tag(defer: bool = False) -> str:
     d = " defer" if defer else ""
     return f'<script src="/shell/qr-welcome.js?v={QR_WELCOME_JS_VER}"{d}></script>'
-PRINT_KIT_JS_VER = "24"
-STUDY_CARD_JS_VER = "23"
+PRINT_KIT_JS_VER = "25"
+STUDY_CARD_JS_VER = "24"
 STUDY_CARD_CSS_VER = "21"
 STUDY_CARDS_DATA_JS_VER = "11"
 VIEWPORT = "width=device-width, initial-scale=1, viewport-fit=cover"

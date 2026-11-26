@@ -318,7 +318,7 @@ class RingTailedLemurZoologistStudyCardTests(unittest.TestCase):
     def test_default_screen_html_keeps_easy_and_adds_zoologist_picker(self):
         html = outing_talk_html({"id": "ring-tailed-lemur", "packTemplate": "animals"})
         self.assertIn(">Quiz</h2>", html)
-        self.assertIn("Quick tips (Junior Ranger)", html)
+        self.assertIn("Learn first: quick tips", html)
         self.assertIn("Junior Ranger", html)
         self.assertIn("Park Ranger", html)
         self.assertIn("Zoologist", html)
@@ -343,7 +343,7 @@ class RingTailedLemurZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("Zoologist", sheet)
         self.assertNotIn("Junior Ranger", sheet)
         self.assertNotIn("Park Ranger", sheet)
-        self.assertIn("Quick tips (Zoologist)", sheet)
+        self.assertIn("Learn first: quick tips (Zoologist)", sheet)
         self.assertIn("ps-study-teach", sheet)
         self.assertIn("ps-study-front", sheet)
         self.assertIn("ps-study-back", sheet)
@@ -533,7 +533,7 @@ class RingTailedLemurZoologistStudyCardTests(unittest.TestCase):
         self.assertIn("study-cards-data.js?v=11", html)
         print_tpl = study_print_html_for("ring-tailed-lemur")
         self.assertIn("Junior Ranger", print_tpl)
-        self.assertIn("Quick tips (Junior Ranger)", print_tpl)
+        self.assertIn("Learn first: quick tips (Junior Ranger)", print_tpl)
         self.assertNotIn("Zoologist", print_tpl)
         for stem in ZOOLOGIST_STEMS:
             self.assertNotIn(stem, print_tpl)

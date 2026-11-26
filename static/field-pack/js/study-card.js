@@ -332,10 +332,9 @@ if (typeof window !== "undefined") {
     const lines = (teach || []).filter(Boolean);
     if (!lines.length) return "";
     const openAttr = teachShouldOpen(id) ? " open" : "";
-    const name = teachLevelName(level);
     return (
       `<details class="study-teach"${openAttr}>` +
-      `<summary class="study-teach-kicker">Quick tips (${esc(name)}) ` +
+      `<summary class="study-teach-kicker">Learn first: quick tips ` +
       `<span class="study-teach-hint">— ${openAttr ? "tap to hide" : "tap to open"}</span></summary>` +
       `<ul>${lines.map((line) => `<li>${esc(line)}</li>`).join("")}</ul></details>`
     );
