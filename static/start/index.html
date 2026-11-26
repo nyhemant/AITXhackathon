@@ -81,7 +81,8 @@
     @keyframes hxd-pop { from { opacity: 0; transform: scale(0.2); } 70% { opacity: 1; transform: scale(1.18); } to { opacity: 1; transform: scale(1); } }
     @keyframes hxd-ring { from { opacity: 0.9; transform: scale(1); } to { opacity: 0; transform: scale(3.2); } }
     @keyframes hxd-in { from { opacity: 0; transform: translateY(5px) scale(0.85); } to { opacity: 1; transform: none; } }
-    @keyframes hxd-print { from { transform: translateY(102%); } to { transform: translateY(0); } }
+    @keyframes hxd-print { from { transform: translateY(56%); } to { transform: translateY(0); } }
+    /* 2026-11-26: the sheet starts half out of the printer so the panel never shows an empty printer bar before the print animation runs. */
     @keyframes hxd-tick { from { stroke-dashoffset: 12; } to { stroke-dashoffset: 0; } }
     @keyframes hxd-led { 0%, 100% { fill: #9db79a; } 20%, 80% { fill: #e07a3f; } }
     @keyframes hxd-pencil { 0% { opacity: 0; translate: 46px 34px; } 35% { opacity: 1; translate: 0 0; } 55% { translate: 3px -3px; } 70% { translate: 0 1px; } 100% { opacity: 1; translate: var(--pr); } }
