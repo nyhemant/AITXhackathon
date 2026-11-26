@@ -12,7 +12,7 @@
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Predators of Asia & Africa, then the Savanna hippo river.",
+  "tagline": "Starter list: lions and Sumatran tigers in Predators of Asia & Africa, then the African Savanna hippos.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Check summer hours; arrive early for parking.",
@@ -23,7 +23,7 @@
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Predators habitat — listen for a roar.",
+      "one_liner": "African lion in the Zoo's newest habitat — listen for a roar.",
       "tags": [
         "big-cats",
         "outdoor",
@@ -42,16 +42,17 @@
       },
       "catalog_id": "african-lion",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "African lion",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.fortworthzoo.org/animals-and-habitats/habitats/predators-of-asia-and-africa?animal=african-lion"
     },
     {
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Predators of Asia — orange stripes in the trees.",
+      "one_liner": "One of the smallest tiger species, with stripes set close together.",
       "tags": [
         "big-cats",
         "pattern",
@@ -70,16 +71,17 @@
       },
       "catalog_id": "sumatran-tiger",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Sumatran tiger",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.fortworthzoo.org/animals-and-habitats/habitats/predators-of-asia-and-africa?animal=sumatran-tiger"
     },
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
       "emoji": "🦛",
-      "one_liner": "Savanna hippo river — watch the underwater window.",
+      "one_liner": "Four female hippos: Daisy, Jonesy, Poppy and Bubbles.",
       "tags": [
         "big",
         "water",
@@ -98,16 +100,17 @@
       },
       "catalog_id": "nile-hippo",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Nile hippo",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.fortworthzoo.org/animals-and-habitats/habitats/african-savanna?animal=hippopotamus"
     },
     {
       "id": "cheetah",
       "label": "Cheetah",
       "emoji": "🐆",
-      "one_liner": "Fast cat on the Predators path — tear marks, not a lion mane.",
+      "one_liner": "Cheetah — unlike other cats, its claws do not pull all the way in.",
       "tags": [
         "big-cats",
         "outdoor"
@@ -125,16 +128,17 @@
       },
       "catalog_id": "cheetah",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Cheetah",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.fortworthzoo.org/animals-and-habitats/habitats/predators-of-asia-and-africa?animal=cheetah"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Giraffe",
       "emoji": "🦒",
-      "one_liner": "Savanna giraffe — look up from the feeding deck.",
+      "one_liner": "Giraffe — seven neck bones, the same number as a person.",
       "tags": [
         "tall",
         "outdoor",
@@ -153,17 +157,18 @@
       },
       "catalog_id": "reticulated-giraffe",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Giraffe",
       "core": true,
-      "presence_note": "Official habitats list giraffes; soft Giraffe."
+      "presence_note": "Official habitats list giraffes; soft Giraffe.",
+      "presence_url": "https://www.fortworthzoo.org/animals-and-habitats/habitats/african-savanna?animal=giraffe"
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Gorilla",
       "emoji": "🦍",
-      "one_liner": "World of Primates gorilla troop in the forest yard.",
+      "one_liner": "Western lowland gorilla troop — find the silverback.",
       "tags": [
         "primates",
         "outdoor"
@@ -181,16 +186,17 @@
       },
       "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Gorilla",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.fortworthzoo.org/animals-and-habitats/habitats/world-of-primates?animal=western-lowland-gorilla"
     },
     {
       "id": "orangutan",
       "label": "Orangutan",
       "emoji": "🦧",
-      "one_liner": "World of Primates orangutan — long arms in the trees.",
+      "one_liner": "Sumatran orangutan — an endangered great ape with long arms.",
       "tags": [
         "primates",
         "climb",
@@ -209,16 +215,17 @@
       },
       "catalog_id": "orangutan",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Orangutan",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.fortworthzoo.org/animals-and-habitats/habitats/world-of-primates?animal=sumatran-orangutan"
     },
     {
       "id": "ostrich",
       "label": "Ostrich",
       "emoji": "🪶",
-      "one_liner": "Savanna ostrich — look at those legs.",
+      "one_liner": "Ostrich — the hens in a herd lay their eggs in one shared nest.",
       "tags": [
         "birds",
         "outdoor"
@@ -236,16 +243,17 @@
       },
       "catalog_id": "ostrich",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Ostrich",
-      "core": false
+      "core": false,
+      "presence_url": "https://www.fortworthzoo.org/animals-and-habitats/habitats/african-savanna?animal=ostrich"
     },
     {
       "id": "caribbean_flamingo",
       "label": "Caribbean flamingo",
       "emoji": "🦩",
-      "one_liner": "Pink flock near the entrance — long legs in the shallows.",
+      "one_liner": "Cross the entrance bridge to a flock of more than 70 flamingos.",
       "tags": [
         "birds",
         "color",
@@ -264,16 +272,17 @@
       },
       "catalog_id": "caribbean-flamingo",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Caribbean flamingo",
-      "core": false
+      "core": false,
+      "presence_url": "https://www.fortworthzoo.org/animals-and-habitats/habitats/flamingos?animal=caribbean-flamingo"
     },
     {
       "id": "two_toed_sloth",
       "label": "Two-toed sloth",
       "emoji": "🦥",
-      "one_liner": "Olive the two-toed sloth — hang and look twice.",
+      "one_liner": "Olive the two-toed sloth — mostly awake at night, so look twice.",
       "tags": [
         "climb",
         "outdoor"
@@ -291,10 +300,11 @@
       },
       "catalog_id": "two-toed-sloth",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Two-toed sloth",
-      "core": false
+      "core": false,
+      "presence_url": "https://www.fortworthzoo.org/animals-and-habitats/habitats/world-of-primates?animal=two-toed-sloth"
     }
   ],
   "content_mode": "curated",
@@ -311,7 +321,7 @@
     "Snack when needed",
     "Leave while happy"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 2a public list pass (habitats + Predators + construction updates).",
+  "research_notes": "[2026-08-23] Official-source Wave 2a public list pass (habitats + Predators + construction updates). [2026-11-26] Gemini SEO consult (ChiefGrok plan item 5, Honolulu pattern): Starter-list tagline; every find sourced to its fortworthzoo.org habitat page (checked 2026-11-26).",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -354,7 +364,11 @@
     "https://www.fortworthzoo.org/",
     "https://www.fortworthzoo.org/habitats",
     "https://www.fortworthzoo.org/predators",
-    "https://www.fortworthzoo.org/construction-updates"
+    "https://www.fortworthzoo.org/construction-updates",
+    "https://www.fortworthzoo.org/animals-and-habitats/habitats/predators-of-asia-and-africa",
+    "https://www.fortworthzoo.org/animals-and-habitats/habitats/african-savanna",
+    "https://www.fortworthzoo.org/animals-and-habitats/habitats/world-of-primates",
+    "https://www.fortworthzoo.org/animals-and-habitats/habitats/flamingos"
   ],
   "bonus_hunt": {
     "tagline": "Fort Worth bonus · Predators + Savanna + Primates",

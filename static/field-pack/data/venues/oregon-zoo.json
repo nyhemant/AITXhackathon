@@ -12,7 +12,7 @@
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Red pandas and chimps first — Asian elephants, not African.",
+  "tagline": "Starter list: red pandas and chimps first — Asian elephants, not African.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Rain happens — layers help year-round.",
@@ -25,7 +25,7 @@
       "id": "red_panda",
       "label": "Red panda",
       "emoji": "🦊",
-      "one_liner": "Discovery Zone red panda — rusty and tree-high.",
+      "one_liner": "Himalayan red panda — a pseudo thumb helps it eat bamboo.",
       "tags": [
         "climb",
         "outdoor"
@@ -36,23 +36,24 @@
         "6-8",
         "9+"
       ],
-      "zone": "Discovery Zone",
+      "zone": "Near Discovery Plaza",
       "qa_card": {
         "question": "What did you notice about the Red panda?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "red-panda",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Red panda",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.oregonzoo.org/animals/red-panda"
     },
     {
       "id": "chimpanzee",
       "label": "Chimpanzee",
       "emoji": "🐵",
-      "one_liner": "Primate Forest chimp play and chatter.",
+      "one_liner": "Every chimpanzee has its own voice — listen for one.",
       "tags": [
         "primates",
         "play"
@@ -70,16 +71,17 @@
       },
       "catalog_id": "chimpanzee",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Chimpanzee",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.oregonzoo.org/animals/chimpanzee"
     },
     {
       "id": "african_lion",
       "label": "Lion",
       "emoji": "🦁",
-      "one_liner": "Oregon lion pride — listen for a roar, then wait.",
+      "one_liner": "Lions in Predators of the Serengeti — a roar can carry five miles.",
       "tags": [
         "big-cats",
         "outdoor",
@@ -91,24 +93,25 @@
         "6-8",
         "9+"
       ],
-      "zone": "Africa",
+      "zone": "Predators of the Serengeti",
       "qa_card": {
         "question": "What did you notice about the Lion?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "african-lion",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Lion",
       "core": true,
-      "presence_note": "Official map lists Lions; news names the African lion pride."
+      "presence_note": "Official map lists Lions; news names the African lion pride.",
+      "presence_url": "https://www.oregonzoo.org/animals/lion"
     },
     {
       "id": "orangutan",
       "label": "Orangutan",
       "emoji": "🦧",
-      "one_liner": "Primate Forest orangutan — long arms in the trees.",
+      "one_liner": "Bornean orangutan — a great ape that lives in the treetops.",
       "tags": [
         "primates",
         "climb",
@@ -127,16 +130,17 @@
       },
       "catalog_id": "orangutan",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Orangutan",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.oregonzoo.org/animals/bornean-orangutan"
     },
     {
       "id": "ring_tailed_lemur",
       "label": "Ring-tailed lemur",
       "emoji": "🐒",
-      "one_liner": "Ring-tailed lemur — striped tail on the primate side.",
+      "one_liner": "Count the rings: 13 black and white bands on a 2-foot tail.",
       "tags": [
         "primates",
         "pattern",
@@ -155,16 +159,17 @@
       },
       "catalog_id": "ring-tailed-lemur",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Ring-tailed lemur",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.oregonzoo.org/animals/ring-tailed-lemur"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Giraffe",
       "emoji": "🦒",
-      "one_liner": "Africa giraffe — look up from the path.",
+      "one_liner": "Reticulated and Masai giraffes — compare their spot patterns.",
       "tags": [
         "tall",
         "outdoor",
@@ -176,18 +181,19 @@
         "6-8",
         "9+"
       ],
-      "zone": "Africa",
+      "zone": "Africa Savanna",
       "qa_card": {
         "question": "What did you notice about the Giraffe?",
         "answer": "Tell a grown-up one thing you saw!"
       },
       "catalog_id": "reticulated-giraffe",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Giraffe",
       "core": false,
-      "presence_note": "Official map lists Giraffe; soft Giraffe."
+      "presence_note": "Official map lists Giraffe; soft Giraffe.",
+      "presence_url": "https://www.oregonzoo.org/animals/giraffe"
     }
   ],
   "content_mode": "curated",
@@ -209,7 +215,7 @@
     "chimpanzee",
     "african_lion"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 2a public list pass (map.oregonzoo.org animals + oregonzoo.org news).",
+  "research_notes": "[2026-08-23] Official-source Wave 2a public list pass (map.oregonzoo.org animals + oregonzoo.org news). [2026-11-26] Gemini SEO consult (ChiefGrok plan item 5, Honolulu pattern): Starter-list tagline; every find sourced to its oregonzoo.org/animals page (checked 2026-11-26).",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -253,7 +259,14 @@
   "presence_sources": [
     "https://www.oregonzoo.org/",
     "https://map.oregonzoo.org/place-types/169-animals",
-    "https://www.oregonzoo.org/news"
+    "https://www.oregonzoo.org/news",
+    "https://www.oregonzoo.org/animals/red-panda",
+    "https://www.oregonzoo.org/animals/chimpanzee",
+    "https://www.oregonzoo.org/animals/lion",
+    "https://www.oregonzoo.org/animals/bornean-orangutan",
+    "https://www.oregonzoo.org/animals/ring-tailed-lemur",
+    "https://www.oregonzoo.org/animals/giraffe",
+    "https://www.oregonzoo.org/animals/asian-elephant"
   ],
   "bonus_hunt": {
     "tagline": "Oregon bonus · red panda + Primate Forest + lions",

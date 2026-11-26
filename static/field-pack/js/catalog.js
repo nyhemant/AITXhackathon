@@ -4799,7 +4799,7 @@ window.FIELD_PACK_VENUES = {
       "two-toed-sloth"
     ],
     treasureHunt: [
-      { id: "th1", text: "Watch Fiona’s bloat at the Hippo Cove window" },
+      { id: "th1", text: "Spot a hippo’s eyes, ears and nostrils above the water" },
       { id: "th2", text: "Find the Gorilla World family" },
       { id: "th3", text: "Spot cheetah tear marks — not a mane" },
       { id: "th4", text: "Watch an African penguin zoom underwater" },

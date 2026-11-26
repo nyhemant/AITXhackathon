@@ -4,6 +4,7 @@ Each venue here gets a "Starter list:" lead and every find on the page is source
 official page on the venue's own site (presence_url, checked 2026-11-26). The committed HTML
 was patched in place, so the embedded venue-data must keep matching the venue JSON.
 """
+import html
 import json
 import pathlib
 import re
@@ -17,9 +18,13 @@ sys.path.insert(0, str(ROOT / "scripts"))
 VENUES = {
     "aquarium-of-the-pacific": "www.aquariumofpacific.org",
     "museum-of-science-industry-chi": "www.griffinmsi.org",
+    "perot-museum": "www.perotmuseum.org",
+    "fort-worth-zoo": "www.fortworthzoo.org",
+    "cincinnati-zoo": "cincinnatizoo.org",
+    "oregon-zoo": "www.oregonzoo.org",
 }
 # finds that are not a place on the venue site (kid's-choice cards) skip the source check
-UNSOURCED_OK = {"free_explore"}
+UNSOURCED_OK = {"free_explore", "cm_free_explore"}
 BANNED = re.compile(r"\b(?:free|we|our|us)\b|no-cost", re.I)
 
 
@@ -40,7 +45,7 @@ class SeoConsultHonoluluPattern(unittest.TestCase):
                 v = _venue(slug)
                 self.assertTrue(v["tagline"].startswith("Starter list: "), v["tagline"])
                 lead = g.quiet_hero_lead({}, v)
-                self.assertIn(f'<p class="lead">{lead}</p>', _html(slug))
+                self.assertIn(f'<p class="lead">{html.escape(lead, quote=False)}</p>', _html(slug))
                 self.assertEqual(len(v["route_90m"]), 3)
 
     def test_every_find_is_sourced_to_the_official_site(self):
@@ -72,6 +77,17 @@ class SeoConsultHonoluluPattern(unittest.TestCase):
 
     def test_caveats_kept(self):
         self.assertIn("Magellanic penguins, not African", _venue("aquarium-of-the-pacific")["tagline"])
+        self.assertIn("Asian elephants, not African", _venue("cincinnati-zoo")["tagline"])
+        self.assertIn("Asian elephants, not African", _venue("oregon-zoo")["tagline"])
+
+    def test_fiona_is_not_named_in_the_cincinnati_hunt(self):
+        # Fiona the hippo died on Nov 19, 2026 (cincinnatizoo.org/fiona-the-world-famous-hippo/).
+        self.assertNotIn("Fiona", _html("cincinnati-zoo"))
+        self.assertNotIn("Fiona", (ROOT / "static/field-pack/js/catalog.js").read_text(encoding="utf-8"))
+
+    def test_perot_sports_hall_closure_is_noted(self):
+        items = {i["id"]: i for i in _venue("perot-museum")["items"]}
+        self.assertIn("closed for renovation Jan 5 – March 2027", items["sci_hands_on"]["one_liner"])
 
 
 if __name__ == "__main__":

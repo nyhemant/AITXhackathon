@@ -12,20 +12,20 @@
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Hippo Cove first, then Gorilla World and a cheetah sprint — Asian elephants, not African.",
+  "tagline": "Starter list: hippos first, then Gorilla World and the Cheetah Encounter — Asian elephants, not African.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Members and timed tickets help on peak days — check cincinnatizoo.org.",
     "transit_note": "Avondale; parking on site.",
     "energy_note": "stroller-easy",
-    "best_start": "Hippo Cove (Fiona) first if open — then cheetah/elephant (Asian) or kids’ zoo."
+    "best_start": "Hippo Cove first if open — then cheetah/elephant (Asian) or kids’ zoo."
   },
   "items": [
     {
       "id": "nile_hippo",
       "label": "Nile hippo",
       "emoji": "🦛",
-      "one_liner": "Hippo Cove — Fiona and the bloat at the underwater window.",
+      "one_liner": "Hippos soak with just their eyes, ears and nostrils above water.",
       "tags": [
         "big",
         "water",
@@ -44,16 +44,17 @@
       },
       "catalog_id": "nile-hippo",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Nile hippo",
-      "core": true
+      "core": true,
+      "presence_url": "https://cincinnatizoo.org/animals-archive/hippopotamus/"
     },
     {
       "id": "western_lowland_gorilla",
       "label": "Western lowland gorilla",
       "emoji": "🦍",
-      "one_liner": "Gorilla World family — who looks in charge?",
+      "one_liner": "A gorilla troop is led by a silverback — who looks in charge?",
       "tags": [
         "primates",
         "outdoor"
@@ -71,16 +72,17 @@
       },
       "catalog_id": "western-lowland-gorilla",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Western lowland gorilla",
-      "core": true
+      "core": true,
+      "presence_url": "https://cincinnatizoo.org/animals-archive/western-lowland-gorilla/"
     },
     {
       "id": "cheetah",
       "label": "Cheetah",
       "emoji": "🐆",
-      "one_liner": "Cheetah Encounter — tear marks, then a sprint if the run is on.",
+      "one_liner": "At the Cheetah Encounter, cheetahs chase a lure around the running yard.",
       "tags": [
         "big-cats",
         "outdoor"
@@ -98,16 +100,17 @@
       },
       "catalog_id": "cheetah",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Cheetah",
-      "core": true
+      "core": true,
+      "presence_url": "https://cincinnatizoo.org/international-cheetah-day-2025-cub-update/"
     },
     {
       "id": "african_penguin",
       "label": "African penguin",
       "emoji": "🐧",
-      "one_liner": "African Penguin Point — waddle, then zoom in the water.",
+      "one_liner": "Penguins can't fly in the air, but they fly through the water.",
       "tags": [
         "birds",
         "water",
@@ -126,16 +129,17 @@
       },
       "catalog_id": "african-penguin",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "African penguin",
-      "core": true
+      "core": true,
+      "presence_url": "https://cincinnatizoo.org/animals-archive/african-penguin/"
     },
     {
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "Africa lion pride — listen for a roar.",
+      "one_liner": "Lions live in prides — listen for a roar.",
       "tags": [
         "big-cats",
         "outdoor",
@@ -154,16 +158,17 @@
       },
       "catalog_id": "african-lion",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "African lion",
-      "core": true
+      "core": true,
+      "presence_url": "https://cincinnatizoo.org/animals-archive/african-lion/"
     },
     {
       "id": "galapagos_tortoise",
       "label": "Galápagos tortoise",
       "emoji": "🐢",
-      "one_liner": "Galápagos tortoise yard — mid-step or statue?",
+      "one_liner": "The largest turtle in the world — mid-step or statue-still?",
       "tags": [
         "outdoor",
         "slow"
@@ -181,16 +186,17 @@
       },
       "catalog_id": "galapagos-tortoise",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Galápagos tortoise",
-      "core": true
+      "core": true,
+      "presence_url": "https://cincinnatizoo.org/animals-archive/galapagos-tortoise/"
     },
     {
       "id": "red_panda",
       "label": "Red panda",
       "emoji": "🦊",
-      "one_liner": "Red panda — rusty and tree-high.",
+      "one_liner": "Red panda — hair on its feet stops it slipping on branches.",
       "tags": [
         "climb",
         "outdoor"
@@ -208,16 +214,17 @@
       },
       "catalog_id": "red-panda",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Red panda",
-      "core": false
+      "core": false,
+      "presence_url": "https://cincinnatizoo.org/animals-archive/red-panda/"
     },
     {
       "id": "orangutan",
       "label": "Orangutan",
       "emoji": "🦧",
-      "one_liner": "Jungle Trails orangutan — long arms in the trees.",
+      "one_liner": "Sumatran orangutan — the name means “person of the forest.”",
       "tags": [
         "primates",
         "climb",
@@ -236,16 +243,17 @@
       },
       "catalog_id": "orangutan",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Orangutan",
-      "core": false
+      "core": false,
+      "presence_url": "https://cincinnatizoo.org/animals-archive/sumatran-orangutan/"
     },
     {
       "id": "ring_tailed_lemur",
       "label": "Ring-tailed lemur",
       "emoji": "🐒",
-      "one_liner": "Lemur Lookout — striped tail and a long stare.",
+      "one_liner": "A lemur's tail can be longer than the rest of its body.",
       "tags": [
         "primates",
         "pattern",
@@ -264,16 +272,17 @@
       },
       "catalog_id": "ring-tailed-lemur",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Ring-tailed lemur",
-      "core": false
+      "core": false,
+      "presence_url": "https://cincinnatizoo.org/animals-archive/ring-tailed-lemur/"
     },
     {
       "id": "two_toed_sloth",
       "label": "Two-toed sloth",
       "emoji": "🦥",
-      "one_liner": "Discovery Forest sloth — hang and look twice.",
+      "one_liner": "Algae can give a sloth's hair a green tint — look twice.",
       "tags": [
         "climb",
         "outdoor"
@@ -291,10 +300,11 @@
       },
       "catalog_id": "two-toed-sloth",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Two-toed sloth",
-      "core": false
+      "core": false,
+      "presence_url": "https://cincinnatizoo.org/animals-archive/two-toed-sloth/"
     }
   ],
   "content_mode": "curated",
@@ -316,7 +326,7 @@
     "western_lowland_gorilla",
     "cheetah"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 2b public list pass (cincinnatizoo.org/animals + habitats).",
+  "research_notes": "[2026-08-23] Official-source Wave 2b public list pass (cincinnatizoo.org/animals + habitats). [2026-11-26] Gemini SEO consult (ChiefGrok plan item 5, Honolulu pattern): Starter-list tagline; every find sourced to a cincinnatizoo.org page (checked 2026-11-26). Fiona the hippo died Nov 19, 2026 (official Fiona page), so the hunt no longer names her.",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -342,7 +352,17 @@
   "presence_sources": [
     "https://cincinnatizoo.org/animals/",
     "https://cincinnatizoo.org/animals/habitats/",
-    "https://cincinnatizoo.org/animals-archive/hippopotamus/"
+    "https://cincinnatizoo.org/animals-archive/hippopotamus/",
+    "https://cincinnatizoo.org/fiona-the-world-famous-hippo/",
+    "https://cincinnatizoo.org/animals-archive/western-lowland-gorilla/",
+    "https://cincinnatizoo.org/international-cheetah-day-2025-cub-update/",
+    "https://cincinnatizoo.org/animals-archive/african-penguin/",
+    "https://cincinnatizoo.org/animals-archive/african-lion/",
+    "https://cincinnatizoo.org/animals-archive/galapagos-tortoise/",
+    "https://cincinnatizoo.org/animals-archive/red-panda/",
+    "https://cincinnatizoo.org/animals-archive/sumatran-orangutan/",
+    "https://cincinnatizoo.org/animals-archive/ring-tailed-lemur/",
+    "https://cincinnatizoo.org/animals-archive/two-toed-sloth/"
   ],
   "bonus_hunt": {
     "tagline": "Cincinnati bonus · Hippo Cove + Gorilla World + cheetahs",
