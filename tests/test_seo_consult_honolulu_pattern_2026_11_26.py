@@ -88,6 +88,10 @@ class SeoConsultHonoluluPattern(unittest.TestCase):
         self.assertIn("elephants have left", _venue("auckland-zoo")["tagline"])
         self.assertIn("tigers are Bengal and Siberian", _venue("manila-zoo")["tagline"])
 
+    def test_al_ain_says_checklist_not_official_map(self):
+        page = (ROOT / "static/field-pack/al-ain-zoo/index.html").read_text(encoding="utf-8")
+        self.assertIn("printable hunt checklist, not an official zoo map", page)
+
     def test_fiona_is_not_named_in_the_cincinnati_hunt(self):
         # Fiona the hippo died on Nov 19, 2026 (cincinnatizoo.org/fiona-the-world-famous-hippo/).
         self.assertNotIn("Fiona", _html("cincinnati-zoo"))
