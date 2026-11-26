@@ -12,7 +12,7 @@
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "African lion, ostrich, and official aquatic freshwater fish — Ma'ali is an Asian elephant; tigers are Bengal/Siberian.",
+  "tagline": "Starter list: African lion, ostrich and the official aquatic freshwater fish — tigers are Bengal and Siberian; no elephant on this list.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "City zoo hours; check reopening notes if renovating.",
@@ -25,7 +25,7 @@
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "African lion — listen for a roar.",
+      "one_liner": "African lion (Panthera leo) — listen for a roar.",
       "tags": [
         "big-cats",
         "outdoor",
@@ -44,16 +44,17 @@
       },
       "catalog_id": "african-lion",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "African lion",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.manilazoo.ph/animals"
     },
     {
       "id": "ostrich",
       "label": "Ostrich",
       "emoji": "🪶",
-      "one_liner": "Ostrich — look at those legs.",
+      "one_liner": "Ostrich (Struthio camelus) — look at those legs.",
       "tags": [
         "birds",
         "outdoor"
@@ -71,10 +72,11 @@
       },
       "catalog_id": "ostrich",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Ostrich",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.manilazoo.ph/animals"
     },
     {
       "id": "freshwater_fish",
@@ -97,10 +99,11 @@
       },
       "catalog_id": "freshwater-fish",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "River / lake fish",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.manilazoo.ph/animals"
     },
     {
       "id": "mnl_tiger",
@@ -122,8 +125,8 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Bengal tiger",
       "core": false,
@@ -149,8 +152,8 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Philippine deer",
       "core": false,
@@ -176,8 +179,8 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Double-wattled cassowary",
       "core": false,
@@ -203,8 +206,8 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Estuarine crocodile",
       "core": false,
@@ -230,8 +233,8 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Philippine serpent eagle",
       "core": false,
@@ -257,8 +260,8 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "presence_url": "https://www.manilazoo.ph/animals",
       "display_label": "Celebes black ape",
       "core": false,
@@ -283,7 +286,7 @@
     "ostrich",
     "freshwater_fish"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (manilazoo.ph about + official animals JS bundle). Short overlap stays short. [2026-11-16] SEO gate B2: added official-list animals; Asian elephant left out on purpose (Mali died in 2023 though the animals page still lists the species)",
+  "research_notes": "[2026-08-23] Official-source Wave 3b public list pass (manilazoo.ph about + official animals JS bundle). Short overlap stays short. [2026-11-16] SEO gate B2: added official-list animals; Asian elephant left out on purpose (Mali died in 2023 though the animals page still lists the species) [2026-11-26] Gemini SEO consult (ChiefGrok plan item 5, Honolulu pattern): Starter-list tagline; every find re-checked against the official manilazoo.ph animals list (React bundle main.abf44f44, 2026-11-26), which gives names and scientific names only, so the one-liners add no new facts. The tagline no longer implies an elephant is on view (see the 2026-11-16 note).",
   "list_confidence": "audited",
   "do_not_list": [
     {

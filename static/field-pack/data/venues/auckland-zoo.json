@@ -12,7 +12,7 @@
   "last_verified": "2026-08-23",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Sumatran tigers first, then a named Galápagos tortoise and Bornean orangutan — elephants have left.",
+  "tagline": "Starter list: Sumatran tigers first, then a Galápagos tortoise and a Bornean orangutan — elephants have left.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Western Springs; check aucklandzoo.co.nz.",
@@ -25,7 +25,7 @@
       "id": "sumatran_tiger",
       "label": "Sumatran tiger",
       "emoji": "🐯",
-      "one_liner": "Sumatran tiger — Ramah, Zayana, and Cahya.",
+      "one_liner": "Ramah, Zayana and Cahya — the smallest tiger subspecies.",
       "tags": [
         "big-cats",
         "pattern",
@@ -44,16 +44,17 @@
       },
       "catalog_id": "sumatran-tiger",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Sumatran tiger",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.aucklandzoo.co.nz/animals/sumatran-tiger"
     },
     {
       "id": "galapagos_tortoise",
       "label": "Galápagos tortoise",
       "emoji": "🐢",
-      "one_liner": "Named Galápagos tortoise residents — mid-step or statue?",
+      "one_liner": "The world's largest tortoise — mid-step or statue-still?",
       "tags": [
         "outdoor",
         "slow"
@@ -71,16 +72,17 @@
       },
       "catalog_id": "galapagos-tortoise",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Galápagos tortoise",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.aucklandzoo.co.nz/animals/galapagos-tortoise"
     },
     {
       "id": "orangutan",
       "label": "Orangutan",
       "emoji": "🦧",
-      "one_liner": "Bornean orangutan — long arms at High Canopy.",
+      "one_liner": "Bornean orangutan — about seven times stronger than a person.",
       "tags": [
         "primates",
         "climb",
@@ -99,16 +101,17 @@
       },
       "catalog_id": "orangutan",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Orangutan",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.aucklandzoo.co.nz/animals/bornean-orangutan"
     },
     {
       "id": "cheetah",
       "label": "Cheetah",
       "emoji": "🐆",
-      "one_liner": "Cheetah — tear marks, not a lion mane.",
+      "one_liner": "Cheetah — the fastest land animal in the world.",
       "tags": [
         "big-cats",
         "outdoor"
@@ -126,16 +129,17 @@
       },
       "catalog_id": "cheetah",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Cheetah",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.aucklandzoo.co.nz/animals/cheetah"
     },
     {
       "id": "african_lion",
       "label": "African lion",
       "emoji": "🦁",
-      "one_liner": "African lion — listen for a roar.",
+      "one_liner": "Lions rest up to 20 hours a day — spot the white patch under each eye.",
       "tags": [
         "big-cats",
         "outdoor",
@@ -154,16 +158,17 @@
       },
       "catalog_id": "african-lion",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "African lion",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.aucklandzoo.co.nz/animals/african-lion"
     },
     {
       "id": "reticulated_giraffe",
       "label": "Giraffe",
       "emoji": "🦒",
-      "one_liner": "Pridelands giraffe — look up from the path.",
+      "one_liner": "Every giraffe has its own unique markings — compare two.",
       "tags": [
         "tall",
         "outdoor",
@@ -182,17 +187,18 @@
       },
       "catalog_id": "reticulated-giraffe",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Giraffe",
       "core": true,
-      "presence_note": "Official mammals page: Giraffe. Soft Giraffe."
+      "presence_note": "Official mammals page: Giraffe. Soft Giraffe.",
+      "presence_url": "https://www.aucklandzoo.co.nz/animals/giraffe"
     },
     {
       "id": "zebra",
       "label": "Zebra",
       "emoji": "🦓",
-      "one_liner": "Pridelands zebra with ostrich and giraffe.",
+      "one_liner": "No two zebras have the same stripes. They share Pridelands with ostriches and giraffes.",
       "tags": [
         "pattern",
         "outdoor",
@@ -211,16 +217,17 @@
       },
       "catalog_id": "zebra",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Zebra",
-      "core": false
+      "core": false,
+      "presence_url": "https://www.aucklandzoo.co.nz/animals/zebra"
     },
     {
       "id": "red_panda",
       "label": "Red panda",
       "emoji": "🦊",
-      "one_liner": "Red panda — rusty and tree-high.",
+      "one_liner": "Red panda — a gap in its teeth helps it strip bamboo leaves.",
       "tags": [
         "climb",
         "outdoor"
@@ -238,16 +245,17 @@
       },
       "catalog_id": "red-panda",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Red panda",
-      "core": false
+      "core": false,
+      "presence_url": "https://www.aucklandzoo.co.nz/animals/red-panda"
     },
     {
       "id": "asian_small_clawed_otter",
       "label": "Asian small-clawed otter",
       "emoji": "🦦",
-      "one_liner": "Asian small-clawed otter — smallest otter, biggest splash.",
+      "one_liner": "Watch for a stream of bubbles as an otter swims.",
       "tags": [
         "play",
         "water"
@@ -265,16 +273,17 @@
       },
       "catalog_id": "asian-small-clawed-otter",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Asian small-clawed otter",
-      "core": false
+      "core": false,
+      "presence_url": "https://www.aucklandzoo.co.nz/animals/otter"
     },
     {
       "id": "ostrich",
       "label": "Ostrich",
       "emoji": "🪶",
-      "one_liner": "Common ostrich — four females on Pridelands.",
+      "one_liner": "Common ostrich — the only bird with two toes on each foot.",
       "tags": [
         "birds",
         "outdoor"
@@ -292,10 +301,11 @@
       },
       "catalog_id": "ostrich",
       "presence": "verified",
-      "presence_checked": "2026-08-23",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Ostrich",
-      "core": false
+      "core": false,
+      "presence_url": "https://www.aucklandzoo.co.nz/animals/common-ostrich"
     }
   ],
   "content_mode": "curated",
@@ -317,7 +327,7 @@
     "galapagos_tortoise",
     "orangutan"
   ],
-  "research_notes": "[2026-08-23] Official-source Wave 3a public list pass (aucklandzoo.co.nz mammals + birds + ectotherms).",
+  "research_notes": "[2026-08-23] Official-source Wave 3a public list pass (aucklandzoo.co.nz mammals + birds + ectotherms). [2026-11-26] Gemini SEO consult (ChiefGrok plan item 5, Honolulu pattern): Starter-list tagline; every find sourced to its aucklandzoo.co.nz/animals page (checked 2026-11-26). Elephants: none since 12 Nov 2024 (official Asian elephant page).",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -368,7 +378,18 @@
     "https://www.aucklandzoo.co.nz/animals",
     "https://www.aucklandzoo.co.nz/animals/mammals",
     "https://www.aucklandzoo.co.nz/animals/birds",
-    "https://www.aucklandzoo.co.nz/animals/ectotherms"
+    "https://www.aucklandzoo.co.nz/animals/ectotherms",
+    "https://www.aucklandzoo.co.nz/animals/sumatran-tiger",
+    "https://www.aucklandzoo.co.nz/animals/galapagos-tortoise",
+    "https://www.aucklandzoo.co.nz/animals/bornean-orangutan",
+    "https://www.aucklandzoo.co.nz/animals/cheetah",
+    "https://www.aucklandzoo.co.nz/animals/african-lion",
+    "https://www.aucklandzoo.co.nz/animals/giraffe",
+    "https://www.aucklandzoo.co.nz/animals/zebra",
+    "https://www.aucklandzoo.co.nz/animals/red-panda",
+    "https://www.aucklandzoo.co.nz/animals/otter",
+    "https://www.aucklandzoo.co.nz/animals/common-ostrich",
+    "https://www.aucklandzoo.co.nz/animals/asian-elephant"
   ],
   "bonus_hunt": {
     "tagline": "Auckland bonus · tiger + tortoise + High Canopy",
