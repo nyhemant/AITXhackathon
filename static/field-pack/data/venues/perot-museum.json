@@ -12,7 +12,7 @@
   "last_verified": "2026-11-12",
   "verified_by": "research",
   "status": "verified",
-  "tagline": "Dinosaurs plus one sports or space hall — skip the rainforest dome.",
+  "tagline": "Starter list: Ellie May the mammoth, then the Sports Hall and Discovering Life Hall — skip the rainforest dome.",
   "practical": {
     "typical_duration": "half day",
     "ticket_note": "Victory Park; timed tickets peak times.",
@@ -25,7 +25,7 @@
       "id": "sci_dinosaur",
       "label": "Dinosaurs",
       "emoji": "🦖",
-      "one_liner": "Look up at the giant dinosaur fossil skeletons that greet you as you walk into the hall.",
+      "one_liner": "The T. rex and Alamosaurus fossil skeletons greet you as you walk into the hall.",
       "tags": [
         "wow",
         "read"
@@ -43,17 +43,18 @@
       },
       "catalog_id": "sci-dinosaur",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
-      "presence_source": "official_animals_page",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
       "display_label": "Dinosaurs",
       "presence_note": "T. rex / paleo halls are Perot signature.",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/life-then-and-now-hall/"
     },
     {
       "id": "sci_hands_on",
       "label": "Lamar Hunt Family Sports Hall",
       "emoji": "🔬",
-      "one_liner": "Step up to the starting line: are you faster than a T. rex?",
+      "one_liner": "Are you faster than a T. rex or a cheetah? Hall closed for renovation Jan 5 – March 2027.",
       "tags": [
         "hands",
         "play"
@@ -71,16 +72,18 @@
       },
       "catalog_id": "sci-hands-on",
       "presence": "verified",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-11-26",
       "display_label": "Lamar Hunt Family Sports Hall",
       "presence_note": "Interactive science floors.",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/sports-hall/",
+      "presence_source": "official_site_page"
     },
     {
       "id": "cm_imaginarium",
       "label": "Moody Family Children's Museum",
       "emoji": "✨",
-      "one_liner": "Climb, create and imagine, with a toddler area and outdoor play space.",
+      "one_liner": "A Toddler Garden plus an outdoor area with a programmable waterfall.",
       "tags": [
         "play"
       ],
@@ -97,18 +100,18 @@
       },
       "catalog_id": "cm-imaginarium",
       "presence": "verified",
-      "presence_checked": "2026-11-16",
+      "presence_checked": "2026-11-26",
       "display_label": "Moody Family Children's Museum",
       "presence_note": "Children’s museum level exists under other branding. Soft kids zone.",
       "core": true,
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.perotmuseum.org/exhibits/"
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/childrens-museum/"
     },
     {
       "id": "sci_planet",
       "label": "Expanding Universe Hall",
       "emoji": "🪐",
-      "one_liner": "Stars, planets and distant galaxies: point to one planet.",
+      "one_liner": "Planets, moons, comets and distant galaxies: point to one planet.",
       "tags": [
         "wow"
       ],
@@ -125,16 +128,18 @@
       },
       "catalog_id": "sci-planet",
       "presence": "high",
-      "presence_checked": "2026-08-08",
+      "presence_checked": "2026-11-26",
       "display_label": "Expanding Universe Hall",
       "presence_note": "Space/astronomy content + adjacent planetarium programming. Soft Space.",
-      "core": true
+      "core": true,
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/expanding-universe-hall/",
+      "presence_source": "official_site_page"
     },
     {
       "id": "cm_makery",
       "label": "Engineering and Innovation Hall",
       "emoji": "🔧",
-      "one_liner": "Build something, test it, then try again.",
+      "one_liner": "Build a better building and play tag with a robot.",
       "tags": [
         "hands"
       ],
@@ -151,18 +156,18 @@
       },
       "catalog_id": "cm-makery",
       "presence": "verified",
-      "presence_checked": "2026-11-16",
+      "presence_checked": "2026-11-26",
       "display_label": "Engineering and Innovation Hall",
       "presence_note": "Engineering/design interactives.",
       "core": true,
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.perotmuseum.org/exhibits/"
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/engineering-and-innovation-hall/"
     },
     {
       "id": "sci_mammal_hall",
       "label": "Discovering Life Hall",
       "emoji": "🦌",
-      "one_liner": "An indoor nature walk, from single cells to whole ecosystems.",
+      "one_liner": "An indoor nature walk, from single-cell organisms to whole ecosystems.",
       "tags": [
         "wow",
         "outdoor"
@@ -180,12 +185,12 @@
       },
       "catalog_id": "sci-mammal-hall",
       "presence": "verified",
-      "presence_checked": "2026-11-16",
+      "presence_checked": "2026-11-26",
       "display_label": "Discovering Life Hall",
       "presence_note": "Life sciences / sports hall etc. — not classic mammal dioramas. Soft Life sciences.",
       "core": true,
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.perotmuseum.org/exhibits/"
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/discovering-life-hall/"
     },
     {
       "id": "cm_free_explore",
@@ -218,7 +223,7 @@
       "id": "perot_birds",
       "label": "Rose Hall of Birds",
       "emoji": "🐦",
-      "one_liner": "Find a bird and a dinosaur that look alike.",
+      "one_liner": "Compare footprints that link dinosaurs to modern-day birds.",
       "tags": [
         "birds",
         "read"
@@ -235,9 +240,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.perotmuseum.org/exhibits/",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/rose-hall-of-birds/",
       "display_label": "Rose Hall of Birds",
       "core": false
     },
@@ -245,7 +250,7 @@
       "id": "perot_mammoth",
       "label": "Mammoth fossil",
       "emoji": "🦣",
-      "one_liner": "Nearly complete mammoth fossil — how big are the tusks?",
+      "one_liner": "Ellie May, a Columbian mammoth discovered in Texas — how big is she?",
       "tags": [
         "wow",
         "read"
@@ -262,9 +267,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.perotmuseum.org/exhibits/",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/dynamic-earth-hall/",
       "display_label": "Mammoth fossil",
       "core": false
     },
@@ -272,7 +277,7 @@
       "id": "perot_gems",
       "label": "Gems and Minerals Hall",
       "emoji": "💎",
-      "one_liner": "Find the sparkliest rock in the hall.",
+      "one_liner": "Find the Grape Jelly Amethyst Geode, the hall's very first exhibit.",
       "tags": [
         "read"
       ],
@@ -288,9 +293,9 @@
         "answer": "Tell a grown-up one thing you saw!"
       },
       "presence": "verified",
-      "presence_checked": "2026-11-16",
-      "presence_source": "official_animals_page",
-      "presence_url": "https://www.perotmuseum.org/exhibits/",
+      "presence_checked": "2026-11-26",
+      "presence_source": "official_site_page",
+      "presence_url": "https://www.perotmuseum.org/exhibits/halls/lyda-hill-gems-and-minerals-hall/",
       "display_label": "Gems and Minerals Hall",
       "core": false
     }
@@ -314,7 +319,7 @@
     "sci_hands_on",
     "sci_mammal_hall"
   ],
-  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor] [2026-11-16] SEO gate B2: added official exhibits-page halls and named the generic finds after the official hall names on perotmuseum.org/exhibits [2026-11-16] SEO gate B2: hunt now shows the sourced halls",
+  "research_notes": "R2 hybrid 2026-08-07 · map-img 2026-08-07 · map-page 2026-08-07 · presence-audit 2026-08-08 [minor] [2026-11-16] SEO gate B2: added official exhibits-page halls and named the generic finds after the official hall names on perotmuseum.org/exhibits [2026-11-16] SEO gate B2: hunt now shows the sourced halls [2026-11-26] Gemini SEO consult (ChiefGrok plan item 5, Honolulu pattern): Starter-list tagline; every hall sourced to its perotmuseum.org/exhibits/halls page (checked 2026-11-26). Sports Hall closed for renovation Jan 5 – March 2027 per the official hall page.",
   "list_confidence": "audited",
   "do_not_list": [
     {
@@ -328,7 +333,16 @@
   "presence_sources": [
     "https://www.perotmuseum.org/",
     "https://www.perotmuseum.org/explore/exhibits",
-    "https://www.perotmuseum.org/exhibits/"
+    "https://www.perotmuseum.org/exhibits/",
+    "https://www.perotmuseum.org/exhibits/halls/life-then-and-now-hall/",
+    "https://www.perotmuseum.org/exhibits/halls/sports-hall/",
+    "https://www.perotmuseum.org/exhibits/halls/childrens-museum/",
+    "https://www.perotmuseum.org/exhibits/halls/expanding-universe-hall/",
+    "https://www.perotmuseum.org/exhibits/halls/engineering-and-innovation-hall/",
+    "https://www.perotmuseum.org/exhibits/halls/discovering-life-hall/",
+    "https://www.perotmuseum.org/exhibits/halls/rose-hall-of-birds/",
+    "https://www.perotmuseum.org/exhibits/halls/dynamic-earth-hall/",
+    "https://www.perotmuseum.org/exhibits/halls/lyda-hill-gems-and-minerals-hall/"
   ],
   "bonus_hunt": {
     "tagline": "Perot bonus · dinos + sports science side quests",
