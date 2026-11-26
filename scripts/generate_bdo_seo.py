@@ -384,7 +384,7 @@ LANDING_CSS_VER = "105"
 LANDING_MAP_JS_VER = "89"
 LANDING_HOOK_JS_VER = "39"
 STYLES_CSS_VER = "45"
-CATALOG_JS_VER = "40"
+CATALOG_JS_VER = "41"
 SHELL_CSS_VER = 13
 SHELL_JS_VER = "8"
 # /shell/qr-welcome.js (QR-scan next-step strip + printable_download). Hubs that
