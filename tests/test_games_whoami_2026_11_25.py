@@ -114,15 +114,13 @@ class WhoAmIPages(unittest.TestCase):
                 self.assertIn(clue.rstrip(".!?"), re.sub(r"\s+", " ", plain), animal["id"])
                 self.assertFalse(_contains_name(clue, forms), f"{animal['id']}: {clue}")
 
-    def test_hub_links_who_am_i_and_keeps_coming_next_honest(self):
+    def test_hub_links_who_am_i_and_has_no_coming_next(self):
         html = (GAMES / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/games/who-am-i/"', html)
-        coming = html.split("Coming next", 1)[-1]
-        self.assertNotIn("/games/who-am-i/", coming)
-        self.assertNotIn("/games/silhouette/", coming)
-        self.assertNotIn("Who-am-I clues", coming)
-        self.assertIn("Silhouette guess", coming)
-        self.assertIn("Habitat sort", coming)
+        self.assertNotIn("Coming next", html)
+        self.assertNotIn("Silhouette guess", html)
+        self.assertNotIn("Habitat sort", html)
+        self.assertNotIn("/games/silhouette/", html)
 
     def test_handler_serves_page_and_slashless_301(self):
         page = FakeHandler("/games/who-am-i/")
