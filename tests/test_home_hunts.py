@@ -37,7 +37,7 @@ GROUPS = [
     ("amnh", ["amnh"]),
     ("dc", ["air-and-space", "national-zoo"]),
     ("baltimore", ["national-aquarium-baltimore"]),
-    ("chicago", ["shedd-aquarium", "lincoln-park-zoo"]),
+    ("chicago", ["shedd-aquarium", "lincoln-park-zoo", "museum-of-science-industry-chi"]),
     ("toronto", ["toronto-zoo"]),
     ("nashville", ["nashville-adventure-science"]),
     ("austin", ["austin-zoo"]),
@@ -47,13 +47,15 @@ GROUPS = [
     # Dallas Zoo pin was here 2026-11-12 to 2026-11-13; removed so comparison pair 10 is unpinned.
     # Fort Worth Zoo (pair 8) stays at Heymant's request.
     ("san-diego", ["san-diego-zoo"]),
+    # 2026-11-26 Gemini SEO consult: Aquarium of the Pacific (Long Beach) gets its own pin; MSI joins Chicago.
+    ("long-beach", ["aquarium-of-the-pacific"]),
     ("perot-museum", ["perot-museum"]),
     ("fort-worth-zoo", ["fort-worth-zoo"]),
     ("tampa", ["tampa-zoo"]),
     ("yellowstone", ["yellowstone"]),
     ("glacier", ["glacier"]),
 ]
-MAP_ONLY = ["san-diego-zoo", "perot-museum", "fort-worth-zoo", "tampa-zoo", "yellowstone", "glacier"]
+MAP_ONLY = ["museum-of-science-industry-chi", "aquarium-of-the-pacific", "san-diego-zoo", "perot-museum", "fort-worth-zoo", "tampa-zoo", "yellowstone", "glacier"]
 
 BANNED = re.compile(r"\b(?:free|we|our|us)\b|no-cost", re.I)
 HREF = re.compile(r'href="([^"]+)"')

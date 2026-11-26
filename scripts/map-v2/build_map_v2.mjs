@@ -153,7 +153,7 @@ const groups = [
   { id: "amnh", label: "Natural History\nMuseum", members: [V("amnh", "/field-pack/amnh/#printable-hunt")], dx: 58, dy: 0, w: [56, 14], tagOnly: true, noDot: true },
   { id: "dc", label: "Washington, DC", members: [V("air-and-space", "/field-pack/air-and-space/#printable-hunt"), V("national-zoo", SH)], dx: 12, dy: 54 },
   { id: "baltimore", label: "Baltimore", members: [V("national-aquarium-baltimore", SH)], dx: -60, dy: 2, w: [-58, 8] },
-  { id: "chicago", label: "Chicago", members: [V("shedd-aquarium", SH), V("lincoln-park-zoo", SH)], dx: -56, dy: -20, w: [-40, -30] },
+  { id: "chicago", label: "Chicago", members: [V("shedd-aquarium", SH), V("lincoln-park-zoo", SH), V("museum-of-science-industry-chi", "/field-pack/museum-of-science-industry-chi/#printable-hunt")], dx: -56, dy: -20, w: [-40, -30] },
   { id: "toronto", label: "Toronto", members: [V("toronto-zoo", SH)], dx: -4, dy: -32, w: [-12, -32] },
   { id: "nashville", label: "Nashville", members: [V("nashville-adventure-science", "/field-pack/nashville-adventure-science/#printable-hunt")], dx: 27, dy: 47, w: [61, 61] },
   { id: "austin", label: "Austin", members: [V("austin-zoo", SH)], dx: 27, dy: 47, w: [0, 46] },
@@ -161,6 +161,8 @@ const groups = [
   { id: "joshua-tree", label: "Joshua Tree", members: [V("joshua-tree", PK)], dx: 52, dy: 30, w: [-33, -33] },
   // 2026-11-12 additions: existing venue pages, same print links as the other zoos, parks and museums.
   { id: "san-diego", label: "San Diego", members: [V("san-diego-zoo", SH)], dx: -54, dy: 22 },
+  // 2026-11-26 Gemini SEO consult: Aquarium of the Pacific gets a Long Beach pin; the live HTML was patched in place.
+  { id: "long-beach", label: "Long Beach", members: [V("aquarium-of-the-pacific", "/field-pack/aquarium-of-the-pacific/#printable-hunt")], dx: -60, dy: -8, w: [-56, 4] },
   // Dallas: the zoo and the Perot Museum share one dot (6 km apart), so each gets its own tag like New York.
   { id: "dallas-zoo", label: "Dallas Zoo", members: [V("dallas-zoo", SH)], dx: 50, dy: 30, w: [56, 24], tagOnly: true },
   { id: "perot-museum", label: "Perot Museum", members: [V("perot-museum", "/field-pack/perot-museum/#printable-hunt")], dx: 40, dy: -23, w: [-17, -29], tagOnly: true, noDot: true },
