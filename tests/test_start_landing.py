@@ -290,10 +290,8 @@ class StartLandingTests(unittest.TestCase):
             self.assertIsNotNone(match, name)
             desc = match.group(1)
             self.assertNotIn(banned, desc)
-            self.assertIn("virtual zoo", desc.lower())
-            self.assertIn("Watch Live", desc)
-            self.assertIn("Places", desc)
-            self.assertIn("Cards", desc)
+            self.assertTrue(desc.startswith("Printable scavenger hunts for your next zoo, aquarium or museum trip."), desc)
+            self.assertLessEqual(len(desc), 155)
             self.assertNotIn("free", desc.lower())
             self.assertIn("no signup", desc.lower())
         self.assertEqual(
@@ -1157,13 +1155,13 @@ class StartLandingTests(unittest.TestCase):
         self.assertIn(".start-venue-sizer::before", self.css)
         self.assertIn("content: attr(data-sizer)", self.css)
         self.assertIn("wordWidth", self.js)
-        self.assertIn("<title>Virtual Zoo for Kids: Animal Cards &amp; Quizzes | KidZooKit</title>", self.html)
+        self.assertIn("<title>Zoo, Aquarium &amp; Museum Scavenger Hunts for Kids | KidZooKit</title>", self.html)
         self.assertIn(
-            '<meta property="og:title" content="Virtual Zoo for Kids: Animal Cards &amp; Quizzes | KidZooKit" />',
+            '<meta property="og:title" content="Zoo, Aquarium &amp; Museum Scavenger Hunts for Kids | KidZooKit" />',
             self.html,
         )
         self.assertIn(
-            '<meta name="twitter:title" content="Virtual Zoo for Kids: Animal Cards &amp; Quizzes | KidZooKit" />',
+            '<meta name="twitter:title" content="Zoo, Aquarium &amp; Museum Scavenger Hunts for Kids | KidZooKit" />',
             self.html,
         )
         self.assertNotIn("A virtual zoo for curious kids like Arya and Kunal", self.html)

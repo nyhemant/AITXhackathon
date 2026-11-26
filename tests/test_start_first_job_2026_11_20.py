@@ -38,7 +38,7 @@ class StartFirstJob(unittest.TestCase):
 
     def test_identity_and_head_tags_unchanged(self):
         self.assertIn("Arya’s Wildlife Project", self.html)
-        self.assertIn("<title>Virtual Zoo for Kids: Animal Cards &amp; Quizzes | KidZooKit</title>", self.html)
+        self.assertIn("<title>Zoo, Aquarium &amp; Museum Scavenger Hunts for Kids | KidZooKit</title>", self.html)
         about = (ROOT / "static" / "about" / "index.html").read_text(encoding="utf-8")
         self.assertIn("Arya", about)
 
