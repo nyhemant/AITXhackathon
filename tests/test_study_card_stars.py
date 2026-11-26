@@ -64,14 +64,14 @@ class StudyCardStarsTests(unittest.TestCase):
 
     def test_card_pages_use_study_card_v23(self):
         gen = GEN.read_text(encoding="utf-8")
-        self.assertIn('STUDY_CARD_JS_VER = "23"', gen)
+        self.assertIn('STUDY_CARD_JS_VER = "24"', gen)
         pages = list(CARDS.glob("*/index.html"))
         linked = []
         for page in pages:
             html = page.read_text(encoding="utf-8")
             self.assertNotIn("/field-pack/js/study-card.js?v=22", html, page.parent.name)
             if "study-card.js" in html:
-                self.assertIn("/field-pack/js/study-card.js?v=23", html, page.parent.name)
+                self.assertIn("/field-pack/js/study-card.js?v=24", html, page.parent.name)
                 linked.append(page.parent.name)
         self.assertEqual(len(linked), 42)
 

@@ -70,7 +70,7 @@ class StudyLevelTeachTests(unittest.TestCase):
         js = STUDY_JS.read_text(encoding="utf-8")
         self.assertIn("function placeTeachBeforeQuiz", js)
         self.assertIn("teachShouldOpen", js)
-        self.assertIn("Quick tips (${esc(name)})", js)
+        self.assertIn("Learn first: quick tips", js)
         checked = 0
         for cid in self.cards:
             page = CARDS / cid / "index.html"
@@ -86,9 +86,9 @@ class StudyLevelTeachTests(unittest.TestCase):
                 self.assertLess(teach_at, quiz_at)
                 if watch_at >= 0:
                     self.assertLess(watch_at, teach_at)
-                self.assertIn("Quick tips (Junior Ranger)", primary)
+                self.assertIn("Learn first: quick tips", primary)
                 self.assertIn("study-cards-data.js?v=11", html)
-                self.assertIn("study-card.js?v=23", html)
+                self.assertIn("study-card.js?v=24", html)
                 self.assertIn("study-card.css?v=21", html)
                 self.assertEqual(html.count('class="study-teach"'), 1)
                 checked += 1

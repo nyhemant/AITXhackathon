@@ -946,7 +946,7 @@
     const levelLabel = (deck && (deck.level_label || studyLevelName(deck.level))) || studyLevelName("easy");
     const teachLabel = levelLabel;
     const teachHtml = teach.length
-      ? `<div class="ps-study-teach"><p class="ps-talk-label">Quick tips (${escapeHtml(teachLabel)})</p><ul>${teach
+      ? `<div class="ps-study-teach"><p class="ps-talk-label">Learn first: quick tips (${escapeHtml(teachLabel)})</p><ul>${teach
           .map((t) => `<li>${escapeHtml(t)}</li>`)
           .join("")}</ul></div>`
       : "";

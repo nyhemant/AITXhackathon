@@ -21734,10 +21734,9 @@ def study_talk_html(deck: dict, *, heading: str = STUDY_QUIZ_H2) -> str:
         foot_bits.append(next_tier)
     foot = f'<div class="study-foot no-print">{"".join(foot_bits)}</div>'
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
-    teach_label = _esc(level_display_name(str(level)))
     teach = (
         f'<details class="study-teach" open>'
-        f'<summary class="study-teach-kicker">Quick tips ({teach_label}) '
+        f'<summary class="study-teach-kicker">Learn first: quick tips '
         f'<span class="study-teach-hint">— tap to hide</span></summary>'
         f"<ul>{teach_items}</ul>"
         f"</details>"
@@ -21835,7 +21834,7 @@ def study_print_html(
     level_label = _esc(deck.get("level_label") or level_display_name(deck.get("level")))
     teach_items = "".join(f"<li>{_esc(line)}</li>" for line in deck.get("teach") or [])
     teach = (
-        f'<div class="ps-study-teach"><p class="ps-talk-label">Quick tips ({level_label})</p>'
+        f'<div class="ps-study-teach"><p class="ps-talk-label">Learn first: quick tips ({level_label})</p>'
         f"<ul>{teach_items}</ul></div>"
         if teach_items
         else ""
